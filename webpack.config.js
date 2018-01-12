@@ -4,10 +4,10 @@ const ExtractTextPlugin = require( 'extract-text-webpack-plugin' );
 
 // Set different CSS extraction for editor only and common block styles
 const gtBlocksCSSPlugin = new ExtractTextPlugin( {
-  filename: '../css/gt-blocks.css',
+  filename: './assets/css/gt-blocks.css',
 } );
 const gtBlocksEditorCSSPlugin = new ExtractTextPlugin( {
-  filename: '../css/gt-blocks-editor.css',
+  filename: './assets/css/gt-blocks-editor.css',
 } );
 
 // Configuration for the ExtractTextPlugin.

@@ -1,4 +1,8 @@
-package.json export-ignore
-gulpfile.js export-ignore
+/blocks export-ignore
+.babelrc export-ignore
 .gitignore export-ignore
 .gitattributes export-ignore
+package.json export-ignore
+package-lock.json export-ignore
+gulpfile.js export-ignore
+webpack.config.js export-ignore
