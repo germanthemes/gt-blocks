@@ -3,3 +3,4 @@
  */
 import './portfolio';
 import './testimonials';
+import './image-text';

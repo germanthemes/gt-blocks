@@ -1,0 +1,25 @@
+$black: #222;
+$dark: red;
+$light: rgba(254, 243, 224, 0.52);
+
+.wp-block-german-themes-blocks-image-text {
+
+    display: grid;
+	grid-template-columns: 1fr 1fr;
+    grid-gap: 2rem;
+    padding: 2rem 0;
+    border-top: 1px solid #aaa;
+    border-bottom: 1px solid #aaa;
+
+    .block-image {
+
+        img {
+            margin: 0;
+            vertical-align: top;
+        }
+    }
+
+    .block-content {
+
+    }
+}
