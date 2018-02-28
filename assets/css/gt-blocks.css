@@ -22,9 +22,10 @@
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-gap: 2rem;
-  padding: 2rem 0;
-  border-top: 1px solid #aaa;
-  border-bottom: 1px solid #aaa; }
+  padding: 1em;
+  border: 1px solid #ddd;
+  -webkit-box-shadow: 5px 10px 5px #e5e5e5;
+          box-shadow: 5px 10px 5px #e5e5e5; }
   .wp-block-german-themes-blocks-image-text .block-image img {
     margin: 0;
     vertical-align: top; }

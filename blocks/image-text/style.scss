@@ -7,9 +7,9 @@ $light: rgba(254, 243, 224, 0.52);
     display: grid;
 	grid-template-columns: 1fr 1fr;
     grid-gap: 2rem;
-    padding: 2rem 0;
-    border-top: 1px solid #aaa;
-    border-bottom: 1px solid #aaa;
+    padding: 1em;
+    border: 1px solid #ddd;
+    box-shadow: 5px 10px 5px #e5e5e5;
 
     .block-image {
 
