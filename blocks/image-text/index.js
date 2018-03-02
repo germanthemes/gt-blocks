@@ -21,6 +21,7 @@ const {
     Button,
     DropZone,
     FormFileUpload,
+    IconButton,
     Placeholder,
 } = wp.components;
 
@@ -156,22 +157,38 @@ registerBlockType(
 
                         ) : (
 
-                            <p class="image-wrapper">
+                            <div class="image-wrapper">
+
                                 <img
                                     src={ props.attributes.imgURL }
                                     alt={ props.attributes.imgAlt }
                                 />
 
                                 { props.isSelected ? (
-                                    <Button
-                                        className="remove-image"
-                                        onClick={ onRemoveImage }
-                                    >
-                                        { __( ' Remove Image') }
-                                    </Button>
+                                    <div class="image-buttons">
+                                        <MediaUpload
+                                            onSelect={ onSelectImage }
+                                            type="image"
+                                            value={ props.attributes.imgID }
+                                            render={ ( { open } ) => (
+                                                <IconButton
+                                                    className="edit-image"
+                                                    label={ __( 'Edit image' ) }
+                                                    icon="edit"
+                                                    onClick={ open }
+                                                />
+                                            ) }
+                                        />
+                                        <IconButton
+                                            className="remove-image"
+                                            label={ __( 'Remove image' ) }
+                                            icon="trash"
+                                            onClick={ onRemoveImage }
+                                        />
+                                    </div>
                                 ) : null }
 
-                            </p>
+                            </div>
                         ) }
 
                     </div>

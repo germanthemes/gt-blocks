@@ -1,13 +1,33 @@
 .wp-block-german-themes-blocks-image-text {
 
     .block-image {
-        .image-wrapper {
-            margin: 0;
-        }
         .block-image-placeholder {
             height: 100%;
             .components-form-file-upload {
                 margin-bottom: 12px;
+            }
+        }
+
+        .image-wrapper {
+            position: relative;
+
+            .image-buttons {
+                position: absolute;
+                right: 5px;
+                bottom: 5px;
+
+                .edit-image {
+                    display: inline-block;
+                    background: #fff;
+                    padding: 8px 10px 5px;
+                    margin-right: 5px;
+                }
+
+                .remove-image {
+                    display: inline-block;
+                    padding: 8px 10px 4px;
+                    background: #fff;
+                }
             }
         }
     }
