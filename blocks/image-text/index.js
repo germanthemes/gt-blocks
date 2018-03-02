@@ -69,10 +69,7 @@ registerBlockType(
                 source: 'children',
                 selector: '.block-text',
             },
-            titleAlignment: {
-                type: 'string',
-            },
-            textAlignment: {
+            alignment: {
                 type: 'string',
             },
             editable: {
@@ -108,11 +105,8 @@ registerBlockType(
             const onChangeText = newText => {
                 props.setAttributes( { text: newText } )
             };
-            const onChangeTitleAlignment = newAlignment => {
-                props.setAttributes( { titleAlignment: newAlignment } );
-            };
-            const onChangeTextAlignment = newAlignment => {
-                props.setAttributes( { textAlignment: newAlignment } );
+            const onChangeAlignment = newAlignment => {
+                props.setAttributes( { alignment: newAlignment } );
             };
             const onSetActiveEditable = ( newEditable ) => () => {
                 props.setAttributes( { editable: newEditable  } );
@@ -173,7 +167,7 @@ registerBlockType(
                                             render={ ( { open } ) => (
                                                 <IconButton
                                                     className="edit-image"
-                                                    label={ __( 'Edit image' ) }
+                                                    label={ __( 'Edit Image' ) }
                                                     icon="edit"
                                                     onClick={ open }
                                                 />
@@ -181,7 +175,7 @@ registerBlockType(
                                         />
                                         <IconButton
                                             className="remove-image"
-                                            label={ __( 'Remove image' ) }
+                                            label={ __( 'Remove Image' ) }
                                             icon="trash"
                                             onClick={ onRemoveImage }
                                         />
@@ -195,11 +189,11 @@ registerBlockType(
 
                     <div className="block-content">
                         {
-                            props.isSelected && props.attributes.editable === 'title' && (
+                            props.isSelected && (
                                 <BlockControls key="controls">
                                     <AlignmentToolbar
-                                        value={ props.attributes.titleAlignment }
-                                        onChange={ onChangeTitleAlignment }
+                                        value={ props.attributes.alignment }
+                                        onChange={ onChangeAlignment }
                                     />
                                 </BlockControls>
                             )
@@ -209,29 +203,19 @@ registerBlockType(
                             placeholder={ __( 'Enter a title' ) }
                             value={ props.attributes.title }
                             className="block-title"
-                            style={ { textAlign: props.attributes.titleAlignment } }
+                            style={ { textAlign: props.attributes.alignment } }
                             onChange={ onChangeTitle }
                             isSelected={ props.isSelected && props.attributes.editable === 'title' }
                             onFocus={ onSetActiveEditable( 'title' ) }
                         />
 
-                        {
-                            props.isSelected && props.attributes.editable === 'text' && (
-                                <BlockControls key="controls">
-                                    <AlignmentToolbar
-                                        value={ props.attributes.textAlignment }
-                                        onChange={ onChangeTextAlignment }
-                                    />
-                                </BlockControls>
-                            )
-                        }
                         <RichText
                             tagName="div"
                             multiline="p"
                             placeholder={ __( 'Enter your text here.' ) }
                             value={ props.attributes.text }
                             className="block-text"
-                            style={ { textAlign: props.attributes.textAlignment } }
+                            style={ { textAlign: props.attributes.alignment } }
                             onChange={ onChangeText }
                             isSelected={ props.isSelected && props.attributes.editable === 'text' }
                             onFocus={ onSetActiveEditable( 'text' ) }
@@ -250,11 +234,11 @@ registerBlockType(
                         />
                     </div>
 
-                    <div className="block-content">
-                        <h2 className="block-title" style={ { textAlign: props.attributes.titleAlignment } }>
+                    <div className="block-content" style={ { textAlign: props.attributes.alignment } }>
+                        <h2 className="block-title" >
                             { props.attributes.title }
                         </h2>
-                        <div className="block-text" style={ { textAlign: props.attributes.textAlignment } }>
+                        <div className="block-text">
                             { props.attributes.text }
                         </div>
                     </div>
