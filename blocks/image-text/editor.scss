@@ -1,9 +1,20 @@
 .wp-block-german-themes-blocks-image-text {
 
-  .sorry.warning {
-    background: blue;
-    color: white;
-    font-size: 1.2rem;
-  }
+    .block-image {
+        .image-wrapper {
+            margin: 0;
+        }
+        .block-image-placeholder {
+            height: 100%;
+            .components-form-file-upload {
+                margin-bottom: 12px;
+            }
+        }
+    }
 
+    .block-content {
+        .block-title {
+            margin-bottom: 0.5em;
+        }
+    }
 }

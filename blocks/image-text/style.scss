@@ -1,18 +1,13 @@
-$black: #222;
-$dark: red;
-$light: rgba(254, 243, 224, 0.52);
-
 .wp-block-german-themes-blocks-image-text {
 
     display: grid;
 	grid-template-columns: 1fr 1fr;
-    grid-gap: 2rem;
-    padding: 1em;
+    grid-gap: 1.5em;
+    padding: 1.5em;
     border: 1px solid #ddd;
     box-shadow: 5px 10px 5px #e5e5e5;
 
     .block-image {
-
         img {
             margin: 0;
             vertical-align: top;
@@ -20,6 +15,8 @@ $light: rgba(254, 243, 224, 0.52);
     }
 
     .block-content {
-
+        .block-title {
+            margin-top: 0.1em;
+        }
     }
 }

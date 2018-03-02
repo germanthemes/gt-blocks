@@ -21,11 +21,13 @@
 .wp-block-german-themes-blocks-image-text {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  grid-gap: 2rem;
-  padding: 1em;
+  grid-gap: 1.5em;
+  padding: 1.5em;
   border: 1px solid #ddd;
   -webkit-box-shadow: 5px 10px 5px #e5e5e5;
           box-shadow: 5px 10px 5px #e5e5e5; }
   .wp-block-german-themes-blocks-image-text .block-image img {
     margin: 0;
     vertical-align: top; }
+  .wp-block-german-themes-blocks-image-text .block-content .block-title {
+    margin-top: 0.1em; }

@@ -9,16 +9,24 @@ import './editor.scss';
  */
 const { __ } = wp.i18n;
 const {
-    registerBlockType,
-    RichText,
     AlignmentToolbar,
     BlockControls,
+    ImagePlaceholder,
     MediaUpload,
+    registerBlockType,
+    RichText,
 } = wp.blocks;
 
 const {
     Button,
+    DropZone,
+    FormFileUpload,
+    Placeholder,
 } = wp.components;
+
+const {
+    mediaUpload,
+} = wp.utils;
 
 /**
  * Register block
@@ -85,6 +93,14 @@ registerBlockType(
                     imgAlt: null,
                 } );
             };
+            const setImage = ( [ image ] ) => onSelectImage( image );
+            const uploadFromFiles = ( event ) => mediaUpload( event.target.files, setImage );
+            const onFilesDrop = ( files ) => mediaUpload( files, setImage );
+            const onHTMLDrop = ( HTML ) => setImage( map(
+                rawHandler( { HTML, mode: 'BLOCKS' } )
+                    .filter( ( { name } ) => name === 'core/image' ),
+                'attributes'
+            ) );
             const onChangeTitle = newTitle => {
                 props.setAttributes( { title: newTitle } )
             };
@@ -107,19 +123,36 @@ registerBlockType(
 
                         { ! props.attributes.imgID ? (
 
-                            <MediaUpload
-                                onSelect={ onSelectImage }
-                                type="image"
-                                value={ props.attributes.imgID }
-                                render={ ( { open } ) => (
-                                    <Button
-                                        className="components-button button button-medium"
-                                        onClick={ open }
-                                    >
-                                        { __( ' Upload Image') }
-                                    </Button>
-                                ) }
-                            />
+                            <Placeholder
+                                className="block-image-placeholder"
+                                instructions={ __( 'Drag image here or add from media library' ) }
+                                icon="format-image"
+                                label={ __( 'Image' ) } >
+
+                                <DropZone
+                                    onFilesDrop={ onFilesDrop }
+                                    onHTMLDrop={ onHTMLDrop }
+                                />
+
+                                <FormFileUpload
+                                    isLarge
+                                    className="wp-block-image__upload-button"
+                                    onChange={ uploadFromFiles }
+                                    accept="image/*"
+                                >
+                                    { __( 'Upload test' ) }
+                                </FormFileUpload>
+
+                                <MediaUpload
+                                    onSelect={ onSelectImage }
+                                    type="image"
+                                    render={ ( { open } ) => (
+                                        <Button isLarge onClick={ open }>
+                                            { __( 'Add from Media Library' ) }
+                                        </Button>
+                                    ) }
+                                />
+                            </Placeholder>
 
                         ) : (
 
