@@ -12,6 +12,7 @@ const {
     AlignmentToolbar,
     BlockControls,
     ImagePlaceholder,
+    InspectorControls,
     MediaUpload,
     registerBlockType,
     RichText,
@@ -115,6 +116,14 @@ registerBlockType(
                 <div className={ props.className }>
 
                     <div className="block-image">
+                        {
+                            props.isSelected && (
+                                <InspectorControls key="inspector">
+                                    <h2>{ __( 'Image Settings' ) }</h2>
+
+                                </InspectorControls>
+                            )
+                        }
 
                         { ! props.attributes.imgID ? (
 
