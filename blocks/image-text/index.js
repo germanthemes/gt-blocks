@@ -1,6 +1,7 @@
 /**
  * Block dependencies
  */
+import classnames from 'classnames';
 import './style.scss';
 import './editor.scss';
 
@@ -24,11 +25,21 @@ const {
     FormFileUpload,
     IconButton,
     Placeholder,
+    SelectControl,
 } = wp.components;
 
 const {
     mediaUpload,
 } = wp.utils;
+
+
+const columnSizes = [
+	{ value: 'block-column-25', label: __( '25%' ) },
+	{ value: 'block-column-33', label: __( '33%' ) },
+	{ value: 'block-column-40', label: __( '40%' ) },
+	{ value: 'block-column-50', label: __( '50%' ) },
+    { value: 'block-column-66', label: __( '66%' ) },
+];
 
 /**
  * Register block
@@ -37,6 +48,7 @@ registerBlockType(
     'german-themes-blocks/image-text',
     {
         title: __( 'GT Image & Text' ),
+        description: __( 'Add a description here' ),
         category: 'layout',
         icon: 'wordpress-alt',
         keywords: [
@@ -76,6 +88,10 @@ registerBlockType(
             editable: {
                 type: 'string',
             },
+            columnSize: {
+                type: 'string',
+                default: 'block-column-50'
+            }
         },
         edit: props => {
             const onSelectImage = img => {
@@ -112,14 +128,23 @@ registerBlockType(
             const onSetActiveEditable = ( newEditable ) => () => {
                 props.setAttributes( { editable: newEditable  } );
             };
+            const onChangeColumnSize = newColumnSize => {
+                props.setAttributes( { columnSize: newColumnSize  } );
+            };
             return (
-                <div className={ props.className }>
+                <div className={ `${props.className} ${props.attributes.columnSize}` }>
 
                     <div className="block-image">
                         {
                             props.isSelected && (
                                 <InspectorControls key="inspector">
-                                    <h2>{ __( 'Image Settings' ) }</h2>
+
+                                    <SelectControl
+                                        label={ __( 'Image Size' ) }
+                                        value={ props.attributes.columnSize }
+                                        onChange={ onChangeColumnSize }
+                                        options={ columnSizes }
+                                    />
 
                                 </InspectorControls>
                             )
@@ -235,7 +260,7 @@ registerBlockType(
         },
         save: props => {
             return (
-                <div>
+                <div className={props.attributes.columnSize}>
                     <div className="block-image">
                         <img
                             src={props.attributes.imgURL}
