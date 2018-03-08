@@ -39,13 +39,17 @@ class gtImageTextBlock extends Component {
     constructor() {
         super( ...arguments );
 
-        this.onSelectImage = this.onSelectImage.bind( this );
-        this.onRemoveImage = this.onRemoveImage.bind( this );
-        this.onChangeTitle = this.onChangeTitle.bind( this );
-        this.onChangeText = this.onChangeText.bind( this );
-        this.onChangeAlignment = this.onChangeAlignment.bind( this );
+        this.onSelectImage       = this.onSelectImage.bind( this );
+        this.onRemoveImage       = this.onRemoveImage.bind( this );
+        this.setImage            = this.setImage.bind( this );
+        this.uploadFromFiles     = this.uploadFromFiles.bind( this );
+        this.onFilesDrop         = this.onFilesDrop.bind( this );
+        this.onHTMLDrop          = this.onHTMLDrop.bind( this );
+        this.onChangeTitle       = this.onChangeTitle.bind( this );
+        this.onChangeText        = this.onChangeText.bind( this );
+        this.onChangeAlignment   = this.onChangeAlignment.bind( this );
         this.onSetActiveEditable = this.onSetActiveEditable.bind( this );
-        this.onChangeColumnSize = this.onChangeColumnSize.bind( this );
+        this.onChangeColumnSize  = this.onChangeColumnSize.bind( this );
     }
 
     onSelectImage( img ) {
@@ -65,7 +69,7 @@ class gtImageTextBlock extends Component {
     }
 
     setImage( [ image ] ) {
-        onSelectImage( image )
+        this.onSelectImage( image )
     };
 
     uploadFromFiles( event ) {
@@ -145,7 +149,7 @@ class gtImageTextBlock extends Component {
                                 onChange={ this.uploadFromFiles }
                                 accept="image/*"
                             >
-                                { __( 'Upload test' ) }
+                                { __( 'Upload' ) }
                             </FormFileUpload>
 
                             <MediaUpload
