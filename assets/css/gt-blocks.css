@@ -20,21 +20,43 @@
     font-size: 1.4rem; }
 /* Block Columns */
 .wp-block-german-themes-blocks-image-text {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-gap: 1.5em; }
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex; }
 
-.wp-block-german-themes-blocks-image-text.block-column-25 {
-  grid-template-columns: 1fr 3fr; }
+.wp-block-german-themes-blocks-image-text .block-image {
+  width: 50%; }
 
-.wp-block-german-themes-blocks-image-text.block-column-33 {
-  grid-template-columns: 1fr 2fr; }
+.wp-block-german-themes-blocks-image-text .block-content {
+  width: 50%;
+  padding-left: 1.5em;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box; }
 
-.wp-block-german-themes-blocks-image-text.block-column-40 {
-  grid-template-columns: 2fr 3fr; }
+/* Different Column Sizes */
+.wp-block-german-themes-blocks-image-text.block-column-25 .block-image {
+  width: 25%; }
 
-.wp-block-german-themes-blocks-image-text.block-column-66 {
-  grid-template-columns: 2fr 1fr; }
+.wp-block-german-themes-blocks-image-text.block-column-25 .block-content {
+  width: 75%; }
+
+.wp-block-german-themes-blocks-image-text.block-column-33 .block-image {
+  width: 33.3333333333%; }
+
+.wp-block-german-themes-blocks-image-text.block-column-33 .block-content {
+  width: 66.6666666666%; }
+
+.wp-block-german-themes-blocks-image-text.block-column-40 .block-image {
+  width: 40%; }
+
+.wp-block-german-themes-blocks-image-text.block-column-40 .block-content {
+  width: 60%; }
+
+.wp-block-german-themes-blocks-image-text.block-column-66 .block-image {
+  width: 66.6666666666%; }
+
+.wp-block-german-themes-blocks-image-text.block-column-66 .block-content {
+  width: 33.3333333333%; }
 
 /* Block Image */
 .wp-block-german-themes-blocks-image-text .block-image img {
@@ -42,5 +64,20 @@
   vertical-align: top; }
 
 /* Block Content */
-.wp-block-german-themes-blocks-image-text .block-content .block-title {
-  margin-top: 0.1em; }
+/* Center Vertical */
+.wp-block-german-themes-blocks-image-text.gt-vertical-centered {
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center; }
+
+.wp-block-german-themes-blocks-image-text.gt-invert-layout .block-image {
+  -webkit-box-ordinal-group: 3;
+      -ms-flex-order: 2;
+          order: 2; }
+
+.wp-block-german-themes-blocks-image-text.gt-invert-layout .block-content {
+  -webkit-box-ordinal-group: 2;
+      -ms-flex-order: 1;
+          order: 1;
+  padding-left: 0;
+  padding-right: 1.5em; }

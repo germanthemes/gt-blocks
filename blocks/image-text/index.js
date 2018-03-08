@@ -61,12 +61,23 @@ registerBlockType(
             columnSize: {
                 type: 'string',
                 default: 'block-column-50'
-            }
+            },
+            verticalAlignment: {
+                type: 'boolean',
+                default: false,
+            },
+            invertLayout: {
+                type: 'boolean',
+                default: false,
+            },
         },
         edit: gtImageTextBlock,
         save: props => {
+            const verticalAlignment = props.attributes.verticalAlignment ? 'gt-vertical-centered' : '';
+            const invertLayout = props.attributes.invertLayout ? 'gt-invert-layout' : '';
+
             return (
-                <div className={props.attributes.columnSize}>
+                <div className={ `${props.attributes.columnSize} ${verticalAlignment} ${invertLayout}` }>
                     <div className="block-image">
                         <img
                             src={props.attributes.imgURL}

@@ -20,6 +20,7 @@ const {
     IconButton,
     Placeholder,
     SelectControl,
+    ToggleControl,
 } = wp.components;
 
 const {
@@ -50,6 +51,8 @@ class gtImageTextBlock extends Component {
         this.onChangeAlignment   = this.onChangeAlignment.bind( this );
         this.onSetActiveEditable = this.onSetActiveEditable.bind( this );
         this.onChangeColumnSize  = this.onChangeColumnSize.bind( this );
+        this.toggleVerticalAlignment  = this.toggleVerticalAlignment.bind( this );
+        this.toggleInvertLayout  = this.toggleInvertLayout.bind( this );
     }
 
     onSelectImage( img ) {
@@ -108,11 +111,21 @@ class gtImageTextBlock extends Component {
         this.props.setAttributes( { columnSize: newColumnSize  } );
     }
 
+    toggleVerticalAlignment() {
+        this.props.setAttributes( { verticalAlignment: ! this.props.attributes.verticalAlignment  } );
+    }
+
+    toggleInvertLayout() {
+        this.props.setAttributes( { invertLayout: ! this.props.attributes.invertLayout  } );
+    }
+
     render() {
         const { attributes, setAttributes, isSelected, className } = this.props;
+        const verticalAlignment = attributes.verticalAlignment ? 'gt-vertical-centered' : '';
+        const invertLayout = attributes.invertLayout ? 'gt-invert-layout' : '';
 
         return (
-            <div className={ `${className} ${attributes.columnSize}` }>
+            <div className={ `${className} ${attributes.columnSize} ${verticalAlignment} ${invertLayout}` }>
 
                 <div className="block-image">
                     {
@@ -124,6 +137,18 @@ class gtImageTextBlock extends Component {
                                     value={ attributes.columnSize }
                                     onChange={ this.onChangeColumnSize }
                                     options={ columnSizes }
+                                />
+
+                                <ToggleControl
+                                    label={ __( 'Center vertically?' ) }
+                                    checked={ !! attributes.verticalAlignment }
+                                    onChange={ this.toggleVerticalAlignment }
+                                />
+
+                                <ToggleControl
+                                    label={ __( 'Invert Layout?' ) }
+                                    checked={ !! attributes.invertLayout }
+                                    onChange={ this.toggleInvertLayout }
                                 />
 
                             </InspectorControls>
