@@ -3,6 +3,7 @@
  */
 import './style.scss';
 import './editor.scss';
+import { default as gtPortfolioBlock } from './block';
 
 /**
  * Internal block libraries
@@ -13,37 +14,42 @@ const { registerBlockType } = wp.blocks;
 /**
  * Register block
  */
-export default registerBlockType(
+registerBlockType(
     'german-themes-blocks/portfolio',
     {
         title: __( 'GT Portfolio' ),
+        description: __( 'Add a description here' ),
         category: 'layout',
         icon: 'wordpress-alt',
         keywords: [
             __( 'German Themes' ),
-            __( 'Services' ),
+            __( 'Portfolio' ),
             __( 'Layout' ),
         ],
-        edit: props => {
-          return (
-            <div className={ props.className }>
-              <h2>{ __( 'GT Portfolio' ) }</h2>
-              <p>{ __( 'This is really important!' ) }</p>
-              {
-                !! props.focus && (
-                  <p className="sorry warning">✋ Sorry! You cannot edit this block ✋</p>
-                )
-              }
-            </div>
-          );
+        attributes: {
+            title: {
+                type: 'array',
+                source: 'children',
+                selector: '.block-title',
+            },
+            text: {
+                type: 'array',
+                source: 'children',
+                selector: '.block-text',
+            },
         },
+        edit: gtPortfolioBlock,
         save: props => {
-          return (
-            <div>
-              <h2>{ __( 'GT Portfolio' ) }</h2>
-              <p>{ __( 'This is really important!' ) }</p>
-            </div>
-          );
+            return (
+                <div>
+                    <h2 className="block-title" >
+                        { props.attributes.title }
+                    </h2>
+                    <div className="block-text">
+                        { props.attributes.text }
+                    </div>
+                </div>
+            );
         },
     },
 );
