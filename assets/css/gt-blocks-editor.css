@@ -30,3 +30,8 @@
 .wp-block-german-themes-blocks-image-text .block-content .block-title {
   margin-top: 0.5em;
   margin-bottom: 0.5em; }
+
+/* Rotate Vertical Align Bottom Icon */
+.edit-post-sidebar .gt-vertical-align-control button[aria-label="Bottom"] .dashicon {
+  -webkit-transform: rotate(180deg);
+          transform: rotate(180deg); }

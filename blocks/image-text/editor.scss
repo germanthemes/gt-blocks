@@ -39,3 +39,9 @@
         }
     }
 }
+
+
+/* Rotate Vertical Align Bottom Icon */
+.edit-post-sidebar .gt-vertical-align-control button[aria-label="Bottom"] .dashicon {
+    transform: rotate(180deg);
+}

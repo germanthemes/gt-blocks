@@ -88,8 +88,8 @@ registerBlockType(
                 type: 'string',
             },
             verticalAlignment: {
-                type: 'boolean',
-                default: false,
+                type: 'string',
+                default: 'top',
             },
             spacing: {
                 type: 'boolean',
@@ -117,7 +117,7 @@ registerBlockType(
                 [ `${ attributes.columnSize }` ]: attributes.columnSize,
                 [ `align${ attributes.blockAlignment }` ]: ( attributes.blockAlignment !== 'center' ),
                 'has-background': attributes.backgroundColor,
-                'gt-vertical-centered': attributes.verticalAlignment,
+                [ `gt-vertical-align-${ attributes.verticalAlignment }` ]: ( attributes.verticalAlignment !== 'top' ),
                 'gt-image-position-right': attributes.imagePosition,
                 'gt-has-spacing': attributes.spacing,
             } );

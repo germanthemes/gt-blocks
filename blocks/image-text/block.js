@@ -60,6 +60,21 @@ const blockAlignmentControls = {
     },
 };
 
+const verticalAlignmentControls = {
+    top: {
+        icon: 'align-full-width',
+        title: __( 'Top' ),
+    },
+    center: {
+        icon: 'align-wide',
+        title: __( 'Center' ),
+    },
+    bottom: {
+        icon: 'align-full-width',
+        title: __( 'Bottom' ),
+    },
+};
+
 class gtImageTextBlock extends Component {
     constructor() {
         super( ...arguments );
@@ -113,18 +128,13 @@ class gtImageTextBlock extends Component {
         this.props.setAttributes( { editable: newEditable  } );
     }
 
-    setBlockAlignment( align ) {
-        const newBlockAlignment = this.props.attributes.blockAlignment === align ? undefined : align;
-        this.props.setAttributes( { blockAlignment: newBlockAlignment  } );
-    }
-
     render() {
         const { attributes, setAttributes, isSelected, className } = this.props;
 
         const classNames= classnames( className, {
             [ `${ attributes.columnSize }` ]: attributes.columnSize,
             'has-background': attributes.backgroundColor,
-            'gt-vertical-centered': attributes.verticalAlignment,
+            [ `gt-vertical-align-${ attributes.verticalAlignment }` ]: ( attributes.verticalAlignment !== 'top' ),
             'gt-image-position-right': attributes.imagePosition,
             'gt-has-spacing': attributes.spacing,
         } );
@@ -216,10 +226,18 @@ class gtImageTextBlock extends Component {
                             }
                         />
 
-                        <ToggleControl
-                            label={ __( 'Center vertically?' ) }
-                            checked={ !! attributes.verticalAlignment }
-                            onChange={ () => setAttributes( { verticalAlignment: ! attributes.verticalAlignment } ) }
+                        <label className="blocks-base-control__label">{ __( 'Vertical Alignment' ) }</label>
+                        <Toolbar
+                            className='gt-vertical-align-control'
+                            controls={
+                                [ 'top', 'center', 'bottom' ].map( control => {
+                                    return {
+                                        ...verticalAlignmentControls[ control ],
+                                        isActive: attributes.verticalAlignment === control,
+                                        onClick: () => setAttributes( { verticalAlignment: control } ),
+                                    };
+                                } )
+                            }
                         />
 
                     </PanelBody>

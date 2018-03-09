@@ -68,8 +68,13 @@
     margin-bottom: 1.5em;
 }
 
-/* Center Vertical */
-.wp-block-german-themes-blocks-image-text.gt-vertical-centered .block-content {
+/* Vertical Alignment */
+.wp-block-german-themes-blocks-image-text.gt-vertical-align-center .block-content {
     display: flex;
     align-items: center;
+}
+
+.wp-block-german-themes-blocks-image-text.gt-vertical-align-bottom .block-content {
+    display: flex;
+    align-items: flex-end;
 }
