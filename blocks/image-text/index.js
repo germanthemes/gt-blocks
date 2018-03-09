@@ -1,4 +1,9 @@
 /**
+ * External dependencies
+ */
+import classnames from 'classnames';
+
+/**
  * Block dependencies
  */
 import './style.scss';
@@ -18,14 +23,19 @@ registerBlockType(
     'german-themes-blocks/image-text',
     {
         title: __( 'GT Image & Text' ),
+
         description: __( 'Add a description here' ),
+
         category: 'layout',
+
         icon: 'wordpress-alt',
+
         keywords: [
             __( 'German Themes' ),
             __( 'Image' ),
             __( 'Text' ),
         ],
+
         attributes: {
             imgURL: {
                 type: 'string',
@@ -70,27 +80,46 @@ registerBlockType(
                 type: 'boolean',
                 default: false,
             },
+            blockAlignment: {
+                type: 'string',
+            },
         },
+
+        getEditWrapperProps( attributes ) {
+            if ( [ 'wide', 'full' ].indexOf( attributes.blockAlignment ) !== -1 ) {
+                return { 'data-align': attributes.blockAlignment };
+            }
+        },
+
         edit: gtImageTextBlock,
-        save: props => {
-            const verticalAlignment = props.attributes.verticalAlignment ? 'gt-vertical-centered' : '';
-            const invertLayout = props.attributes.invertLayout ? 'gt-invert-layout' : '';
+
+        save( { attributes } ) {
+            const verticalAlignment = attributes.verticalAlignment ? 'gt-vertical-centered' : '';
+            const invertLayout = attributes.invertLayout ? 'gt-invert-layout' : '';
+
+            const classNames = classnames( {
+                [ `${ attributes.columnSize }` ]: attributes.columnSize,
+                [ `align${ attributes.blockAlignment }` ]: attributes.blockAlignment,
+                'gt-vertical-centered': attributes.verticalAlignment,
+                'gt-invert-layout': attributes.invertLayout,
+            } );
 
             return (
-                <div className={ `${props.attributes.columnSize} ${verticalAlignment} ${invertLayout}` }>
+                <div className={ classNames ? classNames : undefined }>
+
                     <div className="block-image">
                         <img
-                            src={props.attributes.imgURL}
-                            alt={props.attributes.imgAlt}
+                            src={attributes.imgURL}
+                            alt={attributes.imgAlt}
                         />
                     </div>
 
-                    <div className="block-content" style={ { textAlign: props.attributes.alignment } }>
+                    <div className="block-content" style={ { textAlign: attributes.alignment } }>
                         <h2 className="block-title" >
-                            { props.attributes.title }
+                            { attributes.title }
                         </h2>
                         <div className="block-text">
-                            { props.attributes.text }
+                            { attributes.text }
                         </div>
                     </div>
                 </div>

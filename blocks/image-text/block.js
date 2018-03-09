@@ -1,4 +1,9 @@
 /**
+ * External dependencies
+ */
+import classnames from 'classnames';
+
+/**
  * Internal block libraries
  */
 const { Component } = wp.element;
@@ -18,9 +23,11 @@ const {
     DropZone,
     FormFileUpload,
     IconButton,
+    PanelBody,
     Placeholder,
     SelectControl,
     ToggleControl,
+    Toolbar,
 } = wp.components;
 
 const {
@@ -29,12 +36,27 @@ const {
 
 
 const columnSizes = [
-	{ value: 'block-column-25', label: __( '25%' ) },
-	{ value: 'block-column-33', label: __( '33%' ) },
-	{ value: 'block-column-40', label: __( '40%' ) },
-	{ value: 'block-column-50', label: __( '50%' ) },
+    { value: 'block-column-25', label: __( '25%' ) },
+    { value: 'block-column-33', label: __( '33%' ) },
+    { value: 'block-column-40', label: __( '40%' ) },
+    { value: 'block-column-50', label: __( '50%' ) },
     { value: 'block-column-66', label: __( '66%' ) },
 ];
+
+const alignmentControls = {
+    center: {
+        icon: 'align-center',
+        title: __( 'Align center' ),
+    },
+    wide: {
+        icon: 'align-wide',
+        title: __( 'Wide width' ),
+    },
+    full: {
+        icon: 'align-full-width',
+        title: __( 'Full width' ),
+    },
+};
 
 class gtImageTextBlock extends Component {
     constructor() {
@@ -119,37 +141,72 @@ class gtImageTextBlock extends Component {
         this.props.setAttributes( { invertLayout: ! this.props.attributes.invertLayout  } );
     }
 
+    setBlockAlignment( align ) {
+        const newBlockAlignment = this.props.attributes.blockAlignment === align ? undefined : align;
+        this.props.setAttributes( { blockAlignment: newBlockAlignment  } );
+    }
+
     render() {
         const { attributes, setAttributes, isSelected, className } = this.props;
-        const verticalAlignment = attributes.verticalAlignment ? 'gt-vertical-centered' : '';
-        const invertLayout = attributes.invertLayout ? 'gt-invert-layout' : '';
+
+        const classNames= classnames( className, {
+            [ `${ attributes.columnSize }` ]: attributes.columnSize,
+            'gt-vertical-centered': attributes.verticalAlignment,
+            'gt-invert-layout': attributes.invertLayout,
+        } );
 
         return (
-            <div className={ `${className} ${attributes.columnSize} ${verticalAlignment} ${invertLayout}` }>
+            <div className={ classNames }>
 
                 <div className="block-image">
                     {
                         isSelected && (
                             <InspectorControls key="inspector">
 
-                                <SelectControl
-                                    label={ __( 'Image Size' ) }
-                                    value={ attributes.columnSize }
-                                    onChange={ this.onChangeColumnSize }
-                                    options={ columnSizes }
-                                />
+                                <PanelBody title={ __( 'Layout Settings' ) } initialOpen={ false }>
 
-                                <ToggleControl
-                                    label={ __( 'Center vertically?' ) }
-                                    checked={ !! attributes.verticalAlignment }
-                                    onChange={ this.toggleVerticalAlignment }
-                                />
+                                    <SelectControl
+                                        label={ __( 'Image Size' ) }
+                                        value={ attributes.columnSize }
+                                        onChange={ this.onChangeColumnSize }
+                                        options={ columnSizes }
+                                    />
 
-                                <ToggleControl
-                                    label={ __( 'Invert Layout?' ) }
-                                    checked={ !! attributes.invertLayout }
-                                    onChange={ this.toggleInvertLayout }
-                                />
+                                    <ToggleControl
+                                        label={ __( 'Invert Layout?' ) }
+                                        checked={ !! attributes.invertLayout }
+                                        onChange={ this.toggleInvertLayout }
+                                    />
+
+                                    <label className="blocks-base-control__label">{ __( 'Block Alignment' ) }</label>
+                                    <Toolbar
+                                        controls={
+                                            [ 'center', 'wide', 'full' ].map( control => {
+                                                return {
+                                                    ...alignmentControls[ control ],
+                                                    isActive: attributes.blockAlignment === control,
+                                                    onClick: () => this.setBlockAlignment( control ),
+                                                };
+                                            } )
+                                        }
+                                    />
+
+                                </PanelBody>
+
+                                <PanelBody title={ __( 'Content Settings' ) } initialOpen={ false }>
+
+                                    <ToggleControl
+                                        label={ __( 'Center vertically?' ) }
+                                        checked={ !! attributes.verticalAlignment }
+                                        onChange={ this.toggleVerticalAlignment }
+                                    />
+
+                                </PanelBody>
+
+                                <PanelBody title={ __( 'Color Settings' ) } initialOpen={ false }>
+
+
+                                </PanelBody>
 
                             </InspectorControls>
                         )
