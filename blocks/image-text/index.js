@@ -57,6 +57,13 @@ registerBlockType(
                 source: 'children',
                 selector: '.block-title',
             },
+            titleTag: {
+                type: 'string',
+                source: 'property',
+                selector: 'h1,h2,h3,h4,h5,h6',
+                property: 'nodeName',
+                default: 'H2',
+            },
             text: {
                 type: 'array',
                 source: 'children',
@@ -115,6 +122,8 @@ registerBlockType(
                 textAlign: attributes.textAlignment,
             };
 
+            const TitleTag = attributes.titleTag.toLowerCase();
+
             return (
                 <div className={ classNames ? classNames : undefined }>
 
@@ -129,9 +138,9 @@ registerBlockType(
 
                         <div className="block-content-inner">
 
-                            <h2 className="block-title" >
+                            <TitleTag className="block-title" >
                                 { attributes.title }
-                            </h2>
+                            </TitleTag>
 
                             <div className="block-text">
                                 { attributes.text }

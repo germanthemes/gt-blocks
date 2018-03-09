@@ -7,7 +7,7 @@ import classnames from 'classnames';
  * Internal block libraries
  */
 const { Component } = wp.element;
-const { __ } = wp.i18n;
+const { __, sprintf } = wp.i18n;
 const {
     AlignmentToolbar,
     BlockControls,
@@ -137,10 +137,24 @@ class gtImageTextBlock extends Component {
         return [
             isSelected && (
                 <BlockControls key="controls">
+
                     <AlignmentToolbar
                         value={ attributes.textAlignment }
                         onChange={ ( newAlignment ) => setAttributes( { textAlignment: newAlignment } ) }
                     />
+
+                    <Toolbar
+                        controls={
+                        '234'.split( '' ).map( ( level ) => ( {
+                            icon: 'heading',
+                            title: sprintf( __( 'Heading %s' ), level ),
+                            isActive: 'H' + level === attributes.titleTag,
+                            onClick: () => setAttributes( { titleTag: 'H' + level } ),
+                            subscript: level,
+                        } ) )
+                        }
+                    />
+
                 </BlockControls>
             ),
             isSelected && (
@@ -181,6 +195,19 @@ class gtImageTextBlock extends Component {
                     </PanelBody>
 
                     <PanelBody title={ __( 'Content Settings' ) } initialOpen={ false }>
+
+                        <p>{ __( 'Heading' ) }</p>
+                        <Toolbar
+                            controls={
+                            '123456'.split( '' ).map( ( level ) => ( {
+                                icon: 'heading',
+                                title: sprintf( __( 'Heading %s' ), level ),
+                                isActive: 'H' + level === attributes.titleTag,
+                                onClick: () => setAttributes( { titleTag: 'H' + level } ),
+                                subscript: level,
+                            } ) )
+                            }
+                        />
 
                         <ToggleControl
                             label={ __( 'Center vertically?' ) }
@@ -287,7 +314,7 @@ class gtImageTextBlock extends Component {
                     <div className="block-content-inner">
 
                         <RichText
-                            tagName="h2"
+                            tagName={ attributes.titleTag.toLowerCase() }
                             placeholder={ __( 'Enter a title' ) }
                             value={ attributes.title }
                             className="block-title"
