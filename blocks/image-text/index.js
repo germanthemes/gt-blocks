@@ -82,6 +82,7 @@ registerBlockType(
             },
             blockAlignment: {
                 type: 'string',
+                default: 'center',
             },
             textAlignment: {
                 type: 'string',
@@ -110,7 +111,7 @@ registerBlockType(
 
             const classNames = classnames( {
                 [ `${ attributes.columnSize }` ]: attributes.columnSize,
-                [ `align${ attributes.blockAlignment }` ]: attributes.blockAlignment,
+                [ `align${ attributes.blockAlignment }` ]: ( attributes.blockAlignment !== 'center' ),
                 'has-background': attributes.backgroundColor,
                 'gt-vertical-centered': attributes.verticalAlignment,
                 'gt-image-position-right': attributes.imagePosition,

@@ -46,7 +46,7 @@ const columnSizes = [
 ];
 
 const blockAlignmentControls = {
-    none: {
+    center: {
         icon: 'align-center',
         title: __( 'Align center' ),
     },
@@ -182,11 +182,11 @@ class gtImageTextBlock extends Component {
                         <label className="blocks-base-control__label">{ __( 'Block Alignment' ) }</label>
                         <Toolbar
                             controls={
-                                [ 'none', 'wide', 'full' ].map( control => {
+                                [ 'center', 'wide', 'full' ].map( control => {
                                     return {
                                         ...blockAlignmentControls[ control ],
                                         isActive: attributes.blockAlignment === control,
-                                        onClick: () => this.setBlockAlignment( control ),
+                                        onClick: () => setAttributes( { blockAlignment: control } ),
                                     };
                                 } )
                             }
