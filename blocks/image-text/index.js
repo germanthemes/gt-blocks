@@ -91,6 +91,10 @@ registerBlockType(
                 type: 'boolean',
                 default: false,
             },
+            spacing: {
+                type: 'boolean',
+                default: true,
+            },
             textColor: {
                 type: 'string',
             },
@@ -115,6 +119,7 @@ registerBlockType(
                 'has-background': attributes.backgroundColor,
                 'gt-vertical-centered': attributes.verticalAlignment,
                 'gt-image-position-right': attributes.imagePosition,
+                'gt-has-spacing': attributes.spacing,
             } );
 
             const styles = {

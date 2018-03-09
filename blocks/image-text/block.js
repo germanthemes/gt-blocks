@@ -126,6 +126,7 @@ class gtImageTextBlock extends Component {
             'has-background': attributes.backgroundColor,
             'gt-vertical-centered': attributes.verticalAlignment,
             'gt-image-position-right': attributes.imagePosition,
+            'gt-has-spacing': attributes.spacing,
         } );
 
         const styles = {
@@ -190,6 +191,12 @@ class gtImageTextBlock extends Component {
                                     };
                                 } )
                             }
+                        />
+
+                        <ToggleControl
+                            label={ __( 'Add bottom spacing?' ) }
+                            checked={ !! attributes.spacing }
+                            onChange={ () => setAttributes( { spacing: ! attributes.spacing } ) }
                         />
 
                     </PanelBody>
