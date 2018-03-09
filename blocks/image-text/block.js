@@ -27,6 +27,7 @@ const {
     PanelBody,
     PanelColor,
     Placeholder,
+    RangeControl,
     SelectControl,
     ToggleControl,
     Toolbar,
@@ -133,7 +134,7 @@ class gtImageTextBlock extends Component {
 
         const classNames= classnames( className, {
             [ `${ attributes.columnSize }` ]: attributes.columnSize,
-            'has-background': attributes.backgroundColor,
+            'gt-has-background': attributes.backgroundColor,
             [ `gt-vertical-align-${ attributes.verticalAlignment }` ]: ( attributes.verticalAlignment !== 'top' ),
             'gt-image-position-right': attributes.imagePosition,
             'gt-has-spacing': attributes.spacing,
@@ -224,6 +225,16 @@ class gtImageTextBlock extends Component {
                                 subscript: level,
                             } ) )
                             }
+                        />
+
+                        <RangeControl
+                            label={ __( 'Font Size' ) }
+                            value={ attributes.fontSize || '' }
+                            onChange={ ( value ) => setAttributes( { fontSize: value } ) }
+                            min={ 10 }
+                            max={ 64 }
+                            beforeIcon="editor-textcolor"
+                            allowReset
                         />
 
                         <label className="blocks-base-control__label">{ __( 'Vertical Alignment' ) }</label>
@@ -355,6 +366,7 @@ class gtImageTextBlock extends Component {
                             placeholder={ __( 'Enter your text here.' ) }
                             value={ attributes.text }
                             className="block-text"
+                            style={ { fontSize: attributes.fontSize ? attributes.fontSize + 'px' : undefined } }
                             onChange={ ( newText ) => setAttributes( { text: newText } ) }
                             isSelected={ isSelected && attributes.editable === 'text' }
                             onFocus={ () => this.onSetActiveEditable( 'text' ) }

@@ -95,6 +95,9 @@ registerBlockType(
                 type: 'boolean',
                 default: true,
             },
+            fontSize: {
+                type: 'number',
+            },
             textColor: {
                 type: 'string',
             },
@@ -116,7 +119,7 @@ registerBlockType(
             const classNames = classnames( {
                 [ `${ attributes.columnSize }` ]: attributes.columnSize,
                 [ `align${ attributes.blockAlignment }` ]: ( attributes.blockAlignment !== 'center' ),
-                'has-background': attributes.backgroundColor,
+                'gt-has-background': attributes.backgroundColor,
                 [ `gt-vertical-align-${ attributes.verticalAlignment }` ]: ( attributes.verticalAlignment !== 'top' ),
                 'gt-image-position-right': attributes.imagePosition,
                 'gt-has-spacing': attributes.spacing,
@@ -148,7 +151,7 @@ registerBlockType(
                                 { attributes.title }
                             </TitleTag>
 
-                            <div className="block-text">
+                            <div className="block-text" style={ { fontSize: attributes.fontSize } }>
                                 { attributes.text }
                             </div>
 

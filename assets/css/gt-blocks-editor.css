@@ -31,6 +31,10 @@
   margin-top: 0.5em;
   margin-bottom: 0.5em; }
 
+/* Font Size */
+.wp-block-german-themes-blocks-image-text .block-content .block-text p {
+  font-size: inherit; }
+
 /* Rotate Vertical Align Bottom Icon */
 .edit-post-sidebar .gt-vertical-align-control button[aria-label="Bottom"] .dashicon {
   -webkit-transform: rotate(180deg);
