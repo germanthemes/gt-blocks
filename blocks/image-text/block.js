@@ -11,6 +11,7 @@ const { __ } = wp.i18n;
 const {
     AlignmentToolbar,
     BlockControls,
+    ColorPalette,
     ImagePlaceholder,
     InspectorControls,
     MediaUpload,
@@ -24,6 +25,7 @@ const {
     FormFileUpload,
     IconButton,
     PanelBody,
+    PanelColor,
     Placeholder,
     SelectControl,
     ToggleControl,
@@ -151,66 +153,89 @@ class gtImageTextBlock extends Component {
 
         const classNames= classnames( className, {
             [ `${ attributes.columnSize }` ]: attributes.columnSize,
+            'has-background': attributes.backgroundColor,
             'gt-vertical-centered': attributes.verticalAlignment,
             'gt-invert-layout': attributes.invertLayout,
         } );
 
-        return (
+        const styles = {
+            backgroundColor: attributes.backgroundColor,
+            color: attributes.textColor,
+            textAlign: attributes.alignment,
+        };
+
+        return [
+            isSelected && (
+                <BlockControls key="controls">
+                    <AlignmentToolbar
+                        value={ attributes.alignment }
+                        onChange={ this.onChangeAlignment }
+                    />
+                </BlockControls>
+            ),
+            isSelected && (
+                <InspectorControls key="inspector">
+
+                    <PanelBody title={ __( 'Layout Settings' ) } initialOpen={ false }>
+
+                        <SelectControl
+                            label={ __( 'Image Size' ) }
+                            value={ attributes.columnSize }
+                            onChange={ this.onChangeColumnSize }
+                            options={ columnSizes }
+                        />
+
+                        <ToggleControl
+                            label={ __( 'Invert Layout?' ) }
+                            checked={ !! attributes.invertLayout }
+                            onChange={ this.toggleInvertLayout }
+                        />
+
+                        <label className="blocks-base-control__label">{ __( 'Block Alignment' ) }</label>
+                        <Toolbar
+                            controls={
+                                [ 'center', 'wide', 'full' ].map( control => {
+                                    return {
+                                        ...alignmentControls[ control ],
+                                        isActive: attributes.blockAlignment === control,
+                                        onClick: () => this.setBlockAlignment( control ),
+                                    };
+                                } )
+                            }
+                        />
+
+                    </PanelBody>
+
+                    <PanelBody title={ __( 'Content Settings' ) } initialOpen={ false }>
+
+                        <ToggleControl
+                            label={ __( 'Center vertically?' ) }
+                            checked={ !! attributes.verticalAlignment }
+                            onChange={ this.toggleVerticalAlignment }
+                        />
+
+                    </PanelBody>
+
+                    <PanelColor title={ __( 'Background Color' ) } colorValue={ attributes.backgroundColor } initialOpen={ false }>
+                        <ColorPalette
+                            value={ attributes.backgroundColor }
+                            onChange={ ( colorValue ) => setAttributes( { backgroundColor: colorValue } ) }
+                        />
+                    </PanelColor>
+
+                    <PanelColor title={ __( 'Text Color' ) } colorValue={ attributes.textColor } initialOpen={ false }>
+                        <ColorPalette
+                            value={ attributes.textColor }
+                            onChange={ ( colorValue ) => setAttributes( { textColor: colorValue } ) }
+                        />
+                    </PanelColor>
+
+                </InspectorControls>
+            ),
+
             <div className={ classNames }>
 
                 <div className="block-image">
-                    {
-                        isSelected && (
-                            <InspectorControls key="inspector">
-
-                                <PanelBody title={ __( 'Layout Settings' ) } initialOpen={ false }>
-
-                                    <SelectControl
-                                        label={ __( 'Image Size' ) }
-                                        value={ attributes.columnSize }
-                                        onChange={ this.onChangeColumnSize }
-                                        options={ columnSizes }
-                                    />
-
-                                    <ToggleControl
-                                        label={ __( 'Invert Layout?' ) }
-                                        checked={ !! attributes.invertLayout }
-                                        onChange={ this.toggleInvertLayout }
-                                    />
-
-                                    <label className="blocks-base-control__label">{ __( 'Block Alignment' ) }</label>
-                                    <Toolbar
-                                        controls={
-                                            [ 'center', 'wide', 'full' ].map( control => {
-                                                return {
-                                                    ...alignmentControls[ control ],
-                                                    isActive: attributes.blockAlignment === control,
-                                                    onClick: () => this.setBlockAlignment( control ),
-                                                };
-                                            } )
-                                        }
-                                    />
-
-                                </PanelBody>
-
-                                <PanelBody title={ __( 'Content Settings' ) } initialOpen={ false }>
-
-                                    <ToggleControl
-                                        label={ __( 'Center vertically?' ) }
-                                        checked={ !! attributes.verticalAlignment }
-                                        onChange={ this.toggleVerticalAlignment }
-                                    />
-
-                                </PanelBody>
-
-                                <PanelBody title={ __( 'Color Settings' ) } initialOpen={ false }>
-
-
-                                </PanelBody>
-
-                            </InspectorControls>
-                        )
-                    }
 
                     { ! attributes.imgID ? (
 
@@ -283,42 +308,38 @@ class gtImageTextBlock extends Component {
 
                 </div>
 
-                <div className="block-content">
-                    {
-                        isSelected && (
-                            <BlockControls key="controls">
-                                <AlignmentToolbar
-                                    value={ attributes.alignment }
-                                    onChange={ this.onChangeAlignment }
-                                />
-                            </BlockControls>
-                        )
-                    }
-                    <RichText
-                        tagName="h2"
-                        placeholder={ __( 'Enter a title' ) }
-                        value={ attributes.title }
-                        className="block-title"
-                        style={ { textAlign: attributes.alignment } }
-                        onChange={ this.onChangeTitle }
-                        isSelected={ isSelected && attributes.editable === 'title' }
-                        onFocus={ () => this.onSetActiveEditable( 'title' ) }
-                    />
+                <div className="block-content" style={ styles }>
 
-                    <RichText
-                        tagName="div"
-                        multiline="p"
-                        placeholder={ __( 'Enter your text here.' ) }
-                        value={ attributes.text }
-                        className="block-text"
-                        style={ { textAlign: attributes.alignment } }
-                        onChange={ this.onChangeText }
-                        isSelected={ isSelected && attributes.editable === 'text' }
-                        onFocus={ () => this.onSetActiveEditable( 'text' ) }
-                    />
+                    <div className="block-content-inner">
+
+                        <RichText
+                            tagName="h2"
+                            placeholder={ __( 'Enter a title' ) }
+                            value={ attributes.title }
+                            className="block-title"
+                            style={ styles }
+                            onChange={ this.onChangeTitle }
+                            isSelected={ isSelected && attributes.editable === 'title' }
+                            onFocus={ () => this.onSetActiveEditable( 'title' ) }
+                        />
+
+                        <RichText
+                            tagName="div"
+                            multiline="p"
+                            placeholder={ __( 'Enter your text here.' ) }
+                            value={ attributes.text }
+                            className="block-text"
+                            onChange={ this.onChangeText }
+                            isSelected={ isSelected && attributes.editable === 'text' }
+                            onFocus={ () => this.onSetActiveEditable( 'text' ) }
+                        />
+
+                    </div>
+
                 </div>
+
             </div>
-        );
+        ];
     }
 }
 

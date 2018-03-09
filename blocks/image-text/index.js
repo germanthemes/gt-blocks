@@ -62,10 +62,10 @@ registerBlockType(
                 source: 'children',
                 selector: '.block-text',
             },
-            alignment: {
+            editable: {
                 type: 'string',
             },
-            editable: {
+            alignment: {
                 type: 'string',
             },
             columnSize: {
@@ -82,6 +82,12 @@ registerBlockType(
             },
             blockAlignment: {
                 type: 'string',
+            },
+            textColor: {
+                type: 'string',
+            },
+                backgroundColor: {
+                    type: 'string',
             },
         },
 
@@ -100,9 +106,16 @@ registerBlockType(
             const classNames = classnames( {
                 [ `${ attributes.columnSize }` ]: attributes.columnSize,
                 [ `align${ attributes.blockAlignment }` ]: attributes.blockAlignment,
+                'has-background': attributes.backgroundColor,
                 'gt-vertical-centered': attributes.verticalAlignment,
                 'gt-invert-layout': attributes.invertLayout,
             } );
+
+            const styles = {
+                backgroundColor: attributes.backgroundColor,
+                color: attributes.textColor,
+                textAlign: attributes.alignment,
+            };
 
             return (
                 <div className={ classNames ? classNames : undefined }>
@@ -114,14 +127,22 @@ registerBlockType(
                         />
                     </div>
 
-                    <div className="block-content" style={ { textAlign: attributes.alignment } }>
-                        <h2 className="block-title" >
-                            { attributes.title }
-                        </h2>
-                        <div className="block-text">
-                            { attributes.text }
+                    <div className="block-content" style={ styles }>
+
+                        <div className="block-content-inner">
+
+                            <h2 className="block-title" >
+                                { attributes.title }
+                            </h2>
+
+                            <div className="block-text">
+                                { attributes.text }
+                            </div>
+
                         </div>
+
                     </div>
+
                 </div>
             );
         },
