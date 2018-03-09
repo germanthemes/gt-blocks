@@ -65,29 +65,29 @@ registerBlockType(
             editable: {
                 type: 'string',
             },
-            alignment: {
-                type: 'string',
-            },
             columnSize: {
                 type: 'string',
                 default: 'block-column-50'
+            },
+            imagePosition: {
+                type: 'boolean',
+                default: false, // false = left, true = right
+            },
+            blockAlignment: {
+                type: 'string',
+            },
+            textAlignment: {
+                type: 'string',
             },
             verticalAlignment: {
                 type: 'boolean',
                 default: false,
             },
-            invertLayout: {
-                type: 'boolean',
-                default: false,
-            },
-            blockAlignment: {
-                type: 'string',
-            },
             textColor: {
                 type: 'string',
             },
-                backgroundColor: {
-                    type: 'string',
+            backgroundColor: {
+                type: 'string',
             },
         },
 
@@ -100,21 +100,19 @@ registerBlockType(
         edit: gtImageTextBlock,
 
         save( { attributes } ) {
-            const verticalAlignment = attributes.verticalAlignment ? 'gt-vertical-centered' : '';
-            const invertLayout = attributes.invertLayout ? 'gt-invert-layout' : '';
 
             const classNames = classnames( {
                 [ `${ attributes.columnSize }` ]: attributes.columnSize,
                 [ `align${ attributes.blockAlignment }` ]: attributes.blockAlignment,
                 'has-background': attributes.backgroundColor,
                 'gt-vertical-centered': attributes.verticalAlignment,
-                'gt-invert-layout': attributes.invertLayout,
+                'gt-image-position-right': attributes.imagePosition,
             } );
 
             const styles = {
                 backgroundColor: attributes.backgroundColor,
                 color: attributes.textColor,
-                textAlign: attributes.alignment,
+                textAlign: attributes.textAlignment,
             };
 
             return (

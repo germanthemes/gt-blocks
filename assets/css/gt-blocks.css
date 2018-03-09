@@ -78,12 +78,12 @@
           align-items: center; }
 
 /* Image Position */
-.wp-block-german-themes-blocks-image-text.gt-invert-layout .block-image {
+.wp-block-german-themes-blocks-image-text.gt-image-position-right .block-image {
   -webkit-box-ordinal-group: 3;
       -ms-flex-order: 2;
           order: 2; }
 
-.wp-block-german-themes-blocks-image-text.gt-invert-layout .block-content {
+.wp-block-german-themes-blocks-image-text.gt-image-position-right .block-content {
   -webkit-box-ordinal-group: 2;
       -ms-flex-order: 1;
           order: 1; }

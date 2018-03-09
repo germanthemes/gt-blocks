@@ -45,7 +45,7 @@ const columnSizes = [
     { value: 'block-column-66', label: __( '66%' ) },
 ];
 
-const alignmentControls = {
+const blockAlignmentControls = {
     none: {
         icon: 'align-center',
         title: __( 'Align center' ),
@@ -70,13 +70,7 @@ class gtImageTextBlock extends Component {
         this.uploadFromFiles     = this.uploadFromFiles.bind( this );
         this.onFilesDrop         = this.onFilesDrop.bind( this );
         this.onHTMLDrop          = this.onHTMLDrop.bind( this );
-        this.onChangeTitle       = this.onChangeTitle.bind( this );
-        this.onChangeText        = this.onChangeText.bind( this );
-        this.onChangeAlignment   = this.onChangeAlignment.bind( this );
         this.onSetActiveEditable = this.onSetActiveEditable.bind( this );
-        this.onChangeColumnSize  = this.onChangeColumnSize.bind( this );
-        this.toggleVerticalAlignment  = this.toggleVerticalAlignment.bind( this );
-        this.toggleInvertLayout  = this.toggleInvertLayout.bind( this );
     }
 
     onSelectImage( img ) {
@@ -115,32 +109,8 @@ class gtImageTextBlock extends Component {
         ) );
     }
 
-    onChangeTitle( newTitle ) {
-        this.props.setAttributes( { title: newTitle } )
-    }
-
-    onChangeText( newText ) {
-        this.props.setAttributes( { text: newText } )
-    }
-
-    onChangeAlignment( newAlignment ) {
-        this.props.setAttributes( { alignment: newAlignment } );
-    }
-
     onSetActiveEditable( newEditable ) {
         this.props.setAttributes( { editable: newEditable  } );
-    }
-
-    onChangeColumnSize( newColumnSize ) {
-        this.props.setAttributes( { columnSize: newColumnSize  } );
-    }
-
-    toggleVerticalAlignment() {
-        this.props.setAttributes( { verticalAlignment: ! this.props.attributes.verticalAlignment  } );
-    }
-
-    toggleInvertLayout() {
-        this.props.setAttributes( { invertLayout: ! this.props.attributes.invertLayout  } );
     }
 
     setBlockAlignment( align ) {
@@ -155,40 +125,44 @@ class gtImageTextBlock extends Component {
             [ `${ attributes.columnSize }` ]: attributes.columnSize,
             'has-background': attributes.backgroundColor,
             'gt-vertical-centered': attributes.verticalAlignment,
-            'gt-invert-layout': attributes.invertLayout,
+            'gt-image-position-right': attributes.imagePosition,
         } );
 
         const styles = {
             backgroundColor: attributes.backgroundColor,
             color: attributes.textColor,
-            textAlign: attributes.alignment,
+            textAlign: attributes.textAlignment,
         };
 
         return [
             isSelected && (
                 <BlockControls key="controls">
                     <AlignmentToolbar
-                        value={ attributes.alignment }
-                        onChange={ this.onChangeAlignment }
+                        value={ attributes.textAlignment }
+                        onChange={ ( newAlignment ) => setAttributes( { textAlignment: newAlignment } ) }
                     />
                 </BlockControls>
             ),
             isSelected && (
                 <InspectorControls key="inspector">
 
-                    <PanelBody title={ __( 'Layout Settings' ) } initialOpen={ false }>
+                    <PanelBody title={ __( 'Layout Settings' ) } initialOpen={ true }>
 
                         <SelectControl
                             label={ __( 'Image Size' ) }
                             value={ attributes.columnSize }
-                            onChange={ this.onChangeColumnSize }
+                            onChange={ ( newSize ) => setAttributes( { columnSize: newSize } ) }
                             options={ columnSizes }
                         />
 
-                        <ToggleControl
-                            label={ __( 'Invert Layout?' ) }
-                            checked={ !! attributes.invertLayout }
-                            onChange={ this.toggleInvertLayout }
+                        <SelectControl
+                            label={ __( 'Image Position' ) }
+                            value={ attributes.imagePosition }
+                            onChange={ () => setAttributes( { imagePosition: ! attributes.imagePosition } ) }
+                            options={ [
+                                { value: false, label: __( 'Left' ) },
+                                { value: true, label: __( 'Right' ) }
+                            ] }
                         />
 
                         <label className="blocks-base-control__label">{ __( 'Block Alignment' ) }</label>
@@ -196,7 +170,7 @@ class gtImageTextBlock extends Component {
                             controls={
                                 [ 'none', 'wide', 'full' ].map( control => {
                                     return {
-                                        ...alignmentControls[ control ],
+                                        ...blockAlignmentControls[ control ],
                                         isActive: attributes.blockAlignment === control,
                                         onClick: () => this.setBlockAlignment( control ),
                                     };
@@ -211,7 +185,7 @@ class gtImageTextBlock extends Component {
                         <ToggleControl
                             label={ __( 'Center vertically?' ) }
                             checked={ !! attributes.verticalAlignment }
-                            onChange={ this.toggleVerticalAlignment }
+                            onChange={ () => setAttributes( { verticalAlignment: ! attributes.verticalAlignment } ) }
                         />
 
                     </PanelBody>
@@ -318,7 +292,7 @@ class gtImageTextBlock extends Component {
                             value={ attributes.title }
                             className="block-title"
                             style={ styles }
-                            onChange={ this.onChangeTitle }
+                            onChange={ ( newTitle ) => setAttributes( { title: newTitle } ) }
                             isSelected={ isSelected && attributes.editable === 'title' }
                             onFocus={ () => this.onSetActiveEditable( 'title' ) }
                         />
@@ -329,7 +303,7 @@ class gtImageTextBlock extends Component {
                             placeholder={ __( 'Enter your text here.' ) }
                             value={ attributes.text }
                             className="block-text"
-                            onChange={ this.onChangeText }
+                            onChange={ ( newText ) => setAttributes( { text: newText } ) }
                             isSelected={ isSelected && attributes.editable === 'text' }
                             onFocus={ () => this.onSetActiveEditable( 'text' ) }
                         />
