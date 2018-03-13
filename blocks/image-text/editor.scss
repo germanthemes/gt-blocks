@@ -45,7 +45,14 @@
     font-size: inherit;
 }
 
-/* Rotate Vertical Align Bottom Icon */
-.edit-post-sidebar .gt-vertical-align-control button[aria-label="Bottom"] .dashicon {
-    transform: rotate(180deg);
+/* Change Size of Vertical Alignment Icons */
+.edit-post-sidebar .gt-vertical-align-control button svg {
+    width: 20px;
+    height: 20px;
+}
+
+/* Change Size of Toolbar Icons */
+.editor-block-toolbar .gt-image-position-toolbar-icon svg {
+    width: 20px;
+    height: 20px;
 }

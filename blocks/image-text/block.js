@@ -4,6 +4,16 @@
 import classnames from 'classnames';
 
 /**
+ * Block dependencies
+ */
+import {
+    gtVerticalAlignTopIcon,
+    gtVerticalAlignCenterIcon,
+    gtVerticalAlignBottomIcon,
+    gtImagePositionIcon,
+} from './icons';
+
+/**
  * Internal block libraries
  */
 const { Component } = wp.element;
@@ -31,6 +41,7 @@ const {
     SelectControl,
     ToggleControl,
     Toolbar,
+    Tooltip,
 } = wp.components;
 
 const {
@@ -63,15 +74,15 @@ const blockAlignmentControls = {
 
 const verticalAlignmentControls = {
     top: {
-        icon: 'align-full-width',
+        icon: gtVerticalAlignTopIcon,
         title: __( 'Top' ),
     },
     center: {
-        icon: 'align-wide',
+        icon: gtVerticalAlignCenterIcon,
         title: __( 'Center' ),
     },
     bottom: {
-        icon: 'align-full-width',
+        icon: gtVerticalAlignBottomIcon,
         title: __( 'Bottom' ),
     },
 };
@@ -149,6 +160,22 @@ class gtImageTextBlock extends Component {
         return [
             isSelected && (
                 <BlockControls key="controls">
+
+                    <Toolbar className='components-toolbar'>
+                        <Tooltip text={ __( 'Flip Image Position' )  }>
+                            <Button
+                                className={ classnames(
+                                    'components-icon-button',
+                                    'components-toolbar__control',
+                                    'gt-image-position-toolbar-icon',
+                                    { 'is-active': attributes.imagePosition },
+                                ) }
+                                onClick={ () => setAttributes( { imagePosition: ! attributes.imagePosition } ) }
+                            >
+                                { gtImagePositionIcon }
+                            </Button>
+                        </Tooltip>
+                    </Toolbar>
 
                     <AlignmentToolbar
                         value={ attributes.textAlignment }

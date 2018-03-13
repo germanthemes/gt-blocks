@@ -8,6 +8,7 @@ import classnames from 'classnames';
  */
 import './style.scss';
 import './editor.scss';
+import gtImageTextIcon from './icons';
 import { default as gtImageTextBlock } from './block';
 
 /**
@@ -28,7 +29,7 @@ registerBlockType(
 
         category: 'layout',
 
-        icon: 'wordpress-alt',
+        icon: gtImageTextIcon,
 
         keywords: [
             __( 'German Themes' ),
