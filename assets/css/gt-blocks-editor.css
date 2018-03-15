@@ -6,27 +6,30 @@
   background: #C44D58;
   color: white;
   font-size: 1.2rem; }
+/* Block Image Edit */
+.wp-block-german-themes-blocks-image-text .image-wrapper .edit-image {
+  position: relative; }
+
+.wp-block-german-themes-blocks-image-text .image-wrapper .edit-image:hover {
+  cursor: pointer; }
+
+.wp-block-german-themes-blocks-image-text .image-wrapper .edit-image .remove-image {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  color: #fff;
+  background: rgba(0, 0, 0, 0.6);
+  padding: 5px;
+  border: 3px solid transparent; }
+
+/* Block Image Placeholder */
 .wp-block-german-themes-blocks-image-text .block-image .block-image-placeholder {
   height: 100%; }
-  .wp-block-german-themes-blocks-image-text .block-image .block-image-placeholder .components-form-file-upload {
-    margin-bottom: 12px; }
 
-.wp-block-german-themes-blocks-image-text .block-image .image-wrapper {
-  position: relative; }
-  .wp-block-german-themes-blocks-image-text .block-image .image-wrapper .image-buttons {
-    position: absolute;
-    right: 5px;
-    bottom: 5px; }
-    .wp-block-german-themes-blocks-image-text .block-image .image-wrapper .image-buttons .edit-image {
-      display: inline-block;
-      background: #fff;
-      padding: 8px 10px 4px;
-      margin-right: 5px; }
-    .wp-block-german-themes-blocks-image-text .block-image .image-wrapper .image-buttons .remove-image {
-      display: inline-block;
-      padding: 8px 10px 4px;
-      background: #fff; }
+.wp-block-german-themes-blocks-image-text .block-image .block-image-placeholder .components-form-file-upload {
+  margin-bottom: 12px; }
 
+/* Block Title */
 .wp-block-german-themes-blocks-image-text .block-content .block-title {
   margin-top: 0.5em;
   margin-bottom: 0.5em; }

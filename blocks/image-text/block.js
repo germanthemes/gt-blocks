@@ -162,6 +162,20 @@ class gtImageTextBlock extends Component {
                 <BlockControls key="controls">
 
                     <Toolbar className='components-toolbar'>
+                        <MediaUpload
+                            onSelect={ this.onSelectImage }
+                            type="image"
+                            value={ attributes.imgID }
+                            render={ ( { open } ) => (
+                                <IconButton
+                                    className="components-toolbar__control"
+                                    label={ __( 'Edit image' ) }
+                                    icon="edit"
+                                    onClick={ open }
+                                    />
+                            ) }
+                        />
+
                         <Tooltip text={ __( 'Flip Image Position' )  }>
                             <Button
                                 className={ classnames(
@@ -338,36 +352,43 @@ class gtImageTextBlock extends Component {
 
                         <div class="image-wrapper">
 
-                            <img
-                                src={ attributes.imgURL }
-                                alt={ attributes.imgAlt }
-                            />
-
                             { isSelected ? (
-                                <div class="image-buttons">
+
+                                <div class="edit-image">
+
                                     <MediaUpload
                                         onSelect={ this.onSelectImage }
                                         type="image"
                                         value={ attributes.imgID }
                                         render={ ( { open } ) => (
-                                            <IconButton
-                                                className="edit-image"
-                                                label={ __( 'Edit Image' ) }
-                                                icon="edit"
+                                            <img
+                                                src={ attributes.imgURL }
+                                                alt={ attributes.imgAlt }
                                                 onClick={ open }
                                             />
                                         ) }
                                     />
+
                                     <IconButton
                                         className="remove-image"
                                         label={ __( 'Remove Image' ) }
-                                        icon="trash"
+                                        icon="no-alt"
                                         onClick={ this.onRemoveImage }
                                     />
+
                                 </div>
-                            ) : null }
+
+                            ) : (
+
+                                <img
+                                    src={ attributes.imgURL }
+                                    alt={ attributes.imgAlt }
+                                />
+
+                            ) }
 
                         </div>
+
                     ) }
 
                 </div>
