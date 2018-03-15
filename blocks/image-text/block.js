@@ -2,6 +2,12 @@
  * External dependencies
  */
 import classnames from 'classnames';
+import {
+    startCase,
+    isEmpty,
+    map,
+    get,
+} from 'lodash';
 
 /**
  * Block dependencies
@@ -16,7 +22,7 @@ import {
 /**
  * Internal block libraries
  */
-const { Component } = wp.element;
+const { Component, compose } = wp.element;
 const { __, sprintf } = wp.i18n;
 const {
     AlignmentToolbar,
@@ -42,6 +48,7 @@ const {
     ToggleControl,
     Toolbar,
     Tooltip,
+    withAPIData,
 } = wp.components;
 
 const {
@@ -98,6 +105,8 @@ class gtImageTextBlock extends Component {
         this.onFilesDrop         = this.onFilesDrop.bind( this );
         this.onHTMLDrop          = this.onHTMLDrop.bind( this );
         this.onSetActiveEditable = this.onSetActiveEditable.bind( this );
+        this.updateImageURL      = this.updateImageURL.bind( this );
+        this.getAvailableSizes   = this.getAvailableSizes.bind( this );
     }
 
     onSelectImage( img ) {
@@ -140,8 +149,17 @@ class gtImageTextBlock extends Component {
         this.props.setAttributes( { editable: newEditable  } );
     }
 
+    updateImageURL( url ) {
+        this.props.setAttributes( { imgURL: url } );
+    }
+
+    getAvailableSizes() {
+        return get( this.props.image, [ 'data', 'media_details', 'sizes' ], {} );
+    }
+
     render() {
         const { attributes, setAttributes, isSelected, className } = this.props;
+        const availableSizes = this.getAvailableSizes();
 
         const classNames= classnames( className, {
             [ `${ attributes.columnSize }` ]: attributes.columnSize,
@@ -214,6 +232,18 @@ class gtImageTextBlock extends Component {
                 <InspectorControls key="inspector">
 
                     <PanelBody title={ __( 'Layout Settings' ) } initialOpen={ true }>
+
+                        { ! isEmpty( availableSizes ) && (
+                            <SelectControl
+                                label={ __( 'Image Size' ) }
+                                value={ attributes.imgURL }
+                                options={ map( availableSizes, ( size, name ) => ( {
+                                    value: size.source_url,
+                                    label: startCase( name ),
+                                } ) ) }
+                                onChange={ this.updateImageURL }
+                            />
+                        ) }
 
                         <SelectControl
                             label={ __( 'Image Size' ) }
@@ -429,4 +459,15 @@ class gtImageTextBlock extends Component {
     }
 }
 
-export default gtImageTextBlock;
+export default compose( [
+    withAPIData( ( props ) => {
+        const { imgID } = props.attributes;
+        if ( ! imgID ) {
+            return {};
+        }
+
+        return {
+            image: `/wp/v2/media/${ imgID }`,
+        };
+    } ),
+] )( gtImageTextBlock );
