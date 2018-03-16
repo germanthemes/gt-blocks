@@ -1,0 +1,22 @@
+.wp-block-german-themes-blocks-container {
+    padding: 2em;
+}
+
+.wp-block-german-themes-blocks-container .block-content {
+    margin: 0 auto;
+    max-width: 960px;
+}
+
+.wp-block-german-themes-blocks-container .block-content > .alignwide {
+	margin-left: calc(25% - 25vw);
+	margin-right: calc(25% - 25vw);
+	width: auto;
+	max-width: 1000%;
+}
+
+.wp-block-german-themes-blocks-container .block-content > .alignfull {
+	margin-left: calc(50% - 50vw);
+	margin-right: calc(50% - 50vw);
+	width: auto;
+	max-width: 1000%;
+}
