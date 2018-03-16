@@ -45,6 +45,7 @@ const {
     Placeholder,
     RangeControl,
     SelectControl,
+    TextControl,
     ToggleControl,
     Toolbar,
     Tooltip,
@@ -231,22 +232,10 @@ class gtImageTextBlock extends Component {
             isSelected && (
                 <InspectorControls key="inspector">
 
-                    <PanelBody title={ __( 'Layout Settings' ) } initialOpen={ true }>
-
-                        { ! isEmpty( availableSizes ) && (
-                            <SelectControl
-                                label={ __( 'Image Size' ) }
-                                value={ attributes.imgURL }
-                                options={ map( availableSizes, ( size, name ) => ( {
-                                    value: size.source_url,
-                                    label: startCase( name ),
-                                } ) ) }
-                                onChange={ this.updateImageURL }
-                            />
-                        ) }
+                    <PanelBody title={ __( 'Layout Settings' ) } initialOpen={ false }>
 
                         <SelectControl
-                            label={ __( 'Image Size' ) }
+                            label={ __( 'Column Size' ) }
                             value={ attributes.columnSize }
                             onChange={ ( newSize ) => setAttributes( { columnSize: newSize } ) }
                             options={ columnSizes }
@@ -283,7 +272,30 @@ class gtImageTextBlock extends Component {
 
                     </PanelBody>
 
-                    <PanelBody title={ __( 'Content Settings' ) } initialOpen={ false }>
+                    <PanelBody title={ __( 'Image Settings' ) } initialOpen={ false }>
+
+                        { ! isEmpty( availableSizes ) && (
+                            <SelectControl
+                                label={ __( 'Size' ) }
+                                value={ attributes.imgURL }
+                                options={ map( availableSizes, ( size, name ) => ( {
+                                    value: size.source_url,
+                                    label: startCase( name ),
+                                } ) ) }
+                                onChange={ this.updateImageURL }
+                            />
+                        ) }
+
+                        <TextControl
+                            label={ __( 'Textual Alternative' ) }
+                            value={ attributes.imgAlt }
+                            onChange={ ( newAlt ) => setAttributes( { imgAlt: newAlt } ) }
+                            help={ __( 'Describe the purpose of the image. Leave empty if the image is not a key part of the content.' ) }
+                        />
+
+                    </PanelBody>
+
+                    <PanelBody title={ __( 'Text Settings' ) } initialOpen={ false }>
 
                         <p>{ __( 'Heading' ) }</p>
                         <Toolbar
