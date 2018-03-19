@@ -97,9 +97,22 @@
       -ms-flex-align: end;
           align-items: flex-end; }
 .wp-block-german-themes-blocks-portfolio .block-container .block-item {
-  border: 5px solid green;
+  border: 5px solid #ddd;
   padding: 2em;
   margin-bottom: 2em; }
+
+.wp-block-german-themes-blocks-portfolio.gt-items-edited .block-container .block-item {
+  position: relative;
+  border: 5px solid blue; }
+
+.wp-block-german-themes-blocks-portfolio.gt-items-edited .block-container .block-item .remove-portfolio-item {
+  position: absolute;
+  top: 0;
+  right: 0;
+  color: #fff;
+  background: blue;
+  padding: 5px;
+  border: 3px solid transparent; }
 .wp-block-german-themes-blocks-testimonials {
   background: rgba(254, 243, 224, 0.52);
   border: 5px #f7b733 solid;

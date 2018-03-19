@@ -55,6 +55,10 @@ registerBlockType(
             editable: {
                 type: 'string',
             },
+            editItems: {
+                type: 'boolean',
+                default: false,
+            },
         },
 
         edit: gtPortfolioBlock,

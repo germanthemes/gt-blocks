@@ -1,5 +1,20 @@
 .wp-block-german-themes-blocks-portfolio .block-container .block-item {
-    border: 5px solid green;
+    border: 5px solid #ddd;
     padding: 2em;
     margin-bottom: 2em;
+}
+
+.wp-block-german-themes-blocks-portfolio.gt-items-edited .block-container .block-item {
+    position: relative;
+    border: 5px solid blue;
+}
+
+.wp-block-german-themes-blocks-portfolio.gt-items-edited .block-container .block-item .remove-portfolio-item {
+    position: absolute;
+    top: 0;
+    right: 0;
+    color: #fff;
+    background: blue;
+    padding: 5px;
+    border: 3px solid transparent;
 }

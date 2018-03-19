@@ -1,4 +1,9 @@
 /**
+ * External dependencies
+ */
+import classnames from 'classnames';
+
+/**
  * Internal block libraries
  */
  const { Component, compose } = wp.element;
@@ -46,20 +51,29 @@ class gtPortfolioBlock extends Component {
     }
 
     addPortfolioItem() {
-        let newItems = [...this.props.attributes.items];
+        const newItems = [...this.props.attributes.items];
         newItems.push( { 'title': '', 'text': '' } );
         this.props.setAttributes( { items: newItems } );
     }
 
+    removePortfolioItem( index ) {
+        const newItems = [...this.props.attributes.items].filter( (value, key) => key !== index );
+        this.props.setAttributes( { items: newItems } );
+    }
+
     onChangeTitle( newTitle, index ) {
-        let newItems = [...this.props.attributes.items];
-        newItems[index].title = newTitle;
+        const newItems = [...this.props.attributes.items];
+        if( newItems[index] !== undefined ) {
+            newItems[index].title = newTitle;
+        }
         this.props.setAttributes( { items: newItems } );
     }
 
     onChangeText( newText, index ) {
-        let newItems = [...this.props.attributes.items];
-        newItems[index].text = newText;
+        const newItems = [...this.props.attributes.items];
+        if( newItems[index] !== undefined ) {
+            newItems[index].text = newText;
+        }
         this.props.setAttributes( { items: newItems } );
     }
 
@@ -68,10 +82,14 @@ class gtPortfolioBlock extends Component {
     }
 
     render() {
-        const { attributes, isSelected, className } = this.props;
+        const { attributes, setAttributes, isSelected, className } = this.props;
+
+        const classNames= classnames( className, {
+            'gt-items-edited': attributes.editItems,
+        } );
 
         return (
-            <div className={ className }>
+            <div className={ classNames }>
                 <div className="block-container">
 
                     {
@@ -100,6 +118,15 @@ class gtPortfolioBlock extends Component {
                                         onFocus={ () => this.onSetActiveEditable( `text${index}` ) }
                                     />
 
+                                    { attributes.editItems && (
+                                        <IconButton
+                                            className="remove-portfolio-item"
+                                            label={ __( 'Remove Item' ) }
+                                            icon="no-alt"
+                                            onClick={ () => this.removePortfolioItem( index ) }
+                                        />
+                                    ) }
+
                                 </div>
                             );
                         })
@@ -107,14 +134,21 @@ class gtPortfolioBlock extends Component {
 
                 </div>
 
-                { isSelected && (
+                { isSelected && [
                     <Button
                         isLarge
                         onClick={ this.addPortfolioItem }
                     >
                         { __( 'Add portfolio item' ) }
                     </Button>
-                ) }
+                    ,
+                    <Button
+                        isLarge
+                        onClick={ () => setAttributes( { editItems: ! attributes.editItems } ) }
+                    >
+                        { __( 'Edit portfolio items' ) }
+                    </Button>
+                ] }
             </div>
         );
     }
