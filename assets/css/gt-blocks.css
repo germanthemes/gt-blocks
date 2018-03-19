@@ -96,16 +96,10 @@
   -webkit-box-align: end;
       -ms-flex-align: end;
           align-items: flex-end; }
-.wp-block-german-themes-blocks-portfolio {
-  background: rgba(254, 243, 224, 0.52);
-  border: 5px #3322ee solid;
-  padding: 1rem; }
-  .wp-block-german-themes-blocks-portfolio h2 {
-    color: #222;
-    font-size: 1.5rem;
-    margin: 0 0 1rem; }
-  .wp-block-german-themes-blocks-portfolio p {
-    font-size: 1.4rem; }
+.wp-block-german-themes-blocks-portfolio .block-container .block-item {
+  border: 5px solid green;
+  padding: 2em;
+  margin-bottom: 2em; }
 .wp-block-german-themes-blocks-testimonials {
   background: rgba(254, 243, 224, 0.52);
   border: 5px #f7b733 solid;
