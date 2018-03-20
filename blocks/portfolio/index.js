@@ -70,9 +70,6 @@ registerBlockType(
                     { 'title': '', 'text': '' },
                 ]
             },
-            editable: {
-                type: 'string',
-            },
         },
 
         edit: gtPortfolioBlock,

@@ -53,17 +53,20 @@ class gtPortfolioBlock extends Component {
         this.onHTMLDrop          = this.onHTMLDrop.bind( this );
         this.onChangeTitle = this.onChangeTitle.bind( this );
         this.onChangeText = this.onChangeText.bind( this );
-        this.onSetActiveEditable = this.onSetActiveEditable.bind( this );
 
         this.state = {
             editItems: false,
+            editText: null,
         };
     }
 
     componentWillReceiveProps( nextProps ) {
         // Deactivate item editing when deselecting the block
         if ( ! nextProps.isSelected && this.props.isSelected ) {
-            this.setState( { editItems: false } );
+            this.setState( {
+                editItems: false,
+                editText: null,
+            } );
         }
     }
 
@@ -132,10 +135,6 @@ class gtPortfolioBlock extends Component {
             newItems[index].text = newText;
         }
         this.props.setAttributes( { items: newItems } );
-    }
-
-    onSetActiveEditable( newEditable ) {
-        this.props.setAttributes( { editable: newEditable  } );
     }
 
     render() {
@@ -244,8 +243,8 @@ class gtPortfolioBlock extends Component {
                                             value={ item.title }
                                             className="gt-title"
                                             onChange={ ( newTitle ) => this.onChangeTitle( newTitle, index ) }
-                                            isSelected={ isSelected && attributes.editable === `title${index}` }
-                                            onFocus={ () => this.onSetActiveEditable( `title${index}` ) }
+                                            isSelected={ isSelected && this.state.editText === `title${index}` }
+                                            onFocus={ () => this.setState( { editText: `title${index}` } ) }
                                         />
 
                                         <RichText
@@ -255,8 +254,8 @@ class gtPortfolioBlock extends Component {
                                             value={ item.text }
                                             className="gt-text"
                                             onChange={ ( newText ) => this.onChangeText( newText, index ) }
-                                            isSelected={ isSelected && attributes.editable === `text${index}` }
-                                            onFocus={ () => this.onSetActiveEditable( `text${index}` ) }
+                                            isSelected={ isSelected && this.state.editText === `text${index}` }
+                                            onFocus={ () => this.setState( { editText: `text${index}` } ) }
                                         />
 
                                     </div>
