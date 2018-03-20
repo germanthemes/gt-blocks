@@ -48,6 +48,17 @@ class gtPortfolioBlock extends Component {
         this.onChangeTitle = this.onChangeTitle.bind( this );
         this.onChangeText = this.onChangeText.bind( this );
         this.onSetActiveEditable = this.onSetActiveEditable.bind( this );
+
+        this.state = {
+            editItems: false,
+        };
+    }
+
+    componentWillReceiveProps( nextProps ) {
+        // Deactivate item editing when deselecting the block
+        if ( ! nextProps.isSelected && this.props.isSelected ) {
+            this.setState( { editItems: false } );
+        }
     }
 
     addPortfolioItem() {
@@ -85,7 +96,7 @@ class gtPortfolioBlock extends Component {
         const { attributes, setAttributes, isSelected, className } = this.props;
 
         const classNames= classnames( className, {
-            'gt-items-edited': attributes.editItems,
+            'gt-items-edited': this.state.editItems,
         } );
 
         return (
@@ -118,7 +129,7 @@ class gtPortfolioBlock extends Component {
                                         onFocus={ () => this.onSetActiveEditable( `text${index}` ) }
                                     />
 
-                                    { attributes.editItems && (
+                                    { this.state.editItems && (
                                         <IconButton
                                             className="remove-portfolio-item"
                                             label={ __( 'Remove Item' ) }
@@ -144,7 +155,7 @@ class gtPortfolioBlock extends Component {
                     ,
                     <Button
                         isLarge
-                        onClick={ () => setAttributes( { editItems: ! attributes.editItems } ) }
+                        onClick={ () => this.setState( { editItems: ! this.state.editItems } ) }
                     >
                         { __( 'Edit portfolio items' ) }
                     </Button>
