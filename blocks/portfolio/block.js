@@ -10,6 +10,7 @@ import classnames from 'classnames';
  const { __, sprintf } = wp.i18n;
  const {
      AlignmentToolbar,
+     BlockAlignmentToolbar,
      BlockControls,
      ColorPalette,
      ImagePlaceholder,
@@ -162,6 +163,15 @@ class gtPortfolioBlock extends Component {
         } );
 
         return [
+            isSelected && (
+                <BlockControls key="controls">
+                    <BlockAlignmentToolbar
+                        controls={ [ 'wide', 'full' ] }
+                        value={ attributes.blockAlignment }
+                        onChange={ ( newAlign ) => setAttributes( { blockAlignment: newAlign } ) }
+                    />
+                </BlockControls>
+            ),
             isSelected && (
                 <InspectorControls key="inspector">
 
