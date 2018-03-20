@@ -99,7 +99,7 @@ class gtPortfolioBlock extends Component {
     }
 
     setImage( [ image ] ) {
-        this.onSelectImage( image )
+        this.onSelectImage( image );
     };
 
     uploadFromFiles( event ) {
