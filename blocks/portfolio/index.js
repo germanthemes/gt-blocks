@@ -34,17 +34,17 @@ registerBlockType(
         attributes: {
             items: {
                 source: 'query',
-                selector: '.block-item',
+                selector: '.gt-grid-item',
                 query: {
                     title: {
                         type: 'array',
                         source: 'children',
-                        selector: '.block-title',
+                        selector: '.gt-title',
                     },
                     text: {
                         type: 'array',
                         source: 'children',
-                        selector: '.block-text',
+                        selector: '.gt-text',
                     },
                 },
                 default: [
@@ -62,19 +62,21 @@ registerBlockType(
         save: props => {
             return (
                 <div>
-                    <div className="block-container">
+                    <div className="gt-grid-container">
 
                         {
                             props.attributes.items.map( ( item, index ) => {
                                 return (
-                                    <div className="block-item">
+                                    <div className="gt-grid-item">
 
-                                        <h2 className="block-title" >
-                                            { item.title }
-                                        </h2>
+                                        <div className="gt-content">
+                                            <h2 className="gt-title" >
+                                                { item.title }
+                                            </h2>
 
-                                        <div className="block-text">
-                                            { item.text }
+                                            <div className="gt-text">
+                                                { item.text }
+                                            </div>
                                         </div>
 
                                     </div>

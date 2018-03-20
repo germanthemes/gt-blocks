@@ -101,33 +101,37 @@ class gtPortfolioBlock extends Component {
 
         return (
             <div className={ classNames }>
-                <div className="block-container">
+                <div className="gt-grid-container">
 
                     {
                         attributes.items.map( ( item, index ) => {
                             return (
-                                <div className="block-item">
+                                <div className="gt-grid-item">
 
-                                    <RichText
-                                        tagName="h2"
-                                        placeholder={ __( 'Enter a title' ) }
-                                        value={ item.title }
-                                        className="block-title"
-                                        onChange={ ( newTitle ) => this.onChangeTitle( newTitle, index ) }
-                                        isSelected={ isSelected && attributes.editable === `title${index}` }
-                                        onFocus={ () => this.onSetActiveEditable( `title${index}` ) }
-                                    />
+                                    <div className="gt-content">
 
-                                    <RichText
-                                        tagName="div"
-                                        multiline="p"
-                                        placeholder={ __( 'Enter your text here.' ) }
-                                        value={ item.text }
-                                        className="block-text"
-                                        onChange={ ( newText ) => this.onChangeText( newText, index ) }
-                                        isSelected={ isSelected && attributes.editable === `text${index}` }
-                                        onFocus={ () => this.onSetActiveEditable( `text${index}` ) }
-                                    />
+                                        <RichText
+                                            tagName="h2"
+                                            placeholder={ __( 'Enter a title' ) }
+                                            value={ item.title }
+                                            className="gt-title"
+                                            onChange={ ( newTitle ) => this.onChangeTitle( newTitle, index ) }
+                                            isSelected={ isSelected && attributes.editable === `title${index}` }
+                                            onFocus={ () => this.onSetActiveEditable( `title${index}` ) }
+                                        />
+
+                                        <RichText
+                                            tagName="div"
+                                            multiline="p"
+                                            placeholder={ __( 'Enter your text here.' ) }
+                                            value={ item.text }
+                                            className="gt-text"
+                                            onChange={ ( newText ) => this.onChangeText( newText, index ) }
+                                            isSelected={ isSelected && attributes.editable === `text${index}` }
+                                            onFocus={ () => this.onSetActiveEditable( `text${index}` ) }
+                                        />
+
+                                    </div>
 
                                     { this.state.editItems && (
                                         <IconButton
