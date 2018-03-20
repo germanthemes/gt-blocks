@@ -158,6 +158,7 @@ class gtPortfolioBlock extends Component {
 
         const classNames= classnames( className, {
             'gt-items-edited': this.state.editItems,
+            [ `gt-columns-${ attributes.columns }` ]: attributes.columns,
         } );
 
         return [
@@ -165,6 +166,14 @@ class gtPortfolioBlock extends Component {
                 <InspectorControls key="inspector">
 
                     <PanelBody title={ __( 'Layout Settings' ) } initialOpen={ false }>
+
+                        <RangeControl
+                            label={ __( 'Columns' ) }
+                            value={ attributes.columns }
+                            onChange={ ( nextColumns ) => setAttributes( { columns: nextColumns } ) }
+                            min={ 2 }
+                            max={ 6 }
+                        />
 
                         <label className="blocks-base-control__label">{ __( 'Block Alignment' ) }</label>
                         <Toolbar

@@ -101,18 +101,17 @@
   grid-template-columns: repeat(2, 1fr);
   grid-gap: 1.5em; }
 
-.wp-block-german-themes-blocks-portfolio.gt-items-edited .gt-grid-container .gt-grid-item {
-  position: relative;
-  border: 5px solid blue; }
+.wp-block-german-themes-blocks-portfolio.gt-columns-3 .gt-grid-container {
+  grid-template-columns: repeat(3, 1fr); }
 
-.wp-block-german-themes-blocks-portfolio.gt-items-edited .gt-grid-container .gt-grid-item .remove-portfolio-item {
-  position: absolute;
-  top: 0;
-  right: 0;
-  color: #fff;
-  background: blue;
-  padding: 5px;
-  border: 3px solid transparent; }
+.wp-block-german-themes-blocks-portfolio.gt-columns-4 .gt-grid-container {
+  grid-template-columns: repeat(4, 1fr); }
+
+.wp-block-german-themes-blocks-portfolio.gt-columns-5 .gt-grid-container {
+  grid-template-columns: repeat(5, 1fr); }
+
+.wp-block-german-themes-blocks-portfolio.gt-columns-6 .gt-grid-container {
+  grid-template-columns: repeat(6, 1fr); }
 .wp-block-german-themes-blocks-testimonials {
   background: rgba(254, 243, 224, 0.52);
   border: 5px #f7b733 solid;

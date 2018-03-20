@@ -1,3 +1,17 @@
+/* Portfolio Block Edit */
+.wp-block-german-themes-blocks-portfolio.gt-items-edited .gt-grid-container .gt-grid-item {
+  position: relative;
+  border: 5px solid blue; }
+
+.wp-block-german-themes-blocks-portfolio.gt-items-edited .gt-grid-container .gt-grid-item .remove-portfolio-item {
+  position: absolute;
+  top: 0;
+  right: 0;
+  color: #fff;
+  background: blue;
+  padding: 5px;
+  border: 3px solid transparent; }
+
 /* Block Image Edit */
 .wp-block-german-themes-blocks-image-text .image-wrapper .edit-image {
   position: relative; }

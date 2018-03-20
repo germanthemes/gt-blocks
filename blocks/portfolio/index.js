@@ -75,6 +75,10 @@ registerBlockType(
                     { 'title': '', 'text': '' },
                 ]
             },
+            columns: {
+                type: 'number',
+                default: 2,
+            },
             blockAlignment: {
                 type: 'string',
                 default: 'center',
@@ -92,6 +96,7 @@ registerBlockType(
         save( { attributes } ) {
 
             const classNames = classnames( {
+                [ `gt-columns-${ attributes.columns }` ]: attributes.columns,
                 [ `align${ attributes.blockAlignment }` ]: ( attributes.blockAlignment !== 'center' ),
             } );
 
