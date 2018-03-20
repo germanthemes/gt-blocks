@@ -45,6 +45,12 @@ class gtPortfolioBlock extends Component {
         super( ...arguments );
 
         this.addPortfolioItem = this.addPortfolioItem.bind( this );
+        this.onSelectImage       = this.onSelectImage.bind( this );
+        this.onRemoveImage       = this.onRemoveImage.bind( this );
+        this.setImage            = this.setImage.bind( this );
+        this.uploadFromFiles     = this.uploadFromFiles.bind( this );
+        this.onFilesDrop         = this.onFilesDrop.bind( this );
+        this.onHTMLDrop          = this.onHTMLDrop.bind( this );
         this.onChangeTitle = this.onChangeTitle.bind( this );
         this.onChangeText = this.onChangeText.bind( this );
         this.onSetActiveEditable = this.onSetActiveEditable.bind( this );
@@ -70,6 +76,46 @@ class gtPortfolioBlock extends Component {
     removePortfolioItem( index ) {
         const newItems = [...this.props.attributes.items].filter( (value, key) => key !== index );
         this.props.setAttributes( { items: newItems } );
+    }
+
+    onSelectImage( img, index ) {
+        const newItems = [...this.props.attributes.items];
+        if( newItems[index] !== undefined ) {
+            newItems[index].imgID = img.id;
+            newItems[index].imgURL = img.url;
+            newItems[index].imgAlt = img.alt;
+        }
+        this.props.setAttributes( { items: newItems } );
+    }
+
+    onRemoveImage( index ) {
+        const newItems = [...this.props.attributes.items];
+        if( newItems[index] !== undefined ) {
+            newItems[index].imgID = null;
+            newItems[index].imgURL = null;
+            newItems[index].imgAlt = null;
+        }
+        this.props.setAttributes( { items: newItems } );
+    }
+
+    setImage( [ image ] ) {
+        this.onSelectImage( image )
+    };
+
+    uploadFromFiles( event ) {
+        mediaUpload( event.target.files, this.setImage );
+    }
+
+    onFilesDrop( files ) {
+        mediaUpload( files, this.setImage );
+    }
+
+    onHTMLDrop( HTML ) {
+        this.setImage( map(
+            rawHandler( { HTML, mode: 'BLOCKS' } )
+                .filter( ( { name } ) => name === 'core/image' ),
+            'attributes'
+        ) );
     }
 
     onChangeTitle( newTitle, index ) {
@@ -107,6 +153,88 @@ class gtPortfolioBlock extends Component {
                         attributes.items.map( ( item, index ) => {
                             return (
                                 <div className="gt-grid-item">
+
+                                    <div className="gt-image">
+
+                                        { ! item.imgID ? (
+
+                                            <Placeholder
+                                                className="gt-image-placeholder"
+                                                instructions={ __( 'Drag image here or add from media library' ) }
+                                                icon="format-image"
+                                                label={ __( 'Image' ) } >
+
+                                                <DropZone
+                                                    onFilesDrop={ this.onFilesDrop }
+                                                    onHTMLDrop={ this.onHTMLDrop }
+                                                />
+
+                                                <FormFileUpload
+                                                    isLarge
+                                                    className="wp-block-image__upload-button"
+                                                    onChange={ this.uploadFromFiles }
+                                                    accept="image/*"
+                                                >
+                                                    { __( 'Upload' ) }
+                                                </FormFileUpload>
+
+                                                <MediaUpload
+                                                    onSelect={ ( img ) => this.onSelectImage( img, index ) }
+                                                    type="image"
+                                                    render={ ( { open } ) => (
+                                                        <Button isLarge onClick={ open }>
+                                                            { __( 'Add from Media Library' ) }
+                                                        </Button>
+                                                    ) }
+                                                />
+                                            </Placeholder>
+
+                                        ) : (
+
+                                            <div class="gt-image-wrapper">
+
+                                                { isSelected ? (
+
+                                                    <div class="gt-edit-image">
+
+                                                        <MediaUpload
+                                                            onSelect={ ( img ) => this.onSelectImage( img, index ) }
+                                                            type="image"
+                                                            value={ item.imgID }
+                                                            render={ ( { open } ) => (
+                                                                <img
+                                                                    src={ item.imgURL }
+                                                                    alt={ item.imgAlt }
+                                                                    data-img-id={ item.imgID }
+                                                                    onClick={ open }
+                                                                />
+                                                            ) }
+                                                        />
+
+                                                        <IconButton
+                                                            className="remove-image"
+                                                            label={ __( 'Remove Image' ) }
+                                                            icon="no-alt"
+                                                            onClick={ () => this.onRemoveImage( index ) }
+                                                        />
+
+                                                    </div>
+
+                                                ) : (
+
+                                                    <img
+                                                        src={ item.imgURL }
+                                                        alt={ item.imgAlt }
+                                                        data-img-id={ item.imgID }
+                                                    />
+
+                                                ) }
+
+                                            </div>
+
+                                        ) }
+
+                                    </div>
 
                                     <div className="gt-content">
 

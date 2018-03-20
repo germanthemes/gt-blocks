@@ -39,10 +39,25 @@
 .editor-block-toolbar .gt-image-position-toolbar-icon svg {
   width: 20px;
   height: 20px; }
-.wp-block-german-themes-blocks-portfolio .sorry.warning {
-  background: #C44D58;
-  color: white;
-  font-size: 1.2rem; }
+/* Block Image Edit */
+.wp-block-german-themes-blocks-portfolio .gt-image-wrapper .gt-edit-image {
+  position: relative; }
+
+.wp-block-german-themes-blocks-portfolio .gt-image-wrapper .gt-edit-image:hover {
+  cursor: pointer; }
+
+.wp-block-german-themes-blocks-portfolio .gt-image-wrapper .gt-edit-image .remove-image {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  color: #fff;
+  background: rgba(0, 0, 0, 0.6);
+  padding: 5px;
+  border: 3px solid transparent; }
+
+/* Block Image Placeholder */
+.wp-block-german-themes-blocks-portfolio .gt-image .gt-image-placeholder .components-form-file-upload {
+  margin-bottom: 12px; }
 .wp-block-german-themes-blocks-testimonials .sorry.warning {
   background: #C44D58;
   color: white;

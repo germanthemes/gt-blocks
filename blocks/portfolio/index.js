@@ -36,6 +36,24 @@ registerBlockType(
                 source: 'query',
                 selector: '.gt-grid-item',
                 query: {
+                    imgID: {
+                        type: 'number',
+                        source: 'attribute',
+                        attribute: 'data-img-id',
+                        selector: '.gt-image img',
+                    },
+                    imgURL: {
+                        type: 'string',
+                        source: 'attribute',
+                        attribute: 'src',
+                        selector: '.gt-image img',
+                    },
+                    imgAlt: {
+                        type: 'string',
+                        source: 'attribute',
+                        attribute: 'alt',
+                        selector: '.gt-image img',
+                    },
                     title: {
                         type: 'array',
                         source: 'children',
@@ -69,7 +87,16 @@ registerBlockType(
                                 return (
                                     <div className="gt-grid-item">
 
+                                        <div className="gt-image">
+                                            <img
+                                                src={ item.imgURL }
+                                                alt={ item.imgAlt }
+                                                data-img-id={ item.imgID }
+                                            />
+                                        </div>
+
                                         <div className="gt-content">
+
                                             <h2 className="gt-title" >
                                                 { item.title }
                                             </h2>
@@ -77,6 +104,7 @@ registerBlockType(
                                             <div className="gt-text">
                                                 { item.text }
                                             </div>
+
                                         </div>
 
                                     </div>
