@@ -1,4 +1,9 @@
 /**
+ * External dependencies
+ */
+import classnames from 'classnames';
+
+/**
  * Block dependencies
  */
 import './style.scss';
@@ -70,17 +75,32 @@ registerBlockType(
                     { 'title': '', 'text': '' },
                 ]
             },
+            blockAlignment: {
+                type: 'string',
+                default: 'center',
+            },
+        },
+
+        getEditWrapperProps( attributes ) {
+            if ( [ 'wide', 'full' ].indexOf( attributes.blockAlignment ) !== -1 ) {
+                return { 'data-align': attributes.blockAlignment };
+            }
         },
 
         edit: gtPortfolioBlock,
 
-        save: props => {
+        save( { attributes } ) {
+
+            const classNames = classnames( {
+                [ `align${ attributes.blockAlignment }` ]: ( attributes.blockAlignment !== 'center' ),
+            } );
+
             return (
-                <div>
+                <div className={ classNames ? classNames : undefined }>
                     <div className="gt-grid-container">
 
                         {
-                            props.attributes.items.map( ( item, index ) => {
+                            attributes.items.map( ( item, index ) => {
                                 return (
                                     <div className="gt-grid-item">
 

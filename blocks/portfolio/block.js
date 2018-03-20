@@ -40,6 +40,22 @@ import classnames from 'classnames';
      mediaUpload,
  } = wp.utils;
 
+/* Block Alignment Controls */
+const blockAlignmentControls = {
+    center: {
+        icon: 'align-center',
+        title: __( 'Align center' ),
+    },
+    wide: {
+        icon: 'align-wide',
+        title: __( 'Wide width' ),
+    },
+    full: {
+        icon: 'align-full-width',
+        title: __( 'Full width' ),
+    },
+};
+
 class gtPortfolioBlock extends Component {
     constructor() {
         super( ...arguments );
@@ -144,7 +160,30 @@ class gtPortfolioBlock extends Component {
             'gt-items-edited': this.state.editItems,
         } );
 
-        return (
+        return [
+            isSelected && (
+                <InspectorControls key="inspector">
+
+                    <PanelBody title={ __( 'Layout Settings' ) } initialOpen={ false }>
+
+                        <label className="blocks-base-control__label">{ __( 'Block Alignment' ) }</label>
+                        <Toolbar
+                            controls={
+                                [ 'center', 'wide', 'full' ].map( control => {
+                                    return {
+                                        ...blockAlignmentControls[ control ],
+                                        isActive: attributes.blockAlignment === control,
+                                        onClick: () => setAttributes( { blockAlignment: control } ),
+                                    };
+                                } )
+                            }
+                        />
+
+
+                    </PanelBody>
+
+                </InspectorControls>
+            ),
             <div className={ classNames }>
                 <div className="gt-grid-container">
 
@@ -292,7 +331,7 @@ class gtPortfolioBlock extends Component {
                     </Button>
                 ] }
             </div>
-        );
+        ];
     }
 }
 
