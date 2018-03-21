@@ -111,8 +111,9 @@ class gtPortfolioBlock extends Component {
     onSelectImage( img, index ) {
         const newItems = [...this.props.attributes.items];
         if( newItems[index] !== undefined ) {
+            const newImgURL = this.getImageURL( img.id, this.props.attributes.imageSize );
             newItems[index].imgID = img.id;
-            newItems[index].imgURL = img.url;
+            newItems[index].imgURL = newImgURL ? newImgURL : img.url;
             newItems[index].imgAlt = img.alt;
         }
         this.props.setAttributes( { items: newItems } );
@@ -133,18 +134,31 @@ class gtPortfolioBlock extends Component {
         if( ! newSizes[imgID] ) {
             newSizes[imgID] = sizeObj;
             this.setState( { imageSizes: newSizes } );
+
+            // Update Image URLs after new Image Sizes were added.
+            const newItems = [...this.props.attributes.items];
+            newItems.forEach( ( item, index ) => {
+                if( item.imgID === imgID ) {
+                    const newURL = this.getImageURL( item.imgID, this.props.attributes.imageSize, newSizes );
+
+                    if( newItems[index].imgURL !== newURL ) {
+                        newItems[index].imgURL = newURL;
+                        this.props.setAttributes( { items: newItems } );
+                    }
+                }
+            });
         }
     }
 
-    getImageURL( imgID, size ) {
+    getImageURL( imgID, size, imageSizes = this.state.imageSizes ) {
         // Check if image exists in imageSizes state.
-        if( this.state.imageSizes[imgID] !== undefined ) {
+        if( imageSizes[imgID] !== undefined ) {
 
-            // Get all available sizes for portfolio image.
-            const itemSizes = this.state.imageSizes[imgID];
+            // Get image from imageSizes array.
+            const image = imageSizes[imgID];
 
             // Select the new Image Size.
-            const newSize = ( itemSizes[size] !== undefined ) ? itemSizes[size] : itemSizes['full'];
+            const newSize = ( image[size] !== undefined ) ? image[size] : image['full'];
 
             return newSize['source_url'];
         }
@@ -152,7 +166,6 @@ class gtPortfolioBlock extends Component {
     }
 
     updateImageURLs( size ) {
-        console.log('images updated');
         const newItems = [...this.props.attributes.items];
         newItems.forEach( ( item, index ) => {
             newItems[index].imgURL = this.getImageURL( item.imgID, size );
