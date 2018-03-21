@@ -4,9 +4,14 @@
 import classnames from 'classnames';
 
 /**
+ * Block dependencies
+ */
+import { default as PortfolioImage } from './portfolio-image';
+
+/**
  * Internal block libraries
  */
- const { Component, compose } = wp.element;
+ const { Component } = wp.element;
  const { __, sprintf } = wp.i18n;
  const {
      AlignmentToolbar,
@@ -211,87 +216,14 @@ class gtPortfolioBlock extends Component {
                             return (
                                 <div className="gt-grid-item">
 
-                                    <div className="gt-image">
-
-                                        { ! item.imgID ? (
-
-                                            <Placeholder
-                                                className="gt-image-placeholder"
-                                                instructions={ __( 'Drag image here or add from media library' ) }
-                                                icon="format-image"
-                                                label={ __( 'Image' ) } >
-
-                                                <DropZone
-                                                    onFilesDrop={ this.onFilesDrop }
-                                                    onHTMLDrop={ this.onHTMLDrop }
-                                                />
-
-                                                <FormFileUpload
-                                                    isLarge
-                                                    className="wp-block-image__upload-button"
-                                                    onChange={ this.uploadFromFiles }
-                                                    accept="image/*"
-                                                >
-                                                    { __( 'Upload' ) }
-                                                </FormFileUpload>
-
-                                                <MediaUpload
-                                                    onSelect={ ( img ) => this.onSelectImage( img, index ) }
-                                                    type="image"
-                                                    render={ ( { open } ) => (
-                                                        <Button isLarge onClick={ open }>
-                                                            { __( 'Add from Media Library' ) }
-                                                        </Button>
-                                                    ) }
-                                                />
-                                            </Placeholder>
-
-                                        ) : (
-
-                                            <div class="gt-image-wrapper">
-
-                                                { isSelected ? (
-
-                                                    <div class="gt-edit-image">
-
-                                                        <MediaUpload
-                                                            onSelect={ ( img ) => this.onSelectImage( img, index ) }
-                                                            type="image"
-                                                            value={ item.imgID }
-                                                            render={ ( { open } ) => (
-                                                                <img
-                                                                    src={ item.imgURL }
-                                                                    alt={ item.imgAlt }
-                                                                    data-img-id={ item.imgID }
-                                                                    onClick={ open }
-                                                                />
-                                                            ) }
-                                                        />
-
-                                                        <IconButton
-                                                            className="remove-image"
-                                                            label={ __( 'Remove Image' ) }
-                                                            icon="no-alt"
-                                                            onClick={ () => this.onRemoveImage( index ) }
-                                                        />
-
-                                                    </div>
-
-                                                ) : (
-
-                                                    <img
-                                                        src={ item.imgURL }
-                                                        alt={ item.imgAlt }
-                                                        data-img-id={ item.imgID }
-                                                    />
-
-                                                ) }
-
-                                            </div>
-
-                                        ) }
-
-                                    </div>
+                                    <PortfolioImage
+                                        id={ item.imgID }
+                                        url={ item.imgURL }
+                                        alt={ item.imgAlt }
+                                        onSelect={ ( img ) => this.onSelectImage( img, index ) }
+                                        onRemove={ () => this.onRemoveImage( index ) }
+                                        isSelected={ isSelected }
+                                    />
 
                                     <div className="gt-content">
 
