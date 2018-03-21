@@ -30,11 +30,11 @@ class PortfolioImage extends Component {
     }
 
     componentWillReceiveProps( { image } ) {
-        const { id, updateSize } = this.props;
+        const { id, addSize } = this.props;
 
         if ( image && image.data ) {
-            const size = get( image, [ 'data', 'media_details', 'sizes' ], {} );
-            updateSize( id, size );
+            const sizeObj = get( image, [ 'data', 'media_details', 'sizes' ], {} );
+            addSize( id, sizeObj );
         }
     }
 

@@ -2,6 +2,12 @@
  * External dependencies
  */
 import classnames from 'classnames';
+import {
+    isEmpty,
+    map,
+    startCase,
+    uniq,
+} from 'lodash';
 
 /**
  * Block dependencies
@@ -67,15 +73,12 @@ class gtPortfolioBlock extends Component {
         super( ...arguments );
 
         this.addPortfolioItem = this.addPortfolioItem.bind( this );
-        this.onSelectImage       = this.onSelectImage.bind( this );
-        this.onRemoveImage       = this.onRemoveImage.bind( this );
-        this.updateImageSize     = this.updateImageSize.bind( this );
-        this.setImage            = this.setImage.bind( this );
-        this.uploadFromFiles     = this.uploadFromFiles.bind( this );
-        this.onFilesDrop         = this.onFilesDrop.bind( this );
-        this.onHTMLDrop          = this.onHTMLDrop.bind( this );
-        this.onChangeTitle = this.onChangeTitle.bind( this );
-        this.onChangeText = this.onChangeText.bind( this );
+        this.onSelectImage    = this.onSelectImage.bind( this );
+        this.onRemoveImage    = this.onRemoveImage.bind( this );
+        this.addImageSize     = this.addImageSize.bind( this );
+        this.updateImageURLs  = this.updateImageURLs.bind( this );
+        this.onChangeTitle    = this.onChangeTitle.bind( this );
+        this.onChangeText     = this.onChangeText.bind( this );
 
         this.state = {
             editItems: false,
@@ -125,32 +128,40 @@ class gtPortfolioBlock extends Component {
         this.props.setAttributes( { items: newItems } );
     }
 
-    updateImageSize( imgID, size ) {
+    addImageSize( imgID, sizeObj ) {
         const newSizes = { ...this.state.imageSizes };
         if( ! newSizes[imgID] ) {
-            newSizes[imgID] = size;
+            newSizes[imgID] = sizeObj;
             this.setState( { imageSizes: newSizes } );
         }
     }
 
-    setImage( [ image ] ) {
-        this.onSelectImage( image );
-    };
+    getImageURL( imgID, size ) {
+        // Check if image exists in imageSizes state.
+        if( this.state.imageSizes[imgID] !== undefined ) {
 
-    uploadFromFiles( event ) {
-        mediaUpload( event.target.files, this.setImage );
+            // Get all available sizes for portfolio image.
+            const itemSizes = this.state.imageSizes[imgID];
+
+            // Select the new Image Size.
+            const newSize = ( itemSizes[size] !== undefined ) ? itemSizes[size] : itemSizes['full'];
+
+            return newSize['source_url'];
+        }
+        return null;
     }
 
-    onFilesDrop( files ) {
-        mediaUpload( files, this.setImage );
-    }
+    updateImageURLs( size ) {
+        console.log('images updated');
+        const newItems = [...this.props.attributes.items];
+        newItems.forEach( ( item, index ) => {
+            newItems[index].imgURL = this.getImageURL( item.imgID, size );
+        });
 
-    onHTMLDrop( HTML ) {
-        this.setImage( map(
-            rawHandler( { HTML, mode: 'BLOCKS' } )
-                .filter( ( { name } ) => name === 'core/image' ),
-            'attributes'
-        ) );
+        this.props.setAttributes( {
+            items: newItems,
+            imageSize: size,
+        } );
     }
 
     onChangeTitle( newTitle, index ) {
@@ -172,9 +183,8 @@ class gtPortfolioBlock extends Component {
     getAvailableSizes() {
         const availableSizes = Object.values( this.state.imageSizes )
             .map( img => Object.keys(img) )
-            .reduce( ( sizes, img ) => sizes.concat( img ), [] )
-            .filter( ( item, pos, self ) => self.indexOf( item ) === pos );
-        return availableSizes;
+            .reduce( ( sizes, img ) => sizes.concat( img ), [] );
+        return uniq( availableSizes );
     }
 
     render() {
@@ -222,6 +232,21 @@ class gtPortfolioBlock extends Component {
                             }
                         />
 
+                    </PanelBody>
+
+                    <PanelBody title={ __( 'Image Settings' ) } initialOpen={ false }>
+
+                        { ! isEmpty( availableSizes ) && (
+                            <SelectControl
+                                label={ __( 'Size' ) }
+                                value={ attributes.imageSize }
+                                options={ map( availableSizes, ( size ) => ( {
+                                    value: size,
+                                    label: startCase( size ),
+                                } ) ) }
+                                onChange={ this.updateImageURLs }
+                            />
+                        ) }
 
                     </PanelBody>
 
@@ -241,7 +266,7 @@ class gtPortfolioBlock extends Component {
                                         alt={ item.imgAlt }
                                         onSelect={ ( img ) => this.onSelectImage( img, index ) }
                                         onRemove={ () => this.onRemoveImage( index ) }
-                                        updateSize={ this.updateImageSize }
+                                        addSize={ this.addImageSize }
                                         isSelected={ isSelected }
                                     />
 

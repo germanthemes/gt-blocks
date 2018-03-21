@@ -83,6 +83,10 @@ registerBlockType(
                 type: 'string',
                 default: 'center',
             },
+            imageSize: {
+                type: 'string',
+                default: 'full',
+            },
         },
 
         getEditWrapperProps( attributes ) {
