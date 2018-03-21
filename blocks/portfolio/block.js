@@ -69,6 +69,7 @@ class gtPortfolioBlock extends Component {
         this.addPortfolioItem = this.addPortfolioItem.bind( this );
         this.onSelectImage       = this.onSelectImage.bind( this );
         this.onRemoveImage       = this.onRemoveImage.bind( this );
+        this.updateImageSize     = this.updateImageSize.bind( this );
         this.setImage            = this.setImage.bind( this );
         this.uploadFromFiles     = this.uploadFromFiles.bind( this );
         this.onFilesDrop         = this.onFilesDrop.bind( this );
@@ -79,6 +80,7 @@ class gtPortfolioBlock extends Component {
         this.state = {
             editItems: false,
             editText: null,
+            imageSizes: {},
         };
     }
 
@@ -123,6 +125,14 @@ class gtPortfolioBlock extends Component {
         this.props.setAttributes( { items: newItems } );
     }
 
+    updateImageSize( imgID, size ) {
+        const newSizes = { ...this.state.imageSizes };
+        if( ! newSizes[imgID] ) {
+            newSizes[imgID] = size;
+            this.setState( { imageSizes: newSizes } );
+        }
+    }
+
     setImage( [ image ] ) {
         this.onSelectImage( image );
     };
@@ -159,8 +169,17 @@ class gtPortfolioBlock extends Component {
         this.props.setAttributes( { items: newItems } );
     }
 
+    getAvailableSizes() {
+        const availableSizes = Object.values( this.state.imageSizes )
+            .map( img => Object.keys(img) )
+            .reduce( ( sizes, img ) => sizes.concat( img ), [] )
+            .filter( ( item, pos, self ) => self.indexOf( item ) === pos );
+        return availableSizes;
+    }
+
     render() {
         const { attributes, setAttributes, isSelected, className } = this.props;
+        const availableSizes = this.getAvailableSizes();
 
         const classNames= classnames( className, {
             'gt-items-edited': this.state.editItems,
@@ -222,6 +241,7 @@ class gtPortfolioBlock extends Component {
                                         alt={ item.imgAlt }
                                         onSelect={ ( img ) => this.onSelectImage( img, index ) }
                                         onRemove={ () => this.onRemoveImage( index ) }
+                                        updateSize={ this.updateImageSize }
                                         isSelected={ isSelected }
                                     />
 

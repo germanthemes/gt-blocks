@@ -1,4 +1,14 @@
 /**
+ * External dependencies
+ */
+import {
+    startCase,
+    isEmpty,
+    map,
+    get,
+} from 'lodash';
+
+/**
  * Internal block libraries
  */
 const { Component } = wp.element;
@@ -17,6 +27,15 @@ const {
 class PortfolioImage extends Component {
     constructor() {
         super( ...arguments );
+    }
+
+    componentWillReceiveProps( { image } ) {
+        const { id, updateSize } = this.props;
+
+        if ( image && image.data ) {
+            const size = get( image, [ 'data', 'media_details', 'sizes' ], {} );
+            updateSize( id, size );
+        }
     }
 
     render() {
@@ -94,4 +113,6 @@ class PortfolioImage extends Component {
     }
 }
 
-export default PortfolioImage;
+export default withAPIData( ( { id } ) => ( {
+	image: id ? `/wp/v2/media/${ id }` : {},
+} ) )( PortfolioImage );
