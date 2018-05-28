@@ -1,3 +1,8 @@
+/*Block Panels*/
+.edit-post-sidebar .gt-panel-image-settings {
+    border-top: 1px solid #e2e4e7;
+}
+
 /* Block Image Edit */
 .wp-block-german-themes-blocks-portfolio .gt-image-wrapper .gt-edit-image {
     position: relative;
@@ -31,4 +36,34 @@
 /* Font Size */
 .wp-block-german-themes-blocks-portfolio .gt-content .gt-title p {
     font-size: inherit;
+}
+
+/* Block Portfolio Grid Controls */
+.wp-block-german-themes-blocks-portfolio .gt-editor-portolio-controls {
+    margin-top: 24px;
+}
+
+.wp-block-german-themes-blocks-portfolio .gt-editor-portolio-controls button {
+    margin-right: 12px;
+}
+
+/* Portfolio Grid Item Controls*/
+.wp-block-german-themes-blocks-portfolio.gt-items-edited .gt-grid-container .gt-grid-item {
+    position: relative;
+    outline: 4px solid blue;
+}
+
+.wp-block-german-themes-blocks-portfolio.gt-items-edited .gt-grid-container .gt-grid-item .gt-grid-item-controls {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    background: blue;
+    width: 100%;
+    padding-top: 4px;
+}
+
+.wp-block-german-themes-blocks-portfolio.gt-items-edited .gt-grid-container .gt-grid-item .gt-grid-item-controls .remove-portfolio-item {
+    padding: 5px;
+    float: right;
+    color: #fff;
 }

@@ -29,10 +29,12 @@ import { default as PortfolioImage } from './portfolio-image';
      MediaUpload,
      registerBlockType,
      RichText,
+     UrlInput,
  } = wp.blocks;
 
  const {
      Button,
+     Dashicon,
      DropZone,
      FormFileUpload,
      IconButton,
@@ -72,13 +74,15 @@ class gtPortfolioBlock extends Component {
     constructor() {
         super( ...arguments );
 
-        this.addPortfolioItem = this.addPortfolioItem.bind( this );
-        this.onSelectImage    = this.onSelectImage.bind( this );
-        this.onRemoveImage    = this.onRemoveImage.bind( this );
-        this.addImageSize     = this.addImageSize.bind( this );
-        this.updateImageURLs  = this.updateImageURLs.bind( this );
-        this.onChangeTitle    = this.onChangeTitle.bind( this );
-        this.onChangeText     = this.onChangeText.bind( this );
+        this.addPortfolioItem   = this.addPortfolioItem.bind( this );
+        this.onSelectImage      = this.onSelectImage.bind( this );
+        this.onRemoveImage      = this.onRemoveImage.bind( this );
+        this.addImageSize       = this.addImageSize.bind( this );
+        this.updateImageURLs    = this.updateImageURLs.bind( this );
+        this.onChangeTitle      = this.onChangeTitle.bind( this );
+        this.onChangeText       = this.onChangeText.bind( this );
+        this.onChangeButtonText = this.onChangeButtonText.bind( this );
+        this.onChangeButtonURL  = this.onChangeButtonURL.bind( this );
 
         this.state = {
             editItems: false,
@@ -193,6 +197,22 @@ class gtPortfolioBlock extends Component {
         this.props.setAttributes( { items: newItems } );
     }
 
+    onChangeButtonText( newButtonText, index ) {
+        const newItems = [...this.props.attributes.items];
+        if( newItems[index] !== undefined ) {
+            newItems[index].buttonText = newButtonText;
+        }
+        this.props.setAttributes( { items: newItems } );
+    }
+
+    onChangeButtonURL( newButtonURL, index ) {
+        const newItems = [...this.props.attributes.items];
+        if( newItems[index] !== undefined ) {
+            newItems[index].buttonURL = newButtonURL;
+        }
+        this.props.setAttributes( { items: newItems } );
+    }
+
     getAvailableSizes() {
         const availableSizes = Object.values( this.state.imageSizes )
             .map( img => Object.keys(img) )
@@ -247,7 +267,7 @@ class gtPortfolioBlock extends Component {
 
                     </PanelBody>
 
-                    <PanelBody title={ __( 'Image Settings' ) } initialOpen={ false }>
+                    <PanelBody title={ __( 'Image Settings' ) } initialOpen={ false } className="gt-panel-image-settings">
 
                         { ! isEmpty( availableSizes ) && (
                             <SelectControl
@@ -306,15 +326,40 @@ class gtPortfolioBlock extends Component {
                                             onFocus={ () => this.setState( { editText: `text${index}` } ) }
                                         />
 
+                                        <RichText
+                                            tagName="a"
+                                            placeholder={ __( 'Add text' ) }
+                                            value={ item.buttonText }
+                                            className="gt-button"
+                                            onChange={ ( newButtonText ) => this.onChangeButtonText( newButtonText, index ) }
+                                            isSelected={ isSelected && this.state.editText === `button${index}` }
+                                            onFocus={ () => this.setState( { editText: `button${index}` } ) }
+                                        />
+
+                                        { isSelected && (
+                                            <form
+                                                className="blocks-button__inline-link"
+                                                onSubmit={ ( event ) => event.preventDefault() }>
+                                                <Dashicon icon="admin-links" />
+                                                <UrlInput
+                                                    value={ item.buttonURL }
+                                                    onChange={ ( newButtonURL ) => this.onChangeButtonURL( newButtonURL, index ) }
+                                                />
+                                                <IconButton icon="editor-break" label={ __( 'Apply' ) } type="submit" />
+                                            </form>
+                                        ) }
+
                                     </div>
 
                                     { this.state.editItems && (
-                                        <IconButton
-                                            className="remove-portfolio-item"
-                                            label={ __( 'Remove Item' ) }
-                                            icon="no-alt"
-                                            onClick={ () => this.removePortfolioItem( index ) }
-                                        />
+                                        <div className="gt-grid-item-controls">
+                                            <IconButton
+                                                className="remove-portfolio-item"
+                                                label={ __( 'Remove Item' ) }
+                                                icon="no-alt"
+                                                onClick={ () => this.removePortfolioItem( index ) }
+                                            />
+                                        </div>
                                     ) }
 
                                 </div>
@@ -324,21 +369,24 @@ class gtPortfolioBlock extends Component {
 
                 </div>
 
-                { isSelected && [
-                    <Button
-                        isLarge
-                        onClick={ this.addPortfolioItem }
-                    >
-                        { __( 'Add portfolio item' ) }
-                    </Button>
-                    ,
-                    <Button
-                        isLarge
-                        onClick={ () => this.setState( { editItems: ! this.state.editItems } ) }
-                    >
-                        { __( 'Edit portfolio items' ) }
-                    </Button>
-                ] }
+                { isSelected && (
+                    <div class="gt-editor-portolio-controls">
+
+                        <Button
+                            isLarge
+                            onClick={ this.addPortfolioItem }
+                        >
+                            { __( 'Add portfolio item' ) }
+                        </Button>
+
+                        <Button
+                            isLarge
+                            onClick={ () => this.setState( { editItems: ! this.state.editItems } ) }
+                        >
+                            { __( 'Edit portfolio items' ) }
+                        </Button>
+                    </div>
+                ) }
             </div>
         ];
     }

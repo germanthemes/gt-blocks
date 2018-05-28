@@ -112,6 +112,13 @@
 
 .wp-block-german-themes-blocks-portfolio.gt-columns-6 .gt-grid-container {
   grid-template-columns: repeat(6, 1fr); }
+
+/* Button Styling */
+.wp-block-german-themes-blocks-portfolio .gt-grid-item .gt-button {
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  color: #fff;
+  background: #333; }
 .wp-block-german-themes-blocks-testimonials {
   background: rgba(254, 243, 224, 0.52);
   border: 5px #f7b733 solid;

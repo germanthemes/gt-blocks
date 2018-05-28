@@ -22,7 +22,7 @@ const { registerBlockType } = wp.blocks;
 registerBlockType(
     'german-themes-blocks/portfolio',
     {
-        title: __( 'GT Portfolio' ),
+        title: __( 'Portfolio' ),
 
         description: __( 'Add a description here' ),
 
@@ -38,6 +38,7 @@ registerBlockType(
 
         attributes: {
             items: {
+                type: 'array',
                 source: 'query',
                 selector: '.gt-grid-item',
                 query: {
@@ -68,6 +69,17 @@ registerBlockType(
                         type: 'array',
                         source: 'children',
                         selector: '.gt-text',
+                    },
+                    buttonURL: {
+                        type: 'string',
+                        source: 'attribute',
+                        attribute: 'href',
+                        selector: '.gt-button',
+                    },
+                    buttonText: {
+                        type: 'array',
+                        source: 'children',
+                        selector: '.gt-button',
                     },
                 },
                 default: [
@@ -130,6 +142,10 @@ registerBlockType(
                                             <div className="gt-text">
                                                 { item.text }
                                             </div>
+
+                                            <a className="gt-button" href={ item.buttonURL }>
+                                                { item.buttonText }
+                                            </a>
 
                                         </div>
 
