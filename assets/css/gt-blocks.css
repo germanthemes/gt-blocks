@@ -96,6 +96,7 @@
   -webkit-box-align: end;
       -ms-flex-align: end;
           align-items: flex-end; }
+/* Portfolio Grid Layout */
 .wp-block-german-themes-blocks-portfolio .gt-grid-container {
   display: grid;
   grid-template-columns: repeat(2, 1fr);

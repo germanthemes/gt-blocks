@@ -48,22 +48,73 @@
 }
 
 /* Portfolio Grid Item Controls*/
-.wp-block-german-themes-blocks-portfolio.gt-items-edited .gt-grid-container .gt-grid-item {
-    position: relative;
-    outline: 4px solid blue;
-}
-
-.wp-block-german-themes-blocks-portfolio.gt-items-edited .gt-grid-container .gt-grid-item .gt-grid-item-controls {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    background: blue;
+.wp-block-german-themes-blocks-portfolio .gt-grid-container .gt-grid-item .gt-grid-item-controls {
+    display: flex;
+    margin-top: 5px;
+    padding: 4px;
     width: 100%;
-    padding-top: 4px;
+    background: #00a0d2;
 }
 
-.wp-block-german-themes-blocks-portfolio.gt-items-edited .gt-grid-container .gt-grid-item .gt-grid-item-controls .remove-portfolio-item {
-    padding: 5px;
-    float: right;
+.wp-block-german-themes-blocks-portfolio .gt-grid-container .gt-grid-item .gt-grid-item-controls .gt-grid-item-number {
+    margin: 2px 10px;
     color: #fff;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.wp-block-german-themes-blocks-portfolio .gt-grid-container .gt-grid-item .gt-grid-item-controls .components-icon-button {
+    padding: 4px 5px;
+    color: #fff;
+}
+
+.wp-block-german-themes-blocks-portfolio .gt-grid-container .gt-grid-item .gt-grid-item-controls .components-icon-button:hover,
+.wp-block-german-themes-blocks-portfolio .gt-grid-container .gt-grid-item .gt-grid-item-controls .components-icon-button:active,
+.wp-block-german-themes-blocks-portfolio .gt-grid-container .gt-grid-item .gt-grid-item-controls .components-icon-button:focus {
+    background: none;
+}
+
+.wp-block-german-themes-blocks-portfolio .gt-grid-container .gt-grid-item .gt-grid-item-controls .remove-portfolio-item {
+    margin-left: auto;
+}
+
+.wp-block-german-themes-blocks-portfolio .gt-grid-container .gt-grid-item .gt-grid-item-controls .components-icon-button .dashicon {
+    width: 18px;
+}
+
+/* Portfolio Grid Item URL Input */
+.wp-block-german-themes-blocks-portfolio .gt-url-input {
+	margin-top: 1.5rem;
+    padding-top: 0.25rem;
+    border-top: 1px dotted #ccc;
+    background: #fff;
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+
+	.editor-url-input {
+		width: auto;
+	}
+
+	> .dashicon {
+		width: 24px;
+	}
+
+	.dashicon {
+		color: #8f98a1;
+	}
+
+	.editor-url-input input[type=text]::placeholder {
+		color: #8f98a1;
+	}
+
+	[data-align="center"] & {
+		margin-left: auto;
+		margin-right: auto;
+	}
+
+	[data-align="right"] & {
+		margin-left: auto;
+		margin-right: 0;
+	}
 }

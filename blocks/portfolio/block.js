@@ -107,6 +107,31 @@ class gtPortfolioBlock extends Component {
         this.props.setAttributes( { items: newItems } );
     }
 
+    moveUpPortfolioItem( index ) {
+        // Return early if item is already on top.
+        if ( index === 0 ) {
+            return false;
+        }
+
+        // Swap Items.
+        const newItems = [...this.props.attributes.items];
+        [newItems[index-1], newItems[index]] = [newItems[index], newItems[index-1]];
+        this.props.setAttributes( { items: newItems } );
+    }
+
+    moveDownPortfolioItem( index ) {
+        const newItems = [...this.props.attributes.items];
+
+        // Return early if item is already on top.
+        if ( ( index + 1 ) === newItems.length ) {
+            return false;
+        }
+
+        // Swap Items.
+        [newItems[index], newItems[index+1]] = [newItems[index+1], newItems[index]];
+        this.props.setAttributes( { items: newItems } );
+    }
+
     removePortfolioItem( index ) {
         const newItems = [...this.props.attributes.items].filter( (value, key) => key !== index );
         this.props.setAttributes( { items: newItems } );
@@ -328,22 +353,25 @@ class gtPortfolioBlock extends Component {
 
                                         <RichText
                                             tagName="a"
-                                            placeholder={ __( 'Add text' ) }
+                                            placeholder={ __( 'Add button text' ) }
                                             value={ item.buttonText }
                                             className="gt-button"
                                             onChange={ ( newButtonText ) => this.onChangeButtonText( newButtonText, index ) }
+                                            formattingControls={ [ 'bold', 'italic', 'strikethrough' ] }
                                             isSelected={ isSelected && this.state.editText === `button${index}` }
                                             onFocus={ () => this.setState( { editText: `button${index}` } ) }
+                                            keepPlaceholderOnFocus
                                         />
 
                                         { isSelected && (
                                             <form
-                                                className="blocks-button__inline-link"
+                                                className="gt-url-input"
                                                 onSubmit={ ( event ) => event.preventDefault() }>
                                                 <Dashicon icon="admin-links" />
                                                 <UrlInput
                                                     value={ item.buttonURL }
                                                     onChange={ ( newButtonURL ) => this.onChangeButtonURL( newButtonURL, index ) }
+                                                    autoFocus= { false }
                                                 />
                                                 <IconButton icon="editor-break" label={ __( 'Apply' ) } type="submit" />
                                             </form>
@@ -351,12 +379,34 @@ class gtPortfolioBlock extends Component {
 
                                     </div>
 
-                                    { this.state.editItems && (
+                                    { isSelected && (
                                         <div className="gt-grid-item-controls">
+                                            <div className="gt-grid-item-number">
+                                                #{ index + 1 }
+                                            </div>
+
+                                            { index !== 0 && (
+                                                <IconButton
+                                                    className="move-up-portfolio-item"
+                                                    label={ __( 'Move up' ) }
+                                                    icon="arrow-up-alt2"
+                                                    onClick={ () => this.moveUpPortfolioItem( index ) }
+                                                />
+                                            ) }
+
+                                            { ( ( index + 1 ) !== attributes.items.length ) && (
+                                                <IconButton
+                                                    className="move-down-portfolio-item"
+                                                    label={ __( 'Move down' ) }
+                                                    icon="arrow-down-alt2"
+                                                    onClick={ () => this.moveDownPortfolioItem( index ) }
+                                                />
+                                            ) }
+
                                             <IconButton
                                                 className="remove-portfolio-item"
                                                 label={ __( 'Remove Item' ) }
-                                                icon="no-alt"
+                                                icon="trash"
                                                 onClick={ () => this.removePortfolioItem( index ) }
                                             />
                                         </div>

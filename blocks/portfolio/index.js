@@ -22,7 +22,7 @@ const { registerBlockType } = wp.blocks;
 registerBlockType(
     'german-themes-blocks/portfolio',
     {
-        title: __( 'Portfolio' ),
+        title: __( 'GT Portfolio' ),
 
         description: __( 'Add a description here' ),
 
