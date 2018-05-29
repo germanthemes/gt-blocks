@@ -16,7 +16,10 @@ import { default as gtImageTextBlock } from './block';
  */
 const { __ } = wp.i18n;
 const { registerBlockType } = wp.blocks;
-const { RichText } = wp.editor;
+const {
+    RichText,
+    getColorClass,
+} = wp.editor;
 
 /**
  * Register block
@@ -103,6 +106,12 @@ registerBlockType(
             backgroundColor: {
                 type: 'string',
             },
+            customTextColor: {
+                type: 'string',
+            },
+            customBackgroundColor: {
+                type: 'string',
+            },
         },
 
         getEditWrapperProps( attributes ) {
@@ -115,18 +124,24 @@ registerBlockType(
 
         save( { attributes } ) {
 
+            const textClass = getColorClass( 'color', attributes.textColor );
+            const backgroundClass = getColorClass( 'background-color', attributes.backgroundColor );
+
             const classNames = classnames( {
                 [ `${ attributes.columnSize }` ]: attributes.columnSize,
                 [ `align${ attributes.blockAlignment }` ]: ( attributes.blockAlignment !== 'center' ),
-                'gt-has-background': attributes.backgroundColor,
                 [ `gt-vertical-align-${ attributes.verticalAlignment }` ]: ( attributes.verticalAlignment !== 'top' ),
                 'gt-image-position-right': attributes.imagePosition,
                 'gt-has-spacing': attributes.spacing,
+                'has-text-color': attributes.textColor || attributes.customTextColor,
+    			[ textClass ]: textClass,
+    			'has-background': attributes.backgroundColor || attributes.customBackgroundColor,
+                [ backgroundClass ]: backgroundClass,
             } );
 
             const styles = {
-                backgroundColor: attributes.backgroundColor,
-                color: attributes.textColor,
+                backgroundColor: backgroundClass ? undefined : attributes.customBackgroundColor,
+                color: textClass ? undefined : attributes.customTextColor,
                 textAlign: attributes.textAlignment,
             };
 

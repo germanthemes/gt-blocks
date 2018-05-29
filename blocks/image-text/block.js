@@ -27,12 +27,11 @@ const { __, sprintf } = wp.i18n;
 const {
     AlignmentToolbar,
     BlockControls,
-    ColorPalette,
-    ImagePlaceholder,
     InspectorControls,
     MediaUpload,
-    registerBlockType,
     RichText,
+    withColors,
+    PanelColor,
 } = wp.editor;
 
 const {
@@ -41,7 +40,6 @@ const {
     FormFileUpload,
     IconButton,
     PanelBody,
-    PanelColor,
     Placeholder,
     RangeControl,
     SelectControl,
@@ -154,20 +152,33 @@ class gtImageTextBlock extends Component {
     }
 
     render() {
-        const { attributes, setAttributes, isSelected, className } = this.props;
+        const {
+            attributes,
+            backgroundColor,
+            textColor,
+            setBackgroundColor,
+            setTextColor,
+            setAttributes,
+            isSelected,
+            className
+        } = this.props;
+
         const availableSizes = this.getAvailableSizes();
 
         const classNames= classnames( className, {
             [ `${ attributes.columnSize }` ]: attributes.columnSize,
-            'gt-has-background': attributes.backgroundColor,
             [ `gt-vertical-align-${ attributes.verticalAlignment }` ]: ( attributes.verticalAlignment !== 'top' ),
             'gt-image-position-right': attributes.imagePosition,
             'gt-has-spacing': attributes.spacing,
+            'has-background': backgroundColor.value,
+            [ backgroundColor.class ]: backgroundColor.class,
+            'has-text-color': textColor.value,
+            [ textColor.class ]: textColor.class,
         } );
 
         const styles = {
-            backgroundColor: attributes.backgroundColor,
-            color: attributes.textColor,
+            backgroundColor: backgroundColor.class ? undefined : backgroundColor.value,
+            color: textColor.class ? undefined : textColor.value,
             textAlign: attributes.textAlignment,
         };
 
@@ -331,19 +342,19 @@ class gtImageTextBlock extends Component {
 
                     </PanelBody>
 
-                    <PanelColor title={ __( 'Background Color' ) } colorValue={ attributes.backgroundColor } initialOpen={ false }>
-                        <ColorPalette
-                            value={ attributes.backgroundColor }
-                            onChange={ ( colorValue ) => setAttributes( { backgroundColor: colorValue } ) }
-                        />
-                    </PanelColor>
+                    <PanelColor
+                        colorValue={ backgroundColor.value }
+                        initialOpen={ false }
+                        title={ __( 'Background Color' ) }
+                        onChange={ setBackgroundColor }
+                    />
 
-                    <PanelColor title={ __( 'Text Color' ) } colorValue={ attributes.textColor } initialOpen={ false }>
-                        <ColorPalette
-                            value={ attributes.textColor }
-                            onChange={ ( colorValue ) => setAttributes( { textColor: colorValue } ) }
-                        />
-                    </PanelColor>
+                    <PanelColor
+                        colorValue={ textColor.value }
+                        initialOpen={ false }
+                        title={ __( 'Text Color' ) }
+                        onChange={ setTextColor }
+                    />
 
                 </InspectorControls>
             ),
@@ -473,4 +484,12 @@ export default compose( [
             image: `/wp/v2/media/${ imgID }`,
         };
     } ),
+    withColors( ( getColor, setColor, { attributes } ) => {
+    	return {
+    		backgroundColor: getColor( attributes.backgroundColor, attributes.customBackgroundColor, 'background-color' ),
+    		setBackgroundColor: setColor( 'backgroundColor', 'customBackgroundColor' ),
+    		textColor: getColor( attributes.textColor, attributes.customTextColor, 'color' ),
+    		setTextColor: setColor( 'textColor', 'customTextColor' ),
+        };
+    } )
 ] )( gtImageTextBlock );
