@@ -33,7 +33,7 @@ const {
     MediaUpload,
     registerBlockType,
     RichText,
-} = wp.blocks;
+} = wp.editor;
 
 const {
     Button,
@@ -105,7 +105,6 @@ class gtImageTextBlock extends Component {
         this.uploadFromFiles     = this.uploadFromFiles.bind( this );
         this.onFilesDrop         = this.onFilesDrop.bind( this );
         this.onHTMLDrop          = this.onHTMLDrop.bind( this );
-        this.onSetActiveEditable = this.onSetActiveEditable.bind( this );
         this.updateImageURL      = this.updateImageURL.bind( this );
         this.getAvailableSizes   = this.getAvailableSizes.bind( this );
     }
@@ -144,10 +143,6 @@ class gtImageTextBlock extends Component {
                 .filter( ( { name } ) => name === 'core/image' ),
             'attributes'
         ) );
-    }
-
-    onSetActiveEditable( newEditable ) {
-        this.props.setAttributes( { editable: newEditable  } );
     }
 
     updateImageURL( url ) {
@@ -446,8 +441,6 @@ class gtImageTextBlock extends Component {
                             className="block-title"
                             style={ styles }
                             onChange={ ( newTitle ) => setAttributes( { title: newTitle } ) }
-                            isSelected={ isSelected && attributes.editable === 'title' }
-                            onFocus={ () => this.onSetActiveEditable( 'title' ) }
                         />
 
                         <RichText
@@ -458,8 +451,6 @@ class gtImageTextBlock extends Component {
                             className="block-text"
                             style={ { fontSize: attributes.fontSize ? attributes.fontSize + 'px' : undefined } }
                             onChange={ ( newText ) => setAttributes( { text: newText } ) }
-                            isSelected={ isSelected && attributes.editable === 'text' }
-                            onFocus={ () => this.onSetActiveEditable( 'text' ) }
                         />
 
                     </div>

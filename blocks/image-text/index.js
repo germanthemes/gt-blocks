@@ -16,6 +16,7 @@ import { default as gtImageTextBlock } from './block';
  */
 const { __ } = wp.i18n;
 const { registerBlockType } = wp.blocks;
+const { RichText } = wp.editor;
 
 /**
  * Register block
@@ -69,9 +70,6 @@ registerBlockType(
                 type: 'array',
                 source: 'children',
                 selector: '.block-text',
-            },
-            editable: {
-                type: 'string',
             },
             columnSize: {
                 type: 'string',
@@ -132,8 +130,6 @@ registerBlockType(
                 textAlign: attributes.textAlignment,
             };
 
-            const TitleTag = attributes.titleTag.toLowerCase();
-
             return (
                 <div className={ classNames ? classNames : undefined }>
 
@@ -148,13 +144,18 @@ registerBlockType(
 
                         <div className="block-content-inner">
 
-                            <TitleTag className="block-title" >
-                                { attributes.title }
-                            </TitleTag>
+                            <RichText.Content
+                                tagName={ attributes.titleTag.toLowerCase() }
+                                className="block-title"
+                                value={ attributes.title }
+                            />
 
-                            <div className="block-text" style={ { fontSize: attributes.fontSize } }>
-                                { attributes.text }
-                            </div>
+                            <RichText.Content
+                                tagName="div"
+                                style={ { fontSize: attributes.fontSize } }
+                                className="block-text"
+                                value={ attributes.text }
+                            />
 
                         </div>
 

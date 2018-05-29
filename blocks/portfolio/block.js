@@ -20,39 +20,22 @@ import { default as PortfolioImage } from './portfolio-image';
  const { Component } = wp.element;
  const { __, sprintf } = wp.i18n;
  const {
-     AlignmentToolbar,
      BlockAlignmentToolbar,
      BlockControls,
-     ColorPalette,
-     ImagePlaceholder,
      InspectorControls,
-     MediaUpload,
-     registerBlockType,
      RichText,
      UrlInput,
- } = wp.blocks;
+ } = wp.editor;
 
  const {
      Button,
      Dashicon,
-     DropZone,
-     FormFileUpload,
      IconButton,
      PanelBody,
-     PanelColor,
-     Placeholder,
      RangeControl,
      SelectControl,
-     TextControl,
-     ToggleControl,
      Toolbar,
-     Tooltip,
-     withAPIData,
  } = wp.components;
-
- const {
-     mediaUpload,
- } = wp.utils;
 
 /* Block Alignment Controls */
 const blockAlignmentControls = {
@@ -86,7 +69,6 @@ class gtPortfolioBlock extends Component {
 
         this.state = {
             editItems: false,
-            editText: null,
             imageSizes: {},
         };
     }
@@ -96,7 +78,6 @@ class gtPortfolioBlock extends Component {
         if ( ! nextProps.isSelected && this.props.isSelected ) {
             this.setState( {
                 editItems: false,
-                editText: null,
             } );
         }
     }
@@ -336,8 +317,6 @@ class gtPortfolioBlock extends Component {
                                             value={ item.title }
                                             className="gt-title"
                                             onChange={ ( newTitle ) => this.onChangeTitle( newTitle, index ) }
-                                            isSelected={ isSelected && this.state.editText === `title${index}` }
-                                            onFocus={ () => this.setState( { editText: `title${index}` } ) }
                                         />
 
                                         <RichText
@@ -347,8 +326,6 @@ class gtPortfolioBlock extends Component {
                                             value={ item.text }
                                             className="gt-text"
                                             onChange={ ( newText ) => this.onChangeText( newText, index ) }
-                                            isSelected={ isSelected && this.state.editText === `text${index}` }
-                                            onFocus={ () => this.setState( { editText: `text${index}` } ) }
                                         />
 
                                         <RichText
@@ -358,8 +335,6 @@ class gtPortfolioBlock extends Component {
                                             className="gt-button"
                                             onChange={ ( newButtonText ) => this.onChangeButtonText( newButtonText, index ) }
                                             formattingControls={ [ 'bold', 'italic', 'strikethrough' ] }
-                                            isSelected={ isSelected && this.state.editText === `button${index}` }
-                                            onFocus={ () => this.setState( { editText: `button${index}` } ) }
                                             keepPlaceholderOnFocus
                                         />
 

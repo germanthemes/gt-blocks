@@ -15,7 +15,7 @@ const { Component } = wp.element;
 const { __ } = wp.i18n;
 const {
     MediaUpload,
-} = wp.blocks;
+} = wp.editor;
 
 const {
     Button,

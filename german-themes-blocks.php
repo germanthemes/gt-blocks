@@ -154,7 +154,7 @@ class German_Themes_Blocks {
 	 *
 	 * @return void
 	 */
-	function add_image_sizes() {
+	static function add_image_sizes() {
 
 		add_image_size( 'GT-square-400-x-400', 400, 400, true );
 		add_image_size( 'GT-square-800-x-800', 800, 800, true );

@@ -15,6 +15,7 @@ import { default as gtPortfolioBlock } from './block';
  */
 const { __ } = wp.i18n;
 const { registerBlockType } = wp.blocks;
+const { RichText } = wp.editor;
 
 /**
  * Register block
@@ -135,17 +136,24 @@ registerBlockType(
 
                                         <div className="gt-content">
 
-                                            <h2 className="gt-title" >
-                                                { item.title }
-                                            </h2>
+                                            <RichText.Content
+                                                tagName="h2"
+                                                className="gt-title"
+                                                value={ item.title }
+                                            />
 
-                                            <div className="gt-text">
-                                                { item.text }
-                                            </div>
+                                            <RichText.Content
+                                                tagName="div"
+                                                className="gt-text"
+                                                value={ item.text }
+                                            />
 
-                                            <a className="gt-button" href={ item.buttonURL }>
-                                                { item.buttonText }
-                                            </a>
+                                            <RichText.Content
+                                                tagName="a"
+                                                href={ item.buttonURL }
+                                                className="gt-button"
+                                                value={ item.buttonText }
+                                            />
 
                                         </div>
 
