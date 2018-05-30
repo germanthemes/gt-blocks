@@ -67,7 +67,7 @@ class gtPortfolioBlock extends Component {
         this.onChangeTitle      = this.onChangeTitle.bind( this );
         this.onChangeText       = this.onChangeText.bind( this );
         this.onChangeButtonText = this.onChangeButtonText.bind( this );
-        this.onChangeButtonURL  = this.onChangeButtonURL.bind( this );
+        this.onChangeItemURL  = this.onChangeItemURL.bind( this );
 
         this.state = {
             editItems: false,
@@ -213,10 +213,10 @@ class gtPortfolioBlock extends Component {
         this.props.setAttributes( { items: newItems } );
     }
 
-    onChangeButtonURL( newButtonURL, index ) {
+    onChangeItemURL( newItemURL, index ) {
         const newItems = [...this.props.attributes.items];
         if( newItems[index] !== undefined ) {
-            newItems[index].buttonURL = newButtonURL;
+            newItems[index].itemURL = newItemURL;
         }
         this.props.setAttributes( { items: newItems } );
     }
@@ -354,6 +354,8 @@ class gtPortfolioBlock extends Component {
                                             value={ item.title }
                                             className="gt-title"
                                             onChange={ ( newTitle ) => this.onChangeTitle( newTitle, index ) }
+                                            formattingControls={ [ 'bold', 'italic', 'strikethrough' ] }
+                                            keepPlaceholderOnFocus
                                         />
 
                                         <RichText
@@ -363,6 +365,7 @@ class gtPortfolioBlock extends Component {
                                             value={ item.text }
                                             className="gt-text"
                                             onChange={ ( newText ) => this.onChangeText( newText, index ) }
+                                            keepPlaceholderOnFocus
                                         />
 
                                         <RichText
@@ -375,23 +378,21 @@ class gtPortfolioBlock extends Component {
                                             keepPlaceholderOnFocus
                                         />
 
-                                        { isSelected && (
-                                            <form
-                                                className="gt-url-input"
-                                                onSubmit={ ( event ) => event.preventDefault() }>
-                                                <Dashicon icon="admin-links" />
-                                                <UrlInput
-                                                    value={ item.buttonURL }
-                                                    onChange={ ( newButtonURL ) => this.onChangeButtonURL( newButtonURL, index ) }
-                                                    autoFocus= { false }
-                                                />
-                                                <IconButton icon="editor-break" label={ __( 'Apply' ) } type="submit" />
-                                            </form>
-                                        ) }
-
                                     </div>
 
-                                    { isSelected && (
+                                    { isSelected && [
+                                        <form
+                                            className="gt-url-input"
+                                            onSubmit={ ( event ) => event.preventDefault() }>
+                                            <Dashicon icon="admin-links" />
+                                            <UrlInput
+                                                value={ item.itemURL }
+                                                onChange={ ( newItemURL ) => this.onChangeItemURL( newItemURL, index ) }
+                                                autoFocus= { false }
+                                            />
+                                            <IconButton icon="editor-break" label={ __( 'Apply' ) } type="submit" />
+                                        </form>,
+
                                         <div className="gt-grid-item-controls">
                                             <div className="gt-grid-item-number">
                                                 #{ index + 1 }
@@ -422,7 +423,7 @@ class gtPortfolioBlock extends Component {
                                                 onClick={ () => this.removePortfolioItem( index ) }
                                             />
                                         </div>
-                                    ) }
+                                    ] }
 
                                 </div>
                             );

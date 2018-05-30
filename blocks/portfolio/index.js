@@ -74,16 +74,16 @@ registerBlockType(
                         source: 'children',
                         selector: '.gt-text',
                     },
-                    buttonURL: {
-                        type: 'string',
-                        source: 'attribute',
-                        attribute: 'href',
-                        selector: '.gt-button',
-                    },
                     buttonText: {
                         type: 'array',
                         source: 'children',
                         selector: '.gt-button',
+                    },
+                    itemURL: {
+                        type: 'string',
+                        source: 'attribute',
+                        attribute: 'href',
+                        selector: '.gt-item-url',
                     },
                 },
                 default: [
@@ -153,24 +153,29 @@ registerBlockType(
 
                         {
                             attributes.items.map( ( item, index ) => {
+
+                                const image = <img
+                                    src={ item.imgURL }
+                                    alt={ item.imgAlt }
+                                    data-img-id={ item.imgID }
+                                />;
+
+                                const title = <RichText.Content
+                                    tagName="h2"
+                                    className="gt-title"
+                                    value={ item.title }
+                                />;
+
                                 return (
                                     <div className="gt-grid-item">
 
                                         <div className="gt-image">
-                                            <img
-                                                src={ item.imgURL }
-                                                alt={ item.imgAlt }
-                                                data-img-id={ item.imgID }
-                                            />
+                                            { item.itemURL ? <a href={  item.itemURL }>{ image }</a> : image }
                                         </div>
 
                                         <div className={ itemClasses }>
 
-                                            <RichText.Content
-                                                tagName="h2"
-                                                className="gt-title"
-                                                value={ item.title }
-                                            />
+                                            { item.itemURL ? <a href={  item.itemURL } title={ item.title }>{ title }</a> : title }
 
                                             <RichText.Content
                                                 tagName="div"
@@ -178,12 +183,14 @@ registerBlockType(
                                                 value={ item.text }
                                             />
 
-                                            <RichText.Content
-                                                tagName="a"
-                                                href={ item.buttonURL }
-                                                className="gt-button"
-                                                value={ item.buttonText }
-                                            />
+                                            {  item.itemURL && item.buttonText ?
+                                                <RichText.Content
+                                                    tagName="a"
+                                                    href={ item.itemURL }
+                                                    className="gt-button"
+                                                    value={ item.buttonText }
+                                                /> : null
+                                            }
 
                                         </div>
 
