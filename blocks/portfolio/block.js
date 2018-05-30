@@ -25,6 +25,8 @@ import { default as PortfolioImage } from './portfolio-image';
      InspectorControls,
      RichText,
      UrlInput,
+     withColors,
+     PanelColor,
  } = wp.editor;
 
  const {
@@ -227,13 +229,34 @@ class gtPortfolioBlock extends Component {
     }
 
     render() {
-        const { attributes, setAttributes, isSelected, className } = this.props;
+        const {
+            attributes,
+            backgroundColor,
+            textColor,
+            setBackgroundColor,
+            setTextColor,
+            setAttributes,
+            isSelected,
+            className
+        } = this.props;
         const availableSizes = this.getAvailableSizes();
 
         const classNames= classnames( className, {
             'gt-items-edited': this.state.editItems,
             [ `gt-columns-${ attributes.columns }` ]: attributes.columns,
         } );
+
+        const itemClasses = classnames( 'gt-content', {
+            'has-background': backgroundColor.value,
+            [ backgroundColor.class ]: backgroundColor.class,
+            'has-text-color': textColor.value,
+            [ textColor.class ]: textColor.class,
+        } );
+
+        const itemStyles = {
+            backgroundColor: backgroundColor.class ? undefined : backgroundColor.value,
+            color: textColor.class ? undefined : textColor.value,
+        };
 
         return [
             isSelected && (
@@ -289,6 +312,20 @@ class gtPortfolioBlock extends Component {
 
                     </PanelBody>
 
+                    <PanelColor
+                        colorValue={ backgroundColor.value }
+                        initialOpen={ false }
+                        title={ __( 'Background Color' ) }
+                        onChange={ setBackgroundColor }
+                    />
+
+                    <PanelColor
+                        colorValue={ textColor.value }
+                        initialOpen={ false }
+                        title={ __( 'Text Color' ) }
+                        onChange={ setTextColor }
+                    />
+
                 </InspectorControls>
             ),
             <div className={ classNames }>
@@ -309,7 +346,7 @@ class gtPortfolioBlock extends Component {
                                         isSelected={ isSelected }
                                     />
 
-                                    <div className="gt-content">
+                                    <div className={ itemClasses }>
 
                                         <RichText
                                             tagName="h2"
@@ -409,4 +446,11 @@ class gtPortfolioBlock extends Component {
     }
 }
 
-export default gtPortfolioBlock;
+export default withColors( ( getColor, setColor, { attributes } ) => {
+    return {
+        backgroundColor: getColor( attributes.backgroundColor, attributes.customBackgroundColor, 'background-color' ),
+        setBackgroundColor: setColor( 'backgroundColor', 'customBackgroundColor' ),
+        textColor: getColor( attributes.textColor, attributes.customTextColor, 'color' ),
+        setTextColor: setColor( 'textColor', 'customTextColor' ),
+    };
+} )( gtPortfolioBlock );

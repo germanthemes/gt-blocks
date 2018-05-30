@@ -15,7 +15,10 @@ import { default as gtPortfolioBlock } from './block';
  */
 const { __ } = wp.i18n;
 const { registerBlockType } = wp.blocks;
-const { RichText } = wp.editor;
+const {
+    RichText,
+    getColorClass,
+} = wp.editor;
 
 /**
  * Register block
@@ -100,6 +103,18 @@ registerBlockType(
                 type: 'string',
                 default: 'full',
             },
+            textColor: {
+                type: 'string',
+            },
+            backgroundColor: {
+                type: 'string',
+            },
+            customTextColor: {
+                type: 'string',
+            },
+            customBackgroundColor: {
+                type: 'string',
+            },
         },
 
         getEditWrapperProps( attributes ) {
@@ -112,10 +127,25 @@ registerBlockType(
 
         save( { attributes } ) {
 
+            const textClass = getColorClass( 'color', attributes.textColor );
+            const backgroundClass = getColorClass( 'background-color', attributes.backgroundColor );
+
             const classNames = classnames( {
                 [ `gt-columns-${ attributes.columns }` ]: attributes.columns,
                 [ `align${ attributes.blockAlignment }` ]: ( attributes.blockAlignment !== 'center' ),
             } );
+
+            const itemClasses = classnames( 'gt-content', {
+                'has-text-color': attributes.textColor || attributes.customTextColor,
+                [ textClass ]: textClass,
+                'has-background': attributes.backgroundColor || attributes.customBackgroundColor,
+                [ backgroundClass ]: backgroundClass,
+            } );
+
+            const itemStyles = {
+                backgroundColor: backgroundClass ? undefined : attributes.customBackgroundColor,
+                color: textClass ? undefined : attributes.customTextColor,
+            };
 
             return (
                 <div className={ classNames ? classNames : undefined }>
@@ -134,7 +164,7 @@ registerBlockType(
                                             />
                                         </div>
 
-                                        <div className="gt-content">
+                                        <div className={ itemClasses }>
 
                                             <RichText.Content
                                                 tagName="h2"

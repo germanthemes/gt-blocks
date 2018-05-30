@@ -1,30 +1,59 @@
-/* Portfolio Grid Layout */
-.wp-block-german-themes-blocks-portfolio .gt-grid-container {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    grid-gap: 1.5em;
-}
+.wp-block-german-themes-blocks-portfolio {
 
-.wp-block-german-themes-blocks-portfolio.gt-columns-3 .gt-grid-container {
-    grid-template-columns: repeat(3, 1fr);
-}
+    /* Portfolio Grid Layout */
+    .gt-grid-container {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-gap: 1.5em;
+    }
 
-.wp-block-german-themes-blocks-portfolio.gt-columns-4 .gt-grid-container {
-    grid-template-columns: repeat(4, 1fr);
-}
+    &.gt-columns-3 .gt-grid-container {
+        grid-template-columns: repeat(3, 1fr);
+    }
 
-.wp-block-german-themes-blocks-portfolio.gt-columns-5 .gt-grid-container {
-    grid-template-columns: repeat(5, 1fr);
-}
+    &.gt-columns-4 .gt-grid-container {
+        grid-template-columns: repeat(4, 1fr);
+    }
 
-.wp-block-german-themes-blocks-portfolio.gt-columns-6 .gt-grid-container {
-    grid-template-columns: repeat(6, 1fr);
-}
+    &.gt-columns-5 .gt-grid-container {
+        grid-template-columns: repeat(5, 1fr);
+    }
 
-/* Button Styling */
-.wp-block-german-themes-blocks-portfolio .gt-grid-item .gt-button {
-    display: inline-block;
-    padding: 0.5rem 1rem;
-    color: #fff;
-    background: #333;
+    &.gt-columns-6 .gt-grid-container {
+        grid-template-columns: repeat(6, 1fr);
+    }
+
+    /* Portfolio Item Styling */
+    .gt-grid-item {
+
+        .gt-image {
+            margin: 0;
+
+            img {
+                margin: 0;
+                vertical-align: top;
+            }
+        }
+
+        .gt-content {
+            padding-top: 1em;
+
+            .gt-title {
+                margin-top: 0;
+            }
+
+            .gt-button {
+                display: inline-block;
+                margin: 0 0 1em;
+                padding: 0.5rem 1rem;
+                color: #fff;
+                background: #333;
+            }
+        }
+
+        .gt-content.has-background {
+            padding-left: 1em;
+            padding-right: 1em;
+        }
+    }
 }

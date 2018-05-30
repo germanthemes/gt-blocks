@@ -96,30 +96,39 @@
   -webkit-box-align: end;
       -ms-flex-align: end;
           align-items: flex-end; }
-/* Portfolio Grid Layout */
-.wp-block-german-themes-blocks-portfolio .gt-grid-container {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  grid-gap: 1.5em; }
-
-.wp-block-german-themes-blocks-portfolio.gt-columns-3 .gt-grid-container {
-  grid-template-columns: repeat(3, 1fr); }
-
-.wp-block-german-themes-blocks-portfolio.gt-columns-4 .gt-grid-container {
-  grid-template-columns: repeat(4, 1fr); }
-
-.wp-block-german-themes-blocks-portfolio.gt-columns-5 .gt-grid-container {
-  grid-template-columns: repeat(5, 1fr); }
-
-.wp-block-german-themes-blocks-portfolio.gt-columns-6 .gt-grid-container {
-  grid-template-columns: repeat(6, 1fr); }
-
-/* Button Styling */
-.wp-block-german-themes-blocks-portfolio .gt-grid-item .gt-button {
-  display: inline-block;
-  padding: 0.5rem 1rem;
-  color: #fff;
-  background: #333; }
+.wp-block-german-themes-blocks-portfolio {
+  /* Portfolio Grid Layout */
+  /* Portfolio Item Styling */ }
+  .wp-block-german-themes-blocks-portfolio .gt-grid-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 1.5em; }
+  .wp-block-german-themes-blocks-portfolio.gt-columns-3 .gt-grid-container {
+    grid-template-columns: repeat(3, 1fr); }
+  .wp-block-german-themes-blocks-portfolio.gt-columns-4 .gt-grid-container {
+    grid-template-columns: repeat(4, 1fr); }
+  .wp-block-german-themes-blocks-portfolio.gt-columns-5 .gt-grid-container {
+    grid-template-columns: repeat(5, 1fr); }
+  .wp-block-german-themes-blocks-portfolio.gt-columns-6 .gt-grid-container {
+    grid-template-columns: repeat(6, 1fr); }
+  .wp-block-german-themes-blocks-portfolio .gt-grid-item .gt-image {
+    margin: 0; }
+    .wp-block-german-themes-blocks-portfolio .gt-grid-item .gt-image img {
+      margin: 0;
+      vertical-align: top; }
+  .wp-block-german-themes-blocks-portfolio .gt-grid-item .gt-content {
+    padding-top: 1em; }
+    .wp-block-german-themes-blocks-portfolio .gt-grid-item .gt-content .gt-title {
+      margin-top: 0; }
+    .wp-block-german-themes-blocks-portfolio .gt-grid-item .gt-content .gt-button {
+      display: inline-block;
+      margin: 0 0 1em;
+      padding: 0.5rem 1rem;
+      color: #fff;
+      background: #333; }
+  .wp-block-german-themes-blocks-portfolio .gt-grid-item .gt-content.has-background {
+    padding-left: 1em;
+    padding-right: 1em; }
 .wp-block-german-themes-blocks-testimonials {
   background: rgba(254, 243, 224, 0.52);
   border: 5px #f7b733 solid;
