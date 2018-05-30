@@ -47,9 +47,8 @@
   /* Block Image Edit */
   /* Block Image Placeholder */
   /* Block Content */
-  /* Add Portfolio Item*/
-  /* Portfolio Grid Item Controls*/
-  /* Portfolio Grid Item URL Input */ }
+  /* Portfolio Grid Item */
+  /* Add Portfolio Item*/ }
   .wp-block-german-themes-blocks-portfolio .gt-image-wrapper .gt-edit-image {
     position: relative; }
     .wp-block-german-themes-blocks-portfolio .gt-image-wrapper .gt-edit-image:hover {
@@ -64,12 +63,79 @@
       border: 3px solid transparent; }
   .wp-block-german-themes-blocks-portfolio .gt-image .gt-image-placeholder .components-form-file-upload {
     margin-bottom: 12px; }
-  .wp-block-german-themes-blocks-portfolio .gt-content .gt-title {
-    margin-top: 0 !important;
-    color: inherit;
-    font-size: inherit; }
-  .wp-block-german-themes-blocks-portfolio .gt-content .gt-button[data-is-placeholder-visible='true'] {
-    background: none; }
+  .wp-block-german-themes-blocks-portfolio .gt-content {
+    margin-bottom: 16px; }
+    .wp-block-german-themes-blocks-portfolio .gt-content .gt-title {
+      margin-top: 0 !important;
+      color: inherit;
+      font-size: inherit; }
+    .wp-block-german-themes-blocks-portfolio .gt-content .gt-button[data-is-placeholder-visible='true'] {
+      background: none; }
+  .wp-block-german-themes-blocks-portfolio .gt-grid-item {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    /* Portfolio Grid Item URL Input */
+    /* Portfolio Grid Item Controls*/ }
+    .wp-block-german-themes-blocks-portfolio .gt-grid-item .gt-url-input {
+      margin-top: auto;
+      padding-top: 8px;
+      border-top: 1px dotted #ccc;
+      background: #fff;
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      -ms-flex-wrap: wrap;
+          flex-wrap: wrap;
+      -webkit-box-align: center;
+          -ms-flex-align: center;
+              align-items: center; }
+      .wp-block-german-themes-blocks-portfolio .gt-grid-item .gt-url-input .editor-url-input {
+        width: auto; }
+      .wp-block-german-themes-blocks-portfolio .gt-grid-item .gt-url-input > .dashicon {
+        width: 24px; }
+      .wp-block-german-themes-blocks-portfolio .gt-grid-item .gt-url-input .dashicon {
+        color: #8f98a1; }
+      .wp-block-german-themes-blocks-portfolio .gt-grid-item .gt-url-input .editor-url-input input[type=text]::-webkit-input-placeholder {
+        color: #8f98a1; }
+      .wp-block-german-themes-blocks-portfolio .gt-grid-item .gt-url-input .editor-url-input input[type=text]:-ms-input-placeholder {
+        color: #8f98a1; }
+      .wp-block-german-themes-blocks-portfolio .gt-grid-item .gt-url-input .editor-url-input input[type=text]::-ms-input-placeholder {
+        color: #8f98a1; }
+      .wp-block-german-themes-blocks-portfolio .gt-grid-item .gt-url-input .editor-url-input input[type=text]::placeholder {
+        color: #8f98a1; }
+      [data-align="center"] .wp-block-german-themes-blocks-portfolio .gt-grid-item .gt-url-input {
+        margin-left: auto;
+        margin-right: auto; }
+      [data-align="right"] .wp-block-german-themes-blocks-portfolio .gt-grid-item .gt-url-input {
+        margin-left: auto;
+        margin-right: 0; }
+    .wp-block-german-themes-blocks-portfolio .gt-grid-item .gt-grid-item-controls {
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      margin-top: 5px;
+      padding: 4px;
+      width: 100%;
+      background: #00a0d2; }
+      .wp-block-german-themes-blocks-portfolio .gt-grid-item .gt-grid-item-controls .gt-grid-item-number {
+        margin: 2px 10px;
+        color: #fff;
+        font-size: 14px;
+        font-weight: bold; }
+      .wp-block-german-themes-blocks-portfolio .gt-grid-item .gt-grid-item-controls .components-icon-button {
+        padding: 4px 5px;
+        color: #fff; }
+        .wp-block-german-themes-blocks-portfolio .gt-grid-item .gt-grid-item-controls .components-icon-button:hover, .wp-block-german-themes-blocks-portfolio .gt-grid-item .gt-grid-item-controls .components-icon-button:active, .wp-block-german-themes-blocks-portfolio .gt-grid-item .gt-grid-item-controls .components-icon-button:focus {
+          background: none; }
+      .wp-block-german-themes-blocks-portfolio .gt-grid-item .gt-grid-item-controls .remove-portfolio-item {
+        margin-left: auto; }
+        .wp-block-german-themes-blocks-portfolio .gt-grid-item .gt-grid-item-controls .remove-portfolio-item .dashicon {
+          width: 18px; }
   .wp-block-german-themes-blocks-portfolio .gt-add-portfolio-item.button-large {
     display: -webkit-box;
     display: -ms-flexbox;
@@ -91,61 +157,6 @@
     border-radius: 0; }
     .wp-block-german-themes-blocks-portfolio .gt-add-portfolio-item.button-large:hover, .wp-block-german-themes-blocks-portfolio .gt-add-portfolio-item.button-large:focus {
       border: 1px solid #999; }
-  .wp-block-german-themes-blocks-portfolio .gt-grid-container .gt-grid-item .gt-grid-item-controls {
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    margin-top: 5px;
-    padding: 4px;
-    width: 100%;
-    background: #00a0d2; }
-    .wp-block-german-themes-blocks-portfolio .gt-grid-container .gt-grid-item .gt-grid-item-controls .gt-grid-item-number {
-      margin: 2px 10px;
-      color: #fff;
-      font-size: 14px;
-      font-weight: bold; }
-    .wp-block-german-themes-blocks-portfolio .gt-grid-container .gt-grid-item .gt-grid-item-controls .components-icon-button {
-      padding: 4px 5px;
-      color: #fff; }
-      .wp-block-german-themes-blocks-portfolio .gt-grid-container .gt-grid-item .gt-grid-item-controls .components-icon-button:hover, .wp-block-german-themes-blocks-portfolio .gt-grid-container .gt-grid-item .gt-grid-item-controls .components-icon-button:active, .wp-block-german-themes-blocks-portfolio .gt-grid-container .gt-grid-item .gt-grid-item-controls .components-icon-button:focus {
-        background: none; }
-    .wp-block-german-themes-blocks-portfolio .gt-grid-container .gt-grid-item .gt-grid-item-controls .remove-portfolio-item {
-      margin-left: auto; }
-      .wp-block-german-themes-blocks-portfolio .gt-grid-container .gt-grid-item .gt-grid-item-controls .remove-portfolio-item .dashicon {
-        width: 18px; }
-  .wp-block-german-themes-blocks-portfolio .gt-url-input {
-    margin-top: 16px;
-    padding-top: 8px;
-    border-top: 1px dotted #ccc;
-    background: #fff;
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -ms-flex-wrap: wrap;
-        flex-wrap: wrap;
-    -webkit-box-align: center;
-        -ms-flex-align: center;
-            align-items: center; }
-    .wp-block-german-themes-blocks-portfolio .gt-url-input .editor-url-input {
-      width: auto; }
-    .wp-block-german-themes-blocks-portfolio .gt-url-input > .dashicon {
-      width: 24px; }
-    .wp-block-german-themes-blocks-portfolio .gt-url-input .dashicon {
-      color: #8f98a1; }
-    .wp-block-german-themes-blocks-portfolio .gt-url-input .editor-url-input input[type=text]::-webkit-input-placeholder {
-      color: #8f98a1; }
-    .wp-block-german-themes-blocks-portfolio .gt-url-input .editor-url-input input[type=text]:-ms-input-placeholder {
-      color: #8f98a1; }
-    .wp-block-german-themes-blocks-portfolio .gt-url-input .editor-url-input input[type=text]::-ms-input-placeholder {
-      color: #8f98a1; }
-    .wp-block-german-themes-blocks-portfolio .gt-url-input .editor-url-input input[type=text]::placeholder {
-      color: #8f98a1; }
-    [data-align="center"] .wp-block-german-themes-blocks-portfolio .gt-url-input {
-      margin-left: auto;
-      margin-right: auto; }
-    [data-align="right"] .wp-block-german-themes-blocks-portfolio .gt-url-input {
-      margin-left: auto;
-      margin-right: 0; }
 .wp-block-german-themes-blocks-testimonials .sorry.warning {
   background: #C44D58;
   color: white;

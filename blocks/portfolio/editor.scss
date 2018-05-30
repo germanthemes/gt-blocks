@@ -29,6 +29,7 @@
 
     /* Block Content */
     .gt-content {
+        margin-bottom: 16px;
 
         .gt-title {
             margin-top: 0 !important;
@@ -38,6 +39,84 @@
 
         .gt-button[data-is-placeholder-visible='true'] {
             background: none;
+        }
+    }
+
+    /* Portfolio Grid Item */
+    .gt-grid-item {
+        display: flex;
+        flex-direction: column;
+
+        /* Portfolio Grid Item URL Input */
+        .gt-url-input {
+            margin-top: auto;
+            padding-top: 8px;
+            border-top: 1px dotted #ccc;
+            background: #fff;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+
+            .editor-url-input {
+                width: auto;
+            }
+
+            > .dashicon {
+                width: 24px;
+            }
+
+            .dashicon {
+                color: #8f98a1;
+            }
+
+            .editor-url-input input[type=text]::placeholder {
+                color: #8f98a1;
+            }
+
+            [data-align="center"] & {
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+            [data-align="right"] & {
+                margin-left: auto;
+                margin-right: 0;
+            }
+        }
+
+        /* Portfolio Grid Item Controls*/
+        .gt-grid-item-controls {
+            display: flex;
+            margin-top: 5px;
+            padding: 4px;
+            width: 100%;
+            background: #00a0d2;
+
+            .gt-grid-item-number {
+                margin: 2px 10px;
+                color: #fff;
+                font-size: 14px;
+                font-weight: bold;
+            }
+
+            .components-icon-button {
+                padding: 4px 5px;
+                color: #fff;
+
+                &:hover,
+                &:active,
+                &:focus {
+                    background: none;
+                }
+            }
+
+            .remove-portfolio-item {
+                margin-left: auto;
+
+                .dashicon {
+                    width: 18px;
+                }
+            }
         }
     }
 
@@ -57,78 +136,6 @@
         &:hover,
         &:focus {
             border: 1px solid #999;
-        }
-    }
-
-    /* Portfolio Grid Item Controls*/
-    .gt-grid-container .gt-grid-item .gt-grid-item-controls {
-        display: flex;
-        margin-top: 5px;
-        padding: 4px;
-        width: 100%;
-        background: #00a0d2;
-
-        .gt-grid-item-number {
-            margin: 2px 10px;
-            color: #fff;
-            font-size: 14px;
-            font-weight: bold;
-        }
-
-        .components-icon-button {
-            padding: 4px 5px;
-            color: #fff;
-
-            &:hover,
-            &:active,
-            &:focus {
-                background: none;
-            }
-        }
-
-        .remove-portfolio-item {
-            margin-left: auto;
-
-            .dashicon {
-                width: 18px;
-            }
-        }
-    }
-
-    /* Portfolio Grid Item URL Input */
-    .gt-url-input {
-        margin-top: 16px;
-        padding-top: 8px;
-        border-top: 1px dotted #ccc;
-        background: #fff;
-        display: flex;
-        flex-wrap: wrap;
-        align-items: center;
-
-        .editor-url-input {
-            width: auto;
-        }
-
-        > .dashicon {
-            width: 24px;
-        }
-
-        .dashicon {
-            color: #8f98a1;
-        }
-
-        .editor-url-input input[type=text]::placeholder {
-            color: #8f98a1;
-        }
-
-        [data-align="center"] & {
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        [data-align="right"] & {
-            margin-left: auto;
-            margin-right: 0;
         }
     }
 }

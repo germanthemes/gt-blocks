@@ -37,14 +37,19 @@
 
         .gt-content {
             padding-top: 1em;
+            padding-bottom: 1em;
 
             .gt-title {
                 margin-top: 0;
             }
 
+            .gt-text p:last-child {
+                margin-bottom: 0;
+            }
+
             .gt-button {
                 display: inline-block;
-                margin: 0 0 1em;
+                margin: 1em 0 0;
                 padding: 0.5rem 1rem;
                 color: #fff;
                 background: #333;

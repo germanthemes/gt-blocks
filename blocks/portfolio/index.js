@@ -183,7 +183,7 @@ registerBlockType(
                                                 value={ item.text }
                                             />
 
-                                            {  item.itemURL && item.buttonText ?
+                                            { ( item.itemURL && item.buttonText ) ?
                                                 <RichText.Content
                                                     tagName="a"
                                                     href={ item.itemURL }
