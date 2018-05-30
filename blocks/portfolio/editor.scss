@@ -34,12 +34,22 @@
 }
 
 /* Block Portfolio Grid Controls */
-.wp-block-german-themes-blocks-portfolio .gt-editor-portolio-controls {
-    margin-top: 24px;
+.wp-block-german-themes-blocks-portfolio .gt-add-portfolio-item.button-large {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 16px;
+    padding: 25px 20px 20px;
+    width: 100%;
+    height: auto;
+    box-shadow: none;
+    border: 1px solid #ddd;
+    border-radius: 0;
 }
 
-.wp-block-german-themes-blocks-portfolio .gt-editor-portolio-controls button {
-    margin-right: 12px;
+.wp-block-german-themes-blocks-portfolio .gt-add-portfolio-item.button-large:hover,
+.wp-block-german-themes-blocks-portfolio .gt-add-portfolio-item.button-large:focus {
+    border: 1px solid #999;
 }
 
 /* Portfolio Grid Item Controls*/

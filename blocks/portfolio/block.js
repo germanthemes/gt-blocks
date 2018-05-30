@@ -395,22 +395,14 @@ class gtPortfolioBlock extends Component {
                 </div>
 
                 { isSelected && (
-                    <div class="gt-editor-portolio-controls">
-
-                        <Button
-                            isLarge
-                            onClick={ this.addPortfolioItem }
-                        >
-                            { __( 'Add portfolio item' ) }
-                        </Button>
-
-                        <Button
-                            isLarge
-                            onClick={ () => this.setState( { editItems: ! this.state.editItems } ) }
-                        >
-                            { __( 'Edit portfolio items' ) }
-                        </Button>
-                    </div>
+                    <Button
+                        isLarge
+                        onClick={ this.addPortfolioItem }
+                        className="gt-add-portfolio-item"
+                    >
+                        <Dashicon icon="insert" />
+                        { __( 'Add portfolio item' ) }
+                    </Button>
                 ) }
             </div>
         ];

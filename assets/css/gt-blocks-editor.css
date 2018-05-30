@@ -73,11 +73,29 @@
   font-size: inherit; }
 
 /* Block Portfolio Grid Controls */
-.wp-block-german-themes-blocks-portfolio .gt-editor-portolio-controls {
-  margin-top: 24px; }
+.wp-block-german-themes-blocks-portfolio .gt-add-portfolio-item.button-large {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-top: 16px;
+  padding: 25px 20px 20px;
+  width: 100%;
+  height: auto;
+  -webkit-box-shadow: none;
+          box-shadow: none;
+  border: 1px solid #ddd;
+  border-radius: 0; }
 
-.wp-block-german-themes-blocks-portfolio .gt-editor-portolio-controls button {
-  margin-right: 12px; }
+.wp-block-german-themes-blocks-portfolio .gt-add-portfolio-item.button-large:hover,
+.wp-block-german-themes-blocks-portfolio .gt-add-portfolio-item.button-large:focus {
+  border: 1px solid #999; }
 
 /* Portfolio Grid Item Controls*/
 .wp-block-german-themes-blocks-portfolio .gt-grid-container .gt-grid-item .gt-grid-item-controls {
