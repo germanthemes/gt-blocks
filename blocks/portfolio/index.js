@@ -99,6 +99,10 @@ registerBlockType(
                 type: 'string',
                 default: 'center',
             },
+            showButtons: {
+                type: 'boolean',
+                default: false,
+            },
             imageSize: {
                 type: 'string',
                 default: 'full',
@@ -183,7 +187,7 @@ registerBlockType(
                                                 value={ item.text }
                                             />
 
-                                            { ( item.itemURL && item.buttonText ) ?
+                                            { ( attributes.showButtons && item.buttonText && item.itemURL ) ?
                                                 <RichText.Content
                                                     tagName="a"
                                                     href={ item.itemURL }

@@ -36,6 +36,7 @@ import { default as PortfolioImage } from './portfolio-image';
      PanelBody,
      RangeControl,
      SelectControl,
+     ToggleControl,
      Toolbar,
  } = wp.components;
 
@@ -294,6 +295,12 @@ class gtPortfolioBlock extends Component {
                             }
                         />
 
+                        <ToggleControl
+                            label={ __( 'Show buttons?' ) }
+                            checked={ !! attributes.showButtons }
+                            onChange={ () => setAttributes( { showButtons: ! attributes.showButtons } ) }
+                        />
+
                     </PanelBody>
 
                     <PanelBody title={ __( 'Image Settings' ) } initialOpen={ false } className="gt-panel-image-settings gt-panel">
@@ -368,15 +375,17 @@ class gtPortfolioBlock extends Component {
                                             keepPlaceholderOnFocus
                                         />
 
-                                        <RichText
-                                            tagName="a"
-                                            placeholder={ __( 'Add button text' ) }
-                                            value={ item.buttonText }
-                                            className="gt-button"
-                                            onChange={ ( newButtonText ) => this.onChangeButtonText( newButtonText, index ) }
-                                            formattingControls={ [ 'bold', 'italic', 'strikethrough' ] }
-                                            keepPlaceholderOnFocus
-                                        />
+                                        { attributes.showButtons && (
+                                            <RichText
+                                                tagName="a"
+                                                placeholder={ __( 'Add button text' ) }
+                                                value={ item.buttonText }
+                                                className="gt-button"
+                                                onChange={ ( newButtonText ) => this.onChangeButtonText( newButtonText, index ) }
+                                                formattingControls={ [ 'bold', 'italic', 'strikethrough' ] }
+                                                keepPlaceholderOnFocus
+                                            />
+                                        ) }
 
                                     </div>
 
