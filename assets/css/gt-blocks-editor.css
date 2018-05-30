@@ -1,3 +1,6 @@
+/*Block Panels*/
+.edit-post-sidebar .gt-panel {
+  border-top: 1px solid #e2e4e7; }
 /* Block Image Edit */
 .wp-block-german-themes-blocks-image-text .image-wrapper .edit-image {
   position: relative; }
@@ -40,10 +43,6 @@
 .editor-block-toolbar .gt-image-position-toolbar-icon svg {
   width: 20px;
   height: 20px; }
-/*Block Panels*/
-.edit-post-sidebar .gt-panel-image-settings {
-  border-top: 1px solid #e2e4e7; }
-
 /* Block Image Edit */
 .wp-block-german-themes-blocks-portfolio .gt-image-wrapper .gt-edit-image {
   position: relative; }

@@ -1,3 +1,6 @@
+/** Import general Editor styles */
+import './editor.scss';
+
 /**
  * Import Blocks
  */

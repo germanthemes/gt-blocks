@@ -248,7 +248,7 @@ class gtPortfolioBlock extends Component {
             isSelected && (
                 <InspectorControls key="inspector">
 
-                    <PanelBody title={ __( 'Layout Settings' ) } initialOpen={ false }>
+                    <PanelBody title={ __( 'Layout Settings' ) } initialOpen={ false } className="gt-panel-layout-settings gt-panel">
 
                         <RangeControl
                             label={ __( 'Columns' ) }
@@ -258,7 +258,7 @@ class gtPortfolioBlock extends Component {
                             max={ 6 }
                         />
 
-                        <label className="blocks-base-control__label">{ __( 'Block Alignment' ) }</label>
+                        <p><label className="blocks-base-control__label">{ __( 'Block Alignment' ) }</label></p>
                         <Toolbar
                             controls={
                                 [ 'center', 'wide', 'full' ].map( control => {
@@ -273,7 +273,7 @@ class gtPortfolioBlock extends Component {
 
                     </PanelBody>
 
-                    <PanelBody title={ __( 'Image Settings' ) } initialOpen={ false } className="gt-panel-image-settings">
+                    <PanelBody title={ __( 'Image Settings' ) } initialOpen={ false } className="gt-panel-image-settings gt-panel">
 
                         { ! isEmpty( availableSizes ) && (
                             <SelectControl

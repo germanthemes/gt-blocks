@@ -238,7 +238,7 @@ class gtImageTextBlock extends Component {
             isSelected && (
                 <InspectorControls key="inspector">
 
-                    <PanelBody title={ __( 'Layout Settings' ) } initialOpen={ false }>
+                    <PanelBody title={ __( 'Layout Settings' ) } initialOpen={ false } className="gt-panel-layout-settings gt-panel">
 
                         <SelectControl
                             label={ __( 'Column Size' ) }
@@ -257,7 +257,7 @@ class gtImageTextBlock extends Component {
                             ] }
                         />
 
-                        <label className="blocks-base-control__label">{ __( 'Block Alignment' ) }</label>
+                        <p><label className="blocks-base-control__label">{ __( 'Block Alignment' ) }</label></p>
                         <Toolbar
                             controls={
                                 [ 'center', 'wide', 'full' ].map( control => {
@@ -278,7 +278,7 @@ class gtImageTextBlock extends Component {
 
                     </PanelBody>
 
-                    <PanelBody title={ __( 'Image Settings' ) } initialOpen={ false }>
+                    <PanelBody title={ __( 'Image Settings' ) } initialOpen={ false } className="gt-panel-image-settings gt-panel">
 
                         { ! isEmpty( availableSizes ) && (
                             <SelectControl
@@ -301,9 +301,9 @@ class gtImageTextBlock extends Component {
 
                     </PanelBody>
 
-                    <PanelBody title={ __( 'Text Settings' ) } initialOpen={ false }>
+                    <PanelBody title={ __( 'Text Settings' ) } initialOpen={ false } className="gt-panel-text-settings gt-panel">
 
-                        <p>{ __( 'Heading' ) }</p>
+                        <p><label className="blocks-base-control__label">{ __( 'Heading' ) }</label></p>
                         <Toolbar
                             controls={
                             '123456'.split( '' ).map( ( level ) => ( {
@@ -326,7 +326,7 @@ class gtImageTextBlock extends Component {
                             allowReset
                         />
 
-                        <label className="blocks-base-control__label">{ __( 'Vertical Alignment' ) }</label>
+                        <p><label className="blocks-base-control__label">{ __( 'Vertical Alignment' ) }</label></p>
                         <Toolbar
                             className='gt-vertical-align-control'
                             controls={
