@@ -195,14 +195,14 @@ registerBlockType(
                                                 value={ item.text }
                                             />
 
-                                            { ( attributes.showButtons && item.buttonText && item.itemURL ) ?
+                                            { ( ( attributes.showButtons && item.itemURL ) && item.buttonText.length > 0 ) && (
                                                 <RichText.Content
                                                     tagName="a"
                                                     href={ item.itemURL }
                                                     className="gt-button"
                                                     value={ item.buttonText }
-                                                /> : null
-                                            }
+                                                />
+                                            ) }
 
                                         </div>
 
