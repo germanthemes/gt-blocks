@@ -67,7 +67,7 @@ registerBlockType(
                     title: {
                         type: 'array',
                         source: 'children',
-                        selector: '.gt-title',
+                        selector: '.gt-title-text',
                     },
                     text: {
                         type: 'array',
@@ -171,11 +171,8 @@ registerBlockType(
                                     data-img-id={ item.imgID }
                                 />;
 
-                                const title = <RichText.Content
-                                    tagName={ attributes.titleTag.toLowerCase() }
-                                    className="gt-title"
-                                    value={ item.title }
-                                />;
+                                const titleText = <span class="gt-title-text">{ item.title }</span>;
+                                const title = item.itemURL ? <a href={ item.itemURL } className="gt-item-url" title={ titleText }>{ titleText }</a> : titleText;
 
                                 return (
                                     <div className="gt-grid-item">
@@ -186,7 +183,11 @@ registerBlockType(
 
                                         <div className={ itemClasses }>
 
-                                            { item.itemURL ? <a href={  item.itemURL } className="gt-item-url" title={ item.title }>{ title }</a> : title }
+                                            <RichText.Content
+                                                tagName={ attributes.titleTag.toLowerCase() }
+                                                className="gt-title"
+                                                value={ title }
+                                            />
 
                                             <RichText.Content
                                                 tagName="div"
