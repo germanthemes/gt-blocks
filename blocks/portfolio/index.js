@@ -174,12 +174,12 @@ registerBlockType(
                                     <div className="gt-grid-item">
 
                                         <div className="gt-image">
-                                            { item.itemURL ? <a href={  item.itemURL }>{ image }</a> : image }
+                                            { item.itemURL ? <a href={  item.itemURL } className="gt-item-url">{ image }</a> : image }
                                         </div>
 
                                         <div className={ itemClasses }>
 
-                                            { item.itemURL ? <a href={  item.itemURL } title={ item.title }>{ title }</a> : title }
+                                            { item.itemURL ? <a href={  item.itemURL } className="gt-item-url" title={ item.title }>{ title }</a> : title }
 
                                             <RichText.Content
                                                 tagName="div"
