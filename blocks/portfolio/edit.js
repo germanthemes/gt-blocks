@@ -381,17 +381,15 @@ class gtPortfolioEdit extends Component {
                                             keepPlaceholderOnFocus
                                         />
 
-                                        { attributes.showButtons && (
-                                            <RichText
-                                                tagName="a"
-                                                placeholder={ __( 'Add button text' ) }
-                                                value={ item.buttonText }
-                                                className="gt-button"
-                                                onChange={ ( newButtonText ) => this.onChangeButtonText( newButtonText, index ) }
-                                                formattingControls={ [ 'bold', 'italic', 'strikethrough' ] }
-                                                keepPlaceholderOnFocus
-                                            />
-                                        ) }
+                                        <RichText
+                                            tagName="a"
+                                            placeholder={ __( 'Add button text' ) }
+                                            value={ item.buttonText }
+                                            className={ classnames( 'gt-button', { 'gt-button-hidden': ! attributes.showButtons } ) }
+                                            onChange={ ( newButtonText ) => this.onChangeButtonText( newButtonText, index ) }
+                                            formattingControls={ [ 'bold', 'italic', 'strikethrough' ] }
+                                            keepPlaceholderOnFocus
+                                        />
 
                                     </div>
 

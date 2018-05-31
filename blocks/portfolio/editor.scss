@@ -27,25 +27,32 @@
         margin-bottom: 12px;
     }
 
-    /* Block Content */
-    .gt-content {
-        margin-bottom: 16px;
-
-        .gt-title {
-            margin-top: 0 !important;
-            color: inherit;
-            font-size: inherit;
-        }
-
-        .gt-button[data-is-placeholder-visible='true'] {
-            background: none;
-        }
-    }
-
     /* Portfolio Grid Item */
     .gt-grid-item {
         display: flex;
         flex-direction: column;
+
+        /* Portfolio Grid Item Content */
+        .gt-content {
+            margin-bottom: 16px;
+
+            .gt-title {
+                margin-top: 0 !important;
+                color: inherit;
+                font-size: inherit;
+            }
+
+            .gt-button {
+
+                &[data-is-placeholder-visible='true'] {
+                    background: none;
+                }
+
+                &.gt-button-hidden {
+                    display: none;
+                }
+            }
+        }
 
         /* Portfolio Grid Item URL Input */
         .gt-url-input {
