@@ -54,6 +54,10 @@
                 padding: 0.5rem 1rem;
                 color: #fff;
                 background: #333;
+
+                &.gt-button-hidden {
+                    display: none;
+                }
             }
         }
 

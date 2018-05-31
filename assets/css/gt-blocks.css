@@ -130,6 +130,8 @@
       padding: 0.5rem 1rem;
       color: #fff;
       background: #333; }
+      .wp-block-german-themes-blocks-portfolio .gt-grid-item .gt-content .gt-button.gt-button-hidden {
+        display: none; }
   .wp-block-german-themes-blocks-portfolio .gt-grid-item .gt-content.has-background {
     padding-left: 1em;
     padding-right: 1em; }

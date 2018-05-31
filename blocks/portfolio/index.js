@@ -195,11 +195,11 @@ registerBlockType(
                                                 value={ item.text }
                                             />
 
-                                            { ( ( attributes.showButtons && item.itemURL ) && item.buttonText.length > 0 ) && (
+                                            { ( item.itemURL && item.buttonText.length > 0 ) && (
                                                 <RichText.Content
                                                     tagName="a"
                                                     href={ item.itemURL }
-                                                    className="gt-button"
+                                                    className={ classnames( 'gt-button', { 'gt-button-hidden': ! attributes.showButtons } ) }
                                                     value={ item.buttonText }
                                                 />
                                             ) }

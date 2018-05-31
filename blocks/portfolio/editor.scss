@@ -42,15 +42,8 @@
                 font-size: inherit;
             }
 
-            .gt-button {
-
-                &[data-is-placeholder-visible='true'] {
-                    background: none;
-                }
-
-                &.gt-button-hidden {
-                    display: none;
-                }
+            .gt-button[data-is-placeholder-visible='true'] {
+                background: none;
             }
         }
 
