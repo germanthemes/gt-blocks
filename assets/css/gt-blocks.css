@@ -112,7 +112,8 @@
   .wp-block-german-themes-blocks-portfolio.gt-columns-6 .gt-grid-container {
     grid-template-columns: repeat(6, 1fr); }
   .wp-block-german-themes-blocks-portfolio .gt-grid-item .gt-image {
-    margin: 0; }
+    margin: 0;
+    overflow: hidden; }
     .wp-block-german-themes-blocks-portfolio .gt-grid-item .gt-image img {
       margin: 0;
       vertical-align: top; }
