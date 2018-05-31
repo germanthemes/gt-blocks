@@ -93,7 +93,7 @@ const verticalAlignmentControls = {
     },
 };
 
-class gtImageTextBlock extends Component {
+class gtImageTextEdit extends Component {
     constructor() {
         super( ...arguments );
 
@@ -492,4 +492,4 @@ export default compose( [
     		setTextColor: setColor( 'textColor', 'customTextColor' ),
         };
     } )
-] )( gtImageTextBlock );
+] )( gtImageTextEdit );

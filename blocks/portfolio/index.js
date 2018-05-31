@@ -8,7 +8,7 @@ import classnames from 'classnames';
  */
 import './style.scss';
 import './editor.scss';
-import { default as gtPortfolioBlock } from './block';
+import edit from './edit';
 
 /**
  * Internal block libraries
@@ -127,7 +127,7 @@ registerBlockType(
             }
         },
 
-        edit: gtPortfolioBlock,
+        edit,
 
         save( { attributes } ) {
 

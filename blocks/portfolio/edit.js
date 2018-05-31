@@ -56,7 +56,7 @@ const blockAlignmentControls = {
     },
 };
 
-class gtPortfolioBlock extends Component {
+class gtPortfolioEdit extends Component {
     constructor() {
         super( ...arguments );
 
@@ -452,4 +452,4 @@ export default withColors( ( getColor, setColor, { attributes } ) => {
         textColor: getColor( attributes.textColor, attributes.customTextColor, 'color' ),
         setTextColor: setColor( 'textColor', 'customTextColor' ),
     };
-} )( gtPortfolioBlock );
+} )( gtPortfolioEdit );

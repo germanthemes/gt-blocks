@@ -9,7 +9,7 @@ import classnames from 'classnames';
 import './style.scss';
 import './editor.scss';
 import gtImageTextIcon from './icons';
-import { default as gtImageTextBlock } from './block';
+import edit from './edit';
 
 /**
  * Internal block libraries
@@ -120,7 +120,7 @@ registerBlockType(
             }
         },
 
-        edit: gtImageTextBlock,
+        edit,
 
         save( { attributes } ) {
 
