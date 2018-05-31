@@ -37,6 +37,7 @@ const {
 const {
     Button,
     DropZone,
+    FontSizePicker,
     FormFileUpload,
     IconButton,
     PanelBody,
@@ -78,6 +79,29 @@ const blockAlignmentControls = {
     },
 };
 
+const FONT_SIZES = [
+    {
+        name: 'small',
+        shortName: 'S',
+        size: 14,
+    },
+    {
+        name: 'regular',
+        shortName: 'M',
+        size: 16,
+    },
+    {
+        name: 'large',
+        shortName: 'L',
+        size: 24,
+    },
+    {
+        name: 'larger',
+        shortName: 'XL',
+        size: 36,
+    },
+];
+
 const verticalAlignmentControls = {
     top: {
         icon: gtVerticalAlignTopIcon,
@@ -97,14 +121,16 @@ class gtImageTextEdit extends Component {
     constructor() {
         super( ...arguments );
 
-        this.onSelectImage       = this.onSelectImage.bind( this );
-        this.onRemoveImage       = this.onRemoveImage.bind( this );
-        this.setImage            = this.setImage.bind( this );
-        this.uploadFromFiles     = this.uploadFromFiles.bind( this );
-        this.onFilesDrop         = this.onFilesDrop.bind( this );
-        this.onHTMLDrop          = this.onHTMLDrop.bind( this );
-        this.updateImageURL      = this.updateImageURL.bind( this );
-        this.getAvailableSizes   = this.getAvailableSizes.bind( this );
+        this.onSelectImage = this.onSelectImage.bind( this );
+        this.onRemoveImage = this.onRemoveImage.bind( this );
+        this.setImage = this.setImage.bind( this );
+        this.uploadFromFiles = this.uploadFromFiles.bind( this );
+        this.onFilesDrop = this.onFilesDrop.bind( this );
+        this.onHTMLDrop = this.onHTMLDrop.bind( this );
+        this.updateImageURL = this.updateImageURL.bind( this );
+        this.getAvailableSizes = this.getAvailableSizes.bind( this );
+        this.getFontSize = this.getFontSize.bind( this );
+        this.setFontSize = this.setFontSize.bind( this );
     }
 
     onSelectImage( img ) {
@@ -151,6 +177,36 @@ class gtImageTextEdit extends Component {
         return get( this.props.image, [ 'data', 'media_details', 'sizes' ], {} );
     }
 
+    getFontSize() {
+        const { customFontSize, fontSize } = this.props.attributes;
+        if ( fontSize ) {
+            const fontSizeObj = find( FONT_SIZES, { name: fontSize } );
+            if ( fontSizeObj ) {
+                return fontSizeObj.size;
+            }
+        }
+
+        if ( customFontSize ) {
+            return customFontSize;
+        }
+    }
+
+    setFontSize( fontSizeValue ) {
+        const { setAttributes } = this.props;
+        const thresholdFontSize = find( FONT_SIZES, { size: fontSizeValue } );
+        if ( thresholdFontSize ) {
+            setAttributes( {
+                fontSize: thresholdFontSize.name,
+                customFontSize: undefined,
+            } );
+            return;
+        }
+        setAttributes( {
+            fontSize: undefined,
+            customFontSize: fontSizeValue,
+        } );
+    }
+
     render() {
         const {
             attributes,
@@ -164,6 +220,7 @@ class gtImageTextEdit extends Component {
         } = this.props;
 
         const availableSizes = this.getAvailableSizes();
+        const fontSize = this.getFontSize();
 
         const classNames= classnames( className, {
             [ `${ attributes.columnSize }` ]: attributes.columnSize,
@@ -316,14 +373,11 @@ class gtImageTextEdit extends Component {
                             }
                         />
 
-                        <RangeControl
-                            label={ __( 'Font Size' ) }
-                            value={ attributes.fontSize || '' }
-                            onChange={ ( value ) => setAttributes( { fontSize: value } ) }
-                            min={ 10 }
-                            max={ 64 }
-                            beforeIcon="editor-textcolor"
-                            allowReset
+                        <p><label className="blocks-base-control__label">{ __( 'Font Size' ) }</label></p>
+                        <FontSizePicker
+                            fontSizes={ FONT_SIZES }
+                            value={ fontSize }
+                            onChange={ this.setFontSize }
                         />
 
                         <p><label className="blocks-base-control__label">{ __( 'Vertical Alignment' ) }</label></p>
@@ -460,7 +514,7 @@ class gtImageTextEdit extends Component {
                             placeholder={ __( 'Enter your text here.' ) }
                             value={ attributes.text }
                             className="block-text"
-                            style={ { fontSize: attributes.fontSize ? attributes.fontSize + 'px' : undefined } }
+                            style={ { fontSize: fontSize ? fontSize + 'px' : undefined } }
                             onChange={ ( newText ) => setAttributes( { text: newText } ) }
                         />
 
@@ -485,11 +539,11 @@ export default compose( [
         };
     } ),
     withColors( ( getColor, setColor, { attributes } ) => {
-    	return {
-    		backgroundColor: getColor( attributes.backgroundColor, attributes.customBackgroundColor, 'background-color' ),
-    		setBackgroundColor: setColor( 'backgroundColor', 'customBackgroundColor' ),
-    		textColor: getColor( attributes.textColor, attributes.customTextColor, 'color' ),
-    		setTextColor: setColor( 'textColor', 'customTextColor' ),
+        return {
+            backgroundColor: getColor( attributes.backgroundColor, attributes.customBackgroundColor, 'background-color' ),
+            setBackgroundColor: setColor( 'backgroundColor', 'customBackgroundColor' ),
+            textColor: getColor( attributes.textColor, attributes.customTextColor, 'color' ),
+            setTextColor: setColor( 'textColor', 'customTextColor' ),
         };
     } )
 ] )( gtImageTextEdit );

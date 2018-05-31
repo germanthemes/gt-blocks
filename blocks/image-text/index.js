@@ -98,6 +98,9 @@ registerBlockType(
                 default: true,
             },
             fontSize: {
+                type: 'string',
+            },
+            customFontSize: {
                 type: 'number',
             },
             textColor: {
@@ -126,6 +129,7 @@ registerBlockType(
 
             const textClass = getColorClass( 'color', attributes.textColor );
             const backgroundClass = getColorClass( 'background-color', attributes.backgroundColor );
+            const fontSizeClass = attributes.fontSize && `is-${ attributes.fontSize }-text`;
 
             const classNames = classnames( {
                 [ `${ attributes.columnSize }` ]: attributes.columnSize,
@@ -143,6 +147,14 @@ registerBlockType(
                 backgroundColor: backgroundClass ? undefined : attributes.customBackgroundColor,
                 color: textClass ? undefined : attributes.customTextColor,
                 textAlign: attributes.textAlignment,
+            };
+
+            const textClassNames = classnames( 'block-text', {
+                [ fontSizeClass ]: fontSizeClass,
+            } );
+
+            const textStyles = {
+                fontSize: fontSizeClass ? undefined : attributes.customFontSize,
             };
 
             return (
@@ -167,8 +179,8 @@ registerBlockType(
 
                             <RichText.Content
                                 tagName="div"
-                                style={ { fontSize: attributes.fontSize } }
-                                className="block-text"
+                                style={ textStyles }
+                                className={ textClassNames }
                                 value={ attributes.text }
                             />
 
