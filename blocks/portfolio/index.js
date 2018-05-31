@@ -107,6 +107,13 @@ registerBlockType(
                 type: 'string',
                 default: 'full',
             },
+            titleTag: {
+                type: 'string',
+                source: 'property',
+                selector: 'h1,h2,h3,h4,h5,h6',
+                property: 'nodeName',
+                default: 'H2',
+            },
             textColor: {
                 type: 'string',
             },
@@ -165,7 +172,7 @@ registerBlockType(
                                 />;
 
                                 const title = <RichText.Content
-                                    tagName="h2"
+                                    tagName={ attributes.titleTag.toLowerCase() }
                                     className="gt-title"
                                     value={ item.title }
                                 />;

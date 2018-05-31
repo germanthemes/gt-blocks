@@ -308,6 +308,23 @@ class gtPortfolioEdit extends Component {
 
                     </PanelBody>
 
+                    <PanelBody title={ __( 'Text Settings' ) } initialOpen={ false } className="gt-panel-text-settings gt-panel">
+
+                        <p><label className="blocks-base-control__label">{ __( 'Heading' ) }</label></p>
+                        <Toolbar
+                            controls={
+                            '123456'.split( '' ).map( ( level ) => ( {
+                                icon: 'heading',
+                                title: sprintf( __( 'Heading %s' ), level ),
+                                isActive: 'H' + level === attributes.titleTag,
+                                onClick: () => setAttributes( { titleTag: 'H' + level } ),
+                                subscript: level,
+                            } ) )
+                            }
+                        />
+
+                    </PanelBody>
+
                     <PanelColor
                         colorValue={ backgroundColor.value }
                         initialOpen={ false }
@@ -345,7 +362,7 @@ class gtPortfolioEdit extends Component {
                                     <div className={ itemClasses }>
 
                                         <RichText
-                                            tagName="h2"
+                                            tagName={ attributes.titleTag.toLowerCase() }
                                             placeholder={ __( 'Enter a title' ) }
                                             value={ item.title }
                                             className="gt-title"
