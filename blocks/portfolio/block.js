@@ -71,18 +71,8 @@ class gtPortfolioBlock extends Component {
         this.onChangeItemURL  = this.onChangeItemURL.bind( this );
 
         this.state = {
-            editItems: false,
             imageSizes: {},
         };
-    }
-
-    componentWillReceiveProps( nextProps ) {
-        // Deactivate item editing when deselecting the block
-        if ( ! nextProps.isSelected && this.props.isSelected ) {
-            this.setState( {
-                editItems: false,
-            } );
-        }
     }
 
     addPortfolioItem() {
@@ -243,7 +233,6 @@ class gtPortfolioBlock extends Component {
         const availableSizes = this.getAvailableSizes();
 
         const classNames= classnames( className, {
-            'gt-items-edited': this.state.editItems,
             [ `gt-columns-${ attributes.columns }` ]: attributes.columns,
         } );
 
