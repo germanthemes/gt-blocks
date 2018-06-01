@@ -11,6 +11,7 @@ const verticalAlignTop = <svg height="24" viewBox="0 0 24 24" width="24" xmlns="
     <path d="M0 0h24v24H0z" fill="none"/>
 </svg>;
 export const gtVerticalAlignTopIcon = verticalAlignTop;
+// Source: https://material.io/tools/icons/?icon=vertical_align_top&style=baseline
 
 /* Vertical Alignment Center */
 const verticalAlignCenter = <svg height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
@@ -18,6 +19,7 @@ const verticalAlignCenter = <svg height="24" viewBox="0 0 24 24" width="24" xmln
     <path d="M0 0h24v24H0z" fill="none"/>
 </svg>;
 export const gtVerticalAlignCenterIcon = verticalAlignCenter;
+// Source: https://material.io/tools/icons/?icon=vertical_align_center&style=baseline
 
 /* Vertical Alignment Bottom */
 const verticalAlignBottom = <svg height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
@@ -25,6 +27,7 @@ const verticalAlignBottom = <svg height="24" viewBox="0 0 24 24" width="24" xmln
     <path d="M0 0h24v24H0z" fill="none"/>
 </svg>;
 export const gtVerticalAlignBottomIcon = verticalAlignBottom;
+// Source: https://material.io/tools/icons/?icon=vertical_align_bottom&style=baseline
 
 /* Image Position */
 const imagePosition = <svg fill="#555d66" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">

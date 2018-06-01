@@ -13,6 +13,11 @@ import {
  * Block dependencies
  */
 import { default as PortfolioImage } from './portfolio-image';
+import {
+    gtTwoColumns,
+    gtThreeColumns,
+    gtFourColumns,
+} from './icons';
 
 /**
  * Internal block libraries
@@ -54,6 +59,13 @@ const blockAlignmentControls = {
         icon: 'align-full-width',
         title: __( 'Full width' ),
     },
+};
+
+/* Column Icons */
+const columnIcons = {
+    2: gtTwoColumns,
+    3: gtThreeColumns,
+    4: gtFourColumns,
 };
 
 class gtPortfolioEdit extends Component {
@@ -251,11 +263,24 @@ class gtPortfolioEdit extends Component {
         return [
             isSelected && (
                 <BlockControls key="controls">
+
                     <BlockAlignmentToolbar
                         controls={ [ 'wide', 'full' ] }
                         value={ attributes.blockAlignment }
                         onChange={ ( newAlign ) => setAttributes( { blockAlignment: newAlign } ) }
                     />
+
+                    <Toolbar
+                        controls={
+                            [ 2, 3, 4 ].map( column => ( {
+                                icon: columnIcons[ column ],
+                                title: sprintf( __( '%s Columns' ), column ),
+                                isActive: column === attributes.columns,
+                                onClick: () => setAttributes( { columns: column } ),
+                            } ) )
+                        }
+                    />
+
                 </BlockControls>
             ),
             isSelected && (
