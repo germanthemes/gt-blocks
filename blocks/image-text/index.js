@@ -8,7 +8,7 @@ import classnames from 'classnames';
  */
 import './style.scss';
 import './editor.scss';
-import gtImageTextIcon from './icons';
+import { gtImageTextIcon } from './icons';
 import edit from './edit';
 
 /**

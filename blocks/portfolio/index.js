@@ -8,6 +8,7 @@ import classnames from 'classnames';
  */
 import './style.scss';
 import './editor.scss';
+import { gtPortfolioIcon } from './icons';
 import edit from './edit';
 
 /**
@@ -32,7 +33,7 @@ registerBlockType(
 
         category: 'layout',
 
-        icon: 'wordpress-alt',
+        icon: gtPortfolioIcon,
 
         keywords: [
             __( 'German Themes' ),
