@@ -267,9 +267,9 @@ class gtPortfolioEdit extends Component {
                 <BlockControls key="controls">
 
                     <BlockAlignmentToolbar
-                        controls={ [ 'wide', 'full' ] }
                         value={ attributes.blockAlignment }
                         onChange={ ( newAlign ) => setAttributes( { blockAlignment: newAlign } ) }
+                        controls={ [ 'wide', 'full' ] }
                     />
 
                     <Toolbar
@@ -304,16 +304,10 @@ class gtPortfolioEdit extends Component {
                         />
 
                         <p><label className="blocks-base-control__label">{ __( 'Block Alignment' ) }</label></p>
-                        <Toolbar
-                            controls={
-                                [ 'center', 'wide', 'full' ].map( control => {
-                                    return {
-                                        ...blockAlignmentControls[ control ],
-                                        isActive: attributes.blockAlignment === control,
-                                        onClick: () => setAttributes( { blockAlignment: control } ),
-                                    };
-                                } )
-                            }
+                        <BlockAlignmentToolbar
+                            value={ attributes.blockAlignment }
+                            onChange={ ( newAlign ) => setAttributes( { blockAlignment: newAlign } ) }
+                            controls={ [ 'center', 'wide', 'full' ] }
                         />
 
                         <ToggleControl

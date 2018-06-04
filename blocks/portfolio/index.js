@@ -133,8 +133,9 @@ registerBlockType(
         },
 
         getEditWrapperProps( attributes ) {
-            if ( [ 'wide', 'full' ].indexOf( attributes.blockAlignment ) !== -1 ) {
-                return { 'data-align': attributes.blockAlignment };
+            const { blockAlignment } = attributes;
+            if ( 'wide' === blockAlignment || 'full' === blockAlignment ) {
+                return { 'data-align': blockAlignment };
             }
         },
 
@@ -147,7 +148,7 @@ registerBlockType(
 
             const classNames = classnames( {
                 [ `gt-columns-${ attributes.columns }` ]: attributes.columns,
-                [ `align${ attributes.blockAlignment }` ]: ( attributes.blockAlignment !== 'center' ),
+                [ `align${ attributes.blockAlignment }` ]: ( 'wide' === attributes.blockAlignment || 'full' === attributes.blockAlignment ),
             } );
 
             const contentClasses = classnames( 'gt-content', {
