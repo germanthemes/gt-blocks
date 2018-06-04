@@ -1,36 +1,40 @@
 .wp-block-german-themes-blocks-portfolio {
 
-    /* Block Image Edit */
-    .gt-image-wrapper {
-
-        .gt-edit-image {
-            position: relative;
-
-            &:hover {
-                cursor: pointer;
-            }
-
-            .remove-image {
-                position: absolute;
-                top: 8px;
-                right: 8px;
-                color: #fff;
-                background: rgba(0,0,0,0.6);
-                padding: 5px;
-                border: 3px solid transparent;
-            }
-        }
-    }
-
-    /* Block Image Placeholder */
-    .gt-image .gt-image-placeholder .components-form-file-upload {
-        margin-bottom: 12px;
-    }
-
     /* Portfolio Grid Item */
     .gt-grid-item {
         display: flex;
         flex-direction: column;
+
+        /* Block Image Edit */
+        .gt-image {
+
+            /* Image was added in Editor */
+            .gt-image-wrapper {
+
+                .gt-edit-image {
+                    position: relative;
+
+                    &:hover {
+                        cursor: pointer;
+                    }
+
+                    .remove-image {
+                        position: absolute;
+                        top: 8px;
+                        right: 8px;
+                        color: #fff;
+                        background: rgba(0,0,0,0.6);
+                        padding: 5px;
+                        border: 3px solid transparent;
+                    }
+                }
+            }
+
+            /* Image Placeholder */
+            .gt-image .gt-image-placeholder .components-form-file-upload {
+                margin-bottom: 12px;
+            }
+        }
 
         /* Portfolio Grid Item Content */
         .gt-content {
@@ -38,8 +42,6 @@
 
             .gt-title {
                 margin-top: 0 !important;
-                color: inherit;
-                font-size: inherit;
             }
 
             .gt-button[data-is-placeholder-visible='true'] {

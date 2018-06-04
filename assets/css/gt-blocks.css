@@ -127,9 +127,13 @@
     .wp-block-german-themes-blocks-portfolio .gt-grid-item .gt-content .gt-button {
       display: inline-block;
       margin: 1em 0 0;
-      padding: 0.5rem 1rem;
+      padding: 10px 20px;
       color: #fff;
-      background: #333; }
+      background: #333;
+      border: none;
+      border-radius: 24px;
+      -webkit-box-shadow: none;
+              box-shadow: none; }
       .wp-block-german-themes-blocks-portfolio .gt-grid-item .gt-content .gt-button.gt-button-hidden {
         display: none; }
   .wp-block-german-themes-blocks-portfolio .gt-grid-item .gt-content.has-background {
