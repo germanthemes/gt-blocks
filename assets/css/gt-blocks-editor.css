@@ -79,6 +79,8 @@
       margin-bottom: 16px; }
       .wp-block-german-themes-blocks-portfolio .gt-grid-item .gt-content .gt-title {
         margin-top: 0 !important; }
+      .wp-block-german-themes-blocks-portfolio .gt-grid-item .gt-content .gt-text p {
+        font-size: inherit; }
       .wp-block-german-themes-blocks-portfolio .gt-grid-item .gt-content .gt-button[data-is-placeholder-visible='true'] {
         background: none; }
     .wp-block-german-themes-blocks-portfolio .gt-grid-item .gt-url-input {

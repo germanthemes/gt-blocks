@@ -30,15 +30,16 @@ const {
     BlockAlignmentToolbar,
     BlockControls,
     InspectorControls,
+    PanelColor,
     RichText,
     UrlInput,
     withColors,
-    PanelColor,
  } = wp.editor;
 
  const {
     Button,
     Dashicon,
+    FontSizePicker,
     IconButton,
     PanelBody,
     RangeControl,
@@ -70,6 +71,30 @@ const columnIcons = {
     4: gtFourColumns,
 };
 
+/* Font Sizes */
+const FONT_SIZES = [
+    {
+        name: 'small',
+        shortName: 'S',
+        size: 14,
+    },
+    {
+        name: 'regular',
+        shortName: 'M',
+        size: 16,
+    },
+    {
+        name: 'large',
+        shortName: 'L',
+        size: 24,
+    },
+    {
+        name: 'larger',
+        shortName: 'XL',
+        size: 36,
+    },
+];
+
 class gtPortfolioEdit extends Component {
     constructor() {
         super( ...arguments );
@@ -83,6 +108,8 @@ class gtPortfolioEdit extends Component {
         this.onChangeText       = this.onChangeText.bind( this );
         this.onChangeButtonText = this.onChangeButtonText.bind( this );
         this.onChangeItemURL  = this.onChangeItemURL.bind( this );
+        this.getFontSize = this.getFontSize.bind( this );
+        this.setFontSize = this.setFontSize.bind( this );
 
         this.state = {
             imageSizes: {},
@@ -233,6 +260,36 @@ class gtPortfolioEdit extends Component {
         return uniq( availableSizes );
     }
 
+    getFontSize() {
+        const { customFontSize, fontSize } = this.props.attributes;
+        if ( fontSize ) {
+            const fontSizeObj = find( FONT_SIZES, { name: fontSize } );
+            if ( fontSizeObj ) {
+                return fontSizeObj.size;
+            }
+        }
+
+        if ( customFontSize ) {
+            return customFontSize;
+        }
+    }
+
+    setFontSize( fontSizeValue ) {
+        const { setAttributes } = this.props;
+        const thresholdFontSize = find( FONT_SIZES, { size: fontSizeValue } );
+        if ( thresholdFontSize ) {
+            setAttributes( {
+                fontSize: thresholdFontSize.name,
+                customFontSize: undefined,
+            } );
+            return;
+        }
+        setAttributes( {
+            fontSize: undefined,
+            customFontSize: fontSizeValue,
+        } );
+    }
+
     render() {
         const {
             attributes,
@@ -247,7 +304,9 @@ class gtPortfolioEdit extends Component {
             isSelected,
             className
         } = this.props;
+
         const availableSizes = this.getAvailableSizes();
+        const fontSize = this.getFontSize();
 
         const classNames= classnames( className, {
             [ `gt-columns-${ attributes.columns }` ]: attributes.columns,
@@ -269,6 +328,7 @@ class gtPortfolioEdit extends Component {
         } );
 
         const textStyles = {
+            fontSize: fontSize ? fontSize + 'px' : undefined,
             color: textColor.class ? undefined : textColor.value,
         };
 
@@ -368,6 +428,13 @@ class gtPortfolioEdit extends Component {
                                 subscript: level,
                             } ) )
                             }
+                        />
+
+                        <p><label className="blocks-base-control__label">{ __( 'Font Size' ) }</label></p>
+                        <FontSizePicker
+                            fontSizes={ FONT_SIZES }
+                            value={ fontSize }
+                            onChange={ this.setFontSize }
                         />
 
                     </PanelBody>

@@ -118,6 +118,12 @@ registerBlockType(
                 property: 'nodeName',
                 default: 'H2',
             },
+            fontSize: {
+                type: 'string',
+            },
+            customFontSize: {
+                type: 'number',
+            },
             backgroundColor: {
                 type: 'string',
             },
@@ -149,6 +155,7 @@ registerBlockType(
 
         save( { attributes } ) {
 
+            const fontSizeClass = attributes.fontSize && `is-${ attributes.fontSize }-text`;
             const backgroundClass = getColorClass( 'background-color', attributes.backgroundColor );
             const textClass = getColorClass( 'color', attributes.textColor );
             const titleClass = getColorClass( 'color', attributes.titleColor );
@@ -169,11 +176,13 @@ registerBlockType(
             };
 
             const textClasses = classnames( 'gt-text', {
+                [ fontSizeClass ]: fontSizeClass,
                 'has-text-color': attributes.textColor || attributes.customTextColor,
                 [ textClass ]: textClass,
             } );
 
             const textStyles = {
+                fontSize: fontSizeClass ? undefined : attributes.customFontSize,
                 color: textClass ? undefined : attributes.customTextColor,
             };
 
