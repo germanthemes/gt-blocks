@@ -65,11 +65,11 @@ class PortfolioImage extends Component {
 
                 ) : (
 
-                    <div class="gt-image-wrapper">
+                    <div className="gt-image-wrapper">
 
                         { isSelected ? (
 
-                            <div class="gt-edit-image">
+                            <div className="gt-edit-image">
 
                                 <MediaUpload
                                     onSelect={ onSelect }

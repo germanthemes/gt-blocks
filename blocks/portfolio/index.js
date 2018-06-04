@@ -212,7 +212,7 @@ registerBlockType(
                                 const title = item.itemURL ? <a href={ item.itemURL } className="gt-item-url" title={ titleText }>{ titleText }</a> : titleText;
 
                                 return (
-                                    <div className="gt-grid-item">
+                                    <div className="gt-grid-item" key={ index }>
 
                                         <div className="gt-image">
                                             { item.itemURL ? <a href={  item.itemURL } className="gt-item-url">{ image }</a> : image }

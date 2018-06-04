@@ -141,7 +141,7 @@ class German_Themes_Blocks {
 	 */
 	static function enqueue_block_editor_scripts() {
 		wp_enqueue_script( 'german-themes-blocks-editor', GTB_PLUGIN_URL . 'assets/js/gt-blocks-editor.js', array(
-			'wp-blocks',
+			'wp-editor',
 			'wp-i18n',
 			'wp-element',
 		), GTB_VERSION );
@@ -156,16 +156,16 @@ class German_Themes_Blocks {
 	 */
 	static function add_image_sizes() {
 
-		add_image_size( 'GT-square-400-x-400', 400, 400, true );
+		#add_image_size( 'GT-square-400-x-400', 400, 400, true );
 		add_image_size( 'GT-square-800-x-800', 800, 800, true );
 
-		add_image_size( 'GT-rectangular-400-x-300', 400, 300, true );
+		#add_image_size( 'GT-rectangular-400-x-300', 400, 300, true );
 		add_image_size( 'GT-rectangular-800-x-600', 800, 600, true );
 
-		add_image_size( 'GT-landscape-480-x-270', 480, 270, true );
+		#add_image_size( 'GT-landscape-480-x-270', 480, 270, true );
 		add_image_size( 'GT-landscape-960-x-540', 960, 540, true );
 
-		add_image_size( 'GT-portrait-320-x-480', 320, 480, true );
+		#add_image_size( 'GT-portrait-320-x-480', 320, 480, true );
 		add_image_size( 'GT-portrait-640-x-600', 640, 960, true );
 	}
 }

@@ -22,8 +22,17 @@ import {
 /**
  * Internal block libraries
  */
-const { Component, compose } = wp.element;
-const { __, sprintf } = wp.i18n;
+const {
+    Component,
+    compose,
+    Fragment,
+} = wp.element;
+
+const {
+    __,
+    sprintf,
+} = wp.i18n;
+
 const {
     AlignmentToolbar,
     BlockControls,
@@ -36,9 +45,7 @@ const {
 
 const {
     Button,
-    DropZone,
     FontSizePicker,
-    FormFileUpload,
     IconButton,
     PanelBody,
     Placeholder,
@@ -50,11 +57,6 @@ const {
     Tooltip,
     withAPIData,
 } = wp.components;
-
-const {
-    mediaUpload,
-} = wp.utils;
-
 
 const columnSizes = [
     { value: 'block-column-25', label: __( '25%' ) },
@@ -123,10 +125,6 @@ class gtImageTextEdit extends Component {
 
         this.onSelectImage = this.onSelectImage.bind( this );
         this.onRemoveImage = this.onRemoveImage.bind( this );
-        this.setImage = this.setImage.bind( this );
-        this.uploadFromFiles = this.uploadFromFiles.bind( this );
-        this.onFilesDrop = this.onFilesDrop.bind( this );
-        this.onHTMLDrop = this.onHTMLDrop.bind( this );
         this.updateImageURL = this.updateImageURL.bind( this );
         this.getAvailableSizes = this.getAvailableSizes.bind( this );
         this.getFontSize = this.getFontSize.bind( this );
@@ -143,30 +141,10 @@ class gtImageTextEdit extends Component {
 
     onRemoveImage() {
         this.props.setAttributes( {
-            imgID: null,
-            imgURL: null,
-            imgAlt: null,
+            imgID: undefined,
+            imgURL: undefined,
+            imgAlt: undefined,
         } );
-    }
-
-    setImage( [ image ] ) {
-        this.onSelectImage( image )
-    };
-
-    uploadFromFiles( event ) {
-        mediaUpload( event.target.files, this.setImage );
-    }
-
-    onFilesDrop( files ) {
-        mediaUpload( files, this.setImage );
-    }
-
-    onHTMLDrop( HTML ) {
-        this.setImage( map(
-            rawHandler( { HTML, mode: 'BLOCKS' } )
-                .filter( ( { name } ) => name === 'core/image' ),
-            'attributes'
-        ) );
     }
 
     updateImageURL( url ) {
@@ -239,9 +217,9 @@ class gtImageTextEdit extends Component {
             textAlign: attributes.textAlignment,
         };
 
-        return [
-            isSelected && (
-                <BlockControls key="controls">
+        return (
+            <Fragment>
+                <BlockControls>
 
                     <Toolbar className='components-toolbar'>
                         <MediaUpload
@@ -291,9 +269,8 @@ class gtImageTextEdit extends Component {
                     />
 
                 </BlockControls>
-            ),
-            isSelected && (
-                <InspectorControls key="inspector">
+
+                <InspectorControls>
 
                     <PanelBody title={ __( 'Layout Settings' ) } initialOpen={ false } className="gt-panel-layout-settings gt-panel">
 
@@ -411,11 +388,10 @@ class gtImageTextEdit extends Component {
                     />
 
                 </InspectorControls>
-            ),
 
-            <div className={ classNames }>
+                <div className={ classNames }>
 
-                <div className="block-image">
+                    <div className="block-image">
 
                     { ! attributes.imgID ? (
 
@@ -424,20 +400,6 @@ class gtImageTextEdit extends Component {
                             instructions={ __( 'Drag image here or add from media library' ) }
                             icon="format-image"
                             label={ __( 'Image' ) } >
-
-                            <DropZone
-                                onFilesDrop={ this.onFilesDrop }
-                                onHTMLDrop={ this.onHTMLDrop }
-                            />
-
-                            <FormFileUpload
-                                isLarge
-                                className="wp-block-image__upload-button"
-                                onChange={ this.uploadFromFiles }
-                                accept="image/*"
-                            >
-                                { __( 'Upload' ) }
-                            </FormFileUpload>
 
                             <MediaUpload
                                 onSelect={ this.onSelectImage }
@@ -452,78 +414,80 @@ class gtImageTextEdit extends Component {
 
                     ) : (
 
-                        <div class="image-wrapper">
+                            <div className="image-wrapper">
 
-                            { isSelected ? (
+                                { isSelected ? (
 
-                                <div class="edit-image">
+                                    <div className="edit-image">
 
-                                    <MediaUpload
-                                        onSelect={ this.onSelectImage }
-                                        type="image"
-                                        value={ attributes.imgID }
-                                        render={ ( { open } ) => (
-                                            <img
-                                                src={ attributes.imgURL }
-                                                alt={ attributes.imgAlt }
-                                                onClick={ open }
-                                            />
-                                        ) }
+                                        <MediaUpload
+                                            onSelect={ this.onSelectImage }
+                                            type="image"
+                                            value={ attributes.imgID }
+                                            render={ ( { open } ) => (
+                                                <img
+                                                    src={ attributes.imgURL }
+                                                    alt={ attributes.imgAlt }
+                                                    onClick={ open }
+                                                />
+                                            ) }
+                                        />
+
+                                        <IconButton
+                                            className="remove-image"
+                                            label={ __( 'Remove Image' ) }
+                                            icon="no-alt"
+                                            onClick={ this.onRemoveImage }
+                                        />
+
+                                    </div>
+
+                                ) : (
+
+                                    <img
+                                        src={ attributes.imgURL }
+                                        alt={ attributes.imgAlt }
                                     />
 
-                                    <IconButton
-                                        className="remove-image"
-                                        label={ __( 'Remove Image' ) }
-                                        icon="no-alt"
-                                        onClick={ this.onRemoveImage }
-                                    />
+                                ) }
 
-                                </div>
+                            </div>
 
-                            ) : (
+                        ) }
 
-                                <img
-                                    src={ attributes.imgURL }
-                                    alt={ attributes.imgAlt }
-                                />
+                    </div>
 
-                            ) }
+                    <div className="block-content" style={ styles }>
+
+                        <div className="block-content-inner">
+
+                            <RichText
+                                tagName={ attributes.titleTag.toLowerCase() }
+                                placeholder={ __( 'Enter a title' ) }
+                                value={ attributes.title }
+                                className="block-title"
+                                style={ styles }
+                                onChange={ ( newTitle ) => setAttributes( { title: newTitle } ) }
+                            />
+
+                            <RichText
+                                tagName="div"
+                                multiline="p"
+                                placeholder={ __( 'Enter your text here.' ) }
+                                value={ attributes.text }
+                                className="block-text"
+                                style={ { fontSize: fontSize ? fontSize + 'px' : undefined } }
+                                onChange={ ( newText ) => setAttributes( { text: newText } ) }
+                            />
 
                         </div>
-
-                    ) }
-
-                </div>
-
-                <div className="block-content" style={ styles }>
-
-                    <div className="block-content-inner">
-
-                        <RichText
-                            tagName={ attributes.titleTag.toLowerCase() }
-                            placeholder={ __( 'Enter a title' ) }
-                            value={ attributes.title }
-                            className="block-title"
-                            style={ styles }
-                            onChange={ ( newTitle ) => setAttributes( { title: newTitle } ) }
-                        />
-
-                        <RichText
-                            tagName="div"
-                            multiline="p"
-                            placeholder={ __( 'Enter your text here.' ) }
-                            value={ attributes.text }
-                            className="block-text"
-                            style={ { fontSize: fontSize ? fontSize + 'px' : undefined } }
-                            onChange={ ( newText ) => setAttributes( { text: newText } ) }
-                        />
 
                     </div>
 
                 </div>
 
-            </div>
-        ];
+            </Fragment>
+        );
     }
 }
 

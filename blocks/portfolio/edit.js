@@ -22,9 +22,19 @@ import {
 /**
  * Internal block libraries
  */
-const { Component, compose } = wp.element;
-const { __, sprintf } = wp.i18n;
+ const {
+    Component,
+    compose,
+    Fragment,
+} = wp.element;
+
+const {
+    __,
+    sprintf,
+} = wp.i18n;
+
 const { withSelect } = wp.data;
+
 const {
     AlignmentToolbar,
     BlockAlignmentToolbar,
@@ -341,8 +351,8 @@ class gtPortfolioEdit extends Component {
             color: titleColor.class ? undefined : titleColor.value,
         };
 
-        return [
-            isSelected && (
+        return (
+            <Fragment>
                 <BlockControls key="controls">
 
                     <BlockAlignmentToolbar
@@ -368,8 +378,7 @@ class gtPortfolioEdit extends Component {
                     />
 
                 </BlockControls>
-            ),
-            isSelected && (
+
                 <InspectorControls key="inspector">
 
                     <PanelBody title={ __( 'Layout Settings' ) } initialOpen={ false } className="gt-panel-layout-settings gt-panel">
@@ -461,125 +470,128 @@ class gtPortfolioEdit extends Component {
                     />
 
                 </InspectorControls>
-            ),
-            <div className={ classNames }>
-                <div className="gt-grid-container">
 
-                    {
-                        attributes.items.map( ( item, index ) => {
-                            return (
-                                <div className="gt-grid-item">
+                <div className={ classNames }>
+                    <div className="gt-grid-container">
 
-                                    <PortfolioImage
-                                        id={ item.imgID }
-                                        url={ item.imgURL }
-                                        alt={ item.imgAlt }
-                                        onSelect={ ( img ) => this.onSelectImage( img, index ) }
-                                        onRemove={ () => this.onRemoveImage( index ) }
-                                        addSize={ this.addImageSize }
-                                        isSelected={ isSelected }
-                                    />
+                        {
+                            attributes.items.map( ( item, index ) => {
+                                return (
+                                    <div className="gt-grid-item" key={ index }>
 
-                                    <div className={ contentClasses } style={ contentStyles }>
-
-                                        <RichText
-                                            tagName={ attributes.titleTag.toLowerCase() }
-                                            placeholder={ __( 'Enter a title' ) }
-                                            value={ item.title }
-                                            className={ titleClasses }
-                                            style={ titleStyles }
-                                            onChange={ ( newTitle ) => this.onChangeTitle( newTitle, index ) }
-                                            formattingControls={ [ 'bold', 'italic', 'strikethrough' ] }
-                                            keepPlaceholderOnFocus
+                                        <PortfolioImage
+                                            id={ item.imgID }
+                                            url={ item.imgURL }
+                                            alt={ item.imgAlt }
+                                            onSelect={ ( img ) => this.onSelectImage( img, index ) }
+                                            onRemove={ () => this.onRemoveImage( index ) }
+                                            addSize={ this.addImageSize }
+                                            isSelected={ isSelected }
                                         />
 
-                                        <RichText
-                                            tagName="div"
-                                            multiline="p"
-                                            placeholder={ __( 'Enter your text here.' ) }
-                                            value={ item.text }
-                                            className={ textClasses }
-                                            style={ textStyles }
-                                            onChange={ ( newText ) => this.onChangeText( newText, index ) }
-                                            keepPlaceholderOnFocus
-                                        />
+                                        <div className={ contentClasses } style={ contentStyles }>
 
-                                        <RichText
-                                            tagName="a"
-                                            placeholder={ __( 'Add button text' ) }
-                                            value={ item.buttonText }
-                                            className={ classnames( 'gt-button', { 'gt-button-hidden': ! attributes.showButtons } ) }
-                                            onChange={ ( newButtonText ) => this.onChangeButtonText( newButtonText, index ) }
-                                            formattingControls={ [ 'bold', 'italic', 'strikethrough' ] }
-                                            keepPlaceholderOnFocus
-                                        />
+                                            <RichText
+                                                tagName={ attributes.titleTag.toLowerCase() }
+                                                placeholder={ __( 'Enter a title' ) }
+                                                value={ item.title }
+                                                className={ titleClasses }
+                                                style={ titleStyles }
+                                                onChange={ ( newTitle ) => this.onChangeTitle( newTitle, index ) }
+                                                formattingControls={ [ 'bold', 'italic', 'strikethrough' ] }
+                                                keepPlaceholderOnFocus
+                                            />
+
+                                            <RichText
+                                                tagName="div"
+                                                multiline="p"
+                                                placeholder={ __( 'Enter your text here.' ) }
+                                                value={ item.text }
+                                                className={ textClasses }
+                                                style={ textStyles }
+                                                onChange={ ( newText ) => this.onChangeText( newText, index ) }
+                                                keepPlaceholderOnFocus
+                                            />
+
+                                            <RichText
+                                                tagName="a"
+                                                placeholder={ __( 'Add button text' ) }
+                                                value={ item.buttonText }
+                                                className={ classnames( 'gt-button', { 'gt-button-hidden': ! attributes.showButtons } ) }
+                                                onChange={ ( newButtonText ) => this.onChangeButtonText( newButtonText, index ) }
+                                                formattingControls={ [ 'bold', 'italic', 'strikethrough' ] }
+                                                keepPlaceholderOnFocus
+                                            />
+
+                                        </div>
+
+                                        { isSelected && (
+                                            <Fragment>
+                                                <form
+                                                    className="gt-url-input"
+                                                    onSubmit={ ( event ) => event.preventDefault() }>
+                                                    <Dashicon icon="admin-links" />
+                                                    <UrlInput
+                                                        value={ item.itemURL }
+                                                        onChange={ ( newItemURL ) => this.onChangeItemURL( newItemURL, index ) }
+                                                        autoFocus= { false }
+                                                    />
+                                                    <IconButton icon="editor-break" label={ __( 'Apply' ) } type="submit" />
+                                                </form>,
+
+                                                <div className="gt-grid-item-controls">
+                                                    <div className="gt-grid-item-number">
+                                                        #{ index + 1 }
+                                                    </div>
+
+                                                    { index !== 0 && (
+                                                        <IconButton
+                                                            className="move-up-portfolio-item"
+                                                            label={ __( 'Move up' ) }
+                                                            icon="arrow-up-alt2"
+                                                            onClick={ () => this.moveUpPortfolioItem( index ) }
+                                                        />
+                                                    ) }
+
+                                                    { ( ( index + 1 ) !== attributes.items.length ) && (
+                                                        <IconButton
+                                                            className="move-down-portfolio-item"
+                                                            label={ __( 'Move down' ) }
+                                                            icon="arrow-down-alt2"
+                                                            onClick={ () => this.moveDownPortfolioItem( index ) }
+                                                        />
+                                                    ) }
+
+                                                    <IconButton
+                                                        className="remove-portfolio-item"
+                                                        label={ __( 'Remove Item' ) }
+                                                        icon="trash"
+                                                        onClick={ () => this.removePortfolioItem( index ) }
+                                                    />
+                                                </div>
+                                            </Fragment>
+                                        ) }
 
                                     </div>
+                                );
+                            })
+                        }
 
-                                    { isSelected && [
-                                        <form
-                                            className="gt-url-input"
-                                            onSubmit={ ( event ) => event.preventDefault() }>
-                                            <Dashicon icon="admin-links" />
-                                            <UrlInput
-                                                value={ item.itemURL }
-                                                onChange={ ( newItemURL ) => this.onChangeItemURL( newItemURL, index ) }
-                                                autoFocus= { false }
-                                            />
-                                            <IconButton icon="editor-break" label={ __( 'Apply' ) } type="submit" />
-                                        </form>,
+                    </div>
 
-                                        <div className="gt-grid-item-controls">
-                                            <div className="gt-grid-item-number">
-                                                #{ index + 1 }
-                                            </div>
-
-                                            { index !== 0 && (
-                                                <IconButton
-                                                    className="move-up-portfolio-item"
-                                                    label={ __( 'Move up' ) }
-                                                    icon="arrow-up-alt2"
-                                                    onClick={ () => this.moveUpPortfolioItem( index ) }
-                                                />
-                                            ) }
-
-                                            { ( ( index + 1 ) !== attributes.items.length ) && (
-                                                <IconButton
-                                                    className="move-down-portfolio-item"
-                                                    label={ __( 'Move down' ) }
-                                                    icon="arrow-down-alt2"
-                                                    onClick={ () => this.moveDownPortfolioItem( index ) }
-                                                />
-                                            ) }
-
-                                            <IconButton
-                                                className="remove-portfolio-item"
-                                                label={ __( 'Remove Item' ) }
-                                                icon="trash"
-                                                onClick={ () => this.removePortfolioItem( index ) }
-                                            />
-                                        </div>
-                                    ] }
-
-                                </div>
-                            );
-                        })
-                    }
-
+                    { isSelected && (
+                        <Button
+                            isLarge
+                            onClick={ this.addPortfolioItem }
+                            className="gt-add-portfolio-item"
+                        >
+                            <Dashicon icon="insert" />
+                            { __( 'Add portfolio item' ) }
+                        </Button>
+                    ) }
                 </div>
-
-                { isSelected && (
-                    <Button
-                        isLarge
-                        onClick={ this.addPortfolioItem }
-                        className="gt-add-portfolio-item"
-                    >
-                        <Dashicon icon="insert" />
-                        { __( 'Add portfolio item' ) }
-                    </Button>
-                ) }
-            </div>
-        ];
+            </Fragment>
+        );
     }
 }
 
