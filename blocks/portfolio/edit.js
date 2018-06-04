@@ -25,24 +25,25 @@ import {
  const { Component } = wp.element;
  const { __, sprintf } = wp.i18n;
  const {
-     BlockAlignmentToolbar,
-     BlockControls,
-     InspectorControls,
-     RichText,
-     UrlInput,
-     withColors,
-     PanelColor,
+    AlignmentToolbar,
+    BlockAlignmentToolbar,
+    BlockControls,
+    InspectorControls,
+    RichText,
+    UrlInput,
+    withColors,
+    PanelColor,
  } = wp.editor;
 
  const {
-     Button,
-     Dashicon,
-     IconButton,
-     PanelBody,
-     RangeControl,
-     SelectControl,
-     ToggleControl,
-     Toolbar,
+    Button,
+    Dashicon,
+    IconButton,
+    PanelBody,
+    RangeControl,
+    SelectControl,
+    ToggleControl,
+    Toolbar,
  } = wp.components;
 
 /* Block Alignment Controls */
@@ -248,14 +249,15 @@ class gtPortfolioEdit extends Component {
             [ `gt-columns-${ attributes.columns }` ]: attributes.columns,
         } );
 
-        const itemClasses = classnames( 'gt-content', {
+        const contentClasses = classnames( 'gt-content', {
             'has-background': backgroundColor.value,
             [ backgroundColor.class ]: backgroundColor.class,
             'has-text-color': textColor.value,
             [ textColor.class ]: textColor.class,
         } );
 
-        const itemStyles = {
+        const contentStyles = {
+            textAlign: attributes.textAlignment,
             backgroundColor: backgroundColor.class ? undefined : backgroundColor.value,
             color: textColor.class ? undefined : textColor.value,
         };
@@ -279,6 +281,11 @@ class gtPortfolioEdit extends Component {
                                 onClick: () => setAttributes( { columns: column } ),
                             } ) )
                         }
+                    />
+
+                    <AlignmentToolbar
+                        value={ attributes.textAlignment }
+                        onChange={ ( newAlignment ) => setAttributes( { textAlignment: newAlignment } ) }
                     />
 
                 </BlockControls>
@@ -384,7 +391,7 @@ class gtPortfolioEdit extends Component {
                                         isSelected={ isSelected }
                                     />
 
-                                    <div className={ itemClasses }>
+                                    <div className={ contentClasses } style={ contentStyles }>
 
                                         <RichText
                                             tagName={ attributes.titleTag.toLowerCase() }

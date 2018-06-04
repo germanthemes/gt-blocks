@@ -100,6 +100,9 @@ registerBlockType(
                 type: 'string',
                 default: 'center',
             },
+            textAlignment: {
+                type: 'string',
+            },
             showButtons: {
                 type: 'boolean',
                 default: false,
@@ -147,14 +150,15 @@ registerBlockType(
                 [ `align${ attributes.blockAlignment }` ]: ( attributes.blockAlignment !== 'center' ),
             } );
 
-            const itemClasses = classnames( 'gt-content', {
+            const contentClasses = classnames( 'gt-content', {
                 'has-text-color': attributes.textColor || attributes.customTextColor,
                 [ textClass ]: textClass,
                 'has-background': attributes.backgroundColor || attributes.customBackgroundColor,
                 [ backgroundClass ]: backgroundClass,
             } );
 
-            const itemStyles = {
+            const contentStyles = {
+                textAlign: attributes.textAlignment,
                 backgroundColor: backgroundClass ? undefined : attributes.customBackgroundColor,
                 color: textClass ? undefined : attributes.customTextColor,
             };
@@ -182,7 +186,7 @@ registerBlockType(
                                             { item.itemURL ? <a href={  item.itemURL } className="gt-item-url">{ image }</a> : image }
                                         </div>
 
-                                        <div className={ itemClasses }>
+                                        <div className={ contentClasses } style={ contentStyles }>
 
                                             <RichText.Content
                                                 tagName={ attributes.titleTag.toLowerCase() }
