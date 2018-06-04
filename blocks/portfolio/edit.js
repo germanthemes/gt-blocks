@@ -22,9 +22,10 @@ import {
 /**
  * Internal block libraries
  */
- const { Component } = wp.element;
- const { __, sprintf } = wp.i18n;
- const {
+const { Component, compose } = wp.element;
+const { __, sprintf } = wp.i18n;
+const { withSelect } = wp.data;
+const {
     AlignmentToolbar,
     BlockAlignmentToolbar,
     BlockControls,
@@ -241,6 +242,7 @@ class gtPortfolioEdit extends Component {
             setBackgroundColor,
             setTextColor,
             setTitleColor,
+            wideControlsEnabled,
             setAttributes,
             isSelected,
             className
@@ -320,12 +322,14 @@ class gtPortfolioEdit extends Component {
                             max={ 6 }
                         />
 
-                        <p><label className="blocks-base-control__label">{ __( 'Block Alignment' ) }</label></p>
-                        <BlockAlignmentToolbar
-                            value={ attributes.blockAlignment }
-                            onChange={ ( newAlign ) => setAttributes( { blockAlignment: newAlign } ) }
-                            controls={ [ 'center', 'wide', 'full' ] }
-                        />
+                        { wideControlsEnabled && [
+                            <p><label className="blocks-base-control__label">{ __( 'Block Alignment' ) }</label></p>,
+                            <BlockAlignmentToolbar
+                                value={ attributes.blockAlignment }
+                                onChange={ ( newAlign ) => setAttributes( { blockAlignment: newAlign } ) }
+                                controls={ [ 'center', 'wide', 'full' ] }
+                            />
+                        ] }
 
                         <ToggleControl
                             label={ __( 'Show buttons?' ) }
@@ -512,13 +516,18 @@ class gtPortfolioEdit extends Component {
     }
 }
 
-export default withColors( ( getColor, setColor, { attributes } ) => {
-    return {
-        backgroundColor: getColor( attributes.backgroundColor, attributes.customBackgroundColor, 'background-color' ),
-        setBackgroundColor: setColor( 'backgroundColor', 'customBackgroundColor' ),
-        textColor: getColor( attributes.textColor, attributes.customTextColor, 'color' ),
-        setTextColor: setColor( 'textColor', 'customTextColor' ),
-        titleColor: getColor( attributes.titleColor, attributes.customTitleColor, 'color' ),
-        setTitleColor: setColor( 'titleColor', 'customTitleColor' ),
-    };
-} )( gtPortfolioEdit );
+export default compose( [
+    withColors( ( getColor, setColor, { attributes } ) => {
+        return {
+            backgroundColor: getColor( attributes.backgroundColor, attributes.customBackgroundColor, 'background-color' ),
+            setBackgroundColor: setColor( 'backgroundColor', 'customBackgroundColor' ),
+            textColor: getColor( attributes.textColor, attributes.customTextColor, 'color' ),
+            setTextColor: setColor( 'textColor', 'customTextColor' ),
+            titleColor: getColor( attributes.titleColor, attributes.customTitleColor, 'color' ),
+            setTitleColor: setColor( 'titleColor', 'customTitleColor' ),
+        };
+    } ),
+    withSelect( ( select  ) => ( {
+        wideControlsEnabled: select( 'core/editor' ).getEditorSettings().alignWide,
+    } ) )
+] )( gtPortfolioEdit );
