@@ -118,16 +118,22 @@ registerBlockType(
                 property: 'nodeName',
                 default: 'H2',
             },
+            backgroundColor: {
+                type: 'string',
+            },
             textColor: {
                 type: 'string',
             },
-            backgroundColor: {
+            titleColor: {
+                type: 'string',
+            },
+            customBackgroundColor: {
                 type: 'string',
             },
             customTextColor: {
                 type: 'string',
             },
-            customBackgroundColor: {
+            customTitleColor: {
                 type: 'string',
             },
         },
@@ -143,8 +149,9 @@ registerBlockType(
 
         save( { attributes } ) {
 
-            const textClass = getColorClass( 'color', attributes.textColor );
             const backgroundClass = getColorClass( 'background-color', attributes.backgroundColor );
+            const textClass = getColorClass( 'color', attributes.textColor );
+            const titleClass = getColorClass( 'color', attributes.titleColor );
 
             const classNames = classnames( {
                 [ `gt-columns-${ attributes.columns }` ]: attributes.columns,
@@ -152,8 +159,6 @@ registerBlockType(
             } );
 
             const contentClasses = classnames( 'gt-content', {
-                'has-text-color': attributes.textColor || attributes.customTextColor,
-                [ textClass ]: textClass,
                 'has-background': attributes.backgroundColor || attributes.customBackgroundColor,
                 [ backgroundClass ]: backgroundClass,
             } );
@@ -161,7 +166,24 @@ registerBlockType(
             const contentStyles = {
                 textAlign: attributes.textAlignment,
                 backgroundColor: backgroundClass ? undefined : attributes.customBackgroundColor,
+            };
+
+            const textClasses = classnames( 'gt-text', {
+                'has-text-color': attributes.textColor || attributes.customTextColor,
+                [ textClass ]: textClass,
+            } );
+
+            const textStyles = {
                 color: textClass ? undefined : attributes.customTextColor,
+            };
+
+            const titleClasses = classnames( 'gt-title', {
+                'has-text-color': attributes.titleColor || attributes.customTitleColor,
+                [ titleClass ]: titleClass,
+            } );
+
+            const titleStyles = {
+                color: titleClass ? undefined : attributes.customTitleColor,
             };
 
             return (
@@ -191,14 +213,16 @@ registerBlockType(
 
                                             <RichText.Content
                                                 tagName={ attributes.titleTag.toLowerCase() }
-                                                className="gt-title"
+                                                className={ titleClasses }
                                                 value={ title }
+                                                style={ titleStyles }
                                             />
 
                                             <RichText.Content
                                                 tagName="div"
-                                                className="gt-text"
+                                                className={ textClasses }
                                                 value={ item.text }
+                                                style={ textStyles }
                                             />
 
                                             { ( item.itemURL && item.buttonText.length > 0 ) && (

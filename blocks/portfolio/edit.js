@@ -237,8 +237,10 @@ class gtPortfolioEdit extends Component {
             attributes,
             backgroundColor,
             textColor,
+            titleColor,
             setBackgroundColor,
             setTextColor,
+            setTitleColor,
             setAttributes,
             isSelected,
             className
@@ -252,14 +254,29 @@ class gtPortfolioEdit extends Component {
         const contentClasses = classnames( 'gt-content', {
             'has-background': backgroundColor.value,
             [ backgroundColor.class ]: backgroundColor.class,
-            'has-text-color': textColor.value,
-            [ textColor.class ]: textColor.class,
         } );
 
         const contentStyles = {
             textAlign: attributes.textAlignment,
             backgroundColor: backgroundColor.class ? undefined : backgroundColor.value,
+        };
+
+        const textClasses = classnames( 'gt-text', {
+            'has-text-color': textColor.value,
+            [ textColor.class ]: textColor.class,
+        } );
+
+        const textStyles = {
             color: textColor.class ? undefined : textColor.value,
+        };
+
+        const titleClasses = classnames( 'gt-title', {
+            'has-text-color': titleColor.value,
+            [ titleColor.class ]: titleColor.class,
+        } );
+
+        const titleStyles = {
+            color: titleColor.class ? undefined : titleColor.value,
         };
 
         return [
@@ -365,6 +382,13 @@ class gtPortfolioEdit extends Component {
                         onChange={ setTextColor }
                     />
 
+                    <PanelColor
+                        colorValue={ titleColor.value }
+                        initialOpen={ false }
+                        title={ __( 'Title Color' ) }
+                        onChange={ setTitleColor }
+                    />
+
                 </InspectorControls>
             ),
             <div className={ classNames }>
@@ -391,7 +415,8 @@ class gtPortfolioEdit extends Component {
                                             tagName={ attributes.titleTag.toLowerCase() }
                                             placeholder={ __( 'Enter a title' ) }
                                             value={ item.title }
-                                            className="gt-title"
+                                            className={ titleClasses }
+                                            style={ titleStyles }
                                             onChange={ ( newTitle ) => this.onChangeTitle( newTitle, index ) }
                                             formattingControls={ [ 'bold', 'italic', 'strikethrough' ] }
                                             keepPlaceholderOnFocus
@@ -402,7 +427,8 @@ class gtPortfolioEdit extends Component {
                                             multiline="p"
                                             placeholder={ __( 'Enter your text here.' ) }
                                             value={ item.text }
-                                            className="gt-text"
+                                            className={ textClasses }
+                                            style={ textStyles }
                                             onChange={ ( newText ) => this.onChangeText( newText, index ) }
                                             keepPlaceholderOnFocus
                                         />
@@ -492,5 +518,7 @@ export default withColors( ( getColor, setColor, { attributes } ) => {
         setBackgroundColor: setColor( 'backgroundColor', 'customBackgroundColor' ),
         textColor: getColor( attributes.textColor, attributes.customTextColor, 'color' ),
         setTextColor: setColor( 'textColor', 'customTextColor' ),
+        titleColor: getColor( attributes.titleColor, attributes.customTitleColor, 'color' ),
+        setTitleColor: setColor( 'titleColor', 'customTitleColor' ),
     };
 } )( gtPortfolioEdit );
