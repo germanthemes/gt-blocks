@@ -37,6 +37,7 @@ const {
     AlignmentToolbar,
     BlockControls,
     InspectorControls,
+    MediaPlaceholder,
     MediaUpload,
     RichText,
     withColors,
@@ -48,7 +49,6 @@ const {
     FontSizePicker,
     IconButton,
     PanelBody,
-    Placeholder,
     RangeControl,
     SelectControl,
     TextControl,
@@ -395,22 +395,17 @@ class gtImageTextEdit extends Component {
 
                     { ! attributes.imgID ? (
 
-                        <Placeholder
-                            className="block-image-placeholder"
-                            instructions={ __( 'Drag image here or add from media library' ) }
+                        <MediaPlaceholder
                             icon="format-image"
-                            label={ __( 'Image' ) } >
-
-                            <MediaUpload
-                                onSelect={ this.onSelectImage }
-                                type="image"
-                                render={ ( { open } ) => (
-                                    <Button isLarge onClick={ open }>
-                                        { __( 'Add from Media Library' ) }
-                                    </Button>
-                                ) }
-                            />
-                        </Placeholder>
+                            className="block-image-placeholder"
+                            labels={ {
+                                title: __( 'Image' ),
+                                name: __( 'an image' ),
+                            } }
+                            onSelect={ this.onSelectImage }
+                            accept="image/*"
+                            type="image"
+                        />
 
                     ) : (
 
