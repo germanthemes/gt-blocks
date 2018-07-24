@@ -1,14 +1,4 @@
 /**
- * External dependencies
- */
-import { times } from 'lodash';
-
-/**
- * Import Child Block
- */
-import './service-item';
-
-/**
  * Block dependencies
  */
 import './style.scss';
@@ -20,33 +10,26 @@ import './editor.scss';
 const { __ } = wp.i18n;
 const { registerBlockType } = wp.blocks;
 const {
-    InnerBlocks,
+    RichText,
 } = wp.editor;
-
-/**
- * InnerBlock Settings
- */
-const ALLOWED_BLOCKS = [ 'german-themes-blocks/service-item' ];
-const TEMPLATE = [
-    [ 'german-themes-blocks/service-item', { text: 'Enter your service' } ],
-    [ 'german-themes-blocks/service-item', { text: 'Enter your service' } ]
-];
 
 /**
  * Register block
  */
 registerBlockType(
-    'german-themes-blocks/services',
+    'german-themes-blocks/service-item',
     {
-        title: __( 'GT Services' ),
+        title: __( 'GT Service Item' ),
 
         description: __( 'Add a description here' ),
+
+        parent: [ 'german-themes-blocks/services' ],
 
         category: 'layout',
 
         icon: {
             background: '#7e70af',
-            src: 'carrot',
+            src: 'wordpress-alt',
         },
 
         keywords: [
@@ -68,9 +51,13 @@ registerBlockType(
             return (
                 <div className={ className }>
 
-                    <InnerBlocks
-                        template={ TEMPLATE }
-                        allowedBlocks={ ALLOWED_BLOCKS }
+                    <RichText
+                        tagName="div"
+                        multiline="p"
+                        placeholder={ __( 'Enter your text here.' ) }
+                        value={ attributes.text }
+                        className="block-text"
+                        onChange={ ( newText ) => setAttributes( { text: newText } ) }
                     />
 
                 </div>
@@ -81,7 +68,11 @@ registerBlockType(
 
             return (
                 <div>
-                    <InnerBlocks.Content />
+                    <RichText.Content
+                        tagName="div"
+                        className='block-text'
+                        value={ attributes.text }
+                    />
                 </div>
             );
         },

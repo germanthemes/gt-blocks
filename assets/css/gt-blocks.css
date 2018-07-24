@@ -139,14 +139,16 @@
   .wp-block-german-themes-blocks-portfolio .gt-grid-item .gt-content.has-background {
     padding-left: 1em;
     padding-right: 1em; }
-.wp-block-german-themes-blocks-services {
-  background: rgba(254, 243, 224, 0.52);
-  border: 5px #f7b733 solid;
+.wp-block-german-themes-blocks-service-item {
+  background: #ddd;
+  border: 5px solid blue;
   padding: 1rem; }
-  .wp-block-german-themes-blocks-services h2 {
-    color: #222;
-    font-size: 2rem;
-    margin: 1rem 0; }
+  .wp-block-german-themes-blocks-service-item p {
+    font-size: 1.4rem; }
+.wp-block-german-themes-blocks-services {
+  background: #ddd;
+  border: 5px solid red;
+  padding: 1rem; }
   .wp-block-german-themes-blocks-services p {
     font-size: 1.4rem; }
 .wp-block-german-themes-blocks-testimonials {
