@@ -30,21 +30,21 @@ class PortfolioImage extends Component {
     }
 
     componentWillReceiveProps( { image } ) {
-        const { id, addSize } = this.props;
+        const { imgID, addSize } = this.props;
 
         if ( image && image.data ) {
             const sizeObj = get( image, [ 'data', 'media_details', 'sizes' ], {} );
-            addSize( id, sizeObj );
+            addSize( imgID, sizeObj );
         }
     }
 
     render() {
-        const { id, url, alt, onSelect, onRemove, isSelected } = this.props;
+        const { imgID, imgURL, imgAlt, onSelect, onRemove, isSelected } = this.props;
 
         return (
             <div className="gt-image">
 
-                { ! id ? (
+                { ! imgID ? (
 
                     <Placeholder
                         className="gt-image-placeholder"
@@ -74,12 +74,12 @@ class PortfolioImage extends Component {
                                 <MediaUpload
                                     onSelect={ onSelect }
                                     type="image"
-                                    value={ id }
+                                    value={ imgID }
                                     render={ ( { open } ) => (
                                         <img
-                                            src={ url }
-                                            alt={ alt }
-                                            data-img-id={ id }
+                                            src={ imgURL }
+                                            alt={ imgAlt }
+                                            data-img-id={ imgID }
                                             onClick={ open }
                                         />
                                     ) }
@@ -97,9 +97,9 @@ class PortfolioImage extends Component {
                         ) : (
 
                             <img
-                                src={ url }
-                                alt={ alt }
-                                data-img-id={ id }
+                                src={ imgURL }
+                                alt={ imgAlt }
+                                data-img-id={ imgID }
                             />
 
                         ) }
@@ -113,6 +113,6 @@ class PortfolioImage extends Component {
     }
 }
 
-export default withAPIData( ( { id } ) => ( {
-	image: id ? `/wp/v2/media/${ id }` : {},
+export default withAPIData( ( { imgID } ) => ( {
+	image: imgID ? `/wp/v2/media/${ imgID }` : {},
 } ) )( PortfolioImage );

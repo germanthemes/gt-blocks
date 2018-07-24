@@ -24,7 +24,6 @@ import {
  */
 const {
     Component,
-    compose,
     Fragment,
 } = wp.element;
 
@@ -486,7 +485,7 @@ class gtImageTextEdit extends Component {
     }
 }
 
-export default compose( [
+export default wp.compose.compose( [
     withAPIData( ( props ) => {
         const { imgID } = props.attributes;
         if ( ! imgID ) {

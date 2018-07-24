@@ -24,7 +24,6 @@ import {
  */
  const {
     Component,
-    compose,
     Fragment,
 } = wp.element;
 
@@ -480,9 +479,9 @@ class gtPortfolioEdit extends Component {
                                     <div className="gt-grid-item" key={ index }>
 
                                         <PortfolioImage
-                                            id={ item.imgID }
-                                            url={ item.imgURL }
-                                            alt={ item.imgAlt }
+                                            imgID={ item.imgID }
+                                            imgURL={ item.imgURL }
+                                            imgAlt={ item.imgAlt }
                                             onSelect={ ( img ) => this.onSelectImage( img, index ) }
                                             onRemove={ () => this.onRemoveImage( index ) }
                                             addSize={ this.addImageSize }
@@ -595,7 +594,7 @@ class gtPortfolioEdit extends Component {
     }
 }
 
-export default compose( [
+export default wp.compose.compose( [
     withColors( ( getColor, setColor, { attributes } ) => {
         return {
             backgroundColor: getColor( attributes.backgroundColor, attributes.customBackgroundColor, 'background-color' ),
