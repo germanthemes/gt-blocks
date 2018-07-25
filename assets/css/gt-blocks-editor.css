@@ -57,6 +57,7 @@
             flex-direction: column;
     /* Block Image Edit */
     /* Portfolio Grid Item Content */
+    /* Portfolio Grid Item URL Input */
     /* Portfolio Grid Item Controls*/ }
     .wp-block-german-themes-blocks-portfolio .gt-grid-item .gt-image {
       /* Image was added in Editor */
@@ -83,66 +84,64 @@
       .wp-block-german-themes-blocks-portfolio .gt-grid-item .gt-content .gt-text p {
         color: inherit;
         font-size: inherit; }
-      .wp-block-german-themes-blocks-portfolio .gt-grid-item .gt-content .gt-button[data-is-placeholder-visible='true'] {
-        background: none; }
+      .wp-block-german-themes-blocks-portfolio .gt-grid-item .gt-content .gt-button-edit {
+        display: inline-block; }
+        .wp-block-german-themes-blocks-portfolio .gt-grid-item .gt-content .gt-button-edit .editor-rich-text__tinymce {
+          cursor: text; }
+    .wp-block-german-themes-blocks-portfolio .gt-grid-item .gt-url-input {
+      margin-top: auto;
+      padding-top: 0;
+      background: #fff;
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      -ms-flex-wrap: wrap;
+          flex-wrap: wrap;
+      -webkit-box-align: center;
+          -ms-flex-align: center;
+              align-items: center; }
+      .wp-block-german-themes-blocks-portfolio .gt-grid-item .gt-url-input .editor-url-input {
+        width: auto; }
+      .wp-block-german-themes-blocks-portfolio .gt-grid-item .gt-url-input > .dashicon {
+        width: 24px; }
+      .wp-block-german-themes-blocks-portfolio .gt-grid-item .gt-url-input .dashicon {
+        color: #8f98a1; }
+      .wp-block-german-themes-blocks-portfolio .gt-grid-item .gt-url-input .editor-url-input input[type=text]::-webkit-input-placeholder {
+        color: #8f98a1; }
+      .wp-block-german-themes-blocks-portfolio .gt-grid-item .gt-url-input .editor-url-input input[type=text]:-ms-input-placeholder {
+        color: #8f98a1; }
+      .wp-block-german-themes-blocks-portfolio .gt-grid-item .gt-url-input .editor-url-input input[type=text]::-ms-input-placeholder {
+        color: #8f98a1; }
+      .wp-block-german-themes-blocks-portfolio .gt-grid-item .gt-url-input .editor-url-input input[type=text]::placeholder {
+        color: #8f98a1; }
+      [data-align="center"] .wp-block-german-themes-blocks-portfolio .gt-grid-item .gt-url-input {
+        margin-left: auto;
+        margin-right: auto; }
+      [data-align="right"] .wp-block-german-themes-blocks-portfolio .gt-grid-item .gt-url-input {
+        margin-left: auto;
+        margin-right: 0; }
     .wp-block-german-themes-blocks-portfolio .gt-grid-item .gt-grid-item-controls {
-      margin-bottom: 16px;
-      /* Portfolio Grid Item URL Input */
-      /* Portfolio Grid Item Controls*/ }
-      .wp-block-german-themes-blocks-portfolio .gt-grid-item .gt-grid-item-controls .gt-url-input {
-        margin-top: auto;
-        padding-top: 0;
-        background: #fff;
-        display: -webkit-box;
-        display: -ms-flexbox;
-        display: flex;
-        -ms-flex-wrap: wrap;
-            flex-wrap: wrap;
-        -webkit-box-align: center;
-            -ms-flex-align: center;
-                align-items: center; }
-        .wp-block-german-themes-blocks-portfolio .gt-grid-item .gt-grid-item-controls .gt-url-input .editor-url-input {
-          width: auto; }
-        .wp-block-german-themes-blocks-portfolio .gt-grid-item .gt-grid-item-controls .gt-url-input > .dashicon {
-          width: 24px; }
-        .wp-block-german-themes-blocks-portfolio .gt-grid-item .gt-grid-item-controls .gt-url-input .dashicon {
-          color: #8f98a1; }
-        .wp-block-german-themes-blocks-portfolio .gt-grid-item .gt-grid-item-controls .gt-url-input .editor-url-input input[type=text]::-webkit-input-placeholder {
-          color: #8f98a1; }
-        .wp-block-german-themes-blocks-portfolio .gt-grid-item .gt-grid-item-controls .gt-url-input .editor-url-input input[type=text]:-ms-input-placeholder {
-          color: #8f98a1; }
-        .wp-block-german-themes-blocks-portfolio .gt-grid-item .gt-grid-item-controls .gt-url-input .editor-url-input input[type=text]::-ms-input-placeholder {
-          color: #8f98a1; }
-        .wp-block-german-themes-blocks-portfolio .gt-grid-item .gt-grid-item-controls .gt-url-input .editor-url-input input[type=text]::placeholder {
-          color: #8f98a1; }
-        [data-align="center"] .wp-block-german-themes-blocks-portfolio .gt-grid-item .gt-grid-item-controls .gt-url-input {
-          margin-left: auto;
-          margin-right: auto; }
-        [data-align="right"] .wp-block-german-themes-blocks-portfolio .gt-grid-item .gt-grid-item-controls .gt-url-input {
-          margin-left: auto;
-          margin-right: 0; }
-      .wp-block-german-themes-blocks-portfolio .gt-grid-item .gt-grid-item-controls .gt-grid-item-actions {
-        display: -webkit-box;
-        display: -ms-flexbox;
-        display: flex;
-        margin-top: 16px;
-        padding: 8px 4px;
-        width: 100%;
-        background: #edeff0;
-        border: 1px solid #e2e4e7; }
-        .wp-block-german-themes-blocks-portfolio .gt-grid-item .gt-grid-item-controls .gt-grid-item-actions .gt-grid-item-number {
-          margin: 2px 10px;
-          font-size: 14px;
-          font-weight: bold; }
-        .wp-block-german-themes-blocks-portfolio .gt-grid-item .gt-grid-item-controls .gt-grid-item-actions .components-icon-button {
-          padding: 4px 5px; }
-          .wp-block-german-themes-blocks-portfolio .gt-grid-item .gt-grid-item-controls .gt-grid-item-actions .components-icon-button:hover, .wp-block-german-themes-blocks-portfolio .gt-grid-item .gt-grid-item-controls .gt-grid-item-actions .components-icon-button:active, .wp-block-german-themes-blocks-portfolio .gt-grid-item .gt-grid-item-controls .gt-grid-item-actions .components-icon-button:focus {
-            background: #fff; }
-        .wp-block-german-themes-blocks-portfolio .gt-grid-item .gt-grid-item-controls .gt-grid-item-actions .remove-portfolio-item {
-          margin-left: auto; }
-          .wp-block-german-themes-blocks-portfolio .gt-grid-item .gt-grid-item-controls .gt-grid-item-actions .remove-portfolio-item .dashicon {
-            width: 18px; }
-  .wp-block-german-themes-blocks-portfolio .gt-add-portfolio-item.button-large {
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      margin-top: 16px;
+      padding: 8px;
+      width: 100%;
+      background: #edeff0;
+      border: 1px solid #e2e4e7; }
+      .wp-block-german-themes-blocks-portfolio .gt-grid-item .gt-grid-item-controls .gt-grid-item-number {
+        margin: 2px 10px 2px 6px;
+        font-size: 14px;
+        font-weight: bold; }
+      .wp-block-german-themes-blocks-portfolio .gt-grid-item .gt-grid-item-controls .components-icon-button {
+        padding: 4px 5px; }
+        .wp-block-german-themes-blocks-portfolio .gt-grid-item .gt-grid-item-controls .components-icon-button:hover, .wp-block-german-themes-blocks-portfolio .gt-grid-item .gt-grid-item-controls .components-icon-button:active, .wp-block-german-themes-blocks-portfolio .gt-grid-item .gt-grid-item-controls .components-icon-button:focus {
+          background: #fff; }
+      .wp-block-german-themes-blocks-portfolio .gt-grid-item .gt-grid-item-controls .remove-portfolio-item {
+        margin-left: auto; }
+        .wp-block-german-themes-blocks-portfolio .gt-grid-item .gt-grid-item-controls .remove-portfolio-item .dashicon {
+          width: 18px; }
+  .wp-block-german-themes-blocks-portfolio .gt-add-portfolio-item {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -153,7 +152,7 @@
     -webkit-box-align: center;
         -ms-flex-align: center;
             align-items: center;
-    margin-top: 16px;
+    margin-top: 1.5rem;
     padding: 25px 20px 20px;
     width: 100%;
     height: auto;
@@ -161,8 +160,10 @@
             box-shadow: none;
     border: 1px solid #ddd;
     border-radius: 0; }
-    .wp-block-german-themes-blocks-portfolio .gt-add-portfolio-item.button-large:hover, .wp-block-german-themes-blocks-portfolio .gt-add-portfolio-item.button-large:focus {
-      border: 1px solid #999; }
+    .wp-block-german-themes-blocks-portfolio .gt-add-portfolio-item:hover, .wp-block-german-themes-blocks-portfolio .gt-add-portfolio-item:focus {
+      border: 1px solid #999;
+      -webkit-box-shadow: none;
+              box-shadow: none; }
 .wp-block-german-themes-blocks-services {
   padding: 0;
   /* Portfolio Grid Layout */ }

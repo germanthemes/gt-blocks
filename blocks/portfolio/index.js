@@ -105,7 +105,7 @@ registerBlockType(
             },
             showButtons: {
                 type: 'boolean',
-                default: false,
+                default: true,
             },
             imageSize: {
                 type: 'string',

@@ -516,20 +516,22 @@ class gtPortfolioEdit extends Component {
                                                 keepPlaceholderOnFocus
                                             />
 
-                                            <RichText
-                                                tagName="a"
-                                                placeholder={ __( 'Add button text' ) }
-                                                value={ item.buttonText }
-                                                className={ classnames( 'gt-button', { 'gt-button-hidden': ! attributes.showButtons } ) }
-                                                onChange={ ( newButtonText ) => this.onChangeButtonText( newButtonText, index ) }
-                                                formattingControls={ [ 'bold', 'italic', 'strikethrough' ] }
-                                                keepPlaceholderOnFocus
-                                            />
+                                            <span className="gt-button-edit">
+                                                <RichText
+                                                    tagName="span"
+                                                    placeholder={ __( 'Add button text' ) }
+                                                    value={ item.buttonText }
+                                                    className={ classnames( 'gt-button', { 'gt-button-hidden': ! attributes.showButtons } ) }
+                                                    onChange={ ( newButtonText ) => this.onChangeButtonText( newButtonText, index ) }
+                                                    formattingControls={ [ 'bold', 'italic', 'strikethrough' ] }
+                                                    keepPlaceholderOnFocus
+                                                />
+                                            </span>
 
                                         </div>
 
                                         { isSelected && (
-                                            <div className="gt-grid-item-controls">
+                                            <Fragment>
 
                                                 <form
                                                     className="gt-url-input"
@@ -543,7 +545,7 @@ class gtPortfolioEdit extends Component {
                                                     <IconButton icon="editor-break" label={ __( 'Apply' ) } type="submit" />
                                                 </form>
 
-                                                <div className="gt-grid-item-actions">
+                                                <div className="gt-grid-item-controls">
                                                     <div className="gt-grid-item-number">
                                                         #{ index + 1 }
                                                     </div>
@@ -571,7 +573,7 @@ class gtPortfolioEdit extends Component {
                                                         onClick={ () => this.removePortfolioItem( index ) }
                                                     />
                                                 </div>
-                                            </div>
+                                            </Fragment>
                                         ) }
 
                                     </div>

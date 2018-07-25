@@ -50,93 +50,92 @@
                 font-size: inherit;
             }
 
-            .gt-button[data-is-placeholder-visible='true'] {
-                background: none;
+            .gt-button-edit {
+                display: inline-block;
+
+                .editor-rich-text__tinymce {
+                    cursor: text;
+                }
+            }
+        }
+
+        /* Portfolio Grid Item URL Input */
+        .gt-url-input {
+            margin-top: auto;
+            padding-top: 0;
+            background: #fff;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+
+            .editor-url-input {
+                width: auto;
+            }
+
+            > .dashicon {
+                width: 24px;
+            }
+
+            .dashicon {
+                color: #8f98a1;
+            }
+
+            .editor-url-input input[type=text]::placeholder {
+                color: #8f98a1;
+            }
+
+            [data-align="center"] & {
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+            [data-align="right"] & {
+                margin-left: auto;
+                margin-right: 0;
             }
         }
 
         /* Portfolio Grid Item Controls*/
         .gt-grid-item-controls {
-            margin-bottom: 16px;
+            display: flex;
+            margin-top: 16px;
+            padding: 8px;
+            width: 100%;
+            background: #edeff0;
+            border: 1px solid #e2e4e7;
 
-            /* Portfolio Grid Item URL Input */
-            .gt-url-input {
-                margin-top: auto;
-                padding-top: 0;
-                background: #fff;
-                display: flex;
-                flex-wrap: wrap;
-                align-items: center;
+            .gt-grid-item-number {
+                margin: 2px 10px 2px 6px;
+                font-size: 14px;
+                font-weight: bold;
+            }
 
-                .editor-url-input {
-                    width: auto;
-                }
+            .components-icon-button {
+                padding: 4px 5px;
 
-                > .dashicon {
-                    width: 24px;
-                }
-
-                .dashicon {
-                    color: #8f98a1;
-                }
-
-                .editor-url-input input[type=text]::placeholder {
-                    color: #8f98a1;
-                }
-
-                [data-align="center"] & {
-                    margin-left: auto;
-                    margin-right: auto;
-                }
-
-                [data-align="right"] & {
-                    margin-left: auto;
-                    margin-right: 0;
+                &:hover,
+                &:active,
+                &:focus {
+                    background: #fff;
                 }
             }
 
-            /* Portfolio Grid Item Controls*/
-            .gt-grid-item-actions {
-                display: flex;
-                margin-top: 16px;
-                padding: 8px 4px;
-                width: 100%;
-                background: #edeff0;
-                border: 1px solid #e2e4e7;
+            .remove-portfolio-item {
+                margin-left: auto;
 
-                .gt-grid-item-number {
-                    margin: 2px 10px;
-                    font-size: 14px;
-                    font-weight: bold;
-                }
-
-                .components-icon-button {
-                    padding: 4px 5px;
-
-                    &:hover,
-                    &:active,
-                    &:focus {
-                        background: #fff;
-                    }
-                }
-
-                .remove-portfolio-item {
-                    margin-left: auto;
-
-                    .dashicon {
-                        width: 18px;
-                    }
+                .dashicon {
+                    width: 18px;
                 }
             }
         }
     }
 
     /* Add Portfolio Item*/
-    .gt-add-portfolio-item.button-large {
+    .gt-add-portfolio-item {
         display: flex;
         flex-direction: column;
         align-items: center;
-        margin-top: 16px;
+        margin-top: 1.5rem;
         padding: 25px 20px 20px;
         width: 100%;
         height: auto;
@@ -147,6 +146,7 @@
         &:hover,
         &:focus {
             border: 1px solid #999;
+            box-shadow: none;
         }
     }
 }
