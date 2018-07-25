@@ -112,11 +112,8 @@ registerBlockType(
                 default: 'full',
             },
             titleTag: {
-                type: 'string',
-                source: 'property',
-                selector: 'h1,h2,h3,h4,h5,h6',
-                property: 'nodeName',
-                default: 'H2',
+                type: 'number',
+                default: 2,
             },
             fontSize: {
                 type: 'string',
@@ -210,6 +207,7 @@ registerBlockType(
 
                                 const titleText = <span class="gt-title-text">{ item.title }</span>;
                                 const title = item.itemURL ? <a href={ item.itemURL } className="gt-item-url" title={ titleText }>{ titleText }</a> : titleText;
+                                const titleTag = 'h' + attributes.titleTag;
 
                                 return (
                                     <div className="gt-grid-item" key={ index }>
@@ -221,7 +219,7 @@ registerBlockType(
                                         <div className={ contentClasses } style={ contentStyles }>
 
                                             <RichText.Content
-                                                tagName={ attributes.titleTag.toLowerCase() }
+                                                tagName={ titleTag }
                                                 className={ titleClasses }
                                                 value={ title }
                                                 style={ titleStyles }

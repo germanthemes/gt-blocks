@@ -5,6 +5,7 @@ import classnames from 'classnames';
 import {
     isEmpty,
     map,
+    range,
     startCase,
     uniq,
 } from 'lodash';
@@ -351,6 +352,8 @@ class gtPortfolioEdit extends Component {
             color: titleColor.class ? undefined : titleColor.value,
         };
 
+        const titleTag = 'h' + attributes.titleTag;
+
         return (
             <Fragment>
                 <BlockControls key="controls">
@@ -429,11 +432,11 @@ class gtPortfolioEdit extends Component {
                         <p><label className="blocks-base-control__label">{ __( 'Heading' ) }</label></p>
                         <Toolbar
                             controls={
-                            '123456'.split( '' ).map( ( level ) => ( {
+                            range( 1, 7 ).map( ( level ) => ( {
                                 icon: 'heading',
                                 title: sprintf( __( 'Heading %s' ), level ),
-                                isActive: 'H' + level === attributes.titleTag,
-                                onClick: () => setAttributes( { titleTag: 'H' + level } ),
+                                isActive: level === attributes.titleTag,
+                                onClick: () => setAttributes( { titleTag: level } ),
                                 subscript: level,
                             } ) )
                             }
@@ -492,7 +495,7 @@ class gtPortfolioEdit extends Component {
                                         <div className={ contentClasses } style={ contentStyles }>
 
                                             <RichText
-                                                tagName={ attributes.titleTag.toLowerCase() }
+                                                tagName={ titleTag }
                                                 placeholder={ __( 'Enter a title' ) }
                                                 value={ item.title }
                                                 className={ titleClasses }

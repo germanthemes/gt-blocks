@@ -63,11 +63,8 @@ registerBlockType(
                 selector: '.block-title',
             },
             titleTag: {
-                type: 'string',
-                source: 'property',
-                selector: 'h1,h2,h3,h4,h5,h6',
-                property: 'nodeName',
-                default: 'H2',
+                type: 'number',
+                default: 2,
             },
             text: {
                 type: 'array',
@@ -157,6 +154,8 @@ registerBlockType(
                 fontSize: fontSizeClass ? undefined : attributes.customFontSize,
             };
 
+            const titleTag = 'h' + attributes.titleTag;
+
             return (
                 <div className={ classNames ? classNames : undefined }>
 
@@ -172,7 +171,7 @@ registerBlockType(
                         <div className="block-content-inner">
 
                             <RichText.Content
-                                tagName={ attributes.titleTag.toLowerCase() }
+                                tagName={ titleTag }
                                 className="block-title"
                                 value={ attributes.title }
                             />

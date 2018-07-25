@@ -7,6 +7,7 @@ import {
     isEmpty,
     map,
     get,
+    range,
 } from 'lodash';
 
 /**
@@ -218,6 +219,8 @@ class gtImageTextEdit extends Component {
             textAlign: attributes.textAlignment,
         };
 
+        const titleTag = 'h' + attributes.titleTag;
+
         return (
             <Fragment>
                 <BlockControls>
@@ -259,11 +262,11 @@ class gtImageTextEdit extends Component {
 
                     <Toolbar
                         controls={
-                        '234'.split( '' ).map( ( level ) => ( {
+                        range( 1, 5 ).map( ( level ) => ( {
                             icon: 'heading',
                             title: sprintf( __( 'Heading %s' ), level ),
-                            isActive: 'H' + level === attributes.titleTag,
-                            onClick: () => setAttributes( { titleTag: 'H' + level } ),
+                            isActive: level === attributes.titleTag,
+                            onClick: () => setAttributes( { titleTag: level } ),
                             subscript: level,
                         } ) )
                         }
@@ -341,11 +344,11 @@ class gtImageTextEdit extends Component {
                         <p><label className="blocks-base-control__label">{ __( 'Heading' ) }</label></p>
                         <Toolbar
                             controls={
-                            '123456'.split( '' ).map( ( level ) => ( {
+                            range( 1, 7 ).map( ( level ) => ( {
                                 icon: 'heading',
                                 title: sprintf( __( 'Heading %s' ), level ),
-                                isActive: 'H' + level === attributes.titleTag,
-                                onClick: () => setAttributes( { titleTag: 'H' + level } ),
+                                isActive: level === attributes.titleTag,
+                                onClick: () => setAttributes( { titleTag: level } ),
                                 subscript: level,
                             } ) )
                             }
@@ -458,12 +461,13 @@ class gtImageTextEdit extends Component {
                         <div className="block-content-inner">
 
                             <RichText
-                                tagName={ attributes.titleTag.toLowerCase() }
+                                tagName={ titleTag }
                                 placeholder={ __( 'Enter a title' ) }
                                 value={ attributes.title }
                                 className="block-title"
                                 style={ styles }
                                 onChange={ ( newTitle ) => setAttributes( { title: newTitle } ) }
+                                keepPlaceholderOnFocus
                             />
 
                             <RichText
@@ -474,6 +478,7 @@ class gtImageTextEdit extends Component {
                                 className="block-text"
                                 style={ { fontSize: fontSize ? fontSize + 'px' : undefined } }
                                 onChange={ ( newText ) => setAttributes( { text: newText } ) }
+                                keepPlaceholderOnFocus
                             />
 
                         </div>
