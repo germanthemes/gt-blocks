@@ -159,6 +159,22 @@
     border-radius: 0; }
     .wp-block-german-themes-blocks-portfolio .gt-add-portfolio-item.button-large:hover, .wp-block-german-themes-blocks-portfolio .gt-add-portfolio-item.button-large:focus {
       border: 1px solid #999; }
+.wp-block-german-themes-blocks-services {
+  padding: 0;
+  /* Portfolio Grid Layout */ }
+  .wp-block-german-themes-blocks-services .gt-grid-container {
+    display: block; }
+    .wp-block-german-themes-blocks-services .gt-grid-container > .editor-inner-blocks > .editor-block-list__layout {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr); }
+  .wp-block-german-themes-blocks-services.gt-columns-2 .gt-grid-container > .editor-inner-blocks > .editor-block-list__layout {
+    grid-template-columns: repeat(2, 1fr); }
+  .wp-block-german-themes-blocks-services.gt-columns-4 .gt-grid-container > .editor-inner-blocks > .editor-block-list__layout {
+    grid-template-columns: repeat(4, 1fr); }
+  .wp-block-german-themes-blocks-services.gt-columns-5 .gt-grid-container > .editor-inner-blocks > .editor-block-list__layout {
+    grid-template-columns: repeat(5, 1fr); }
+  .wp-block-german-themes-blocks-services.gt-columns-6 .gt-grid-container > .editor-inner-blocks > .editor-block-list__layout {
+    grid-template-columns: repeat(6, 1fr); }
 .wp-block-german-themes-blocks-testimonials .sorry.warning {
   background: #C44D58;
   color: white;

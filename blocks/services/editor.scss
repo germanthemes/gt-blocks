@@ -1,3 +1,30 @@
 .wp-block-german-themes-blocks-services {
 
+    padding: 0;
+
+    /* Portfolio Grid Layout */
+    .gt-grid-container {
+        display: block;
+
+        > .editor-inner-blocks > .editor-block-list__layout {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+        }
+    }
+
+    &.gt-columns-2 .gt-grid-container > .editor-inner-blocks > .editor-block-list__layout {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    &.gt-columns-4 .gt-grid-container > .editor-inner-blocks > .editor-block-list__layout {
+        grid-template-columns: repeat(4, 1fr);
+    }
+
+    &.gt-columns-5 .gt-grid-container > .editor-inner-blocks > .editor-block-list__layout {
+        grid-template-columns: repeat(5, 1fr);
+    }
+
+    &.gt-columns-6 .gt-grid-container > .editor-inner-blocks > .editor-block-list__layout {
+        grid-template-columns: repeat(6, 1fr);
+    }
 }
