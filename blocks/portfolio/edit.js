@@ -43,7 +43,7 @@ const {
     InspectorControls,
     PanelColor,
     RichText,
-    UrlInput,
+    URLInput,
     withColors,
  } = wp.editor;
 
@@ -529,41 +529,40 @@ class gtPortfolioEdit extends Component {
                                         </div>
 
                                         { isSelected && (
-                                            <Fragment>
+                                            <div className="gt-grid-item-controls">
+
                                                 <form
                                                     className="gt-url-input"
                                                     onSubmit={ ( event ) => event.preventDefault() }>
                                                     <Dashicon icon="admin-links" />
-                                                    <UrlInput
+                                                    <URLInput
                                                         value={ item.itemURL }
                                                         onChange={ ( newItemURL ) => this.onChangeItemURL( newItemURL, index ) }
                                                         autoFocus= { false }
                                                     />
                                                     <IconButton icon="editor-break" label={ __( 'Apply' ) } type="submit" />
-                                                </form>,
+                                                </form>
 
-                                                <div className="gt-grid-item-controls">
+                                                <div className="gt-grid-item-actions">
                                                     <div className="gt-grid-item-number">
                                                         #{ index + 1 }
                                                     </div>
 
-                                                    { index !== 0 && (
-                                                        <IconButton
-                                                            className="move-up-portfolio-item"
-                                                            label={ __( 'Move up' ) }
-                                                            icon="arrow-up-alt2"
-                                                            onClick={ () => this.moveUpPortfolioItem( index ) }
-                                                        />
-                                                    ) }
+                                                    <IconButton
+                                                        className="move-up-portfolio-item"
+                                                        label={ __( 'Move up' ) }
+                                                        icon="arrow-up-alt2"
+                                                        onClick={ () => this.moveUpPortfolioItem( index ) }
+                                                        disabled={ index === 0 }
+                                                    />
 
-                                                    { ( ( index + 1 ) !== attributes.items.length ) && (
-                                                        <IconButton
-                                                            className="move-down-portfolio-item"
-                                                            label={ __( 'Move down' ) }
-                                                            icon="arrow-down-alt2"
-                                                            onClick={ () => this.moveDownPortfolioItem( index ) }
-                                                        />
-                                                    ) }
+                                                    <IconButton
+                                                        className="move-down-portfolio-item"
+                                                        label={ __( 'Move down' ) }
+                                                        icon="arrow-down-alt2"
+                                                        onClick={ () => this.moveDownPortfolioItem( index ) }
+                                                        disabled={ ( index + 1 ) === attributes.items.length }
+                                                    />
 
                                                     <IconButton
                                                         className="remove-portfolio-item"
@@ -572,7 +571,7 @@ class gtPortfolioEdit extends Component {
                                                         onClick={ () => this.removePortfolioItem( index ) }
                                                     />
                                                 </div>
-                                            </Fragment>
+                                            </div>
                                         ) }
 
                                     </div>
