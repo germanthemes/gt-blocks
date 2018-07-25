@@ -33,6 +33,7 @@ const {
 } = wp.i18n;
 
 const { withSelect } = wp.data;
+const { compose } = wp.compose;
 
 const {
     AlignmentToolbar,
@@ -594,17 +595,8 @@ class gtPortfolioEdit extends Component {
     }
 }
 
-export default wp.compose.compose( [
-    withColors( ( getColor, setColor, { attributes } ) => {
-        return {
-            backgroundColor: getColor( attributes.backgroundColor, attributes.customBackgroundColor, 'background-color' ),
-            setBackgroundColor: setColor( 'backgroundColor', 'customBackgroundColor' ),
-            textColor: getColor( attributes.textColor, attributes.customTextColor, 'color' ),
-            setTextColor: setColor( 'textColor', 'customTextColor' ),
-            titleColor: getColor( attributes.titleColor, attributes.customTitleColor, 'color' ),
-            setTitleColor: setColor( 'titleColor', 'customTitleColor' ),
-        };
-    } ),
+export default compose( [
+    withColors( 'backgroundColor', { textColor: 'color' }, 'titleColor' ),
     withSelect( ( select  ) => ( {
         wideControlsEnabled: select( 'core/editor' ).getEditorSettings().alignWide,
     } ) )

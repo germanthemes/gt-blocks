@@ -79,8 +79,10 @@
     .wp-block-german-themes-blocks-portfolio .gt-grid-item .gt-content {
       margin-bottom: 16px; }
       .wp-block-german-themes-blocks-portfolio .gt-grid-item .gt-content .gt-title {
+        color: inherit;
         margin-top: 0 !important; }
       .wp-block-german-themes-blocks-portfolio .gt-grid-item .gt-content .gt-text p {
+        color: inherit;
         font-size: inherit; }
       .wp-block-german-themes-blocks-portfolio .gt-grid-item .gt-content .gt-button[data-is-placeholder-visible='true'] {
         background: none; }
