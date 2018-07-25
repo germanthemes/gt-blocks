@@ -2,6 +2,7 @@
  * External dependencies
  */
 import { times } from 'lodash';
+import memoize from 'memize';
 
 /**
  * Import Child Block
@@ -27,10 +28,17 @@ const {
  * InnerBlock Settings
  */
 const ALLOWED_BLOCKS = [ 'german-themes-blocks/service-item' ];
-const TEMPLATE = [
-    [ 'german-themes-blocks/service-item', { text: 'Enter your service' } ],
-    [ 'german-themes-blocks/service-item', { text: 'Enter your service' } ]
-];
+
+/**
+ * Returns the number of service boxes.
+ *
+ * @param {number} services Number of services.
+ *
+ * @return {Object[]} Columns layout configuration.
+ */
+const getServicesTemplate = memoize( ( services ) => {
+	return times( services, () => [ 'german-themes-blocks/service-item', { text: 'Enter your service' } ] );
+} );
 
 /**
  * Register block
@@ -56,10 +64,13 @@ registerBlockType(
         ],
 
         attributes: {
-            text: {
-                type: 'array',
-                source: 'children',
-                selector: '.block-text',
+            services: {
+                type: 'number',
+                default: 3,
+            },
+            columns: {
+                type: 'number',
+                default: 3,
             },
         },
 
@@ -69,7 +80,8 @@ registerBlockType(
                 <div className={ className }>
 
                     <InnerBlocks
-                        template={ TEMPLATE }
+                        template={ getServicesTemplate( attributes.services ) }
+                        templateLock='all'
                         allowedBlocks={ ALLOWED_BLOCKS }
                     />
 
