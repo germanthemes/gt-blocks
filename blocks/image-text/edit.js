@@ -32,6 +32,8 @@ const {
     sprintf,
 } = wp.i18n;
 
+const { compose } = wp.compose;
+
 const {
     AlignmentToolbar,
     BlockControls,
@@ -485,7 +487,7 @@ class gtImageTextEdit extends Component {
     }
 }
 
-export default wp.compose.compose( [
+export default compose( [
     withAPIData( ( props ) => {
         const { imgID } = props.attributes;
         if ( ! imgID ) {
@@ -496,12 +498,5 @@ export default wp.compose.compose( [
             image: `/wp/v2/media/${ imgID }`,
         };
     } ),
-    withColors( ( getColor, setColor, { attributes } ) => {
-        return {
-            backgroundColor: getColor( attributes.backgroundColor, attributes.customBackgroundColor, 'background-color' ),
-            setBackgroundColor: setColor( 'backgroundColor', 'customBackgroundColor' ),
-            textColor: getColor( attributes.textColor, attributes.customTextColor, 'color' ),
-            setTextColor: setColor( 'textColor', 'customTextColor' ),
-        };
-    } )
+    withColors( 'backgroundColor', { textColor: 'color' } )
 ] )( gtImageTextEdit );

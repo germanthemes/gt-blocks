@@ -32,7 +32,8 @@
 
 /* Font Size */
 .wp-block-german-themes-blocks-image-text .block-content .block-text p {
-  font-size: inherit; }
+  font-size: inherit;
+  color: inherit; }
 
 /* Change Size of Vertical Alignment Icons */
 .edit-post-sidebar .gt-vertical-align-control button svg {
