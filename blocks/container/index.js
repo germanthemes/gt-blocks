@@ -26,9 +26,13 @@ registerBlockType(
 
         description: __( 'Add a description here' ),
 
-        category: 'layout',
+        category: 'germanthemes',
 
-        icon: 'wordpress-alt',
+        icon: {
+            foreground: '#2585ff',
+            background: '#ddeeff',
+            src: 'wordpress-alt',
+        },
 
         keywords: [
             __( 'German Themes' ),

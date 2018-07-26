@@ -119,6 +119,9 @@ class German_Themes_Blocks {
 
 		// Add custom image sizes.
 		add_action( 'after_setup_theme', array( __CLASS__, 'add_image_sizes' ) );
+
+		// Add block category.
+		add_filter( 'block_categories', array( __CLASS__, 'block_categories' ), 10, 2 );
 	}
 
 	/**
@@ -167,6 +170,23 @@ class German_Themes_Blocks {
 
 		#add_image_size( 'GT-portrait-320-x-480', 320, 480, true );
 		add_image_size( 'GT-portrait-640-x-600', 640, 960, true );
+	}
+
+	/**
+	 * Define custom image sizes
+	 *
+	 * @return void
+	 */
+	static function block_categories( $categories, $post ) {
+		return array_merge(
+			$categories,
+			array(
+				array(
+					'slug'  => 'germanthemes',
+					'title' => __( 'German Themes', 'german-themes-blocks' ),
+				),
+			)
+		);
 	}
 }
 

@@ -60,10 +60,11 @@ registerBlockType(
 
         description: __( 'Add a description here' ),
 
-        category: 'layout',
+        category: 'germanthemes',
 
         icon: {
-            background: '#7e70af',
+            foreground: '#2585ff',
+            background: '#ddeeff',
             src: 'carrot',
         },
 

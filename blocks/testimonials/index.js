@@ -17,13 +17,21 @@ export default registerBlockType(
     'german-themes-blocks/testimonials',
     {
         title: __( 'GT Testimonials' ),
-        category: 'layout',
-        icon: 'wordpress-alt',
+
+        category: 'germanthemes',
+
+        icon: {
+            foreground: '#2585ff',
+            background: '#ddeeff',
+            src: 'wordpress-alt',
+        },
+
         keywords: [
             __( 'German Themes' ),
             __( 'Services' ),
             __( 'Layout' ),
         ],
+
         edit: props => {
           return (
             <div className={ props.className }>
@@ -37,6 +45,7 @@ export default registerBlockType(
             </div>
           );
         },
+
         save: props => {
           return (
             <div>

@@ -31,9 +31,13 @@ registerBlockType(
 
         description: __( 'Add a description here' ),
 
-        category: 'layout',
+        category: 'germanthemes',
 
-        icon: gtImageTextIcon,
+        icon: {
+            foreground: '#2585ff',
+            background: '#ddeeff',
+            src: gtImageTextIcon,
+        },
 
         keywords: [
             __( 'German Themes' ),

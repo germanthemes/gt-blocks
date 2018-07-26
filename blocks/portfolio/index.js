@@ -31,9 +31,13 @@ registerBlockType(
 
         description: __( 'Add a description here' ),
 
-        category: 'layout',
+        category: 'germanthemes',
 
-        icon: gtPortfolioIcon,
+        icon: {
+            foreground: '#2585ff',
+            background: '#ddeeff',
+            src: gtPortfolioIcon,
+        },
 
         keywords: [
             __( 'German Themes' ),
