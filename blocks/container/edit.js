@@ -29,6 +29,7 @@ const {
 
 const {
     PanelBody,
+    RangeControl,
 } = wp.components;
 
 class gtContainerEdit extends Component {
@@ -51,8 +52,12 @@ class gtContainerEdit extends Component {
             [ backgroundColor.class ]: backgroundColor.class,
         } );
 
-        const styles = {
+        const blockStyles = {
             backgroundColor: backgroundColor.class ? undefined : backgroundColor.value,
+        };
+
+        const contentStyles = {
+            maxWidth: attributes.contentWidth + 'px',
         };
 
         return (
@@ -78,6 +83,14 @@ class gtContainerEdit extends Component {
                             controls={ [ 'wide', 'full' ] }
                         />
 
+                        <RangeControl
+                            label={ __( 'Content Width (in px)' ) }
+                            value={ attributes.contentWidth }
+                            onChange={ ( maxWidth ) => setAttributes( { contentWidth: maxWidth } ) }
+                            min={ 100 }
+                            max={ 2500 }
+                        />
+
                     </PanelBody>
 
                     <PanelColor
@@ -89,8 +102,10 @@ class gtContainerEdit extends Component {
 
                 </InspectorControls>
 
-                <div className={ classNames } style={ styles }>
-                    <InnerBlocks />
+                <div className={ classNames } style={ blockStyles }>
+                    <div className="gt-inner-content" style={ contentStyles }>
+                        <InnerBlocks />
+                    </div>
                 </div>
 
             </Fragment>

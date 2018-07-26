@@ -51,6 +51,10 @@ registerBlockType(
                 type: 'string',
                 default: 'center',
             },
+            contentWidth: {
+                type: 'number',
+                default: 720,
+            },
             backgroundColor: {
                 type: 'string',
             },
@@ -77,13 +81,19 @@ registerBlockType(
                 [ backgroundClass ]: backgroundClass,
             } );
 
-            const styles = {
+            const blockStyles = {
                 backgroundColor: backgroundClass ? undefined : attributes.customBackgroundColor,
             };
 
+            const contentStyles = {
+                maxWidth: attributes.contentWidth + 'px',
+            };
+
             return (
-                <div className={ classNames ? classNames : undefined } style={ styles }>
-                    <InnerBlocks.Content />
+                <div className={ classNames ? classNames : undefined } style={ blockStyles }>
+                    <div className="gt-inner-content" style={ contentStyles }>
+                        <InnerBlocks.Content />
+                    </div>
                 </div>
             );
         },
