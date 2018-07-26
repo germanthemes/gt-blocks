@@ -8,13 +8,24 @@ import classnames from 'classnames';
  */
 import './style.scss';
 import './editor.scss';
-import { default as gtContainerBlock } from './block';
 
 /**
  * Internal block libraries
  */
 const { __ } = wp.i18n;
-const { registerBlockType, InnerBlocks } = wp.blocks;
+const { registerBlockType } = wp.blocks;
+const { Fragment } = wp.element;
+
+const {
+    BlockAlignmentToolbar,
+    BlockControls,
+    InspectorControls,
+    InnerBlocks,
+} = wp.editor;
+
+const {
+    PanelBody,
+} = wp.components;
 
 /**
  * Register block
@@ -31,54 +42,75 @@ registerBlockType(
         icon: {
             foreground: '#2585ff',
             background: '#ddeeff',
-            src: 'wordpress-alt',
+            src: 'carrot',
         },
 
         keywords: [
             __( 'German Themes' ),
             __( 'Container' ),
-            __( 'Layout' ),
+            __( 'Text' ),
         ],
 
         attributes: {
             blockAlignment: {
                 type: 'string',
-                default: 'full',
-            },
-            textColor: {
-                type: 'string',
-            },
-            backgroundColor: {
-                type: 'string',
-                default: '#eeeeee',
+                default: 'center',
             },
         },
 
         getEditWrapperProps( attributes ) {
-            if ( [ 'wide', 'full' ].indexOf( attributes.blockAlignment ) !== -1 ) {
-                return { 'data-align': attributes.blockAlignment };
+            const { blockAlignment } = attributes;
+            if ( 'wide' === blockAlignment || 'full' === blockAlignment ) {
+                return { 'data-align': blockAlignment };
             }
         },
 
-        edit: gtContainerBlock,
+        edit( { attributes, setAttributes, isSelected, className } ) {
+
+            return (
+                <Fragment>
+
+                    <BlockControls key="controls">
+
+                        <BlockAlignmentToolbar
+                            value={ attributes.blockAlignment }
+                            onChange={ ( newAlign ) => setAttributes( { blockAlignment: newAlign } ) }
+                            controls={ [ 'wide', 'full' ] }
+                        />
+
+                    </BlockControls>
+
+                    <InspectorControls key="inspector">
+
+                        <PanelBody title={ __( 'Layout Settings' ) } initialOpen={ false } className="gt-panel-layout-settings gt-panel">
+
+                            <BlockAlignmentToolbar
+                                value={ attributes.blockAlignment }
+                                onChange={ ( newAlign ) => setAttributes( { blockAlignment: newAlign } ) }
+                                controls={ [ 'wide', 'full' ] }
+                            />
+
+                        </PanelBody>
+
+                    </InspectorControls>
+
+                    <div className={ className }>
+                        <InnerBlocks />
+                    </div>
+
+                </Fragment>
+            );
+        },
 
         save( { attributes } ) {
 
             const classNames = classnames( {
-                [ `align${ attributes.blockAlignment }` ]: ( attributes.blockAlignment !== 'center' ),
-                'gt-has-background': attributes.backgroundColor,
+                [ `align${ attributes.blockAlignment }` ]: ( 'wide' === attributes.blockAlignment || 'full' === attributes.blockAlignment ),
             } );
 
-            const styles = {
-                backgroundColor: attributes.backgroundColor,
-                color: attributes.textColor,
-            };
-
             return (
-                <div className={ classNames ? classNames : undefined } style={ styles }>
-                    <div className="block-content">
-                        <InnerBlocks.Content />
-                    </div>
+                <div className={ classNames ? classNames : undefined }>
+                    <InnerBlocks.Content />
                 </div>
             );
         },
