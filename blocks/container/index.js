@@ -8,6 +8,7 @@ import classnames from 'classnames';
  */
 import './style.scss';
 import './editor.scss';
+import edit from './edit';
 
 /**
  * Internal block libraries
@@ -17,15 +18,8 @@ const { registerBlockType } = wp.blocks;
 const { Fragment } = wp.element;
 
 const {
-    BlockAlignmentToolbar,
-    BlockControls,
-    InspectorControls,
     InnerBlocks,
 } = wp.editor;
-
-const {
-    PanelBody,
-} = wp.components;
 
 /**
  * Register block
@@ -56,6 +50,12 @@ registerBlockType(
                 type: 'string',
                 default: 'center',
             },
+            backgroundColor: {
+                type: 'string',
+            },
+            customBackgroundColor: {
+                type: 'string',
+            },
         },
 
         getEditWrapperProps( attributes ) {
@@ -65,42 +65,7 @@ registerBlockType(
             }
         },
 
-        edit( { attributes, setAttributes, isSelected, className } ) {
-
-            return (
-                <Fragment>
-
-                    <BlockControls key="controls">
-
-                        <BlockAlignmentToolbar
-                            value={ attributes.blockAlignment }
-                            onChange={ ( newAlign ) => setAttributes( { blockAlignment: newAlign } ) }
-                            controls={ [ 'wide', 'full' ] }
-                        />
-
-                    </BlockControls>
-
-                    <InspectorControls key="inspector">
-
-                        <PanelBody title={ __( 'Layout Settings' ) } initialOpen={ false } className="gt-panel-layout-settings gt-panel">
-
-                            <BlockAlignmentToolbar
-                                value={ attributes.blockAlignment }
-                                onChange={ ( newAlign ) => setAttributes( { blockAlignment: newAlign } ) }
-                                controls={ [ 'wide', 'full' ] }
-                            />
-
-                        </PanelBody>
-
-                    </InspectorControls>
-
-                    <div className={ className }>
-                        <InnerBlocks />
-                    </div>
-
-                </Fragment>
-            );
-        },
+        edit,
 
         save( { attributes } ) {
 
