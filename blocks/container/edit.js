@@ -56,9 +56,15 @@ class gtContainerEdit extends Component {
             backgroundColor: backgroundColor.class ? undefined : backgroundColor.value,
         };
 
-        const contentStyles = {
-            maxWidth: attributes.contentWidth + 'px',
-        };
+        const contentStyles = `
+            .wp-block-german-themes-blocks-container .gt-inner-content .editor-block-list__block {
+                max-width: ${attributes.contentWidth}px;
+            }
+            .wp-block-german-themes-blocks-container .gt-inner-content .editor-block-list__block[data-align="wide"],
+            .wp-block-german-themes-blocks-container .gt-inner-content .editor-block-list__block[data-align="full"] {
+                max-width: inherit;
+            }
+        `;
 
         return (
             <Fragment>
@@ -103,7 +109,8 @@ class gtContainerEdit extends Component {
                 </InspectorControls>
 
                 <div className={ classNames } style={ blockStyles }>
-                    <div className="gt-inner-content" style={ contentStyles }>
+                    <style>{ contentStyles }</style>
+                    <div className="gt-inner-content">
                         <InnerBlocks />
                     </div>
                 </div>
