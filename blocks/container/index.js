@@ -18,6 +18,7 @@ const { registerBlockType } = wp.blocks;
 const { Fragment } = wp.element;
 
 const {
+    getColorClass,
     InnerBlocks,
 } = wp.editor;
 
@@ -68,13 +69,20 @@ registerBlockType(
         edit,
 
         save( { attributes } ) {
+            const backgroundClass = getColorClass( 'background-color', attributes.backgroundColor );
 
             const classNames = classnames( {
-                [ `align${ attributes.blockAlignment }` ]: ( 'wide' === attributes.blockAlignment || 'full' === attributes.blockAlignment ),
+                [ `align${ attributes.blockAlignment }` ]: ( attributes.blockAlignment !== 'center' ),
+                'has-background': attributes.backgroundColor || attributes.customBackgroundColor,
+                [ backgroundClass ]: backgroundClass,
             } );
 
+            const styles = {
+                backgroundColor: backgroundClass ? undefined : attributes.customBackgroundColor,
+            };
+
             return (
-                <div className={ classNames ? classNames : undefined }>
+                <div className={ classNames ? classNames : undefined } style={ styles }>
                     <InnerBlocks.Content />
                 </div>
             );

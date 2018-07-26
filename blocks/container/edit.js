@@ -39,10 +39,21 @@ class gtContainerEdit extends Component {
     render() {
         const {
             attributes,
+            backgroundColor,
+            setBackgroundColor,
             setAttributes,
             isSelected,
             className
         } = this.props;
+
+        const classNames= classnames( className, {
+            'has-background': backgroundColor.value,
+            [ backgroundColor.class ]: backgroundColor.class,
+        } );
+
+        const styles = {
+            backgroundColor: backgroundColor.class ? undefined : backgroundColor.value,
+        };
 
         return (
             <Fragment>
@@ -69,9 +80,16 @@ class gtContainerEdit extends Component {
 
                     </PanelBody>
 
+                    <PanelColor
+                        colorValue={ backgroundColor.value }
+                        initialOpen={ false }
+                        title={ __( 'Background Color' ) }
+                        onChange={ setBackgroundColor }
+                    />
+
                 </InspectorControls>
 
-                <div className={ className }>
+                <div className={ classNames } style={ styles }>
                     <InnerBlocks />
                 </div>
 
@@ -80,4 +98,6 @@ class gtContainerEdit extends Component {
     }
 }
 
-export default gtContainerEdit;
+export default compose( [
+    withColors( 'backgroundColor' )
+] )( gtContainerEdit );
