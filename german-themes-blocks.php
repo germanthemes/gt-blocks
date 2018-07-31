@@ -1,7 +1,7 @@
 <?php
 /*
-Plugin Name: German Themes Blocks
-Plugin URI: https://themezee.com/plugins/german-themes-blocks/
+Plugin Name: GT Blocks
+Plugin URI: https://themezee.com/plugins/gt-blocks/
 Description: A Custom Gutenberg Block to turn your WordPress theme into a powerful magazine website.
 Author: ThemeZee
 Author URI: https://themezee.com/
@@ -183,7 +183,7 @@ class German_Themes_Blocks {
 			array(
 				array(
 					'slug'  => 'germanthemes',
-					'title' => __( 'German Themes', 'german-themes-blocks' ),
+					'title' => __( 'GT Blocks', 'german-themes-blocks' ),
 				),
 			)
 		);
