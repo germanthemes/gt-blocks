@@ -38,12 +38,13 @@ const { compose } = wp.compose;
 const {
     AlignmentToolbar,
     BlockControls,
+    ContrastChecker,
     InspectorControls,
     MediaPlaceholder,
     MediaUpload,
+    PanelColorSettings,
     RichText,
     withColors,
-    PanelColor,
 } = wp.editor;
 
 const {
@@ -58,6 +59,7 @@ const {
     Toolbar,
     Tooltip,
     withAPIData,
+    withFallbackStyles,
 } = wp.components;
 
 const columnSizes = [
@@ -120,6 +122,20 @@ const verticalAlignmentControls = {
         title: __( 'Bottom' ),
     },
 };
+
+const { getComputedStyle } = window;
+
+const FallbackStyles = withFallbackStyles( ( node, ownProps ) => {
+    const { textColor, backgroundColor } = ownProps;
+    const backgroundColorValue = backgroundColor && backgroundColor.value;
+    const textColorValue = textColor && textColor.value;
+    //avoid the use of querySelector if textColor color is known and verify if node is available.
+    const textNode = ! textColorValue && node ? node.querySelector( '[contenteditable="true"]' ) : null;
+    return {
+        fallbackBackgroundColor: backgroundColorValue || ! node ? undefined : getComputedStyle( node ).backgroundColor,
+        fallbackTextColor: textColorValue || ! textNode ? undefined : getComputedStyle( textNode ).color,
+    };
+} );
 
 class gtImageTextEdit extends Component {
     constructor() {
@@ -194,9 +210,11 @@ class gtImageTextEdit extends Component {
             textColor,
             setBackgroundColor,
             setTextColor,
+            fallbackBackgroundColor,
+            fallbackTextColor,
             setAttributes,
             isSelected,
-            className
+            className,
         } = this.props;
 
         const availableSizes = this.getAvailableSizes();
@@ -377,19 +395,30 @@ class gtImageTextEdit extends Component {
 
                     </PanelBody>
 
-                    <PanelColor
-                        colorValue={ backgroundColor.value }
-                        initialOpen={ false }
-                        title={ __( 'Background Color' ) }
-                        onChange={ setBackgroundColor }
-                    />
-
-                    <PanelColor
-                        colorValue={ textColor.value }
-                        initialOpen={ false }
-                        title={ __( 'Text Color' ) }
-                        onChange={ setTextColor }
-                    />
+                    <PanelColorSettings
+                        title={ __( 'Color Settings' ) }
+                        colorSettings={ [
+                            {
+                                value: backgroundColor.value,
+                                onChange: setBackgroundColor,
+                                label: __( 'Background Color' ),
+                            },
+                            {
+                                value: textColor.value,
+                                onChange: setTextColor,
+                                label: __( 'Text Color' ),
+                            },
+                        ] }
+                    >
+                        <ContrastChecker
+                            { ...{
+                            textColor: textColor.value,
+                            backgroundColor: backgroundColor.value,
+                            fallbackBackgroundColor,
+                            fallbackTextColor,
+                            } }
+                        />
+                    </PanelColorSettings>
 
                 </InspectorControls>
 
@@ -503,5 +532,6 @@ export default compose( [
             image: `/wp/v2/media/${ imgID }`,
         };
     } ),
-    withColors( 'backgroundColor', { textColor: 'color' } )
+    withColors( 'backgroundColor', { textColor: 'color' } ),
+	FallbackStyles,
 ] )( gtImageTextEdit );
