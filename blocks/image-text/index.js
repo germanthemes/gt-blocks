@@ -19,6 +19,7 @@ const { registerBlockType } = wp.blocks;
 const {
     RichText,
     getColorClass,
+    getFontSizeClass,
 } = wp.editor;
 
 /**
@@ -98,12 +99,6 @@ registerBlockType(
                 type: 'boolean',
                 default: true,
             },
-            fontSize: {
-                type: 'string',
-            },
-            customFontSize: {
-                type: 'number',
-            },
             textColor: {
                 type: 'string',
             },
@@ -116,6 +111,12 @@ registerBlockType(
             customBackgroundColor: {
                 type: 'string',
             },
+            fontSize: {
+                type: 'string',
+            },
+            customFontSize: {
+                type: 'number',
+            },
         },
 
         getEditWrapperProps( attributes ) {
@@ -127,10 +128,18 @@ registerBlockType(
         edit,
 
         save( { attributes } ) {
+            const {
+                backgroundColor,
+                textColor,
+                customBackgroundColor,
+                customTextColor,
+                fontSize,
+                customFontSize,
+            } = attributes;
 
-            const textClass = getColorClass( 'color', attributes.textColor );
-            const backgroundClass = getColorClass( 'background-color', attributes.backgroundColor );
-            const fontSizeClass = attributes.fontSize && `is-${ attributes.fontSize }-text`;
+            const textClass = getColorClass( 'color', textColor );
+            const backgroundClass = getColorClass( 'background-color', backgroundColor );
+            const fontSizeClass = getFontSizeClass( fontSize );
 
             const classNames = classnames( {
                 [ `${ attributes.columnSize }` ]: attributes.columnSize,
@@ -138,15 +147,14 @@ registerBlockType(
                 [ `gt-vertical-align-${ attributes.verticalAlignment }` ]: ( attributes.verticalAlignment !== 'top' ),
                 'gt-image-position-right': attributes.imagePosition,
                 'gt-has-spacing': attributes.spacing,
-                'has-text-color': attributes.textColor || attributes.customTextColor,
-    			[ textClass ]: textClass,
-    			'has-background': attributes.backgroundColor || attributes.customBackgroundColor,
+                'has-background': backgroundColor || customBackgroundColor,
+                [ textClass ]: textClass,
                 [ backgroundClass ]: backgroundClass,
             } );
 
             const styles = {
-                backgroundColor: backgroundClass ? undefined : attributes.customBackgroundColor,
-                color: textClass ? undefined : attributes.customTextColor,
+                backgroundColor: backgroundClass ? undefined : customBackgroundColor,
+    			color: textClass ? undefined : customTextColor,
                 textAlign: attributes.textAlignment,
             };
 
@@ -155,7 +163,7 @@ registerBlockType(
             } );
 
             const textStyles = {
-                fontSize: fontSizeClass ? undefined : attributes.customFontSize,
+                fontSize: fontSizeClass ? undefined : customFontSize,
             };
 
             const titleTag = 'h' + attributes.titleTag;

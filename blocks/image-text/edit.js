@@ -45,6 +45,7 @@ const {
     PanelColorSettings,
     RichText,
     withColors,
+    withFontSizes,
 } = wp.editor;
 
 const {
@@ -125,16 +126,16 @@ const verticalAlignmentControls = {
 
 const { getComputedStyle } = window;
 
-const FallbackStyles = withFallbackStyles( ( node, ownProps ) => {
-    const { textColor, backgroundColor } = ownProps;
-    const backgroundColorValue = backgroundColor && backgroundColor.value;
-    const textColorValue = textColor && textColor.value;
-    //avoid the use of querySelector if textColor color is known and verify if node is available.
-    const textNode = ! textColorValue && node ? node.querySelector( '[contenteditable="true"]' ) : null;
-    return {
-        fallbackBackgroundColor: backgroundColorValue || ! node ? undefined : getComputedStyle( node ).backgroundColor,
-        fallbackTextColor: textColorValue || ! textNode ? undefined : getComputedStyle( textNode ).color,
-    };
+const applyFallbackStyles = withFallbackStyles( ( node, ownProps ) => {
+	const { textColor, backgroundColor, fontSize, customFontSize } = ownProps.attributes;
+	const editableNode = node.querySelector( '[contenteditable="true"]' );
+	//verify if editableNode is available, before using getComputedStyle.
+	const computedStyles = editableNode ? getComputedStyle( editableNode ) : null;
+	return {
+		fallbackBackgroundColor: backgroundColor || ! computedStyles ? undefined : computedStyles.backgroundColor,
+		fallbackTextColor: textColor || ! computedStyles ? undefined : computedStyles.color,
+		fallbackFontSize: fontSize || customFontSize || ! computedStyles ? undefined : parseInt( computedStyles.fontSize ) || undefined,
+	};
 } );
 
 class gtImageTextEdit extends Component {
@@ -145,8 +146,6 @@ class gtImageTextEdit extends Component {
         this.onRemoveImage = this.onRemoveImage.bind( this );
         this.updateImageURL = this.updateImageURL.bind( this );
         this.getAvailableSizes = this.getAvailableSizes.bind( this );
-        this.getFontSize = this.getFontSize.bind( this );
-        this.setFontSize = this.setFontSize.bind( this );
     }
 
     onSelectImage( img ) {
@@ -173,52 +172,24 @@ class gtImageTextEdit extends Component {
         return get( this.props.image, [ 'data', 'media_details', 'sizes' ], {} );
     }
 
-    getFontSize() {
-        const { customFontSize, fontSize } = this.props.attributes;
-        if ( fontSize ) {
-            const fontSizeObj = find( FONT_SIZES, { name: fontSize } );
-            if ( fontSizeObj ) {
-                return fontSizeObj.size;
-            }
-        }
-
-        if ( customFontSize ) {
-            return customFontSize;
-        }
-    }
-
-    setFontSize( fontSizeValue ) {
-        const { setAttributes } = this.props;
-        const thresholdFontSize = find( FONT_SIZES, { size: fontSizeValue } );
-        if ( thresholdFontSize ) {
-            setAttributes( {
-                fontSize: thresholdFontSize.name,
-                customFontSize: undefined,
-            } );
-            return;
-        }
-        setAttributes( {
-            fontSize: undefined,
-            customFontSize: fontSizeValue,
-        } );
-    }
-
     render() {
         const {
             attributes,
             backgroundColor,
-            textColor,
             setBackgroundColor,
-            setTextColor,
             fallbackBackgroundColor,
+            textColor,
+            setTextColor,
             fallbackTextColor,
+            fontSize,
+            setFontSize,
+            fallbackFontSize,
             setAttributes,
             isSelected,
             className,
         } = this.props;
 
         const availableSizes = this.getAvailableSizes();
-        const fontSize = this.getFontSize();
 
         const classNames= classnames( className, {
             [ `${ attributes.columnSize }` ]: attributes.columnSize,
@@ -229,6 +200,7 @@ class gtImageTextEdit extends Component {
             [ backgroundColor.class ]: backgroundColor.class,
             'has-text-color': textColor.value,
             [ textColor.class ]: textColor.class,
+            [ fontSize.class ]: fontSize.class,
         } );
 
         const styles = {
@@ -375,9 +347,10 @@ class gtImageTextEdit extends Component {
                         <p><label className="blocks-base-control__label">{ __( 'Font Size' ) }</label></p>
                         <FontSizePicker
                             fontSizes={ FONT_SIZES }
-                            value={ fontSize }
-                            onChange={ this.setFontSize }
-                        />
+                            fallbackFontSize={ fallbackFontSize }
+							value={ fontSize.size }
+							onChange={ setFontSize }
+						/>
 
                         <p><label className="blocks-base-control__label">{ __( 'Vertical Alignment' ) }</label></p>
                         <Toolbar
@@ -410,13 +383,15 @@ class gtImageTextEdit extends Component {
                             },
                         ] }
                     >
+
                         <ContrastChecker
                             { ...{
-                            textColor: textColor.value,
-                            backgroundColor: backgroundColor.value,
-                            fallbackBackgroundColor,
-                            fallbackTextColor,
+                                textColor: textColor.value,
+                                backgroundColor: backgroundColor.value,
+                                fallbackTextColor,
+                                fallbackBackgroundColor,
                             } }
+                            fontSize={ fontSize.size }
                         />
                     </PanelColorSettings>
 
@@ -505,7 +480,7 @@ class gtImageTextEdit extends Component {
                                 placeholder={ __( 'Enter your text here.' ) }
                                 value={ attributes.text }
                                 className="block-text"
-                                style={ { fontSize: fontSize ? fontSize + 'px' : undefined } }
+                                style={ { fontSize: fontSize.size ? fontSize.size + 'px' : undefined } }
                                 onChange={ ( newText ) => setAttributes( { text: newText } ) }
                                 keepPlaceholderOnFocus
                             />
@@ -533,5 +508,6 @@ export default compose( [
         };
     } ),
     withColors( 'backgroundColor', { textColor: 'color' } ),
-	FallbackStyles,
+    withFontSizes( 'fontSize' ),
+	applyFallbackStyles,
 ] )( gtImageTextEdit );
