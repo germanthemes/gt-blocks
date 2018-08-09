@@ -63,6 +63,10 @@ const {
     withFallbackStyles,
 } = wp.components;
 
+const {
+    withSelect,
+} = wp.data;
+
 const columnSizes = [
     { value: 'block-column-25', label: __( '25%' ) },
     { value: 'block-column-33', label: __( '33%' ) },
@@ -85,29 +89,6 @@ const blockAlignmentControls = {
         title: __( 'Full width' ),
     },
 };
-
-const FONT_SIZES = [
-    {
-        name: 'small',
-        shortName: 'S',
-        size: 14,
-    },
-    {
-        name: 'regular',
-        shortName: 'M',
-        size: 16,
-    },
-    {
-        name: 'large',
-        shortName: 'L',
-        size: 24,
-    },
-    {
-        name: 'larger',
-        shortName: 'XL',
-        size: 36,
-    },
-];
 
 const verticalAlignmentControls = {
     top: {
@@ -184,6 +165,7 @@ class gtImageTextEdit extends Component {
             fontSize,
             setFontSize,
             fallbackFontSize,
+            fontSizes,
             setAttributes,
             isSelected,
             className,
@@ -346,7 +328,7 @@ class gtImageTextEdit extends Component {
 
                         <p><label className="blocks-base-control__label">{ __( 'Font Size' ) }</label></p>
                         <FontSizePicker
-                            fontSizes={ FONT_SIZES }
+                            fontSizes={ fontSizes }
                             fallbackFontSize={ fallbackFontSize }
 							value={ fontSize.size }
 							onChange={ setFontSize }
@@ -510,4 +492,10 @@ export default compose( [
     withColors( 'backgroundColor', { textColor: 'color' } ),
     withFontSizes( 'fontSize' ),
 	applyFallbackStyles,
+    withSelect(
+        ( select ) => {
+            const { fontSizes } = select( 'core/editor' ).getEditorSettings();
+            return { fontSizes };
+        }
+    )
 ] )( gtImageTextEdit );
