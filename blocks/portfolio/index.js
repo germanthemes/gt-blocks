@@ -19,6 +19,7 @@ const { registerBlockType } = wp.blocks;
 const {
     RichText,
     getColorClass,
+    getFontSizeClass,
 } = wp.editor;
 
 /**
@@ -119,29 +120,23 @@ registerBlockType(
                 type: 'number',
                 default: 2,
             },
-            fontSize: {
-                type: 'string',
-            },
-            customFontSize: {
-                type: 'number',
-            },
-            backgroundColor: {
-                type: 'string',
-            },
             textColor: {
                 type: 'string',
             },
-            titleColor: {
-                type: 'string',
-            },
-            customBackgroundColor: {
+            backgroundColor: {
                 type: 'string',
             },
             customTextColor: {
                 type: 'string',
             },
-            customTitleColor: {
+            customBackgroundColor: {
                 type: 'string',
+            },
+            fontSize: {
+                type: 'string',
+            },
+            customFontSize: {
+                type: 'number',
             },
         },
 
@@ -155,11 +150,18 @@ registerBlockType(
         edit,
 
         save( { attributes } ) {
+            const {
+                backgroundColor,
+                textColor,
+                customBackgroundColor,
+                customTextColor,
+                fontSize,
+                customFontSize,
+            } = attributes;
 
-            const fontSizeClass = attributes.fontSize && `is-${ attributes.fontSize }-text`;
-            const backgroundClass = getColorClass( 'background-color', attributes.backgroundColor );
-            const textClass = getColorClass( 'color', attributes.textColor );
-            const titleClass = getColorClass( 'color', attributes.titleColor );
+            const textClass = getColorClass( 'color', textColor );
+            const backgroundClass = getColorClass( 'background-color', backgroundColor );
+            const fontSizeClass = getFontSizeClass( fontSize );
 
             const classNames = classnames( {
                 [ `gt-columns-${ attributes.columns }` ]: attributes.columns,
@@ -167,33 +169,24 @@ registerBlockType(
             } );
 
             const contentClasses = classnames( 'gt-content', {
-                'has-background': attributes.backgroundColor || attributes.customBackgroundColor,
+                'has-background': backgroundColor || customBackgroundColor,
                 [ backgroundClass ]: backgroundClass,
             } );
 
             const contentStyles = {
                 textAlign: attributes.textAlignment,
-                backgroundColor: backgroundClass ? undefined : attributes.customBackgroundColor,
+                backgroundColor: backgroundClass ? undefined : customBackgroundColor,
             };
 
             const textClasses = classnames( 'gt-text', {
-                [ fontSizeClass ]: fontSizeClass,
-                'has-text-color': attributes.textColor || attributes.customTextColor,
+                'has-text-color': textColor || customTextColor,
                 [ textClass ]: textClass,
+                [ fontSizeClass ]: fontSizeClass,
             } );
 
             const textStyles = {
-                fontSize: fontSizeClass ? undefined : attributes.customFontSize,
-                color: textClass ? undefined : attributes.customTextColor,
-            };
-
-            const titleClasses = classnames( 'gt-title', {
-                'has-text-color': attributes.titleColor || attributes.customTitleColor,
-                [ titleClass ]: titleClass,
-            } );
-
-            const titleStyles = {
-                color: titleClass ? undefined : attributes.customTitleColor,
+                color: textClass ? undefined : customTextColor,
+                fontSize: fontSizeClass ? undefined : customFontSize,
             };
 
             return (
@@ -224,9 +217,7 @@ registerBlockType(
 
                                             <RichText.Content
                                                 tagName={ titleTag }
-                                                className={ titleClasses }
                                                 value={ title }
-                                                style={ titleStyles }
                                             />
 
                                             <RichText.Content

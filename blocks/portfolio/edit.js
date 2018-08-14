@@ -40,11 +40,13 @@ const {
     AlignmentToolbar,
     BlockAlignmentToolbar,
     BlockControls,
+    ContrastChecker,
     InspectorControls,
-    PanelColor,
+    PanelColorSettings,
     RichText,
     URLInput,
     withColors,
+    withFontSizes,
  } = wp.editor;
 
  const {
@@ -57,6 +59,7 @@ const {
     SelectControl,
     ToggleControl,
     Toolbar,
+    withFallbackStyles,
  } = wp.components;
 
 /* Block Alignment Controls */
@@ -82,29 +85,19 @@ const columnIcons = {
     4: gtFourColumns,
 };
 
-/* Font Sizes */
-const FONT_SIZES = [
-    {
-        name: 'small',
-        shortName: 'S',
-        size: 14,
-    },
-    {
-        name: 'regular',
-        shortName: 'M',
-        size: 16,
-    },
-    {
-        name: 'large',
-        shortName: 'L',
-        size: 24,
-    },
-    {
-        name: 'larger',
-        shortName: 'XL',
-        size: 36,
-    },
-];
+const { getComputedStyle } = window;
+
+const applyFallbackStyles = withFallbackStyles( ( node, ownProps ) => {
+	const { textColor, backgroundColor, fontSize, customFontSize } = ownProps.attributes;
+	const editableNode = node.querySelector( '[contenteditable="true"]' );
+	//verify if editableNode is available, before using getComputedStyle.
+	const computedStyles = editableNode ? getComputedStyle( editableNode ) : null;
+	return {
+		fallbackBackgroundColor: backgroundColor || ! computedStyles ? undefined : computedStyles.backgroundColor,
+		fallbackTextColor: textColor || ! computedStyles ? undefined : computedStyles.color,
+		fallbackFontSize: fontSize || customFontSize || ! computedStyles ? undefined : parseInt( computedStyles.fontSize ) || undefined,
+	};
+} );
 
 class gtPortfolioEdit extends Component {
     constructor() {
@@ -305,19 +298,22 @@ class gtPortfolioEdit extends Component {
         const {
             attributes,
             backgroundColor,
-            textColor,
-            titleColor,
             setBackgroundColor,
+            fallbackBackgroundColor,
+            textColor,
             setTextColor,
-            setTitleColor,
-            wideControlsEnabled,
+            fallbackTextColor,
+            fontSize,
+            setFontSize,
+            fallbackFontSize,
+            fontSizes,
             setAttributes,
             isSelected,
-            className
+            className,
+            wideControlsEnabled,
         } = this.props;
 
         const availableSizes = this.getAvailableSizes();
-        const fontSize = this.getFontSize();
 
         const classNames= classnames( className, {
             [ `gt-columns-${ attributes.columns }` ]: attributes.columns,
@@ -336,20 +332,12 @@ class gtPortfolioEdit extends Component {
         const textClasses = classnames( 'gt-text', {
             'has-text-color': textColor.value,
             [ textColor.class ]: textColor.class,
+            [ fontSize.class ]: fontSize.class,
         } );
 
         const textStyles = {
-            fontSize: fontSize ? fontSize + 'px' : undefined,
+            fontSize: fontSize.size ? fontSize.size + 'px' : undefined,
             color: textColor.class ? undefined : textColor.value,
-        };
-
-        const titleClasses = classnames( 'gt-title', {
-            'has-text-color': titleColor.value,
-            [ titleColor.class ]: titleColor.class,
-        } );
-
-        const titleStyles = {
-            color: titleColor.class ? undefined : titleColor.value,
         };
 
         const titleTag = 'h' + attributes.titleTag;
@@ -444,33 +432,40 @@ class gtPortfolioEdit extends Component {
 
                         <p><label className="blocks-base-control__label">{ __( 'Font Size' ) }</label></p>
                         <FontSizePicker
-                            fontSizes={ FONT_SIZES }
-                            value={ fontSize }
-                            onChange={ this.setFontSize }
-                        />
+                            fontSizes={ fontSizes }
+                            fallbackFontSize={ fallbackFontSize }
+							value={ fontSize.size }
+							onChange={ setFontSize }
+						/>
 
                     </PanelBody>
 
-                    <PanelColor
-                        colorValue={ backgroundColor.value }
-                        initialOpen={ false }
-                        title={ __( 'Background Color' ) }
-                        onChange={ setBackgroundColor }
-                    />
+                    <PanelColorSettings
+                        title={ __( 'Color Settings' ) }
+                        colorSettings={ [
+                            {
+                                value: backgroundColor.value,
+                                onChange: setBackgroundColor,
+                                label: __( 'Background Color' ),
+                            },
+                            {
+                                value: textColor.value,
+                                onChange: setTextColor,
+                                label: __( 'Text Color' ),
+                            },
+                        ] }
+                    >
 
-                    <PanelColor
-                        colorValue={ textColor.value }
-                        initialOpen={ false }
-                        title={ __( 'Text Color' ) }
-                        onChange={ setTextColor }
-                    />
-
-                    <PanelColor
-                        colorValue={ titleColor.value }
-                        initialOpen={ false }
-                        title={ __( 'Title Color' ) }
-                        onChange={ setTitleColor }
-                    />
+                        <ContrastChecker
+                            { ...{
+                                textColor: textColor.value,
+                                backgroundColor: backgroundColor.value,
+                                fallbackTextColor,
+                                fallbackBackgroundColor,
+                            } }
+                            fontSize={ fontSize.size }
+                        />
+                    </PanelColorSettings>
 
                 </InspectorControls>
 
@@ -498,8 +493,6 @@ class gtPortfolioEdit extends Component {
                                                 tagName={ titleTag }
                                                 placeholder={ __( 'Enter a title' ) }
                                                 value={ item.title }
-                                                className={ titleClasses }
-                                                style={ titleStyles }
                                                 onChange={ ( newTitle ) => this.onChangeTitle( newTitle, index ) }
                                                 formattingControls={ [ 'bold', 'italic', 'strikethrough' ] }
                                                 keepPlaceholderOnFocus
@@ -600,8 +593,13 @@ class gtPortfolioEdit extends Component {
 }
 
 export default compose( [
-    withColors( 'backgroundColor', { textColor: 'color' }, 'titleColor' ),
-    withSelect( ( select  ) => ( {
-        wideControlsEnabled: select( 'core/editor' ).getEditorSettings().alignWide,
-    } ) )
+    withColors( 'backgroundColor', { textColor: 'color' } ),
+    withFontSizes( 'fontSize' ),
+	applyFallbackStyles,
+    withSelect(
+        ( select ) => {
+            const { fontSizes } = select( 'core/editor' ).getEditorSettings();
+            return { fontSizes };
+        }
+    )
 ] )( gtPortfolioEdit );
