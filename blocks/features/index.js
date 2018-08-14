@@ -163,6 +163,12 @@ registerBlockType(
                                 return (
                                     <div className="gt-grid-item" key={ index }>
 
+                                        <div className="gt-icon">
+                                            <svg className="icon icon-address-card" aria-hidden="true" role="img">
+                                                <use href='http://localhost/wp-content/plugins/german-themes-blocks/assets/icons/fontawesome.svg#address-card'></use>
+                                            </svg>
+                                        </div>
+
                                         <div className={ contentClasses } style={ contentStyles }>
 
                                             <RichText.Content

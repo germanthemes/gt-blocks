@@ -27,6 +27,16 @@
     grid-template-columns: repeat(5, 1fr); }
   .wp-block-german-themes-blocks-features.gt-columns-6 .gt-grid-container {
     grid-template-columns: repeat(6, 1fr); }
+  .wp-block-german-themes-blocks-features .gt-grid-item .gt-icon {
+    background: #202020;
+    padding: 2rem 1rem;
+    text-align: center; }
+    .wp-block-german-themes-blocks-features .gt-grid-item .gt-icon .icon {
+      margin: 0;
+      width: 64px;
+      height: 64px;
+      vertical-align: middle;
+      fill: #fff; }
   .wp-block-german-themes-blocks-features .gt-grid-item .gt-content {
     padding-top: 1rem; }
     .wp-block-german-themes-blocks-features .gt-grid-item .gt-content .gt-title {

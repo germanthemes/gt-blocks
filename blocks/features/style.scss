@@ -26,6 +26,20 @@
     /* Features Item Styling */
     .gt-grid-item {
 
+        .gt-icon {
+        	background: #202020;
+            padding: 2rem 1rem;
+            text-align: center;
+
+            .icon {
+            	margin: 0;
+            	width: 64px;
+            	height: 64px;
+            	vertical-align: middle;
+            	fill: #fff;
+            }
+        }
+
         .gt-content {
             padding-top: 1rem;
 
