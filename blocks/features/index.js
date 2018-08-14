@@ -80,11 +80,6 @@ registerBlockType(
                         source: 'children',
                         selector: '.gt-text',
                     },
-                    buttonText: {
-                        type: 'array',
-                        source: 'children',
-                        selector: '.gt-button',
-                    },
                     itemURL: {
                         type: 'string',
                         source: 'attribute',
@@ -107,10 +102,6 @@ registerBlockType(
             },
             textAlignment: {
                 type: 'string',
-            },
-            showButtons: {
-                type: 'boolean',
-                default: true,
             },
             imageSize: {
                 type: 'string',
@@ -226,15 +217,6 @@ registerBlockType(
                                                 value={ item.text }
                                                 style={ textStyles }
                                             />
-
-                                            { ( item.itemURL && item.buttonText.length > 0 ) && (
-                                                <RichText.Content
-                                                    tagName="a"
-                                                    href={ item.itemURL }
-                                                    className={ classnames( 'gt-button', { 'gt-button-hidden': ! attributes.showButtons } ) }
-                                                    value={ item.buttonText }
-                                                />
-                                            ) }
 
                                         </div>
 

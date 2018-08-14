@@ -103,17 +103,14 @@ class gtFeaturesEdit extends Component {
     constructor() {
         super( ...arguments );
 
-        this.addFeaturesItem   = this.addFeaturesItem.bind( this );
-        this.onSelectImage      = this.onSelectImage.bind( this );
-        this.onRemoveImage      = this.onRemoveImage.bind( this );
-        this.addImageSize       = this.addImageSize.bind( this );
-        this.updateImageURLs    = this.updateImageURLs.bind( this );
-        this.onChangeTitle      = this.onChangeTitle.bind( this );
-        this.onChangeText       = this.onChangeText.bind( this );
-        this.onChangeButtonText = this.onChangeButtonText.bind( this );
-        this.onChangeItemURL  = this.onChangeItemURL.bind( this );
-        this.getFontSize = this.getFontSize.bind( this );
-        this.setFontSize = this.setFontSize.bind( this );
+        this.addFeaturesItem = this.addFeaturesItem.bind( this );
+        this.onSelectImage   = this.onSelectImage.bind( this );
+        this.onRemoveImage   = this.onRemoveImage.bind( this );
+        this.addImageSize    = this.addImageSize.bind( this );
+        this.updateImageURLs = this.updateImageURLs.bind( this );
+        this.onChangeTitle   = this.onChangeTitle.bind( this );
+        this.onChangeText    = this.onChangeText.bind( this );
+        this.onChangeItemURL = this.onChangeItemURL.bind( this );
 
         this.state = {
             imageSizes: {},
@@ -241,14 +238,6 @@ class gtFeaturesEdit extends Component {
         this.props.setAttributes( { items: newItems } );
     }
 
-    onChangeButtonText( newButtonText, index ) {
-        const newItems = [...this.props.attributes.items];
-        if( newItems[index] !== undefined ) {
-            newItems[index].buttonText = newButtonText;
-        }
-        this.props.setAttributes( { items: newItems } );
-    }
-
     onChangeItemURL( newItemURL, index ) {
         const newItems = [...this.props.attributes.items];
         if( newItems[index] !== undefined ) {
@@ -262,36 +251,6 @@ class gtFeaturesEdit extends Component {
             .map( img => Object.keys(img) )
             .reduce( ( sizes, img ) => sizes.concat( img ), [] );
         return uniq( availableSizes );
-    }
-
-    getFontSize() {
-        const { customFontSize, fontSize } = this.props.attributes;
-        if ( fontSize ) {
-            const fontSizeObj = find( FONT_SIZES, { name: fontSize } );
-            if ( fontSizeObj ) {
-                return fontSizeObj.size;
-            }
-        }
-
-        if ( customFontSize ) {
-            return customFontSize;
-        }
-    }
-
-    setFontSize( fontSizeValue ) {
-        const { setAttributes } = this.props;
-        const thresholdFontSize = find( FONT_SIZES, { size: fontSizeValue } );
-        if ( thresholdFontSize ) {
-            setAttributes( {
-                fontSize: thresholdFontSize.name,
-                customFontSize: undefined,
-            } );
-            return;
-        }
-        setAttributes( {
-            fontSize: undefined,
-            customFontSize: fontSizeValue,
-        } );
     }
 
     render() {
@@ -390,12 +349,6 @@ class gtFeaturesEdit extends Component {
                                 controls={ [ 'center', 'wide', 'full' ] }
                             />
                         ] }
-
-                        <ToggleControl
-                            label={ __( 'Show buttons?' ) }
-                            checked={ !! attributes.showButtons }
-                            onChange={ () => setAttributes( { showButtons: ! attributes.showButtons } ) }
-                        />
 
                     </PanelBody>
 
@@ -508,18 +461,6 @@ class gtFeaturesEdit extends Component {
                                                 onChange={ ( newText ) => this.onChangeText( newText, index ) }
                                                 keepPlaceholderOnFocus
                                             />
-
-                                            <span className="gt-button-edit">
-                                                <RichText
-                                                    tagName="span"
-                                                    placeholder={ __( 'Add button text' ) }
-                                                    value={ item.buttonText }
-                                                    className={ classnames( 'gt-button', { 'gt-button-hidden': ! attributes.showButtons } ) }
-                                                    onChange={ ( newButtonText ) => this.onChangeButtonText( newButtonText, index ) }
-                                                    formattingControls={ [ 'bold', 'italic', 'strikethrough' ] }
-                                                    keepPlaceholderOnFocus
-                                                />
-                                            </span>
 
                                         </div>
 
