@@ -35,7 +35,6 @@ registerBlockType(
         category: 'germanthemes',
 
         icon: {
-            foreground: '#2585ff',
             background: '#ddeeff',
             src: gtFeaturesIcon,
         },
