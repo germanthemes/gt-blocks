@@ -149,6 +149,12 @@ class German_Themes_Blocks {
 			'wp-element',
 		), GTB_VERSION );
 
+		wp_add_inline_script(
+			'german-themes-blocks-editor',
+			sprintf( 'wp.data.dispatch( "gt-blocks" ).setPluginURL( %s );', wp_json_encode( GTB_PLUGIN_URL ) ),
+			'after'
+		);
+
 		wp_enqueue_style( 'german-themes-blocks-editor', GTB_PLUGIN_URL . 'assets/css/gt-blocks-editor.css', array( 'wp-edit-blocks' ), GTB_VERSION );
 	}
 

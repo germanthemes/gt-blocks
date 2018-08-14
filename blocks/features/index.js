@@ -15,6 +15,7 @@ import edit from './edit';
  * Internal block libraries
  */
 const { __ } = wp.i18n;
+const { select } = wp.data;
 const { registerBlockType } = wp.blocks;
 const {
     RichText,
@@ -151,6 +152,8 @@ registerBlockType(
                 fontSize: fontSizeClass ? undefined : customFontSize,
             };
 
+            const pluginURL = select( 'gt-blocks' ).getPluginURL();
+
             return (
                 <div className={ classNames ? classNames : undefined }>
                     <div className="gt-grid-container">
@@ -158,6 +161,7 @@ registerBlockType(
                         {
                             attributes.items.map( ( item, index ) => {
 
+                                const iconURL = pluginURL + '/assets/icons/fontawesome.svg#' + 'address-card';
                                 const titleTag = 'h' + attributes.titleTag;
 
                                 return (
@@ -165,7 +169,7 @@ registerBlockType(
 
                                         <div className="gt-icon">
                                             <svg className="icon icon-address-card" aria-hidden="true" role="img">
-                                                <use href='http://localhost/wp-content/plugins/german-themes-blocks/assets/icons/fontawesome.svg#address-card'></use>
+                                                <use href={ iconURL }></use>
                                             </svg>
                                         </div>
 

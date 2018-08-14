@@ -2,6 +2,11 @@
 import './editor.scss';
 
 /**
+ * Import Data Store
+ */
+import './store.js';
+
+/**
  * Import Blocks
  */
 import './container';
