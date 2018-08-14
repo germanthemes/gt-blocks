@@ -52,24 +52,6 @@ registerBlockType(
                 source: 'query',
                 selector: '.gt-grid-item',
                 query: {
-                    imgID: {
-                        type: 'number',
-                        source: 'attribute',
-                        attribute: 'data-img-id',
-                        selector: '.gt-image img',
-                    },
-                    imgURL: {
-                        type: 'string',
-                        source: 'attribute',
-                        attribute: 'src',
-                        selector: '.gt-image img',
-                    },
-                    imgAlt: {
-                        type: 'string',
-                        source: 'attribute',
-                        attribute: 'alt',
-                        selector: '.gt-image img',
-                    },
                     title: {
                         type: 'array',
                         source: 'children',
@@ -96,10 +78,6 @@ registerBlockType(
             },
             textAlignment: {
                 type: 'string',
-            },
-            imageSize: {
-                type: 'string',
-                default: 'full',
             },
             titleTag: {
                 type: 'number',
@@ -185,14 +163,6 @@ registerBlockType(
 
                                 return (
                                     <div className="gt-grid-item" key={ index }>
-
-                                        <div className="gt-image">
-                                            <img
-                                                src={ item.imgURL }
-                                                alt={ item.imgAlt }
-                                                data-img-id={ item.imgID }
-                                            />
-                                        </div>
 
                                         <div className={ contentClasses } style={ contentStyles }>
 

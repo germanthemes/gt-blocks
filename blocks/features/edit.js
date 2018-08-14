@@ -13,7 +13,6 @@ import {
 /**
  * Block dependencies
  */
-import { default as FeaturesImage } from './features-image';
 import {
     gtTwoColumns,
     gtThreeColumns,
@@ -103,16 +102,8 @@ class gtFeaturesEdit extends Component {
         super( ...arguments );
 
         this.addFeaturesItem = this.addFeaturesItem.bind( this );
-        this.onSelectImage   = this.onSelectImage.bind( this );
-        this.onRemoveImage   = this.onRemoveImage.bind( this );
-        this.addImageSize    = this.addImageSize.bind( this );
-        this.updateImageURLs = this.updateImageURLs.bind( this );
         this.onChangeTitle   = this.onChangeTitle.bind( this );
         this.onChangeText    = this.onChangeText.bind( this );
-
-        this.state = {
-            imageSizes: {},
-        };
     }
 
     addFeaturesItem() {
@@ -151,75 +142,6 @@ class gtFeaturesEdit extends Component {
         this.props.setAttributes( { items: newItems } );
     }
 
-    onSelectImage( img, index ) {
-        const newItems = [...this.props.attributes.items];
-        if( newItems[index] !== undefined ) {
-            const newImgURL = this.getImageURL( img.id, this.props.attributes.imageSize );
-            newItems[index].imgID = img.id;
-            newItems[index].imgURL = newImgURL ? newImgURL : img.url;
-            newItems[index].imgAlt = img.alt;
-        }
-        this.props.setAttributes( { items: newItems } );
-    }
-
-    onRemoveImage( index ) {
-        const newItems = [...this.props.attributes.items];
-        if( newItems[index] !== undefined ) {
-            newItems[index].imgID = null;
-            newItems[index].imgURL = null;
-            newItems[index].imgAlt = null;
-        }
-        this.props.setAttributes( { items: newItems } );
-    }
-
-    addImageSize( imgID, sizeObj ) {
-        const newSizes = { ...this.state.imageSizes };
-        if( ! newSizes[imgID] ) {
-            newSizes[imgID] = sizeObj;
-            this.setState( { imageSizes: newSizes } );
-
-            // Update Image URLs after new Image Sizes were added.
-            const newItems = [...this.props.attributes.items];
-            newItems.forEach( ( item, index ) => {
-                if( item.imgID === imgID ) {
-                    const newURL = this.getImageURL( item.imgID, this.props.attributes.imageSize, newSizes );
-
-                    if( newItems[index].imgURL !== newURL ) {
-                        newItems[index].imgURL = newURL;
-                        this.props.setAttributes( { items: newItems } );
-                    }
-                }
-            });
-        }
-    }
-
-    getImageURL( imgID, size, imageSizes = this.state.imageSizes ) {
-        // Check if image exists in imageSizes state.
-        if( imageSizes[imgID] !== undefined ) {
-
-            // Get image from imageSizes array.
-            const image = imageSizes[imgID];
-
-            // Select the new Image Size.
-            const newSize = ( image[size] !== undefined ) ? image[size] : image['full'];
-
-            return newSize['source_url'];
-        }
-        return null;
-    }
-
-    updateImageURLs( size ) {
-        const newItems = [...this.props.attributes.items];
-        newItems.forEach( ( item, index ) => {
-            newItems[index].imgURL = this.getImageURL( item.imgID, size );
-        });
-
-        this.props.setAttributes( {
-            items: newItems,
-            imageSize: size,
-        } );
-    }
-
     onChangeTitle( newTitle, index ) {
         const newItems = [...this.props.attributes.items];
         if( newItems[index] !== undefined ) {
@@ -234,13 +156,6 @@ class gtFeaturesEdit extends Component {
             newItems[index].text = newText;
         }
         this.props.setAttributes( { items: newItems } );
-    }
-
-    getAvailableSizes() {
-        const availableSizes = Object.values( this.state.imageSizes )
-            .map( img => Object.keys(img) )
-            .reduce( ( sizes, img ) => sizes.concat( img ), [] );
-        return uniq( availableSizes );
     }
 
     render() {
@@ -261,8 +176,6 @@ class gtFeaturesEdit extends Component {
             className,
             wideControlsEnabled,
         } = this.props;
-
-        const availableSizes = this.getAvailableSizes();
 
         const classNames= classnames( className, {
             [ `gt-columns-${ attributes.columns }` ]: attributes.columns,
@@ -342,19 +255,8 @@ class gtFeaturesEdit extends Component {
 
                     </PanelBody>
 
-                    <PanelBody title={ __( 'Image Settings' ) } initialOpen={ false } className="gt-panel-image-settings gt-panel">
+                    <PanelBody title={ __( 'Icon Settings' ) } initialOpen={ false } className="gt-panel-icon-settings gt-panel">
 
-                        { ! isEmpty( availableSizes ) && (
-                            <SelectControl
-                                label={ __( 'Size' ) }
-                                value={ attributes.imageSize }
-                                options={ map( availableSizes, ( size ) => ( {
-                                    value: size,
-                                    label: startCase( size ),
-                                } ) ) }
-                                onChange={ this.updateImageURLs }
-                            />
-                        ) }
 
                     </PanelBody>
 
@@ -419,16 +321,6 @@ class gtFeaturesEdit extends Component {
                             attributes.items.map( ( item, index ) => {
                                 return (
                                     <div className="gt-grid-item" key={ index }>
-
-                                        <FeaturesImage
-                                            imgID={ item.imgID }
-                                            imgURL={ item.imgURL }
-                                            imgAlt={ item.imgAlt }
-                                            onSelect={ ( img ) => this.onSelectImage( img, index ) }
-                                            onRemove={ () => this.onRemoveImage( index ) }
-                                            addSize={ this.addImageSize }
-                                            isSelected={ isSelected }
-                                        />
 
                                         <div className={ contentClasses } style={ contentStyles }>
 
