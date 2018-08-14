@@ -51,42 +51,6 @@
             }
         }
 
-        /* Features Grid Item URL Input */
-        .gt-url-input {
-            margin-top: auto;
-            padding-top: 0;
-            background: #fff;
-            display: flex;
-            flex-wrap: wrap;
-            align-items: center;
-
-            .editor-url-input {
-                width: auto;
-            }
-
-            > .dashicon {
-                width: 24px;
-            }
-
-            .dashicon {
-                color: #8f98a1;
-            }
-
-            .editor-url-input input[type=text]::placeholder {
-                color: #8f98a1;
-            }
-
-            [data-align="center"] & {
-                margin-left: auto;
-                margin-right: auto;
-            }
-
-            [data-align="right"] & {
-                margin-left: auto;
-                margin-right: 0;
-            }
-        }
-
         /* Features Grid Item Controls*/
         .gt-grid-item-controls {
             display: flex;

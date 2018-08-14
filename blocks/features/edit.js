@@ -44,7 +44,6 @@ const {
     InspectorControls,
     PanelColorSettings,
     RichText,
-    URLInput,
     withColors,
     withFontSizes,
  } = wp.editor;
@@ -110,7 +109,6 @@ class gtFeaturesEdit extends Component {
         this.updateImageURLs = this.updateImageURLs.bind( this );
         this.onChangeTitle   = this.onChangeTitle.bind( this );
         this.onChangeText    = this.onChangeText.bind( this );
-        this.onChangeItemURL = this.onChangeItemURL.bind( this );
 
         this.state = {
             imageSizes: {},
@@ -234,14 +232,6 @@ class gtFeaturesEdit extends Component {
         const newItems = [...this.props.attributes.items];
         if( newItems[index] !== undefined ) {
             newItems[index].text = newText;
-        }
-        this.props.setAttributes( { items: newItems } );
-    }
-
-    onChangeItemURL( newItemURL, index ) {
-        const newItems = [...this.props.attributes.items];
-        if( newItems[index] !== undefined ) {
-            newItems[index].itemURL = newItemURL;
         }
         this.props.setAttributes( { items: newItems } );
     }
@@ -465,49 +455,34 @@ class gtFeaturesEdit extends Component {
                                         </div>
 
                                         { isSelected && (
-                                            <Fragment>
-
-                                                <form
-                                                    className="gt-url-input"
-                                                    onSubmit={ ( event ) => event.preventDefault() }>
-                                                    <Dashicon icon="admin-links" />
-                                                    <URLInput
-                                                        value={ item.itemURL }
-                                                        onChange={ ( newItemURL ) => this.onChangeItemURL( newItemURL, index ) }
-                                                        autoFocus= { false }
-                                                    />
-                                                    <IconButton icon="editor-break" label={ __( 'Apply' ) } type="submit" />
-                                                </form>
-
-                                                <div className="gt-grid-item-controls">
-                                                    <div className="gt-grid-item-number">
-                                                        #{ index + 1 }
-                                                    </div>
-
-                                                    <IconButton
-                                                        className="move-up-features-item"
-                                                        label={ __( 'Move up' ) }
-                                                        icon="arrow-up-alt2"
-                                                        onClick={ () => this.moveUpFeaturesItem( index ) }
-                                                        disabled={ index === 0 }
-                                                    />
-
-                                                    <IconButton
-                                                        className="move-down-features-item"
-                                                        label={ __( 'Move down' ) }
-                                                        icon="arrow-down-alt2"
-                                                        onClick={ () => this.moveDownFeaturesItem( index ) }
-                                                        disabled={ ( index + 1 ) === attributes.items.length }
-                                                    />
-
-                                                    <IconButton
-                                                        className="remove-features-item"
-                                                        label={ __( 'Remove Item' ) }
-                                                        icon="trash"
-                                                        onClick={ () => this.removeFeaturesItem( index ) }
-                                                    />
+                                            <div className="gt-grid-item-controls">
+                                                <div className="gt-grid-item-number">
+                                                    #{ index + 1 }
                                                 </div>
-                                            </Fragment>
+
+                                                <IconButton
+                                                    className="move-up-features-item"
+                                                    label={ __( 'Move up' ) }
+                                                    icon="arrow-up-alt2"
+                                                    onClick={ () => this.moveUpFeaturesItem( index ) }
+                                                    disabled={ index === 0 }
+                                                />
+
+                                                <IconButton
+                                                    className="move-down-features-item"
+                                                    label={ __( 'Move down' ) }
+                                                    icon="arrow-down-alt2"
+                                                    onClick={ () => this.moveDownFeaturesItem( index ) }
+                                                    disabled={ ( index + 1 ) === attributes.items.length }
+                                                />
+
+                                                <IconButton
+                                                    className="remove-features-item"
+                                                    label={ __( 'Remove Item' ) }
+                                                    icon="trash"
+                                                    onClick={ () => this.removeFeaturesItem( index ) }
+                                                />
+                                            </div>
                                         ) }
 
                                     </div>

@@ -80,12 +80,6 @@ registerBlockType(
                         source: 'children',
                         selector: '.gt-text',
                     },
-                    itemURL: {
-                        type: 'string',
-                        source: 'attribute',
-                        attribute: 'href',
-                        selector: '.gt-item-url',
-                    },
                 },
                 default: [
                     { 'title': '', 'text': '' },
@@ -187,28 +181,25 @@ registerBlockType(
                         {
                             attributes.items.map( ( item, index ) => {
 
-                                const image = <img
-                                    src={ item.imgURL }
-                                    alt={ item.imgAlt }
-                                    data-img-id={ item.imgID }
-                                />;
-
-                                const titleText = <span class="gt-title-text">{ item.title }</span>;
-                                const title = item.itemURL ? <a href={ item.itemURL } className="gt-item-url" title={ titleText }>{ titleText }</a> : titleText;
                                 const titleTag = 'h' + attributes.titleTag;
 
                                 return (
                                     <div className="gt-grid-item" key={ index }>
 
                                         <div className="gt-image">
-                                            { item.itemURL ? <a href={  item.itemURL } className="gt-item-url">{ image }</a> : image }
+                                            <img
+                                                src={ item.imgURL }
+                                                alt={ item.imgAlt }
+                                                data-img-id={ item.imgID }
+                                            />
                                         </div>
 
                                         <div className={ contentClasses } style={ contentStyles }>
 
                                             <RichText.Content
                                                 tagName={ titleTag }
-                                                value={ title }
+                                                className="gt-title-text"
+                                                value={ item.title }
                                             />
 
                                             <RichText.Content
