@@ -12,6 +12,51 @@
       margin-right: calc(50% - 50vw);
       width: auto;
       max-width: 1000%; }
+.wp-block-german-themes-blocks-features {
+  /* Features Grid Layout */
+  /* Features Item Styling */ }
+  .wp-block-german-themes-blocks-features .gt-grid-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 1.5rem; }
+  .wp-block-german-themes-blocks-features.gt-columns-3 .gt-grid-container {
+    grid-template-columns: repeat(3, 1fr); }
+  .wp-block-german-themes-blocks-features.gt-columns-4 .gt-grid-container {
+    grid-template-columns: repeat(4, 1fr); }
+  .wp-block-german-themes-blocks-features.gt-columns-5 .gt-grid-container {
+    grid-template-columns: repeat(5, 1fr); }
+  .wp-block-german-themes-blocks-features.gt-columns-6 .gt-grid-container {
+    grid-template-columns: repeat(6, 1fr); }
+  .wp-block-german-themes-blocks-features .gt-grid-item .gt-image {
+    margin: 0;
+    overflow: hidden; }
+    .wp-block-german-themes-blocks-features .gt-grid-item .gt-image img {
+      margin: 0;
+      vertical-align: top; }
+  .wp-block-german-themes-blocks-features .gt-grid-item .gt-content {
+    padding-top: 1rem; }
+    .wp-block-german-themes-blocks-features .gt-grid-item .gt-content .gt-title {
+      margin-top: 0; }
+    .wp-block-german-themes-blocks-features .gt-grid-item .gt-content .gt-button {
+      display: inline-block;
+      margin: 0 0 1.5rem;
+      padding: 10px 20px;
+      color: #fff;
+      background: #333;
+      border: none;
+      border-radius: 24px;
+      -webkit-box-shadow: none;
+              box-shadow: none;
+      cursor: pointer;
+      text-align: center;
+      text-decoration: none;
+      white-space: normal;
+      word-break: break-all; }
+      .wp-block-german-themes-blocks-features .gt-grid-item .gt-content .gt-button.gt-button-hidden {
+        display: none; }
+  .wp-block-german-themes-blocks-features .gt-grid-item .gt-content.has-background {
+    padding-left: 1rem;
+    padding-right: 1rem; }
 /* Block Columns */
 .wp-block-german-themes-blocks-image-text {
   display: -webkit-box;

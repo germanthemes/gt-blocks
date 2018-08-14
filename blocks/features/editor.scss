@@ -1,0 +1,152 @@
+.wp-block-german-themes-blocks-features {
+
+    /* Features Grid Item */
+    .gt-grid-item {
+        display: flex;
+        flex-direction: column;
+
+        /* Block Image Edit */
+        .gt-image {
+
+            /* Image was added in Editor */
+            .gt-image-wrapper {
+
+                .gt-edit-image {
+                    position: relative;
+
+                    &:hover {
+                        cursor: pointer;
+                    }
+
+                    .remove-image {
+                        position: absolute;
+                        top: 8px;
+                        right: 8px;
+                        color: #fff;
+                        background: rgba(0,0,0,0.6);
+                        padding: 5px;
+                        border: 3px solid transparent;
+                    }
+                }
+            }
+
+            /* Image Placeholder */
+            .gt-image .gt-image-placeholder .components-form-file-upload {
+                margin-bottom: 12px;
+            }
+        }
+
+        /* Features Grid Item Content */
+        .gt-content {
+            margin-bottom: 16px;
+
+            .gt-title {
+                color: inherit;
+                margin-top: 0 !important;
+            }
+
+            .gt-text p {
+                color: inherit;
+                font-size: inherit;
+            }
+
+            .gt-button-edit {
+                display: inline-block;
+
+                .editor-rich-text__tinymce {
+                    cursor: text;
+                }
+            }
+        }
+
+        /* Features Grid Item URL Input */
+        .gt-url-input {
+            margin-top: auto;
+            padding-top: 0;
+            background: #fff;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+
+            .editor-url-input {
+                width: auto;
+            }
+
+            > .dashicon {
+                width: 24px;
+            }
+
+            .dashicon {
+                color: #8f98a1;
+            }
+
+            .editor-url-input input[type=text]::placeholder {
+                color: #8f98a1;
+            }
+
+            [data-align="center"] & {
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+            [data-align="right"] & {
+                margin-left: auto;
+                margin-right: 0;
+            }
+        }
+
+        /* Features Grid Item Controls*/
+        .gt-grid-item-controls {
+            display: flex;
+            margin-top: 16px;
+            padding: 8px;
+            width: 100%;
+            background: #edeff0;
+            border: 1px solid #e2e4e7;
+
+            .gt-grid-item-number {
+                margin: 2px 10px 2px 6px;
+                font-size: 14px;
+                font-weight: bold;
+            }
+
+            .components-icon-button {
+                padding: 4px 5px;
+
+                &:hover,
+                &:active,
+                &:focus {
+                    background: #fff;
+                }
+            }
+
+            .remove-features-item {
+                margin-left: auto;
+
+                .dashicon {
+                    width: 18px;
+                }
+            }
+        }
+    }
+
+    /* Add Features Item*/
+    .gt-add-features-item {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-top: 1.5rem;
+        padding: 25px 20px 20px;
+        width: 100%;
+        height: auto;
+        box-shadow: none;
+        border: 1px solid #ddd;
+        border-radius: 0;
+
+        &:hover,
+        &:focus {
+            border: 1px solid #999;
+            box-shadow: none;
+        }
+    }
+}

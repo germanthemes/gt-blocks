@@ -1,0 +1,72 @@
+.wp-block-german-themes-blocks-features {
+
+    /* Features Grid Layout */
+    .gt-grid-container {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-gap: 1.5rem;
+    }
+
+    &.gt-columns-3 .gt-grid-container {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    &.gt-columns-4 .gt-grid-container {
+        grid-template-columns: repeat(4, 1fr);
+    }
+
+    &.gt-columns-5 .gt-grid-container {
+        grid-template-columns: repeat(5, 1fr);
+    }
+
+    &.gt-columns-6 .gt-grid-container {
+        grid-template-columns: repeat(6, 1fr);
+    }
+
+    /* Features Item Styling */
+    .gt-grid-item {
+
+        .gt-image {
+            margin: 0;
+            overflow: hidden;
+
+            img {
+                margin: 0;
+                vertical-align: top;
+            }
+        }
+
+        .gt-content {
+            padding-top: 1rem;
+
+            .gt-title {
+                margin-top: 0;
+            }
+
+            .gt-button {
+                display: inline-block;
+                margin: 0 0 1.5rem;
+                padding: 10px 20px;
+                color: #fff;
+                background: #333;
+                border: none;
+                border-radius: 24px;
+                box-shadow: none;
+                cursor: pointer;
+                text-align: center;
+                text-decoration: none;
+                white-space: normal;
+                word-break: break-all;
+
+                &.gt-button-hidden {
+                    display: none;
+                }
+            }
+        }
+
+        .gt-content.has-background {
+            padding-left: 1rem;
+            padding-right: 1rem;
+        }
+    }
+}

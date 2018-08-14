@@ -5,6 +5,7 @@ import './editor.scss';
  * Import Blocks
  */
 import './container';
+import './features';
 import './image-text';
 import './portfolio';
 import './services';
