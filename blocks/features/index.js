@@ -52,6 +52,12 @@ registerBlockType(
                 source: 'query',
                 selector: '.gt-grid-item',
                 query: {
+                    icon: {
+                        type: 'string',
+                        source: 'attribute',
+                        selector: '.gt-icon',
+                        attribute: 'data-icon',
+                    },
                     title: {
                         type: 'array',
                         source: 'children',
@@ -64,8 +70,8 @@ registerBlockType(
                     },
                 },
                 default: [
-                    { 'title': '', 'text': '' },
-                    { 'title': '', 'text': '' },
+                    { 'icon': 'home', 'title': '', 'text': '' },
+                    { 'icon': 'home', 'title': '', 'text': '' },
                 ]
             },
             columns: {
@@ -161,14 +167,15 @@ registerBlockType(
                         {
                             attributes.items.map( ( item, index ) => {
 
-                                const iconURL = pluginURL + '/assets/icons/fontawesome.svg#' + 'address-card';
+                                const iconURL = pluginURL + '/assets/icons/fontawesome.svg#' + item.icon;
+                                const iconClass = classnames( 'icon', `icon-${item.icon}` );
                                 const titleTag = 'h' + attributes.titleTag;
 
                                 return (
                                     <div className="gt-grid-item" key={ index }>
 
-                                        <div className="gt-icon">
-                                            <svg className="icon icon-address-card" aria-hidden="true" role="img">
+                                        <div className="gt-icon" data-icon={ item.icon }>
+                                            <svg className={ iconClass } aria-hidden="true" role="img">
                                                 <use href={ iconURL }></use>
                                             </svg>
                                         </div>

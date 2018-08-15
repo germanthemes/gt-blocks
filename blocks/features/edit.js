@@ -32,7 +32,7 @@ const {
     sprintf,
 } = wp.i18n;
 
-const { withSelect } = wp.data;
+const { select, withSelect } = wp.data;
 const { compose } = wp.compose;
 
 const {
@@ -42,6 +42,7 @@ const {
     ContrastChecker,
     InspectorControls,
     PanelColorSettings,
+    PlainText,
     RichText,
     withColors,
     withFontSizes,
@@ -102,6 +103,7 @@ class gtFeaturesEdit extends Component {
         super( ...arguments );
 
         this.addFeaturesItem = this.addFeaturesItem.bind( this );
+        this.onChangeIcon    = this.onChangeIcon.bind( this );
         this.onChangeTitle   = this.onChangeTitle.bind( this );
         this.onChangeText    = this.onChangeText.bind( this );
     }
@@ -139,6 +141,15 @@ class gtFeaturesEdit extends Component {
 
     removeFeaturesItem( index ) {
         const newItems = [...this.props.attributes.items].filter( (value, key) => key !== index );
+        this.props.setAttributes( { items: newItems } );
+    }
+
+    onChangeIcon( newIcon, index ) {
+        console.log(newIcon);
+        const newItems = [...this.props.attributes.items];
+        if( newItems[index] !== undefined ) {
+            newItems[index].icon = newIcon;
+        }
         this.props.setAttributes( { items: newItems } );
     }
 
@@ -202,6 +213,7 @@ class gtFeaturesEdit extends Component {
             color: textColor.class ? undefined : textColor.value,
         };
 
+        const pluginURL = select( 'gt-blocks' ).getPluginURL();
         const titleTag = 'h' + attributes.titleTag;
 
         return (
@@ -319,8 +331,29 @@ class gtFeaturesEdit extends Component {
 
                         {
                             attributes.items.map( ( item, index ) => {
+
+                                const iconURL = pluginURL + '/assets/icons/fontawesome.svg#' + item.icon;
+                                const iconClass = classnames( 'icon', `icon-${item.icon}` );
+
                                 return (
                                     <div className="gt-grid-item" key={ index }>
+
+                                        <div className="gt-icon" data-icon={ item.icon }>
+                                            <svg className={ iconClass } aria-hidden="true" role="img">
+                                                <use href={ iconURL }></use>
+                                            </svg>
+                                        </div>
+
+                                        { isSelected && (
+                                            <div className="gt-icon-input">
+                                                <PlainText
+                                                    className="input-control"
+                                                    id={ `gt-icon-input-${ index }` }
+                                                    value={ item.icon }
+                                                    onChange={ ( newIcon ) => this.onChangeIcon( newIcon, index ) }
+                                                />
+                                            </div>
+                                        ) }
 
                                         <div className={ contentClasses } style={ contentStyles }>
 
