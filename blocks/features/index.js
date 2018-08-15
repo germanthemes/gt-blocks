@@ -70,13 +70,14 @@ registerBlockType(
                     },
                 },
                 default: [
-                    { 'icon': 'home', 'title': '', 'text': '' },
-                    { 'icon': 'home', 'title': '', 'text': '' },
+                    { 'icon': '', 'title': '', 'text': '' },
+                    { 'icon': '', 'title': '', 'text': '' },
+                    { 'icon': '', 'title': '', 'text': '' },
                 ]
             },
             columns: {
                 type: 'number',
-                default: 2,
+                default: 3,
             },
             blockAlignment: {
                 type: 'string',

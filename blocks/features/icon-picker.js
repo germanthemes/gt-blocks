@@ -71,6 +71,12 @@ class IconPicker extends Component {
                             value={ icon }
                             onChange={ onChange }
                         />
+
+                        <div className="gt-icon-picker">
+                            <a onClick={ () => onChange( 'home' ) }>Home</a>
+                            <a onClick={ () => onChange( 'music' ) }>Music</a>
+                            <a onClick={ () => onChange( 'cog' ) }>Cog</a>
+                        </div>
                     </div>
                 ) }
 
