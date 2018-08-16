@@ -74,4 +74,31 @@
             box-shadow: none;
         }
     }
+
+    .gt-icon-wrapper {
+
+        a.gt-show-icon-picker {
+            cursor: pointer;
+        }
+
+        .gt-icon-picker {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.85);
+            z-index: 9999999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 3em;
+
+            .gt-icon-picker-box {
+                width: 100%;
+                height: 100%;
+                background: #fff;
+            }
+        }
+    }
 }

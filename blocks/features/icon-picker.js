@@ -6,7 +6,7 @@ import classnames from 'classnames';
 /**
  * Internal block libraries
  */
-const { Component } = wp.element;
+const { Component, Fragment } = wp.element;
 const { __ } = wp.i18n;
 const { select } = wp.data;
 
@@ -23,6 +23,40 @@ const {
 class IconPicker extends Component {
     constructor() {
         super( ...arguments );
+
+        this.showIconPicker = this.showIconPicker.bind( this );
+        this.hideIconPicker = this.hideIconPicker.bind( this );
+
+        this.state = {
+            displayed: false,
+        };
+    }
+
+    showIconPicker() {
+        this.setState( { displayed: true } );
+    }
+
+    hideIconPicker() {
+        this.setState( { displayed: false } );
+    }
+
+    componentDidUpdate( prevProps ) {
+		const { isSelected } = this.props;
+
+		// Hide IconPicker if block is unselected.
+		if ( this.state.displayed && ! isSelected && prevProps.isSelected ) {
+            this.setState( { displayed: false } );
+		}
+	}
+
+    setIcon( icon ) {
+        const { onChange } = this.props;
+
+        // Change Icon with function from parent.
+        onChange( icon );
+
+        // Hide IconPicker after icon is selected.
+        this.hideIconPicker();
     }
 
     render() {
@@ -44,38 +78,57 @@ class IconPicker extends Component {
 
                     <Placeholder
                         className="gt-icon-placeholder"
-                        instructions={ __( 'You can choose from over 700 Fontawesome icons.' ) }
-                        icon="format-image"
+                        instructions={ __( 'Choose an icon here.' ) }
+                        icon="carrot"
                         label={ __( 'Icon' ) }
                     >
-                        <Button isLarge onClick={ console.log('clicked') }>
+                        <Button isLarge onClick={ this.showIconPicker }>
                             { __( 'Select Icon' ) }
                         </Button>
                     </Placeholder>
 
                 ) : (
 
-                    <div className="gt-icon" data-icon={ icon }>
-                        <svg className={ iconClass } aria-hidden="true" role="img">
-                            <use href={ iconURL }></use>
-                        </svg>
-                    </div>
+                    <Fragment>
+
+                        { isSelected ? (
+
+                            <a className="gt-show-icon-picker" onClick={ this.showIconPicker }>
+                                <div className="gt-icon" data-icon={ icon }>
+                                    <svg className={ iconClass } aria-hidden="true" role="img">
+                                        <use href={ iconURL }></use>
+                                    </svg>
+                                </div>
+                            </a>
+
+                        ) : (
+
+                            <div className="gt-icon" data-icon={ icon }>
+                                <svg className={ iconClass } aria-hidden="true" role="img">
+                                    <use href={ iconURL }></use>
+                                </svg>
+                            </div>
+
+                        ) }
+
+                    </Fragment>
 
                 ) }
 
-                { isSelected && (
-                    <div className="gt-icon-input">
-                        <PlainText
-                            className="input-control"
-                            id={ `gt-icon-input-${ index }` }
-                            value={ icon }
-                            onChange={ onChange }
-                        />
+                { ( isSelected && this.state.displayed ) && (
+                    <div className="gt-icon-picker">
+                        <div className="gt-icon-picker-box">
 
-                        <div className="gt-icon-picker">
-                            <a onClick={ () => onChange( 'home' ) }>Home</a>
-                            <a onClick={ () => onChange( 'music' ) }>Music</a>
-                            <a onClick={ () => onChange( 'cog' ) }>Cog</a>
+                            <h4 className="gt-icon-picker-title">
+                                Select Icon
+                            </h4>
+
+                            <div className="gt-icon-picker-list">
+                                <a onClick={ () => this.setIcon( 'home' ) }>Home</a>
+                                <a onClick={ () => this.setIcon( 'music' ) }>Music</a>
+                                <a onClick={ () => this.setIcon( 'cog' ) }>Cog</a>
+                            </div>
+
                         </div>
                     </div>
                 ) }
