@@ -18,6 +18,7 @@ const {
     Button,
     IconButton,
     Placeholder,
+    Tooltip,
 } = wp.components;
 
 const ICONS = [
@@ -92,7 +93,9 @@ class IconPicker extends Component {
                     icons.map( ( icon ) => {
                         return (
                             <a className="gt-icon-link" onClick={ () => this.setIcon( icon) }>
-                                { this.displayIcon( icon ) }
+                                <Tooltip text={ icon }>
+                                    { this.displayIcon( icon ) }
+                                </Tooltip>
                             </a>
                         );
                     })

@@ -125,7 +125,6 @@
 
                         .gt-icon-link {
                             display: block;
-                            padding: 16px;
                             background: #f0f0f0;
 
                             &:hover,
@@ -133,16 +132,17 @@
                                 background: #e0e0e0;
                                 cursor: pointer;
                             }
-                        }
 
-                        .gt-icon {
-                        	background: none;
-                            padding: 0;
+                            .gt-icon {
+                            	background: none;
+                                padding: 16px;
 
-                            .icon {
-                            	width: 24px;
-                            	height: 24px;
-                            	fill: #202020;
+                                .icon {
+                                	width: 24px;
+                                	height: 24px;
+                                	fill: #202020;
+                                    pointer-events: none;
+                                }
                             }
                         }
                     }
