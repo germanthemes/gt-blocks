@@ -94,11 +94,19 @@
       width: 100%;
       height: 100%;
       max-height: 500px; }
-      .wp-block-german-themes-blocks-features .gt-icon-wrapper .gt-icon-picker .gt-icon-picker-box .gt-icon-picker-title {
-        background: #edeff0;
-        border: 1px solid #e2e4e7;
-        padding: 1rem;
-        margin: 0 0 2rem; }
+      .wp-block-german-themes-blocks-features .gt-icon-wrapper .gt-icon-picker .gt-icon-picker-box .gt-icon-picker-header {
+        margin: 0 0 0.5rem; }
+        .wp-block-german-themes-blocks-features .gt-icon-wrapper .gt-icon-picker .gt-icon-picker-box .gt-icon-picker-header .gt-icon-picker-title {
+          display: -webkit-box;
+          display: -ms-flexbox;
+          display: flex;
+          -webkit-box-pack: justify;
+              -ms-flex-pack: justify;
+                  justify-content: space-between;
+          background: #edeff0;
+          border: 1px solid #e2e4e7;
+          padding: 0.5rem 0.5rem 0.5rem 1rem;
+          margin: 0 0 1rem; }
       .wp-block-german-themes-blocks-features .gt-icon-wrapper .gt-icon-picker .gt-icon-picker-box .gt-icon-picker-list {
         overflow-y: scroll;
         background: #fff;

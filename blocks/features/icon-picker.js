@@ -156,14 +156,24 @@ class IconPicker extends Component {
                     <div className="gt-icon-picker">
                         <div className="gt-icon-picker-box">
 
-                            <div className="gt-icon-picker-title">
-                                { __( 'Select Icon' ) }
+                            <div className="gt-icon-picker-header">
+                                <div className="gt-icon-picker-title">
+                                    { __( 'Select Icon' ) }
+
+                                    <IconButton
+                                        className="gt-hide-icon-picker"
+                                        label={ __( 'Close' ) }
+                                        icon="no-alt"
+                                        onClick={ this.hideIconPicker }
+                                    />
+                                </div>
 
                                 <PlainText
                                     className="input-control"
                                     id="gt-icon-picker-search"
                                     placeholder={ __( 'Search Icon' ) }
                                     onChange={ this.searchIcon }
+                                    autoFocus={ true }
                                 />
                             </div>
 
