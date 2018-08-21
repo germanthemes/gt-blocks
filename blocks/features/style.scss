@@ -30,44 +30,48 @@
             text-align: center;
 
             .gt-icon {
-                padding: 2rem 1rem;
+                padding-top: 1rem;
 
                 .gt-icon-svg {
                     display: inline-block;
 
                     .icon {
                     	margin: 0;
-                    	width: 64px;
-                    	height: 64px;
+                    	width: 32px;
+                    	height: 32px;
                     	vertical-align: middle;
                     	fill: currentColor;
                     }
                 }
 
+                &.has-icon-background {
+                    padding: 2rem 0;
+                }
+
                 &.gt-icon-square {
                     display: inline-block;
-                    padding: 1.5rem;
+                    padding: 2rem;
                 }
 
                 &.gt-icon-circle {
                     display: inline-block;
-                    padding: 1.5rem;
+                    padding: 1.75rem;
                     border-radius: 6rem;
                 }
 
-                &.gt-icon-outline .gt-icon-svg {
-                    display: inline-block;
-                    padding: 1.5rem;
-                    border-radius: 6rem;
-                    border: 5px solid currentColor;
-                }
+                &.gt-icon-outline {
+                    padding: 0;
 
-                &:not(.has-icon-color) {
-                    color: #fff;
-                }
+                    .gt-icon-svg {
+                        display: inline-block;
+                        padding: 2rem;
+                        border-radius: 6rem;
+                        border: 3px solid currentColor;
+                    }
 
-                &:not(.has-icon-background) {
-                    background-color: #303030;
+                    &.has-icon-background {
+                        padding: 1.5rem 0;
+                    }
                 }
             }
         }

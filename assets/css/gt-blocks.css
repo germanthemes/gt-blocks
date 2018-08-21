@@ -30,31 +30,33 @@
   .wp-block-german-themes-blocks-features .gt-grid-item .gt-icon-wrap {
     text-align: center; }
     .wp-block-german-themes-blocks-features .gt-grid-item .gt-icon-wrap .gt-icon {
-      padding: 2rem 1rem; }
+      padding-top: 1rem; }
       .wp-block-german-themes-blocks-features .gt-grid-item .gt-icon-wrap .gt-icon .gt-icon-svg {
         display: inline-block; }
         .wp-block-german-themes-blocks-features .gt-grid-item .gt-icon-wrap .gt-icon .gt-icon-svg .icon {
           margin: 0;
-          width: 64px;
-          height: 64px;
+          width: 32px;
+          height: 32px;
           vertical-align: middle;
           fill: currentColor; }
+      .wp-block-german-themes-blocks-features .gt-grid-item .gt-icon-wrap .gt-icon.has-icon-background {
+        padding: 2rem 0; }
       .wp-block-german-themes-blocks-features .gt-grid-item .gt-icon-wrap .gt-icon.gt-icon-square {
         display: inline-block;
-        padding: 1.5rem; }
+        padding: 2rem; }
       .wp-block-german-themes-blocks-features .gt-grid-item .gt-icon-wrap .gt-icon.gt-icon-circle {
         display: inline-block;
-        padding: 1.5rem;
+        padding: 1.75rem;
         border-radius: 6rem; }
-      .wp-block-german-themes-blocks-features .gt-grid-item .gt-icon-wrap .gt-icon.gt-icon-outline .gt-icon-svg {
-        display: inline-block;
-        padding: 1.5rem;
-        border-radius: 6rem;
-        border: 5px solid currentColor; }
-      .wp-block-german-themes-blocks-features .gt-grid-item .gt-icon-wrap .gt-icon:not(.has-icon-color) {
-        color: #fff; }
-      .wp-block-german-themes-blocks-features .gt-grid-item .gt-icon-wrap .gt-icon:not(.has-icon-background) {
-        background-color: #303030; }
+      .wp-block-german-themes-blocks-features .gt-grid-item .gt-icon-wrap .gt-icon.gt-icon-outline {
+        padding: 0; }
+        .wp-block-german-themes-blocks-features .gt-grid-item .gt-icon-wrap .gt-icon.gt-icon-outline .gt-icon-svg {
+          display: inline-block;
+          padding: 2rem;
+          border-radius: 6rem;
+          border: 3px solid currentColor; }
+        .wp-block-german-themes-blocks-features .gt-grid-item .gt-icon-wrap .gt-icon.gt-icon-outline.has-icon-background {
+          padding: 1.5rem 0; }
   .wp-block-german-themes-blocks-features .gt-grid-item .gt-content.has-background {
     padding: 0.001rem 1.25rem; }
 /* Block Columns */

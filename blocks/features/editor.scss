@@ -81,7 +81,12 @@
     .gt-icon-wrapper {
 
         a.gt-show-icon-picker {
+            color: inherit;
             cursor: pointer;
+
+            .gt-icon-svg .icon {
+                pointer-events: none;
+            }
         }
 
         .gt-icon-picker {

@@ -89,7 +89,7 @@ registerBlockType(
             },
             iconLayout: {
                 type: 'string',
-                default: 'circle',
+                default: 'default',
             },
             titleTag: {
                 type: 'number',
@@ -164,7 +164,7 @@ registerBlockType(
             } );
 
             const iconClasses = classnames( 'gt-icon', {
-                [ `gt-icon-${ iconLayout }` ]: ( iconLayout !== 'full' ),
+                [ `gt-icon-${ iconLayout }` ]: ( iconLayout !== 'default' ),
                 'has-icon-color': iconColor || customIconColor,
                 [ iconColorClass ]: iconColorClass,
                 'has-icon-background': iconBackgroundColor || customIconBackgroundColor,

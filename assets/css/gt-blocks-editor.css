@@ -67,7 +67,10 @@
       -webkit-box-shadow: none;
               box-shadow: none; }
   .wp-block-german-themes-blocks-features .gt-icon-wrapper a.gt-show-icon-picker {
+    color: inherit;
     cursor: pointer; }
+    .wp-block-german-themes-blocks-features .gt-icon-wrapper a.gt-show-icon-picker .gt-icon-svg .icon {
+      pointer-events: none; }
   .wp-block-german-themes-blocks-features .gt-icon-wrapper .gt-icon-picker {
     position: absolute;
     top: 0;

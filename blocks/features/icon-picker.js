@@ -131,7 +131,7 @@ class IconPicker extends Component {
                         label={ __( 'Icon' ) }
                     >
                         <Button isLarge onClick={ this.showIconPicker }>
-                            { __( 'Select Icon' ) }
+                            { __( 'Select icon' ) }
                         </Button>
                     </Placeholder>
 
@@ -142,9 +142,11 @@ class IconPicker extends Component {
                         { isSelected ? (
 
                             <a className="gt-show-icon-picker" onClick={ this.showIconPicker }>
-                                <div className={ iconClasses } style={ iconStyles }>
-                                    { this.displayIcon( icon ) }
-                                </div>
+                                <Tooltip text={ __( 'Edit icon' ) }>
+                                    <div className={ iconClasses } style={ iconStyles }>
+                                            { this.displayIcon( icon ) }
+                                    </div>
+                                </Tooltip>
                             </a>
 
                         ) : (
@@ -165,7 +167,7 @@ class IconPicker extends Component {
 
                             <div className="gt-icon-picker-header">
                                 <div className="gt-icon-picker-title">
-                                    { __( 'Select Icon' ) }
+                                    { __( 'Select icon' ) }
 
                                     <IconButton
                                         className="gt-hide-icon-picker"
@@ -178,7 +180,7 @@ class IconPicker extends Component {
                                 <PlainText
                                     className="input-control"
                                     id="gt-icon-picker-search"
-                                    placeholder={ __( 'Search Icon' ) }
+                                    placeholder={ __( 'Search for icon' ) }
                                     onChange={ this.searchIcon }
                                     autoFocus={ true }
                                 />

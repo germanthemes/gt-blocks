@@ -196,7 +196,7 @@ class gtFeaturesEdit extends Component {
         } );
 
         const iconClasses = classnames( 'gt-icon', {
-            [ `gt-icon-${ attributes.iconLayout }` ]: ( attributes.iconLayout !== 'full' ),
+            [ `gt-icon-${ attributes.iconLayout }` ]: ( attributes.iconLayout !== 'default' ),
             'has-icon-color': iconColor.value,
             [ iconColor.class ]: iconColor.class,
             'has-icon-background': iconBackgroundColor.value,
@@ -289,10 +289,10 @@ class gtFeaturesEdit extends Component {
                             value={ attributes.iconLayout }
                             onChange={ ( newStyle ) => setAttributes( { iconLayout: newStyle } ) }
                             options={ [
+                                { value: 'default', label: __( 'Default' ) },
                                 { value: 'circle', label: __( 'Circle' ) },
                                 { value: 'outline', label: __( 'Outline' ) },
                                 { value: 'square', label: __( 'Square' ) },
-                                { value: 'full', label: __( 'Full' ) },
                             ] }
                         />
 
@@ -325,16 +325,17 @@ class gtFeaturesEdit extends Component {
 
                     <PanelColorSettings
                         title={ __( 'Icon Color' ) }
+                        initialOpen={ false }
                         colorSettings={ [
-                            {
-                                value: iconColor.value,
-                                onChange: setIconColor,
-                                label: __( 'Icon Color' ),
-                            },
                             {
                                 value: iconBackgroundColor.value,
                                 onChange: setIconBackgroundColor,
                                 label: __( 'Background Color' ),
+                            },
+                            {
+                                value: iconColor.value,
+                                onChange: setIconColor,
+                                label: __( 'Icon Color' ),
                             },
                         ] }
                     >
@@ -342,6 +343,7 @@ class gtFeaturesEdit extends Component {
 
                     <PanelColorSettings
                         title={ __( 'Color Settings' ) }
+                        initialOpen={ false }
                         colorSettings={ [
                             {
                                 value: backgroundColor.value,
