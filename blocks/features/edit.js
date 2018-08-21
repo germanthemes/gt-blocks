@@ -196,6 +196,7 @@ class gtFeaturesEdit extends Component {
         } );
 
         const iconClasses = classnames( 'gt-icon', {
+            [ `gt-icon-${ attributes.iconLayout }` ]: ( attributes.iconLayout !== 'full' ),
             'has-icon-color': iconColor.value,
             [ iconColor.class ]: iconColor.class,
             'has-icon-background': iconBackgroundColor.value,
@@ -283,6 +284,17 @@ class gtFeaturesEdit extends Component {
 
                     <PanelBody title={ __( 'Icon Settings' ) } initialOpen={ false } className="gt-panel-icon-settings gt-panel">
 
+                        <SelectControl
+                            label={ __( 'Icon Style' ) }
+                            value={ attributes.iconLayout }
+                            onChange={ ( newStyle ) => setAttributes( { iconLayout: newStyle } ) }
+                            options={ [
+                                { value: 'circle', label: __( 'Circle' ) },
+                                { value: 'outline', label: __( 'Outline' ) },
+                                { value: 'square', label: __( 'Square' ) },
+                                { value: 'full', label: __( 'Full' ) },
+                            ] }
+                        />
 
                     </PanelBody>
 

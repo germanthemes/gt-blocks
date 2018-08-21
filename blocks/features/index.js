@@ -75,16 +75,21 @@ registerBlockType(
                     { 'icon': '', 'title': '', 'text': '' },
                 ]
             },
-            columns: {
-                type: 'number',
-                default: 3,
-            },
             blockAlignment: {
                 type: 'string',
                 default: 'center',
             },
             textAlignment: {
                 type: 'string',
+                default: 'center',
+            },
+            columns: {
+                type: 'number',
+                default: 3,
+            },
+            iconLayout: {
+                type: 'string',
+                default: 'circle',
             },
             titleTag: {
                 type: 'number',
@@ -133,6 +138,7 @@ registerBlockType(
 
         save( { attributes } ) {
             const {
+                iconLayout,
                 iconColor,
                 iconBackgroundColor,
                 customIconColor,
@@ -158,6 +164,7 @@ registerBlockType(
             } );
 
             const iconClasses = classnames( 'gt-icon', {
+                [ `gt-icon-${ iconLayout }` ]: ( iconLayout !== 'full' ),
                 'has-icon-color': iconColor || customIconColor,
                 [ iconColorClass ]: iconColorClass,
                 'has-icon-background': iconBackgroundColor || customIconBackgroundColor,
