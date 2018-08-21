@@ -136,14 +136,15 @@
                                 cursor: pointer;
                             }
 
-                            .gt-icon {
-                            	background: none;
+                            .gt-icon-svg {
+                            	display: inline-block;
                                 padding: 16px;
 
                                 .icon {
                                 	width: 24px;
                                 	height: 24px;
                                 	fill: #202020;
+                                    vertical-align: middle;
                                     pointer-events: none;
                                 }
                             }

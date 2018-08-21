@@ -70,17 +70,16 @@ class IconPicker extends Component {
     }
 
     displayIcon( icon ) {
-        const { iconClasses, iconStyles } = this.props;
         const pluginURL = select( 'gt-blocks' ).getPluginURL();
-        const iconURL = pluginURL + '/assets/icons/fontawesome.svg#' + icon;
-        const iconClass = classnames( 'icon', `icon-${icon}` );
+        const svgURL = pluginURL + '/assets/icons/fontawesome.svg#' + icon;
+        const svgClass = classnames( 'icon', `icon-${icon}` );
 
         return (
-            <div className={ iconClasses } data-icon={ icon } style={ iconStyles }>
-                <svg className={ iconClass } aria-hidden="true" role="img">
-                    <use href={ iconURL }></use>
+            <span className="gt-icon-svg" data-icon={ icon }>
+                <svg className={ svgClass } aria-hidden="true" role="img">
+                    <use href={ svgURL }></use>
                 </svg>
-            </div>
+            </span>
         );
     }
 
@@ -114,6 +113,8 @@ class IconPicker extends Component {
     render() {
         const {
             icon,
+            iconClasses,
+            iconStyles,
             onChange,
             isSelected
         } = this.props;
@@ -141,14 +142,16 @@ class IconPicker extends Component {
                         { isSelected ? (
 
                             <a className="gt-show-icon-picker" onClick={ this.showIconPicker }>
-                                { this.displayIcon( icon ) }
+                                <div className={ iconClasses } style={ iconStyles }>
+                                    { this.displayIcon( icon ) }
+                                </div>
                             </a>
 
                         ) : (
 
-                            <Fragment>
+                            <div className={ iconClasses } style={ iconStyles }>
                                 { this.displayIcon( icon ) }
-                            </Fragment>
+                            </div>
 
                         ) }
 

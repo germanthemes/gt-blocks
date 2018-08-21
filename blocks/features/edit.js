@@ -364,13 +364,15 @@ class gtFeaturesEdit extends Component {
                                 return (
                                     <div className="gt-grid-item" key={ index }>
 
-                                        <IconPicker
-                                            icon={ item.icon }
-                                            iconClasses={ iconClasses }
-                                            iconStyles={ iconStyles }
-                                            onChange={ ( newIcon ) => this.onChangeIcon( newIcon, index ) }
-                                            isSelected={ isSelected }
-                                        />
+                                        <div className="gt-icon-wrap">
+                                            <IconPicker
+                                                icon={ item.icon }
+                                                iconClasses={ iconClasses }
+                                                iconStyles={ iconStyles }
+                                                onChange={ ( newIcon ) => this.onChangeIcon( newIcon, index ) }
+                                                isSelected={ isSelected }
+                                            />
+                                        </div>
 
                                         <div className={ contentClasses } style={ contentStyles }>
 

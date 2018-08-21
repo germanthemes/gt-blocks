@@ -121,13 +121,14 @@
             .wp-block-german-themes-blocks-features .gt-icon-wrapper .gt-icon-picker .gt-icon-picker-box .gt-icon-picker-list .gt-icon-picker-grid .gt-icon-link:hover, .wp-block-german-themes-blocks-features .gt-icon-wrapper .gt-icon-picker .gt-icon-picker-box .gt-icon-picker-list .gt-icon-picker-grid .gt-icon-link:active {
               background: #e0e0e0;
               cursor: pointer; }
-            .wp-block-german-themes-blocks-features .gt-icon-wrapper .gt-icon-picker .gt-icon-picker-box .gt-icon-picker-list .gt-icon-picker-grid .gt-icon-link .gt-icon {
-              background: none;
+            .wp-block-german-themes-blocks-features .gt-icon-wrapper .gt-icon-picker .gt-icon-picker-box .gt-icon-picker-list .gt-icon-picker-grid .gt-icon-link .gt-icon-svg {
+              display: inline-block;
               padding: 16px; }
-              .wp-block-german-themes-blocks-features .gt-icon-wrapper .gt-icon-picker .gt-icon-picker-box .gt-icon-picker-list .gt-icon-picker-grid .gt-icon-link .gt-icon .icon {
+              .wp-block-german-themes-blocks-features .gt-icon-wrapper .gt-icon-picker .gt-icon-picker-box .gt-icon-picker-list .gt-icon-picker-grid .gt-icon-link .gt-icon-svg .icon {
                 width: 24px;
                 height: 24px;
                 fill: #202020;
+                vertical-align: middle;
                 pointer-events: none; }
 /* Block Image Edit */
 .wp-block-german-themes-blocks-image-text .image-wrapper .edit-image {

@@ -26,25 +26,50 @@
     /* Features Item Styling */
     .gt-grid-item {
 
-        .gt-icon {
-            padding: 2rem 1rem;
+        .gt-icon-wrap {
             text-align: center;
 
-            .icon {
-            	margin: 0;
-            	width: 64px;
-            	height: 64px;
-            	vertical-align: middle;
-            	fill: currentColor;
+            .gt-icon {
+                padding: 2rem 1rem;
+
+                .gt-icon-svg {
+                    display: inline-block;
+
+                    .icon {
+                    	margin: 0;
+                    	width: 64px;
+                    	height: 64px;
+                    	vertical-align: middle;
+                    	fill: currentColor;
+                    }
+                }
+
+                &.gt-icon-square {
+                    display: inline-block;
+                    padding: 1.5rem;
+                }
+
+                &.gt-icon-circle {
+                    display: inline-block;
+                    padding: 1.5rem;
+                    border-radius: 6rem;
+                }
+
+                &.gt-icon-outline .gt-icon-svg {
+                    display: inline-block;
+                    padding: 1.5rem;
+                    border-radius: 6rem;
+                    border: 5px solid currentColor;
+                }
+
+                &:not(.has-icon-color) {
+                    color: #fff;
+                }
+
+                &:not(.has-icon-background) {
+                    background-color: #303030;
+                }
             }
-        }
-
-        .gt-icon:not(.has-icon-color) {
-            color: #fff;
-        }
-
-        .gt-icon:not(.has-icon-background) {
-            background-color: #303030;
         }
 
         .gt-content {

@@ -55,7 +55,7 @@ registerBlockType(
                     icon: {
                         type: 'string',
                         source: 'attribute',
-                        selector: '.gt-icon',
+                        selector: '.gt-icon-svg',
                         attribute: 'data-icon',
                     },
                     title: {
@@ -206,10 +206,16 @@ registerBlockType(
                                 return (
                                     <div className="gt-grid-item" key={ index }>
 
-                                        <div className={ iconClasses } data-icon={ item.icon } style={ iconStyles }>
-                                            <svg className={ svgClass } aria-hidden="true" role="img">
-                                                <use href={ svgURL }></use>
-                                            </svg>
+                                        <div className="gt-icon-wrap">
+                                            <div className={ iconClasses } style={ iconStyles }>
+
+                                                <span className="gt-icon-svg" data-icon={ item.icon }>
+                                                    <svg className={ svgClass } aria-hidden="true" role="img">
+                                                        <use href={ svgURL }></use>
+                                                    </svg>
+                                                </span>
+
+                                            </div>
                                         </div>
 
                                         <div className={ contentClasses } style={ contentStyles }>

@@ -27,19 +27,34 @@
     grid-template-columns: repeat(5, 1fr); }
   .wp-block-german-themes-blocks-features.gt-columns-6 .gt-grid-container {
     grid-template-columns: repeat(6, 1fr); }
-  .wp-block-german-themes-blocks-features .gt-grid-item .gt-icon {
-    padding: 2rem 1rem;
+  .wp-block-german-themes-blocks-features .gt-grid-item .gt-icon-wrap {
     text-align: center; }
-    .wp-block-german-themes-blocks-features .gt-grid-item .gt-icon .icon {
-      margin: 0;
-      width: 64px;
-      height: 64px;
-      vertical-align: middle;
-      fill: currentColor; }
-  .wp-block-german-themes-blocks-features .gt-grid-item .gt-icon:not(.has-icon-color) {
-    color: #fff; }
-  .wp-block-german-themes-blocks-features .gt-grid-item .gt-icon:not(.has-icon-background) {
-    background-color: #303030; }
+    .wp-block-german-themes-blocks-features .gt-grid-item .gt-icon-wrap .gt-icon {
+      padding: 2rem 1rem; }
+      .wp-block-german-themes-blocks-features .gt-grid-item .gt-icon-wrap .gt-icon .gt-icon-svg {
+        display: inline-block; }
+        .wp-block-german-themes-blocks-features .gt-grid-item .gt-icon-wrap .gt-icon .gt-icon-svg .icon {
+          margin: 0;
+          width: 64px;
+          height: 64px;
+          vertical-align: middle;
+          fill: currentColor; }
+      .wp-block-german-themes-blocks-features .gt-grid-item .gt-icon-wrap .gt-icon.gt-icon-square {
+        display: inline-block;
+        padding: 1.5rem; }
+      .wp-block-german-themes-blocks-features .gt-grid-item .gt-icon-wrap .gt-icon.gt-icon-circle {
+        display: inline-block;
+        padding: 1.5rem;
+        border-radius: 6rem; }
+      .wp-block-german-themes-blocks-features .gt-grid-item .gt-icon-wrap .gt-icon.gt-icon-outline .gt-icon-svg {
+        display: inline-block;
+        padding: 1.5rem;
+        border-radius: 6rem;
+        border: 5px solid currentColor; }
+      .wp-block-german-themes-blocks-features .gt-grid-item .gt-icon-wrap .gt-icon:not(.has-icon-color) {
+        color: #fff; }
+      .wp-block-german-themes-blocks-features .gt-grid-item .gt-icon-wrap .gt-icon:not(.has-icon-background) {
+        background-color: #303030; }
   .wp-block-german-themes-blocks-features .gt-grid-item .gt-content.has-background {
     padding: 0.001rem 1.25rem; }
 /* Block Columns */
