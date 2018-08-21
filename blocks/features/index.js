@@ -61,7 +61,7 @@ registerBlockType(
                     title: {
                         type: 'array',
                         source: 'children',
-                        selector: '.gt-title-text',
+                        selector: '.gt-title',
                     },
                     text: {
                         type: 'array',
@@ -139,23 +139,23 @@ registerBlockType(
             } );
 
             const contentClasses = classnames( 'gt-content', {
+                'has-text-color': textColor || customTextColor,
+                [ textClass ]: textClass,
                 'has-background': backgroundColor || customBackgroundColor,
                 [ backgroundClass ]: backgroundClass,
             } );
 
             const contentStyles = {
                 textAlign: attributes.textAlignment,
+                color: textClass ? undefined : customTextColor,
                 backgroundColor: backgroundClass ? undefined : customBackgroundColor,
             };
 
             const textClasses = classnames( 'gt-text', {
-                'has-text-color': textColor || customTextColor,
-                [ textClass ]: textClass,
                 [ fontSizeClass ]: fontSizeClass,
             } );
 
             const textStyles = {
-                color: textClass ? undefined : customTextColor,
                 fontSize: fontSizeClass ? undefined : customFontSize,
             };
 
@@ -185,7 +185,7 @@ registerBlockType(
 
                                             <RichText.Content
                                                 tagName={ titleTag }
-                                                className="gt-title-text"
+                                                className="gt-title"
                                                 value={ item.title }
                                             />
 

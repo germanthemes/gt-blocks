@@ -37,13 +37,8 @@
       height: 64px;
       vertical-align: middle;
       fill: #fff; }
-  .wp-block-german-themes-blocks-features .gt-grid-item .gt-content {
-    padding-top: 1rem; }
-    .wp-block-german-themes-blocks-features .gt-grid-item .gt-content .gt-title {
-      margin-top: 0; }
   .wp-block-german-themes-blocks-features .gt-grid-item .gt-content.has-background {
-    padding-left: 1rem;
-    padding-right: 1rem; }
+    padding: 0.001rem 1.25rem; }
 /* Block Columns */
 .wp-block-german-themes-blocks-image-text {
   display: -webkit-box;

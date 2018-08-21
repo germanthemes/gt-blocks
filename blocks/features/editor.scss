@@ -7,11 +7,14 @@
 
         /* Features Grid Item Content */
         .gt-content {
-            margin-bottom: 16px;
 
             .gt-title {
+                margin: 1em 0 0.75em;
                 color: inherit;
-                margin-top: 0 !important;
+            }
+
+            .gt-title[data-is-placeholder-visible=true] {
+                top: -1em;
             }
 
             .gt-text p {

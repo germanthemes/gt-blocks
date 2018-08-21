@@ -192,24 +192,24 @@ class gtFeaturesEdit extends Component {
         } );
 
         const contentClasses = classnames( 'gt-content', {
+            'has-text-color': textColor.value,
+            [ textColor.class ]: textColor.class,
             'has-background': backgroundColor.value,
             [ backgroundColor.class ]: backgroundColor.class,
         } );
 
         const contentStyles = {
             textAlign: attributes.textAlignment,
+            color: textColor.class ? undefined : textColor.value,
             backgroundColor: backgroundColor.class ? undefined : backgroundColor.value,
         };
 
         const textClasses = classnames( 'gt-text', {
-            'has-text-color': textColor.value,
-            [ textColor.class ]: textColor.class,
             [ fontSize.class ]: fontSize.class,
         } );
 
         const textStyles = {
             fontSize: fontSize.size ? fontSize.size + 'px' : undefined,
-            color: textColor.class ? undefined : textColor.value,
         };
 
         const titleTag = 'h' + attributes.titleTag;
@@ -345,6 +345,7 @@ class gtFeaturesEdit extends Component {
                                                 tagName={ titleTag }
                                                 placeholder={ __( 'Enter a title' ) }
                                                 value={ item.title }
+                                                className="gt-title"
                                                 onChange={ ( newTitle ) => this.onChangeTitle( newTitle, index ) }
                                                 formattingControls={ [ 'bold', 'italic', 'strikethrough' ] }
                                                 keepPlaceholderOnFocus
