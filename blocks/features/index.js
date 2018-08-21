@@ -90,6 +90,18 @@ registerBlockType(
                 type: 'number',
                 default: 2,
             },
+            iconColor: {
+                type: 'string',
+            },
+            iconBackgroundColor: {
+                type: 'string',
+            },
+            customIconColor: {
+                type: 'string',
+            },
+            customIconBackgroundColor: {
+                type: 'string',
+            },
             textColor: {
                 type: 'string',
             },
@@ -121,6 +133,10 @@ registerBlockType(
 
         save( { attributes } ) {
             const {
+                iconColor,
+                iconBackgroundColor,
+                customIconColor,
+                customIconBackgroundColor,
                 backgroundColor,
                 textColor,
                 customBackgroundColor,
@@ -129,7 +145,10 @@ registerBlockType(
                 customFontSize,
             } = attributes;
 
-            const textClass = getColorClass( 'color', textColor );
+            const iconColorClass = getColorClass( 'color', iconColor );
+            const iconBackgroundClass = getColorClass( 'background-color', iconBackgroundColor );
+
+            const textColorClass = getColorClass( 'color', textColor );
             const backgroundClass = getColorClass( 'background-color', backgroundColor );
             const fontSizeClass = getFontSizeClass( fontSize );
 
@@ -138,16 +157,28 @@ registerBlockType(
                 [ `align${ attributes.blockAlignment }` ]: ( 'wide' === attributes.blockAlignment || 'full' === attributes.blockAlignment ),
             } );
 
+            const iconClasses = classnames( 'gt-icon', {
+                'has-icon-color': iconColor || customIconColor,
+                [ iconColorClass ]: iconColorClass,
+                'has-icon-background': iconBackgroundColor || customIconBackgroundColor,
+                [ iconBackgroundClass ]: iconBackgroundClass,
+            } );
+
+            const iconStyles = {
+                color: iconColorClass ? undefined : customIconColor,
+                backgroundColor: iconBackgroundClass ? undefined : customIconBackgroundColor,
+            };
+
             const contentClasses = classnames( 'gt-content', {
                 'has-text-color': textColor || customTextColor,
-                [ textClass ]: textClass,
+                [ textColorClass ]: textColorClass,
                 'has-background': backgroundColor || customBackgroundColor,
                 [ backgroundClass ]: backgroundClass,
             } );
 
             const contentStyles = {
                 textAlign: attributes.textAlignment,
-                color: textClass ? undefined : customTextColor,
+                color: textColorClass ? undefined : customTextColor,
                 backgroundColor: backgroundClass ? undefined : customBackgroundColor,
             };
 
@@ -160,6 +191,7 @@ registerBlockType(
             };
 
             const pluginURL = select( 'gt-blocks' ).getPluginURL();
+            const titleTag = 'h' + attributes.titleTag;
 
             return (
                 <div className={ classNames ? classNames : undefined }>
@@ -168,16 +200,15 @@ registerBlockType(
                         {
                             attributes.items.map( ( item, index ) => {
 
-                                const iconURL = pluginURL + '/assets/icons/fontawesome.svg#' + item.icon;
-                                const iconClass = classnames( 'icon', `icon-${item.icon}` );
-                                const titleTag = 'h' + attributes.titleTag;
+                                const svgURL = pluginURL + '/assets/icons/fontawesome.svg#' + item.icon;
+                                const svgClass = classnames( 'icon', `icon-${item.icon}` );
 
                                 return (
                                     <div className="gt-grid-item" key={ index }>
 
-                                        <div className="gt-icon" data-icon={ item.icon }>
-                                            <svg className={ iconClass } aria-hidden="true" role="img">
-                                                <use href={ iconURL }></use>
+                                        <div className={ iconClasses } data-icon={ item.icon } style={ iconStyles }>
+                                            <svg className={ svgClass } aria-hidden="true" role="img">
+                                                <use href={ svgURL }></use>
                                             </svg>
                                         </div>
 

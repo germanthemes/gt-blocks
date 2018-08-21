@@ -171,6 +171,10 @@ class gtFeaturesEdit extends Component {
     render() {
         const {
             attributes,
+            iconColor,
+            setIconColor,
+            iconBackgroundColor,
+            setIconBackgroundColor,
             backgroundColor,
             setBackgroundColor,
             fallbackBackgroundColor,
@@ -190,6 +194,18 @@ class gtFeaturesEdit extends Component {
         const classNames= classnames( className, {
             [ `gt-columns-${ attributes.columns }` ]: attributes.columns,
         } );
+
+        const iconClasses = classnames( 'gt-icon', {
+            'has-icon-color': iconColor.value,
+            [ iconColor.class ]: iconColor.class,
+            'has-icon-background': iconBackgroundColor.value,
+            [ iconBackgroundColor.class ]: iconBackgroundColor.class,
+        } );
+
+        const iconStyles = {
+            color: iconColor.class ? undefined : iconColor.value,
+            backgroundColor: iconBackgroundColor.class ? undefined : iconBackgroundColor.value,
+        };
 
         const contentClasses = classnames( 'gt-content', {
             'has-text-color': textColor.value,
@@ -296,6 +312,23 @@ class gtFeaturesEdit extends Component {
                     </PanelBody>
 
                     <PanelColorSettings
+                        title={ __( 'Icon Color' ) }
+                        colorSettings={ [
+                            {
+                                value: iconColor.value,
+                                onChange: setIconColor,
+                                label: __( 'Icon Color' ),
+                            },
+                            {
+                                value: iconBackgroundColor.value,
+                                onChange: setIconBackgroundColor,
+                                label: __( 'Background Color' ),
+                            },
+                        ] }
+                    >
+                    </PanelColorSettings>
+
+                    <PanelColorSettings
                         title={ __( 'Color Settings' ) }
                         colorSettings={ [
                             {
@@ -310,7 +343,6 @@ class gtFeaturesEdit extends Component {
                             },
                         ] }
                     >
-
                         <ContrastChecker
                             { ...{
                                 textColor: textColor.value,
@@ -334,7 +366,8 @@ class gtFeaturesEdit extends Component {
 
                                         <IconPicker
                                             icon={ item.icon }
-                                            index={ index }
+                                            iconClasses={ iconClasses }
+                                            iconStyles={ iconStyles }
                                             onChange={ ( newIcon ) => this.onChangeIcon( newIcon, index ) }
                                             isSelected={ isSelected }
                                         />
@@ -419,7 +452,7 @@ class gtFeaturesEdit extends Component {
 }
 
 export default compose( [
-    withColors( 'backgroundColor', { textColor: 'color' } ),
+    withColors( 'backgroundColor', { textColor: 'color' }, { iconColor: 'color' }, { iconBackgroundColor: 'background-color' } ),
     withFontSizes( 'fontSize' ),
 	applyFallbackStyles,
     withSelect(
