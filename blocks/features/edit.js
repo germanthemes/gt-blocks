@@ -296,6 +296,14 @@ class gtFeaturesEdit extends Component {
                             ] }
                         />
 
+                        <RangeControl
+                            label={ __( 'Icon Size' ) }
+                            value={ attributes.iconSize }
+                            onChange={ ( newSize ) => setAttributes( { iconSize: newSize } ) }
+                            min={ 16 }
+                            max={ 128 }
+                        />
+
                     </PanelBody>
 
                     <PanelBody title={ __( 'Text Settings' ) } initialOpen={ false } className="gt-panel-text-settings gt-panel">
@@ -383,6 +391,7 @@ class gtFeaturesEdit extends Component {
                                                 icon={ item.icon }
                                                 iconClasses={ iconClasses }
                                                 iconStyles={ iconStyles }
+                                                iconSize={ attributes.iconSize }
                                                 onChange={ ( newIcon ) => this.onChangeIcon( newIcon, index ) }
                                                 isSelected={ isSelected }
                                             />

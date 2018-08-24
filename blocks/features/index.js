@@ -91,6 +91,10 @@ registerBlockType(
                 type: 'string',
                 default: 'default',
             },
+            iconSize: {
+                type: 'number',
+                default: 32,
+            },
             titleTag: {
                 type: 'number',
                 default: 2,
@@ -139,6 +143,7 @@ registerBlockType(
         save( { attributes } ) {
             const {
                 iconLayout,
+                iconSize,
                 iconColor,
                 iconBackgroundColor,
                 customIconColor,
@@ -174,6 +179,11 @@ registerBlockType(
             const iconStyles = {
                 color: iconColorClass ? undefined : customIconColor,
                 backgroundColor: iconBackgroundClass ? undefined : customIconBackgroundColor,
+            };
+
+            const svgStyles = {
+                width: iconSize !== 32 ? iconSize + 'px' : undefined,
+                height: iconSize !== 32 ? iconSize + 'px' : undefined,
             };
 
             const contentClasses = classnames( 'gt-content', {
@@ -217,7 +227,7 @@ registerBlockType(
                                             <div className={ iconClasses } style={ iconStyles }>
 
                                                 <span className="gt-icon-svg" data-icon={ item.icon }>
-                                                    <svg className={ svgClass } aria-hidden="true" role="img">
+                                                    <svg className={ svgClass } style={ svgStyles } aria-hidden="true" role="img">
                                                         <use href={ svgURL }></use>
                                                     </svg>
                                                 </span>

@@ -70,13 +70,19 @@ class IconPicker extends Component {
     }
 
     displayIcon( icon ) {
+        const { iconSize } = this.props;
         const pluginURL = select( 'gt-blocks' ).getPluginURL();
+
         const svgURL = pluginURL + '/assets/icons/fontawesome.svg#' + icon;
         const svgClass = classnames( 'icon', `icon-${icon}` );
+        const svgStyles = {
+            width: iconSize !== 32 ? iconSize + 'px' : undefined,
+            height: iconSize !== 32 ? iconSize + 'px' : undefined,
+        };
 
         return (
             <span className="gt-icon-svg" data-icon={ icon }>
-                <svg className={ svgClass } aria-hidden="true" role="img">
+                <svg className={ svgClass } style={ svgStyles } aria-hidden="true" role="img">
                     <use href={ svgURL }></use>
                 </svg>
             </span>
