@@ -16,7 +16,7 @@ const {
     sprintf,
 } = wp.i18n;
 
-const { compose } = wp.compose;
+const { compose, withInstanceId } = wp.compose;
 
 const {
     BlockAlignmentToolbar,
@@ -43,9 +43,12 @@ class gtContainerEdit extends Component {
             backgroundColor,
             setBackgroundColor,
             setAttributes,
+            instanceId,
             isSelected,
-            className
+            className,
         } = this.props;
+
+        const blockId = `gt-container-block-${instanceId}`;
 
         const classNames= classnames( className, {
             'has-background': backgroundColor.value,
@@ -57,12 +60,8 @@ class gtContainerEdit extends Component {
         };
 
         const contentStyles = `
-            .wp-block-german-themes-blocks-container .gt-inner-content .editor-block-list__block {
+            #${blockId} .gt-inner-content .editor-block-list__block {
                 max-width: ${attributes.contentWidth}px;
-            }
-            .wp-block-german-themes-blocks-container .gt-inner-content .editor-block-list__block[data-align="wide"],
-            .wp-block-german-themes-blocks-container .gt-inner-content .editor-block-list__block[data-align="full"] {
-                max-width: inherit;
             }
         `;
 
@@ -108,7 +107,7 @@ class gtContainerEdit extends Component {
 
                 </InspectorControls>
 
-                <div className={ classNames } style={ blockStyles }>
+                <div id={ blockId } className={ classNames } style={ blockStyles }>
                     <style>{ contentStyles }</style>
                     <div className="gt-inner-content">
                         <InnerBlocks />
@@ -120,6 +119,7 @@ class gtContainerEdit extends Component {
     }
 }
 
-export default compose( [
-    withColors( 'backgroundColor' )
-] )( gtContainerEdit );
+export default compose(
+    withInstanceId,
+    withColors( 'backgroundColor' ),
+)( gtContainerEdit );
