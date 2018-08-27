@@ -31,18 +31,14 @@
       width: 100%;
       background: #edeff0;
       border: 1px solid #e2e4e7; }
-      .wp-block-german-themes-blocks-features .gt-grid-item .gt-grid-item-controls .gt-grid-item-number {
-        margin: 2px 10px 2px 6px;
-        font-size: 14px;
-        font-weight: bold; }
       .wp-block-german-themes-blocks-features .gt-grid-item .gt-grid-item-controls .components-icon-button {
         padding: 4px 5px; }
         .wp-block-german-themes-blocks-features .gt-grid-item .gt-grid-item-controls .components-icon-button:hover, .wp-block-german-themes-blocks-features .gt-grid-item .gt-grid-item-controls .components-icon-button:active, .wp-block-german-themes-blocks-features .gt-grid-item .gt-grid-item-controls .components-icon-button:focus {
           background: #fff; }
+        .wp-block-german-themes-blocks-features .gt-grid-item .gt-grid-item-controls .components-icon-button .dashicon {
+          width: 18px; }
       .wp-block-german-themes-blocks-features .gt-grid-item .gt-grid-item-controls .remove-features-item {
         margin-left: auto; }
-        .wp-block-german-themes-blocks-features .gt-grid-item .gt-grid-item-controls .remove-features-item .dashicon {
-          width: 18px; }
   .wp-block-german-themes-blocks-features .gt-add-features-item {
     display: -webkit-box;
     display: -ms-flexbox;

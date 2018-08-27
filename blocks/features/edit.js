@@ -110,7 +110,7 @@ class gtFeaturesEdit extends Component {
 
     addFeaturesItem() {
         const newItems = [...this.props.attributes.items];
-        newItems.push( { 'title': '', 'text': '' } );
+        newItems.push( { 'icon': '', 'title': '', 'text': '' } );
         this.props.setAttributes( { items: newItems } );
     }
 
@@ -136,6 +136,14 @@ class gtFeaturesEdit extends Component {
 
         // Swap Items.
         [newItems[index], newItems[index+1]] = [newItems[index+1], newItems[index]];
+        this.props.setAttributes( { items: newItems } );
+    }
+
+    duplicateFeaturesItem( index ) {
+        const newItems = [...this.props.attributes.items];
+
+        // Duplicate Item.
+        newItems.splice( index+1, 0, newItems[index] );
         this.props.setAttributes( { items: newItems } );
     }
 
@@ -424,10 +432,6 @@ class gtFeaturesEdit extends Component {
 
                                         { isSelected && (
                                             <div className="gt-grid-item-controls">
-                                                <div className="gt-grid-item-number">
-                                                    #{ index + 1 }
-                                                </div>
-
                                                 <IconButton
                                                     className="move-up-features-item"
                                                     label={ __( 'Move up' ) }
@@ -445,8 +449,15 @@ class gtFeaturesEdit extends Component {
                                                 />
 
                                                 <IconButton
+                                                    className="duplicate-features-item"
+                                                    label={ __( 'Duplicate' ) }
+                                                    icon="admin-page"
+                                                    onClick={ () => this.duplicateFeaturesItem( index ) }
+                                                />
+
+                                                <IconButton
                                                     className="remove-features-item"
-                                                    label={ __( 'Remove Item' ) }
+                                                    label={ __( 'Remove' ) }
                                                     icon="trash"
                                                     onClick={ () => this.removeFeaturesItem( index ) }
                                                 />

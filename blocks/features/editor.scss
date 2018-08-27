@@ -32,12 +32,6 @@
             background: #edeff0;
             border: 1px solid #e2e4e7;
 
-            .gt-grid-item-number {
-                margin: 2px 10px 2px 6px;
-                font-size: 14px;
-                font-weight: bold;
-            }
-
             .components-icon-button {
                 padding: 4px 5px;
 
@@ -46,14 +40,14 @@
                 &:focus {
                     background: #fff;
                 }
-            }
-
-            .remove-features-item {
-                margin-left: auto;
 
                 .dashicon {
                     width: 18px;
                 }
+            }
+
+            .remove-features-item {
+                margin-left: auto;
             }
         }
     }
