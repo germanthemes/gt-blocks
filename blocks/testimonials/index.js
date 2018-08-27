@@ -21,8 +21,7 @@ export default registerBlockType(
         category: 'germanthemes',
 
         icon: {
-            foreground: '#2585ff',
-            background: '#ddeeff',
+            foreground: '#ff5544',
             src: 'wordpress-alt',
         },
 
