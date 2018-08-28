@@ -1,6 +1,8 @@
 /*Block Panels*/
 .edit-post-sidebar .gt-panel {
   border-top: 1px solid #e2e4e7; }
+.wp-block-german-themes-blocks-container .gt-inner-content h1, .wp-block-german-themes-blocks-container .gt-inner-content h2, .wp-block-german-themes-blocks-container .gt-inner-content h3, .wp-block-german-themes-blocks-container .gt-inner-content h4, .wp-block-german-themes-blocks-container .gt-inner-content h5, .wp-block-german-themes-blocks-container .gt-inner-content h6, .wp-block-german-themes-blocks-container .gt-inner-content p {
+  color: inherit; }
 .wp-block-german-themes-blocks-features {
   /* Features Grid Item */
   /* Add Features Item*/ }

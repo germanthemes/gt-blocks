@@ -21,16 +21,31 @@ const { compose, withInstanceId } = wp.compose;
 const {
     BlockAlignmentToolbar,
     BlockControls,
+    ContrastChecker,
     InnerBlocks,
     InspectorControls,
-    PanelColor,
+    PanelColorSettings,
     withColors,
 } = wp.editor;
 
 const {
     PanelBody,
     RangeControl,
+    withFallbackStyles,
 } = wp.components;
+
+const { getComputedStyle } = window;
+
+const applyFallbackStyles = withFallbackStyles( ( node, ownProps ) => {
+	const { textColor, backgroundColor } = ownProps.attributes;
+	const editableNode = node.querySelector( '[contenteditable="true"]' );
+	//verify if editableNode is available, before using getComputedStyle.
+	const computedStyles = editableNode ? getComputedStyle( editableNode ) : null;
+	return {
+		fallbackBackgroundColor: backgroundColor || ! computedStyles ? undefined : computedStyles.backgroundColor,
+		fallbackTextColor: textColor || ! computedStyles ? undefined : computedStyles.color,
+	};
+} );
 
 class gtContainerEdit extends Component {
     constructor() {
@@ -42,6 +57,10 @@ class gtContainerEdit extends Component {
             attributes,
             backgroundColor,
             setBackgroundColor,
+            fallbackBackgroundColor,
+            textColor,
+            setTextColor,
+            fallbackTextColor,
             setAttributes,
             instanceId,
             isSelected,
@@ -51,12 +70,15 @@ class gtContainerEdit extends Component {
         const blockId = `gt-container-block-${instanceId}`;
 
         const classNames= classnames( className, {
+            'has-text-color': textColor.value,
+            [ textColor.class ]: textColor.class,
             'has-background': backgroundColor.value,
             [ backgroundColor.class ]: backgroundColor.class,
         } );
 
         const blockStyles = {
             backgroundColor: backgroundColor.class ? undefined : backgroundColor.value,
+            color: textColor.class ? undefined : textColor.value,
         };
 
         const contentStyles = `
@@ -98,12 +120,31 @@ class gtContainerEdit extends Component {
 
                     </PanelBody>
 
-                    <PanelColor
-                        colorValue={ backgroundColor.value }
-                        initialOpen={ false }
-                        title={ __( 'Background Color' ) }
-                        onChange={ setBackgroundColor }
-                    />
+                    <PanelColorSettings
+                        title={ __( 'Color Settings' ) }
+                        colorSettings={ [
+                            {
+                                value: backgroundColor.value,
+                                onChange: setBackgroundColor,
+                                label: __( 'Background Color' ),
+                            },
+                            {
+                                value: textColor.value,
+                                onChange: setTextColor,
+                                label: __( 'Text Color' ),
+                            },
+                        ] }
+                    >
+
+                        <ContrastChecker
+                            { ...{
+                                textColor: textColor.value,
+                                backgroundColor: backgroundColor.value,
+                                fallbackTextColor,
+                                fallbackBackgroundColor,
+                            } }
+                        />
+                    </PanelColorSettings>
 
                 </InspectorControls>
 
@@ -121,5 +162,6 @@ class gtContainerEdit extends Component {
 
 export default compose(
     withInstanceId,
-    withColors( 'backgroundColor' ),
+    withColors( 'backgroundColor', { textColor: 'color' } ),
+    applyFallbackStyles,
 )( gtContainerEdit );

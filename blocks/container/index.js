@@ -51,7 +51,13 @@ registerBlockType(
                 type: 'number',
                 default: 720,
             },
+            textColor: {
+                type: 'string',
+            },
             backgroundColor: {
+                type: 'string',
+            },
+            customTextColor: {
                 type: 'string',
             },
             customBackgroundColor: {
@@ -69,16 +75,27 @@ registerBlockType(
         edit,
 
         save( { attributes } ) {
-            const backgroundClass = getColorClass( 'background-color', attributes.backgroundColor );
+            const {
+                textColor,
+                backgroundColor,
+                customTextColor,
+                customBackgroundColor,
+            } = attributes;
+
+            const textColorClass = getColorClass( 'color', textColor );
+            const backgroundClass = getColorClass( 'background-color', backgroundColor );
 
             const classNames = classnames( {
                 [ `align${ attributes.blockAlignment }` ]: ( attributes.blockAlignment !== 'center' ),
-                'has-background': attributes.backgroundColor || attributes.customBackgroundColor,
+                'has-text-color': textColor || customTextColor,
+                [ textColorClass ]: textColorClass,
+                'has-background': backgroundColor || customBackgroundColor,
                 [ backgroundClass ]: backgroundClass,
             } );
 
             const blockStyles = {
-                backgroundColor: backgroundClass ? undefined : attributes.customBackgroundColor,
+                color: textColorClass ? undefined : customTextColor,
+                backgroundColor: backgroundClass ? undefined : customBackgroundColor,
             };
 
             const contentStyles = {
