@@ -63,6 +63,15 @@ registerBlockType(
             customBackgroundColor: {
                 type: 'string',
             },
+            backgroundImageId: {
+                type: 'number',
+            },
+            backgroundImageUrl: {
+                type: 'string',
+                source: 'attribute',
+                attribute: 'src',
+                selector: 'img',
+            },
         },
 
         getEditWrapperProps( attributes ) {
@@ -104,6 +113,9 @@ registerBlockType(
 
             return (
                 <div className={ classNames ? classNames : undefined } style={ blockStyles }>
+                    <img
+                        src={ attributes.backgroundImageUrl }
+                    />
                     <div className="gt-inner-content" style={ contentStyles }>
                         <InnerBlocks.Content />
                     </div>

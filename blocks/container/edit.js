@@ -23,12 +23,15 @@ const {
     BlockControls,
     ContrastChecker,
     InnerBlocks,
+    MediaUpload,
     InspectorControls,
     PanelColorSettings,
     withColors,
 } = wp.editor;
 
 const {
+    Button,
+    IconButton,
     PanelBody,
     RangeControl,
     withFallbackStyles,
@@ -50,6 +53,23 @@ const applyFallbackStyles = withFallbackStyles( ( node, ownProps ) => {
 class gtContainerEdit extends Component {
     constructor() {
         super( ...arguments );
+
+        this.onSelectImage = this.onSelectImage.bind( this );
+        this.onRemoveImage = this.onRemoveImage.bind( this );
+    }
+
+    onSelectImage( img ) {
+        this.props.setAttributes( {
+            backgroundImageId: img.id,
+            backgroundImageUrl: img.url,
+        } );
+    }
+
+    onRemoveImage() {
+        this.props.setAttributes( {
+            backgroundImageId: undefined,
+            backgroundImageUrl: undefined,
+        } );
     }
 
     render() {
@@ -102,7 +122,7 @@ class gtContainerEdit extends Component {
 
                 <InspectorControls>
 
-                    <PanelBody title={ __( 'Layout Settings' ) } initialOpen={ false } className="gt-panel-layout-settings gt-panel">
+                    <PanelBody title={ __( 'Layout Settings' ) } initialOpen={ false }>
 
                         <BlockAlignmentToolbar
                             value={ attributes.blockAlignment }
@@ -122,6 +142,7 @@ class gtContainerEdit extends Component {
 
                     <PanelColorSettings
                         title={ __( 'Color Settings' ) }
+                        initialOpen={ false }
                         colorSettings={ [
                             {
                                 value: backgroundColor.value,
@@ -146,9 +167,74 @@ class gtContainerEdit extends Component {
                         />
                     </PanelColorSettings>
 
+                    <PanelBody title={ __( 'Background Image' ) } initialOpen={ false }>
+
+                        <div className="gt-background-image">
+
+                            { ! attributes.backgroundImageId ? (
+
+                                <MediaUpload
+                                    title={ __( 'Set background image' ) }
+                                    onSelect={ this.onSelectImage }
+                                    type="image"
+                                    render={ ( { open } ) => (
+                                        <Button onClick={ open } isDefault isLarge>
+                							{ __( 'Set background image' ) }
+                						</Button>
+                                    ) }
+                                />
+
+                            ) : (
+
+                                <Fragment>
+
+                                    <MediaUpload
+                                        title={ __( 'Set background image' ) }
+                                        onSelect={ this.onSelectImage }
+                                        type="image"
+                                        value={ attributes.backgroundImageId }
+                                        render={ ( { open } ) => (
+                                            <img
+                                                src={ attributes.backgroundImageUrl }
+                                                onClick={ open }
+                                            />
+                                        ) }
+                                    />
+
+                                    <MediaUpload
+                                        title={ __( 'Set background image' ) }
+                                        onSelect={ this.onSelectImage }
+                                        type="image"
+                                        value={ attributes.backgroundImageId }
+                                        render={ ( { open } ) => (
+                                            <Button onClick={ open } isDefault isLarge>
+                    							{ __( 'Replace image' ) }
+                    						</Button>
+                                        ) }
+                                    />
+
+                                    <IconButton
+                                        className="remove-image"
+                                        label={ __( 'Remove Image' ) }
+                                        icon="no-alt"
+                                        onClick={ this.onRemoveImage }
+                                    />
+
+                                </Fragment>
+
+                            ) }
+
+                        </div>
+
+                    </PanelBody>
+
                 </InspectorControls>
 
                 <div id={ blockId } className={ classNames } style={ blockStyles }>
+                    <img
+                        src={ attributes.backgroundImageUrl }
+                    />
+
                     <style>{ contentStyles }</style>
                     <div className="gt-inner-content">
                         <InnerBlocks />
