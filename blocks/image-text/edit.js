@@ -59,7 +59,6 @@ const {
     ToggleControl,
     Toolbar,
     Tooltip,
-    withAPIData,
     withFallbackStyles,
 } = wp.components;
 
@@ -150,7 +149,7 @@ class gtImageTextEdit extends Component {
     }
 
     getAvailableSizes() {
-        return get( this.props.image, [ 'data', 'media_details', 'sizes' ], {} );
+        return get( this.props.image, [ 'media_details', 'sizes' ], {} );
     }
 
     render() {
@@ -352,6 +351,7 @@ class gtImageTextEdit extends Component {
 
                     <PanelColorSettings
                         title={ __( 'Color Settings' ) }
+                        initialOpen={ false }
                         colorSettings={ [
                             {
                                 value: backgroundColor.value,
@@ -479,23 +479,18 @@ class gtImageTextEdit extends Component {
 }
 
 export default compose( [
-    withAPIData( ( props ) => {
-        const { imgID } = props.attributes;
-        if ( ! imgID ) {
-            return {};
-        }
+    withSelect( ( select, props ) => {
+		const { getMedia } = select( 'core' );
+		const { getEditorSettings } = select( 'core/editor' );
+		const { imgID } = props.attributes;
+		const { fontSizes } = getEditorSettings();
 
-        return {
-            image: `/wp/v2/media/${ imgID }`,
-        };
-    } ),
+		return {
+			image: imgID ? getMedia( imgID ) : null,
+			fontSizes,
+		};
+	} ),
     withColors( 'backgroundColor', { textColor: 'color' } ),
     withFontSizes( 'fontSize' ),
 	applyFallbackStyles,
-    withSelect(
-        ( select ) => {
-            const { fontSizes } = select( 'core/editor' ).getEditorSettings();
-            return { fontSizes };
-        }
-    )
 ] )( gtImageTextEdit );

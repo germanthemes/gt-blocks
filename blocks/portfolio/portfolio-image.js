@@ -13,6 +13,8 @@ import {
  */
 const { Component } = wp.element;
 const { __ } = wp.i18n;
+const { compose } = wp.compose;
+
 const {
     MediaUpload,
 } = wp.editor;
@@ -21,8 +23,11 @@ const {
     Button,
     IconButton,
     Placeholder,
-    withAPIData,
 } = wp.components;
+
+const {
+    withSelect,
+} = wp.data;
 
 class PortfolioImage extends Component {
     constructor() {
@@ -32,8 +37,8 @@ class PortfolioImage extends Component {
     componentWillReceiveProps( { image } ) {
         const { imgID, addSize } = this.props;
 
-        if ( image && image.data ) {
-            const sizeObj = get( image, [ 'data', 'media_details', 'sizes' ], {} );
+        if ( image ) {
+            const sizeObj = get( image, [ 'media_details', 'sizes' ], {} );
             addSize( imgID, sizeObj );
         }
     }
@@ -113,6 +118,11 @@ class PortfolioImage extends Component {
     }
 }
 
-export default withAPIData( ( { imgID } ) => ( {
-	image: imgID ? `/wp/v2/media/${ imgID }` : {},
-} ) )( PortfolioImage );
+export default compose( [
+    withSelect( ( select, { imgID } ) => {
+		const { getMedia } = select( 'core' );
+		return {
+			image: imgID ? getMedia( imgID ) : null,
+		};
+	} ),
+] )( PortfolioImage );
