@@ -3,6 +3,31 @@
   border-top: 1px solid #e2e4e7; }
 .wp-block-german-themes-blocks-container .gt-inner-content h1, .wp-block-german-themes-blocks-container .gt-inner-content h2, .wp-block-german-themes-blocks-container .gt-inner-content h3, .wp-block-german-themes-blocks-container .gt-inner-content h4, .wp-block-german-themes-blocks-container .gt-inner-content h5, .wp-block-german-themes-blocks-container .gt-inner-content h6, .wp-block-german-themes-blocks-container .gt-inner-content p {
   color: inherit; }
+
+.gt-blocks-container-background-image-panel .gt-background-image .gt-set-image {
+  display: block;
+  -webkit-transition: all .1s ease-out;
+  transition: all .1s ease-out;
+  width: 100%;
+  background-color: #edeff0;
+  border: 1px dashed #a2aab2;
+  line-height: 20px;
+  padding: 10px 0;
+  text-align: center; }
+  .gt-blocks-container-background-image-panel .gt-background-image .gt-set-image:hover {
+    background-color: #f8f9f9; }
+
+.gt-blocks-container-background-image-panel .gt-background-image img:hover {
+  cursor: pointer; }
+
+.gt-blocks-container-background-image-panel .gt-background-image .gt-image-controls {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin-top: 3px; }
+  .gt-blocks-container-background-image-panel .gt-background-image .gt-image-controls .gt-replace-image {
+    margin-top: 3px;
+    margin-right: 12px; }
 .wp-block-german-themes-blocks-features {
   /* Features Grid Item */
   /* Add Features Item*/ }

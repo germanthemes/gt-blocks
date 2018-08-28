@@ -167,7 +167,7 @@ class gtContainerEdit extends Component {
                         />
                     </PanelColorSettings>
 
-                    <PanelBody title={ __( 'Background Image' ) } initialOpen={ false }>
+                    <PanelBody title={ __( 'Background Image' ) } initialOpen={ false } className="gt-blocks-container-background-image-panel">
 
                         <div className="gt-background-image">
 
@@ -178,7 +178,7 @@ class gtContainerEdit extends Component {
                                     onSelect={ this.onSelectImage }
                                     type="image"
                                     render={ ( { open } ) => (
-                                        <Button onClick={ open } isDefault isLarge>
+                                        <Button onClick={ open } className="gt-set-image">
                 							{ __( 'Set background image' ) }
                 						</Button>
                                     ) }
@@ -201,24 +201,25 @@ class gtContainerEdit extends Component {
                                         ) }
                                     />
 
-                                    <MediaUpload
-                                        title={ __( 'Set background image' ) }
-                                        onSelect={ this.onSelectImage }
-                                        type="image"
-                                        value={ attributes.backgroundImageId }
-                                        render={ ( { open } ) => (
-                                            <Button onClick={ open } isDefault isLarge>
-                    							{ __( 'Replace image' ) }
-                    						</Button>
-                                        ) }
-                                    />
+                                    <div className="gt-image-controls">
 
-                                    <IconButton
-                                        className="remove-image"
-                                        label={ __( 'Remove Image' ) }
-                                        icon="no-alt"
-                                        onClick={ this.onRemoveImage }
-                                    />
+                                        <MediaUpload
+                                            title={ __( 'Set background image' ) }
+                                            onSelect={ this.onSelectImage }
+                                            type="image"
+                                            value={ attributes.backgroundImageId }
+                                            render={ ( { open } ) => (
+                                                <Button onClick={ open } isDefault isLarge className="gt-replace-image">
+                        							{ __( 'Replace image' ) }
+                        						</Button>
+                                            ) }
+                                        />
+
+                                        <Button onClick={ this.onRemoveImage } isLink isDestructive>
+                                            { __( 'Remove image' ) }
+                                        </Button>
+
+                                    </div>
 
                                 </Fragment>
 

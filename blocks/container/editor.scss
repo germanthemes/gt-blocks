@@ -7,3 +7,38 @@
         }
     }
 }
+
+.gt-blocks-container-background-image-panel {
+
+    .gt-background-image {
+
+        .gt-set-image {
+            display: block;
+            transition: all .1s ease-out;
+            width: 100%;
+            background-color: #edeff0;
+            border: 1px dashed #a2aab2;
+            line-height: 20px;
+            padding: 10px 0;
+            text-align: center;
+
+            &:hover {
+                background-color: #f8f9f9;
+            }
+        }
+
+        img:hover {
+            cursor: pointer;
+        }
+
+        .gt-image-controls {
+            display: flex;
+            margin-top: 3px;
+
+            .gt-replace-image {
+                margin-top: 3px;
+                margin-right: 12px;
+            }
+        }
+    }
+}
