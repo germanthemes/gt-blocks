@@ -145,6 +145,14 @@ class gtPortfolioEdit extends Component {
         this.props.setAttributes( { items: newItems } );
     }
 
+    duplicatePortfolioItem( index ) {
+        const newItems = [...this.props.attributes.items];
+
+        // Duplicate Item.
+        newItems.splice( index+1, 0, newItems[index] );
+        this.props.setAttributes( { items: newItems } );
+    }
+
     removePortfolioItem( index ) {
         const newItems = [...this.props.attributes.items].filter( (value, key) => key !== index );
         this.props.setAttributes( { items: newItems } );
@@ -456,10 +464,6 @@ class gtPortfolioEdit extends Component {
 
                                         { isSelected && (
                                             <div className="gt-grid-item-controls">
-                                                <div className="gt-grid-item-number">
-                                                    #{ index + 1 }
-                                                </div>
-
                                                 <IconButton
                                                     className="move-up-portfolio-item"
                                                     label={ __( 'Move up' ) }
@@ -477,8 +481,15 @@ class gtPortfolioEdit extends Component {
                                                 />
 
                                                 <IconButton
+                                                    className="duplicate-portfolio-item"
+                                                    label={ __( 'Duplicate' ) }
+                                                    icon="admin-page"
+                                                    onClick={ () => this.duplicatePortfolioItem( index ) }
+                                                />
+
+                                                <IconButton
                                                     className="remove-portfolio-item"
-                                                    label={ __( 'Remove Item' ) }
+                                                    label={ __( 'Remove' ) }
                                                     icon="trash"
                                                     onClick={ () => this.removePortfolioItem( index ) }
                                                 />

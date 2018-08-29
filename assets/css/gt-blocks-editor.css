@@ -253,10 +253,10 @@
         padding: 4px 5px; }
         .wp-block-german-themes-blocks-portfolio .gt-grid-item .gt-grid-item-controls .components-icon-button:hover, .wp-block-german-themes-blocks-portfolio .gt-grid-item .gt-grid-item-controls .components-icon-button:active, .wp-block-german-themes-blocks-portfolio .gt-grid-item .gt-grid-item-controls .components-icon-button:focus {
           background: #fff; }
+        .wp-block-german-themes-blocks-portfolio .gt-grid-item .gt-grid-item-controls .components-icon-button .dashicon {
+          width: 18px; }
       .wp-block-german-themes-blocks-portfolio .gt-grid-item .gt-grid-item-controls .remove-portfolio-item {
         margin-left: auto; }
-        .wp-block-german-themes-blocks-portfolio .gt-grid-item .gt-grid-item-controls .remove-portfolio-item .dashicon {
-          width: 18px; }
   .wp-block-german-themes-blocks-portfolio .gt-add-portfolio-item {
     display: -webkit-box;
     display: -ms-flexbox;
