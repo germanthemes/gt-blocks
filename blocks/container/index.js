@@ -102,7 +102,7 @@ registerBlockType(
             const textColorClass = getColorClass( 'color', textColor );
             const backgroundClass = getColorClass( 'background-color', backgroundColor );
 
-            const classNames = classnames( {
+            const blockClasses = classnames( {
                 [ `align${ attributes.blockAlignment }` ]: ( attributes.blockAlignment !== 'center' ),
                 'has-text-color': textColor || customTextColor,
                 [ textColorClass ]: textColorClass,
@@ -119,6 +119,15 @@ registerBlockType(
                 backgroundPosition: attributes.backgroundPosition,
             };
 
+            const overlayClasses = classnames( 'gt-background-overlay', {
+                'has-background': backgroundColor || customBackgroundColor,
+                [ backgroundClass ]: backgroundClass,
+            } );
+
+            const overlayStyles = {
+                backgroundColor: backgroundClass ? undefined : customBackgroundColor,
+            };
+
             const contentStyles = {
                 maxWidth: attributes.contentWidth + 'px',
             };
@@ -126,10 +135,16 @@ registerBlockType(
             const dataBackgroundImage = attributes.backgroundImageId ? attributes.backgroundImageUrl : undefined;
 
             return (
-                <div className={ classNames ? classNames : undefined } style={ blockStyles } data-background-image={ dataBackgroundImage }>
+                <div className={ blockClasses ? blockClasses : undefined } style={ blockStyles } data-background-image={ dataBackgroundImage }>
+
+                    { attributes.backgroundImageId && (
+                        <div className={ overlayClasses } style={ overlayStyles }></div>
+                    ) }
+
                     <div className="gt-inner-content" style={ contentStyles }>
                         <InnerBlocks.Content />
                     </div>
+
                 </div>
             );
         },

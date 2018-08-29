@@ -90,7 +90,7 @@ class gtContainerEdit extends Component {
 
         const blockId = `gt-container-block-${instanceId}`;
 
-        const classNames= classnames( className, {
+        const blockClasses= classnames( className, {
             'has-text-color': textColor.value,
             [ textColor.class ]: textColor.class,
             'has-background': backgroundColor.value,
@@ -104,6 +104,15 @@ class gtContainerEdit extends Component {
             color: textColor.class ? undefined : textColor.value,
             backgroundImage: attributes.backgroundImageId ? `url(${attributes.backgroundImageUrl})` : undefined,
             backgroundPosition: attributes.backgroundPosition,
+        };
+
+        const overlayClasses = classnames( 'gt-background-overlay', {
+            'has-background': backgroundColor.value,
+            [ backgroundColor.class ]: backgroundColor.class,
+        } );
+
+        const overlayStyles = {
+            backgroundColor: backgroundColor.class ? undefined : backgroundColor.value,
         };
 
         const contentStyles = `
@@ -269,11 +278,17 @@ class gtContainerEdit extends Component {
 
                 </InspectorControls>
 
-                <div id={ blockId } className={ classNames } style={ blockStyles } data-background-image={ dataBackgroundImage }>
+                <div id={ blockId } className={ blockClasses } style={ blockStyles } data-background-image={ dataBackgroundImage }>
+
+                    { attributes.backgroundImageId && (
+                        <div className={ overlayClasses } style={ overlayStyles }></div>
+                    ) }
+
                     <style>{ contentStyles }</style>
                     <div className="gt-inner-content">
                         <InnerBlocks />
                     </div>
+
                 </div>
 
             </Fragment>
