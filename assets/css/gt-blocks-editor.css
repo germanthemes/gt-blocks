@@ -213,7 +213,6 @@
             flex-direction: column;
     /* Block Image Edit */
     /* Portfolio Grid Item Content */
-    /* Portfolio Grid Item URL Input */
     /* Portfolio Grid Item Controls*/ }
     .wp-block-german-themes-blocks-portfolio .gt-grid-item .gt-image {
       /* Image was added in Editor */
@@ -240,42 +239,6 @@
       .wp-block-german-themes-blocks-portfolio .gt-grid-item .gt-content .gt-text p {
         color: inherit;
         font-size: inherit; }
-      .wp-block-german-themes-blocks-portfolio .gt-grid-item .gt-content .gt-button-edit {
-        display: inline-block; }
-        .wp-block-german-themes-blocks-portfolio .gt-grid-item .gt-content .gt-button-edit .editor-rich-text__tinymce {
-          cursor: text; }
-    .wp-block-german-themes-blocks-portfolio .gt-grid-item .gt-url-input {
-      margin-top: auto;
-      padding-top: 0;
-      background: #fff;
-      display: -webkit-box;
-      display: -ms-flexbox;
-      display: flex;
-      -ms-flex-wrap: wrap;
-          flex-wrap: wrap;
-      -webkit-box-align: center;
-          -ms-flex-align: center;
-              align-items: center; }
-      .wp-block-german-themes-blocks-portfolio .gt-grid-item .gt-url-input .editor-url-input {
-        width: auto; }
-      .wp-block-german-themes-blocks-portfolio .gt-grid-item .gt-url-input > .dashicon {
-        width: 24px; }
-      .wp-block-german-themes-blocks-portfolio .gt-grid-item .gt-url-input .dashicon {
-        color: #8f98a1; }
-      .wp-block-german-themes-blocks-portfolio .gt-grid-item .gt-url-input .editor-url-input input[type=text]::-webkit-input-placeholder {
-        color: #8f98a1; }
-      .wp-block-german-themes-blocks-portfolio .gt-grid-item .gt-url-input .editor-url-input input[type=text]:-ms-input-placeholder {
-        color: #8f98a1; }
-      .wp-block-german-themes-blocks-portfolio .gt-grid-item .gt-url-input .editor-url-input input[type=text]::-ms-input-placeholder {
-        color: #8f98a1; }
-      .wp-block-german-themes-blocks-portfolio .gt-grid-item .gt-url-input .editor-url-input input[type=text]::placeholder {
-        color: #8f98a1; }
-      [data-align="center"] .wp-block-german-themes-blocks-portfolio .gt-grid-item .gt-url-input {
-        margin-left: auto;
-        margin-right: auto; }
-      [data-align="right"] .wp-block-german-themes-blocks-portfolio .gt-grid-item .gt-url-input {
-        margin-left: auto;
-        margin-right: 0; }
     .wp-block-german-themes-blocks-portfolio .gt-grid-item .gt-grid-item-controls {
       display: -webkit-box;
       display: -ms-flexbox;

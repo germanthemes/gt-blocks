@@ -69,23 +69,12 @@ registerBlockType(
                     title: {
                         type: 'array',
                         source: 'children',
-                        selector: '.gt-title-text',
+                        selector: '.gt-title',
                     },
                     text: {
                         type: 'array',
                         source: 'children',
                         selector: '.gt-text',
-                    },
-                    buttonText: {
-                        type: 'array',
-                        source: 'children',
-                        selector: '.gt-button',
-                    },
-                    itemURL: {
-                        type: 'string',
-                        source: 'attribute',
-                        attribute: 'href',
-                        selector: '.gt-item-url',
                     },
                 },
                 default: [
@@ -103,10 +92,6 @@ registerBlockType(
             },
             textAlignment: {
                 type: 'string',
-            },
-            showButtons: {
-                type: 'boolean',
-                default: true,
             },
             imageSize: {
                 type: 'string',
@@ -185,6 +170,8 @@ registerBlockType(
                 fontSize: fontSizeClass ? undefined : customFontSize,
             };
 
+            const titleTag = 'h' + attributes.titleTag;
+
             return (
                 <div className={ classNames ? classNames : undefined }>
                     <div className="gt-grid-container">
@@ -192,28 +179,23 @@ registerBlockType(
                         {
                             attributes.items.map( ( item, index ) => {
 
-                                const image = <img
-                                    src={ item.imgURL }
-                                    alt={ item.imgAlt }
-                                    data-img-id={ item.imgID }
-                                />;
-
-                                const titleText = <span class="gt-title-text">{ item.title }</span>;
-                                const title = item.itemURL ? <a href={ item.itemURL } className="gt-item-url" title={ titleText }>{ titleText }</a> : titleText;
-                                const titleTag = 'h' + attributes.titleTag;
-
                                 return (
                                     <div className="gt-grid-item" key={ index }>
 
                                         <div className="gt-image">
-                                            { item.itemURL ? <a href={  item.itemURL } className="gt-item-url">{ image }</a> : image }
+                                            <img
+                                                src={ item.imgURL }
+                                                alt={ item.imgAlt }
+                                                data-img-id={ item.imgID }
+                                            />
                                         </div>
 
                                         <div className={ contentClasses } style={ contentStyles }>
 
                                             <RichText.Content
                                                 tagName={ titleTag }
-                                                value={ title }
+                                                className="gt-title"
+                                                value={ item.title }
                                             />
 
                                             <RichText.Content
@@ -222,15 +204,6 @@ registerBlockType(
                                                 value={ item.text }
                                                 style={ textStyles }
                                             />
-
-                                            { ( item.itemURL && item.buttonText.length > 0 ) && (
-                                                <RichText.Content
-                                                    tagName="a"
-                                                    href={ item.itemURL }
-                                                    className={ classnames( 'gt-button', { 'gt-button-hidden': ! attributes.showButtons } ) }
-                                                    value={ item.buttonText }
-                                                />
-                                            ) }
 
                                         </div>
 

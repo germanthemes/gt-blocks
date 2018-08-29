@@ -44,7 +44,6 @@ const {
     InspectorControls,
     PanelColorSettings,
     RichText,
-    URLInput,
     withColors,
     withFontSizes,
  } = wp.editor;
@@ -57,7 +56,6 @@ const {
     PanelBody,
     RangeControl,
     SelectControl,
-    ToggleControl,
     Toolbar,
     withFallbackStyles,
  } = wp.components;
@@ -103,17 +101,15 @@ class gtPortfolioEdit extends Component {
     constructor() {
         super( ...arguments );
 
-        this.addPortfolioItem   = this.addPortfolioItem.bind( this );
-        this.onSelectImage      = this.onSelectImage.bind( this );
-        this.onRemoveImage      = this.onRemoveImage.bind( this );
-        this.addImageSize       = this.addImageSize.bind( this );
-        this.updateImageURLs    = this.updateImageURLs.bind( this );
-        this.onChangeTitle      = this.onChangeTitle.bind( this );
-        this.onChangeText       = this.onChangeText.bind( this );
-        this.onChangeButtonText = this.onChangeButtonText.bind( this );
-        this.onChangeItemURL  = this.onChangeItemURL.bind( this );
-        this.getFontSize = this.getFontSize.bind( this );
-        this.setFontSize = this.setFontSize.bind( this );
+        this.addPortfolioItem = this.addPortfolioItem.bind( this );
+        this.onSelectImage    = this.onSelectImage.bind( this );
+        this.onRemoveImage    = this.onRemoveImage.bind( this );
+        this.addImageSize     = this.addImageSize.bind( this );
+        this.updateImageURLs  = this.updateImageURLs.bind( this );
+        this.onChangeTitle    = this.onChangeTitle.bind( this );
+        this.onChangeText     = this.onChangeText.bind( this );
+        this.getFontSize      = this.getFontSize.bind( this );
+        this.setFontSize      = this.setFontSize.bind( this );
 
         this.state = {
             imageSizes: {},
@@ -237,22 +233,6 @@ class gtPortfolioEdit extends Component {
         const newItems = [...this.props.attributes.items];
         if( newItems[index] !== undefined ) {
             newItems[index].text = newText;
-        }
-        this.props.setAttributes( { items: newItems } );
-    }
-
-    onChangeButtonText( newButtonText, index ) {
-        const newItems = [...this.props.attributes.items];
-        if( newItems[index] !== undefined ) {
-            newItems[index].buttonText = newButtonText;
-        }
-        this.props.setAttributes( { items: newItems } );
-    }
-
-    onChangeItemURL( newItemURL, index ) {
-        const newItems = [...this.props.attributes.items];
-        if( newItems[index] !== undefined ) {
-            newItems[index].itemURL = newItemURL;
         }
         this.props.setAttributes( { items: newItems } );
     }
@@ -391,12 +371,6 @@ class gtPortfolioEdit extends Component {
                             />
                         ] }
 
-                        <ToggleControl
-                            label={ __( 'Show buttons?' ) }
-                            checked={ !! attributes.showButtons }
-                            onChange={ () => setAttributes( { showButtons: ! attributes.showButtons } ) }
-                        />
-
                     </PanelBody>
 
                     <PanelBody title={ __( 'Image Settings' ) } initialOpen={ false } className="gt-panel-image-settings gt-panel">
@@ -509,64 +483,37 @@ class gtPortfolioEdit extends Component {
                                                 keepPlaceholderOnFocus
                                             />
 
-                                            <span className="gt-button-edit">
-                                                <RichText
-                                                    tagName="span"
-                                                    placeholder={ __( 'Add button text' ) }
-                                                    value={ item.buttonText }
-                                                    className={ classnames( 'gt-button', { 'gt-button-hidden': ! attributes.showButtons } ) }
-                                                    onChange={ ( newButtonText ) => this.onChangeButtonText( newButtonText, index ) }
-                                                    formattingControls={ [ 'bold', 'italic', 'strikethrough' ] }
-                                                    keepPlaceholderOnFocus
-                                                />
-                                            </span>
-
                                         </div>
 
                                         { isSelected && (
-                                            <Fragment>
-
-                                                <form
-                                                    className="gt-url-input"
-                                                    onSubmit={ ( event ) => event.preventDefault() }>
-                                                    <Dashicon icon="admin-links" />
-                                                    <URLInput
-                                                        value={ item.itemURL }
-                                                        onChange={ ( newItemURL ) => this.onChangeItemURL( newItemURL, index ) }
-                                                        autoFocus= { false }
-                                                    />
-                                                    <IconButton icon="editor-break" label={ __( 'Apply' ) } type="submit" />
-                                                </form>
-
-                                                <div className="gt-grid-item-controls">
-                                                    <div className="gt-grid-item-number">
-                                                        #{ index + 1 }
-                                                    </div>
-
-                                                    <IconButton
-                                                        className="move-up-portfolio-item"
-                                                        label={ __( 'Move up' ) }
-                                                        icon="arrow-up-alt2"
-                                                        onClick={ () => this.moveUpPortfolioItem( index ) }
-                                                        disabled={ index === 0 }
-                                                    />
-
-                                                    <IconButton
-                                                        className="move-down-portfolio-item"
-                                                        label={ __( 'Move down' ) }
-                                                        icon="arrow-down-alt2"
-                                                        onClick={ () => this.moveDownPortfolioItem( index ) }
-                                                        disabled={ ( index + 1 ) === attributes.items.length }
-                                                    />
-
-                                                    <IconButton
-                                                        className="remove-portfolio-item"
-                                                        label={ __( 'Remove Item' ) }
-                                                        icon="trash"
-                                                        onClick={ () => this.removePortfolioItem( index ) }
-                                                    />
+                                            <div className="gt-grid-item-controls">
+                                                <div className="gt-grid-item-number">
+                                                    #{ index + 1 }
                                                 </div>
-                                            </Fragment>
+
+                                                <IconButton
+                                                    className="move-up-portfolio-item"
+                                                    label={ __( 'Move up' ) }
+                                                    icon="arrow-up-alt2"
+                                                    onClick={ () => this.moveUpPortfolioItem( index ) }
+                                                    disabled={ index === 0 }
+                                                />
+
+                                                <IconButton
+                                                    className="move-down-portfolio-item"
+                                                    label={ __( 'Move down' ) }
+                                                    icon="arrow-down-alt2"
+                                                    onClick={ () => this.moveDownPortfolioItem( index ) }
+                                                    disabled={ ( index + 1 ) === attributes.items.length }
+                                                />
+
+                                                <IconButton
+                                                    className="remove-portfolio-item"
+                                                    label={ __( 'Remove Item' ) }
+                                                    icon="trash"
+                                                    onClick={ () => this.removePortfolioItem( index ) }
+                                                />
+                                            </div>
                                         ) }
 
                                     </div>

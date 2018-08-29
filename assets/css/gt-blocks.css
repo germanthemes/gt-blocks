@@ -170,23 +170,6 @@
     padding-top: 1rem; }
     .wp-block-german-themes-blocks-portfolio .gt-grid-item .gt-content .gt-title {
       margin-top: 0; }
-    .wp-block-german-themes-blocks-portfolio .gt-grid-item .gt-content .gt-button {
-      display: inline-block;
-      margin: 0 0 1.5rem;
-      padding: 10px 20px;
-      color: #fff;
-      background: #333;
-      border: none;
-      border-radius: 24px;
-      -webkit-box-shadow: none;
-              box-shadow: none;
-      cursor: pointer;
-      text-align: center;
-      text-decoration: none;
-      white-space: normal;
-      word-break: break-all; }
-      .wp-block-german-themes-blocks-portfolio .gt-grid-item .gt-content .gt-button.gt-button-hidden {
-        display: none; }
   .wp-block-german-themes-blocks-portfolio .gt-grid-item .gt-content.has-background {
     padding-left: 1rem;
     padding-right: 1rem; }
