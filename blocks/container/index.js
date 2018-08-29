@@ -69,8 +69,8 @@ registerBlockType(
             backgroundImageUrl: {
                 type: 'string',
                 source: 'attribute',
-                attribute: 'src',
-                selector: 'img',
+                selector: '.gt-has-background-image',
+                attribute: 'data-background-image',
             },
         },
 
@@ -100,22 +100,23 @@ registerBlockType(
                 [ textColorClass ]: textColorClass,
                 'has-background': backgroundColor || customBackgroundColor,
                 [ backgroundClass ]: backgroundClass,
+                'gt-has-background-image': attributes.backgroundImageId,
             } );
 
             const blockStyles = {
                 color: textColorClass ? undefined : customTextColor,
                 backgroundColor: backgroundClass ? undefined : customBackgroundColor,
+                backgroundImage: attributes.backgroundImageId ? `url(${attributes.backgroundImageUrl})` : undefined,
             };
 
             const contentStyles = {
                 maxWidth: attributes.contentWidth + 'px',
             };
 
+            const dataBackgroundImage = attributes.backgroundImageId ? attributes.backgroundImageUrl : undefined;
+
             return (
-                <div className={ classNames ? classNames : undefined } style={ blockStyles }>
-                    <img
-                        src={ attributes.backgroundImageUrl }
-                    />
+                <div className={ classNames ? classNames : undefined } style={ blockStyles } data-background-image={ dataBackgroundImage }>
                     <div className="gt-inner-content" style={ contentStyles }>
                         <InnerBlocks.Content />
                     </div>

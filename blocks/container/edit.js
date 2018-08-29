@@ -94,11 +94,13 @@ class gtContainerEdit extends Component {
             [ textColor.class ]: textColor.class,
             'has-background': backgroundColor.value,
             [ backgroundColor.class ]: backgroundColor.class,
+            'gt-has-background-image': attributes.backgroundImageId,
         } );
 
         const blockStyles = {
             backgroundColor: backgroundColor.class ? undefined : backgroundColor.value,
             color: textColor.class ? undefined : textColor.value,
+            backgroundImage: attributes.backgroundImageId ? `url(${attributes.backgroundImageUrl})` : undefined,
         };
 
         const contentStyles = `
@@ -106,6 +108,8 @@ class gtContainerEdit extends Component {
                 max-width: ${attributes.contentWidth}px;
             }
         `;
+
+        const dataBackgroundImage = attributes.backgroundImageId ? attributes.backgroundImageUrl : undefined;
 
         return (
             <Fragment>
@@ -231,11 +235,7 @@ class gtContainerEdit extends Component {
 
                 </InspectorControls>
 
-                <div id={ blockId } className={ classNames } style={ blockStyles }>
-                    <img
-                        src={ attributes.backgroundImageUrl }
-                    />
-
+                <div id={ blockId } className={ classNames } style={ blockStyles } data-background-image={ dataBackgroundImage }>
                     <style>{ contentStyles }</style>
                     <div className="gt-inner-content">
                         <InnerBlocks />

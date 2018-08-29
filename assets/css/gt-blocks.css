@@ -1,5 +1,10 @@
 .wp-block-german-themes-blocks-container {
   padding: 1.5rem; }
+  .wp-block-german-themes-blocks-container.gt-has-background-image {
+    background-size: cover;
+    background-position: center center;
+    background-attachment: scroll;
+    background-repeat: no-repeat; }
   .wp-block-german-themes-blocks-container .gt-inner-content {
     margin: 0 auto; }
 .wp-block-german-themes-blocks-features {
