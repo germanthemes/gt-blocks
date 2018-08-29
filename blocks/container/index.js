@@ -128,7 +128,7 @@ registerBlockType(
                 [ backgroundClass ]: backgroundClass,
             } );
 
-            const overlayColor = customBackgroundColor ? customBackgroundColor : '#000000';
+            const overlayColor = customBackgroundColor ? customBackgroundColor : '#ffffff';
 
             const overlayStyles = {
                 backgroundColor: backgroundClass ? undefined : overlayColor,

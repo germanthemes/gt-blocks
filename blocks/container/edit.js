@@ -112,7 +112,7 @@ class gtContainerEdit extends Component {
         } );
 
         const overlayStyles = {
-            backgroundColor: backgroundColor.value ? backgroundColor.value : '#000000',
+            backgroundColor: backgroundColor.value ? backgroundColor.value : '#ffffff',
             opacity: ( 100 - attributes.imageOpacity ) / 100,
         };
 
