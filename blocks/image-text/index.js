@@ -133,28 +133,28 @@ registerBlockType(
                 customFontSize,
             } = attributes;
 
-            const textClass = getColorClass( 'color', textColor );
+            const textColorClass = getColorClass( 'color', textColor );
             const backgroundClass = getColorClass( 'background-color', backgroundColor );
             const fontSizeClass = getFontSizeClass( fontSize );
 
-            const classNames = classnames( {
+            const blockClasses = classnames( {
                 [ `${ attributes.columnSize }` ]: attributes.columnSize,
                 [ `align${ attributes.blockAlignment }` ]: ( attributes.blockAlignment !== 'center' ),
                 [ `gt-vertical-align-${ attributes.verticalAlignment }` ]: ( attributes.verticalAlignment !== 'top' ),
                 'gt-image-position-right': attributes.imagePosition,
                 'gt-has-spacing': attributes.spacing,
                 'has-background': backgroundColor || customBackgroundColor,
-                [ textClass ]: textClass,
+                [ textColorClass ]: textColorClass,
                 [ backgroundClass ]: backgroundClass,
             } );
 
             const styles = {
                 backgroundColor: backgroundClass ? undefined : customBackgroundColor,
-    			color: textClass ? undefined : customTextColor,
+    			color: textColorClass ? undefined : customTextColor,
                 textAlign: attributes.textAlignment,
             };
 
-            const textClassNames = classnames( 'block-text', {
+            const textClasses = classnames( 'block-text', {
                 [ fontSizeClass ]: fontSizeClass,
             } );
 
@@ -165,7 +165,7 @@ registerBlockType(
             const titleTag = 'h' + attributes.titleTag;
 
             return (
-                <div className={ classNames ? classNames : undefined }>
+                <div className={ blockClasses ? blockClasses : undefined }>
 
                     <div className="block-image">
                         <img
@@ -187,7 +187,7 @@ registerBlockType(
                             <RichText.Content
                                 tagName="div"
                                 style={ textStyles }
-                                className={ textClassNames }
+                                className={ textClasses }
                                 value={ attributes.text }
                             />
 

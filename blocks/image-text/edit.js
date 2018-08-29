@@ -172,7 +172,7 @@ class gtImageTextEdit extends Component {
 
         const availableSizes = this.getAvailableSizes();
 
-        const classNames= classnames( className, {
+        const blockClasses= classnames( className, {
             [ `${ attributes.columnSize }` ]: attributes.columnSize,
             [ `gt-vertical-align-${ attributes.verticalAlignment }` ]: ( attributes.verticalAlignment !== 'top' ),
             'gt-image-position-right': attributes.imagePosition,
@@ -379,7 +379,7 @@ class gtImageTextEdit extends Component {
 
                 </InspectorControls>
 
-                <div className={ classNames }>
+                <div className={ blockClasses }>
 
                     <div className="block-image">
 

@@ -108,8 +108,6 @@ class gtPortfolioEdit extends Component {
         this.updateImageURLs  = this.updateImageURLs.bind( this );
         this.onChangeTitle    = this.onChangeTitle.bind( this );
         this.onChangeText     = this.onChangeText.bind( this );
-        this.getFontSize      = this.getFontSize.bind( this );
-        this.setFontSize      = this.setFontSize.bind( this );
 
         this.state = {
             imageSizes: {},
@@ -244,36 +242,6 @@ class gtPortfolioEdit extends Component {
         return uniq( availableSizes );
     }
 
-    getFontSize() {
-        const { customFontSize, fontSize } = this.props.attributes;
-        if ( fontSize ) {
-            const fontSizeObj = find( FONT_SIZES, { name: fontSize } );
-            if ( fontSizeObj ) {
-                return fontSizeObj.size;
-            }
-        }
-
-        if ( customFontSize ) {
-            return customFontSize;
-        }
-    }
-
-    setFontSize( fontSizeValue ) {
-        const { setAttributes } = this.props;
-        const thresholdFontSize = find( FONT_SIZES, { size: fontSizeValue } );
-        if ( thresholdFontSize ) {
-            setAttributes( {
-                fontSize: thresholdFontSize.name,
-                customFontSize: undefined,
-            } );
-            return;
-        }
-        setAttributes( {
-            fontSize: undefined,
-            customFontSize: fontSizeValue,
-        } );
-    }
-
     render() {
         const {
             attributes,
@@ -295,7 +263,7 @@ class gtPortfolioEdit extends Component {
 
         const availableSizes = this.getAvailableSizes();
 
-        const classNames= classnames( className, {
+        const blockClasses= classnames( className, {
             [ `gt-columns-${ attributes.columns }` ]: attributes.columns,
         } );
 
@@ -416,6 +384,7 @@ class gtPortfolioEdit extends Component {
 
                     <PanelColorSettings
                         title={ __( 'Color Settings' ) }
+                        initialOpen={ false }
                         colorSettings={ [
                             {
                                 value: backgroundColor.value,
@@ -443,7 +412,7 @@ class gtPortfolioEdit extends Component {
 
                 </InspectorControls>
 
-                <div className={ classNames }>
+                <div className={ blockClasses }>
                     <div className="gt-grid-container">
 
                         {

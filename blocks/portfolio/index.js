@@ -140,11 +140,11 @@ registerBlockType(
                 customFontSize,
             } = attributes;
 
-            const textClass = getColorClass( 'color', textColor );
+            const textColorClass = getColorClass( 'color', textColor );
             const backgroundClass = getColorClass( 'background-color', backgroundColor );
             const fontSizeClass = getFontSizeClass( fontSize );
 
-            const classNames = classnames( {
+            const blockClasses = classnames( {
                 [ `gt-columns-${ attributes.columns }` ]: attributes.columns,
                 [ `align${ attributes.blockAlignment }` ]: ( 'wide' === attributes.blockAlignment || 'full' === attributes.blockAlignment ),
             } );
@@ -161,19 +161,19 @@ registerBlockType(
 
             const textClasses = classnames( 'gt-text', {
                 'has-text-color': textColor || customTextColor,
-                [ textClass ]: textClass,
+                [ textColorClass ]: textColorClass,
                 [ fontSizeClass ]: fontSizeClass,
             } );
 
             const textStyles = {
-                color: textClass ? undefined : customTextColor,
+                color: textColorClass ? undefined : customTextColor,
                 fontSize: fontSizeClass ? undefined : customFontSize,
             };
 
             const titleTag = 'h' + attributes.titleTag;
 
             return (
-                <div className={ classNames ? classNames : undefined }>
+                <div className={ blockClasses ? blockClasses : undefined }>
                     <div className="gt-grid-container">
 
                         {

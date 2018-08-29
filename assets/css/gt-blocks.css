@@ -173,38 +173,3 @@
   .wp-block-german-themes-blocks-portfolio .gt-grid-item .gt-content.has-background {
     padding-left: 1rem;
     padding-right: 1rem; }
-.wp-block-german-themes-blocks-service-item {
-  background: #ddd;
-  border: 5px solid blue;
-  padding: 1rem; }
-  .wp-block-german-themes-blocks-service-item p {
-    font-size: 1.4rem; }
-.wp-block-german-themes-blocks-services {
-  background: #ddd;
-  border: 5px solid red;
-  padding: 1rem;
-  /* Portfolio Grid Layout */ }
-  .wp-block-german-themes-blocks-services .gt-grid-container {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-gap: 1.5em; }
-  .wp-block-german-themes-blocks-services.gt-columns-2 .gt-grid-container {
-    grid-template-columns: repeat(2, 1fr); }
-  .wp-block-german-themes-blocks-services.gt-columns-4 .gt-grid-container {
-    grid-template-columns: repeat(4, 1fr); }
-  .wp-block-german-themes-blocks-services.gt-columns-5 .gt-grid-container {
-    grid-template-columns: repeat(5, 1fr); }
-  .wp-block-german-themes-blocks-services.gt-columns-6 .gt-grid-container {
-    grid-template-columns: repeat(6, 1fr); }
-  .wp-block-german-themes-blocks-services p {
-    font-size: 1.4rem; }
-.wp-block-german-themes-blocks-testimonials {
-  background: rgba(254, 243, 224, 0.52);
-  border: 5px #f7b733 solid;
-  padding: 1rem; }
-  .wp-block-german-themes-blocks-testimonials h2 {
-    color: #222;
-    font-size: 2rem;
-    margin: 1rem 0; }
-  .wp-block-german-themes-blocks-testimonials p {
-    font-size: 1.4rem; }

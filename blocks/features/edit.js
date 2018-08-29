@@ -199,7 +199,7 @@ class gtFeaturesEdit extends Component {
             wideControlsEnabled,
         } = this.props;
 
-        const classNames= classnames( className, {
+        const blockClasses= classnames( className, {
             [ `gt-columns-${ attributes.columns }` ]: attributes.columns,
         } );
 
@@ -386,7 +386,7 @@ class gtFeaturesEdit extends Component {
 
                 </InspectorControls>
 
-                <div className={ classNames }>
+                <div className={ blockClasses }>
                     <div className="gt-grid-container">
 
                         {

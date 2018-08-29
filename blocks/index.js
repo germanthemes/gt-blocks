@@ -13,5 +13,3 @@ import './container';
 import './features';
 import './image-text';
 import './portfolio';
-import './services';
-import './testimonials';
