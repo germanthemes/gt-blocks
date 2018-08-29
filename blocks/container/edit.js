@@ -31,9 +31,9 @@ const {
 
 const {
     Button,
-    IconButton,
     PanelBody,
     RangeControl,
+    ToggleControl,
     withFallbackStyles,
 } = wp.components;
 
@@ -95,6 +95,7 @@ class gtContainerEdit extends Component {
             'has-background': backgroundColor.value,
             [ backgroundColor.class ]: backgroundColor.class,
             'gt-has-background-image': attributes.backgroundImageId,
+            'gt-fixed-background': attributes.fixedBackground,
         } );
 
         const blockStyles = {
@@ -230,6 +231,16 @@ class gtContainerEdit extends Component {
                             ) }
 
                         </div>
+
+                        { attributes.backgroundImageId && (
+
+                            <ToggleControl
+                                label={ __( 'Fixed Background' ) }
+                                checked={ !! attributes.fixedBackground }
+                                onChange={ () => setAttributes( { fixedBackground: ! attributes.fixedBackground } ) }
+                            />
+
+                        ) }
 
                     </PanelBody>
 

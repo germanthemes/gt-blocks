@@ -72,6 +72,10 @@ registerBlockType(
                 selector: '.gt-has-background-image',
                 attribute: 'data-background-image',
             },
+            fixedBackground: {
+                type: 'boolean',
+                default: false,
+            },
         },
 
         getEditWrapperProps( attributes ) {
@@ -101,6 +105,7 @@ registerBlockType(
                 'has-background': backgroundColor || customBackgroundColor,
                 [ backgroundClass ]: backgroundClass,
                 'gt-has-background-image': attributes.backgroundImageId,
+                'gt-fixed-background': attributes.fixedBackground,
             } );
 
             const blockStyles = {
