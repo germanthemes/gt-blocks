@@ -72,6 +72,10 @@ registerBlockType(
                 selector: '.gt-has-background-image',
                 attribute: 'data-background-image',
             },
+            backgroundPosition: {
+                type: 'string',
+                default: 'center center',
+            },
             fixedBackground: {
                 type: 'boolean',
                 default: false,
@@ -112,6 +116,7 @@ registerBlockType(
                 color: textColorClass ? undefined : customTextColor,
                 backgroundColor: backgroundClass ? undefined : customBackgroundColor,
                 backgroundImage: attributes.backgroundImageId ? `url(${attributes.backgroundImageUrl})` : undefined,
+                backgroundPosition: attributes.backgroundPosition,
             };
 
             const contentStyles = {

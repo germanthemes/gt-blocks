@@ -33,6 +33,7 @@ const {
     Button,
     PanelBody,
     RangeControl,
+    SelectControl,
     ToggleControl,
     withFallbackStyles,
 } = wp.components;
@@ -102,6 +103,7 @@ class gtContainerEdit extends Component {
             backgroundColor: backgroundColor.class ? undefined : backgroundColor.value,
             color: textColor.class ? undefined : textColor.value,
             backgroundImage: attributes.backgroundImageId ? `url(${attributes.backgroundImageUrl})` : undefined,
+            backgroundPosition: attributes.backgroundPosition,
         };
 
         const contentStyles = `
@@ -234,11 +236,32 @@ class gtContainerEdit extends Component {
 
                         { attributes.backgroundImageId && (
 
-                            <ToggleControl
-                                label={ __( 'Fixed Background' ) }
-                                checked={ !! attributes.fixedBackground }
-                                onChange={ () => setAttributes( { fixedBackground: ! attributes.fixedBackground } ) }
-                            />
+                            <Fragment>
+
+                                <SelectControl
+                                    label={ __( 'Background Position' ) }
+                                    value={ attributes.backgroundPosition }
+                                    onChange={ ( newPosition ) => setAttributes( { backgroundPosition: newPosition } ) }
+                                    options={ [
+                                        { value: 'left top', label: __( 'Left Top' ) },
+                                        { value: 'left center', label: __( 'Left Center' ) },
+                                        { value: 'left bottom', label: __( 'Left Bottom' ) },
+                                        { value: 'center top', label: __( 'Center Top' ) },
+                                        { value: 'center center', label: __( 'Center Center' ) },
+                                        { value: 'center bottom', label: __( 'Center Bottom' ) },
+                                        { value: 'right top', label: __( 'Right Top' ) },
+                                        { value: 'right center', label: __( 'Right Center' ) },
+                                        { value: 'right bottom', label: __( 'Right Bottom' ) },
+                                    ] }
+                                />
+
+                                <ToggleControl
+                                    label={ __( 'Fixed Background' ) }
+                                    checked={ !! attributes.fixedBackground }
+                                    onChange={ () => setAttributes( { fixedBackground: ! attributes.fixedBackground } ) }
+                                />
+
+                            </Fragment>
 
                         ) }
 

@@ -24,7 +24,8 @@
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  margin-top: 3px; }
+  margin-top: 3px;
+  margin-bottom: 1.5em; }
   .gt-blocks-container-background-image-panel .gt-background-image .gt-image-controls .gt-replace-image {
     margin-top: 3px;
     margin-right: 12px; }
