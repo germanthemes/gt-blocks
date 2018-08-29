@@ -112,7 +112,8 @@ class gtContainerEdit extends Component {
         } );
 
         const overlayStyles = {
-            backgroundColor: backgroundColor.class ? undefined : backgroundColor.value,
+            backgroundColor: backgroundColor.value ? backgroundColor.value : '#000000',
+            opacity: ( 100 - attributes.imageOpacity ) / 100,
         };
 
         const contentStyles = `
@@ -246,6 +247,14 @@ class gtContainerEdit extends Component {
                         { attributes.backgroundImageId && (
 
                             <Fragment>
+
+                                <RangeControl
+                                    label={ __( 'Image Opacity' ) }
+                                    value={ attributes.imageOpacity }
+                                    onChange={ ( newOpacity ) => setAttributes( { imageOpacity: newOpacity } ) }
+                                    min={ 0 }
+                                    max={ 100 }
+                                />
 
                                 <SelectControl
                                     label={ __( 'Background Position' ) }

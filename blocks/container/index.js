@@ -72,6 +72,10 @@ registerBlockType(
                 selector: '.gt-has-background-image',
                 attribute: 'data-background-image',
             },
+            imageOpacity: {
+                type: 'number',
+                default: 100,
+            },
             backgroundPosition: {
                 type: 'string',
                 default: 'center center',
@@ -124,8 +128,11 @@ registerBlockType(
                 [ backgroundClass ]: backgroundClass,
             } );
 
+            const overlayColor = customBackgroundColor ? customBackgroundColor : '#000000';
+
             const overlayStyles = {
-                backgroundColor: backgroundClass ? undefined : customBackgroundColor,
+                backgroundColor: backgroundClass ? undefined : overlayColor,
+                opacity: ( 100 - attributes.imageOpacity ) / 100,
             };
 
             const contentStyles = {
