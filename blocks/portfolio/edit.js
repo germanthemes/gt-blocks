@@ -149,7 +149,7 @@ class gtPortfolioEdit extends Component {
         const newItems = [...this.props.attributes.items];
 
         // Duplicate Item.
-        newItems.splice( index+1, 0, newItems[index] );
+        newItems.splice( index+1, 0, {...newItems[index]} );
         this.props.setAttributes( { items: newItems } );
     }
 
