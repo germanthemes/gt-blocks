@@ -479,18 +479,17 @@ class gtImageTextEdit extends Component {
 }
 
 export default compose( [
-    withSelect( ( select, props ) => {
-		const { getMedia } = select( 'core' );
-		const { getEditorSettings } = select( 'core/editor' );
-		const { imgID } = props.attributes;
-		const { fontSizes } = getEditorSettings();
-
-		return {
-			image: imgID ? getMedia( imgID ) : null,
-			fontSizes,
-		};
-	} ),
     withColors( 'backgroundColor', { textColor: 'color' } ),
     withFontSizes( 'fontSize' ),
 	applyFallbackStyles,
+    withSelect( ( select, props ) => {
+        const { getMedia } = select( 'core' );
+        const { imgID } = props.attributes;
+        const { fontSizes } = select( 'core/editor' ).getEditorSettings();
+
+        return {
+            image: imgID ? getMedia( imgID ) : null,
+            fontSizes,
+        };
+    } ),
 ] )( gtImageTextEdit );
