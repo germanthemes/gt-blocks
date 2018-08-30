@@ -4,6 +4,7 @@
 .gt-blocks-container-background-image-panel .gt-background-image .gt-set-image {
   display: block;
   -webkit-transition: all .1s ease-out;
+  -o-transition: all .1s ease-out;
   transition: all .1s ease-out;
   width: 100%;
   background-color: #edeff0;
@@ -18,7 +19,6 @@
   cursor: pointer; }
 
 .gt-blocks-container-background-image-panel .gt-background-image .gt-image-controls {
-  display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   margin-top: 3px;
@@ -30,13 +30,10 @@
   /* Features Grid Item */
   /* Add Features Item*/ }
   .wp-block-german-themes-blocks-features .gt-grid-item {
-    display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-        -ms-flex-direction: column;
-            flex-direction: column;
+    -ms-flex-direction: column;
+        flex-direction: column;
     /* Features Grid Item Content */
     /* Features Grid Item Controls*/ }
     .wp-block-german-themes-blocks-features .gt-grid-item .gt-content .gt-title {
@@ -48,7 +45,6 @@
       color: inherit;
       font-size: inherit; }
     .wp-block-german-themes-blocks-features .gt-grid-item .gt-grid-item-controls {
-      display: -webkit-box;
       display: -ms-flexbox;
       display: flex;
       margin-top: 16px;
@@ -65,16 +61,12 @@
       .wp-block-german-themes-blocks-features .gt-grid-item .gt-grid-item-controls .remove-features-item {
         margin-left: auto; }
   .wp-block-german-themes-blocks-features .gt-add-features-item {
-    display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-        -ms-flex-direction: column;
-            flex-direction: column;
-    -webkit-box-align: center;
-        -ms-flex-align: center;
-            align-items: center;
+    -ms-flex-direction: column;
+        flex-direction: column;
+    -ms-flex-align: center;
+        align-items: center;
     margin-top: 1.5rem;
     padding: 25px 20px 20px;
     width: 100%;
@@ -99,34 +91,27 @@
     width: 100%;
     height: 100%;
     z-index: 999;
-    display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
-    -webkit-box-pack: center;
-        -ms-flex-pack: center;
-            justify-content: center;
+    -ms-flex-pack: center;
+        justify-content: center;
     background: #fff;
     padding: 1.5rem; }
     .wp-block-german-themes-blocks-features .gt-icon-wrapper .gt-icon-picker .gt-icon-picker-box {
-      display: -webkit-box;
       display: -ms-flexbox;
       display: flex;
-      -webkit-box-orient: vertical;
-      -webkit-box-direction: normal;
-          -ms-flex-direction: column;
-              flex-direction: column;
+      -ms-flex-direction: column;
+          flex-direction: column;
       width: 100%;
       height: 100%;
       max-height: 500px; }
       .wp-block-german-themes-blocks-features .gt-icon-wrapper .gt-icon-picker .gt-icon-picker-box .gt-icon-picker-header {
         margin: 0 0 0.5rem; }
         .wp-block-german-themes-blocks-features .gt-icon-wrapper .gt-icon-picker .gt-icon-picker-box .gt-icon-picker-header .gt-icon-picker-title {
-          display: -webkit-box;
           display: -ms-flexbox;
           display: flex;
-          -webkit-box-pack: justify;
-              -ms-flex-pack: justify;
-                  justify-content: space-between;
+          -ms-flex-pack: justify;
+              justify-content: space-between;
           background: #edeff0;
           border: 1px solid #e2e4e7;
           padding: 0.5rem 0.5rem 0.5rem 1rem;
@@ -187,13 +172,10 @@
   /* Portfolio Grid Item */
   /* Add Portfolio Item*/ }
   .wp-block-german-themes-blocks-portfolio .gt-grid-item {
-    display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-        -ms-flex-direction: column;
-            flex-direction: column;
+    -ms-flex-direction: column;
+        flex-direction: column;
     /* Block Image Edit */
     /* Portfolio Grid Item Content */
     /* Portfolio Grid Item Controls*/ }
@@ -225,7 +207,6 @@
         color: inherit;
         font-size: inherit; }
     .wp-block-german-themes-blocks-portfolio .gt-grid-item .gt-grid-item-controls {
-      display: -webkit-box;
       display: -ms-flexbox;
       display: flex;
       margin-top: 16px;
@@ -246,16 +227,12 @@
       .wp-block-german-themes-blocks-portfolio .gt-grid-item .gt-grid-item-controls .remove-portfolio-item {
         margin-left: auto; }
   .wp-block-german-themes-blocks-portfolio .gt-add-portfolio-item {
-    display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-        -ms-flex-direction: column;
-            flex-direction: column;
-    -webkit-box-align: center;
-        -ms-flex-align: center;
-            align-items: center;
+    -ms-flex-direction: column;
+        flex-direction: column;
+    -ms-flex-align: center;
+        align-items: center;
     margin-top: 1.5rem;
     padding: 25px 20px 20px;
     width: 100%;

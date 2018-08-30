@@ -1,18 +1,18 @@
 <?php
 /*
-Plugin Name: GT Blocks
-Plugin URI: https://themezee.com/plugins/gt-blocks/
-Description: A Custom Gutenberg Block to turn your WordPress theme into a powerful magazine website.
-Author: ThemeZee
-Author URI: https://themezee.com/
+Plugin Name: GT Layout Blocks
+Plugin URI: https://germanthemes.dem/gt-layout-blocks/
+Description: Page Building Blocks from germanThemes
+Author: germanThemes
+Author URI: https://germanthemes.de/
 Version: 1.0
-Text Domain: german-themes-blocks
+Text Domain: gt-layout-blocks
 Domain Path: /languages/
 License: GPL v3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
-German Themes Blocks
-Copyright(C) 2018, ThemeZee.com - support@themezee.com
+GT Layout Blocks
+Copyright(C) 2018, germanthemes.de - support@germanthemes.de
 */
 
 // Exit if accessed directly.
@@ -21,18 +21,18 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 /**
- * Main German_Themes_Blocks Class
+ * Main GT_Layout_Blocks Class
  *
- * @package German Themes Blocks
+ * @package GT Layout Blocks
  */
-class German_Themes_Blocks {
+class GT_Layout_Blocks {
 
 	/**
 	 * Call all Functions to setup the Plugin
 	 *
-	 * @uses German_Themes_Blocks::constants() Setup the constants needed
-	 * @uses German_Themes_Blocks::includes() Include the required files
-	 * @uses German_Themes_Blocks::setup_actions() Setup the hooks and actions
+	 * @uses GT_Layout_Blocks::constants() Setup the constants needed
+	 * @uses GT_Layout_Blocks::includes() Include the required files
+	 * @uses GT_Layout_Blocks::setup_actions() Setup the hooks and actions
 	 * @return void
 	 */
 	static function setup() {
@@ -43,12 +43,8 @@ class German_Themes_Blocks {
 		// Setup Translation.
 		add_action( 'plugins_loaded', array( __CLASS__, 'translation' ) );
 
-		// Include Files.
-		self::includes();
-
 		// Setup Action Hooks.
 		self::setup_actions();
-
 	}
 
 	/**
@@ -59,20 +55,19 @@ class German_Themes_Blocks {
 	static function constants() {
 
 		// Define Plugin Name.
-		define( 'GTB_NAME', 'German Themes Blocks' );
+		define( 'GTLB_NAME', 'GT Layout Blocks' );
 
 		// Define Version Number.
-		define( 'GTB_VERSION', '1.0' );
+		define( 'GTLB_VERSION', '1.0' );
 
 		// Plugin Folder Path.
-		define( 'GTB_PLUGIN_DIR', plugin_dir_path( __FILE__ ) );
+		define( 'GTLB_PLUGIN_DIR', plugin_dir_path( __FILE__ ) );
 
 		// Plugin Folder URL.
-		define( 'GTB_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
+		define( 'GTLB_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
 
 		// Plugin Root File.
-		define( 'GTB_PLUGIN_FILE', __FILE__ );
-
+		define( 'GTLB_PLUGIN_FILE', __FILE__ );
 	}
 
 	/**
@@ -82,24 +77,7 @@ class German_Themes_Blocks {
 	 */
 	static function translation() {
 
-		load_plugin_textdomain( 'german-themes-blocks', false, dirname( plugin_basename( GTB_PLUGIN_FILE ) ) . '/languages/' );
-
-	}
-
-	/**
-	 * Include required files
-	 *
-	 * @return void
-	 */
-	static function includes() {
-
-		// Include Admin Classes.
-		#require_once GTB_PLUGIN_DIR . '/includes/admin/class-themezee-plugins-page.php';
-		#require_once GTB_PLUGIN_DIR . '/includes/admin/class-tzba-plugin-updater.php';
-
-		// Include Settings Classes.
-		#require_once GTB_PLUGIN_DIR . '/includes/settings/class-tzba-settings.php';
-		#require_once GTB_PLUGIN_DIR . '/includes/settings/class-tzba-settings-page.php';
+		load_plugin_textdomain( 'gt-layout-blocks', false, dirname( plugin_basename( GTLB_PLUGIN_FILE ) ) . '/languages/' );
 
 	}
 
@@ -132,7 +110,7 @@ class German_Themes_Blocks {
 	 * @return void
 	 */
 	static function enqueue_block_scripts() {
-		wp_enqueue_style( 'german-themes-blocks', GTB_PLUGIN_URL . 'assets/css/gt-blocks.css', array( 'wp-blocks' ), GTB_VERSION );
+		wp_enqueue_style( 'gt-layout-blocks', GTLB_PLUGIN_URL . 'dist/blocks.style.build.css', array( 'wp-blocks' ), GTLB_VERSION );
 	}
 
 	/**
@@ -143,19 +121,19 @@ class German_Themes_Blocks {
 	 * @return void
 	 */
 	static function enqueue_block_editor_scripts() {
-		wp_enqueue_script( 'german-themes-blocks-editor', GTB_PLUGIN_URL . 'assets/js/gt-blocks-editor.js', array(
-			'wp-editor',
+		wp_enqueue_script( 'gt-layout-blocks-editor', GTLB_PLUGIN_URL . 'dist/blocks.build.js', array(
+			'wp-blocks',
 			'wp-i18n',
 			'wp-element',
-		), GTB_VERSION );
+		), GTLB_VERSION );
 
 		wp_add_inline_script(
-			'german-themes-blocks-editor',
-			sprintf( 'wp.data.dispatch( "gt-blocks" ).setPluginURL( %s );', wp_json_encode( GTB_PLUGIN_URL ) ),
+			'gt-layout-blocks-editor',
+			sprintf( 'wp.data.dispatch( "gt-blocks" ).setPluginURL( %s );', wp_json_encode( GTLB_PLUGIN_URL ) ),
 			'after'
 		);
 
-		wp_enqueue_style( 'german-themes-blocks-editor', GTB_PLUGIN_URL . 'assets/css/gt-blocks-editor.css', array( 'wp-edit-blocks' ), GTB_VERSION );
+		wp_enqueue_style( 'gt-layout-blocks-editor', GTLB_PLUGIN_URL . 'dist/blocks.editor.build.css', array( 'wp-edit-blocks' ), GTLB_VERSION );
 	}
 
 	/**
@@ -189,7 +167,7 @@ class German_Themes_Blocks {
 			array(
 				array(
 					'slug'  => 'germanthemes',
-					'title' => __( 'GT Blocks', 'german-themes-blocks' ),
+					'title' => __( 'GT Blocks', 'gt-layout-blocks' ),
 				),
 			)
 		);
@@ -197,4 +175,4 @@ class German_Themes_Blocks {
 }
 
 // Run Plugin.
-German_Themes_Blocks::setup();
+GT_Layout_Blocks::setup();
