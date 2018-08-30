@@ -8,7 +8,7 @@ import classnames from 'classnames';
  */
 const { Component, Fragment } = wp.element;
 const { __ } = wp.i18n;
-const { select } = wp.data;
+const { select, withDispatch } = wp.data;
 
 const {
     PlainText,
@@ -122,7 +122,8 @@ class IconPicker extends Component {
             iconClasses,
             iconStyles,
             onChange,
-            isSelected
+            isSelected,
+            openModal,
         } = this.props;
 
         return (
@@ -130,16 +131,25 @@ class IconPicker extends Component {
 
                 { ! icon ? (
 
-                    <Placeholder
-                        className="gt-icon-placeholder"
-                        instructions={ __( 'Choose an icon here.' ) }
-                        icon="carrot"
-                        label={ __( 'Icon' ) }
-                    >
-                        <Button isLarge onClick={ this.showIconPicker }>
-                            { __( 'Select icon' ) }
+                    <Fragment>
+                        <Placeholder
+                            className="gt-icon-placeholder"
+                            instructions={ __( 'Choose an icon here.' ) }
+                            icon="carrot"
+                            label={ __( 'Icon' ) }
+                        >
+                            <Button isLarge onClick={ this.showIconPicker }>
+                                { __( 'Select icon' ) }
+                            </Button>
+                        </Placeholder>
+
+                        <Button isLarge onClick={ () => {
+                            openModal( 'gt-layout-blocks/icon-picker-modal' );
+                        } }>
+                            { __( 'Open Modal' ) }
                         </Button>
-                    </Placeholder>
+
+                    </Fragment>
 
                 ) : (
 
@@ -205,4 +215,12 @@ class IconPicker extends Component {
     }
 }
 
-export default IconPicker;
+export default withDispatch( ( dispatch, ) => {
+	const {
+		openModal,
+	} = dispatch( 'core/edit-post' );
+
+	return {
+		openModal,
+	};
+} )( IconPicker );

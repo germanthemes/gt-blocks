@@ -14,6 +14,7 @@ import {
  * Block dependencies
  */
 import { default as IconPicker } from './icon-picker';
+import { default as IconPickerModal } from './icon-picker-modal';
 import {
     gtTwoColumns,
     gtThreeColumns,
@@ -241,6 +242,7 @@ class gtFeaturesEdit extends Component {
 
         return (
             <Fragment>
+                <IconPickerModal/>
                 <BlockControls key="controls">
 
                     <BlockAlignmentToolbar
