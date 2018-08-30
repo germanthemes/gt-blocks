@@ -154,39 +154,35 @@
                 fill: #202020;
                 vertical-align: middle;
                 pointer-events: none; }
-/* Block Image Edit */
-.wp-block-german-themes-blocks-image-text .image-wrapper .edit-image {
-  position: relative; }
-
-.wp-block-german-themes-blocks-image-text .image-wrapper .edit-image:hover {
-  cursor: pointer; }
-
-.wp-block-german-themes-blocks-image-text .image-wrapper .edit-image .remove-image {
-  position: absolute;
-  top: 8px;
-  right: 8px;
-  color: #fff;
-  background: rgba(0, 0, 0, 0.6);
-  padding: 5px;
-  border: 3px solid transparent; }
-
-/* Block Image Placeholder */
-.wp-block-german-themes-blocks-image-text .block-image .block-image-placeholder {
-  height: 100%; }
-
-.wp-block-german-themes-blocks-image-text .block-image .block-image-placeholder .components-form-file-upload {
-  margin-bottom: 12px; }
-
-/* Block Title */
-.wp-block-german-themes-blocks-image-text .block-content .block-title {
-  margin-top: 0.5em;
-  margin-bottom: 0.5em;
-  color: inherit; }
-
-/* Font Size */
-.wp-block-german-themes-blocks-image-text .block-content .block-text p {
-  font-size: inherit;
-  color: inherit; }
+.wp-block-german-themes-blocks-image-text {
+  /* Block Image Edit */
+  /* Block Content */ }
+  .wp-block-german-themes-blocks-image-text .gt-image {
+    /* Image was added in Editor */
+    /* Image Placeholder */ }
+    .wp-block-german-themes-blocks-image-text .gt-image .gt-image-wrapper .gt-edit-image {
+      position: relative; }
+      .wp-block-german-themes-blocks-image-text .gt-image .gt-image-wrapper .gt-edit-image:hover {
+        cursor: pointer; }
+      .wp-block-german-themes-blocks-image-text .gt-image .gt-image-wrapper .gt-edit-image .remove-image {
+        position: absolute;
+        top: 8px;
+        right: 8px;
+        color: #fff;
+        background: rgba(0, 0, 0, 0.6);
+        padding: 5px;
+        border: 3px solid transparent; }
+    .wp-block-german-themes-blocks-image-text .gt-image .gt-image-placeholder {
+      height: 100%; }
+      .wp-block-german-themes-blocks-image-text .gt-image .gt-image-placeholder .components-form-file-upload {
+        margin-bottom: 12px; }
+  .wp-block-german-themes-blocks-image-text .gt-content .gt-title {
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+    color: inherit; }
+  .wp-block-german-themes-blocks-image-text .gt-content .gt-text p {
+    font-size: inherit;
+    color: inherit; }
 
 /* Change Size of Vertical Alignment Icons */
 .edit-post-sidebar .gt-vertical-align-control button svg {
@@ -226,8 +222,10 @@
           background: rgba(0, 0, 0, 0.6);
           padding: 5px;
           border: 3px solid transparent; }
-      .wp-block-german-themes-blocks-portfolio .gt-grid-item .gt-image .gt-image .gt-image-placeholder .components-form-file-upload {
-        margin-bottom: 12px; }
+      .wp-block-german-themes-blocks-portfolio .gt-grid-item .gt-image .gt-image-placeholder {
+        height: 100%; }
+        .wp-block-german-themes-blocks-portfolio .gt-grid-item .gt-image .gt-image-placeholder .components-form-file-upload {
+          margin-bottom: 12px; }
     .wp-block-german-themes-blocks-portfolio .gt-grid-item .gt-content {
       margin-bottom: 16px; }
       .wp-block-german-themes-blocks-portfolio .gt-grid-item .gt-content .gt-title {

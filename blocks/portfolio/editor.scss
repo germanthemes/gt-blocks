@@ -31,8 +31,12 @@
             }
 
             /* Image Placeholder */
-            .gt-image .gt-image-placeholder .components-form-file-upload {
-                margin-bottom: 12px;
+            .gt-image-placeholder {
+                height: 100%;
+
+                .components-form-file-upload {
+                    margin-bottom: 12px;
+                }
             }
         }
 

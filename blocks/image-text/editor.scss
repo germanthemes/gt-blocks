@@ -1,42 +1,54 @@
-/* Block Image Edit */
-.wp-block-german-themes-blocks-image-text .image-wrapper .edit-image {
-    position: relative;
-}
+.wp-block-german-themes-blocks-image-text {
 
-.wp-block-german-themes-blocks-image-text .image-wrapper .edit-image:hover {
-    cursor: pointer;
-}
+    /* Block Image Edit */
+    .gt-image {
 
-.wp-block-german-themes-blocks-image-text .image-wrapper .edit-image .remove-image {
-    position: absolute;
-    top: 8px;
-    right: 8px;
-    color: #fff;
-    background: rgba(0,0,0,0.6);
-    padding: 5px;
-    border: 3px solid transparent;
-}
+        /* Image was added in Editor */
+        .gt-image-wrapper {
 
-/* Block Image Placeholder */
-.wp-block-german-themes-blocks-image-text .block-image .block-image-placeholder {
-    height: 100%;
-}
+            .gt-edit-image {
+                position: relative;
 
-.wp-block-german-themes-blocks-image-text .block-image .block-image-placeholder .components-form-file-upload {
-    margin-bottom: 12px;
-}
+                &:hover {
+                    cursor: pointer;
+                }
 
-/* Block Title */
-.wp-block-german-themes-blocks-image-text .block-content .block-title {
-    margin-top: 0.5em;
-    margin-bottom: 0.5em;
-    color: inherit;
-}
+                .remove-image {
+                    position: absolute;
+                    top: 8px;
+                    right: 8px;
+                    color: #fff;
+                    background: rgba(0,0,0,0.6);
+                    padding: 5px;
+                    border: 3px solid transparent;
+                }
+            }
+        }
 
-/* Font Size */
-.wp-block-german-themes-blocks-image-text .block-content .block-text p {
-    font-size: inherit;
-    color: inherit;
+        /* Image Placeholder */
+        .gt-image-placeholder {
+            height: 100%;
+
+            .components-form-file-upload {
+                margin-bottom: 12px;
+            }
+        }
+    }
+
+    /* Block Content */
+    .gt-content {
+
+        .gt-title {
+           margin-top: 0.5em;
+           margin-bottom: 0.5em;
+           color: inherit;
+       }
+
+       .gt-text p {
+           font-size: inherit;
+           color: inherit;
+       }
+    }
 }
 
 /* Change Size of Vertical Alignment Icons */

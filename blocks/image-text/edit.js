@@ -67,11 +67,11 @@ const {
 } = wp.data;
 
 const columnSizes = [
-    { value: 'block-column-25', label: __( '25%' ) },
-    { value: 'block-column-33', label: __( '33%' ) },
-    { value: 'block-column-40', label: __( '40%' ) },
-    { value: 'block-column-50', label: __( '50%' ) },
-    { value: 'block-column-66', label: __( '66%' ) },
+    { value: 'gt-column-25', label: __( '25%' ) },
+    { value: 'gt-column-33', label: __( '33%' ) },
+    { value: 'gt-column-40', label: __( '40%' ) },
+    { value: 'gt-column-50', label: __( '50%' ) },
+    { value: 'gt-column-66', label: __( '66%' ) },
 ];
 
 const blockAlignmentControls = {
@@ -381,13 +381,13 @@ class gtImageTextEdit extends Component {
 
                 <div className={ blockClasses }>
 
-                    <div className="block-image">
+                    <div className="gt-image">
 
                     { ! attributes.imgID ? (
 
                         <MediaPlaceholder
                             icon="format-image"
-                            className="block-image-placeholder"
+                            className="gt-image-placeholder"
                             labels={ {
                                 title: __( 'Image' ),
                                 name: __( 'an image' ),
@@ -399,11 +399,11 @@ class gtImageTextEdit extends Component {
 
                     ) : (
 
-                            <div className="image-wrapper">
+                            <div className="gt-image-wrapper">
 
                                 { isSelected ? (
 
-                                    <div className="edit-image">
+                                    <div className="gt-edit-image">
 
                                         <MediaUpload
                                             onSelect={ this.onSelectImage }
@@ -442,15 +442,15 @@ class gtImageTextEdit extends Component {
 
                     </div>
 
-                    <div className="block-content" style={ styles }>
+                    <div className="gt-content" style={ styles }>
 
-                        <div className="block-content-inner">
+                        <div className="gt-inner-content">
 
                             <RichText
                                 tagName={ titleTag }
                                 placeholder={ __( 'Enter a title' ) }
                                 value={ attributes.title }
-                                className="block-title"
+                                className="gt-title"
                                 style={ styles }
                                 onChange={ ( newTitle ) => setAttributes( { title: newTitle } ) }
                                 keepPlaceholderOnFocus
@@ -461,7 +461,7 @@ class gtImageTextEdit extends Component {
                                 multiline="p"
                                 placeholder={ __( 'Enter your text here.' ) }
                                 value={ attributes.text }
-                                className="block-text"
+                                className="gt-text"
                                 style={ { fontSize: fontSize.size ? fontSize.size + 'px' : undefined } }
                                 onChange={ ( newText ) => setAttributes( { text: newText } ) }
                                 keepPlaceholderOnFocus

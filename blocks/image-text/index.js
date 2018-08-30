@@ -61,7 +61,7 @@ registerBlockType(
             title: {
                 type: 'array',
                 source: 'children',
-                selector: '.block-title',
+                selector: '.gt-title',
             },
             titleTag: {
                 type: 'number',
@@ -70,11 +70,11 @@ registerBlockType(
             text: {
                 type: 'array',
                 source: 'children',
-                selector: '.block-text',
+                selector: '.gt-text',
             },
             columnSize: {
                 type: 'string',
-                default: 'block-column-50'
+                default: 'gt-column-50'
             },
             imagePosition: {
                 type: 'boolean',
@@ -154,7 +154,7 @@ registerBlockType(
                 textAlign: attributes.textAlignment,
             };
 
-            const textClasses = classnames( 'block-text', {
+            const textClasses = classnames( 'gt-text', {
                 [ fontSizeClass ]: fontSizeClass,
             } );
 
@@ -167,20 +167,20 @@ registerBlockType(
             return (
                 <div className={ blockClasses ? blockClasses : undefined }>
 
-                    <div className="block-image">
+                    <div className="gt-image">
                         <img
                             src={attributes.imgURL}
                             alt={attributes.imgAlt}
                         />
                     </div>
 
-                    <div className="block-content" style={ styles }>
+                    <div className="gt-content" style={ styles }>
 
-                        <div className="block-content-inner">
+                        <div className="gt-inner-content">
 
                             <RichText.Content
                                 tagName={ titleTag }
-                                className="block-title"
+                                className="gt-title"
                                 value={ attributes.title }
                             />
 
