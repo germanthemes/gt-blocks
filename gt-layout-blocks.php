@@ -5,7 +5,7 @@ Plugin URI: https://germanthemes.dem/gt-layout-blocks/
 Description: Page Building Blocks from germanThemes
 Author: germanThemes
 Author URI: https://germanthemes.de/
-Version: 1.0
+Version: 0.1
 Text Domain: gt-layout-blocks
 Domain Path: /languages/
 License: GPL v3
@@ -58,7 +58,7 @@ class GT_Layout_Blocks {
 		define( 'GTLB_NAME', 'GT Layout Blocks' );
 
 		// Define Version Number.
-		define( 'GTLB_VERSION', '1.0' );
+		define( 'GTLB_VERSION', '0.1' );
 
 		// Plugin Folder Path.
 		define( 'GTLB_PLUGIN_DIR', plugin_dir_path( __FILE__ ) );
