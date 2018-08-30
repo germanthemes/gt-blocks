@@ -129,7 +129,7 @@ class GT_Layout_Blocks {
 
 		wp_add_inline_script(
 			'gt-layout-blocks-editor',
-			sprintf( 'wp.data.dispatch( "gt-blocks" ).setPluginURL( %s );', wp_json_encode( GTLB_PLUGIN_URL ) ),
+			sprintf( 'wp.data.dispatch( "gt-layout-blocks-store" ).setPluginURL( %s );', wp_json_encode( GTLB_PLUGIN_URL ) ),
 			'after'
 		);
 
@@ -166,8 +166,8 @@ class GT_Layout_Blocks {
 			$categories,
 			array(
 				array(
-					'slug'  => 'germanthemes',
-					'title' => __( 'GT Blocks', 'gt-layout-blocks' ),
+					'slug'  => 'gt-layout-blocks',
+					'title' => __( 'GT Layout Blocks', 'gt-layout-blocks' ),
 				),
 			)
 		);

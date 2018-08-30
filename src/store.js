@@ -14,7 +14,7 @@ const actions = {
     },
 };
 
-registerStore( 'gt-blocks', {
+registerStore( 'gt-layout-blocks-store', {
     reducer( state = DEFAULT_STATE, action ) {
         switch ( action.type ) {
             case 'SET_PLUGIN_URL':

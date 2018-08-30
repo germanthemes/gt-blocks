@@ -71,9 +71,9 @@ class IconPicker extends Component {
 
     displayIcon( icon ) {
         const { iconSize } = this.props;
-        const pluginURL = select( 'gt-blocks' ).getPluginURL();
+        const pluginURL = select( 'gt-layout-blocks-store' ).getPluginURL();
 
-        const svgURL = pluginURL + '/assets/icons/fontawesome.svg#' + icon;
+        const svgURL = pluginURL + 'assets/icons/fontawesome.svg#' + icon;
         const svgClass = classnames( 'icon', `icon-${icon}` );
         const svgStyles = {
             width: iconSize !== 32 ? iconSize + 'px' : undefined,
