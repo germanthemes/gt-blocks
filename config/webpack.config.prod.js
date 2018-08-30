@@ -30,12 +30,12 @@ const shouldUseSourceMap = process.env.GENERATE_SOURCEMAP === 'true';
 
 // Extract style.css for both editor and frontend styles.
 const blocksCSSPlugin = new ExtractTextPlugin( {
-	filename: './dist/blocks.style.build.css',
+	filename: './assets/css/gt-layout-blocks.css',
 } );
 
 // Extract editor.css for editor styles.
 const editBlocksCSSPlugin = new ExtractTextPlugin( {
-	filename: './dist/blocks.editor.build.css',
+	filename: './assets/css/gt-layout-blocks-editor.css',
 } );
 
 // Configuration for the ExtractTextPlugin — DRY rule.
@@ -75,14 +75,14 @@ const extractConfig = {
 // Export configuration.
 module.exports = {
 	entry: {
-		'./dist/blocks.build': paths.pluginBlocksJs, // 'name' : 'path/file.ext'.
+		'./assets/js/gt-layout-blocks-editor': paths.pluginBlocksJs, // 'name' : 'path/file.ext'.
 	},
 	output: {
 		// Add /* filename */ comments to generated require()s in the output.
 		pathinfo: true,
 		// The dist folder.
 		path: paths.pluginDist,
-		filename: '[name].js', // [name] = './dist/blocks.build' as defined above.
+		filename: '[name].js', // [name] = './assets/js/gt-layout-blocks-editor' as defined above.
 	},
 	// You may want 'eval' instead if you prefer to see the compiled output in DevTools.
 	devtool: shouldUseSourceMap ? 'source-map' : false,
@@ -94,7 +94,7 @@ module.exports = {
 				use: {
 					loader: 'babel-loader',
 					options: {
-						
+
 						// This is a feature of `babel-loader` for webpack (not Babel itself).
 						// It enables caching results in ./node_modules/.cache/babel-loader/
 						// directory for faster rebuilds.

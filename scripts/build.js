@@ -34,9 +34,9 @@ const formatWebpackMessages = require( cgbDevUtilsPath +
 
 // Build file paths.
 const theCWD = process.cwd();
-const fileBuildJS = path.resolve( theCWD, './dist/blocks.build.js' );
-const fileEditorCSS = path.resolve( theCWD, './dist/blocks.editor.build.css' );
-const fileStyleCSS = path.resolve( theCWD, './dist/blocks.style.build.css' );
+const fileBuildJS = path.resolve( theCWD, './assets/js/gt-layout-blocks-editor.js' );
+const fileEditorCSS = path.resolve( theCWD, './assets/css/gt-layout-blocks-editor.css' );
+const fileStyleCSS = path.resolve( theCWD, './assets/css/gt-layout-blocks.css' );
 
 /**
  * Get File Size
@@ -118,17 +118,17 @@ async function build( webpackConfig ) {
 			'File sizes after gzip:',
 			'\n\n',
 			getFileSize( fileBuildJS ),
-			`${ chalk.dim( '— ./dist/' ) }`,
-			`${ chalk.green( 'blocks.build.js' ) }`,
+			`${ chalk.dim( '— ./assets/js/' ) }`,
+			`${ chalk.green( 'gt-layout-blocks-editor.js' ) }`,
 			'\n',
 			getFileSize( fileEditorCSS ),
-			`${ chalk.dim( '— ./dist/' ) }`,
-			`${ chalk.green( 'blocks.editor.build.css' ) }`,
+			`${ chalk.dim( '— ./assets/css/' ) }`,
+			`${ chalk.green( 'gt-layout-blocks-editor.css' ) }`,
 
 			'\n',
 			getFileSize( fileStyleCSS ),
-			`${ chalk.dim( '— ./dist/' ) }`,
-			`${ chalk.green( 'blocks.style.build.css' ) }`,
+			`${ chalk.dim( '— ./assets/css/' ) }`,
+			`${ chalk.green( 'gt-layout-blocks.css' ) }`,
 
 			'\n\n'
 		);

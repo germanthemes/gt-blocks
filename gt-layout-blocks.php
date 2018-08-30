@@ -110,7 +110,7 @@ class GT_Layout_Blocks {
 	 * @return void
 	 */
 	static function enqueue_block_scripts() {
-		wp_enqueue_style( 'gt-layout-blocks', GTLB_PLUGIN_URL . 'dist/blocks.style.build.css', array( 'wp-blocks' ), GTLB_VERSION );
+		wp_enqueue_style( 'gt-layout-blocks', GTLB_PLUGIN_URL . 'assets/css/gt-layout-blocks.css', array( 'wp-blocks' ), GTLB_VERSION );
 	}
 
 	/**
@@ -121,7 +121,7 @@ class GT_Layout_Blocks {
 	 * @return void
 	 */
 	static function enqueue_block_editor_scripts() {
-		wp_enqueue_script( 'gt-layout-blocks-editor', GTLB_PLUGIN_URL . 'dist/blocks.build.js', array(
+		wp_enqueue_script( 'gt-layout-blocks-editor', GTLB_PLUGIN_URL . 'assets/js/gt-layout-blocks-editor.js', array(
 			'wp-blocks',
 			'wp-i18n',
 			'wp-element',
@@ -133,7 +133,7 @@ class GT_Layout_Blocks {
 			'after'
 		);
 
-		wp_enqueue_style( 'gt-layout-blocks-editor', GTLB_PLUGIN_URL . 'dist/blocks.editor.build.css', array( 'wp-edit-blocks' ), GTLB_VERSION );
+		wp_enqueue_style( 'gt-layout-blocks-editor', GTLB_PLUGIN_URL . 'assets/css/gt-layout-blocks-editor.css', array( 'wp-edit-blocks' ), GTLB_VERSION );
 	}
 
 	/**
