@@ -183,16 +183,6 @@
   .wp-block-german-themes-blocks-image-text .gt-content .gt-text p {
     font-size: inherit;
     color: inherit; }
-
-/* Change Size of Vertical Alignment Icons */
-.edit-post-sidebar .gt-vertical-align-control button svg {
-  width: 20px;
-  height: 20px; }
-
-/* Change Size of Toolbar Icons */
-.editor-block-toolbar .gt-image-position-toolbar-icon svg {
-  width: 20px;
-  height: 20px; }
 .wp-block-german-themes-blocks-portfolio {
   /* Portfolio Grid Item */
   /* Add Portfolio Item*/ }
