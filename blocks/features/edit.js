@@ -54,7 +54,7 @@ const {
 /**
 * Indernal dependencies
 */
-import { IconPickerModal, IconPickerPlaceholder } from '../components/icon-picker';
+import { default as IconPicker } from '../components/icon-picker';
 import {
     gtTwoColumns,
     gtThreeColumns,
@@ -246,11 +246,6 @@ class gtFeaturesEdit extends Component {
         return (
             <Fragment>
 
-                <IconPickerModal
-                    isSelected={ isSelected }
-                    onChange={ ( newIcon ) => this.onChangeIcon( newIcon, this.state.currentIndex ) }
-                />
-
                 <BlockControls key="controls">
 
                     <BlockAlignmentToolbar
@@ -405,13 +400,13 @@ class gtFeaturesEdit extends Component {
                                     <div className="gt-grid-item" key={ index }>
 
                                         <div className="gt-icon-wrap">
-                                            <IconPickerPlaceholder
+                                            <IconPicker
                                                 icon={ item.icon }
                                                 iconClasses={ iconClasses }
                                                 iconStyles={ iconStyles }
                                                 iconSize={ attributes.iconSize }
                                                 isSelected={ isSelected }
-                                                onModalOpen={ () => this.setState( { currentIndex: index } ) }
+                                                onChange={ ( newIcon ) => this.onChangeIcon( newIcon, index ) }
                                             />
                                         </div>
 
