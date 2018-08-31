@@ -107,6 +107,10 @@ class gtFeaturesEdit extends Component {
         this.onChangeIcon    = this.onChangeIcon.bind( this );
         this.onChangeTitle   = this.onChangeTitle.bind( this );
         this.onChangeText    = this.onChangeText.bind( this );
+
+        this.state = {
+            currentIndex: 0,
+        };
     }
 
     addFeaturesItem() {
@@ -244,7 +248,7 @@ class gtFeaturesEdit extends Component {
             <Fragment>
 
                 <IconPickerModal
-                    onChange={ ( newIcon ) => this.onChangeIcon( newIcon, 1 ) }
+                    onChange={ ( newIcon ) => this.onChangeIcon( newIcon, this.state.currentIndex ) }
                 />
 
                 <BlockControls key="controls">
@@ -407,6 +411,7 @@ class gtFeaturesEdit extends Component {
                                                 iconStyles={ iconStyles }
                                                 iconSize={ attributes.iconSize }
                                                 isSelected={ isSelected }
+                                                onModalOpen={ () => this.setState( { currentIndex: index } ) }
                                             />
                                         </div>
 

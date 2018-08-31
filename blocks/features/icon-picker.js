@@ -68,6 +68,7 @@ class IconPicker extends Component {
                             label={ __( 'Icon' ) }
                         >
                             <Button isLarge onClick={ () => {
+                                { this.props.onModalOpen ? this.props.onModalOpen() : null }
                                 openModal( 'gt-layout-blocks/icon-picker-modal' );
                             } }>
                                 { __( 'Select icon' ) }
@@ -83,6 +84,7 @@ class IconPicker extends Component {
                         { isSelected ? (
 
                             <a className="gt-show-icon-picker" onClick={ () => {
+                                { this.props.onModalOpen ? this.props.onModalOpen() : null }
                                 openModal( 'gt-layout-blocks/icon-picker-modal' );
                             } }>
                                 <Tooltip text={ __( 'Edit icon' ) }>
