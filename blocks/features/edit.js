@@ -242,7 +242,11 @@ class gtFeaturesEdit extends Component {
 
         return (
             <Fragment>
-                <IconPickerModal/>
+
+                <IconPickerModal
+                    onChange={ ( newIcon ) => this.onChangeIcon( newIcon, 1 ) }
+                />
+
                 <BlockControls key="controls">
 
                     <BlockAlignmentToolbar
@@ -402,7 +406,6 @@ class gtFeaturesEdit extends Component {
                                                 iconClasses={ iconClasses }
                                                 iconStyles={ iconStyles }
                                                 iconSize={ attributes.iconSize }
-                                                onChange={ ( newIcon ) => this.onChangeIcon( newIcon, index ) }
                                                 isSelected={ isSelected }
                                             />
                                         </div>
