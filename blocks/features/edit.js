@@ -54,9 +54,7 @@ const {
 /**
 * Indernal dependencies
 */
-import { default as IconPickerModal } from '../components/icon-picker';
-import { default as IconPickerPlaceholder } from '../components/icon-picker/placeholder.js';
-
+import { IconPickerModal, IconPickerPlaceholder } from '../components/icon-picker';
 import {
     gtTwoColumns,
     gtThreeColumns,
