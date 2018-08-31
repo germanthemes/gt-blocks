@@ -4,7 +4,7 @@
 import classnames from 'classnames';
 
 /**
- * Internal dependencies
+ * WordPress dependencies
  */
 const { Component, Fragment } = wp.element;
 const { __, sprintf } = wp.i18n;
@@ -12,7 +12,10 @@ const { compose } = wp.compose;
 const { PlainText } = wp.editor;
 
 const {
+    Button,
+    IconButton,
     Modal,
+    Placeholder,
     Tooltip,
 } = wp.components;
 
@@ -21,6 +24,11 @@ const {
     withSelect,
     withDispatch,
 } = wp.data;
+
+/**
+ * Internal dependencies
+ */
+import './style.scss';
 
 const MODAL_NAME = 'gt-layout-blocks/icon-picker-modal';
 

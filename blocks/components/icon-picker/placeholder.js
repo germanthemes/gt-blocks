@@ -4,24 +4,33 @@
 import classnames from 'classnames';
 
 /**
- * Internal dependencies
+ * WordPress dependencies
  */
 const { Component, Fragment } = wp.element;
-const { __ } = wp.i18n;
-const { select, withDispatch } = wp.data;
-
-const {
-    PlainText,
- } = wp.editor;
+const { __, sprintf } = wp.i18n;
+const { compose } = wp.compose;
+const { PlainText } = wp.editor;
 
 const {
     Button,
     IconButton,
+    Modal,
     Placeholder,
     Tooltip,
 } = wp.components;
 
-class IconPicker extends Component {
+const {
+    select,
+    withSelect,
+    withDispatch,
+} = wp.data;
+
+/**
+ * Internal dependencies
+ */
+import './style.scss';
+
+class IconPickerPlaceholder extends Component {
     constructor() {
         super( ...arguments );
     }
@@ -56,7 +65,7 @@ class IconPicker extends Component {
         } = this.props;
 
         return (
-            <div className="gt-icon-wrapper">
+            <div className="gt-icon-placeholder-wrapper">
 
                 { ! icon ? (
 
@@ -111,12 +120,12 @@ class IconPicker extends Component {
     }
 }
 
-export default withDispatch( ( dispatch, ) => {
-	const {
-		openModal,
-	} = dispatch( 'core/edit-post' );
+export default compose( [
+	withDispatch( ( dispatch ) => {
+		const {
+			openModal,
+		} = dispatch( 'core/edit-post' );
 
-	return {
-		openModal,
-	};
-} )( IconPicker );
+		return { openModal };
+	} ),
+] )( IconPickerPlaceholder );

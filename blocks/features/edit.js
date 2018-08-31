@@ -11,20 +11,9 @@ import {
 } from 'lodash';
 
 /**
- * Block dependencies
+ * WordPress dependencies
  */
-import { default as IconPicker } from './icon-picker';
-import { default as IconPickerModal } from './icon-picker-modal';
-import {
-    gtTwoColumns,
-    gtThreeColumns,
-    gtFourColumns,
-} from './icons';
-
-/**
- * Internal block libraries
- */
- const {
+const {
     Component,
     Fragment,
 } = wp.element;
@@ -47,9 +36,9 @@ const {
     RichText,
     withColors,
     withFontSizes,
- } = wp.editor;
+} = wp.editor;
 
- const {
+const {
     Button,
     Dashicon,
     FontSizePicker,
@@ -60,7 +49,19 @@ const {
     ToggleControl,
     Toolbar,
     withFallbackStyles,
- } = wp.components;
+} = wp.components;
+
+/**
+* Indernal dependencies
+*/
+import { default as IconPickerModal } from '../components/icon-picker';
+import { default as IconPickerPlaceholder } from '../components/icon-picker/placeholder.js';
+
+import {
+    gtTwoColumns,
+    gtThreeColumns,
+    gtFourColumns,
+} from './icons';
 
 /* Block Alignment Controls */
 const blockAlignmentControls = {
@@ -407,7 +408,7 @@ class gtFeaturesEdit extends Component {
                                     <div className="gt-grid-item" key={ index }>
 
                                         <div className="gt-icon-wrap">
-                                            <IconPicker
+                                            <IconPickerPlaceholder
                                                 icon={ item.icon }
                                                 iconClasses={ iconClasses }
                                                 iconStyles={ iconStyles }

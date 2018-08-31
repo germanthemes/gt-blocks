@@ -65,6 +65,39 @@
           padding: 1.5rem 0; }
   .wp-block-gt-layout-blocks-features .gt-grid-item .gt-content.has-background {
     padding: 0.001rem 1.25rem; }
+/* Icon Picker Modal */
+.gt-layout-blocks-icon-picker-modal {
+  width: 100%; }
+  .gt-layout-blocks-icon-picker-modal .gt-icon-picker-title {
+    font-size: 1rem;
+    font-weight: bold; }
+  .gt-layout-blocks-icon-picker-modal .gt-icon-picker-list .gt-icon-picker-grid {
+    display: grid;
+    grid-gap: 4px;
+    grid-template-columns: repeat(auto-fill, minmax(56px, 1fr)); }
+    .gt-layout-blocks-icon-picker-modal .gt-icon-picker-list .gt-icon-picker-grid .gt-icon-link {
+      display: block;
+      background: #f0f0f0;
+      text-align: center; }
+      .gt-layout-blocks-icon-picker-modal .gt-icon-picker-list .gt-icon-picker-grid .gt-icon-link:hover, .gt-layout-blocks-icon-picker-modal .gt-icon-picker-list .gt-icon-picker-grid .gt-icon-link:active {
+        background: #e0e0e0;
+        cursor: pointer; }
+      .gt-layout-blocks-icon-picker-modal .gt-icon-picker-list .gt-icon-picker-grid .gt-icon-link .gt-icon-svg {
+        display: inline-block;
+        padding: 16px; }
+        .gt-layout-blocks-icon-picker-modal .gt-icon-picker-list .gt-icon-picker-grid .gt-icon-link .gt-icon-svg .icon {
+          width: 24px;
+          height: 24px;
+          fill: #202020;
+          vertical-align: middle;
+          pointer-events: none; }
+
+/* Icon Picker Placeholder */
+.gt-icon-placeholder-wrapper a.gt-show-icon-picker {
+  color: inherit;
+  cursor: pointer; }
+  .gt-icon-placeholder-wrapper a.gt-show-icon-picker .gt-icon-svg .icon {
+    pointer-events: none; }
 .wp-block-gt-layout-blocks-image-text {
   display: -ms-flexbox;
   display: flex;
