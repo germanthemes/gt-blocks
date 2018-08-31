@@ -61,7 +61,7 @@ const extractConfig = {
 			loader: 'sass-loader',
 			options: {
 				// Add common CSS file for variables and mixins.
-				data: '@import "./blocks/common.scss";\n',
+				data: '@import "./src/common.scss";\n',
 				outputStyle: 'nested',
 			},
 		},
