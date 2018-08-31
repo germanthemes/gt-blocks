@@ -196,10 +196,8 @@ class IconPicker extends Component {
                         onRequestClose={ this.closeModal }
                         focusOnMount={ false }
                     >
-
                         <PlainText
-                            className="input-control"
-                            id="gt-icon-picker-search"
+                            className="gt-icon-picker-search"
                             placeholder={ __( 'Search for icon' ) }
                             onChange={ this.searchIcon }
                             autoFocus={ true }
