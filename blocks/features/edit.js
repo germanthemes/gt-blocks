@@ -246,11 +246,10 @@ class gtFeaturesEdit extends Component {
         return (
             <Fragment>
 
-                { isSelected && (
-                    <IconPickerModal
-                        onChange={ ( newIcon ) => this.onChangeIcon( newIcon, this.state.currentIndex ) }
-                    />
-                ) }
+                <IconPickerModal
+                    isSelected={ isSelected }
+                    onChange={ ( newIcon ) => this.onChangeIcon( newIcon, this.state.currentIndex ) }
+                />
 
                 <BlockControls key="controls">
 

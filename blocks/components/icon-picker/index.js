@@ -66,11 +66,16 @@ class gtIconPickerModal extends Component {
     }
 
     componentDidUpdate( prevProps ) {
-        const { isModalActive } = this.props;
+        const { isModalActive, isSelected } = this.props;
 
         // Reset icons when modal is openend.
         if ( isModalActive && ! prevProps.isModalActive ) {
             this.setState( { icons: ICONS } );
+        }
+
+        // Close modal if block is unselected.
+        if( ! isSelected ) {
+            console.log( 'close modal because unselected block' );
         }
     }
 
@@ -81,7 +86,7 @@ class gtIconPickerModal extends Component {
         onChange( icon );
 
         // Hide IconPicker after icon is selected.
-        this.props.toggleModal();
+        this.props.closeModal();
 
         // Reset available icons.
         this.setState( { icons: ICONS } );
@@ -134,6 +139,7 @@ class gtIconPickerModal extends Component {
                         title={ title }
                         closeLabel={ __( 'Close' ) }
                         onRequestClose={ toggleModal }
+                        focusOnMount={ false }
                     >
 
                         <PlainText
