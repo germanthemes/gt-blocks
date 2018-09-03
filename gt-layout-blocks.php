@@ -78,7 +78,6 @@ class GT_Layout_Blocks {
 	static function translation() {
 
 		load_plugin_textdomain( 'gt-layout-blocks', false, dirname( plugin_basename( GTLB_PLUGIN_FILE ) ) . '/languages/' );
-
 	}
 
 	/**
