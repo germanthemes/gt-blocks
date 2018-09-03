@@ -19,7 +19,7 @@ const { select } = wp.data;
 const { registerBlockType } = wp.blocks;
 const {
     RichText,
-    getColorClass,
+    getColorClassName,
     getFontSizeClass,
 } = wp.editor;
 
@@ -153,11 +153,11 @@ registerBlockType(
                 customFontSize,
             } = attributes;
 
-            const iconColorClass = getColorClass( 'color', iconColor );
-            const iconBackgroundClass = getColorClass( 'background-color', iconBackgroundColor );
+            const iconColorClass = getColorClassName( 'color', iconColor );
+            const iconBackgroundClass = getColorClassName( 'background-color', iconBackgroundColor );
 
-            const textColorClass = getColorClass( 'color', textColor );
-            const backgroundClass = getColorClass( 'background-color', backgroundColor );
+            const textColorClass = getColorClassName( 'color', textColor );
+            const backgroundClass = getColorClassName( 'background-color', backgroundColor );
             const fontSizeClass = getFontSizeClass( fontSize );
 
             const blockClasses = classnames( {

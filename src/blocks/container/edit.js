@@ -91,28 +91,28 @@ class gtContainerEdit extends Component {
         const blockId = `gt-container-block-${instanceId}`;
 
         const blockClasses= classnames( className, {
-            'has-text-color': textColor.value,
+            'has-text-color': textColor.color,
             [ textColor.class ]: textColor.class,
-            'has-background': backgroundColor.value,
+            'has-background': backgroundColor.color,
             [ backgroundColor.class ]: backgroundColor.class,
             'gt-has-background-image': attributes.backgroundImageId,
             'gt-fixed-background': attributes.fixedBackground,
         } );
 
         const blockStyles = {
-            backgroundColor: backgroundColor.class ? undefined : backgroundColor.value,
-            color: textColor.class ? undefined : textColor.value,
+            backgroundColor: backgroundColor.class ? undefined : backgroundColor.color,
+            color: textColor.class ? undefined : textColor.color,
             backgroundImage: attributes.backgroundImageId ? `url(${attributes.backgroundImageUrl})` : undefined,
             backgroundPosition: attributes.backgroundPosition,
         };
 
         const overlayClasses = classnames( 'gt-background-overlay', {
-            'has-background': backgroundColor.value,
+            'has-background': backgroundColor.color,
             [ backgroundColor.class ]: backgroundColor.class,
         } );
 
         const overlayStyles = {
-            backgroundColor: backgroundColor.value ? backgroundColor.value : '#ffffff',
+            backgroundColor: backgroundColor.color ? backgroundColor.color : '#ffffff',
             opacity: ( 100 - attributes.imageOpacity ) / 100,
         };
 
@@ -162,12 +162,12 @@ class gtContainerEdit extends Component {
                         initialOpen={ false }
                         colorSettings={ [
                             {
-                                value: backgroundColor.value,
+                                value: backgroundColor.color,
                                 onChange: setBackgroundColor,
                                 label: __( 'Background Color' ),
                             },
                             {
-                                value: textColor.value,
+                                value: textColor.color,
                                 onChange: setTextColor,
                                 label: __( 'Text Color' ),
                             },
@@ -176,8 +176,8 @@ class gtContainerEdit extends Component {
 
                         <ContrastChecker
                             { ...{
-                                textColor: textColor.value,
-                                backgroundColor: backgroundColor.value,
+                                textColor: textColor.color,
+                                backgroundColor: backgroundColor.color,
                                 fallbackTextColor,
                                 fallbackBackgroundColor,
                             } }

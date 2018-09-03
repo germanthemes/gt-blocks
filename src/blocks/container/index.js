@@ -18,7 +18,7 @@ const { registerBlockType } = wp.blocks;
 const { Fragment } = wp.element;
 
 const {
-    getColorClass,
+    getColorClassName,
     InnerBlocks,
 } = wp.editor;
 
@@ -103,8 +103,8 @@ registerBlockType(
                 customBackgroundColor,
             } = attributes;
 
-            const textColorClass = getColorClass( 'color', textColor );
-            const backgroundClass = getColorClass( 'background-color', backgroundColor );
+            const textColorClass = getColorClassName( 'color', textColor );
+            const backgroundClass = getColorClassName( 'background-color', backgroundColor );
 
             const blockClasses = classnames( {
                 [ `align${ attributes.blockAlignment }` ]: ( attributes.blockAlignment !== 'center' ),

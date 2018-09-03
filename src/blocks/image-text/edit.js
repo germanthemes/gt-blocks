@@ -177,16 +177,16 @@ class gtImageTextEdit extends Component {
             [ `gt-vertical-align-${ attributes.verticalAlignment }` ]: ( attributes.verticalAlignment !== 'top' ),
             'gt-image-position-right': attributes.imagePosition,
             'gt-has-spacing': attributes.spacing,
-            'has-background': backgroundColor.value,
+            'has-background': backgroundColor.color,
             [ backgroundColor.class ]: backgroundColor.class,
-            'has-text-color': textColor.value,
+            'has-text-color': textColor.color,
             [ textColor.class ]: textColor.class,
             [ fontSize.class ]: fontSize.class,
         } );
 
         const styles = {
-            backgroundColor: backgroundColor.class ? undefined : backgroundColor.value,
-            color: textColor.class ? undefined : textColor.value,
+            backgroundColor: backgroundColor.class ? undefined : backgroundColor.color,
+            color: textColor.class ? undefined : textColor.color,
             textAlign: attributes.textAlignment,
         };
 
@@ -354,12 +354,12 @@ class gtImageTextEdit extends Component {
                         initialOpen={ false }
                         colorSettings={ [
                             {
-                                value: backgroundColor.value,
+                                value: backgroundColor.color,
                                 onChange: setBackgroundColor,
                                 label: __( 'Background Color' ),
                             },
                             {
-                                value: textColor.value,
+                                value: textColor.color,
                                 onChange: setTextColor,
                                 label: __( 'Text Color' ),
                             },
@@ -368,8 +368,8 @@ class gtImageTextEdit extends Component {
 
                         <ContrastChecker
                             { ...{
-                                textColor: textColor.value,
-                                backgroundColor: backgroundColor.value,
+                                textColor: textColor.color,
+                                backgroundColor: backgroundColor.color,
                                 fallbackTextColor,
                                 fallbackBackgroundColor,
                             } }

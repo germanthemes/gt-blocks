@@ -276,24 +276,24 @@ class gtPortfolioEdit extends Component {
         } );
 
         const contentClasses = classnames( 'gt-content', {
-            'has-background': backgroundColor.value,
+            'has-background': backgroundColor.color,
             [ backgroundColor.class ]: backgroundColor.class,
         } );
 
         const contentStyles = {
             textAlign: attributes.textAlignment,
-            backgroundColor: backgroundColor.class ? undefined : backgroundColor.value,
+            backgroundColor: backgroundColor.class ? undefined : backgroundColor.color,
         };
 
         const textClasses = classnames( 'gt-text', {
-            'has-text-color': textColor.value,
+            'has-text-color': textColor.color,
             [ textColor.class ]: textColor.class,
             [ fontSize.class ]: fontSize.class,
         } );
 
         const textStyles = {
             fontSize: fontSize.size ? fontSize.size + 'px' : undefined,
-            color: textColor.class ? undefined : textColor.value,
+            color: textColor.class ? undefined : textColor.color,
         };
 
         const titleTag = 'h' + attributes.titleTag;
@@ -395,12 +395,12 @@ class gtPortfolioEdit extends Component {
                         initialOpen={ false }
                         colorSettings={ [
                             {
-                                value: backgroundColor.value,
+                                value: backgroundColor.color,
                                 onChange: setBackgroundColor,
                                 label: __( 'Background Color' ),
                             },
                             {
-                                value: textColor.value,
+                                value: textColor.color,
                                 onChange: setTextColor,
                                 label: __( 'Text Color' ),
                             },
@@ -409,8 +409,8 @@ class gtPortfolioEdit extends Component {
 
                         <ContrastChecker
                             { ...{
-                                textColor: textColor.value,
-                                backgroundColor: backgroundColor.value,
+                                textColor: textColor.color,
+                                backgroundColor: backgroundColor.color,
                                 fallbackTextColor,
                                 fallbackBackgroundColor,
                             } }
