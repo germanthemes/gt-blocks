@@ -1,3 +1,7 @@
+// containerWidth.
+$padding: 1.25rem;
+$iconPadding: 32px;
+
 .wp-block-gt-layout-blocks-features {
 
     /* Features Grid Layout */
@@ -29,9 +33,10 @@
         .gt-icon-wrap {
 
             .gt-icon {
-                padding-top: 1.25rem;
-                padding-left: 1.25rem;
-                padding-right: 1.25rem;
+
+                &.has-icon-background {
+                    padding: $iconPadding $padding;
+                }
 
                 .gt-icon-svg {
                     display: inline-block;
@@ -46,18 +51,14 @@
                     }
                 }
 
-                &.has-icon-background {
-                    padding: 2rem 1.5rem;
-                }
-
                 &.gt-icon-square {
                     display: inline-block;
-                    padding: 2rem;
+                    padding: $iconPadding;
                 }
 
                 &.gt-icon-circle {
                     display: inline-block;
-                    padding: 1.5rem;
+                    padding: $iconPadding;
                     border-radius: 100%;
                 }
 
@@ -65,35 +66,33 @@
 
                     .gt-icon-svg {
                         display: inline-block;
-                        padding: 2rem;
+                        padding: $iconPadding;
                         border-radius: 100%;
                         border: 3px solid currentColor;
                     }
 
                     &.has-icon-background {
-                        padding: 1.5rem;
+                        padding: $padding;
                     }
                 }
             }
         }
 
-        .gt-content {
-
-
-            .gt-title {
-
-            }
+        &.has-background .gt-content {
+            padding: 0 $padding;
         }
 
-        &.has-background .gt-content {
-            padding: 0 1.25rem;
+        &.has-background .gt-icon {
+            padding-top: $padding;
+            padding-left: $padding;
+            padding-right: $padding;
         }
 
         &.has-background .gt-icon-square,
         &.has-background .gt-icon-circle {
-            margin-top: 1.25rem;
-            margin-left: 1.25rem;
-            margin-right: 1.25rem;
+            margin-top: $padding;
+            margin-left: $padding;
+            margin-right: $padding;
         }
     }
 }
