@@ -165,6 +165,19 @@ registerBlockType(
                 [ `align${ attributes.blockAlignment }` ]: ( 'wide' === attributes.blockAlignment || 'full' === attributes.blockAlignment ),
             } );
 
+            const itemClasses = classnames( 'gt-grid-item', {
+                'has-text-color': textColor || customTextColor,
+                [ textColorClass ]: textColorClass,
+                'has-background': backgroundColor || customBackgroundColor,
+                [ backgroundClass ]: backgroundClass,
+            } );
+
+            const itemStyles = {
+                textAlign: attributes.textAlignment,
+                color: textColorClass ? undefined : customTextColor,
+                backgroundColor: backgroundClass ? undefined : customBackgroundColor,
+            };
+
             const iconClasses = classnames( 'gt-icon', {
                 [ `gt-icon-${ iconLayout }` ]: ( iconLayout !== 'default' ),
                 'has-icon-color': iconColor || customIconColor,
@@ -181,19 +194,6 @@ registerBlockType(
             const svgStyles = {
                 width: iconSize !== 32 ? iconSize + 'px' : undefined,
                 height: iconSize !== 32 ? iconSize + 'px' : undefined,
-            };
-
-            const contentClasses = classnames( 'gt-content', {
-                'has-text-color': textColor || customTextColor,
-                [ textColorClass ]: textColorClass,
-                'has-background': backgroundColor || customBackgroundColor,
-                [ backgroundClass ]: backgroundClass,
-            } );
-
-            const contentStyles = {
-                textAlign: attributes.textAlignment,
-                color: textColorClass ? undefined : customTextColor,
-                backgroundColor: backgroundClass ? undefined : customBackgroundColor,
             };
 
             const textClasses = classnames( 'gt-text', {
@@ -218,7 +218,7 @@ registerBlockType(
                                 const svgClass = classnames( 'icon', `icon-${item.icon}` );
 
                                 return (
-                                    <div className="gt-grid-item" key={ index }>
+                                    <div className={ itemClasses } style={ itemStyles } key={ index }>
 
                                         <div className="gt-icon-wrap">
                                             <div className={ iconClasses } style={ iconStyles }>
@@ -232,7 +232,7 @@ registerBlockType(
                                             </div>
                                         </div>
 
-                                        <div className={ contentClasses } style={ contentStyles }>
+                                        <div className="gt-content">
 
                                             <RichText.Content
                                                 tagName={ titleTag }

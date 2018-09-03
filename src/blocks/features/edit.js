@@ -207,6 +207,19 @@ class gtFeaturesEdit extends Component {
             [ `gt-columns-${ attributes.columns }` ]: attributes.columns,
         } );
 
+        const itemClasses = classnames( 'gt-grid-item', {
+            'has-text-color': textColor.color,
+            [ textColor.class ]: textColor.class,
+            'has-background': backgroundColor.color,
+            [ backgroundColor.class ]: backgroundColor.class,
+        } );
+
+        const itemStyles = {
+            textAlign: attributes.textAlignment,
+            color: textColor.class ? undefined : textColor.color,
+            backgroundColor: backgroundColor.class ? undefined : backgroundColor.color,
+        };
+
         const iconClasses = classnames( 'gt-icon', {
             [ `gt-icon-${ attributes.iconLayout }` ]: ( attributes.iconLayout !== 'default' ),
             'has-icon-color': iconColor.color,
@@ -218,19 +231,6 @@ class gtFeaturesEdit extends Component {
         const iconStyles = {
             color: iconColor.class ? undefined : iconColor.color,
             backgroundColor: iconBackgroundColor.class ? undefined : iconBackgroundColor.color,
-        };
-
-        const contentClasses = classnames( 'gt-content', {
-            'has-text-color': textColor.color,
-            [ textColor.class ]: textColor.class,
-            'has-background': backgroundColor.color,
-            [ backgroundColor.class ]: backgroundColor.class,
-        } );
-
-        const contentStyles = {
-            textAlign: attributes.textAlignment,
-            color: textColor.class ? undefined : textColor.color,
-            backgroundColor: backgroundColor.class ? undefined : backgroundColor.color,
         };
 
         const textClasses = classnames( 'gt-text', {
@@ -397,7 +397,7 @@ class gtFeaturesEdit extends Component {
                         {
                             attributes.items.map( ( item, index ) => {
                                 return (
-                                    <div className="gt-grid-item" key={ index }>
+                                    <div className={ itemClasses } style={ itemStyles } key={ index }>
 
                                         <div className="gt-icon-wrap">
                                             <IconPicker
@@ -410,7 +410,7 @@ class gtFeaturesEdit extends Component {
                                             />
                                         </div>
 
-                                        <div className={ contentClasses } style={ contentStyles }>
+                                        <div className="gt-content">
 
                                             <RichText
                                                 tagName={ titleTag }

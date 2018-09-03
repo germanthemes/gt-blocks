@@ -64,8 +64,11 @@
           border: 3px solid currentColor; }
         .wp-block-gt-layout-blocks-features .gt-grid-item .gt-icon-wrap .gt-icon.gt-icon-outline.has-icon-background {
           padding: 1.5rem 0; }
-  .wp-block-gt-layout-blocks-features .gt-grid-item .gt-content.has-background {
-    padding: 0.001rem 1.25rem; }
+  .wp-block-gt-layout-blocks-features .gt-grid-item.has-background .gt-content {
+    padding: 0 1.25rem; }
+  .wp-block-gt-layout-blocks-features .gt-grid-item.has-background .gt-icon-square,
+  .wp-block-gt-layout-blocks-features .gt-grid-item.has-background .gt-icon-circle {
+    margin-top: 1.25rem; }
 /* Icon Picker Modal */
 .gt-layout-blocks-icon-picker-modal {
   width: 100%; }

@@ -85,8 +85,13 @@
             }
         }
 
-        .gt-content.has-background {
-            padding: 0.001rem 1.25rem;
+        &.has-background .gt-content {
+            padding: 0 1.25rem;
+        }
+
+        &.has-background .gt-icon-square,
+        &.has-background .gt-icon-circle {
+            margin-top: 1.25rem;
         }
     }
 }
