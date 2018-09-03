@@ -345,24 +345,6 @@ class gtFeaturesEdit extends Component {
                     </PanelBody>
 
                     <PanelColorSettings
-                        title={ __( 'Icon Color' ) }
-                        initialOpen={ false }
-                        colorSettings={ [
-                            {
-                                value: iconBackgroundColor.color,
-                                onChange: setIconBackgroundColor,
-                                label: __( 'Background Color' ),
-                            },
-                            {
-                                value: iconColor.color,
-                                onChange: setIconColor,
-                                label: __( 'Icon Color' ),
-                            },
-                        ] }
-                    >
-                    </PanelColorSettings>
-
-                    <PanelColorSettings
                         title={ __( 'Color Settings' ) }
                         initialOpen={ false }
                         colorSettings={ [
@@ -387,6 +369,24 @@ class gtFeaturesEdit extends Component {
                             } }
                             fontSize={ fontSize.size }
                         />
+                    </PanelColorSettings>
+
+                    <PanelColorSettings
+                        title={ __( 'Icon Color' ) }
+                        initialOpen={ false }
+                        colorSettings={ [
+                            {
+                                value: iconBackgroundColor.color,
+                                onChange: setIconBackgroundColor,
+                                label: __( 'Background Color' ),
+                            },
+                            {
+                                value: iconColor.color,
+                                onChange: setIconColor,
+                                label: __( 'Icon Color' ),
+                            },
+                        ] }
+                    >
                     </PanelColorSettings>
 
                 </InspectorControls>

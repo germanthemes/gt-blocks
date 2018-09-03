@@ -27,10 +27,11 @@
     .gt-grid-item {
 
         .gt-icon-wrap {
-            text-align: center;
 
             .gt-icon {
-                padding-top: 1rem;
+                padding-top: 1.25rem;
+                padding-left: 1.25rem;
+                padding-right: 1.25rem;
 
                 .gt-icon-svg {
                     display: inline-block;
@@ -46,7 +47,7 @@
                 }
 
                 &.has-icon-background {
-                    padding: 2rem 0;
+                    padding: 2rem 1.5rem;
                 }
 
                 &.gt-icon-square {
@@ -56,12 +57,11 @@
 
                 &.gt-icon-circle {
                     display: inline-block;
-                    padding: 1.5em;
+                    padding: 1.5rem;
                     border-radius: 100%;
                 }
 
                 &.gt-icon-outline {
-                    padding: 0;
 
                     .gt-icon-svg {
                         display: inline-block;
@@ -71,7 +71,7 @@
                     }
 
                     &.has-icon-background {
-                        padding: 1.5rem 0;
+                        padding: 1.5rem;
                     }
                 }
             }
@@ -92,6 +92,8 @@
         &.has-background .gt-icon-square,
         &.has-background .gt-icon-circle {
             margin-top: 1.25rem;
+            margin-left: 1.25rem;
+            margin-right: 1.25rem;
         }
     }
 }
