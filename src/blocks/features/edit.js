@@ -212,6 +212,7 @@ class gtFeaturesEdit extends Component {
             [ textColor.class ]: textColor.class,
             'has-background': backgroundColor.color,
             [ backgroundColor.class ]: backgroundColor.class,
+            'gt-is-icon-edited' : ( isSelected && document.querySelectorAll( '.gt-panel-icon-settings.is-opened' ).length > 0 ),
         } );
 
         const itemStyles = {

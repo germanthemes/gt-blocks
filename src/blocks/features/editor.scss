@@ -71,4 +71,42 @@
             box-shadow: none;
         }
     }
+
+    /* Is Icon Edited? */
+    .gt-is-icon-edited .gt-icon-wrap {
+
+        .gt-icon {
+            border: 1px dashed rgba(0,0,0,0.2);
+
+            &.gt-icon-circle {
+                border: none;
+
+                .gt-icon-svg {
+                    border: 1px dashed rgba(0,0,0,0.2);
+                    border-radius: 100%;
+                }
+            }
+
+            &.gt-icon-square {
+                border: none;
+
+                .gt-icon-svg {
+                    border: 1px dashed rgba(0,0,0,0.2);
+                }
+            }
+
+            &.has-icon-background,
+            &.gt-icon-outline {
+                border: none;
+            }
+
+            &.has-icon-background.gt-icon-circle,
+            &.has-icon-background.gt-icon-square {
+
+                .gt-icon-svg {
+                    border: none;
+                }
+            }
+        }
+    }
 }
