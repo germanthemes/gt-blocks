@@ -1,90 +1,90 @@
 .wp-block-gt-layout-blocks-image-text {
-    display: flex;
-    align-items: stretch;
+	display: flex;
+	align-items: stretch;
 
-    .gt-image {
-        width: 50%;
+	.gt-image {
+		width: 50%;
 
-        img {
-            margin: 0;
-            vertical-align: top;
-        }
-    }
+		img {
+			margin: 0;
+			vertical-align: top;
+		}
+	}
 
-    .gt-content {
-        width: 50%;
-        padding-left: 1.5em;
-        padding-right: 1.5em;
-        box-sizing: border-box;
-    }
+	.gt-content {
+		width: 50%;
+		padding-left: 1.5em;
+		padding-right: 1.5em;
+		box-sizing: border-box;
+	}
 
-    /* Image Position */
-    &.gt-image-position-right .gt-image {
-        order: 2;
-    }
+	/* Image Position */
+	&.gt-image-position-right .gt-image {
+		order: 2;
+	}
 
-    &.gt-image-position-right .gt-content {
-        order: 1;
-    }
+	&.gt-image-position-right .gt-content {
+		order: 1;
+	}
 
-    /* Block Spacing */
-    &.gt-has-spacing {
-        margin-bottom: 1.5em;
-    }
+	/* Block Spacing */
+	&.gt-has-spacing {
+		margin-bottom: 1.5em;
+	}
 
-    /* Vertical Alignment */
-    &.gt-vertical-align-center .gt-content {
-        display: flex;
-        align-items: center;
-    }
+	/* Vertical Alignment */
+	&.gt-vertical-align-center .gt-content {
+		display: flex;
+		align-items: center;
+	}
 
-    &.gt-vertical-align-bottom .gt-content {
-        display: flex;
-        align-items: flex-end;
-    }
+	&.gt-vertical-align-bottom .gt-content {
+		display: flex;
+		align-items: flex-end;
+	}
 
-    /* Block Columns */
-    &.gt-column-25 {
+	/* Block Columns */
+	&.gt-column-25 {
 
-        .gt-image {
-            width: 25%;
-        }
+		.gt-image {
+			width: 25%;
+		}
 
-        .gt-content {
-            width: 75%;
-        }
-    }
+		.gt-content {
+			width: 75%;
+		}
+	}
 
-    &.gt-column-33 {
+	&.gt-column-33 {
 
-        .gt-image {
-            width: 33.3333333333%;
-        }
+		.gt-image {
+			width: 33.3333333333%;
+		}
 
-        .gt-content {
-            width: 66.6666666666%;
-        }
-    }
+		.gt-content {
+			width: 66.6666666666%;
+		}
+	}
 
-    &.gt-column-40 {
+	&.gt-column-40 {
 
-        .gt-image {
-            width: 40%;
-        }
+		.gt-image {
+			width: 40%;
+		}
 
-        .gt-content {
-            width: 60%;
-        }
-    }
+		.gt-content {
+			width: 60%;
+		}
+	}
 
-    &.gt-column-66 {
+	&.gt-column-66 {
 
-        .gt-image {
-            width: 66.6666666666%;
-        }
+		.gt-image {
+			width: 66.6666666666%;
+		}
 
-        .gt-content {
-            width: 33.3333333333%;
-        }
-    }
+		.gt-content {
+			width: 33.3333333333%;
+		}
+	}
 }

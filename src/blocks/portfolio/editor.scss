@@ -1,112 +1,112 @@
 .wp-block-gt-layout-blocks-portfolio {
 
-    /* Portfolio Grid Item */
-    .gt-grid-item {
-        display: flex;
-        flex-direction: column;
+	/* Portfolio Grid Item */
+	.gt-grid-item {
+		display: flex;
+		flex-direction: column;
 
-        /* Block Image Edit */
-        .gt-image {
+		/* Block Image Edit */
+		.gt-image {
 
-            /* Image was added in Editor */
-            .gt-image-wrapper {
+			/* Image was added in Editor */
+			.gt-image-wrapper {
 
-                .gt-edit-image {
-                    position: relative;
+				.gt-edit-image {
+					position: relative;
 
-                    &:hover {
-                        cursor: pointer;
-                    }
+					&:hover {
+						cursor: pointer;
+					}
 
-                    .remove-image {
-                        position: absolute;
-                        top: 8px;
-                        right: 8px;
-                        color: #fff;
-                        background: rgba(0,0,0,0.6);
-                        padding: 5px;
-                        border: 3px solid transparent;
-                    }
-                }
-            }
+					.remove-image {
+						position: absolute;
+						top: 8px;
+						right: 8px;
+						color: #fff;
+						background: rgba(0,0,0,0.6);
+						padding: 5px;
+						border: 3px solid transparent;
+					}
+				}
+			}
 
-            /* Image Placeholder */
-            .gt-image-placeholder {
-                height: 100%;
+			/* Image Placeholder */
+			.gt-image-placeholder {
+				height: 100%;
 
-                .components-form-file-upload {
-                    margin-bottom: 12px;
-                }
-            }
-        }
+				.components-form-file-upload {
+					margin-bottom: 12px;
+				}
+			}
+		}
 
-        /* Portfolio Grid Item Content */
-        .gt-content {
-            margin-bottom: 16px;
+		/* Portfolio Grid Item Content */
+		.gt-content {
+			margin-bottom: 16px;
 
-            .gt-title {
-                color: inherit;
-                margin-top: 0 !important;
-            }
+			.gt-title {
+				color: inherit;
+				margin-top: 0 !important;
+			}
 
-            .gt-text p {
-                color: inherit;
-                font-size: inherit;
-            }
-        }
+			.gt-text p {
+				color: inherit;
+				font-size: inherit;
+			}
+		}
 
-        /* Portfolio Grid Item Controls*/
-        .gt-grid-item-controls {
-            display: flex;
-            margin-top: 16px;
-            padding: 8px;
-            width: 100%;
-            background: #edeff0;
-            border: 1px solid #e2e4e7;
+		/* Portfolio Grid Item Controls*/
+		.gt-grid-item-controls {
+			display: flex;
+			margin-top: 16px;
+			padding: 8px;
+			width: 100%;
+			background: #edeff0;
+			border: 1px solid #e2e4e7;
 
-            .gt-grid-item-number {
-                margin: 2px 10px 2px 6px;
-                font-size: 14px;
-                font-weight: bold;
-            }
+			.gt-grid-item-number {
+				margin: 2px 10px 2px 6px;
+				font-size: 14px;
+				font-weight: bold;
+			}
 
-            .components-icon-button {
-                padding: 4px 5px;
+			.components-icon-button {
+				padding: 4px 5px;
 
-                &:hover,
-                &:active,
-                &:focus {
-                    background: #fff;
-                }
+				&:hover,
+				&:active,
+				&:focus {
+					background: #fff;
+				}
 
-                .dashicon {
-                    width: 18px;
-                }
-            }
+				.dashicon {
+					width: 18px;
+				}
+			}
 
-            .remove-portfolio-item {
-                margin-left: auto;
-            }
-        }
-    }
+			.remove-portfolio-item {
+				margin-left: auto;
+			}
+		}
+	}
 
-    /* Add Portfolio Item*/
-    .gt-add-portfolio-item {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        margin-top: 1.5rem;
-        padding: 25px 20px 20px;
-        width: 100%;
-        height: auto;
-        box-shadow: none;
-        border: 1px solid #ddd;
-        border-radius: 0;
+	/* Add Portfolio Item*/
+	.gt-add-portfolio-item {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		margin-top: 1.5rem;
+		padding: 25px 20px 20px;
+		width: 100%;
+		height: auto;
+		box-shadow: none;
+		border: 1px solid #ddd;
+		border-radius: 0;
 
-        &:hover,
-        &:focus {
-            border: 1px solid #999;
-            box-shadow: none;
-        }
-    }
+		&:hover,
+		&:focus {
+			border: 1px solid #999;
+			box-shadow: none;
+		}
+	}
 }

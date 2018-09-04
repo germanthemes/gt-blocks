@@ -4,122 +4,122 @@ $iconPadding: 32px;
 
 .wp-block-gt-layout-blocks-features {
 
-    /* Features Grid Layout */
-    .gt-grid-container {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        grid-gap: 1.5rem;
-    }
+	/* Features Grid Layout */
+	.gt-grid-container {
+		display: grid;
+		grid-template-columns: repeat(2, 1fr);
+		grid-gap: 1.5rem;
+	}
 
-    &.gt-columns-3 .gt-grid-container {
-        grid-template-columns: repeat(3, 1fr);
-    }
+	&.gt-columns-3 .gt-grid-container {
+		grid-template-columns: repeat(3, 1fr);
+	}
 
-    &.gt-columns-4 .gt-grid-container {
-        grid-template-columns: repeat(4, 1fr);
-    }
+	&.gt-columns-4 .gt-grid-container {
+		grid-template-columns: repeat(4, 1fr);
+	}
 
-    &.gt-columns-5 .gt-grid-container {
-        grid-template-columns: repeat(5, 1fr);
-    }
+	&.gt-columns-5 .gt-grid-container {
+		grid-template-columns: repeat(5, 1fr);
+	}
 
-    &.gt-columns-6 .gt-grid-container {
-        grid-template-columns: repeat(6, 1fr);
-    }
+	&.gt-columns-6 .gt-grid-container {
+		grid-template-columns: repeat(6, 1fr);
+	}
 
-    /* Features Item Styling */
-    .gt-grid-item {
+	/* Features Item Styling */
+	.gt-grid-item {
 
-        .gt-icon-wrap {
+		.gt-icon-wrap {
 
-            .gt-icon {
+			.gt-icon {
 
-                &.has-icon-background {
-                    padding: $padding;
-                }
+				&.has-icon-background {
+					padding: $padding;
+				}
 
-                .gt-icon-svg {
-                    display: inline-block;
-                    line-height: 0;
+				.gt-icon-svg {
+					display: inline-block;
+					line-height: 0;
 
-                    .icon {
-                    	margin: 0;
-                    	width: 32px;
-                    	height: 32px;
-                    	vertical-align: middle;
-                    	fill: currentColor;
-                    }
-                }
+					.icon {
+						margin: 0;
+						width: 32px;
+						height: 32px;
+						vertical-align: middle;
+						fill: currentColor;
+					}
+				}
 
-                &.gt-icon-full {
-                    display: block;
-                    padding: 0 $padding;
+				&.gt-icon-full {
+					display: block;
+					padding: 0 $padding;
 
-                    .gt-icon-svg {
-                        padding-top: $iconPadding;
-                        padding-bottom: $iconPadding;
-                    }
-                }
+					.gt-icon-svg {
+						padding-top: $iconPadding;
+						padding-bottom: $iconPadding;
+					}
+				}
 
-                &.gt-icon-square {
-                    display: inline-block;
-                    padding: 0;
+				&.gt-icon-square {
+					display: inline-block;
+					padding: 0;
 
-                    .gt-icon-svg {
-                        padding: $iconPadding;
-                    }
-                }
+					.gt-icon-svg {
+						padding: $iconPadding;
+					}
+				}
 
-                &.gt-icon-circle {
-                    display: inline-block;
-                    padding: 0;
-                    border-radius: 100%;
+				&.gt-icon-circle {
+					display: inline-block;
+					padding: 0;
+					border-radius: 100%;
 
-                    .gt-icon-svg {
-                        padding: $iconPadding;
-                    }
-                }
+					.gt-icon-svg {
+						padding: $iconPadding;
+					}
+				}
 
-                &.gt-icon-outline {
-                    padding: 0;
+				&.gt-icon-outline {
+					padding: 0;
 
-                    .gt-icon-svg {
-                        display: inline-block;
-                        padding: $iconPadding;
-                        border-radius: 100%;
-                        border: 3px solid currentColor;
-                    }
+					.gt-icon-svg {
+						display: inline-block;
+						padding: $iconPadding;
+						border-radius: 100%;
+						border: 3px solid currentColor;
+					}
 
-                    &.has-icon-background {
-                        padding: $padding;
-                    }
-                }
+					&.has-icon-background {
+						padding: $padding;
+					}
+				}
 
-                &.gt-icon-circle:not(.has-icon-background),
-                &.gt-icon-square:not(.has-icon-background),
-                &.gt-icon-full:not(.has-icon-background) {
-                    background-color: rgba(0,0,0,0.1);
-                }
-            }
-        }
+				&.gt-icon-circle:not(.has-icon-background),
+				&.gt-icon-square:not(.has-icon-background),
+				&.gt-icon-full:not(.has-icon-background) {
+					background-color: rgba(0,0,0,0.1);
+				}
+			}
+		}
 
-        &.has-background .gt-content {
-            padding: 0 $padding;
-        }
+		&.has-background .gt-content {
+			padding: 0 $padding;
+		}
 
-        &.has-background .gt-icon {
-            margin-top: $padding;
-            margin-left: $padding;
-            margin-right: $padding;
-        }
+		&.has-background .gt-icon {
+			margin-top: $padding;
+			margin-left: $padding;
+			margin-right: $padding;
+		}
 
-        &.has-background .gt-icon-full {
-            margin: 0;
-        }
+		&.has-background .gt-icon-full {
+			margin: 0;
+		}
 
-        &.has-background .gt-icon-outline.has-icon-background {
-            margin: 0;
-        }
+		&.has-background .gt-icon-outline.has-icon-background {
+			margin: 0;
+		}
 
-    }
+	}
 }

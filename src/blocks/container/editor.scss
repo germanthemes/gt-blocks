@@ -1,45 +1,49 @@
 .wp-block-gt-layout-blocks-container {
 
-    .gt-inner-content {
+	.gt-inner-content {
 
-        h1, h2, h3, h4, h5, h6, p {
-            color: inherit;
-        }
-    }
-}
+		h1, h2, h3, h4, h5, h6, p {
+			color: inherit;
+		}
+	}
+	}
 
-.gt-blocks-container-background-image-panel {
+	.gt-blocks-container-background-image-panel {
 
-    .gt-background-image {
+	.gt-background-image {
 
-        .gt-set-image {
-            display: block;
-            transition: all .1s ease-out;
-            width: 100%;
-            background-color: #edeff0;
-            border: 1px dashed #a2aab2;
-            line-height: 20px;
-            padding: 10px 0;
-            text-align: center;
+		.gt-set-image {
+			display: block;
+			transition: all .1s ease-out;
+			width: 100%;
+			background-color: #edeff0;
+			border: 1px dashed #a2aab2;
+			line-height: 20px;
+			padding: 10px 0;
+			text-align: center;
 
-            &:hover {
-                background-color: #f8f9f9;
-            }
-        }
+			&:hover {
+				background-color: #f8f9f9;
+			}
+		}
 
-        img:hover {
-            cursor: pointer;
-        }
+		.gt-image-button {
+			padding: 0;
 
-        .gt-image-controls {
-            display: flex;
-            margin-top: 3px;
-            margin-bottom: 1.5em;
+			&:hover {
+				cursor: pointer;
+			}
+		}
 
-            .gt-replace-image {
-                margin-top: 3px;
-                margin-right: 12px;
-            }
-        }
-    }
+		.gt-image-controls {
+			display: flex;
+			margin-top: 3px;
+			margin-bottom: 1.5em;
+
+			.gt-replace-image {
+				margin-top: 3px;
+				margin-right: 12px;
+			}
+		}
+	}
 }

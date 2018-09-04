@@ -15,8 +15,10 @@
   .gt-blocks-container-background-image-panel .gt-background-image .gt-set-image:hover {
     background-color: #f8f9f9; }
 
-.gt-blocks-container-background-image-panel .gt-background-image img:hover {
-  cursor: pointer; }
+.gt-blocks-container-background-image-panel .gt-background-image .gt-image-button {
+  padding: 0; }
+  .gt-blocks-container-background-image-panel .gt-background-image .gt-image-button:hover {
+    cursor: pointer; }
 
 .gt-blocks-container-background-image-panel .gt-background-image .gt-image-controls {
   display: -ms-flexbox;

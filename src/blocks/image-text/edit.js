@@ -3,105 +3,104 @@
  */
 import classnames from 'classnames';
 import {
-    startCase,
-    isEmpty,
-    map,
-    get,
-    range,
+	startCase,
+	isEmpty,
+	map,
+	get,
+	range,
 } from 'lodash';
 
 /**
  * Block dependencies
  */
 import {
-    gtVerticalAlignTopIcon,
-    gtVerticalAlignCenterIcon,
-    gtVerticalAlignBottomIcon,
-    gtImagePositionIcon,
+	gtVerticalAlignTopIcon,
+	gtVerticalAlignCenterIcon,
+	gtVerticalAlignBottomIcon,
+	gtImagePositionIcon,
 } from './icons';
 
 /**
  * Internal block libraries
  */
 const {
-    Component,
-    Fragment,
+	Component,
+	Fragment,
 } = wp.element;
 
 const {
-    __,
-    sprintf,
+	__,
+	sprintf,
 } = wp.i18n;
 
 const { compose } = wp.compose;
 
 const {
-    AlignmentToolbar,
-    BlockControls,
-    ContrastChecker,
-    InspectorControls,
-    MediaPlaceholder,
-    MediaUpload,
-    PanelColorSettings,
-    RichText,
-    withColors,
-    withFontSizes,
+	AlignmentToolbar,
+	BlockControls,
+	ContrastChecker,
+	InspectorControls,
+	MediaPlaceholder,
+	MediaUpload,
+	PanelColorSettings,
+	RichText,
+	withColors,
+	withFontSizes,
 } = wp.editor;
 
 const {
-    Button,
-    FontSizePicker,
-    IconButton,
-    PanelBody,
-    RangeControl,
-    SelectControl,
-    TextControl,
-    ToggleControl,
-    Toolbar,
-    Tooltip,
-    withFallbackStyles,
+	Button,
+	FontSizePicker,
+	IconButton,
+	PanelBody,
+	SelectControl,
+	TextControl,
+	ToggleControl,
+	Toolbar,
+	Tooltip,
+	withFallbackStyles,
 } = wp.components;
 
 const {
-    withSelect,
+	withSelect,
 } = wp.data;
 
 const columnSizes = [
-    { value: 'gt-column-25', label: __( '25%' ) },
-    { value: 'gt-column-33', label: __( '33%' ) },
-    { value: 'gt-column-40', label: __( '40%' ) },
-    { value: 'gt-column-50', label: __( '50%' ) },
-    { value: 'gt-column-66', label: __( '66%' ) },
+	{ value: 'gt-column-25', label: __( '25%' ) },
+	{ value: 'gt-column-33', label: __( '33%' ) },
+	{ value: 'gt-column-40', label: __( '40%' ) },
+	{ value: 'gt-column-50', label: __( '50%' ) },
+	{ value: 'gt-column-66', label: __( '66%' ) },
 ];
 
 const blockAlignmentControls = {
-    center: {
-        icon: 'align-center',
-        title: __( 'Align center' ),
-    },
-    wide: {
-        icon: 'align-wide',
-        title: __( 'Wide width' ),
-    },
-    full: {
-        icon: 'align-full-width',
-        title: __( 'Full width' ),
-    },
+	center: {
+		icon: 'align-center',
+		title: __( 'Align center' ),
+	},
+	wide: {
+		icon: 'align-wide',
+		title: __( 'Wide width' ),
+	},
+	full: {
+		icon: 'align-full-width',
+		title: __( 'Full width' ),
+	},
 };
 
 const verticalAlignmentControls = {
-    top: {
-        icon: gtVerticalAlignTopIcon,
-        title: __( 'Top' ),
-    },
-    center: {
-        icon: gtVerticalAlignCenterIcon,
-        title: __( 'Center' ),
-    },
-    bottom: {
-        icon: gtVerticalAlignBottomIcon,
-        title: __( 'Bottom' ),
-    },
+	top: {
+		icon: gtVerticalAlignTopIcon,
+		title: __( 'Top' ),
+	},
+	center: {
+		icon: gtVerticalAlignCenterIcon,
+		title: __( 'Center' ),
+	},
+	bottom: {
+		icon: gtVerticalAlignBottomIcon,
+		title: __( 'Bottom' ),
+	},
 };
 
 const { getComputedStyle } = window;
@@ -119,377 +118,385 @@ const applyFallbackStyles = withFallbackStyles( ( node, ownProps ) => {
 } );
 
 class gtImageTextEdit extends Component {
-    constructor() {
-        super( ...arguments );
+	constructor() {
+		super( ...arguments );
 
-        this.onSelectImage = this.onSelectImage.bind( this );
-        this.onRemoveImage = this.onRemoveImage.bind( this );
-        this.updateImageURL = this.updateImageURL.bind( this );
-        this.getAvailableSizes = this.getAvailableSizes.bind( this );
-    }
+		this.onSelectImage = this.onSelectImage.bind( this );
+		this.onRemoveImage = this.onRemoveImage.bind( this );
+		this.updateImageURL = this.updateImageURL.bind( this );
+		this.getAvailableSizes = this.getAvailableSizes.bind( this );
+	}
 
-    onSelectImage( img ) {
-        this.props.setAttributes( {
-            imgID: img.id,
-            imgURL: img.url,
-            imgAlt: img.alt,
-        } );
-    }
+	onSelectImage( img ) {
+		this.props.setAttributes( {
+			imgID: img.id,
+			imgURL: img.url,
+			imgAlt: img.alt,
+		} );
+	}
 
-    onRemoveImage() {
-        this.props.setAttributes( {
-            imgID: undefined,
-            imgURL: undefined,
-            imgAlt: undefined,
-        } );
-    }
+	onRemoveImage() {
+		this.props.setAttributes( {
+			imgID: undefined,
+			imgURL: undefined,
+			imgAlt: undefined,
+		} );
+	}
 
-    updateImageURL( url ) {
-        this.props.setAttributes( { imgURL: url } );
-    }
+	updateImageURL( url ) {
+		this.props.setAttributes( { imgURL: url } );
+	}
 
-    getAvailableSizes() {
-        return get( this.props.image, [ 'media_details', 'sizes' ], {} );
-    }
+	getAvailableSizes() {
+		return get( this.props.image, [ 'media_details', 'sizes' ], {} );
+	}
 
-    render() {
-        const {
-            attributes,
-            backgroundColor,
-            setBackgroundColor,
-            fallbackBackgroundColor,
-            textColor,
-            setTextColor,
-            fallbackTextColor,
-            fontSize,
-            setFontSize,
-            fallbackFontSize,
-            fontSizes,
-            setAttributes,
-            isSelected,
-            className,
-        } = this.props;
+	render() {
+		const {
+			attributes,
+			backgroundColor,
+			setBackgroundColor,
+			fallbackBackgroundColor,
+			textColor,
+			setTextColor,
+			fallbackTextColor,
+			fontSize,
+			setFontSize,
+			fallbackFontSize,
+			fontSizes,
+			setAttributes,
+			isSelected,
+			className,
+		} = this.props;
 
-        const availableSizes = this.getAvailableSizes();
+		const availableSizes = this.getAvailableSizes();
 
-        const blockClasses= classnames( className, {
-            [ `${ attributes.columnSize }` ]: attributes.columnSize,
-            [ `gt-vertical-align-${ attributes.verticalAlignment }` ]: ( attributes.verticalAlignment !== 'top' ),
-            'gt-image-position-right': attributes.imagePosition,
-            'gt-has-spacing': attributes.spacing,
-            'has-background': backgroundColor.color,
-            [ backgroundColor.class ]: backgroundColor.class,
-            'has-text-color': textColor.color,
-            [ textColor.class ]: textColor.class,
-            [ fontSize.class ]: fontSize.class,
-        } );
+		const blockClasses = classnames( className, {
+			[ `${ attributes.columnSize }` ]: attributes.columnSize,
+			[ `gt-vertical-align-${ attributes.verticalAlignment }` ]: ( attributes.verticalAlignment !== 'top' ),
+			'gt-image-position-right': attributes.imagePosition,
+			'gt-has-spacing': attributes.spacing,
+			'has-background': backgroundColor.color,
+			[ backgroundColor.class ]: backgroundColor.class,
+			'has-text-color': textColor.color,
+			[ textColor.class ]: textColor.class,
+			[ fontSize.class ]: fontSize.class,
+		} );
 
-        const styles = {
-            backgroundColor: backgroundColor.class ? undefined : backgroundColor.color,
-            color: textColor.class ? undefined : textColor.color,
-            textAlign: attributes.textAlignment,
-        };
+		const styles = {
+			backgroundColor: backgroundColor.class ? undefined : backgroundColor.color,
+			color: textColor.class ? undefined : textColor.color,
+			textAlign: attributes.textAlignment,
+		};
 
-        const titleTag = 'h' + attributes.titleTag;
+		const titleTag = 'h' + attributes.titleTag;
 
-        return (
-            <Fragment>
-                <BlockControls>
+		return (
+			<Fragment>
+				<BlockControls>
 
-                    <Toolbar className='components-toolbar'>
-                        <MediaUpload
-                            onSelect={ this.onSelectImage }
-                            type="image"
-                            value={ attributes.imgID }
-                            render={ ( { open } ) => (
-                                <IconButton
-                                    className="components-toolbar__control"
-                                    label={ __( 'Edit image' ) }
-                                    icon="edit"
-                                    onClick={ open }
-                                    />
-                            ) }
-                        />
+					<Toolbar className="components-toolbar">
+						<MediaUpload
+							onSelect={ this.onSelectImage }
+							type="image"
+							value={ attributes.imgID }
+							render={ ( { open } ) => (
+								<IconButton
+									className="components-toolbar__control"
+									label={ __( 'Edit image' ) }
+									icon="edit"
+									onClick={ open }
+								/>
+							) }
+						/>
 
-                        <Tooltip text={ __( 'Flip Image Position' )  }>
-                            <Button
-                                className={ classnames(
-                                    'components-icon-button',
-                                    'components-toolbar__control',
-                                    'gt-image-position-toolbar-icon',
-                                    { 'is-active': attributes.imagePosition },
-                                ) }
-                                onClick={ () => setAttributes( { imagePosition: ! attributes.imagePosition } ) }
-                            >
-                                { gtImagePositionIcon }
-                            </Button>
-                        </Tooltip>
-                    </Toolbar>
+						<Tooltip text={ __( 'Flip Image Position' ) }>
+							<Button
+								className={ classnames(
+									'components-icon-button',
+									'components-toolbar__control',
+									'gt-image-position-toolbar-icon',
+									{ 'is-active': attributes.imagePosition },
+								) }
+								onClick={ () => setAttributes( { imagePosition: ! attributes.imagePosition } ) }
+							>
+								{ gtImagePositionIcon }
+							</Button>
+						</Tooltip>
+					</Toolbar>
 
-                    <AlignmentToolbar
-                        value={ attributes.textAlignment }
-                        onChange={ ( newAlignment ) => setAttributes( { textAlignment: newAlignment } ) }
-                    />
+					<AlignmentToolbar
+						value={ attributes.textAlignment }
+						onChange={ ( newAlignment ) => setAttributes( { textAlignment: newAlignment } ) }
+					/>
 
-                    <Toolbar
-                        controls={
-                        range( 1, 5 ).map( ( level ) => ( {
-                            icon: 'heading',
-                            title: sprintf( __( 'Heading %s' ), level ),
-                            isActive: level === attributes.titleTag,
-                            onClick: () => setAttributes( { titleTag: level } ),
-                            subscript: level,
-                        } ) )
-                        }
-                    />
+					<Toolbar
+						controls={
+							range( 1, 5 ).map( ( level ) => ( {
+								icon: 'heading',
+								title: sprintf( __( 'Heading %s' ), level ),
+								isActive: level === attributes.titleTag,
+								onClick: () => setAttributes( { titleTag: level } ),
+								subscript: level,
+							} ) )
+						}
+					/>
 
-                </BlockControls>
+				</BlockControls>
 
-                <InspectorControls>
+				<InspectorControls>
 
-                    <PanelBody title={ __( 'Layout Settings' ) } initialOpen={ false } className="gt-panel-layout-settings gt-panel">
+					<PanelBody title={ __( 'Layout Settings' ) } initialOpen={ false } className="gt-panel-layout-settings gt-panel">
 
-                        <SelectControl
-                            label={ __( 'Column Size' ) }
-                            value={ attributes.columnSize }
-                            onChange={ ( newSize ) => setAttributes( { columnSize: newSize } ) }
-                            options={ columnSizes }
-                        />
+						<SelectControl
+							label={ __( 'Column Size' ) }
+							value={ attributes.columnSize }
+							onChange={ ( newSize ) => setAttributes( { columnSize: newSize } ) }
+							options={ columnSizes }
+						/>
 
-                        <SelectControl
-                            label={ __( 'Image Position' ) }
-                            value={ attributes.imagePosition }
-                            onChange={ () => setAttributes( { imagePosition: ! attributes.imagePosition } ) }
-                            options={ [
-                                { value: false, label: __( 'Left' ) },
-                                { value: true, label: __( 'Right' ) }
-                            ] }
-                        />
+						<SelectControl
+							label={ __( 'Image Position' ) }
+							value={ attributes.imagePosition }
+							onChange={ () => setAttributes( { imagePosition: ! attributes.imagePosition } ) }
+							options={ [
+								{ value: false, label: __( 'Left' ) },
+								{ value: true, label: __( 'Right' ) },
+							] }
+						/>
 
-                        <p><label className="blocks-base-control__label">{ __( 'Block Alignment' ) }</label></p>
-                        <Toolbar
-                            controls={
-                                [ 'center', 'wide', 'full' ].map( control => {
-                                    return {
-                                        ...blockAlignmentControls[ control ],
-                                        isActive: attributes.blockAlignment === control,
-                                        onClick: () => setAttributes( { blockAlignment: control } ),
-                                    };
-                                } )
-                            }
-                        />
+						<p><label htmlFor="gt-block-alignment" className="blocks-base-control__label">
+							{ __( 'Block Alignment' ) }
+						</label></p>
+						<Toolbar
+							controls={
+								[ 'center', 'wide', 'full' ].map( control => {
+									return {
+										...blockAlignmentControls[ control ],
+										isActive: attributes.blockAlignment === control,
+										onClick: () => setAttributes( { blockAlignment: control } ),
+									};
+								} )
+							}
+						/>
 
-                        <ToggleControl
-                            label={ __( 'Add bottom spacing?' ) }
-                            checked={ !! attributes.spacing }
-                            onChange={ () => setAttributes( { spacing: ! attributes.spacing } ) }
-                        />
+						<ToggleControl
+							label={ __( 'Add bottom spacing?' ) }
+							checked={ !! attributes.spacing }
+							onChange={ () => setAttributes( { spacing: ! attributes.spacing } ) }
+						/>
 
-                    </PanelBody>
+					</PanelBody>
 
-                    <PanelBody title={ __( 'Image Settings' ) } initialOpen={ false } className="gt-panel-image-settings gt-panel">
+					<PanelBody title={ __( 'Image Settings' ) } initialOpen={ false } className="gt-panel-image-settings gt-panel">
 
-                        { ! isEmpty( availableSizes ) && (
-                            <SelectControl
-                                label={ __( 'Size' ) }
-                                value={ attributes.imgURL }
-                                options={ map( availableSizes, ( size, name ) => ( {
-                                    value: size.source_url,
-                                    label: startCase( name ),
-                                } ) ) }
-                                onChange={ this.updateImageURL }
-                            />
-                        ) }
+						{ ! isEmpty( availableSizes ) && (
+							<SelectControl
+								label={ __( 'Size' ) }
+								value={ attributes.imgURL }
+								options={ map( availableSizes, ( size, name ) => ( {
+									value: size.source_url,
+									label: startCase( name ),
+								} ) ) }
+								onChange={ this.updateImageURL }
+							/>
+						) }
 
-                        <TextControl
-                            label={ __( 'Textual Alternative' ) }
-                            value={ attributes.imgAlt }
-                            onChange={ ( newAlt ) => setAttributes( { imgAlt: newAlt } ) }
-                            help={ __( 'Describe the purpose of the image. Leave empty if the image is not a key part of the content.' ) }
-                        />
+						<TextControl
+							label={ __( 'Textual Alternative' ) }
+							value={ attributes.imgAlt }
+							onChange={ ( newAlt ) => setAttributes( { imgAlt: newAlt } ) }
+							help={ __( 'Describe the purpose of the image. Leave empty if the image is not a key part of the content.' ) }
+						/>
 
-                    </PanelBody>
+					</PanelBody>
 
-                    <PanelBody title={ __( 'Text Settings' ) } initialOpen={ false } className="gt-panel-text-settings gt-panel">
+					<PanelBody title={ __( 'Text Settings' ) } initialOpen={ false } className="gt-panel-text-settings gt-panel">
 
-                        <p><label className="blocks-base-control__label">{ __( 'Heading' ) }</label></p>
-                        <Toolbar
-                            controls={
-                            range( 1, 7 ).map( ( level ) => ( {
-                                icon: 'heading',
-                                title: sprintf( __( 'Heading %s' ), level ),
-                                isActive: level === attributes.titleTag,
-                                onClick: () => setAttributes( { titleTag: level } ),
-                                subscript: level,
-                            } ) )
-                            }
-                        />
+						<p><label htmlFor="gt-title-tag" className="blocks-base-control__label">
+							{ __( 'Heading' ) }
+						</label></p>
+						<Toolbar
+							controls={
+								range( 1, 7 ).map( ( level ) => ( {
+									icon: 'heading',
+									title: sprintf( __( 'Heading %s' ), level ),
+									isActive: level === attributes.titleTag,
+									onClick: () => setAttributes( { titleTag: level } ),
+									subscript: level,
+								} ) )
+							}
+						/>
 
-                        <p><label className="blocks-base-control__label">{ __( 'Font Size' ) }</label></p>
-                        <FontSizePicker
-                            fontSizes={ fontSizes }
-                            fallbackFontSize={ fallbackFontSize }
+						<p><label htmlFor="gt-font-size" className="blocks-base-control__label">
+							{ __( 'Font Size' ) }
+						</label></p>
+						<FontSizePicker
+							fontSizes={ fontSizes }
+							fallbackFontSize={ fallbackFontSize }
 							value={ fontSize.size }
 							onChange={ setFontSize }
 						/>
 
-                        <p><label className="blocks-base-control__label">{ __( 'Vertical Alignment' ) }</label></p>
-                        <Toolbar
-                            className='gt-vertical-align-control'
-                            controls={
-                                [ 'top', 'center', 'bottom' ].map( control => {
-                                    return {
-                                        ...verticalAlignmentControls[ control ],
-                                        isActive: attributes.verticalAlignment === control,
-                                        onClick: () => setAttributes( { verticalAlignment: control } ),
-                                    };
-                                } )
-                            }
-                        />
+						<p><label htmlFor="gt-vertical-alignment" className="blocks-base-control__label">
+							{ __( 'Vertical Alignment' ) }
+						</label></p>
+						<Toolbar
+							className="gt-vertical-align-control"
+							controls={
+								[ 'top', 'center', 'bottom' ].map( control => {
+									return {
+										...verticalAlignmentControls[ control ],
+										isActive: attributes.verticalAlignment === control,
+										onClick: () => setAttributes( { verticalAlignment: control } ),
+									};
+								} )
+							}
+						/>
 
-                    </PanelBody>
+					</PanelBody>
 
-                    <PanelColorSettings
-                        title={ __( 'Color Settings' ) }
-                        initialOpen={ false }
-                        colorSettings={ [
-                            {
-                                value: backgroundColor.color,
-                                onChange: setBackgroundColor,
-                                label: __( 'Background Color' ),
-                            },
-                            {
-                                value: textColor.color,
-                                onChange: setTextColor,
-                                label: __( 'Text Color' ),
-                            },
-                        ] }
-                    >
+					<PanelColorSettings
+						title={ __( 'Color Settings' ) }
+						initialOpen={ false }
+						colorSettings={ [
+							{
+								value: backgroundColor.color,
+								onChange: setBackgroundColor,
+								label: __( 'Background Color' ),
+							},
+							{
+								value: textColor.color,
+								onChange: setTextColor,
+								label: __( 'Text Color' ),
+							},
+						] }
+					>
 
-                        <ContrastChecker
-                            { ...{
-                                textColor: textColor.color,
-                                backgroundColor: backgroundColor.color,
-                                fallbackTextColor,
-                                fallbackBackgroundColor,
-                            } }
-                            fontSize={ fontSize.size }
-                        />
-                    </PanelColorSettings>
+						<ContrastChecker
+							{ ...{
+								textColor: textColor.color,
+								backgroundColor: backgroundColor.color,
+								fallbackTextColor,
+								fallbackBackgroundColor,
+							} }
+							fontSize={ fontSize.size }
+						/>
+					</PanelColorSettings>
 
-                </InspectorControls>
+				</InspectorControls>
 
-                <div className={ blockClasses }>
+				<div className={ blockClasses }>
 
-                    <div className="gt-image">
+					<div className="gt-image">
 
-                    { ! attributes.imgID ? (
+						{ ! attributes.imgID ? (
 
-                        <MediaPlaceholder
-                            icon="format-image"
-                            className="gt-image-placeholder"
-                            labels={ {
-                                title: __( 'Image' ),
-                                name: __( 'an image' ),
-                            } }
-                            onSelect={ this.onSelectImage }
-                            accept="image/*"
-                            type="image"
-                        />
+							<MediaPlaceholder
+								icon="format-image"
+								className="gt-image-placeholder"
+								labels={ {
+									title: __( 'Image' ),
+									name: __( 'an image' ),
+								} }
+								onSelect={ this.onSelectImage }
+								accept="image/*"
+								type="image"
+							/>
 
-                    ) : (
+						) : (
 
-                            <div className="gt-image-wrapper">
+							<div className="gt-image-wrapper">
 
-                                { isSelected ? (
+								{ isSelected ? (
 
-                                    <div className="gt-edit-image">
+									<div className="gt-edit-image">
 
-                                        <MediaUpload
-                                            onSelect={ this.onSelectImage }
-                                            type="image"
-                                            value={ attributes.imgID }
-                                            render={ ( { open } ) => (
-                                                <img
-                                                    src={ attributes.imgURL }
-                                                    alt={ attributes.imgAlt }
-                                                    onClick={ open }
-                                                />
-                                            ) }
-                                        />
+										<MediaUpload
+											onSelect={ this.onSelectImage }
+											type="image"
+											value={ attributes.imgID }
+											render={ ( { open } ) => (
+												<img
+													src={ attributes.imgURL }
+													alt={ attributes.imgAlt }
+													onClick={ open }
+												/>
+											) }
+										/>
 
-                                        <IconButton
-                                            className="remove-image"
-                                            label={ __( 'Remove Image' ) }
-                                            icon="no-alt"
-                                            onClick={ this.onRemoveImage }
-                                        />
+										<IconButton
+											className="remove-image"
+											label={ __( 'Remove Image' ) }
+											icon="no-alt"
+											onClick={ this.onRemoveImage }
+										/>
 
-                                    </div>
+									</div>
 
-                                ) : (
+								) : (
 
-                                    <img
-                                        src={ attributes.imgURL }
-                                        alt={ attributes.imgAlt }
-                                    />
+									<img
+										src={ attributes.imgURL }
+										alt={ attributes.imgAlt }
+									/>
 
-                                ) }
+								) }
 
-                            </div>
+							</div>
 
-                        ) }
+						) }
 
-                    </div>
+					</div>
 
-                    <div className="gt-content" style={ styles }>
+					<div className="gt-content" style={ styles }>
 
-                        <div className="gt-inner-content">
+						<div className="gt-inner-content">
 
-                            <RichText
-                                tagName={ titleTag }
-                                placeholder={ __( 'Enter a title' ) }
-                                value={ attributes.title }
-                                className="gt-title"
-                                style={ styles }
-                                onChange={ ( newTitle ) => setAttributes( { title: newTitle } ) }
-                                keepPlaceholderOnFocus
-                            />
+							<RichText
+								tagName={ titleTag }
+								placeholder={ __( 'Enter a title' ) }
+								value={ attributes.title }
+								className="gt-title"
+								style={ styles }
+								onChange={ ( newTitle ) => setAttributes( { title: newTitle } ) }
+								keepPlaceholderOnFocus
+							/>
 
-                            <RichText
-                                tagName="div"
-                                multiline="p"
-                                placeholder={ __( 'Enter your text here.' ) }
-                                value={ attributes.text }
-                                className="gt-text"
-                                style={ { fontSize: fontSize.size ? fontSize.size + 'px' : undefined } }
-                                onChange={ ( newText ) => setAttributes( { text: newText } ) }
-                                keepPlaceholderOnFocus
-                            />
+							<RichText
+								tagName="div"
+								multiline="p"
+								placeholder={ __( 'Enter your text here.' ) }
+								value={ attributes.text }
+								className="gt-text"
+								style={ { fontSize: fontSize.size ? fontSize.size + 'px' : undefined } }
+								onChange={ ( newText ) => setAttributes( { text: newText } ) }
+								keepPlaceholderOnFocus
+							/>
 
-                        </div>
+						</div>
 
-                    </div>
+					</div>
 
-                </div>
+				</div>
 
-            </Fragment>
-        );
-    }
+			</Fragment>
+		);
+	}
 }
 
 export default compose( [
-    withColors( 'backgroundColor', { textColor: 'color' } ),
-    withFontSizes( 'fontSize' ),
+	withColors( 'backgroundColor', { textColor: 'color' } ),
+	withFontSizes( 'fontSize' ),
 	applyFallbackStyles,
-    withSelect( ( select, props ) => {
-        const { getMedia } = select( 'core' );
-        const { imgID } = props.attributes;
-        const { fontSizes } = select( 'core/editor' ).getEditorSettings();
+	withSelect( ( select, props ) => {
+		const { getMedia } = select( 'core' );
+		const { imgID } = props.attributes;
+		const { fontSizes } = select( 'core/editor' ).getEditorSettings();
 
-        return {
-            image: imgID ? getMedia( imgID ) : null,
-            fontSizes,
-        };
-    } ),
+		return {
+			image: imgID ? getMedia( imgID ) : null,
+			fontSizes,
+		};
+	} ),
 ] )( gtImageTextEdit );

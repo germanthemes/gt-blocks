@@ -1,38 +1,38 @@
 const { registerStore } = wp.data;
 
 const DEFAULT_STATE = {
-    pluginURL: '',
-    contentWidth: 0,
+	pluginURL: '',
+	contentWidth: 0,
 };
 
 const actions = {
-    setPluginURL( pluginURL ) {
-        return {
-            type: 'SET_PLUGIN_URL',
-            pluginURL,
-        };
-    },
+	setPluginURL( pluginURL ) {
+		return {
+			type: 'SET_PLUGIN_URL',
+			pluginURL,
+		};
+	},
 };
 
 registerStore( 'gt-layout-blocks-store', {
-    reducer( state = DEFAULT_STATE, action ) {
-        switch ( action.type ) {
-            case 'SET_PLUGIN_URL':
-                return {
-                    ...state,
-                    pluginURL: action.pluginURL,
-                };
-        }
+	reducer( state = DEFAULT_STATE, action ) {
+		switch ( action.type ) {
+			case 'SET_PLUGIN_URL':
+				return {
+					...state,
+					pluginURL: action.pluginURL,
+				};
+		}
 
-        return state;
-    },
+		return state;
+	},
 
-    actions,
+	actions,
 
-    selectors: {
-        getPluginURL( state ) {
-            const { pluginURL } = state;
-            return pluginURL;
-        },
-    },
+	selectors: {
+		getPluginURL( state ) {
+			const { pluginURL } = state;
+			return pluginURL;
+		},
+	},
 } );

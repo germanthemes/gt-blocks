@@ -1,52 +1,52 @@
 .wp-block-gt-layout-blocks-portfolio {
 
-    /* Portfolio Grid Layout */
-    .gt-grid-container {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        grid-gap: 1.5rem;
-    }
+	/* Portfolio Grid Layout */
+	.gt-grid-container {
+		display: grid;
+		grid-template-columns: repeat(2, 1fr);
+		grid-gap: 1.5rem;
+	}
 
-    &.gt-columns-3 .gt-grid-container {
-        grid-template-columns: repeat(3, 1fr);
-    }
+	&.gt-columns-3 .gt-grid-container {
+		grid-template-columns: repeat(3, 1fr);
+	}
 
-    &.gt-columns-4 .gt-grid-container {
-        grid-template-columns: repeat(4, 1fr);
-    }
+	&.gt-columns-4 .gt-grid-container {
+		grid-template-columns: repeat(4, 1fr);
+	}
 
-    &.gt-columns-5 .gt-grid-container {
-        grid-template-columns: repeat(5, 1fr);
-    }
+	&.gt-columns-5 .gt-grid-container {
+		grid-template-columns: repeat(5, 1fr);
+	}
 
-    &.gt-columns-6 .gt-grid-container {
-        grid-template-columns: repeat(6, 1fr);
-    }
+	&.gt-columns-6 .gt-grid-container {
+		grid-template-columns: repeat(6, 1fr);
+	}
 
-    /* Portfolio Item Styling */
-    .gt-grid-item {
+	/* Portfolio Item Styling */
+	.gt-grid-item {
 
-        .gt-image {
-            margin: 0;
-            overflow: hidden;
+		.gt-image {
+			margin: 0;
+			overflow: hidden;
 
-            img {
-                margin: 0;
-                vertical-align: top;
-            }
-        }
+			img {
+				margin: 0;
+				vertical-align: top;
+			}
+		}
 
-        .gt-content {
-            padding-top: 1rem;
+		.gt-content {
+			padding-top: 1rem;
 
-            .gt-title {
-                margin-top: 0;
-            }
-        }
+			.gt-title {
+				margin-top: 0;
+			}
+		}
 
-        .gt-content.has-background {
-            padding-left: 1rem;
-            padding-right: 1rem;
-        }
-    }
+		.gt-content.has-background {
+			padding-left: 1rem;
+			padding-right: 1rem;
+		}
+	}
 }

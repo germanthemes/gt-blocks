@@ -1,74 +1,74 @@
 .wp-block-gt-layout-blocks-features {
 
-    /* Features Grid Item */
-    .gt-grid-item {
-        display: flex;
-        flex-direction: column;
+	/* Features Grid Item */
+	.gt-grid-item {
+		display: flex;
+		flex-direction: column;
 
-        /* Features Grid Item Content */
-        .gt-content {
+		/* Features Grid Item Content */
+		.gt-content {
 
-            .gt-title {
-                margin: 1em 0 0.75em;
-                color: inherit;
-            }
+			.gt-title {
+				margin: 1em 0 0.75em;
+				color: inherit;
+			}
 
-            .gt-title[data-is-placeholder-visible=true] {
-                top: -1em;
-            }
+			.gt-title[data-is-placeholder-visible=true] {
+				top: -1em;
+			}
 
-            .gt-text p {
-                color: inherit;
-                font-size: inherit;
-            }
-        }
+			.gt-text p {
+				color: inherit;
+				font-size: inherit;
+			}
+		}
 
-        /* Features Grid Item Controls*/
-        .gt-grid-item-controls {
-            display: flex;
-            margin-top: 16px;
-            padding: 8px;
-            width: 100%;
-            background: #edeff0;
-            border: 1px solid #e2e4e7;
+		/* Features Grid Item Controls*/
+		.gt-grid-item-controls {
+			display: flex;
+			margin-top: 16px;
+			padding: 8px;
+			width: 100%;
+			background: #edeff0;
+			border: 1px solid #e2e4e7;
 
-            .components-icon-button {
-                padding: 4px 5px;
+			.components-icon-button {
+				padding: 4px 5px;
 
-                &:hover,
-                &:active,
-                &:focus {
-                    background: #fff;
-                }
+				&:hover,
+				&:active,
+				&:focus {
+					background: #fff;
+				}
 
-                .dashicon {
-                    width: 18px;
-                }
-            }
+				.dashicon {
+					width: 18px;
+				}
+			}
 
-            .remove-features-item {
-                margin-left: auto;
-            }
-        }
-    }
+			.remove-features-item {
+				margin-left: auto;
+			}
+		}
+	}
 
-    /* Add Features Item*/
-    .gt-add-features-item {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        margin-top: 1.5rem;
-        padding: 25px 20px 20px;
-        width: 100%;
-        height: auto;
-        box-shadow: none;
-        border: 1px solid #ddd;
-        border-radius: 0;
+	/* Add Features Item*/
+	.gt-add-features-item {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		margin-top: 1.5rem;
+		padding: 25px 20px 20px;
+		width: 100%;
+		height: auto;
+		box-shadow: none;
+		border: 1px solid #ddd;
+		border-radius: 0;
 
-        &:hover,
-        &:focus {
-            border: 1px solid #999;
-            box-shadow: none;
-        }
-    }
+		&:hover,
+		&:focus {
+			border: 1px solid #999;
+			box-shadow: none;
+		}
+	}
 }

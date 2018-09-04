@@ -15,145 +15,144 @@ import edit from './edit';
  */
 const { __ } = wp.i18n;
 const { registerBlockType } = wp.blocks;
-const { Fragment } = wp.element;
 
 const {
-    getColorClassName,
-    InnerBlocks,
+	getColorClassName,
+	InnerBlocks,
 } = wp.editor;
 
 /**
  * Register block
  */
 registerBlockType(
-    'gt-layout-blocks/container',
-    {
-        title: __( 'GT Container' ),
+	'gt-layout-blocks/container',
+	{
+		title: __( 'GT Container' ),
 
-        description: __( 'Add a description here' ),
+		description: __( 'Add a description here' ),
 
-        category: 'gt-layout-blocks',
+		category: 'gt-layout-blocks',
 
-        icon: <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M19 5v14H5V5h14m0-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2z"/><path d="M0 0h24v24H0z" fill="none"/></svg>,
+		icon: <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M19 5v14H5V5h14m0-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2z" /><path d="M0 0h24v24H0z" fill="none" /></svg>,
 
-        keywords: [
-            __( 'German Themes' ),
-            __( 'Container' ),
-            __( 'Text' ),
-        ],
+		keywords: [
+			__( 'German Themes' ),
+			__( 'Container' ),
+			__( 'Text' ),
+		],
 
-        attributes: {
-            blockAlignment: {
-                type: 'string',
-                default: 'center',
-            },
-            contentWidth: {
-                type: 'number',
-                default: 720,
-            },
-            textColor: {
-                type: 'string',
-            },
-            backgroundColor: {
-                type: 'string',
-            },
-            customTextColor: {
-                type: 'string',
-            },
-            customBackgroundColor: {
-                type: 'string',
-            },
-            backgroundImageId: {
-                type: 'number',
-            },
-            backgroundImageUrl: {
-                type: 'string',
-                source: 'attribute',
-                selector: '.gt-has-background-image',
-                attribute: 'data-background-image',
-            },
-            imageOpacity: {
-                type: 'number',
-                default: 100,
-            },
-            backgroundPosition: {
-                type: 'string',
-                default: 'center center',
-            },
-            fixedBackground: {
-                type: 'boolean',
-                default: false,
-            },
-        },
+		attributes: {
+			blockAlignment: {
+				type: 'string',
+				default: 'center',
+			},
+			contentWidth: {
+				type: 'number',
+				default: 720,
+			},
+			textColor: {
+				type: 'string',
+			},
+			backgroundColor: {
+				type: 'string',
+			},
+			customTextColor: {
+				type: 'string',
+			},
+			customBackgroundColor: {
+				type: 'string',
+			},
+			backgroundImageId: {
+				type: 'number',
+			},
+			backgroundImageUrl: {
+				type: 'string',
+				source: 'attribute',
+				selector: '.gt-has-background-image',
+				attribute: 'data-background-image',
+			},
+			imageOpacity: {
+				type: 'number',
+				default: 100,
+			},
+			backgroundPosition: {
+				type: 'string',
+				default: 'center center',
+			},
+			fixedBackground: {
+				type: 'boolean',
+				default: false,
+			},
+		},
 
-        getEditWrapperProps( attributes ) {
-            const { blockAlignment } = attributes;
-            if ( 'wide' === blockAlignment || 'full' === blockAlignment ) {
-                return { 'data-align': blockAlignment };
-            }
-        },
+		getEditWrapperProps( attributes ) {
+			const { blockAlignment } = attributes;
+			if ( 'wide' === blockAlignment || 'full' === blockAlignment ) {
+				return { 'data-align': blockAlignment };
+			}
+		},
 
-        edit,
+		edit,
 
-        save( { attributes } ) {
-            const {
-                textColor,
-                backgroundColor,
-                customTextColor,
-                customBackgroundColor,
-            } = attributes;
+		save( { attributes } ) {
+			const {
+				textColor,
+				backgroundColor,
+				customTextColor,
+				customBackgroundColor,
+			} = attributes;
 
-            const textColorClass = getColorClassName( 'color', textColor );
-            const backgroundClass = getColorClassName( 'background-color', backgroundColor );
+			const textColorClass = getColorClassName( 'color', textColor );
+			const backgroundClass = getColorClassName( 'background-color', backgroundColor );
 
-            const blockClasses = classnames( {
-                [ `align${ attributes.blockAlignment }` ]: ( attributes.blockAlignment !== 'center' ),
-                'has-text-color': textColor || customTextColor,
-                [ textColorClass ]: textColorClass,
-                'has-background': backgroundColor || customBackgroundColor,
-                [ backgroundClass ]: backgroundClass,
-                'gt-has-background-image': attributes.backgroundImageId,
-                'gt-fixed-background': attributes.fixedBackground,
-            } );
+			const blockClasses = classnames( {
+				[ `align${ attributes.blockAlignment }` ]: ( attributes.blockAlignment !== 'center' ),
+				'has-text-color': textColor || customTextColor,
+				[ textColorClass ]: textColorClass,
+				'has-background': backgroundColor || customBackgroundColor,
+				[ backgroundClass ]: backgroundClass,
+				'gt-has-background-image': attributes.backgroundImageId,
+				'gt-fixed-background': attributes.fixedBackground,
+			} );
 
-            const blockStyles = {
-                color: textColorClass ? undefined : customTextColor,
-                backgroundColor: backgroundClass ? undefined : customBackgroundColor,
-                backgroundImage: attributes.backgroundImageId ? `url(${attributes.backgroundImageUrl})` : undefined,
-                backgroundPosition: attributes.backgroundPosition,
-            };
+			const blockStyles = {
+				color: textColorClass ? undefined : customTextColor,
+				backgroundColor: backgroundClass ? undefined : customBackgroundColor,
+				backgroundImage: attributes.backgroundImageId ? `url(${ attributes.backgroundImageUrl })` : undefined,
+				backgroundPosition: attributes.backgroundPosition,
+			};
 
-            const overlayClasses = classnames( 'gt-background-overlay', {
-                'has-background': backgroundColor || customBackgroundColor,
-                [ backgroundClass ]: backgroundClass,
-            } );
+			const overlayClasses = classnames( 'gt-background-overlay', {
+				'has-background': backgroundColor || customBackgroundColor,
+				[ backgroundClass ]: backgroundClass,
+			} );
 
-            const overlayColor = customBackgroundColor ? customBackgroundColor : '#ffffff';
+			const overlayColor = customBackgroundColor ? customBackgroundColor : '#ffffff';
 
-            const overlayStyles = {
-                backgroundColor: backgroundClass ? undefined : overlayColor,
-                opacity: ( 100 - attributes.imageOpacity ) / 100,
-            };
+			const overlayStyles = {
+				backgroundColor: backgroundClass ? undefined : overlayColor,
+				opacity: ( 100 - attributes.imageOpacity ) / 100,
+			};
 
-            const contentStyles = {
-                maxWidth: attributes.contentWidth + 'px',
-            };
+			const contentStyles = {
+				maxWidth: attributes.contentWidth + 'px',
+			};
 
-            const dataBackgroundImage = attributes.backgroundImageId ? attributes.backgroundImageUrl : undefined;
+			const dataBackgroundImage = attributes.backgroundImageId ? attributes.backgroundImageUrl : undefined;
 
-            return (
-                <div className={ blockClasses ? blockClasses : undefined } style={ blockStyles } data-background-image={ dataBackgroundImage }>
+			return (
+				<div className={ blockClasses ? blockClasses : undefined } style={ blockStyles } data-background-image={ dataBackgroundImage }>
 
-                    { attributes.backgroundImageId && (
-                        <div className={ overlayClasses } style={ overlayStyles }></div>
-                    ) }
+					{ attributes.backgroundImageId && (
+						<div className={ overlayClasses } style={ overlayStyles }></div>
+					) }
 
-                    <div className="gt-inner-content" style={ contentStyles }>
-                        <InnerBlocks.Content />
-                    </div>
+					<div className="gt-inner-content" style={ contentStyles }>
+						<InnerBlocks.Content />
+					</div>
 
-                </div>
-            );
-        },
-    },
+				</div>
+			);
+		},
+	},
 );

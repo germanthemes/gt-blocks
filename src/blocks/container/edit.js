@@ -7,35 +7,34 @@ import classnames from 'classnames';
  * Internal block libraries
  */
 const {
-    Component,
-    Fragment,
+	Component,
+	Fragment,
 } = wp.element;
 
 const {
-    __,
-    sprintf,
+	__,
 } = wp.i18n;
 
 const { compose, withInstanceId } = wp.compose;
 
 const {
-    BlockAlignmentToolbar,
-    BlockControls,
-    ContrastChecker,
-    InnerBlocks,
-    MediaUpload,
-    InspectorControls,
-    PanelColorSettings,
-    withColors,
+	BlockAlignmentToolbar,
+	BlockControls,
+	ContrastChecker,
+	InnerBlocks,
+	MediaUpload,
+	InspectorControls,
+	PanelColorSettings,
+	withColors,
 } = wp.editor;
 
 const {
-    Button,
-    PanelBody,
-    RangeControl,
-    SelectControl,
-    ToggleControl,
-    withFallbackStyles,
+	Button,
+	PanelBody,
+	RangeControl,
+	SelectControl,
+	ToggleControl,
+	withFallbackStyles,
 } = wp.components;
 
 const { getComputedStyle } = window;
@@ -52,261 +51,262 @@ const applyFallbackStyles = withFallbackStyles( ( node, ownProps ) => {
 } );
 
 class gtContainerEdit extends Component {
-    constructor() {
-        super( ...arguments );
+	constructor() {
+		super( ...arguments );
 
-        this.onSelectImage = this.onSelectImage.bind( this );
-        this.onRemoveImage = this.onRemoveImage.bind( this );
-    }
+		this.onSelectImage = this.onSelectImage.bind( this );
+		this.onRemoveImage = this.onRemoveImage.bind( this );
+	}
 
-    onSelectImage( img ) {
-        this.props.setAttributes( {
-            backgroundImageId: img.id,
-            backgroundImageUrl: img.url,
-        } );
-    }
+	onSelectImage( img ) {
+		this.props.setAttributes( {
+			backgroundImageId: img.id,
+			backgroundImageUrl: img.url,
+		} );
+	}
 
-    onRemoveImage() {
-        this.props.setAttributes( {
-            backgroundImageId: undefined,
-            backgroundImageUrl: undefined,
-        } );
-    }
+	onRemoveImage() {
+		this.props.setAttributes( {
+			backgroundImageId: undefined,
+			backgroundImageUrl: undefined,
+		} );
+	}
 
-    render() {
-        const {
-            attributes,
-            backgroundColor,
-            setBackgroundColor,
-            fallbackBackgroundColor,
-            textColor,
-            setTextColor,
-            fallbackTextColor,
-            setAttributes,
-            instanceId,
-            isSelected,
-            className,
-        } = this.props;
+	render() {
+		const {
+			attributes,
+			backgroundColor,
+			setBackgroundColor,
+			fallbackBackgroundColor,
+			textColor,
+			setTextColor,
+			fallbackTextColor,
+			setAttributes,
+			instanceId,
+			className,
+		} = this.props;
 
-        const blockId = `gt-container-block-${instanceId}`;
+		const blockId = `gt-container-block-${ instanceId }`;
 
-        const blockClasses= classnames( className, {
-            'has-text-color': textColor.color,
-            [ textColor.class ]: textColor.class,
-            'has-background': backgroundColor.color,
-            [ backgroundColor.class ]: backgroundColor.class,
-            'gt-has-background-image': attributes.backgroundImageId,
-            'gt-fixed-background': attributes.fixedBackground,
-        } );
+		const blockClasses = classnames( className, {
+			'has-text-color': textColor.color,
+			[ textColor.class ]: textColor.class,
+			'has-background': backgroundColor.color,
+			[ backgroundColor.class ]: backgroundColor.class,
+			'gt-has-background-image': attributes.backgroundImageId,
+			'gt-fixed-background': attributes.fixedBackground,
+		} );
 
-        const blockStyles = {
-            backgroundColor: backgroundColor.class ? undefined : backgroundColor.color,
-            color: textColor.class ? undefined : textColor.color,
-            backgroundImage: attributes.backgroundImageId ? `url(${attributes.backgroundImageUrl})` : undefined,
-            backgroundPosition: attributes.backgroundPosition,
-        };
+		const blockStyles = {
+			backgroundColor: backgroundColor.class ? undefined : backgroundColor.color,
+			color: textColor.class ? undefined : textColor.color,
+			backgroundImage: attributes.backgroundImageId ? `url(${ attributes.backgroundImageUrl })` : undefined,
+			backgroundPosition: attributes.backgroundPosition,
+		};
 
-        const overlayClasses = classnames( 'gt-background-overlay', {
-            'has-background': backgroundColor.color,
-            [ backgroundColor.class ]: backgroundColor.class,
-        } );
+		const overlayClasses = classnames( 'gt-background-overlay', {
+			'has-background': backgroundColor.color,
+			[ backgroundColor.class ]: backgroundColor.class,
+		} );
 
-        const overlayStyles = {
-            backgroundColor: backgroundColor.color ? backgroundColor.color : '#ffffff',
-            opacity: ( 100 - attributes.imageOpacity ) / 100,
-        };
+		const overlayStyles = {
+			backgroundColor: backgroundColor.color ? backgroundColor.color : '#ffffff',
+			opacity: ( 100 - attributes.imageOpacity ) / 100,
+		};
 
-        const contentStyles = `
-            #${blockId} .gt-inner-content .editor-block-list__block {
-                max-width: ${attributes.contentWidth}px;
-            }
-        `;
+		const contentStyles = `
+			#${ blockId } .gt-inner-content .editor-block-list__block {
+				max-width: ${ attributes.contentWidth }px;
+			}
+		`;
 
-        const dataBackgroundImage = attributes.backgroundImageId ? attributes.backgroundImageUrl : undefined;
+		const dataBackgroundImage = attributes.backgroundImageId ? attributes.backgroundImageUrl : undefined;
 
-        return (
-            <Fragment>
+		return (
+			<Fragment>
 
-                <BlockControls>
+				<BlockControls>
 
-                    <BlockAlignmentToolbar
-                        value={ attributes.blockAlignment }
-                        onChange={ ( newAlign ) => setAttributes( { blockAlignment: newAlign } ) }
-                        controls={ [ 'wide', 'full' ] }
-                    />
+					<BlockAlignmentToolbar
+						value={ attributes.blockAlignment }
+						onChange={ ( newAlign ) => setAttributes( { blockAlignment: newAlign } ) }
+						controls={ [ 'wide', 'full' ] }
+					/>
 
-                </BlockControls>
+				</BlockControls>
 
-                <InspectorControls>
+				<InspectorControls>
 
-                    <PanelBody title={ __( 'Layout Settings' ) } initialOpen={ false }>
+					<PanelBody title={ __( 'Layout Settings' ) } initialOpen={ false }>
 
-                        <BlockAlignmentToolbar
-                            value={ attributes.blockAlignment }
-                            onChange={ ( newAlign ) => setAttributes( { blockAlignment: newAlign } ) }
-                            controls={ [ 'wide', 'full' ] }
-                        />
+						<BlockAlignmentToolbar
+							value={ attributes.blockAlignment }
+							onChange={ ( newAlign ) => setAttributes( { blockAlignment: newAlign } ) }
+							controls={ [ 'wide', 'full' ] }
+						/>
 
-                        <RangeControl
-                            label={ __( 'Content Width (in px)' ) }
-                            value={ attributes.contentWidth }
-                            onChange={ ( maxWidth ) => setAttributes( { contentWidth: maxWidth } ) }
-                            min={ 100 }
-                            max={ 2500 }
-                        />
+						<RangeControl
+							label={ __( 'Content Width (in px)' ) }
+							value={ attributes.contentWidth }
+							onChange={ ( maxWidth ) => setAttributes( { contentWidth: maxWidth } ) }
+							min={ 100 }
+							max={ 2500 }
+						/>
 
-                    </PanelBody>
+					</PanelBody>
 
-                    <PanelColorSettings
-                        title={ __( 'Color Settings' ) }
-                        initialOpen={ false }
-                        colorSettings={ [
-                            {
-                                value: backgroundColor.color,
-                                onChange: setBackgroundColor,
-                                label: __( 'Background Color' ),
-                            },
-                            {
-                                value: textColor.color,
-                                onChange: setTextColor,
-                                label: __( 'Text Color' ),
-                            },
-                        ] }
-                    >
+					<PanelColorSettings
+						title={ __( 'Color Settings' ) }
+						initialOpen={ false }
+						colorSettings={ [
+							{
+								value: backgroundColor.color,
+								onChange: setBackgroundColor,
+								label: __( 'Background Color' ),
+							},
+							{
+								value: textColor.color,
+								onChange: setTextColor,
+								label: __( 'Text Color' ),
+							},
+						] }
+					>
 
-                        <ContrastChecker
-                            { ...{
-                                textColor: textColor.color,
-                                backgroundColor: backgroundColor.color,
-                                fallbackTextColor,
-                                fallbackBackgroundColor,
-                            } }
-                        />
-                    </PanelColorSettings>
+						<ContrastChecker
+							{ ...{
+								textColor: textColor.color,
+								backgroundColor: backgroundColor.color,
+								fallbackTextColor,
+								fallbackBackgroundColor,
+							} }
+						/>
+					</PanelColorSettings>
 
-                    <PanelBody title={ __( 'Background Image' ) } initialOpen={ false } className="gt-blocks-container-background-image-panel">
+					<PanelBody title={ __( 'Background Image' ) } initialOpen={ false } className="gt-blocks-container-background-image-panel">
 
-                        <div className="gt-background-image">
+						<div className="gt-background-image">
 
-                            { ! attributes.backgroundImageId ? (
+							{ ! attributes.backgroundImageId ? (
 
-                                <MediaUpload
-                                    title={ __( 'Set background image' ) }
-                                    onSelect={ this.onSelectImage }
-                                    type="image"
-                                    render={ ( { open } ) => (
-                                        <Button onClick={ open } className="gt-set-image">
-                							{ __( 'Set background image' ) }
-                						</Button>
-                                    ) }
-                                />
+								<MediaUpload
+									title={ __( 'Set background image' ) }
+									onSelect={ this.onSelectImage }
+									type="image"
+									render={ ( { open } ) => (
+										<Button onClick={ open } className="gt-set-image">
+											{ __( 'Set background image' ) }
+										</Button>
+									) }
+								/>
 
-                            ) : (
+							) : (
 
-                                <Fragment>
+								<Fragment>
 
-                                    <MediaUpload
-                                        title={ __( 'Set background image' ) }
-                                        onSelect={ this.onSelectImage }
-                                        type="image"
-                                        value={ attributes.backgroundImageId }
-                                        render={ ( { open } ) => (
-                                            <img
-                                                src={ attributes.backgroundImageUrl }
-                                                onClick={ open }
-                                            />
-                                        ) }
-                                    />
+									<MediaUpload
+										title={ __( 'Set background image' ) }
+										onSelect={ this.onSelectImage }
+										type="image"
+										value={ attributes.backgroundImageId }
+										render={ ( { open } ) => (
+											<Button onClick={ open } className="gt-image-button">
+												<img
+													src={ attributes.backgroundImageUrl }
+													alt={ __( 'Background image' ) }
+												/>
+											</Button>
+										) }
+									/>
 
-                                    <div className="gt-image-controls">
+									<div className="gt-image-controls">
 
-                                        <MediaUpload
-                                            title={ __( 'Set background image' ) }
-                                            onSelect={ this.onSelectImage }
-                                            type="image"
-                                            value={ attributes.backgroundImageId }
-                                            render={ ( { open } ) => (
-                                                <Button onClick={ open } isDefault isLarge className="gt-replace-image">
-                        							{ __( 'Replace image' ) }
-                        						</Button>
-                                            ) }
-                                        />
+										<MediaUpload
+											title={ __( 'Set background image' ) }
+											onSelect={ this.onSelectImage }
+											type="image"
+											value={ attributes.backgroundImageId }
+											render={ ( { open } ) => (
+												<Button onClick={ open } isDefault isLarge className="gt-replace-image">
+													{ __( 'Replace image' ) }
+												</Button>
+											) }
+										/>
 
-                                        <Button onClick={ this.onRemoveImage } isLink isDestructive>
-                                            { __( 'Remove image' ) }
-                                        </Button>
+										<Button onClick={ this.onRemoveImage } isLink isDestructive>
+											{ __( 'Remove image' ) }
+										</Button>
 
-                                    </div>
+									</div>
 
-                                </Fragment>
+								</Fragment>
 
-                            ) }
+							) }
 
-                        </div>
+						</div>
 
-                        { attributes.backgroundImageId && (
+						{ attributes.backgroundImageId && (
 
-                            <Fragment>
+							<Fragment>
 
-                                <RangeControl
-                                    label={ __( 'Image Opacity' ) }
-                                    value={ attributes.imageOpacity }
-                                    onChange={ ( newOpacity ) => setAttributes( { imageOpacity: newOpacity } ) }
-                                    min={ 0 }
-                                    max={ 100 }
-                                />
+								<RangeControl
+									label={ __( 'Image Opacity' ) }
+									value={ attributes.imageOpacity }
+									onChange={ ( newOpacity ) => setAttributes( { imageOpacity: newOpacity } ) }
+									min={ 0 }
+									max={ 100 }
+								/>
 
-                                <SelectControl
-                                    label={ __( 'Background Position' ) }
-                                    value={ attributes.backgroundPosition }
-                                    onChange={ ( newPosition ) => setAttributes( { backgroundPosition: newPosition } ) }
-                                    options={ [
-                                        { value: 'left top', label: __( 'Left Top' ) },
-                                        { value: 'left center', label: __( 'Left Center' ) },
-                                        { value: 'left bottom', label: __( 'Left Bottom' ) },
-                                        { value: 'center top', label: __( 'Center Top' ) },
-                                        { value: 'center center', label: __( 'Center Center' ) },
-                                        { value: 'center bottom', label: __( 'Center Bottom' ) },
-                                        { value: 'right top', label: __( 'Right Top' ) },
-                                        { value: 'right center', label: __( 'Right Center' ) },
-                                        { value: 'right bottom', label: __( 'Right Bottom' ) },
-                                    ] }
-                                />
+								<SelectControl
+									label={ __( 'Background Position' ) }
+									value={ attributes.backgroundPosition }
+									onChange={ ( newPosition ) => setAttributes( { backgroundPosition: newPosition } ) }
+									options={ [
+										{ value: 'left top', label: __( 'Left Top' ) },
+										{ value: 'left center', label: __( 'Left Center' ) },
+										{ value: 'left bottom', label: __( 'Left Bottom' ) },
+										{ value: 'center top', label: __( 'Center Top' ) },
+										{ value: 'center center', label: __( 'Center Center' ) },
+										{ value: 'center bottom', label: __( 'Center Bottom' ) },
+										{ value: 'right top', label: __( 'Right Top' ) },
+										{ value: 'right center', label: __( 'Right Center' ) },
+										{ value: 'right bottom', label: __( 'Right Bottom' ) },
+									] }
+								/>
 
-                                <ToggleControl
-                                    label={ __( 'Fixed Background' ) }
-                                    checked={ !! attributes.fixedBackground }
-                                    onChange={ () => setAttributes( { fixedBackground: ! attributes.fixedBackground } ) }
-                                />
+								<ToggleControl
+									label={ __( 'Fixed Background' ) }
+									checked={ !! attributes.fixedBackground }
+									onChange={ () => setAttributes( { fixedBackground: ! attributes.fixedBackground } ) }
+								/>
 
-                            </Fragment>
+							</Fragment>
 
-                        ) }
+						) }
 
-                    </PanelBody>
+					</PanelBody>
 
-                </InspectorControls>
+				</InspectorControls>
 
-                <div id={ blockId } className={ blockClasses } style={ blockStyles } data-background-image={ dataBackgroundImage }>
+				<div id={ blockId } className={ blockClasses } style={ blockStyles } data-background-image={ dataBackgroundImage }>
 
-                    { attributes.backgroundImageId && (
-                        <div className={ overlayClasses } style={ overlayStyles }></div>
-                    ) }
+					{ attributes.backgroundImageId && (
+						<div className={ overlayClasses } style={ overlayStyles }></div>
+					) }
 
-                    <style>{ contentStyles }</style>
-                    <div className="gt-inner-content">
-                        <InnerBlocks />
-                    </div>
+					<style>{ contentStyles }</style>
+					<div className="gt-inner-content">
+						<InnerBlocks />
+					</div>
 
-                </div>
+				</div>
 
-            </Fragment>
-        );
-    }
+			</Fragment>
+		);
+	}
 }
 
 export default compose(
-    withInstanceId,
-    withColors( 'backgroundColor', { textColor: 'color' } ),
-    applyFallbackStyles,
+	withInstanceId,
+	withColors( 'backgroundColor', { textColor: 'color' } ),
+	applyFallbackStyles,
 )( gtContainerEdit );
