@@ -24,6 +24,7 @@
 
 			.gt-icon-link {
 				display: block;
+				padding: 0;
 				background: #f0f0f0;
 				text-align: center;
 
@@ -53,9 +54,9 @@
 /* Icon Picker Placeholder */
 .gt-icon-placeholder-wrapper {
 
-	a.gt-show-icon-picker {
+	.gt-show-icon-picker {
 		color: inherit;
-		cursor: pointer;
+		padding: 0;
 
 		.gt-icon-svg .icon {
 			pointer-events: none;

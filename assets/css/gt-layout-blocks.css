@@ -100,6 +100,7 @@
     grid-template-columns: repeat(auto-fill, minmax(56px, 1fr)); }
     .gt-layout-blocks-icon-picker-modal .gt-icon-picker-list .gt-icon-picker-grid .gt-icon-link {
       display: block;
+      padding: 0;
       background: #f0f0f0;
       text-align: center; }
       .gt-layout-blocks-icon-picker-modal .gt-icon-picker-list .gt-icon-picker-grid .gt-icon-link:hover, .gt-layout-blocks-icon-picker-modal .gt-icon-picker-list .gt-icon-picker-grid .gt-icon-link:active {
@@ -116,10 +117,10 @@
           pointer-events: none; }
 
 /* Icon Picker Placeholder */
-.gt-icon-placeholder-wrapper a.gt-show-icon-picker {
+.gt-icon-placeholder-wrapper .gt-show-icon-picker {
   color: inherit;
-  cursor: pointer; }
-  .gt-icon-placeholder-wrapper a.gt-show-icon-picker .gt-icon-svg .icon {
+  padding: 0; }
+  .gt-icon-placeholder-wrapper .gt-show-icon-picker .gt-icon-svg .icon {
     pointer-events: none; }
 .wp-block-gt-layout-blocks-image-text {
   display: -ms-flexbox;

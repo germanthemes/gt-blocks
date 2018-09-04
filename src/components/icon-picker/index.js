@@ -79,11 +79,15 @@ class IconPicker extends Component {
 				{
 					icons.map( ( icon ) => {
 						return (
-							<a className="gt-icon-link" onClick={ () => this.setIcon( icon ) }>
+							<Button
+								key={ icon }
+								className="gt-icon-link"
+								onClick={ () => this.setIcon( icon ) }
+							>
 								<Tooltip text={ icon }>
 									{ this.displayIcon( icon ) }
 								</Tooltip>
-							</a>
+							</Button>
 						);
 					} )
 				}
@@ -151,13 +155,13 @@ class IconPicker extends Component {
 
 						{ isSelected ? (
 
-							<a className="gt-show-icon-picker" onClick={ this.openModal }>
+							<Button className="gt-show-icon-picker" onClick={ this.openModal }>
 								<Tooltip text={ __( 'Edit icon' ) }>
 									<div className={ iconClasses } style={ iconStyles }>
 										{ this.displayIcon( icon, iconSize, paddingStyles ) }
 									</div>
 								</Tooltip>
-							</a>
+							</Button>
 
 						) : (
 
