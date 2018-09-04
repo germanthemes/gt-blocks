@@ -234,11 +234,11 @@ class gtFeaturesEdit extends Component {
             backgroundColor: iconBackgroundColor.class ? undefined : iconBackgroundColor.color,
         };
 
-        const paddingStyles = {
+        const paddingStyles = attributes.iconLayout == 'default' ? {} : {
             paddingTop: attributes.iconPadding !== 32 ? attributes.iconPadding + 'px' : undefined,
             paddingBottom: attributes.iconPadding !== 32 ? attributes.iconPadding + 'px' : undefined,
-            paddingLeft: ( attributes.iconLayout !== 'default' && attributes.iconPadding !== 32 ) ? attributes.iconPadding + 'px' : undefined,
-            paddingRight: ( attributes.iconLayout !== 'default' && attributes.iconPadding !== 32 ) ? attributes.iconPadding + 'px' : undefined,
+            paddingLeft: ( attributes.iconLayout !== 'full' && attributes.iconPadding !== 32 ) ? attributes.iconPadding + 'px' : undefined,
+            paddingRight: ( attributes.iconLayout !== 'full' && attributes.iconPadding !== 32 ) ? attributes.iconPadding + 'px' : undefined,
         };
 
         const textClasses = classnames( 'gt-text', {
@@ -314,6 +314,7 @@ class gtFeaturesEdit extends Component {
                                 { value: 'circle', label: __( 'Circle' ) },
                                 { value: 'outline', label: __( 'Outline' ) },
                                 { value: 'square', label: __( 'Square' ) },
+                                { value: 'full', label: __( 'Full' ) },
                             ] }
                         />
 
@@ -325,13 +326,15 @@ class gtFeaturesEdit extends Component {
                             max={ 128 }
                         />
 
-                        <RangeControl
-                            label={ __( 'Icon Padding' ) }
-                            value={ attributes.iconPadding }
-                            onChange={ ( newPadding ) => setAttributes( { iconPadding: newPadding } ) }
-                            min={ 16 }
-                            max={ 128 }
-                        />
+                        { attributes.iconLayout !== 'default' && (
+                            <RangeControl
+                                label={ __( 'Icon Padding' ) }
+                                value={ attributes.iconPadding }
+                                onChange={ ( newPadding ) => setAttributes( { iconPadding: newPadding } ) }
+                                min={ 16 }
+                                max={ 128 }
+                            />
+                        ) }
 
                     </PanelBody>
 
