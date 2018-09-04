@@ -191,7 +191,7 @@ class gtPortfolioEdit extends Component {
 			const image = imageSizes[ imgID ];
 
 			// Select the new Image Size.
-			const newSize = ( image[ size ] !== undefined ) ? image[ size ] : image[ 'full' ];
+			const newSize = ( image[ size ] !== undefined ) ? image[ size ] : image.full;
 
 			return newSize[ 'source_url' ];
 		}

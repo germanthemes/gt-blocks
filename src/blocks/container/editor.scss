@@ -28,16 +28,17 @@
 		}
 
 		.gt-image-button {
+			display: block;
 			padding: 0;
 
-			&:hover {
-				cursor: pointer;
+			img {
+				vertical-align: top;
 			}
 		}
 
 		.gt-image-controls {
 			display: flex;
-			margin-top: 3px;
+			margin-top: 5px;
 			margin-bottom: 1.5em;
 
 			.gt-replace-image {

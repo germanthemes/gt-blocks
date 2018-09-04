@@ -25,11 +25,26 @@ const {
 } = wp.data;
 
 class PortfolioImage extends Component {
-	componentWillReceiveProps( { image } ) {
+	constructor() {
+		super( ...arguments );
+
+		this.state = {
+			currentImage: 0,
+		};
+	}
+
+	static getDerivedStateFromProps( nextProps ) {
+		if ( nextProps.image ) {
+			return { currentImage: nextProps.imgID };
+		}
+		return null;
+	}
+
+	componentDidUpdate( prevProps, prevState ) {
 		const { imgID, addSize } = this.props;
 
-		if ( image ) {
-			const sizeObj = get( image, [ 'media_details', 'sizes' ], {} );
+		if ( this.props.image && imgID !== prevState.currentImage ) {
+			const sizeObj = get( this.props.image, [ 'media_details', 'sizes' ], {} );
 			addSize( imgID, sizeObj );
 		}
 	}
@@ -72,12 +87,13 @@ class PortfolioImage extends Component {
 									type="image"
 									value={ imgID }
 									render={ ( { open } ) => (
-										<img
-											src={ imgURL }
-											alt={ imgAlt }
-											data-img-id={ imgID }
-											onClick={ open }
-										/>
+										<Button onClick={ open } className="gt-image-button">
+											<img
+												src={ imgURL }
+												alt={ imgAlt }
+												data-img-id={ imgID }
+											/>
+										</Button>
 									) }
 								/>
 

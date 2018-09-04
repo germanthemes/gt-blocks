@@ -417,11 +417,12 @@ class gtImageTextEdit extends Component {
 											type="image"
 											value={ attributes.imgID }
 											render={ ( { open } ) => (
-												<img
-													src={ attributes.imgURL }
-													alt={ attributes.imgAlt }
-													onClick={ open }
-												/>
+												<Button onClick={ open } className="gt-image-button">
+													<img
+														src={ attributes.imgURL }
+														alt={ attributes.imgAlt }
+													/>
+												</Button>
 											) }
 										/>
 

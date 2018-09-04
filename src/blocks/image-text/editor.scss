@@ -9,8 +9,9 @@
 			.gt-edit-image {
 				position: relative;
 
-				&:hover {
-					cursor: pointer;
+				.gt-image-button {
+					display: block;
+					padding: 0;
 				}
 
 				.remove-image {
