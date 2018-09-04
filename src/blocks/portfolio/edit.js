@@ -252,10 +252,19 @@ class gtPortfolioEdit extends Component {
 			wideControlsEnabled,
 		} = this.props;
 
+		const {
+			items,
+			columns,
+			blockAlignment,
+			textAlignment,
+			imageSize,
+			titleTag,
+		} = attributes;
+
 		const availableSizes = this.getAvailableSizes();
 
 		const blockClasses = classnames( className, {
-			[ `gt-columns-${ attributes.columns }` ]: attributes.columns,
+			[ `gt-columns-${ columns }` ]: columns,
 		} );
 
 		const contentClasses = classnames( 'gt-content', {
@@ -264,7 +273,7 @@ class gtPortfolioEdit extends Component {
 		} );
 
 		const contentStyles = {
-			textAlign: attributes.textAlignment,
+			textAlign: textAlignment,
 			backgroundColor: backgroundColor.class ? undefined : backgroundColor.color,
 		};
 
@@ -279,14 +288,12 @@ class gtPortfolioEdit extends Component {
 			color: textColor.class ? undefined : textColor.color,
 		};
 
-		const titleTag = 'h' + attributes.titleTag;
-
 		return (
 			<Fragment>
 				<BlockControls key="controls">
 
 					<BlockAlignmentToolbar
-						value={ attributes.blockAlignment }
+						value={ blockAlignment }
 						onChange={ ( newAlign ) => setAttributes( { blockAlignment: newAlign } ) }
 						controls={ [ 'wide', 'full' ] }
 					/>
@@ -296,14 +303,14 @@ class gtPortfolioEdit extends Component {
 							[ 2, 3, 4 ].map( column => ( {
 								icon: columnIcons[ column ],
 								title: sprintf( __( '%s Columns' ), column ),
-								isActive: column === attributes.columns,
+								isActive: column === columns,
 								onClick: () => setAttributes( { columns: column } ),
 							} ) )
 						}
 					/>
 
 					<AlignmentToolbar
-						value={ attributes.textAlignment }
+						value={ textAlignment }
 						onChange={ ( newAlignment ) => setAttributes( { textAlignment: newAlignment } ) }
 					/>
 
@@ -315,7 +322,7 @@ class gtPortfolioEdit extends Component {
 
 						<RangeControl
 							label={ __( 'Columns' ) }
-							value={ attributes.columns }
+							value={ columns }
 							onChange={ ( nextColumns ) => setAttributes( { columns: nextColumns } ) }
 							min={ 2 }
 							max={ 6 }
@@ -327,7 +334,7 @@ class gtPortfolioEdit extends Component {
 									{ __( 'Block Alignment' ) }
 								</label></p>,
 								<BlockAlignmentToolbar
-									value={ attributes.blockAlignment }
+									value={ blockAlignment }
 									onChange={ ( newAlign ) => setAttributes( { blockAlignment: newAlign } ) }
 									controls={ [ 'center', 'wide', 'full' ] }
 								/>
@@ -341,7 +348,7 @@ class gtPortfolioEdit extends Component {
 						{ ! isEmpty( availableSizes ) && (
 							<SelectControl
 								label={ __( 'Size' ) }
-								value={ attributes.imageSize }
+								value={ imageSize }
 								options={ map( availableSizes, ( size ) => ( {
 									value: size,
 									label: startCase( size ),
@@ -362,7 +369,7 @@ class gtPortfolioEdit extends Component {
 								range( 1, 7 ).map( ( level ) => ( {
 									icon: 'heading',
 									title: sprintf( __( 'Heading %s' ), level ),
-									isActive: level === attributes.titleTag,
+									isActive: level === titleTag,
 									onClick: () => setAttributes( { titleTag: level } ),
 									subscript: level,
 								} ) )
@@ -415,7 +422,7 @@ class gtPortfolioEdit extends Component {
 					<div className="gt-grid-container">
 
 						{
-							attributes.items.map( ( item, index ) => {
+							items.map( ( item, index ) => {
 								return (
 									<div className="gt-grid-item" key={ index }>
 
@@ -432,7 +439,7 @@ class gtPortfolioEdit extends Component {
 										<div className={ contentClasses } style={ contentStyles }>
 
 											<RichText
-												tagName={ titleTag }
+												tagName={ 'h' + titleTag }
 												placeholder={ __( 'Enter a title' ) }
 												value={ item.title }
 												onChange={ ( newTitle ) => this.onChangeTitle( newTitle, index ) }
@@ -468,7 +475,7 @@ class gtPortfolioEdit extends Component {
 													label={ __( 'Move down' ) }
 													icon="arrow-down-alt2"
 													onClick={ () => this.moveDownPortfolioItem( index ) }
-													disabled={ ( index + 1 ) === attributes.items.length }
+													disabled={ ( index + 1 ) === items.length }
 												/>
 
 												<IconButton

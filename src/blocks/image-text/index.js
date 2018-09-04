@@ -115,8 +115,9 @@ registerBlockType(
 		},
 
 		getEditWrapperProps( attributes ) {
-			if ( [ 'wide', 'full' ].indexOf( attributes.blockAlignment ) !== -1 ) {
-				return { 'data-align': attributes.blockAlignment };
+			const { blockAlignment } = attributes;
+			if ( 'wide' === blockAlignment || 'full' === blockAlignment ) {
+				return { 'data-align': blockAlignment };
 			}
 		},
 
@@ -124,10 +125,21 @@ registerBlockType(
 
 		save( { attributes } ) {
 			const {
-				backgroundColor,
+				imgURL,
+				imgAlt,
+				title,
+				titleTag,
+				text,
+				columnSize,
+				imagePosition,
+				blockAlignment,
+				textAlignment,
+				verticalAlignment,
+				spacing,
 				textColor,
-				customBackgroundColor,
+				backgroundColor,
 				customTextColor,
+				customBackgroundColor,
 				fontSize,
 				customFontSize,
 			} = attributes;
@@ -137,11 +149,11 @@ registerBlockType(
 			const fontSizeClass = getFontSizeClass( fontSize );
 
 			const blockClasses = classnames( {
-				[ `${ attributes.columnSize }` ]: attributes.columnSize,
-				[ `align${ attributes.blockAlignment }` ]: ( attributes.blockAlignment !== 'center' ),
-				[ `gt-vertical-align-${ attributes.verticalAlignment }` ]: ( attributes.verticalAlignment !== 'top' ),
-				'gt-image-position-right': attributes.imagePosition,
-				'gt-has-spacing': attributes.spacing,
+				[ `${ columnSize }` ]: columnSize,
+				[ `align${ blockAlignment }` ]: ( blockAlignment !== 'center' ),
+				[ `gt-vertical-align-${ verticalAlignment }` ]: ( verticalAlignment !== 'top' ),
+				'gt-image-position-right': imagePosition,
+				'gt-has-spacing': spacing,
 				'has-background': backgroundColor || customBackgroundColor,
 				[ textColorClass ]: textColorClass,
 				[ backgroundClass ]: backgroundClass,
@@ -150,7 +162,7 @@ registerBlockType(
 			const styles = {
 				backgroundColor: backgroundClass ? undefined : customBackgroundColor,
 				color: textColorClass ? undefined : customTextColor,
-				textAlign: attributes.textAlignment,
+				textAlign: textAlignment,
 			};
 
 			const textClasses = classnames( 'gt-text', {
@@ -161,15 +173,13 @@ registerBlockType(
 				fontSize: fontSizeClass ? undefined : customFontSize,
 			};
 
-			const titleTag = 'h' + attributes.titleTag;
-
 			return (
 				<div className={ blockClasses ? blockClasses : undefined }>
 
 					<div className="gt-image">
 						<img
-							src={ attributes.imgURL }
-							alt={ attributes.imgAlt }
+							src={ imgURL }
+							alt={ imgAlt }
 						/>
 					</div>
 
@@ -178,16 +188,16 @@ registerBlockType(
 						<div className="gt-inner-content">
 
 							<RichText.Content
-								tagName={ titleTag }
+								tagName={ 'h' + titleTag }
 								className="gt-title"
-								value={ attributes.title }
+								value={ title }
 							/>
 
 							<RichText.Content
 								tagName="div"
 								style={ textStyles }
 								className={ textClasses }
-								value={ attributes.text }
+								value={ text }
 							/>
 
 						</div>

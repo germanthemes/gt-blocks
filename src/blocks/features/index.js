@@ -138,17 +138,22 @@ registerBlockType(
 
 		save( { attributes } ) {
 			const {
+				items,
+				blockAlignment,
+				textAlignment,
+				columns,
 				iconLayout,
 				iconSize,
 				iconPadding,
+				titleTag,
 				iconColor,
 				iconBackgroundColor,
 				customIconColor,
 				customIconBackgroundColor,
-				backgroundColor,
 				textColor,
-				customBackgroundColor,
+				backgroundColor,
 				customTextColor,
+				customBackgroundColor,
 				fontSize,
 				customFontSize,
 			} = attributes;
@@ -161,8 +166,8 @@ registerBlockType(
 			const fontSizeClass = getFontSizeClass( fontSize );
 
 			const blockClasses = classnames( {
-				[ `gt-columns-${ attributes.columns }` ]: attributes.columns,
-				[ `align${ attributes.blockAlignment }` ]: ( 'wide' === attributes.blockAlignment || 'full' === attributes.blockAlignment ),
+				[ `gt-columns-${ columns }` ]: columns,
+				[ `align${ blockAlignment }` ]: ( 'wide' === blockAlignment || 'full' === blockAlignment ),
 			} );
 
 			const itemClasses = classnames( 'gt-grid-item', {
@@ -173,7 +178,7 @@ registerBlockType(
 			} );
 
 			const itemStyles = {
-				textAlign: attributes.textAlignment,
+				textAlign: textAlignment,
 				color: textColorClass ? undefined : customTextColor,
 				backgroundColor: backgroundClass ? undefined : customBackgroundColor,
 			};
@@ -212,14 +217,13 @@ registerBlockType(
 			};
 
 			const pluginURL = select( 'gt-layout-blocks-store' ).getPluginURL();
-			const titleTag = 'h' + attributes.titleTag;
 
 			return (
 				<div className={ blockClasses ? blockClasses : undefined }>
 					<div className="gt-grid-container">
 
 						{
-							attributes.items.map( ( item, index ) => {
+							items.map( ( item, index ) => {
 								const svgURL = pluginURL + 'assets/icons/fontawesome.svg#' + item.icon;
 								const svgClass = classnames( 'icon', `icon-${ item.icon }` );
 
@@ -241,7 +245,7 @@ registerBlockType(
 										<div className="gt-content">
 
 											<RichText.Content
-												tagName={ titleTag }
+												tagName={ 'h' + titleTag }
 												className="gt-title"
 												value={ item.title }
 											/>

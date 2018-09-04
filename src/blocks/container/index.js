@@ -96,30 +96,37 @@ registerBlockType(
 
 		save( { attributes } ) {
 			const {
+				blockAlignment,
+				contentWidth,
 				textColor,
 				backgroundColor,
 				customTextColor,
 				customBackgroundColor,
+				backgroundImageId,
+				backgroundImageUrl,
+				imageOpacity,
+				backgroundPosition,
+				fixedBackground,
 			} = attributes;
 
 			const textColorClass = getColorClassName( 'color', textColor );
 			const backgroundClass = getColorClassName( 'background-color', backgroundColor );
 
 			const blockClasses = classnames( {
-				[ `align${ attributes.blockAlignment }` ]: ( attributes.blockAlignment !== 'center' ),
+				[ `align${ blockAlignment }` ]: ( blockAlignment !== 'center' ),
 				'has-text-color': textColor || customTextColor,
 				[ textColorClass ]: textColorClass,
 				'has-background': backgroundColor || customBackgroundColor,
 				[ backgroundClass ]: backgroundClass,
-				'gt-has-background-image': attributes.backgroundImageId,
-				'gt-fixed-background': attributes.fixedBackground,
+				'gt-has-background-image': backgroundImageId,
+				'gt-fixed-background': fixedBackground,
 			} );
 
 			const blockStyles = {
 				color: textColorClass ? undefined : customTextColor,
 				backgroundColor: backgroundClass ? undefined : customBackgroundColor,
-				backgroundImage: attributes.backgroundImageId ? `url(${ attributes.backgroundImageUrl })` : undefined,
-				backgroundPosition: attributes.backgroundPosition,
+				backgroundImage: backgroundImageId ? `url(${ backgroundImageUrl })` : undefined,
+				backgroundPosition: backgroundPosition,
 			};
 
 			const overlayClasses = classnames( 'gt-background-overlay', {
@@ -131,19 +138,19 @@ registerBlockType(
 
 			const overlayStyles = {
 				backgroundColor: backgroundClass ? undefined : overlayColor,
-				opacity: ( 100 - attributes.imageOpacity ) / 100,
+				opacity: ( 100 - imageOpacity ) / 100,
 			};
 
 			const contentStyles = {
-				maxWidth: attributes.contentWidth + 'px',
+				maxWidth: contentWidth + 'px',
 			};
 
-			const dataBackgroundImage = attributes.backgroundImageId ? attributes.backgroundImageUrl : undefined;
+			const dataBackgroundImage = backgroundImageId ? backgroundImageUrl : undefined;
 
 			return (
 				<div className={ blockClasses ? blockClasses : undefined } style={ blockStyles } data-background-image={ dataBackgroundImage }>
 
-					{ attributes.backgroundImageId && (
+					{ backgroundImageId && (
 						<div className={ overlayClasses } style={ overlayStyles }></div>
 					) }
 

@@ -128,6 +128,11 @@ registerBlockType(
 
 		save( { attributes } ) {
 			const {
+				items,
+				columns,
+				blockAlignment,
+				textAlignment,
+				titleTag,
 				backgroundColor,
 				textColor,
 				customBackgroundColor,
@@ -141,8 +146,8 @@ registerBlockType(
 			const fontSizeClass = getFontSizeClass( fontSize );
 
 			const blockClasses = classnames( {
-				[ `gt-columns-${ attributes.columns }` ]: attributes.columns,
-				[ `align${ attributes.blockAlignment }` ]: ( 'wide' === attributes.blockAlignment || 'full' === attributes.blockAlignment ),
+				[ `gt-columns-${ columns }` ]: columns,
+				[ `align${ blockAlignment }` ]: ( 'wide' === blockAlignment || 'full' === blockAlignment ),
 			} );
 
 			const contentClasses = classnames( 'gt-content', {
@@ -151,7 +156,7 @@ registerBlockType(
 			} );
 
 			const contentStyles = {
-				textAlign: attributes.textAlignment,
+				textAlign: textAlignment,
 				backgroundColor: backgroundClass ? undefined : customBackgroundColor,
 			};
 
@@ -166,14 +171,12 @@ registerBlockType(
 				fontSize: fontSizeClass ? undefined : customFontSize,
 			};
 
-			const titleTag = 'h' + attributes.titleTag;
-
 			return (
 				<div className={ blockClasses ? blockClasses : undefined }>
 					<div className="gt-grid-container">
 
 						{
-							attributes.items.map( ( item, index ) => {
+							items.map( ( item, index ) => {
 								return (
 									<div className="gt-grid-item" key={ index }>
 
@@ -188,7 +191,7 @@ registerBlockType(
 										<div className={ contentClasses } style={ contentStyles }>
 
 											<RichText.Content
-												tagName={ titleTag }
+												tagName={ 'h' + titleTag }
 												className="gt-title"
 												value={ item.title }
 											/>

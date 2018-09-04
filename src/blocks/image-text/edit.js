@@ -169,13 +169,28 @@ class gtImageTextEdit extends Component {
 			className,
 		} = this.props;
 
+		const {
+			imgURL,
+			imgID,
+			imgAlt,
+			title,
+			titleTag,
+			text,
+			columnSize,
+			imagePosition,
+			blockAlignment,
+			textAlignment,
+			verticalAlignment,
+			spacing,
+		} = attributes;
+
 		const availableSizes = this.getAvailableSizes();
 
 		const blockClasses = classnames( className, {
-			[ `${ attributes.columnSize }` ]: attributes.columnSize,
-			[ `gt-vertical-align-${ attributes.verticalAlignment }` ]: ( attributes.verticalAlignment !== 'top' ),
-			'gt-image-position-right': attributes.imagePosition,
-			'gt-has-spacing': attributes.spacing,
+			[ `${ columnSize }` ]: columnSize,
+			[ `gt-vertical-align-${ verticalAlignment }` ]: ( verticalAlignment !== 'top' ),
+			'gt-image-position-right': imagePosition,
+			'gt-has-spacing': spacing,
 			'has-background': backgroundColor.color,
 			[ backgroundColor.class ]: backgroundColor.class,
 			'has-text-color': textColor.color,
@@ -186,10 +201,8 @@ class gtImageTextEdit extends Component {
 		const styles = {
 			backgroundColor: backgroundColor.class ? undefined : backgroundColor.color,
 			color: textColor.class ? undefined : textColor.color,
-			textAlign: attributes.textAlignment,
+			textAlign: textAlignment,
 		};
-
-		const titleTag = 'h' + attributes.titleTag;
 
 		return (
 			<Fragment>
@@ -199,7 +212,7 @@ class gtImageTextEdit extends Component {
 						<MediaUpload
 							onSelect={ this.onSelectImage }
 							type="image"
-							value={ attributes.imgID }
+							value={ imgID }
 							render={ ( { open } ) => (
 								<IconButton
 									className="components-toolbar__control"
@@ -216,9 +229,9 @@ class gtImageTextEdit extends Component {
 									'components-icon-button',
 									'components-toolbar__control',
 									'gt-image-position-toolbar-icon',
-									{ 'is-active': attributes.imagePosition },
+									{ 'is-active': imagePosition },
 								) }
-								onClick={ () => setAttributes( { imagePosition: ! attributes.imagePosition } ) }
+								onClick={ () => setAttributes( { imagePosition: ! imagePosition } ) }
 							>
 								{ gtImagePositionIcon }
 							</Button>
@@ -226,7 +239,7 @@ class gtImageTextEdit extends Component {
 					</Toolbar>
 
 					<AlignmentToolbar
-						value={ attributes.textAlignment }
+						value={ textAlignment }
 						onChange={ ( newAlignment ) => setAttributes( { textAlignment: newAlignment } ) }
 					/>
 
@@ -235,7 +248,7 @@ class gtImageTextEdit extends Component {
 							range( 1, 5 ).map( ( level ) => ( {
 								icon: 'heading',
 								title: sprintf( __( 'Heading %s' ), level ),
-								isActive: level === attributes.titleTag,
+								isActive: level === titleTag,
 								onClick: () => setAttributes( { titleTag: level } ),
 								subscript: level,
 							} ) )
@@ -250,15 +263,15 @@ class gtImageTextEdit extends Component {
 
 						<SelectControl
 							label={ __( 'Column Size' ) }
-							value={ attributes.columnSize }
+							value={ columnSize }
 							onChange={ ( newSize ) => setAttributes( { columnSize: newSize } ) }
 							options={ columnSizes }
 						/>
 
 						<SelectControl
 							label={ __( 'Image Position' ) }
-							value={ attributes.imagePosition }
-							onChange={ () => setAttributes( { imagePosition: ! attributes.imagePosition } ) }
+							value={ imagePosition }
+							onChange={ () => setAttributes( { imagePosition: ! imagePosition } ) }
 							options={ [
 								{ value: false, label: __( 'Left' ) },
 								{ value: true, label: __( 'Right' ) },
@@ -273,7 +286,7 @@ class gtImageTextEdit extends Component {
 								[ 'center', 'wide', 'full' ].map( control => {
 									return {
 										...blockAlignmentControls[ control ],
-										isActive: attributes.blockAlignment === control,
+										isActive: blockAlignment === control,
 										onClick: () => setAttributes( { blockAlignment: control } ),
 									};
 								} )
@@ -282,8 +295,8 @@ class gtImageTextEdit extends Component {
 
 						<ToggleControl
 							label={ __( 'Add bottom spacing?' ) }
-							checked={ !! attributes.spacing }
-							onChange={ () => setAttributes( { spacing: ! attributes.spacing } ) }
+							checked={ !! spacing }
+							onChange={ () => setAttributes( { spacing: ! spacing } ) }
 						/>
 
 					</PanelBody>
@@ -293,7 +306,7 @@ class gtImageTextEdit extends Component {
 						{ ! isEmpty( availableSizes ) && (
 							<SelectControl
 								label={ __( 'Size' ) }
-								value={ attributes.imgURL }
+								value={ imgURL }
 								options={ map( availableSizes, ( size, name ) => ( {
 									value: size.source_url,
 									label: startCase( name ),
@@ -304,7 +317,7 @@ class gtImageTextEdit extends Component {
 
 						<TextControl
 							label={ __( 'Textual Alternative' ) }
-							value={ attributes.imgAlt }
+							value={ imgAlt }
 							onChange={ ( newAlt ) => setAttributes( { imgAlt: newAlt } ) }
 							help={ __( 'Describe the purpose of the image. Leave empty if the image is not a key part of the content.' ) }
 						/>
@@ -321,7 +334,7 @@ class gtImageTextEdit extends Component {
 								range( 1, 7 ).map( ( level ) => ( {
 									icon: 'heading',
 									title: sprintf( __( 'Heading %s' ), level ),
-									isActive: level === attributes.titleTag,
+									isActive: level === titleTag,
 									onClick: () => setAttributes( { titleTag: level } ),
 									subscript: level,
 								} ) )
@@ -347,7 +360,7 @@ class gtImageTextEdit extends Component {
 								[ 'top', 'center', 'bottom' ].map( control => {
 									return {
 										...verticalAlignmentControls[ control ],
-										isActive: attributes.verticalAlignment === control,
+										isActive: verticalAlignment === control,
 										onClick: () => setAttributes( { verticalAlignment: control } ),
 									};
 								} )
@@ -390,7 +403,7 @@ class gtImageTextEdit extends Component {
 
 					<div className="gt-image">
 
-						{ ! attributes.imgID ? (
+						{ ! imgID ? (
 
 							<MediaPlaceholder
 								icon="format-image"
@@ -415,12 +428,12 @@ class gtImageTextEdit extends Component {
 										<MediaUpload
 											onSelect={ this.onSelectImage }
 											type="image"
-											value={ attributes.imgID }
+											value={ imgID }
 											render={ ( { open } ) => (
 												<Button onClick={ open } className="gt-image-button">
 													<img
-														src={ attributes.imgURL }
-														alt={ attributes.imgAlt }
+														src={ imgURL }
+														alt={ imgAlt }
 													/>
 												</Button>
 											) }
@@ -438,8 +451,8 @@ class gtImageTextEdit extends Component {
 								) : (
 
 									<img
-										src={ attributes.imgURL }
-										alt={ attributes.imgAlt }
+										src={ imgURL }
+										alt={ imgAlt }
 									/>
 
 								) }
@@ -455,9 +468,9 @@ class gtImageTextEdit extends Component {
 						<div className="gt-inner-content">
 
 							<RichText
-								tagName={ titleTag }
+								tagName={ 'h' + titleTag }
 								placeholder={ __( 'Enter a title' ) }
-								value={ attributes.title }
+								value={ title }
 								className="gt-title"
 								style={ styles }
 								onChange={ ( newTitle ) => setAttributes( { title: newTitle } ) }
@@ -468,7 +481,7 @@ class gtImageTextEdit extends Component {
 								tagName="div"
 								multiline="p"
 								placeholder={ __( 'Enter your text here.' ) }
-								value={ attributes.text }
+								value={ text }
 								className="gt-text"
 								style={ { fontSize: fontSize.size ? fontSize.size + 'px' : undefined } }
 								onChange={ ( newText ) => setAttributes( { text: newText } ) }

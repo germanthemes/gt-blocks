@@ -180,8 +180,19 @@ class gtFeaturesEdit extends Component {
 			wideControlsEnabled,
 		} = this.props;
 
+		const {
+			items,
+			blockAlignment,
+			textAlignment,
+			columns,
+			iconLayout,
+			iconSize,
+			iconPadding,
+			titleTag,
+		} = attributes;
+
 		const blockClasses = classnames( className, {
-			[ `gt-columns-${ attributes.columns }` ]: attributes.columns,
+			[ `gt-columns-${ columns }` ]: columns,
 		} );
 
 		const itemClasses = classnames( 'gt-grid-item', {
@@ -192,13 +203,13 @@ class gtFeaturesEdit extends Component {
 		} );
 
 		const itemStyles = {
-			textAlign: attributes.textAlignment,
+			textAlign: textAlignment,
 			color: textColor.class ? undefined : textColor.color,
 			backgroundColor: backgroundColor.class ? undefined : backgroundColor.color,
 		};
 
 		const iconClasses = classnames( 'gt-icon', {
-			[ `gt-icon-${ attributes.iconLayout }` ]: ( attributes.iconLayout !== 'default' ),
+			[ `gt-icon-${ iconLayout }` ]: ( iconLayout !== 'default' ),
 			'has-icon-color': iconColor.color,
 			[ iconColor.class ]: iconColor.class,
 			'has-icon-background': iconBackgroundColor.color,
@@ -210,11 +221,11 @@ class gtFeaturesEdit extends Component {
 			backgroundColor: iconBackgroundColor.class ? undefined : iconBackgroundColor.color,
 		};
 
-		const paddingStyles = attributes.iconLayout === 'default' ? {} : {
-			paddingTop: attributes.iconPadding !== 32 ? attributes.iconPadding + 'px' : undefined,
-			paddingBottom: attributes.iconPadding !== 32 ? attributes.iconPadding + 'px' : undefined,
-			paddingLeft: ( attributes.iconLayout !== 'full' && attributes.iconPadding !== 32 ) ? attributes.iconPadding + 'px' : undefined,
-			paddingRight: ( attributes.iconLayout !== 'full' && attributes.iconPadding !== 32 ) ? attributes.iconPadding + 'px' : undefined,
+		const paddingStyles = iconLayout === 'default' ? {} : {
+			paddingTop: iconPadding !== 32 ? iconPadding + 'px' : undefined,
+			paddingBottom: iconPadding !== 32 ? iconPadding + 'px' : undefined,
+			paddingLeft: ( iconLayout !== 'full' && iconPadding !== 32 ) ? iconPadding + 'px' : undefined,
+			paddingRight: ( iconLayout !== 'full' && iconPadding !== 32 ) ? iconPadding + 'px' : undefined,
 		};
 
 		const textClasses = classnames( 'gt-text', {
@@ -225,15 +236,13 @@ class gtFeaturesEdit extends Component {
 			fontSize: fontSize.size ? fontSize.size + 'px' : undefined,
 		};
 
-		const titleTag = 'h' + attributes.titleTag;
-
 		return (
 			<Fragment>
 
 				<BlockControls key="controls">
 
 					<BlockAlignmentToolbar
-						value={ attributes.blockAlignment }
+						value={ blockAlignment }
 						onChange={ ( newAlign ) => setAttributes( { blockAlignment: newAlign } ) }
 						controls={ [ 'wide', 'full' ] }
 					/>
@@ -243,14 +252,14 @@ class gtFeaturesEdit extends Component {
 							[ 2, 3, 4 ].map( column => ( {
 								icon: columnIcons[ column ],
 								title: sprintf( __( '%s Columns' ), column ),
-								isActive: column === attributes.columns,
+								isActive: column === columns,
 								onClick: () => setAttributes( { columns: column } ),
 							} ) )
 						}
 					/>
 
 					<AlignmentToolbar
-						value={ attributes.textAlignment }
+						value={ textAlignment }
 						onChange={ ( newAlignment ) => setAttributes( { textAlignment: newAlignment } ) }
 					/>
 
@@ -262,7 +271,7 @@ class gtFeaturesEdit extends Component {
 
 						<RangeControl
 							label={ __( 'Columns' ) }
-							value={ attributes.columns }
+							value={ columns }
 							onChange={ ( nextColumns ) => setAttributes( { columns: nextColumns } ) }
 							min={ 2 }
 							max={ 6 }
@@ -274,7 +283,7 @@ class gtFeaturesEdit extends Component {
 									{ __( 'Block Alignment' ) }
 								</label></p>,
 								<BlockAlignmentToolbar
-									value={ attributes.blockAlignment }
+									value={ blockAlignment }
 									onChange={ ( newAlign ) => setAttributes( { blockAlignment: newAlign } ) }
 									controls={ [ 'center', 'wide', 'full' ] }
 								/>
@@ -287,7 +296,7 @@ class gtFeaturesEdit extends Component {
 
 						<SelectControl
 							label={ __( 'Icon Style' ) }
-							value={ attributes.iconLayout }
+							value={ iconLayout }
 							onChange={ ( newStyle ) => setAttributes( { iconLayout: newStyle } ) }
 							options={ [
 								{ value: 'default', label: __( 'Default' ) },
@@ -300,16 +309,16 @@ class gtFeaturesEdit extends Component {
 
 						<RangeControl
 							label={ __( 'Icon Size' ) }
-							value={ attributes.iconSize }
+							value={ iconSize }
 							onChange={ ( newSize ) => setAttributes( { iconSize: newSize } ) }
 							min={ 16 }
 							max={ 128 }
 						/>
 
-						{ attributes.iconLayout !== 'default' && (
+						{ iconLayout !== 'default' && (
 							<RangeControl
 								label={ __( 'Icon Padding' ) }
-								value={ attributes.iconPadding }
+								value={ iconPadding }
 								onChange={ ( newPadding ) => setAttributes( { iconPadding: newPadding } ) }
 								min={ 16 }
 								max={ 128 }
@@ -328,7 +337,7 @@ class gtFeaturesEdit extends Component {
 								range( 1, 7 ).map( ( level ) => ( {
 									icon: 'heading',
 									title: sprintf( __( 'Heading %s' ), level ),
-									isActive: level === attributes.titleTag,
+									isActive: level === titleTag,
 									onClick: () => setAttributes( { titleTag: level } ),
 									subscript: level,
 								} ) )
@@ -398,7 +407,7 @@ class gtFeaturesEdit extends Component {
 					<div className="gt-grid-container">
 
 						{
-							attributes.items.map( ( item, index ) => {
+							items.map( ( item, index ) => {
 								return (
 									<div className={ itemClasses } style={ itemStyles } key={ index }>
 
@@ -407,7 +416,7 @@ class gtFeaturesEdit extends Component {
 												icon={ item.icon }
 												iconClasses={ iconClasses }
 												iconStyles={ iconStyles }
-												iconSize={ attributes.iconSize }
+												iconSize={ iconSize }
 												paddingStyles={ paddingStyles }
 												isSelected={ isSelected }
 												onChange={ ( newIcon ) => this.onChangeIcon( newIcon, index ) }
@@ -417,7 +426,7 @@ class gtFeaturesEdit extends Component {
 										<div className="gt-content">
 
 											<RichText
-												tagName={ titleTag }
+												tagName={ 'h' + titleTag }
 												placeholder={ __( 'Enter a title' ) }
 												value={ item.title }
 												className="gt-title"
@@ -454,7 +463,7 @@ class gtFeaturesEdit extends Component {
 													label={ __( 'Move down' ) }
 													icon="arrow-down-alt2"
 													onClick={ () => this.moveDownFeaturesItem( index ) }
-													disabled={ ( index + 1 ) === attributes.items.length }
+													disabled={ ( index + 1 ) === items.length }
 												/>
 
 												<IconButton

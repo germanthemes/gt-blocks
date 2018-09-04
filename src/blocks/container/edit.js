@@ -86,6 +86,16 @@ class gtContainerEdit extends Component {
 			className,
 		} = this.props;
 
+		const {
+			blockAlignment,
+			contentWidth,
+			backgroundImageId,
+			backgroundImageUrl,
+			imageOpacity,
+			backgroundPosition,
+			fixedBackground,
+		} = attributes;
+
 		const blockId = `gt-container-block-${ instanceId }`;
 
 		const blockClasses = classnames( className, {
@@ -93,15 +103,15 @@ class gtContainerEdit extends Component {
 			[ textColor.class ]: textColor.class,
 			'has-background': backgroundColor.color,
 			[ backgroundColor.class ]: backgroundColor.class,
-			'gt-has-background-image': attributes.backgroundImageId,
-			'gt-fixed-background': attributes.fixedBackground,
+			'gt-has-background-image': backgroundImageId,
+			'gt-fixed-background': fixedBackground,
 		} );
 
 		const blockStyles = {
 			backgroundColor: backgroundColor.class ? undefined : backgroundColor.color,
 			color: textColor.class ? undefined : textColor.color,
-			backgroundImage: attributes.backgroundImageId ? `url(${ attributes.backgroundImageUrl })` : undefined,
-			backgroundPosition: attributes.backgroundPosition,
+			backgroundImage: backgroundImageId ? `url(${ backgroundImageUrl })` : undefined,
+			backgroundPosition: backgroundPosition,
 		};
 
 		const overlayClasses = classnames( 'gt-background-overlay', {
@@ -111,16 +121,16 @@ class gtContainerEdit extends Component {
 
 		const overlayStyles = {
 			backgroundColor: backgroundColor.color ? backgroundColor.color : '#ffffff',
-			opacity: ( 100 - attributes.imageOpacity ) / 100,
+			opacity: ( 100 - imageOpacity ) / 100,
 		};
 
 		const contentStyles = `
 			#${ blockId } .gt-inner-content .editor-block-list__block {
-				max-width: ${ attributes.contentWidth }px;
+				max-width: ${ contentWidth }px;
 			}
 		`;
 
-		const dataBackgroundImage = attributes.backgroundImageId ? attributes.backgroundImageUrl : undefined;
+		const dataBackgroundImage = backgroundImageId ? backgroundImageUrl : undefined;
 
 		return (
 			<Fragment>
@@ -128,7 +138,7 @@ class gtContainerEdit extends Component {
 				<BlockControls>
 
 					<BlockAlignmentToolbar
-						value={ attributes.blockAlignment }
+						value={ blockAlignment }
 						onChange={ ( newAlign ) => setAttributes( { blockAlignment: newAlign } ) }
 						controls={ [ 'wide', 'full' ] }
 					/>
@@ -140,14 +150,14 @@ class gtContainerEdit extends Component {
 					<PanelBody title={ __( 'Layout Settings' ) } initialOpen={ false }>
 
 						<BlockAlignmentToolbar
-							value={ attributes.blockAlignment }
+							value={ blockAlignment }
 							onChange={ ( newAlign ) => setAttributes( { blockAlignment: newAlign } ) }
 							controls={ [ 'wide', 'full' ] }
 						/>
 
 						<RangeControl
 							label={ __( 'Content Width (in px)' ) }
-							value={ attributes.contentWidth }
+							value={ contentWidth }
 							onChange={ ( maxWidth ) => setAttributes( { contentWidth: maxWidth } ) }
 							min={ 100 }
 							max={ 2500 }
@@ -186,7 +196,7 @@ class gtContainerEdit extends Component {
 
 						<div className="gt-background-image">
 
-							{ ! attributes.backgroundImageId ? (
+							{ ! backgroundImageId ? (
 
 								<MediaUpload
 									title={ __( 'Set background image' ) }
@@ -207,11 +217,11 @@ class gtContainerEdit extends Component {
 										title={ __( 'Set background image' ) }
 										onSelect={ this.onSelectImage }
 										type="image"
-										value={ attributes.backgroundImageId }
+										value={ backgroundImageId }
 										render={ ( { open } ) => (
 											<Button onClick={ open } className="gt-image-button">
 												<img
-													src={ attributes.backgroundImageUrl }
+													src={ backgroundImageUrl }
 													alt={ __( 'Background image' ) }
 												/>
 											</Button>
@@ -224,7 +234,7 @@ class gtContainerEdit extends Component {
 											title={ __( 'Set background image' ) }
 											onSelect={ this.onSelectImage }
 											type="image"
-											value={ attributes.backgroundImageId }
+											value={ backgroundImageId }
 											render={ ( { open } ) => (
 												<Button onClick={ open } isDefault isLarge className="gt-replace-image">
 													{ __( 'Replace image' ) }
@@ -244,13 +254,13 @@ class gtContainerEdit extends Component {
 
 						</div>
 
-						{ attributes.backgroundImageId && (
+						{ backgroundImageId && (
 
 							<Fragment>
 
 								<RangeControl
 									label={ __( 'Image Opacity' ) }
-									value={ attributes.imageOpacity }
+									value={ imageOpacity }
 									onChange={ ( newOpacity ) => setAttributes( { imageOpacity: newOpacity } ) }
 									min={ 0 }
 									max={ 100 }
@@ -258,7 +268,7 @@ class gtContainerEdit extends Component {
 
 								<SelectControl
 									label={ __( 'Background Position' ) }
-									value={ attributes.backgroundPosition }
+									value={ backgroundPosition }
 									onChange={ ( newPosition ) => setAttributes( { backgroundPosition: newPosition } ) }
 									options={ [
 										{ value: 'left top', label: __( 'Left Top' ) },
@@ -275,8 +285,8 @@ class gtContainerEdit extends Component {
 
 								<ToggleControl
 									label={ __( 'Fixed Background' ) }
-									checked={ !! attributes.fixedBackground }
-									onChange={ () => setAttributes( { fixedBackground: ! attributes.fixedBackground } ) }
+									checked={ !! fixedBackground }
+									onChange={ () => setAttributes( { fixedBackground: ! fixedBackground } ) }
 								/>
 
 							</Fragment>
@@ -289,7 +299,7 @@ class gtContainerEdit extends Component {
 
 				<div id={ blockId } className={ blockClasses } style={ blockStyles } data-background-image={ dataBackgroundImage }>
 
-					{ attributes.backgroundImageId && (
+					{ backgroundImageId && (
 						<div className={ overlayClasses } style={ overlayStyles }></div>
 					) }
 
