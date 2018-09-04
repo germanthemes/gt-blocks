@@ -28,8 +28,7 @@
     margin-right: 12px; }
 .wp-block-gt-layout-blocks-features {
   /* Features Grid Item */
-  /* Add Features Item*/
-  /* Is Icon Edited? */ }
+  /* Add Features Item*/ }
   .wp-block-gt-layout-blocks-features .gt-grid-item {
     display: -ms-flexbox;
     display: flex;
@@ -80,21 +79,6 @@
       border: 1px solid #999;
       -webkit-box-shadow: none;
               box-shadow: none; }
-  .wp-block-gt-layout-blocks-features .gt-is-icon-edited .gt-icon-wrap .gt-icon {
-    border: 1px dashed rgba(0, 0, 0, 0.2); }
-    .wp-block-gt-layout-blocks-features .gt-is-icon-edited .gt-icon-wrap .gt-icon.gt-icon-circle {
-      border: none; }
-      .wp-block-gt-layout-blocks-features .gt-is-icon-edited .gt-icon-wrap .gt-icon.gt-icon-circle .gt-icon-svg {
-        border: 1px dashed rgba(0, 0, 0, 0.2);
-        border-radius: 100%; }
-    .wp-block-gt-layout-blocks-features .gt-is-icon-edited .gt-icon-wrap .gt-icon.gt-icon-square {
-      border: none; }
-      .wp-block-gt-layout-blocks-features .gt-is-icon-edited .gt-icon-wrap .gt-icon.gt-icon-square .gt-icon-svg {
-        border: 1px dashed rgba(0, 0, 0, 0.2); }
-    .wp-block-gt-layout-blocks-features .gt-is-icon-edited .gt-icon-wrap .gt-icon.has-icon-background, .wp-block-gt-layout-blocks-features .gt-is-icon-edited .gt-icon-wrap .gt-icon.gt-icon-outline {
-      border: none; }
-    .wp-block-gt-layout-blocks-features .gt-is-icon-edited .gt-icon-wrap .gt-icon.has-icon-background.gt-icon-circle .gt-icon-svg, .wp-block-gt-layout-blocks-features .gt-is-icon-edited .gt-icon-wrap .gt-icon.has-icon-background.gt-icon-square .gt-icon-svg {
-      border: none; }
 .wp-block-gt-layout-blocks-image-text {
   /* Block Image Edit */
   /* Block Content */ }
