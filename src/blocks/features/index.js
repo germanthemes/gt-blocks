@@ -92,6 +92,10 @@ registerBlockType(
                 type: 'number',
                 default: 32,
             },
+            iconPadding: {
+                type: 'number',
+                default: 32,
+            },
             titleTag: {
                 type: 'number',
                 default: 2,
@@ -141,6 +145,7 @@ registerBlockType(
             const {
                 iconLayout,
                 iconSize,
+                iconPadding,
                 iconColor,
                 iconBackgroundColor,
                 customIconColor,
@@ -191,6 +196,13 @@ registerBlockType(
                 backgroundColor: iconBackgroundClass ? undefined : customIconBackgroundColor,
             };
 
+            const paddingStyles = {
+                paddingTop: iconPadding !== 32 ? iconPadding + 'px' : undefined,
+                paddingBottom: iconPadding !== 32 ? iconPadding + 'px' : undefined,
+                paddingLeft: ( iconLayout !== 'default' && iconPadding !== 32 ) ? iconPadding + 'px' : undefined,
+                paddingRight: ( iconLayout !== 'default' && iconPadding !== 32 ) ? iconPadding + 'px' : undefined,
+            };
+
             const svgStyles = {
                 width: iconSize !== 32 ? iconSize + 'px' : undefined,
                 height: iconSize !== 32 ? iconSize + 'px' : undefined,
@@ -223,7 +235,7 @@ registerBlockType(
                                         <div className="gt-icon-wrap">
                                             <div className={ iconClasses } style={ iconStyles }>
 
-                                                <span className="gt-icon-svg" data-icon={ item.icon }>
+                                                <span className="gt-icon-svg" style={ paddingStyles } data-icon={ item.icon }>
                                                     <svg className={ svgClass } style={ svgStyles } aria-hidden="true" role="img">
                                                         <use href={ svgURL }></use>
                                                     </svg>

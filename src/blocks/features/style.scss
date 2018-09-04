@@ -35,12 +35,15 @@ $iconPadding: 32px;
             .gt-icon {
 
                 &.has-icon-background {
-                    padding: $iconPadding $padding;
+                    padding-left: $padding;
+                    padding-right: $padding;
                 }
 
                 .gt-icon-svg {
                     display: inline-block;
                     line-height: 0;
+                    padding-top: $iconPadding;
+                    padding-bottom: $iconPadding;
 
                     .icon {
                     	margin: 0;
@@ -53,16 +56,25 @@ $iconPadding: 32px;
 
                 &.gt-icon-square {
                     display: inline-block;
-                    padding: $iconPadding;
+                    padding: 0;
+
+                    .gt-icon-svg {
+                        padding: $iconPadding;
+                    }
                 }
 
                 &.gt-icon-circle {
                     display: inline-block;
-                    padding: $iconPadding;
+                    padding: 0;
                     border-radius: 100%;
+
+                    .gt-icon-svg {
+                        padding: $iconPadding;
+                    }
                 }
 
                 &.gt-icon-outline {
+                    padding: 0;
 
                     .gt-icon-svg {
                         display: inline-block;
@@ -83,16 +95,21 @@ $iconPadding: 32px;
         }
 
         &.has-background .gt-icon {
-            padding-top: $padding;
             padding-left: $padding;
             padding-right: $padding;
         }
 
         &.has-background .gt-icon-square,
-        &.has-background .gt-icon-circle {
+        &.has-background .gt-icon-circle,
+        &.has-background .gt-icon-outline {
             margin-top: $padding;
             margin-left: $padding;
             margin-right: $padding;
         }
+
+        &.has-background .gt-icon-outline.has-icon-background {
+            margin: 0;
+        }
+
     }
 }

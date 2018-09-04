@@ -98,7 +98,7 @@ class IconPicker extends Component {
         this.setState( { icons: filtered } );
     }
 
-    displayIcon( icon, iconSize=32 ) {
+    displayIcon( icon, iconSize=32, paddingStyles={} ) {
         const pluginURL = select( 'gt-layout-blocks-store' ).getPluginURL();
 
         const svgURL = pluginURL + 'assets/icons/fontawesome.svg#' + icon;
@@ -109,7 +109,7 @@ class IconPicker extends Component {
         };
 
         return (
-            <span className="gt-icon-svg" data-icon={ icon }>
+            <span className="gt-icon-svg" style={ paddingStyles } data-icon={ icon }>
                 <svg className={ svgClass } style={ svgStyles } aria-hidden="true" role="img">
                     <use href={ svgURL }></use>
                 </svg>
@@ -123,6 +123,7 @@ class IconPicker extends Component {
             iconClasses,
             iconStyles,
             iconSize,
+            paddingStyles,
             isSelected,
         } = this.props;
 
@@ -154,7 +155,7 @@ class IconPicker extends Component {
                             <a className="gt-show-icon-picker" onClick={ this.openModal }>
                                 <Tooltip text={ __( 'Edit icon' ) }>
                                     <div className={ iconClasses } style={ iconStyles }>
-                                            { this.displayIcon( icon, iconSize ) }
+                                            { this.displayIcon( icon, iconSize, paddingStyles ) }
                                     </div>
                                 </Tooltip>
                             </a>
@@ -162,7 +163,7 @@ class IconPicker extends Component {
                         ) : (
 
                             <div className={ iconClasses } style={ iconStyles }>
-                                { this.displayIcon( icon, iconSize ) }
+                                { this.displayIcon( icon, iconSize, paddingStyles ) }
                             </div>
 
                         ) }

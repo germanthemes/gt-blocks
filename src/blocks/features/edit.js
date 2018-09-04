@@ -233,6 +233,13 @@ class gtFeaturesEdit extends Component {
             backgroundColor: iconBackgroundColor.class ? undefined : iconBackgroundColor.color,
         };
 
+        const paddingStyles = {
+            paddingTop: attributes.iconPadding !== 32 ? attributes.iconPadding + 'px' : undefined,
+            paddingBottom: attributes.iconPadding !== 32 ? attributes.iconPadding + 'px' : undefined,
+            paddingLeft: ( attributes.iconLayout !== 'default' && attributes.iconPadding !== 32 ) ? attributes.iconPadding + 'px' : undefined,
+            paddingRight: ( attributes.iconLayout !== 'default' && attributes.iconPadding !== 32 ) ? attributes.iconPadding + 'px' : undefined,
+        };
+
         const textClasses = classnames( 'gt-text', {
             [ fontSize.class ]: fontSize.class,
         } );
@@ -313,6 +320,14 @@ class gtFeaturesEdit extends Component {
                             label={ __( 'Icon Size' ) }
                             value={ attributes.iconSize }
                             onChange={ ( newSize ) => setAttributes( { iconSize: newSize } ) }
+                            min={ 16 }
+                            max={ 128 }
+                        />
+
+                        <RangeControl
+                            label={ __( 'Icon Padding' ) }
+                            value={ attributes.iconPadding }
+                            onChange={ ( newPadding ) => setAttributes( { iconPadding: newPadding } ) }
                             min={ 16 }
                             max={ 128 }
                         />
@@ -405,6 +420,7 @@ class gtFeaturesEdit extends Component {
                                                 iconClasses={ iconClasses }
                                                 iconStyles={ iconStyles }
                                                 iconSize={ attributes.iconSize }
+                                                paddingStyles={ paddingStyles }
                                                 isSelected={ isSelected }
                                                 onChange={ ( newIcon ) => this.onChangeIcon( newIcon, index ) }
                                             />
