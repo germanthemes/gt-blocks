@@ -91,6 +91,10 @@ registerBlockType(
 				type: 'number',
 				default: 32,
 			},
+			outlineBorderWidth: {
+				type: 'number',
+				default: 3,
+			},
 			titleTag: {
 				type: 'number',
 				default: 2,
@@ -145,6 +149,7 @@ registerBlockType(
 				iconLayout,
 				iconSize,
 				iconPadding,
+				outlineBorderWidth,
 				titleTag,
 				iconColor,
 				iconBackgroundColor,
@@ -204,6 +209,7 @@ registerBlockType(
 				paddingBottom: iconPadding !== 32 ? iconPadding + 'px' : undefined,
 				paddingLeft: ( iconLayout !== 'default' && iconPadding !== 32 ) ? iconPadding + 'px' : undefined,
 				paddingRight: ( iconLayout !== 'default' && iconPadding !== 32 ) ? iconPadding + 'px' : undefined,
+				borderWidth: ( iconLayout === 'outline' && outlineBorderWidth !== 3 ) ? outlineBorderWidth + 'px' : undefined,
 			};
 
 			const svgStyles = {

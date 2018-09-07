@@ -185,6 +185,7 @@ class gtFeaturesEdit extends Component {
 			iconLayout,
 			iconSize,
 			iconPadding,
+			outlineBorderWidth,
 			titleTag,
 		} = attributes;
 
@@ -223,6 +224,7 @@ class gtFeaturesEdit extends Component {
 			paddingBottom: iconPadding !== 32 ? iconPadding + 'px' : undefined,
 			paddingLeft: ( iconLayout !== 'full' && iconPadding !== 32 ) ? iconPadding + 'px' : undefined,
 			paddingRight: ( iconLayout !== 'full' && iconPadding !== 32 ) ? iconPadding + 'px' : undefined,
+			borderWidth: ( iconLayout === 'outline' && outlineBorderWidth !== 3 ) ? outlineBorderWidth + 'px' : undefined,
 		};
 
 		const textClasses = classnames( 'gt-text', {
@@ -321,7 +323,17 @@ class gtFeaturesEdit extends Component {
 								value={ iconPadding }
 								onChange={ ( newPadding ) => setAttributes( { iconPadding: newPadding } ) }
 								min={ 16 }
-								max={ 128 }
+								max={ 64 }
+							/>
+						) }
+
+						{ iconLayout === 'outline' && (
+							<RangeControl
+								label={ __( 'Border Width' ) }
+								value={ outlineBorderWidth }
+								onChange={ ( newWidth ) => setAttributes( { outlineBorderWidth: newWidth } ) }
+								min={ 1 }
+								max={ 12 }
 							/>
 						) }
 
