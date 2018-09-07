@@ -13,7 +13,7 @@ import {
 /**
  * Block dependencies
  */
-import { default as PortfolioImage } from './portfolio-image';
+import { default as GridImage } from '../../components/grid-image';
 import {
 	gtTwoColumns,
 	gtThreeColumns,
@@ -427,15 +427,18 @@ class gtPortfolioEdit extends Component {
 									<div className="gt-grid-column" key={ index }>
 
 										<div className="gt-grid-item">
-											<PortfolioImage
-												imgID={ item.imgID }
-												imgURL={ item.imgURL }
-												imgAlt={ item.imgAlt }
-												onSelect={ ( img ) => this.onSelectImage( img, index ) }
-												onRemove={ () => this.onRemoveImage( index ) }
-												addSize={ this.addImageSize }
-												isSelected={ isSelected }
-											/>
+
+											<div className="gt-image">
+												<GridImage
+													imgID={ item.imgID }
+													imgURL={ item.imgURL }
+													imgAlt={ item.imgAlt }
+													onSelect={ ( img ) => this.onSelectImage( img, index ) }
+													onRemove={ () => this.onRemoveImage( index ) }
+													addSize={ this.addImageSize }
+													isSelected={ isSelected }
+												/>
+											</div>
 
 											<div className={ contentClasses } style={ contentStyles }>
 

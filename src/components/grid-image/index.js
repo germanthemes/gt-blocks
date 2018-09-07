@@ -13,9 +13,9 @@ const { withSelect } = wp.data;
 /**
 * Internal dependencies
 */
-import { default as GtImagePlaceholder } from '../../components/image-placeholder';
+import { default as GtImagePlaceholder } from '../image-placeholder';
 
-class PortfolioImage extends Component {
+class GridImage extends Component {
 	constructor() {
 		super( ...arguments );
 
@@ -51,18 +51,14 @@ class PortfolioImage extends Component {
 		} = this.props;
 
 		return (
-			<div className="gt-image">
-
-				<GtImagePlaceholder
-					imgID={ imgID }
-					imgURL={ imgURL }
-					imgAlt={ imgAlt }
-					onSelect={ onSelect }
-					onRemove={ onRemove }
-					isSelected={ isSelected }
-				/>
-
-			</div>
+			<GtImagePlaceholder
+				imgID={ imgID }
+				imgURL={ imgURL }
+				imgAlt={ imgAlt }
+				onSelect={ onSelect }
+				onRemove={ onRemove }
+				isSelected={ isSelected }
+			/>
 		);
 	}
 }
@@ -74,4 +70,4 @@ export default compose( [
 			image: imgID ? getMedia( imgID ) : null,
 		};
 	} ),
-] )( PortfolioImage );
+] )( GridImage );
