@@ -191,7 +191,7 @@ class gtFeaturesEdit extends Component {
 			titleTag,
 		} = attributes;
 
-		const blockClasses = classnames( className, {
+		const gridClasses = classnames( 'gt-grid-container', {
 			[ `gt-columns-${ columns }` ]: columns,
 		} );
 
@@ -403,49 +403,51 @@ class gtFeaturesEdit extends Component {
 
 				</InspectorControls>
 
-				<div className={ blockClasses }>
-					<div className="gt-grid-container">
+				<div className={ className }>
+					<div className={ gridClasses }>
 
 						{
 							items.map( ( item, index ) => {
 								return (
-									<div className={ itemClasses } style={ itemStyles } key={ index }>
+									<div className="gt-grid-column" key={ index }>
 
-										<div className="gt-icon-wrap">
-											<IconPicker
-												icon={ item.icon }
-												iconClasses={ iconClasses }
-												iconStyles={ iconStyles }
-												iconSize={ iconSize }
-												paddingStyles={ paddingStyles }
-												isSelected={ isSelected }
-												onChange={ ( newIcon ) => this.onChangeIcon( newIcon, index ) }
-											/>
-										</div>
+										<div className={ itemClasses } style={ itemStyles }>
+											<div className="gt-icon-wrap">
+												<IconPicker
+													icon={ item.icon }
+													iconClasses={ iconClasses }
+													iconStyles={ iconStyles }
+													iconSize={ iconSize }
+													paddingStyles={ paddingStyles }
+													isSelected={ isSelected }
+													onChange={ ( newIcon ) => this.onChangeIcon( newIcon, index ) }
+												/>
+											</div>
 
-										<div className="gt-content">
+											<div className="gt-content">
 
-											<RichText
-												tagName={ 'h' + titleTag }
-												placeholder={ __( 'Enter a title' ) }
-												value={ item.title }
-												className="gt-title"
-												onChange={ ( newTitle ) => this.onChangeTitle( newTitle, index ) }
-												formattingControls={ [ 'bold', 'italic', 'strikethrough' ] }
-												keepPlaceholderOnFocus
-											/>
+												<RichText
+													tagName={ 'h' + titleTag }
+													placeholder={ __( 'Enter a title' ) }
+													value={ item.title }
+													className="gt-title"
+													onChange={ ( newTitle ) => this.onChangeTitle( newTitle, index ) }
+													formattingControls={ [ 'bold', 'italic', 'strikethrough' ] }
+													keepPlaceholderOnFocus
+												/>
 
-											<RichText
-												tagName="div"
-												multiline="p"
-												placeholder={ __( 'Enter your text here.' ) }
-												value={ item.text }
-												className={ textClasses }
-												style={ textStyles }
-												onChange={ ( newText ) => this.onChangeText( newText, index ) }
-												keepPlaceholderOnFocus
-											/>
+												<RichText
+													tagName="div"
+													multiline="p"
+													placeholder={ __( 'Enter your text here.' ) }
+													value={ item.text }
+													className={ textClasses }
+													style={ textStyles }
+													onChange={ ( newText ) => this.onChangeText( newText, index ) }
+													keepPlaceholderOnFocus
+												/>
 
+											</div>
 										</div>
 
 										{ isSelected && (

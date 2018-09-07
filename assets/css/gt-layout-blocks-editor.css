@@ -31,38 +31,32 @@
     margin-right: 12px; }
 .wp-block-gt-layout-blocks-features {
   /* Features Grid Item */
+  /* Features Grid Item Controls*/
   /* Add Features Item*/ }
-  .wp-block-gt-layout-blocks-features .gt-grid-item {
+  .wp-block-gt-layout-blocks-features .gt-grid-item .gt-content .gt-title {
+    margin: 1em 0 0.75em;
+    color: inherit; }
+  .wp-block-gt-layout-blocks-features .gt-grid-item .gt-content .gt-title[data-is-placeholder-visible=true] {
+    top: -1em; }
+  .wp-block-gt-layout-blocks-features .gt-grid-item .gt-content .gt-text p {
+    color: inherit;
+    font-size: inherit; }
+  .wp-block-gt-layout-blocks-features .gt-grid-item-controls {
     display: -ms-flexbox;
     display: flex;
-    -ms-flex-direction: column;
-        flex-direction: column;
-    /* Features Grid Item Content */
-    /* Features Grid Item Controls*/ }
-    .wp-block-gt-layout-blocks-features .gt-grid-item .gt-content .gt-title {
-      margin: 1em 0 0.75em;
-      color: inherit; }
-    .wp-block-gt-layout-blocks-features .gt-grid-item .gt-content .gt-title[data-is-placeholder-visible=true] {
-      top: -1em; }
-    .wp-block-gt-layout-blocks-features .gt-grid-item .gt-content .gt-text p {
-      color: inherit;
-      font-size: inherit; }
-    .wp-block-gt-layout-blocks-features .gt-grid-item .gt-grid-item-controls {
-      display: -ms-flexbox;
-      display: flex;
-      margin-top: 16px;
-      padding: 8px;
-      width: 100%;
-      background: #edeff0;
-      border: 1px solid #e2e4e7; }
-      .wp-block-gt-layout-blocks-features .gt-grid-item .gt-grid-item-controls .components-icon-button {
-        padding: 4px 5px; }
-        .wp-block-gt-layout-blocks-features .gt-grid-item .gt-grid-item-controls .components-icon-button:hover, .wp-block-gt-layout-blocks-features .gt-grid-item .gt-grid-item-controls .components-icon-button:active, .wp-block-gt-layout-blocks-features .gt-grid-item .gt-grid-item-controls .components-icon-button:focus {
-          background: #fff; }
-        .wp-block-gt-layout-blocks-features .gt-grid-item .gt-grid-item-controls .components-icon-button .dashicon {
-          width: 18px; }
-      .wp-block-gt-layout-blocks-features .gt-grid-item .gt-grid-item-controls .remove-features-item {
-        margin-left: auto; }
+    margin-top: 16px;
+    padding: 8px;
+    width: 100%;
+    background: #edeff0;
+    border: 1px solid #e2e4e7; }
+    .wp-block-gt-layout-blocks-features .gt-grid-item-controls .components-icon-button {
+      padding: 4px 5px; }
+      .wp-block-gt-layout-blocks-features .gt-grid-item-controls .components-icon-button:hover, .wp-block-gt-layout-blocks-features .gt-grid-item-controls .components-icon-button:active, .wp-block-gt-layout-blocks-features .gt-grid-item-controls .components-icon-button:focus {
+        background: #fff; }
+      .wp-block-gt-layout-blocks-features .gt-grid-item-controls .components-icon-button .dashicon {
+        width: 18px; }
+    .wp-block-gt-layout-blocks-features .gt-grid-item-controls .remove-features-item {
+      margin-left: auto; }
   .wp-block-gt-layout-blocks-features .gt-add-features-item {
     display: -ms-flexbox;
     display: flex;

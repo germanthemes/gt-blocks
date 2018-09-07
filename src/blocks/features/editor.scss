@@ -2,10 +2,7 @@
 
 	/* Features Grid Item */
 	.gt-grid-item {
-		display: flex;
-		flex-direction: column;
 
-		/* Features Grid Item Content */
 		.gt-content {
 
 			.gt-title {
@@ -22,33 +19,33 @@
 				font-size: inherit;
 			}
 		}
+	}
 
-		/* Features Grid Item Controls*/
-		.gt-grid-item-controls {
-			display: flex;
-			margin-top: 16px;
-			padding: 8px;
-			width: 100%;
-			background: #edeff0;
-			border: 1px solid #e2e4e7;
+	/* Features Grid Item Controls*/
+	.gt-grid-item-controls {
+		display: flex;
+		margin-top: 16px;
+		padding: 8px;
+		width: 100%;
+		background: #edeff0;
+		border: 1px solid #e2e4e7;
 
-			.components-icon-button {
-				padding: 4px 5px;
+		.components-icon-button {
+			padding: 4px 5px;
 
-				&:hover,
-				&:active,
-				&:focus {
-					background: #fff;
-				}
-
-				.dashicon {
-					width: 18px;
-				}
+			&:hover,
+			&:active,
+			&:focus {
+				background: #fff;
 			}
 
-			.remove-features-item {
-				margin-left: auto;
+			.dashicon {
+				width: 18px;
 			}
+		}
+
+		.remove-features-item {
+			margin-left: auto;
 		}
 	}
 

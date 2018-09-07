@@ -166,8 +166,11 @@ registerBlockType(
 			const fontSizeClass = getFontSizeClass( fontSize );
 
 			const blockClasses = classnames( {
-				[ `gt-columns-${ columns }` ]: columns,
 				[ `align${ blockAlignment }` ]: ( 'wide' === blockAlignment || 'full' === blockAlignment ),
+			} );
+
+			const gridClasses = classnames( 'gt-grid-container', {
+				[ `gt-columns-${ columns }` ]: columns,
 			} );
 
 			const itemClasses = classnames( 'gt-grid-item', {
@@ -220,7 +223,7 @@ registerBlockType(
 
 			return (
 				<div className={ blockClasses ? blockClasses : undefined }>
-					<div className="gt-grid-container">
+					<div className={ gridClasses }>
 
 						{
 							items.map( ( item, index ) => {
@@ -228,34 +231,38 @@ registerBlockType(
 								const svgClass = classnames( 'icon', `icon-${ item.icon }` );
 
 								return (
-									<div className={ itemClasses } style={ itemStyles } key={ index }>
+									<div className="gt-grid-column" key={ index }>
 
-										<div className="gt-icon-wrap">
-											<div className={ iconClasses } style={ iconStyles }>
+										<div className={ itemClasses } style={ itemStyles }>
 
-												<span className="gt-icon-svg" style={ paddingStyles } data-icon={ item.icon }>
-													<svg className={ svgClass } style={ svgStyles } aria-hidden="true" role="img">
-														<use href={ svgURL }></use>
-													</svg>
-												</span>
+											<div className="gt-icon-wrap">
+												<div className={ iconClasses } style={ iconStyles }>
+
+													<span className="gt-icon-svg" style={ paddingStyles } data-icon={ item.icon }>
+														<svg className={ svgClass } style={ svgStyles } aria-hidden="true" role="img">
+															<use href={ svgURL }></use>
+														</svg>
+													</span>
+
+												</div>
+											</div>
+
+											<div className="gt-content">
+
+												<RichText.Content
+													tagName={ 'h' + titleTag }
+													className="gt-title"
+													value={ item.title }
+												/>
+
+												<RichText.Content
+													tagName="div"
+													className={ textClasses }
+													value={ item.text }
+													style={ textStyles }
+												/>
 
 											</div>
-										</div>
-
-										<div className="gt-content">
-
-											<RichText.Content
-												tagName={ 'h' + titleTag }
-												className="gt-title"
-												value={ item.title }
-											/>
-
-											<RichText.Content
-												tagName="div"
-												className={ textClasses }
-												value={ item.text }
-												style={ textStyles }
-											/>
 
 										</div>
 
