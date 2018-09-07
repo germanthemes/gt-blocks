@@ -118,10 +118,20 @@
 
 /* Icon Picker Placeholder */
 .gt-icon-placeholder-wrapper .gt-show-icon-picker {
+  display: block;
   color: inherit;
-  padding: 0; }
+  padding: 0;
+  width: 100%;
+  text-align: inherit;
+  font-size: inherit; }
   .gt-icon-placeholder-wrapper .gt-show-icon-picker .gt-icon-svg .icon {
     pointer-events: none; }
+  .gt-icon-placeholder-wrapper .gt-show-icon-picker:not(:disabled):not([aria-disabled=true]):focus {
+    background-color: inherit;
+    color: inherit;
+    -webkit-box-shadow: none;
+            box-shadow: none;
+    outline: none; }
 .wp-block-gt-layout-blocks-image-text {
   display: -ms-flexbox;
   display: flex;

@@ -55,11 +55,22 @@
 .gt-icon-placeholder-wrapper {
 
 	.gt-show-icon-picker {
+		display: block;
 		color: inherit;
 		padding: 0;
+		width: 100%;
+		text-align: inherit;
+		font-size: inherit;
 
 		.gt-icon-svg .icon {
 			pointer-events: none;
+		}
+
+		&:not(:disabled):not([aria-disabled=true]):focus {
+			background-color: inherit;
+			color: inherit;
+			box-shadow: none;
+			outline: none;
 		}
 	}
 }
