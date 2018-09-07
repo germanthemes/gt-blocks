@@ -28,6 +28,7 @@ const { compose } = wp.compose;
 
 const {
 	AlignmentToolbar,
+	BlockAlignmentToolbar,
 	BlockControls,
 	ContrastChecker,
 	InspectorControls,
@@ -65,21 +66,6 @@ import {
 	gtIconVerticalAlignBottom,
 	gtIconImagePosition,
 } from '../../components/icons';
-
-const blockAlignmentControls = {
-	center: {
-		icon: 'align-center',
-		title: __( 'Align center' ),
-	},
-	wide: {
-		icon: 'align-wide',
-		title: __( 'Wide width' ),
-	},
-	full: {
-		icon: 'align-full-width',
-		title: __( 'Full width' ),
-	},
-};
 
 /* Set Fallback Styles */
 const applyFallbackStyles = withFallbackStyles( ( node, ownProps ) => {
@@ -282,16 +268,10 @@ class gtImageTextEdit extends Component {
 						<p><label htmlFor="gt-block-alignment" className="blocks-base-control__label">
 							{ __( 'Block Alignment' ) }
 						</label></p>
-						<Toolbar
-							controls={
-								[ 'center', 'wide', 'full' ].map( control => {
-									return {
-										...blockAlignmentControls[ control ],
-										isActive: blockAlignment === control,
-										onClick: () => setAttributes( { blockAlignment: control } ),
-									};
-								} )
-							}
+						<BlockAlignmentToolbar
+							value={ blockAlignment }
+							onChange={ ( newAlign ) => setAttributes( { blockAlignment: newAlign ? newAlign : blockAlignment } ) }
+							controls={ [ 'center', 'wide', 'full' ] }
 						/>
 
 						<ToggleControl
