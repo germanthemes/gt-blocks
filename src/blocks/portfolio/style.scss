@@ -3,28 +3,38 @@
 	/* Portfolio Grid Layout */
 	.gt-grid-container {
 		display: grid;
-		grid-template-columns: repeat(2, 1fr);
 		grid-gap: 1.5rem;
-	}
 
-	&.gt-columns-3 .gt-grid-container {
-		grid-template-columns: repeat(3, 1fr);
-	}
+		.gt-grid-column {
+			min-width: 0;
+			overflow: hidden;
+		}
 
-	&.gt-columns-4 .gt-grid-container {
-		grid-template-columns: repeat(4, 1fr);
-	}
+		&.gt-columns-2 {
+			grid-template-columns: repeat(2, 1fr);
+		}
 
-	&.gt-columns-5 .gt-grid-container {
-		grid-template-columns: repeat(5, 1fr);
-	}
+		&.gt-columns-3 {
+			grid-template-columns: repeat(3, 1fr);
+		}
 
-	&.gt-columns-6 .gt-grid-container {
-		grid-template-columns: repeat(6, 1fr);
+		&.gt-columns-4 {
+			grid-template-columns: repeat(4, 1fr);
+		}
+
+		&.gt-columns-5 {
+			grid-template-columns: repeat(5, 1fr);
+		}
+
+		&.gt-columns-6 {
+			grid-template-columns: repeat(6, 1fr);
+		}
 	}
 
 	/* Portfolio Item Styling */
 	.gt-grid-item {
+		display: flex;
+		flex-direction: column;
 
 		.gt-image {
 			margin: 0;

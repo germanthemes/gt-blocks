@@ -263,7 +263,7 @@ class gtPortfolioEdit extends Component {
 
 		const availableSizes = this.getAvailableSizes();
 
-		const blockClasses = classnames( className, {
+		const gridClasses = classnames( 'gt-grid-container', {
 			[ `gt-columns-${ columns }` ]: columns,
 		} );
 
@@ -418,46 +418,48 @@ class gtPortfolioEdit extends Component {
 
 				</InspectorControls>
 
-				<div className={ blockClasses }>
-					<div className="gt-grid-container">
+				<div className={ className }>
+					<div className={ gridClasses }>
 
 						{
 							items.map( ( item, index ) => {
 								return (
-									<div className="gt-grid-item" key={ index }>
+									<div className="gt-grid-column" key={ index }>
 
-										<PortfolioImage
-											imgID={ item.imgID }
-											imgURL={ item.imgURL }
-											imgAlt={ item.imgAlt }
-											onSelect={ ( img ) => this.onSelectImage( img, index ) }
-											onRemove={ () => this.onRemoveImage( index ) }
-											addSize={ this.addImageSize }
-											isSelected={ isSelected }
-										/>
-
-										<div className={ contentClasses } style={ contentStyles }>
-
-											<RichText
-												tagName={ 'h' + titleTag }
-												placeholder={ __( 'Enter a title' ) }
-												value={ item.title }
-												onChange={ ( newTitle ) => this.onChangeTitle( newTitle, index ) }
-												formattingControls={ [ 'bold', 'italic', 'strikethrough' ] }
-												keepPlaceholderOnFocus
+										<div className="gt-grid-item">
+											<PortfolioImage
+												imgID={ item.imgID }
+												imgURL={ item.imgURL }
+												imgAlt={ item.imgAlt }
+												onSelect={ ( img ) => this.onSelectImage( img, index ) }
+												onRemove={ () => this.onRemoveImage( index ) }
+												addSize={ this.addImageSize }
+												isSelected={ isSelected }
 											/>
 
-											<RichText
-												tagName="div"
-												multiline="p"
-												placeholder={ __( 'Enter your text here.' ) }
-												value={ item.text }
-												className={ textClasses }
-												style={ textStyles }
-												onChange={ ( newText ) => this.onChangeText( newText, index ) }
-												keepPlaceholderOnFocus
-											/>
+											<div className={ contentClasses } style={ contentStyles }>
 
+												<RichText
+													tagName={ 'h' + titleTag }
+													placeholder={ __( 'Enter a title' ) }
+													value={ item.title }
+													onChange={ ( newTitle ) => this.onChangeTitle( newTitle, index ) }
+													formattingControls={ [ 'bold', 'italic', 'strikethrough' ] }
+													keepPlaceholderOnFocus
+												/>
+
+												<RichText
+													tagName="div"
+													multiline="p"
+													placeholder={ __( 'Enter your text here.' ) }
+													value={ item.text }
+													className={ textClasses }
+													style={ textStyles }
+													onChange={ ( newText ) => this.onChangeText( newText, index ) }
+													keepPlaceholderOnFocus
+												/>
+
+											</div>
 										</div>
 
 										{ isSelected && (

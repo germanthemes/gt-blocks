@@ -146,8 +146,11 @@ registerBlockType(
 			const fontSizeClass = getFontSizeClass( fontSize );
 
 			const blockClasses = classnames( {
-				[ `gt-columns-${ columns }` ]: columns,
 				[ `align${ blockAlignment }` ]: ( 'wide' === blockAlignment || 'full' === blockAlignment ),
+			} );
+
+			const gridClasses = classnames( 'gt-grid-container', {
+				[ `gt-columns-${ columns }` ]: columns,
 			} );
 
 			const contentClasses = classnames( 'gt-content', {
@@ -173,35 +176,39 @@ registerBlockType(
 
 			return (
 				<div className={ blockClasses ? blockClasses : undefined }>
-					<div className="gt-grid-container">
+					<div className={ gridClasses }>
 
 						{
 							items.map( ( item, index ) => {
 								return (
-									<div className="gt-grid-item" key={ index }>
+									<div className="gt-grid-column" key={ index }>
 
-										<div className="gt-image">
-											<img
-												src={ item.imgURL }
-												alt={ item.imgAlt }
-												data-img-id={ item.imgID }
-											/>
-										</div>
+										<div className="gt-grid-item">
 
-										<div className={ contentClasses } style={ contentStyles }>
+											<div className="gt-image">
+												<img
+													src={ item.imgURL }
+													alt={ item.imgAlt }
+													data-img-id={ item.imgID }
+												/>
+											</div>
 
-											<RichText.Content
-												tagName={ 'h' + titleTag }
-												className="gt-title"
-												value={ item.title }
-											/>
+											<div className={ contentClasses } style={ contentStyles }>
 
-											<RichText.Content
-												tagName="div"
-												className={ textClasses }
-												value={ item.text }
-												style={ textStyles }
-											/>
+												<RichText.Content
+													tagName={ 'h' + titleTag }
+													className="gt-title"
+													value={ item.title }
+												/>
+
+												<RichText.Content
+													tagName="div"
+													className={ textClasses }
+													value={ item.text }
+													style={ textStyles }
+												/>
+
+											</div>
 
 										</div>
 

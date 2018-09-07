@@ -2,8 +2,6 @@
 
 	/* Portfolio Grid Item */
 	.gt-grid-item {
-		display: flex;
-		flex-direction: column;
 
 		/* Block Image Edit */
 		.gt-image {
@@ -43,7 +41,6 @@
 
 		/* Portfolio Grid Item Content */
 		.gt-content {
-			margin-bottom: 16px;
 
 			.gt-title {
 				color: inherit;
@@ -55,39 +52,39 @@
 				font-size: inherit;
 			}
 		}
+	}
 
-		/* Portfolio Grid Item Controls*/
-		.gt-grid-item-controls {
-			display: flex;
-			margin-top: 16px;
-			padding: 8px;
-			width: 100%;
-			background: #edeff0;
-			border: 1px solid #e2e4e7;
+	/* Portfolio Grid Item Controls*/
+	.gt-grid-item-controls {
+		display: flex;
+		margin-top: 16px;
+		padding: 8px;
+		width: 100%;
+		background: #edeff0;
+		border: 1px solid #e2e4e7;
 
-			.gt-grid-item-number {
-				margin: 2px 10px 2px 6px;
-				font-size: 14px;
-				font-weight: bold;
+		.gt-grid-item-number {
+			margin: 2px 10px 2px 6px;
+			font-size: 14px;
+			font-weight: bold;
+		}
+
+		.components-icon-button {
+			padding: 4px 5px;
+
+			&:hover,
+			&:active,
+			&:focus {
+				background: #fff;
 			}
 
-			.components-icon-button {
-				padding: 4px 5px;
-
-				&:hover,
-				&:active,
-				&:focus {
-					background: #fff;
-				}
-
-				.dashicon {
-					width: 18px;
-				}
+			.dashicon {
+				width: 18px;
 			}
+		}
 
-			.remove-portfolio-item {
-				margin-left: auto;
-			}
+		.remove-portfolio-item {
+			margin-left: auto;
 		}
 	}
 
