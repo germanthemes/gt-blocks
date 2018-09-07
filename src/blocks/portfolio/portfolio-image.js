@@ -4,25 +4,16 @@
 import { get } from 'lodash';
 
 /**
- * Internal block libraries
+ * WordPress dependencies
  */
 const { Component } = wp.element;
-const { __ } = wp.i18n;
 const { compose } = wp.compose;
+const { withSelect } = wp.data;
 
-const {
-	MediaUpload,
-} = wp.editor;
-
-const {
-	Button,
-	IconButton,
-	Placeholder,
-} = wp.components;
-
-const {
-	withSelect,
-} = wp.data;
+/**
+* Internal dependencies
+*/
+import { default as GtImagePlaceholder } from '../../components/image-placeholder';
 
 class PortfolioImage extends Component {
 	constructor() {
@@ -50,75 +41,26 @@ class PortfolioImage extends Component {
 	}
 
 	render() {
-		const { imgID, imgURL, imgAlt, onSelect, onRemove, isSelected } = this.props;
+		const {
+			imgID,
+			imgURL,
+			imgAlt,
+			onSelect,
+			onRemove,
+			isSelected,
+		} = this.props;
 
 		return (
 			<div className="gt-image">
 
-				{ ! imgID ? (
-
-					<Placeholder
-						className="gt-image-placeholder"
-						instructions={ __( 'Drag image here or add from media library' ) }
-						icon="format-image"
-						label={ __( 'Image' ) } >
-
-						<MediaUpload
-							onSelect={ onSelect }
-							type="image"
-							render={ ( { open } ) => (
-								<Button isLarge onClick={ open }>
-									{ __( 'Add from Media Library' ) }
-								</Button>
-							) }
-						/>
-					</Placeholder>
-
-				) : (
-
-					<div className="gt-image-wrapper">
-
-						{ isSelected ? (
-
-							<div className="gt-edit-image">
-
-								<MediaUpload
-									onSelect={ onSelect }
-									type="image"
-									value={ imgID }
-									render={ ( { open } ) => (
-										<Button onClick={ open } className="gt-image-button">
-											<img
-												src={ imgURL }
-												alt={ imgAlt }
-												data-img-id={ imgID }
-											/>
-										</Button>
-									) }
-								/>
-
-								<IconButton
-									className="remove-image"
-									label={ __( 'Remove Image' ) }
-									icon="no-alt"
-									onClick={ onRemove }
-								/>
-
-							</div>
-
-						) : (
-
-							<img
-								src={ imgURL }
-								alt={ imgAlt }
-								data-img-id={ imgID }
-							/>
-
-						) }
-
-					</div>
-
-				) }
+				<GtImagePlaceholder
+					imgID={ imgID }
+					imgURL={ imgURL }
+					imgAlt={ imgAlt }
+					onSelect={ onSelect }
+					onRemove={ onRemove }
+					isSelected={ isSelected }
+				/>
 
 			</div>
 		);

@@ -11,17 +11,7 @@ import {
 } from 'lodash';
 
 /**
- * Block dependencies
- */
-import {
-	gtVerticalAlignTopIcon,
-	gtVerticalAlignCenterIcon,
-	gtVerticalAlignBottomIcon,
-	gtImagePositionIcon,
-} from './icons';
-
-/**
- * Internal block libraries
+ * WordPress dependencies
  */
 const {
 	Component,
@@ -40,7 +30,6 @@ const {
 	BlockControls,
 	ContrastChecker,
 	InspectorControls,
-	MediaPlaceholder,
 	MediaUpload,
 	PanelColorSettings,
 	RichText,
@@ -64,6 +53,17 @@ const {
 const {
 	withSelect,
 } = wp.data;
+
+/**
+* Internal dependencies
+*/
+import { default as GtImagePlaceholder } from '../../components/image-placeholder';
+import {
+	gtVerticalAlignTopIcon,
+	gtVerticalAlignCenterIcon,
+	gtVerticalAlignBottomIcon,
+	gtImagePositionIcon,
+} from './icons';
 
 const columnSizes = [
 	{ value: 'gt-column-25', label: __( '25%' ) },
@@ -403,63 +403,14 @@ class gtImageTextEdit extends Component {
 
 					<div className="gt-image">
 
-						{ ! imgID ? (
-
-							<MediaPlaceholder
-								icon="format-image"
-								className="gt-image-placeholder"
-								labels={ {
-									title: __( 'Image' ),
-									name: __( 'an image' ),
-								} }
-								onSelect={ this.onSelectImage }
-								accept="image/*"
-								type="image"
-							/>
-
-						) : (
-
-							<div className="gt-image-wrapper">
-
-								{ isSelected ? (
-
-									<div className="gt-edit-image">
-
-										<MediaUpload
-											onSelect={ this.onSelectImage }
-											type="image"
-											value={ imgID }
-											render={ ( { open } ) => (
-												<Button onClick={ open } className="gt-image-button">
-													<img
-														src={ imgURL }
-														alt={ imgAlt }
-													/>
-												</Button>
-											) }
-										/>
-
-										<IconButton
-											className="remove-image"
-											label={ __( 'Remove Image' ) }
-											icon="no-alt"
-											onClick={ this.onRemoveImage }
-										/>
-
-									</div>
-
-								) : (
-
-									<img
-										src={ imgURL }
-										alt={ imgAlt }
-									/>
-
-								) }
-
-							</div>
-
-						) }
+						<GtImagePlaceholder
+							imgID={ imgID }
+							imgURL={ imgURL }
+							imgAlt={ imgAlt }
+							onSelect={ ( img ) => this.onSelectImage( img ) }
+							onRemove={ () => this.onRemoveImage() }
+							isSelected={ isSelected }
+						/>
 
 					</div>
 

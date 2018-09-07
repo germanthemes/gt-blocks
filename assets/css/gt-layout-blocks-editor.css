@@ -77,28 +77,7 @@
       -webkit-box-shadow: none;
               box-shadow: none; }
 .wp-block-gt-layout-blocks-image-text {
-  /* Block Image Edit */
   /* Block Content */ }
-  .wp-block-gt-layout-blocks-image-text .gt-image {
-    /* Image was added in Editor */
-    /* Image Placeholder */ }
-    .wp-block-gt-layout-blocks-image-text .gt-image .gt-image-wrapper .gt-edit-image {
-      position: relative; }
-      .wp-block-gt-layout-blocks-image-text .gt-image .gt-image-wrapper .gt-edit-image .gt-image-button {
-        display: block;
-        padding: 0; }
-      .wp-block-gt-layout-blocks-image-text .gt-image .gt-image-wrapper .gt-edit-image .remove-image {
-        position: absolute;
-        top: 8px;
-        right: 8px;
-        color: #fff;
-        background: rgba(0, 0, 0, 0.6);
-        padding: 5px;
-        border: 3px solid transparent; }
-    .wp-block-gt-layout-blocks-image-text .gt-image .gt-image-placeholder {
-      height: 100%; }
-      .wp-block-gt-layout-blocks-image-text .gt-image .gt-image-placeholder .components-form-file-upload {
-        margin-bottom: 12px; }
   .wp-block-gt-layout-blocks-image-text .gt-content .gt-title {
     margin-top: 0.5em;
     margin-bottom: 0.5em;
@@ -111,28 +90,7 @@
   /* Portfolio Grid Item Controls*/
   /* Add Portfolio Item*/ }
   .wp-block-gt-layout-blocks-portfolio .gt-grid-item {
-    /* Block Image Edit */
     /* Portfolio Grid Item Content */ }
-    .wp-block-gt-layout-blocks-portfolio .gt-grid-item .gt-image {
-      /* Image was added in Editor */
-      /* Image Placeholder */ }
-      .wp-block-gt-layout-blocks-portfolio .gt-grid-item .gt-image .gt-image-wrapper .gt-edit-image {
-        position: relative; }
-        .wp-block-gt-layout-blocks-portfolio .gt-grid-item .gt-image .gt-image-wrapper .gt-edit-image .gt-image-button {
-          display: block;
-          padding: 0; }
-        .wp-block-gt-layout-blocks-portfolio .gt-grid-item .gt-image .gt-image-wrapper .gt-edit-image .remove-image {
-          position: absolute;
-          top: 8px;
-          right: 8px;
-          color: #fff;
-          background: rgba(0, 0, 0, 0.6);
-          padding: 5px;
-          border: 3px solid transparent; }
-      .wp-block-gt-layout-blocks-portfolio .gt-grid-item .gt-image .gt-image-placeholder {
-        height: 100%; }
-        .wp-block-gt-layout-blocks-portfolio .gt-grid-item .gt-image .gt-image-placeholder .components-form-file-upload {
-          margin-bottom: 12px; }
     .wp-block-gt-layout-blocks-portfolio .gt-grid-item .gt-content .gt-title {
       color: inherit;
       margin-top: 0 !important; }

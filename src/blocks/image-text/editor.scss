@@ -1,41 +1,5 @@
 .wp-block-gt-layout-blocks-image-text {
 
-	/* Block Image Edit */
-	.gt-image {
-
-		/* Image was added in Editor */
-		.gt-image-wrapper {
-
-			.gt-edit-image {
-				position: relative;
-
-				.gt-image-button {
-					display: block;
-					padding: 0;
-				}
-
-				.remove-image {
-					position: absolute;
-					top: 8px;
-					right: 8px;
-					color: #fff;
-					background: rgba(0,0,0,0.6);
-					padding: 5px;
-					border: 3px solid transparent;
-				}
-			}
-		}
-
-		/* Image Placeholder */
-		.gt-image-placeholder {
-			height: 100%;
-
-			.components-form-file-upload {
-				margin-bottom: 12px;
-			}
-		}
-	}
-
 	/* Block Content */
 	.gt-content {
 
