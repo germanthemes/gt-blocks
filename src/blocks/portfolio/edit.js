@@ -9,19 +9,10 @@ import {
 	startCase,
 	uniq,
 } from 'lodash';
+const { getComputedStyle } = window;
 
 /**
- * Block dependencies
- */
-import { default as GridImage } from '../../components/grid-image';
-import {
-	gtTwoColumns,
-	gtThreeColumns,
-	gtFourColumns,
-} from './icons';
-
-/**
- * Internal block libraries
+ * WordPress dependencies
  */
 const {
 	Component,
@@ -60,15 +51,17 @@ const {
 	withFallbackStyles,
 } = wp.components;
 
-/* Column Icons */
-const columnIcons = {
-	2: gtTwoColumns,
-	3: gtThreeColumns,
-	4: gtFourColumns,
-};
+/**
+ * Internal dependencies
+ */
+import { default as GridImage } from '../../components/grid-image';
+import {
+	gtTwoColumns,
+	gtThreeColumns,
+	gtFourColumns,
+} from './icons';
 
-const { getComputedStyle } = window;
-
+/* Set Fallback Styles */
 const applyFallbackStyles = withFallbackStyles( ( node, ownProps ) => {
 	const { textColor, backgroundColor, fontSize, customFontSize } = ownProps.attributes;
 	const editableNode = node.querySelector( '[contenteditable="true"]' );
@@ -81,6 +74,9 @@ const applyFallbackStyles = withFallbackStyles( ( node, ownProps ) => {
 	};
 } );
 
+/**
+ * Block Edit Component
+ */
 class gtPortfolioEdit extends Component {
 	constructor() {
 		super( ...arguments );
@@ -286,6 +282,12 @@ class gtPortfolioEdit extends Component {
 		const textStyles = {
 			fontSize: fontSize.size ? fontSize.size + 'px' : undefined,
 			color: textColor.class ? undefined : textColor.color,
+		};
+
+		const columnIcons = {
+			2: gtTwoColumns,
+			3: gtThreeColumns,
+			4: gtFourColumns,
 		};
 
 		return (

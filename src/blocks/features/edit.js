@@ -3,6 +3,7 @@
  */
 import classnames from 'classnames';
 import { range } from 'lodash';
+const { getComputedStyle } = window;
 
 /**
  * WordPress dependencies
@@ -45,8 +46,8 @@ const {
 } = wp.components;
 
 /**
-* Indernal dependencies
-*/
+ * Internal dependencies
+ */
 import { default as IconPicker } from '../../components/icon-picker';
 import {
 	gtTwoColumns,
@@ -54,15 +55,7 @@ import {
 	gtFourColumns,
 } from './icons';
 
-/* Column Icons */
-const columnIcons = {
-	2: gtTwoColumns,
-	3: gtThreeColumns,
-	4: gtFourColumns,
-};
-
-const { getComputedStyle } = window;
-
+/* Set Fallback Styles */
 const applyFallbackStyles = withFallbackStyles( ( node, ownProps ) => {
 	const { textColor, backgroundColor, fontSize, customFontSize } = ownProps.attributes;
 	const editableNode = node.querySelector( '[contenteditable="true"]' );
@@ -75,6 +68,9 @@ const applyFallbackStyles = withFallbackStyles( ( node, ownProps ) => {
 	};
 } );
 
+/**
+ * Block Edit Component
+ */
 class gtFeaturesEdit extends Component {
 	constructor() {
 		super( ...arguments );
@@ -234,6 +230,12 @@ class gtFeaturesEdit extends Component {
 
 		const textStyles = {
 			fontSize: fontSize.size ? fontSize.size + 'px' : undefined,
+		};
+
+		const columnIcons = {
+			2: gtTwoColumns,
+			3: gtThreeColumns,
+			4: gtFourColumns,
 		};
 
 		return (

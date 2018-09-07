@@ -2,9 +2,10 @@
  * External dependencies
  */
 import classnames from 'classnames';
+const { getComputedStyle } = window;
 
 /**
- * Internal block libraries
+ * WordPress dependencies
  */
 const {
 	Component,
@@ -37,8 +38,7 @@ const {
 	withFallbackStyles,
 } = wp.components;
 
-const { getComputedStyle } = window;
-
+/* Set Fallback Styles */
 const applyFallbackStyles = withFallbackStyles( ( node, ownProps ) => {
 	const { textColor, backgroundColor } = ownProps.attributes;
 	const editableNode = node.querySelector( '[contenteditable="true"]' );
@@ -50,6 +50,9 @@ const applyFallbackStyles = withFallbackStyles( ( node, ownProps ) => {
 	};
 } );
 
+/**
+ * Block Edit Component
+ */
 class gtContainerEdit extends Component {
 	constructor() {
 		super( ...arguments );

@@ -4,14 +4,7 @@
 import classnames from 'classnames';
 
 /**
- * Block dependencies
- */
-import './style.scss';
-import './editor.scss';
-import edit from './edit';
-
-/**
- * Internal block libraries
+ * WordPress dependencies
  */
 const { __ } = wp.i18n;
 const { registerBlockType } = wp.blocks;
@@ -20,6 +13,13 @@ const {
 	getColorClassName,
 	getFontSizeClass,
 } = wp.editor;
+
+/**
+ * Internal dependencies
+ */
+import './style.scss';
+import './editor.scss';
+import edit from './edit';
 
 /**
  * Register block

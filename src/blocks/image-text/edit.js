@@ -9,6 +9,7 @@ import {
 	get,
 	range,
 } from 'lodash';
+const { getComputedStyle } = window;
 
 /**
  * WordPress dependencies
@@ -55,8 +56,8 @@ const {
 } = wp.data;
 
 /**
-* Internal dependencies
-*/
+ * Internal dependencies
+ */
 import { default as GtImagePlaceholder } from '../../components/image-placeholder';
 import {
 	gtVerticalAlignTopIcon,
@@ -64,14 +65,6 @@ import {
 	gtVerticalAlignBottomIcon,
 	gtImagePositionIcon,
 } from './icons';
-
-const columnSizes = [
-	{ value: 'gt-column-25', label: __( '25%' ) },
-	{ value: 'gt-column-33', label: __( '33%' ) },
-	{ value: 'gt-column-40', label: __( '40%' ) },
-	{ value: 'gt-column-50', label: __( '50%' ) },
-	{ value: 'gt-column-66', label: __( '66%' ) },
-];
 
 const blockAlignmentControls = {
 	center: {
@@ -88,23 +81,7 @@ const blockAlignmentControls = {
 	},
 };
 
-const verticalAlignmentControls = {
-	top: {
-		icon: gtVerticalAlignTopIcon,
-		title: __( 'Top' ),
-	},
-	center: {
-		icon: gtVerticalAlignCenterIcon,
-		title: __( 'Center' ),
-	},
-	bottom: {
-		icon: gtVerticalAlignBottomIcon,
-		title: __( 'Bottom' ),
-	},
-};
-
-const { getComputedStyle } = window;
-
+/* Set Fallback Styles */
 const applyFallbackStyles = withFallbackStyles( ( node, ownProps ) => {
 	const { textColor, backgroundColor, fontSize, customFontSize } = ownProps.attributes;
 	const editableNode = node.querySelector( '[contenteditable="true"]' );
@@ -117,6 +94,9 @@ const applyFallbackStyles = withFallbackStyles( ( node, ownProps ) => {
 	};
 } );
 
+/**
+ * Block Edit Component
+ */
 class gtImageTextEdit extends Component {
 	constructor() {
 		super( ...arguments );
@@ -204,6 +184,21 @@ class gtImageTextEdit extends Component {
 			textAlign: textAlignment,
 		};
 
+		const verticalAlignmentControls = {
+			top: {
+				icon: gtVerticalAlignTopIcon,
+				title: __( 'Top' ),
+			},
+			center: {
+				icon: gtVerticalAlignCenterIcon,
+				title: __( 'Center' ),
+			},
+			bottom: {
+				icon: gtVerticalAlignBottomIcon,
+				title: __( 'Bottom' ),
+			},
+		};
+
 		return (
 			<Fragment>
 				<BlockControls>
@@ -265,7 +260,13 @@ class gtImageTextEdit extends Component {
 							label={ __( 'Column Size' ) }
 							value={ columnSize }
 							onChange={ ( newSize ) => setAttributes( { columnSize: newSize } ) }
-							options={ columnSizes }
+							options={ [
+								{ value: 'gt-column-25', label: __( '25%' ) },
+								{ value: 'gt-column-33', label: __( '33%' ) },
+								{ value: 'gt-column-40', label: __( '40%' ) },
+								{ value: 'gt-column-50', label: __( '50%' ) },
+								{ value: 'gt-column-66', label: __( '66%' ) },
+							] }
 						/>
 
 						<SelectControl
