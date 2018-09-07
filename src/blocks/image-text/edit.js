@@ -60,11 +60,11 @@ const {
  */
 import { default as GtImagePlaceholder } from '../../components/image-placeholder';
 import {
-	gtVerticalAlignTopIcon,
-	gtVerticalAlignCenterIcon,
-	gtVerticalAlignBottomIcon,
-	gtImagePositionIcon,
-} from './icons';
+	gtIconVerticalAlignTop,
+	gtIconVerticalAlignCenter,
+	gtIconVerticalAlignBottom,
+	gtIconImagePosition,
+} from '../../components/icons';
 
 const blockAlignmentControls = {
 	center: {
@@ -186,15 +186,15 @@ class gtImageTextEdit extends Component {
 
 		const verticalAlignmentControls = {
 			top: {
-				icon: gtVerticalAlignTopIcon,
+				icon: gtIconVerticalAlignTop,
 				title: __( 'Top' ),
 			},
 			center: {
-				icon: gtVerticalAlignCenterIcon,
+				icon: gtIconVerticalAlignCenter,
 				title: __( 'Center' ),
 			},
 			bottom: {
-				icon: gtVerticalAlignBottomIcon,
+				icon: gtIconVerticalAlignBottom,
 				title: __( 'Bottom' ),
 			},
 		};
@@ -228,7 +228,7 @@ class gtImageTextEdit extends Component {
 								) }
 								onClick={ () => setAttributes( { imagePosition: ! imagePosition } ) }
 							>
-								{ gtImagePositionIcon }
+								{ gtIconImagePosition }
 							</Button>
 						</Tooltip>
 					</Toolbar>

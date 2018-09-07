@@ -56,10 +56,10 @@ const {
  */
 import { default as GridImage } from '../../components/grid-image';
 import {
-	gtTwoColumns,
-	gtThreeColumns,
-	gtFourColumns,
-} from './icons';
+	gtIconNumberTwo,
+	gtIconNumberThree,
+	gtIconNumberFour,
+} from '../../components/icons';
 
 /* Set Fallback Styles */
 const applyFallbackStyles = withFallbackStyles( ( node, ownProps ) => {
@@ -285,9 +285,9 @@ class gtPortfolioEdit extends Component {
 		};
 
 		const columnIcons = {
-			2: gtTwoColumns,
-			3: gtThreeColumns,
-			4: gtFourColumns,
+			2: gtIconNumberTwo,
+			3: gtIconNumberThree,
+			4: gtIconNumberFour,
 		};
 
 		return (
