@@ -40,6 +40,7 @@ const {
 } = wp.editor;
 
 const {
+	BaseControl,
 	Button,
 	FontSizePicker,
 	IconButton,
@@ -265,14 +266,13 @@ class gtImageTextEdit extends Component {
 							] }
 						/>
 
-						<p><label htmlFor="gt-block-alignment" className="blocks-base-control__label">
-							{ __( 'Block Alignment' ) }
-						</label></p>
-						<BlockAlignmentToolbar
-							value={ blockAlignment }
-							onChange={ ( newAlign ) => setAttributes( { blockAlignment: newAlign ? newAlign : blockAlignment } ) }
-							controls={ [ 'center', 'wide', 'full' ] }
-						/>
+						<BaseControl id="gt-block-alignment" label={ __( 'Block Alignment' ) }>
+							<BlockAlignmentToolbar
+								value={ blockAlignment }
+								onChange={ ( newAlign ) => setAttributes( { blockAlignment: newAlign ? newAlign : blockAlignment } ) }
+								controls={ [ 'center', 'wide', 'full' ] }
+							/>
+						</BaseControl>
 
 						<ToggleControl
 							label={ __( 'Add bottom spacing?' ) }
@@ -307,46 +307,43 @@ class gtImageTextEdit extends Component {
 
 					<PanelBody title={ __( 'Text Settings' ) } initialOpen={ false } className="gt-panel-text-settings gt-panel">
 
-						<p><label htmlFor="gt-title-tag" className="blocks-base-control__label">
-							{ __( 'Heading' ) }
-						</label></p>
-						<Toolbar
-							controls={
-								range( 1, 7 ).map( ( level ) => ( {
-									icon: 'heading',
-									title: sprintf( __( 'Heading %s' ), level ),
-									isActive: level === titleTag,
-									onClick: () => setAttributes( { titleTag: level } ),
-									subscript: level,
-								} ) )
-							}
-						/>
+						<BaseControl id="gt-title-tag" label={ __( 'Heading' ) }>
+							<Toolbar
+								controls={
+									range( 1, 7 ).map( ( level ) => ( {
+										icon: 'heading',
+										title: sprintf( __( 'Heading %s' ), level ),
+										isActive: level === titleTag,
+										onClick: () => setAttributes( { titleTag: level } ),
+										subscript: level,
+									} ) )
+								}
+							/>
+						</BaseControl>
 
-						<p><label htmlFor="gt-font-size" className="blocks-base-control__label">
-							{ __( 'Font Size' ) }
-						</label></p>
-						<FontSizePicker
-							fontSizes={ fontSizes }
-							fallbackFontSize={ fallbackFontSize }
-							value={ fontSize.size }
-							onChange={ setFontSize }
-						/>
+						<BaseControl id="gt-font-size" label={ __( 'Font Size' ) }>
+							<FontSizePicker
+								fontSizes={ fontSizes }
+								fallbackFontSize={ fallbackFontSize }
+								value={ fontSize.size }
+								onChange={ setFontSize }
+							/>
+						</BaseControl>
 
-						<p><label htmlFor="gt-vertical-alignment" className="blocks-base-control__label">
-							{ __( 'Vertical Alignment' ) }
-						</label></p>
-						<Toolbar
-							className="gt-vertical-align-control"
-							controls={
-								[ 'top', 'center', 'bottom' ].map( control => {
-									return {
-										...verticalAlignmentControls[ control ],
-										isActive: verticalAlignment === control,
-										onClick: () => setAttributes( { verticalAlignment: control } ),
-									};
-								} )
-							}
-						/>
+						<BaseControl id="gt-vertical-alignment" label={ __( 'Vertical Alignment' ) }>
+							<Toolbar
+								className="gt-vertical-align-control"
+								controls={
+									[ 'top', 'center', 'bottom' ].map( control => {
+										return {
+											...verticalAlignmentControls[ control ],
+											isActive: verticalAlignment === control,
+											onClick: () => setAttributes( { verticalAlignment: control } ),
+										};
+									} )
+								}
+							/>
+						</BaseControl>
 
 					</PanelBody>
 

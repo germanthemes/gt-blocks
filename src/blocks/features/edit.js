@@ -34,6 +34,7 @@ const {
 } = wp.editor;
 
 const {
+	BaseControl,
 	Button,
 	Dashicon,
 	FontSizePicker,
@@ -245,8 +246,8 @@ class gtFeaturesEdit extends Component {
 
 					<BlockAlignmentToolbar
 						value={ blockAlignment }
-						onChange={ ( newAlign ) => setAttributes( { blockAlignment: newAlign } ) }
-						controls={ [ 'wide', 'full' ] }
+						onChange={ ( newAlign ) => setAttributes( { blockAlignment: newAlign ? newAlign : blockAlignment } ) }
+						controls={ [ 'center', 'wide', 'full' ] }
 					/>
 
 					<Toolbar
@@ -280,16 +281,13 @@ class gtFeaturesEdit extends Component {
 						/>
 
 						{ wideControlsEnabled && (
-							<Fragment>
-								<p><label htmlFor="gt-block-alignment" className="blocks-base-control__label">
-									{ __( 'Block Alignment' ) }
-								</label></p>,
+							<BaseControl id="gt-block-alignment" label={ __( 'Block Alignment' ) }>
 								<BlockAlignmentToolbar
 									value={ blockAlignment }
-									onChange={ ( newAlign ) => setAttributes( { blockAlignment: newAlign } ) }
+									onChange={ ( newAlign ) => setAttributes( { blockAlignment: newAlign ? newAlign : blockAlignment } ) }
 									controls={ [ 'center', 'wide', 'full' ] }
 								/>
-							</Fragment>
+							</BaseControl>
 						) }
 
 					</PanelBody>
@@ -331,30 +329,28 @@ class gtFeaturesEdit extends Component {
 
 					<PanelBody title={ __( 'Text Settings' ) } initialOpen={ false } className="gt-panel-text-settings gt-panel">
 
-						<p><label htmlFor="gt-title-tag" className="blocks-base-control__label">
-							{ __( 'Heading' ) }
-						</label></p>
-						<Toolbar
-							controls={
-								range( 1, 7 ).map( ( level ) => ( {
-									icon: 'heading',
-									title: sprintf( __( 'Heading %s' ), level ),
-									isActive: level === titleTag,
-									onClick: () => setAttributes( { titleTag: level } ),
-									subscript: level,
-								} ) )
-							}
-						/>
+						<BaseControl id="gt-title-tag" label={ __( 'Heading' ) }>
+							<Toolbar
+								controls={
+									range( 1, 7 ).map( ( level ) => ( {
+										icon: 'heading',
+										title: sprintf( __( 'Heading %s' ), level ),
+										isActive: level === titleTag,
+										onClick: () => setAttributes( { titleTag: level } ),
+										subscript: level,
+									} ) )
+								}
+							/>
+						</BaseControl>
 
-						<p><label htmlFor="gt-font-size" className="blocks-base-control__label">
-							{ __( 'Font Size' ) }
-						</label></p>
-						<FontSizePicker
-							fontSizes={ fontSizes }
-							fallbackFontSize={ fallbackFontSize }
-							value={ fontSize.size }
-							onChange={ setFontSize }
-						/>
+						<BaseControl id="gt-font-size" label={ __( 'Font Size' ) }>
+							<FontSizePicker
+								fontSizes={ fontSizes }
+								fallbackFontSize={ fallbackFontSize }
+								value={ fontSize.size }
+								onChange={ setFontSize }
+							/>
+						</BaseControl>
 
 					</PanelBody>
 
