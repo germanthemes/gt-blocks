@@ -93,7 +93,11 @@ registerBlockType(
 			},
 			outlineBorderWidth: {
 				type: 'number',
-				default: 3,
+				default: 2,
+			},
+			roundedCorners: {
+				type: 'number',
+				default: 0,
 			},
 			titleTag: {
 				type: 'number',
@@ -150,6 +154,7 @@ registerBlockType(
 				iconSize,
 				iconPadding,
 				outlineBorderWidth,
+				roundedCorners,
 				titleTag,
 				iconColor,
 				iconBackgroundColor,
@@ -202,6 +207,7 @@ registerBlockType(
 			const iconStyles = {
 				color: iconColorClass ? undefined : customIconColor,
 				backgroundColor: iconBackgroundClass ? undefined : customIconBackgroundColor,
+				borderRadius: ( iconLayout === 'square' && roundedCorners !== 0 ) ? roundedCorners + 'px' : undefined,
 			};
 
 			const paddingStyles = {
@@ -209,7 +215,7 @@ registerBlockType(
 				paddingBottom: iconPadding !== 32 ? iconPadding + 'px' : undefined,
 				paddingLeft: ( iconLayout !== 'default' && iconPadding !== 32 ) ? iconPadding + 'px' : undefined,
 				paddingRight: ( iconLayout !== 'default' && iconPadding !== 32 ) ? iconPadding + 'px' : undefined,
-				borderWidth: ( iconLayout === 'outline' && outlineBorderWidth !== 3 ) ? outlineBorderWidth + 'px' : undefined,
+				borderWidth: ( iconLayout === 'outline' && outlineBorderWidth !== 2 ) ? outlineBorderWidth + 'px' : undefined,
 			};
 
 			const svgStyles = {

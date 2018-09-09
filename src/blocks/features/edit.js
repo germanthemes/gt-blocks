@@ -186,6 +186,7 @@ class gtFeaturesEdit extends Component {
 			iconSize,
 			iconPadding,
 			outlineBorderWidth,
+			roundedCorners,
 			titleTag,
 		} = attributes;
 
@@ -217,6 +218,7 @@ class gtFeaturesEdit extends Component {
 		const iconStyles = {
 			color: iconColor.class ? undefined : iconColor.color,
 			backgroundColor: iconBackgroundColor.class ? undefined : iconBackgroundColor.color,
+			borderRadius: ( iconLayout === 'square' && roundedCorners !== 0 ) ? roundedCorners + 'px' : undefined,
 		};
 
 		const paddingStyles = iconLayout === 'default' ? {} : {
@@ -224,7 +226,7 @@ class gtFeaturesEdit extends Component {
 			paddingBottom: iconPadding !== 32 ? iconPadding + 'px' : undefined,
 			paddingLeft: ( iconLayout !== 'full' && iconPadding !== 32 ) ? iconPadding + 'px' : undefined,
 			paddingRight: ( iconLayout !== 'full' && iconPadding !== 32 ) ? iconPadding + 'px' : undefined,
-			borderWidth: ( iconLayout === 'outline' && outlineBorderWidth !== 3 ) ? outlineBorderWidth + 'px' : undefined,
+			borderWidth: ( iconLayout === 'outline' && outlineBorderWidth !== 2 ) ? outlineBorderWidth + 'px' : undefined,
 		};
 
 		const textClasses = classnames( 'gt-text', {
@@ -334,6 +336,16 @@ class gtFeaturesEdit extends Component {
 								onChange={ ( newWidth ) => setAttributes( { outlineBorderWidth: newWidth } ) }
 								min={ 1 }
 								max={ 12 }
+							/>
+						) }
+
+						{ iconLayout === 'square' && (
+							<RangeControl
+								label={ __( 'Rounded Corners' ) }
+								value={ roundedCorners }
+								onChange={ ( newRadius ) => setAttributes( { roundedCorners: newRadius } ) }
+								min={ 0 }
+								max={ 48 }
 							/>
 						) }
 

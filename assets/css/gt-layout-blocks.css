@@ -76,7 +76,7 @@
         display: inline-block;
         padding: 32px;
         border-radius: 100%;
-        border: 3px solid currentColor; }
+        border: 2px solid currentColor; }
       .wp-block-gt-layout-blocks-features .gt-grid-item .gt-icon-wrap .gt-icon.gt-icon-outline.has-icon-background {
         padding: 1.25rem; }
     .wp-block-gt-layout-blocks-features .gt-grid-item .gt-icon-wrap .gt-icon.gt-icon-circle:not(.has-icon-background), .wp-block-gt-layout-blocks-features .gt-grid-item .gt-icon-wrap .gt-icon.gt-icon-square:not(.has-icon-background), .wp-block-gt-layout-blocks-features .gt-grid-item .gt-icon-wrap .gt-icon.gt-icon-full:not(.has-icon-background) {
