@@ -15,3 +15,8 @@ import './blocks/container';
 import './blocks/features';
 import './blocks/image-text';
 import './blocks/portfolio';
+
+/**
+ * Test Sidebar Plugin
+ */
+import './data/sidebar.js';
