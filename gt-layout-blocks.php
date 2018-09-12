@@ -124,7 +124,6 @@ class GT_Layout_Blocks {
 			'wp-blocks',
 			'wp-i18n',
 			'wp-element',
-			'wp-edit-post',
 		), GTLB_VERSION );
 
 		wp_add_inline_script(
