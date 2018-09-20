@@ -1,0 +1,29 @@
+.wp-block-gt-layout-blocks-hero-image {
+	position: relative;
+	padding-top: 2rem;
+	padding-bottom: 2rem;
+
+	&.gt-has-background-image {
+		background-size: cover;
+		background-repeat: no-repeat;
+	}
+
+	&.gt-fixed-background {
+		background-attachment: fixed;
+	}
+
+	.gt-background-overlay {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		z-index: 1;
+	}
+
+	.gt-inner-content {
+		position: relative;
+		margin: 0 auto;
+		z-index: 2;
+	}
+}

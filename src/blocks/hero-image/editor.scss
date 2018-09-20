@@ -1,0 +1,50 @@
+.wp-block-gt-layout-blocks-hero-image {
+
+	.gt-inner-content {
+
+		h1, h2, h3, h4, h5, h6, p {
+			color: inherit;
+		}
+	}
+	}
+
+	.gt-blocks-hero-image-background-image-panel {
+
+	.gt-background-image {
+
+		.gt-set-image {
+			display: block;
+			transition: all .1s ease-out;
+			width: 100%;
+			background-color: #edeff0;
+			border: 1px dashed #a2aab2;
+			line-height: 20px;
+			padding: 10px 0;
+			text-align: center;
+
+			&:hover {
+				background-color: #f8f9f9;
+			}
+		}
+
+		.gt-image-button {
+			display: block;
+			padding: 0;
+
+			img {
+				vertical-align: top;
+			}
+		}
+
+		.gt-image-controls {
+			display: flex;
+			margin-top: 5px;
+			margin-bottom: 1.5em;
+
+			.gt-replace-image {
+				margin-top: 3px;
+				margin-right: 12px;
+			}
+		}
+	}
+}

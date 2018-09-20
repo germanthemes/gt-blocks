@@ -141,6 +141,26 @@
     -webkit-box-shadow: none;
             box-shadow: none;
     outline: none; }
+.wp-block-gt-layout-blocks-hero-image {
+  position: relative;
+  padding-top: 2rem;
+  padding-bottom: 2rem; }
+  .wp-block-gt-layout-blocks-hero-image.gt-has-background-image {
+    background-size: cover;
+    background-repeat: no-repeat; }
+  .wp-block-gt-layout-blocks-hero-image.gt-fixed-background {
+    background-attachment: fixed; }
+  .wp-block-gt-layout-blocks-hero-image .gt-background-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1; }
+  .wp-block-gt-layout-blocks-hero-image .gt-inner-content {
+    position: relative;
+    margin: 0 auto;
+    z-index: 2; }
 .wp-block-gt-layout-blocks-image-text {
   display: -ms-flexbox;
   display: flex;
