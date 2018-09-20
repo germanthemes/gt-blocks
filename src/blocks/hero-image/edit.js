@@ -53,7 +53,7 @@ const applyFallbackStyles = withFallbackStyles( ( node, ownProps ) => {
 /**
  * Block Edit Component
  */
-class gtContainerEdit extends Component {
+class gtHeroImageEdit extends Component {
 	constructor() {
 		super( ...arguments );
 
@@ -308,7 +308,14 @@ class gtContainerEdit extends Component {
 
 					<style>{ contentStyles }</style>
 					<div className="gt-inner-content">
-						<InnerBlocks />
+						<InnerBlocks
+							allowedBlocks={ [ 'core/heading', 'core/paragraph' ] }
+							template={ [
+								[ 'core/heading', { placeholder: __( 'Add Hero title' ) } ],
+								[ 'core/paragraph', { placeholder: __( 'Add Hero subtitle' ) } ],
+							] }
+							templateLock="all"
+						/>
 					</div>
 
 				</div>
@@ -322,4 +329,4 @@ export default compose(
 	withInstanceId,
 	withColors( 'backgroundColor', { textColor: 'color' } ),
 	applyFallbackStyles,
-)( gtContainerEdit );
+)( gtHeroImageEdit );
