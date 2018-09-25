@@ -141,6 +141,15 @@
     -webkit-box-shadow: none;
             box-shadow: none;
     outline: none; }
+.wp-block-gt-layout-blocks-heading {
+  margin-top: 24px;
+  margin-bottom: 24px;
+  line-height: 1.4;
+  font-weight: normal;
+  font-style: normal;
+  text-transform: none; }
+  .wp-block-gt-layout-blocks-heading.has-background {
+    padding: 12px 24px; }
 .wp-block-gt-layout-blocks-hero-image {
   position: relative;
   padding-top: 2rem;
