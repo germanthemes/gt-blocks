@@ -13,6 +13,7 @@ import './data/store.js';
  */
 import './blocks/container';
 import './blocks/features';
+import './blocks/heading';
 import './blocks/hero-image';
 import './blocks/image-text';
 import './blocks/portfolio';
