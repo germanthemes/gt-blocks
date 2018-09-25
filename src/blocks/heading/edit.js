@@ -38,6 +38,7 @@ const {
 	BaseControl,
 	FontSizePicker,
 	PanelBody,
+	SelectControl,
 	Toolbar,
 	withFallbackStyles,
 } = wp.components;
@@ -85,9 +86,12 @@ class gtHeadingEdit extends Component {
 			titleTag,
 			blockAlignment,
 			textAlignment,
+			fontStyle,
 		} = attributes;
 
 		const blockClasses = classnames( className, {
+			'gt-is-bold': ( 'bold' === fontStyle || 'bold-italic' === fontStyle ),
+			'gt-is-italic': ( 'italic' === fontStyle || 'bold-italic' === fontStyle ),
 			'has-background': backgroundColor.color,
 			[ backgroundColor.class ]: backgroundColor.class,
 			'has-text-color': textColor.color,
@@ -170,6 +174,18 @@ class gtHeadingEdit extends Component {
 								onChange={ setFontSize }
 							/>
 						</BaseControl>
+
+						<SelectControl
+							label={ __( 'Font Style' ) }
+							value={ fontStyle }
+							onChange={ ( newStyle ) => setAttributes( { fontStyle: newStyle } ) }
+							options={ [
+								{ value: 'none', label: __( 'None' ) },
+								{ value: 'bold', label: __( 'Bold' ) },
+								{ value: 'italic', label: __( 'Italic' ) },
+								{ value: 'bold-italic', label: __( 'Bold & Italic' ) },
+							] }
+						/>
 
 					</PanelBody>
 

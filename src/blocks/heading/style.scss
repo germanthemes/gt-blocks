@@ -9,4 +9,12 @@
 	&.has-background {
 		padding: 12px 24px;
 	}
+
+	&.gt-is-bold {
+		font-weight: bold;
+	}
+
+	&.gt-is-italic {
+		font-style: italic;
+	}
 }

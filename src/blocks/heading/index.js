@@ -58,6 +58,10 @@ registerBlockType(
 			textAlignment: {
 				type: 'string',
 			},
+			fontStyle: {
+				type: 'string',
+				default: 'bold',
+			},
 			textColor: {
 				type: 'string',
 			},
@@ -93,6 +97,7 @@ registerBlockType(
 				titleTag,
 				blockAlignment,
 				textAlignment,
+				fontStyle,
 				textColor,
 				backgroundColor,
 				customTextColor,
@@ -107,6 +112,8 @@ registerBlockType(
 
 			const blockClasses = classnames( {
 				[ `align${ blockAlignment }` ]: ( blockAlignment !== 'center' ),
+				'gt-is-bold': ( 'bold' === fontStyle || 'bold-italic' === fontStyle ),
+				'gt-is-italic': ( 'italic' === fontStyle || 'bold-italic' === fontStyle ),
 				'has-background': backgroundColor || customBackgroundColor,
 				[ textColorClass ]: textColorClass,
 				[ backgroundClass ]: backgroundClass,

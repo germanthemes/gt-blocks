@@ -150,6 +150,10 @@
   text-transform: none; }
   .wp-block-gt-layout-blocks-heading.has-background {
     padding: 12px 24px; }
+  .wp-block-gt-layout-blocks-heading.gt-is-bold {
+    font-weight: bold; }
+  .wp-block-gt-layout-blocks-heading.gt-is-italic {
+    font-style: italic; }
 .wp-block-gt-layout-blocks-hero-image {
   position: relative;
   padding-top: 2rem;
