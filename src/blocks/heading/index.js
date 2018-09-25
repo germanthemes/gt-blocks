@@ -62,6 +62,10 @@ registerBlockType(
 				type: 'string',
 				default: 'bold',
 			},
+			uppercase: {
+				type: 'boolean',
+				default: false,
+			},
 			textColor: {
 				type: 'string',
 			},
@@ -98,6 +102,7 @@ registerBlockType(
 				blockAlignment,
 				textAlignment,
 				fontStyle,
+				uppercase,
 				textColor,
 				backgroundColor,
 				customTextColor,
@@ -114,6 +119,7 @@ registerBlockType(
 				[ `align${ blockAlignment }` ]: ( blockAlignment !== 'center' ),
 				'gt-is-bold': ( 'bold' === fontStyle || 'bold-italic' === fontStyle ),
 				'gt-is-italic': ( 'italic' === fontStyle || 'bold-italic' === fontStyle ),
+				'gt-is-uppercase': uppercase,
 				'has-background': backgroundColor || customBackgroundColor,
 				[ textColorClass ]: textColorClass,
 				[ backgroundClass ]: backgroundClass,

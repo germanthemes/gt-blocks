@@ -17,4 +17,8 @@
 	&.gt-is-italic {
 		font-style: italic;
 	}
+
+	&.gt-is-uppercase {
+		text-transform: uppercase;
+	}
 }

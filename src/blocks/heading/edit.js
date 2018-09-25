@@ -39,6 +39,7 @@ const {
 	FontSizePicker,
 	PanelBody,
 	SelectControl,
+	ToggleControl,
 	Toolbar,
 	withFallbackStyles,
 } = wp.components;
@@ -87,11 +88,13 @@ class gtHeadingEdit extends Component {
 			blockAlignment,
 			textAlignment,
 			fontStyle,
+			uppercase,
 		} = attributes;
 
 		const blockClasses = classnames( className, {
 			'gt-is-bold': ( 'bold' === fontStyle || 'bold-italic' === fontStyle ),
 			'gt-is-italic': ( 'italic' === fontStyle || 'bold-italic' === fontStyle ),
+			'gt-is-uppercase': uppercase,
 			'has-background': backgroundColor.color,
 			[ backgroundColor.class ]: backgroundColor.class,
 			'has-text-color': textColor.color,
@@ -164,7 +167,7 @@ class gtHeadingEdit extends Component {
 
 					</PanelBody>
 
-					<PanelBody title={ __( 'Header Styling' ) } initialOpen={ false } className="gt-panel-header-styling gt-panel">
+					<PanelBody title={ __( 'Font Settings' ) } initialOpen={ false } className="gt-panel-font-settings gt-panel">
 
 						<BaseControl id="gt-font-size" label={ __( 'Font Size' ) }>
 							<FontSizePicker
@@ -185,6 +188,12 @@ class gtHeadingEdit extends Component {
 								{ value: 'italic', label: __( 'Italic' ) },
 								{ value: 'bold-italic', label: __( 'Bold & Italic' ) },
 							] }
+						/>
+
+						<ToggleControl
+							label={ __( 'Uppercase?' ) }
+							checked={ !! uppercase }
+							onChange={ () => setAttributes( { uppercase: ! uppercase } ) }
 						/>
 
 					</PanelBody>
