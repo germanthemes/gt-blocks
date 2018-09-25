@@ -45,7 +45,7 @@ registerBlockType(
 			title: {
 				type: 'array',
 				source: 'children',
-				selector: '.gt-title',
+				selector: 'h1,h2,h3,h4,h5,h6',
 			},
 			titleTag: {
 				type: 'number',
@@ -113,7 +113,7 @@ registerBlockType(
 				[ fontSizeClass ]: fontSizeClass,
 			} );
 
-			const styles = {
+			const blockStyles = {
 				textAlign: textAlignment,
 				backgroundColor: backgroundClass ? undefined : customBackgroundColor,
 				color: textColorClass ? undefined : customTextColor,
@@ -121,15 +121,12 @@ registerBlockType(
 			};
 
 			return (
-				<div className={ blockClasses ? blockClasses : undefined } style={ styles }>
-
-					<RichText.Content
-						tagName={ 'h' + titleTag }
-						className="gt-title"
-						value={ title }
-					/>
-
-				</div>
+				<RichText.Content
+					tagName={ 'h' + titleTag }
+					className={ blockClasses }
+					style={ blockStyles }
+					value={ title }
+				/>
 			);
 		},
 	},

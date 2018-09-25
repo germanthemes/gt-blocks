@@ -95,10 +95,11 @@ class gtHeadingEdit extends Component {
 			[ fontSize.class ]: fontSize.class,
 		} );
 
-		const styles = {
+		const blockStyles = {
+			textAlign: textAlignment,
 			backgroundColor: backgroundColor.class ? undefined : backgroundColor.color,
 			color: textColor.class ? undefined : textColor.color,
-			textAlign: textAlignment,
+			fontSize: fontSize.size ? fontSize.size + 'px' : undefined,
 		};
 
 		return (
@@ -126,7 +127,7 @@ class gtHeadingEdit extends Component {
 
 				<InspectorControls>
 
-					<PanelBody title={ __( 'Text Settings' ) } initialOpen={ false } className="gt-panel-text-settings gt-panel">
+					<PanelBody title={ __( 'Header Settings' ) } initialOpen={ false } className="gt-panel-header-settings gt-panel">
 
 						<BaseControl id="gt-title-tag" label={ __( 'Heading' ) }>
 							<Toolbar
@@ -149,6 +150,17 @@ class gtHeadingEdit extends Component {
 								controls={ [ 'center', 'wide', 'full' ] }
 							/>
 						</BaseControl>
+
+						<BaseControl id="gt-text-alignment" label={ __( 'Text Alignment' ) }>
+							<AlignmentToolbar
+								value={ textAlignment }
+								onChange={ ( newAlignment ) => setAttributes( { textAlignment: newAlignment } ) }
+							/>
+						</BaseControl>
+
+					</PanelBody>
+
+					<PanelBody title={ __( 'Header Styling' ) } initialOpen={ false } className="gt-panel-header-styling gt-panel">
 
 						<BaseControl id="gt-font-size" label={ __( 'Font Size' ) }>
 							<FontSizePicker
@@ -191,19 +203,15 @@ class gtHeadingEdit extends Component {
 
 				</InspectorControls>
 
-				<div className={ blockClasses } style={ styles }>
-
-					<RichText
-						tagName={ 'h' + titleTag }
-						placeholder={ __( 'Enter a title' ) }
-						value={ title }
-						className="gt-title"
-						style={ styles }
-						onChange={ ( newTitle ) => setAttributes( { title: newTitle } ) }
-						keepPlaceholderOnFocus
-					/>
-
-				</div>
+				<RichText
+					tagName={ 'h' + titleTag }
+					placeholder={ __( 'Enter a title' ) }
+					value={ title }
+					className={ blockClasses }
+					style={ blockStyles }
+					onChange={ ( newTitle ) => setAttributes( { title: newTitle } ) }
+					keepPlaceholderOnFocus
+				/>
 
 			</Fragment>
 		);
