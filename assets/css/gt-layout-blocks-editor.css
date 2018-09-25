@@ -76,9 +76,6 @@
       border: 1px solid #999;
       -webkit-box-shadow: none;
               box-shadow: none; }
-.editor-block-list__block .wp-block-gt-layout-blocks-heading {
-  margin-top: inherit;
-  margin-bottom: inherit; }
 .wp-block-gt-layout-blocks-hero-image .gt-inner-content h1, .wp-block-gt-layout-blocks-hero-image .gt-inner-content h2, .wp-block-gt-layout-blocks-hero-image .gt-inner-content h3, .wp-block-gt-layout-blocks-hero-image .gt-inner-content h4, .wp-block-gt-layout-blocks-hero-image .gt-inner-content h5, .wp-block-gt-layout-blocks-hero-image .gt-inner-content h6, .wp-block-gt-layout-blocks-hero-image .gt-inner-content p {
   color: inherit; }
 

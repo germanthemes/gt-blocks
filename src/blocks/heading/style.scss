@@ -1,24 +1,31 @@
 .wp-block-gt-layout-blocks-heading {
 	margin-top: 24px;
 	margin-bottom: 24px;
-	line-height: 1.4;
-	font-weight: normal;
-	font-style: normal;
-	text-transform: none;
 
-	&.has-background {
-		padding: 12px 24px;
-	}
+	.gt-title {
+		display: block;
+		margin: 0;
+		padding: 0;
+		line-height: 1.4;
+		font-weight: normal;
+		font-style: normal;
+		text-transform: none;
+		border: none;
 
-	&.gt-is-bold {
-		font-weight: bold;
-	}
+		&.has-background {
+			padding: 12px 24px;
+		}
 
-	&.gt-is-italic {
-		font-style: italic;
-	}
+		&.gt-is-bold {
+			font-weight: bold;
+		}
 
-	&.gt-is-uppercase {
-		text-transform: uppercase;
+		&.gt-is-italic {
+			font-style: italic;
+		}
+
+		&.gt-is-uppercase {
+			text-transform: uppercase;
+		}
 	}
 }

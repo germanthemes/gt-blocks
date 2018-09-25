@@ -87,11 +87,16 @@ class gtHeadingEdit extends Component {
 			titleTag,
 			blockAlignment,
 			textAlignment,
+			headingWidth,
 			fontStyle,
 			uppercase,
 		} = attributes;
 
-		const blockClasses = classnames( className, {
+		const blockStyles = {
+			textAlign: textAlignment,
+		};
+
+		const headingClasses = classnames( 'gt-title', {
 			'gt-is-bold': ( 'bold' === fontStyle || 'bold-italic' === fontStyle ),
 			'gt-is-italic': ( 'italic' === fontStyle || 'bold-italic' === fontStyle ),
 			'gt-is-uppercase': uppercase,
@@ -102,8 +107,8 @@ class gtHeadingEdit extends Component {
 			[ fontSize.class ]: fontSize.class,
 		} );
 
-		const blockStyles = {
-			textAlign: textAlignment,
+		const headingStyles = {
+			display: 'auto' === headingWidth ? 'inline-block' : undefined,
 			backgroundColor: backgroundColor.class ? undefined : backgroundColor.color,
 			color: textColor.class ? undefined : textColor.color,
 			fontSize: fontSize.size ? fontSize.size + 'px' : undefined,
@@ -134,9 +139,9 @@ class gtHeadingEdit extends Component {
 
 				<InspectorControls>
 
-					<PanelBody title={ __( 'Header Settings' ) } initialOpen={ false } className="gt-panel-header-settings gt-panel">
+					<PanelBody title={ __( 'Heading Settings' ) } initialOpen={ false } className="gt-panel-heading-settings gt-panel">
 
-						<BaseControl id="gt-title-tag" label={ __( 'Heading' ) }>
+						<BaseControl id="gt-title-tag" label={ __( 'Level' ) }>
 							<Toolbar
 								controls={
 									range( 1, 7 ).map( ( level ) => ( {
@@ -164,6 +169,17 @@ class gtHeadingEdit extends Component {
 								onChange={ ( newAlignment ) => setAttributes( { textAlignment: newAlignment } ) }
 							/>
 						</BaseControl>
+
+						<SelectControl
+							label={ __( 'Heading Width' ) }
+							value={ headingWidth }
+							onChange={ ( newWidth ) => setAttributes( { headingWidth: newWidth } ) }
+							options={ [
+								{ value: 'auto', label: __( 'Auto' ) },
+								{ value: 'full', label: __( '100%' ) },
+							] }
+							help={ __( 'The effect of this setting is only visible with a border or background color assigned.' ) }
+						/>
 
 					</PanelBody>
 
@@ -228,15 +244,17 @@ class gtHeadingEdit extends Component {
 
 				</InspectorControls>
 
-				<RichText
-					tagName={ 'h' + titleTag }
-					placeholder={ __( 'Enter a title' ) }
-					value={ title }
-					className={ blockClasses }
-					style={ blockStyles }
-					onChange={ ( newTitle ) => setAttributes( { title: newTitle } ) }
-					keepPlaceholderOnFocus
-				/>
+				<div className={ className } style={ blockStyles }>
+					<RichText
+						tagName={ 'h' + titleTag }
+						placeholder={ __( 'Enter a title' ) }
+						value={ title }
+						className={ headingClasses }
+						style={ headingStyles }
+						onChange={ ( newTitle ) => setAttributes( { title: newTitle } ) }
+						keepPlaceholderOnFocus
+					/>
+				</div>
 
 			</Fragment>
 		);

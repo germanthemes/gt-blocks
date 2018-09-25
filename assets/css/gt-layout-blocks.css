@@ -143,19 +143,24 @@
     outline: none; }
 .wp-block-gt-layout-blocks-heading {
   margin-top: 24px;
-  margin-bottom: 24px;
-  line-height: 1.4;
-  font-weight: normal;
-  font-style: normal;
-  text-transform: none; }
-  .wp-block-gt-layout-blocks-heading.has-background {
-    padding: 12px 24px; }
-  .wp-block-gt-layout-blocks-heading.gt-is-bold {
-    font-weight: bold; }
-  .wp-block-gt-layout-blocks-heading.gt-is-italic {
-    font-style: italic; }
-  .wp-block-gt-layout-blocks-heading.gt-is-uppercase {
-    text-transform: uppercase; }
+  margin-bottom: 24px; }
+  .wp-block-gt-layout-blocks-heading .gt-title {
+    display: block;
+    margin: 0;
+    padding: 0;
+    line-height: 1.4;
+    font-weight: normal;
+    font-style: normal;
+    text-transform: none;
+    border: none; }
+    .wp-block-gt-layout-blocks-heading .gt-title.has-background {
+      padding: 12px 24px; }
+    .wp-block-gt-layout-blocks-heading .gt-title.gt-is-bold {
+      font-weight: bold; }
+    .wp-block-gt-layout-blocks-heading .gt-title.gt-is-italic {
+      font-style: italic; }
+    .wp-block-gt-layout-blocks-heading .gt-title.gt-is-uppercase {
+      text-transform: uppercase; }
 .wp-block-gt-layout-blocks-hero-image {
   position: relative;
   padding-top: 2rem;

@@ -45,7 +45,7 @@ registerBlockType(
 			title: {
 				type: 'array',
 				source: 'children',
-				selector: 'h1,h2,h3,h4,h5,h6',
+				selector: '.gt-title',
 			},
 			titleTag: {
 				type: 'number',
@@ -57,6 +57,10 @@ registerBlockType(
 			},
 			textAlignment: {
 				type: 'string',
+			},
+			headingWidth: {
+				type: 'string',
+				default: 'full',
 			},
 			fontStyle: {
 				type: 'string',
@@ -101,6 +105,7 @@ registerBlockType(
 				titleTag,
 				blockAlignment,
 				textAlignment,
+				headingWidth,
 				fontStyle,
 				uppercase,
 				textColor,
@@ -117,6 +122,13 @@ registerBlockType(
 
 			const blockClasses = classnames( {
 				[ `align${ blockAlignment }` ]: ( blockAlignment !== 'center' ),
+			} );
+
+			const blockStyles = {
+				textAlign: textAlignment,
+			};
+
+			const headingClasses = classnames( 'gt-title', {
 				'gt-is-bold': ( 'bold' === fontStyle || 'bold-italic' === fontStyle ),
 				'gt-is-italic': ( 'italic' === fontStyle || 'bold-italic' === fontStyle ),
 				'gt-is-uppercase': uppercase,
@@ -126,20 +138,22 @@ registerBlockType(
 				[ fontSizeClass ]: fontSizeClass,
 			} );
 
-			const blockStyles = {
-				textAlign: textAlignment,
+			const headingStyles = {
+				display: 'auto' === headingWidth ? 'inline-block' : undefined,
 				backgroundColor: backgroundClass ? undefined : customBackgroundColor,
 				color: textColorClass ? undefined : customTextColor,
 				fontSize: fontSizeClass ? undefined : customFontSize,
 			};
 
 			return (
-				<RichText.Content
-					tagName={ 'h' + titleTag }
-					className={ blockClasses }
-					style={ blockStyles }
-					value={ title }
-				/>
+				<div className={ blockClasses ? blockClasses : undefined } style={ blockStyles }>
+					<RichText.Content
+						tagName={ 'h' + titleTag }
+						className={ headingClasses }
+						style={ headingStyles }
+						value={ title }
+					/>
+				</div>
 			);
 		},
 	},
