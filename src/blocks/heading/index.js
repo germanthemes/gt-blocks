@@ -62,6 +62,30 @@ registerBlockType(
 				type: 'string',
 				default: 'full',
 			},
+			marginTop: {
+				type: 'number',
+				default: 24,
+			},
+			marginBottom: {
+				type: 'number',
+				default: 24,
+			},
+			paddingTop: {
+				type: 'number',
+				default: 12,
+			},
+			paddingBottom: {
+				type: 'number',
+				default: 12,
+			},
+			paddingLeft: {
+				type: 'number',
+				default: 24,
+			},
+			paddingRight: {
+				type: 'number',
+				default: 24,
+			},
 			fontStyle: {
 				type: 'string',
 				default: 'bold',
@@ -106,6 +130,12 @@ registerBlockType(
 				blockAlignment,
 				textAlignment,
 				headingWidth,
+				marginTop,
+				marginBottom,
+				paddingTop,
+				paddingBottom,
+				paddingLeft,
+				paddingRight,
 				fontStyle,
 				uppercase,
 				textColor,
@@ -126,6 +156,8 @@ registerBlockType(
 
 			const blockStyles = {
 				textAlign: textAlignment,
+				marginTop: marginTop !== 24 ? marginTop + 'px' : undefined,
+				marginBottom: marginBottom !== 24 ? marginBottom + 'px' : undefined,
 			};
 
 			const headingClasses = classnames( 'gt-title', {
@@ -140,6 +172,10 @@ registerBlockType(
 
 			const headingStyles = {
 				display: 'auto' === headingWidth ? 'inline-block' : undefined,
+				paddingTop: paddingTop !== 12 ? paddingTop + 'px' : undefined,
+				paddingBottom: paddingBottom !== 12 ? paddingBottom + 'px' : undefined,
+				paddingLeft: paddingLeft !== 24 ? paddingLeft + 'px' : undefined,
+				paddingRight: paddingRight !== 24 ? paddingRight + 'px' : undefined,
 				backgroundColor: backgroundClass ? undefined : customBackgroundColor,
 				color: textColorClass ? undefined : customTextColor,
 				fontSize: fontSizeClass ? undefined : customFontSize,

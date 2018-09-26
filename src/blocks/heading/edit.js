@@ -38,6 +38,7 @@ const {
 	BaseControl,
 	FontSizePicker,
 	PanelBody,
+	RangeControl,
 	SelectControl,
 	ToggleControl,
 	Toolbar,
@@ -88,12 +89,20 @@ class gtHeadingEdit extends Component {
 			blockAlignment,
 			textAlignment,
 			headingWidth,
+			marginTop,
+			marginBottom,
+			paddingTop,
+			paddingBottom,
+			paddingLeft,
+			paddingRight,
 			fontStyle,
 			uppercase,
 		} = attributes;
 
 		const blockStyles = {
 			textAlign: textAlignment,
+			marginTop: marginTop !== 24 ? marginTop + 'px' : undefined,
+			marginBottom: marginBottom !== 24 ? marginBottom + 'px' : undefined,
 		};
 
 		const headingClasses = classnames( 'gt-title', {
@@ -109,6 +118,10 @@ class gtHeadingEdit extends Component {
 
 		const headingStyles = {
 			display: 'auto' === headingWidth ? 'inline-block' : undefined,
+			paddingTop: paddingTop !== 12 ? paddingTop + 'px' : undefined,
+			paddingBottom: paddingBottom !== 12 ? paddingBottom + 'px' : undefined,
+			paddingLeft: paddingLeft !== 24 ? paddingLeft + 'px' : undefined,
+			paddingRight: paddingRight !== 24 ? paddingRight + 'px' : undefined,
 			backgroundColor: backgroundColor.class ? undefined : backgroundColor.color,
 			color: textColor.class ? undefined : textColor.color,
 			fontSize: fontSize.size ? fontSize.size + 'px' : undefined,
@@ -179,6 +192,58 @@ class gtHeadingEdit extends Component {
 								{ value: 'full', label: __( '100%' ) },
 							] }
 							help={ __( 'The effect of this setting is only visible with a border or background color assigned.' ) }
+						/>
+
+					</PanelBody>
+
+					<PanelBody title={ __( 'Spacing Options' ) } initialOpen={ false } className="gt-panel-spacing-options gt-panel">
+
+						<RangeControl
+							label={ __( 'Margin Top' ) }
+							value={ marginTop }
+							onChange={ ( newMargin ) => setAttributes( { marginTop: newMargin } ) }
+							min={ 0 }
+							max={ 64 }
+						/>
+
+						<RangeControl
+							label={ __( 'Margin Bottom' ) }
+							value={ marginBottom }
+							onChange={ ( newMargin ) => setAttributes( { marginBottom: newMargin } ) }
+							min={ 0 }
+							max={ 64 }
+						/>
+
+						<RangeControl
+							label={ __( 'Padding Top' ) }
+							value={ paddingTop }
+							onChange={ ( newPadding ) => setAttributes( { paddingTop: newPadding } ) }
+							min={ 0 }
+							max={ 64 }
+						/>
+
+						<RangeControl
+							label={ __( 'Padding Bottom' ) }
+							value={ paddingBottom }
+							onChange={ ( newPadding ) => setAttributes( { paddingBottom: newPadding } ) }
+							min={ 0 }
+							max={ 64 }
+						/>
+
+						<RangeControl
+							label={ __( 'Padding Left' ) }
+							value={ paddingLeft }
+							onChange={ ( newPadding ) => setAttributes( { paddingLeft: newPadding } ) }
+							min={ 0 }
+							max={ 64 }
+						/>
+
+						<RangeControl
+							label={ __( 'Padding Right' ) }
+							value={ paddingRight }
+							onChange={ ( newPadding ) => setAttributes( { paddingRight: newPadding } ) }
+							min={ 0 }
+							max={ 64 }
 						/>
 
 					</PanelBody>
