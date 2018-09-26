@@ -51,6 +51,9 @@ registerBlockType(
 				type: 'number',
 				default: 2,
 			},
+			placeholder: {
+				type: 'string',
+			},
 			blockAlignment: {
 				type: 'string',
 				default: 'center',

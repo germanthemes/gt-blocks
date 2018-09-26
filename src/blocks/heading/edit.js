@@ -86,6 +86,7 @@ class gtHeadingEdit extends Component {
 		const {
 			title,
 			titleTag,
+			placeholder,
 			blockAlignment,
 			textAlignment,
 			headingWidth,
@@ -344,11 +345,11 @@ class gtHeadingEdit extends Component {
 				<div className={ className } style={ blockStyles }>
 					<RichText
 						tagName={ 'h' + titleTag }
-						placeholder={ __( 'Enter a title' ) }
 						value={ title }
 						className={ headingClasses }
 						style={ headingStyles }
 						onChange={ ( newTitle ) => setAttributes( { title: newTitle } ) }
+						placeholder={ placeholder || __( 'Write heading…' ) }
 						keepPlaceholderOnFocus
 					/>
 				</div>

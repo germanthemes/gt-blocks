@@ -309,10 +309,16 @@ class gtHeroImageEdit extends Component {
 					<style>{ contentStyles }</style>
 					<div className="gt-inner-content">
 						<InnerBlocks
-							allowedBlocks={ [ 'core/heading', 'core/paragraph' ] }
+							allowedBlocks={ [ 'gt-layout-blocks/heading', 'core/paragraph' ] }
 							template={ [
-								[ 'core/heading', { placeholder: __( 'Add Hero title' ) } ],
-								[ 'core/paragraph', { placeholder: __( 'Add Hero subtitle' ) } ],
+								[ 'gt-layout-blocks/heading', {
+									placeholder: __( 'Write hero heading...' ),
+									customFontSize: 48,
+								} ],
+								[ 'core/paragraph', {
+									placeholder: __( 'Write hero text...' ),
+									customFontSize: 20,
+								} ],
 							] }
 							templateLock="all"
 						/>
