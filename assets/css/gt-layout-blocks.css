@@ -299,3 +299,8 @@
     .wp-block-gt-layout-blocks-portfolio .gt-grid-item .gt-content.has-background {
       padding-left: 1rem;
       padding-right: 1rem; }
+.wp-block-gt-layout-blocks-wrapper {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: nowrap;
+      flex-wrap: nowrap; }

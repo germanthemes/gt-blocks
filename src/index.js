@@ -17,3 +17,4 @@ import './blocks/heading';
 import './blocks/hero-image';
 import './blocks/image-text';
 import './blocks/portfolio';
+import './blocks/wrapper';

@@ -312,12 +312,21 @@ class gtHeroImageEdit extends Component {
 							allowedBlocks={ [ 'gt-layout-blocks/heading', 'core/paragraph' ] }
 							template={ [
 								[ 'gt-layout-blocks/heading', {
-									placeholder: __( 'Write hero heading...' ),
+									placeholder: __( 'Write Hero Heading...' ),
 									customFontSize: 48,
 								} ],
 								[ 'core/paragraph', {
-									placeholder: __( 'Write hero text...' ),
+									placeholder: __( 'Write Hero text...' ),
 									customFontSize: 20,
+								} ],
+								[ 'gt-layout-blocks/wrapper', {
+									customClass: 'gt-button-wrapper',
+									allowedBlocks: [ 'core/button' ],
+									template: [
+										[ 'core/button', {} ],
+										[ 'core/button', {} ],
+									],
+									templateLock: 'all',
 								} ],
 							] }
 							templateLock="all"
