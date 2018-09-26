@@ -161,6 +161,13 @@
       font-style: italic; }
     .wp-block-gt-layout-blocks-heading .gt-title.gt-is-uppercase {
       text-transform: uppercase; }
+    .wp-block-gt-layout-blocks-heading .gt-title.gt-border-top, .wp-block-gt-layout-blocks-heading .gt-title.gt-border-horizontal, .wp-block-gt-layout-blocks-heading .gt-title.gt-border-full {
+      border-top: 4px solid currentColor; }
+    .wp-block-gt-layout-blocks-heading .gt-title.gt-border-bottom, .wp-block-gt-layout-blocks-heading .gt-title.gt-border-horizontal, .wp-block-gt-layout-blocks-heading .gt-title.gt-border-full {
+      border-bottom: 4px solid currentColor; }
+    .wp-block-gt-layout-blocks-heading .gt-title.gt-border-vertical, .wp-block-gt-layout-blocks-heading .gt-title.gt-border-full {
+      border-left: 4px solid currentColor;
+      border-right: 4px solid currentColor; }
 .wp-block-gt-layout-blocks-hero-image {
   position: relative;
   padding-top: 2rem;

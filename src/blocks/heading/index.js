@@ -112,6 +112,14 @@ registerBlockType(
 			customFontSize: {
 				type: 'number',
 			},
+			border: {
+				type: 'string',
+				default: 'none',
+			},
+			borderWidth: {
+				type: 'number',
+				default: 4,
+			},
 		},
 
 		getEditWrapperProps( attributes ) {
@@ -144,6 +152,8 @@ registerBlockType(
 				customBackgroundColor,
 				fontSize,
 				customFontSize,
+				border,
+				borderWidth,
 			} = attributes;
 
 			const textColorClass = getColorClassName( 'color', textColor );
@@ -151,7 +161,7 @@ registerBlockType(
 			const fontSizeClass = getFontSizeClass( fontSize );
 
 			const blockClasses = classnames( {
-				[ `align${ blockAlignment }` ]: ( blockAlignment !== 'center' ),
+				[ `align${ blockAlignment }` ]: 'center' !== blockAlignment,
 			} );
 
 			const blockStyles = {
@@ -161,13 +171,14 @@ registerBlockType(
 			};
 
 			const headingClasses = classnames( 'gt-title', {
-				'gt-is-bold': ( 'bold' === fontStyle || 'bold-italic' === fontStyle ),
-				'gt-is-italic': ( 'italic' === fontStyle || 'bold-italic' === fontStyle ),
+				'gt-is-bold': 'bold' === fontStyle || 'bold-italic' === fontStyle,
+				'gt-is-italic': 'italic' === fontStyle || 'bold-italic' === fontStyle,
 				'gt-is-uppercase': uppercase,
 				'has-background': backgroundColor || customBackgroundColor,
 				[ textColorClass ]: textColorClass,
 				[ backgroundClass ]: backgroundClass,
 				[ fontSizeClass ]: fontSizeClass,
+				[ `gt-border-${ border }` ]: 'none' !== border,
 			} );
 
 			const headingStyles = {
@@ -179,6 +190,7 @@ registerBlockType(
 				backgroundColor: backgroundClass ? undefined : customBackgroundColor,
 				color: textColorClass ? undefined : customTextColor,
 				fontSize: fontSizeClass ? undefined : customFontSize,
+				borderWidth: borderWidth !== 4 ? borderWidth + 'px' : undefined,
 			};
 
 			return (

@@ -97,6 +97,8 @@ class gtHeadingEdit extends Component {
 			paddingRight,
 			fontStyle,
 			uppercase,
+			border,
+			borderWidth,
 		} = attributes;
 
 		const blockStyles = {
@@ -114,6 +116,7 @@ class gtHeadingEdit extends Component {
 			'has-text-color': textColor.color,
 			[ textColor.class ]: textColor.class,
 			[ fontSize.class ]: fontSize.class,
+			[ `gt-border-${ border }` ]: ( 'none' !== border ),
 		} );
 
 		const headingStyles = {
@@ -125,6 +128,7 @@ class gtHeadingEdit extends Component {
 			backgroundColor: backgroundColor.class ? undefined : backgroundColor.color,
 			color: textColor.class ? undefined : textColor.color,
 			fontSize: fontSize.size ? fontSize.size + 'px' : undefined,
+			borderWidth: borderWidth !== 4 ? borderWidth + 'px' : undefined,
 		};
 
 		return (
@@ -306,6 +310,34 @@ class gtHeadingEdit extends Component {
 							fontSize={ fontSize.size }
 						/>
 					</PanelColorSettings>
+
+					<PanelBody title={ __( 'Border Settings' ) } initialOpen={ false } className="gt-panel-border-settings gt-panel">
+
+						<SelectControl
+							label={ __( 'Border' ) }
+							value={ border }
+							onChange={ ( newBorderStyle ) => setAttributes( { border: newBorderStyle } ) }
+							options={ [
+								{ value: 'none', label: __( 'None' ) },
+								{ value: 'top', label: __( 'Top' ) },
+								{ value: 'bottom', label: __( 'Bottom' ) },
+								{ value: 'horizontal', label: __( 'Horizontal' ) },
+								{ value: 'vertical', label: __( 'Vertical' ) },
+								{ value: 'full', label: __( 'All sides' ) },
+							] }
+						/>
+
+						{ 'none' !== border && (
+							<RangeControl
+								label={ __( 'Border Width' ) }
+								value={ borderWidth }
+								onChange={ ( newWidth ) => setAttributes( { borderWidth: newWidth } ) }
+								min={ 1 }
+								max={ 12 }
+							/>
+						) }
+
+					</PanelBody>
 
 				</InspectorControls>
 
