@@ -1,0 +1,63 @@
+.wp-block-gt-layout-blocks-button {
+
+	.gt-button {
+		display: inline-block;
+		margin: 0;
+		padding: 0;
+		font-weight: normal;
+		font-style: normal;
+		line-height: 1.4;
+		text-align: center;
+		text-decoration: none;
+		text-transform: none;
+		border: none;
+		border-radius: 0;
+		box-shadow: none;
+		cursor: pointer;
+		white-space: normal;
+		word-break: break-all;
+
+		.gt-button-text {
+			display: inline-block;
+			margin: 0;
+			padding: 12px 24px;
+
+			&:not(.has-background) {
+				background-color: #303030;
+			}
+
+			&:not(.has-text-color) {
+				color: #fff;
+			}
+		}
+
+		&:not(.has-background) {
+			background-color: #424242;
+		}
+
+		&:not(.has-text-color) {
+			color: #fff;
+		}
+
+		&:link,
+		&:visited,
+		&:hover .gt-button-text,
+		&:active .gt-button-text,
+		&:focus .gt-button-text {
+			color: inherit;
+			background: transparent;
+		}
+
+		&.gt-is-bold {
+			font-weight: bold;
+		}
+
+		&.gt-is-italic {
+			font-style: italic;
+		}
+
+		&.gt-is-uppercase {
+			text-transform: uppercase;
+		}
+	}
+}

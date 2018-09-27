@@ -11,6 +11,7 @@ import './data/store.js';
 /**
  * Import Blocks
  */
+import './blocks/button';
 import './blocks/container';
 import './blocks/features';
 import './blocks/heading';
