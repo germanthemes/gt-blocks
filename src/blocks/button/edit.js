@@ -67,6 +67,10 @@ class gtButtonEdit extends Component {
 			textColor,
 			setTextColor,
 			fallbackTextColor,
+			hoverColor,
+			setHoverColor,
+			hoverBackgroundColor,
+			setHoverBackgroundColor,
 			fontSize,
 			setFontSize,
 			fallbackFontSize,
@@ -90,10 +94,16 @@ class gtButtonEdit extends Component {
 			'gt-is-bold': ( 'bold' === fontStyle || 'bold-italic' === fontStyle ),
 			'gt-is-italic': ( 'italic' === fontStyle || 'bold-italic' === fontStyle ),
 			'gt-is-uppercase': uppercase,
+			'has-hover-text-color': hoverColor.color,
+			[ hoverColor.class ]: hoverColor.class,
+			'has-hover-background': hoverBackgroundColor.color,
+			[ hoverBackgroundColor.class ]: hoverBackgroundColor.class,
 			[ fontSize.class ]: fontSize.class,
 		} );
 
 		const buttonStyles = {
+			color: hoverColor.class ? undefined : hoverColor.color,
+			backgroundColor: hoverBackgroundColor.class ? undefined : hoverBackgroundColor.color,
 			fontSize: fontSize.size ? fontSize.size + 'px' : undefined,
 		};
 
@@ -180,6 +190,24 @@ class gtButtonEdit extends Component {
 						/>
 					</PanelColorSettings>
 
+					<PanelColorSettings
+						title={ __( 'Hover Color Settings' ) }
+						initialOpen={ false }
+						colorSettings={ [
+							{
+								value: hoverBackgroundColor.color,
+								onChange: setHoverBackgroundColor,
+								label: __( 'Background Color' ),
+							},
+							{
+								value: hoverColor.color,
+								onChange: setHoverColor,
+								label: __( 'Text Color' ),
+							},
+						] }
+					>
+					</PanelColorSettings>
+
 				</InspectorControls>
 
 				<div className={ className } style={ blockStyles }>
@@ -207,7 +235,7 @@ class gtButtonEdit extends Component {
 }
 
 export default compose( [
-	withColors( 'backgroundColor', { textColor: 'color' } ),
+	withColors( 'backgroundColor', { textColor: 'color' }, { hoverColor: 'color' }, { hoverBackgroundColor: 'background-color' } ),
 	withFontSizes( 'fontSize' ),
 	applyFallbackStyles,
 	withSelect( ( select ) => {

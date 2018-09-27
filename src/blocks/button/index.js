@@ -82,6 +82,18 @@ registerBlockType(
 			customBackgroundColor: {
 				type: 'string',
 			},
+			hoverColor: {
+				type: 'string',
+			},
+			hoverBackgroundColor: {
+				type: 'string',
+			},
+			customHoverColor: {
+				type: 'string',
+			},
+			customHoverBackgroundColor: {
+				type: 'string',
+			},
 			fontSize: {
 				type: 'string',
 			},
@@ -103,12 +115,20 @@ registerBlockType(
 				backgroundColor,
 				customTextColor,
 				customBackgroundColor,
+				hoverColor,
+				hoverBackgroundColor,
+				customHoverColor,
+				customHoverBackgroundColor,
 				fontSize,
 				customFontSize,
 			} = attributes;
 
 			const textColorClass = getColorClassName( 'color', textColor );
 			const backgroundClass = getColorClassName( 'background-color', backgroundColor );
+
+			const hoverColorClass = getColorClassName( 'color', hoverColor );
+			const hoverBackgroundClass = getColorClassName( 'background-color', hoverBackgroundColor );
+
 			const fontSizeClass = getFontSizeClass( fontSize );
 
 			const blockClasses = {};
@@ -118,10 +138,16 @@ registerBlockType(
 				'gt-is-bold': 'bold' === fontStyle || 'bold-italic' === fontStyle,
 				'gt-is-italic': 'italic' === fontStyle || 'bold-italic' === fontStyle,
 				'gt-is-uppercase': uppercase,
+				'has-hover-text-color': hoverColor || customHoverColor,
+				[ hoverColorClass ]: hoverColorClass,
+				'has-hover-background': hoverBackgroundColor || customHoverBackgroundColor,
+				[ hoverBackgroundClass ]: hoverBackgroundClass,
 				[ fontSizeClass ]: fontSizeClass,
 			} );
 
 			const buttonStyles = {
+				color: hoverColorClass ? undefined : customHoverColor,
+				backgroundColor: hoverBackgroundClass ? undefined : customHoverBackgroundColor,
 				fontSize: fontSizeClass ? undefined : customFontSize,
 			};
 

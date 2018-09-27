@@ -31,20 +31,18 @@
 			}
 		}
 
-		&:not(.has-background) {
+		&:not(.has-hover-background) {
 			background-color: #424242;
 		}
 
-		&:not(.has-text-color) {
+		&:not(.has-hover-text-color) {
 			color: #fff;
 		}
 
-		&:link,
-		&:visited,
 		&:hover .gt-button-text,
 		&:active .gt-button-text,
 		&:focus .gt-button-text {
-			color: inherit;
+			color: currentColor;
 			background: transparent;
 		}
 
