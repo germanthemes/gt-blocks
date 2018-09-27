@@ -85,6 +85,9 @@ registerBlockType(
 			hoverColor: {
 				type: 'string',
 			},
+			hoverTextColor: {
+				type: 'string',
+			},
 			hoverBackgroundColor: {
 				type: 'string',
 			},
@@ -116,6 +119,7 @@ registerBlockType(
 				customTextColor,
 				customBackgroundColor,
 				hoverColor,
+				hoverTextColor,
 				hoverBackgroundColor,
 				customHoverColor,
 				customHoverBackgroundColor,
@@ -146,7 +150,7 @@ registerBlockType(
 			} );
 
 			const buttonStyles = {
-				color: hoverColorClass ? undefined : customHoverColor,
+				color: hoverColorClass ? hoverTextColor : customHoverColor,
 				backgroundColor: hoverBackgroundClass ? undefined : customHoverBackgroundColor,
 				fontSize: fontSizeClass ? undefined : customFontSize,
 			};

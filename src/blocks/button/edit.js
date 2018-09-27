@@ -58,6 +58,21 @@ const applyFallbackStyles = withFallbackStyles( ( node, ownProps ) => {
  * Block Edit Component
  */
 class gtButtonEdit extends Component {
+	constructor() {
+		super( ...arguments );
+		this.setHoverTextColor = this.setHoverTextColor.bind( this );
+	}
+
+	setHoverTextColor( color ) {
+		const {
+			setHoverColor,
+			setAttributes,
+		} = this.props;
+
+		setHoverColor( color );
+		setAttributes( { hoverTextColor: color } );
+	}
+
 	render() {
 		const {
 			attributes,
@@ -68,7 +83,6 @@ class gtButtonEdit extends Component {
 			setTextColor,
 			fallbackTextColor,
 			hoverColor,
-			setHoverColor,
 			hoverBackgroundColor,
 			setHoverBackgroundColor,
 			fontSize,
@@ -102,7 +116,7 @@ class gtButtonEdit extends Component {
 		} );
 
 		const buttonStyles = {
-			color: hoverColor.class ? undefined : hoverColor.color,
+			color: hoverColor.color,
 			backgroundColor: hoverBackgroundColor.class ? undefined : hoverBackgroundColor.color,
 			fontSize: fontSize.size ? fontSize.size + 'px' : undefined,
 		};
@@ -201,7 +215,7 @@ class gtButtonEdit extends Component {
 							},
 							{
 								value: hoverColor.color,
-								onChange: setHoverColor,
+								onChange: this.setHoverTextColor,
 								label: __( 'Text Color' ),
 							},
 						] }
