@@ -183,6 +183,7 @@ class gtButtonEdit extends Component {
 		};
 
 		const textClasses = classnames( 'gt-button-text', {
+			[ `gt-button-${ buttonSize }` ]: buttonSize,
 			'has-background': backgroundColor.color,
 			[ backgroundColor.class ]: backgroundColor.class,
 			'has-text-color': textColor.color,
@@ -190,10 +191,10 @@ class gtButtonEdit extends Component {
 		} );
 
 		const textStyles = {
-			paddingTop: paddingVertical !== 6 ? paddingVertical + 'px' : undefined,
-			paddingBottom: paddingVertical !== 6 ? paddingVertical + 'px' : undefined,
-			paddingLeft: paddingHorizontal !== 18 ? paddingHorizontal + 'px' : undefined,
-			paddingRight: paddingHorizontal !== 18 ? paddingHorizontal + 'px' : undefined,
+			paddingTop: ! buttonSize && paddingVertical !== 6 ? paddingVertical + 'px' : undefined,
+			paddingBottom: ! buttonSize && paddingVertical !== 6 ? paddingVertical + 'px' : undefined,
+			paddingLeft: ! buttonSize && paddingHorizontal !== 18 ? paddingHorizontal + 'px' : undefined,
+			paddingRight: ! buttonSize && paddingHorizontal !== 18 ? paddingHorizontal + 'px' : undefined,
 			backgroundColor: backgroundColor.class ? undefined : backgroundColor.color,
 			color: textColor.class ? undefined : textColor.color,
 		};

@@ -170,6 +170,7 @@ registerBlockType(
 			};
 
 			const textClasses = classnames( 'gt-button-text', {
+				[ `gt-button-${ buttonSize }` ]: buttonSize,
 				'has-background': backgroundColor || customBackgroundColor,
 				[ backgroundClass ]: backgroundClass,
 				'has-text-color': textColor || customTextColor,
@@ -177,10 +178,10 @@ registerBlockType(
 			} );
 
 			const textStyles = {
-				paddingTop: paddingVertical !== 6 ? paddingVertical + 'px' : undefined,
-				paddingBottom: paddingVertical !== 6 ? paddingVertical + 'px' : undefined,
-				paddingLeft: paddingHorizontal !== 18 ? paddingHorizontal + 'px' : undefined,
-				paddingRight: paddingHorizontal !== 18 ? paddingHorizontal + 'px' : undefined,
+				paddingTop: ! buttonSize && paddingVertical !== 6 ? paddingVertical + 'px' : undefined,
+				paddingBottom: ! buttonSize && paddingVertical !== 6 ? paddingVertical + 'px' : undefined,
+				paddingLeft: ! buttonSize && paddingHorizontal !== 18 ? paddingHorizontal + 'px' : undefined,
+				paddingRight: ! buttonSize && paddingHorizontal !== 18 ? paddingHorizontal + 'px' : undefined,
 				backgroundColor: backgroundClass ? undefined : customBackgroundColor,
 				color: textColorClass ? undefined : customTextColor,
 			};

@@ -29,6 +29,18 @@
 			&:not(.has-text-color) {
 				color: #fff;
 			}
+
+			&.gt-button-small {
+				padding: 4px 12px;
+			}
+
+			&.gt-button-medium {
+				padding: 8px 24px;
+			}
+
+			&.gt-button-large {
+				padding: 16px 48px;
+			}
 		}
 
 		&:not(.has-hover-background) {
