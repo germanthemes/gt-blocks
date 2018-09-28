@@ -62,6 +62,9 @@ registerBlockType(
 			placeholder: {
 				type: 'string',
 			},
+			buttonSize: {
+				type: 'string',
+			},
 			paddingVertical: {
 				type: 'number',
 				default: 6,
@@ -120,6 +123,7 @@ registerBlockType(
 				url,
 				title,
 				text,
+				buttonSize,
 				paddingVertical,
 				paddingHorizontal,
 				fontStyle,

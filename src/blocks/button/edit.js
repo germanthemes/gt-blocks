@@ -2,6 +2,7 @@
  * External dependencies
  */
 import classnames from 'classnames';
+import { forEach, map } from 'lodash';
 const { getComputedStyle } = window;
 
 /**
@@ -30,6 +31,8 @@ const {
 
 const {
 	BaseControl,
+	Button,
+	ButtonGroup,
 	FontSizePicker,
 	PanelBody,
 	RangeControl,
@@ -55,13 +58,67 @@ const applyFallbackStyles = withFallbackStyles( ( node, ownProps ) => {
 	};
 } );
 
+/* Define Button Sizes */
+const buttonSizes = {
+	small: {
+		name: 'S',
+		paddingVertical: 4,
+		paddingHorizontal: 12,
+	},
+	medium: {
+		name: 'M',
+		paddingVertical: 8,
+		paddingHorizontal: 24,
+	},
+	large: {
+		name: 'L',
+		paddingVertical: 16,
+		paddingHorizontal: 48,
+	},
+};
+
 /**
  * Block Edit Component
  */
 class gtButtonEdit extends Component {
 	constructor() {
 		super( ...arguments );
+
+		this.setButtonSize = this.setButtonSize.bind( this );
+		this.setVerticalPadding = this.setVerticalPadding.bind( this );
+		this.setHorizontalPadding = this.setHorizontalPadding.bind( this );
 		this.setHoverTextColor = this.setHoverTextColor.bind( this );
+	}
+
+	setButtonSize( size ) {
+		const paddingV = buttonSizes[ size ] && buttonSizes[ size ].paddingVertical ? buttonSizes[ size ].paddingVertical : 6;
+		const paddingH = buttonSizes[ size ] && buttonSizes[ size ].paddingHorizontal ? buttonSizes[ size ].paddingHorizontal : 18;
+
+		this.props.setAttributes( {
+			buttonSize: size,
+			paddingVertical: paddingV,
+			paddingHorizontal: paddingH,
+		} );
+	}
+
+	setVerticalPadding( padding ) {
+		this.props.setAttributes( { paddingVertical: padding } );
+		this.updateButtonSize( padding, this.props.attributes.paddingHorizontal );
+	}
+
+	setHorizontalPadding( padding ) {
+		this.props.setAttributes( { paddingHorizontal: padding } );
+		this.updateButtonSize( this.props.attributes.paddingVertical, padding );
+	}
+
+	updateButtonSize( vertical, horizontal ) {
+		forEach( buttonSizes, ( { paddingVertical, paddingHorizontal }, size ) => {
+			if ( paddingVertical === vertical && paddingHorizontal === horizontal ) {
+				this.props.setAttributes( { buttonSize: size } );
+				return false;
+			}
+			this.props.setAttributes( { buttonSize: undefined } );
+		} );
 	}
 
 	setHoverTextColor( color ) {
@@ -99,6 +156,7 @@ class gtButtonEdit extends Component {
 			title,
 			text,
 			placeholder,
+			buttonSize,
 			paddingVertical,
 			paddingHorizontal,
 			fontStyle,
@@ -148,12 +206,37 @@ class gtButtonEdit extends Component {
 
 				<InspectorControls>
 
-					<PanelBody title={ __( 'Button Settings' ) } initialOpen={ false } className="gt-panel-button-settings gt-panel">
+					<PanelBody title={ __( 'Button Size' ) } initialOpen={ false } className="gt-panel-button-size gt-panel">
+
+						<div className="components-font-size-picker__buttons">
+
+							<ButtonGroup aria-label={ __( 'Button Size' ) }>
+								{ map( buttonSizes, ( { name }, size ) => (
+									<Button
+										key={ size }
+										isLarge
+										isPrimary={ buttonSize === size }
+										aria-pressed={ buttonSize === size }
+										onClick={ () => this.setButtonSize( size ) }
+									>
+										{ name }
+									</Button>
+								) ) }
+							</ButtonGroup>
+
+							<Button
+								isLarge
+								onClick={ () => this.setButtonSize( undefined ) }
+							>
+								{ __( 'Reset' ) }
+							</Button>
+
+						</div>
 
 						<RangeControl
 							label={ __( 'Vertical Padding' ) }
 							value={ paddingVertical }
-							onChange={ ( newPadding ) => setAttributes( { paddingVertical: newPadding } ) }
+							onChange={ this.setVerticalPadding }
 							min={ 0 }
 							max={ 64 }
 						/>
@@ -161,7 +244,7 @@ class gtButtonEdit extends Component {
 						<RangeControl
 							label={ __( 'Horizontal Padding' ) }
 							value={ paddingHorizontal }
-							onChange={ ( newPadding ) => setAttributes( { paddingHorizontal: newPadding } ) }
+							onChange={ this.setHorizontalPadding }
 							min={ 0 }
 							max={ 64 }
 						/>
