@@ -62,6 +62,14 @@ registerBlockType(
 			placeholder: {
 				type: 'string',
 			},
+			paddingVertical: {
+				type: 'number',
+				default: 6,
+			},
+			paddingHorizontal: {
+				type: 'number',
+				default: 18,
+			},
 			fontStyle: {
 				type: 'string',
 				default: 'bold',
@@ -112,6 +120,8 @@ registerBlockType(
 				url,
 				title,
 				text,
+				paddingVertical,
+				paddingHorizontal,
 				fontStyle,
 				uppercase,
 				textColor,
@@ -163,6 +173,10 @@ registerBlockType(
 			} );
 
 			const textStyles = {
+				paddingTop: paddingVertical !== 6 ? paddingVertical + 'px' : undefined,
+				paddingBottom: paddingVertical !== 6 ? paddingVertical + 'px' : undefined,
+				paddingLeft: paddingHorizontal !== 18 ? paddingHorizontal + 'px' : undefined,
+				paddingRight: paddingHorizontal !== 18 ? paddingHorizontal + 'px' : undefined,
 				backgroundColor: backgroundClass ? undefined : customBackgroundColor,
 				color: textColorClass ? undefined : customTextColor,
 			};

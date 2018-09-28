@@ -32,6 +32,7 @@ const {
 	BaseControl,
 	FontSizePicker,
 	PanelBody,
+	RangeControl,
 	SelectControl,
 	ToggleControl,
 	withFallbackStyles,
@@ -98,6 +99,8 @@ class gtButtonEdit extends Component {
 			title,
 			text,
 			placeholder,
+			paddingVertical,
+			paddingHorizontal,
 			fontStyle,
 			uppercase,
 		} = attributes;
@@ -129,6 +132,10 @@ class gtButtonEdit extends Component {
 		} );
 
 		const textStyles = {
+			paddingTop: paddingVertical !== 6 ? paddingVertical + 'px' : undefined,
+			paddingBottom: paddingVertical !== 6 ? paddingVertical + 'px' : undefined,
+			paddingLeft: paddingHorizontal !== 18 ? paddingHorizontal + 'px' : undefined,
+			paddingRight: paddingHorizontal !== 18 ? paddingHorizontal + 'px' : undefined,
 			backgroundColor: backgroundColor.class ? undefined : backgroundColor.color,
 			color: textColor.class ? undefined : textColor.color,
 		};
@@ -142,6 +149,22 @@ class gtButtonEdit extends Component {
 				<InspectorControls>
 
 					<PanelBody title={ __( 'Button Settings' ) } initialOpen={ false } className="gt-panel-button-settings gt-panel">
+
+						<RangeControl
+							label={ __( 'Vertical Padding' ) }
+							value={ paddingVertical }
+							onChange={ ( newPadding ) => setAttributes( { paddingVertical: newPadding } ) }
+							min={ 0 }
+							max={ 64 }
+						/>
+
+						<RangeControl
+							label={ __( 'Horizontal Padding' ) }
+							value={ paddingHorizontal }
+							onChange={ ( newPadding ) => setAttributes( { paddingHorizontal: newPadding } ) }
+							min={ 0 }
+							max={ 64 }
+						/>
 
 					</PanelBody>
 
