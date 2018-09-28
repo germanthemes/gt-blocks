@@ -209,30 +209,34 @@ class gtButtonEdit extends Component {
 
 					<PanelBody title={ __( 'Button Size' ) } initialOpen={ false } className="gt-panel-button-size gt-panel">
 
-						<div className="components-font-size-picker__buttons">
+						<BaseControl id="gt-button-size" label={ __( 'Button Size' ) }>
 
-							<ButtonGroup aria-label={ __( 'Button Size' ) }>
-								{ map( buttonSizes, ( { name }, size ) => (
-									<Button
-										key={ size }
-										isLarge
-										isPrimary={ buttonSize === size }
-										aria-pressed={ buttonSize === size }
-										onClick={ () => this.setButtonSize( size ) }
-									>
-										{ name }
-									</Button>
-								) ) }
-							</ButtonGroup>
+							<div className="gt-button-size-picker">
 
-							<Button
-								isLarge
-								onClick={ () => this.setButtonSize( undefined ) }
-							>
-								{ __( 'Reset' ) }
-							</Button>
+								<ButtonGroup aria-label={ __( 'Button Size' ) }>
+									{ map( buttonSizes, ( { name }, size ) => (
+										<Button
+											key={ size }
+											isLarge
+											isPrimary={ buttonSize === size }
+											aria-pressed={ buttonSize === size }
+											onClick={ () => this.setButtonSize( size ) }
+										>
+											{ name }
+										</Button>
+									) ) }
+								</ButtonGroup>
 
-						</div>
+								<Button
+									isLarge
+									onClick={ () => this.setButtonSize( undefined ) }
+								>
+									{ __( 'Reset' ) }
+								</Button>
+
+							</div>
+
+						</BaseControl>
 
 						<RangeControl
 							label={ __( 'Vertical Padding' ) }
