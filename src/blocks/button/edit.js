@@ -341,7 +341,7 @@ class gtButtonEdit extends Component {
 
 				<div className={ className } style={ blockStyles }>
 
-					<span className={ hoverClasses } style={ hoverStyles }>
+					<span className={ hoverClasses } style={ hoverStyles } title={ title }>
 						<RichText
 							className={ buttonClasses }
 							style={ buttonStyles }
@@ -361,6 +361,7 @@ class gtButtonEdit extends Component {
 							<URLInput
 								value={ url }
 								onChange={ ( newURL ) => setAttributes( { url: newURL } ) }
+								autoFocus={ false }
 							/>
 							<IconButton icon="editor-break" label={ __( 'Apply' ) } type="submit" />
 						</form>

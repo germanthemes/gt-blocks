@@ -323,10 +323,21 @@ class gtHeroImageEdit extends Component {
 									customClass: 'gt-button-wrapper',
 									allowedBlocks: [ 'core/button' ],
 									template: [
-										[ 'core/button', {} ],
-										[ 'core/button', {} ],
+										[ 'gt-layout-blocks/button', {
+											placeholder: __( 'Button 1' ),
+											buttonSize: 'medium',
+											customFontSize: 20,
+										} ],
+										[ 'gt-layout-blocks/button', {
+											placeholder: __( 'Button 2' ),
+											buttonSize: 'medium',
+											customFontSize: 20,
+										} ],
 									],
 									templateLock: 'all',
+								} ],
+								[ 'core/spacer', {
+									height: 24,
 								} ],
 							] }
 							templateLock="all"
