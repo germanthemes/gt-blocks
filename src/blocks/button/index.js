@@ -57,7 +57,7 @@ registerBlockType(
 			text: {
 				type: 'array',
 				source: 'children',
-				selector: '.gt-button-text',
+				selector: '.gt-button',
 			},
 			placeholder: {
 				type: 'string',
@@ -152,56 +152,53 @@ registerBlockType(
 			const blockClasses = {};
 			const blockStyles = {};
 
-			const buttonClasses = classnames( 'gt-button', {
-				'gt-is-bold': 'bold' === fontStyle || 'bold-italic' === fontStyle,
-				'gt-is-italic': 'italic' === fontStyle || 'bold-italic' === fontStyle,
-				'gt-is-uppercase': uppercase,
+			const hoverClasses = classnames( 'gt-button-wrap', {
 				'has-hover-text-color': hoverColor || customHoverColor,
 				[ hoverColorClass ]: hoverColorClass,
 				'has-hover-background': hoverBackgroundColor || customHoverBackgroundColor,
 				[ hoverBackgroundClass ]: hoverBackgroundClass,
-				[ fontSizeClass ]: fontSizeClass,
 			} );
 
-			const buttonStyles = {
-				color: hoverColorClass ? hoverTextColor : customHoverColor,
+			const hoverStyles = {
+				color: hoverColorClass ? undefined : customHoverColor,
 				backgroundColor: hoverBackgroundClass ? undefined : customHoverBackgroundColor,
-				fontSize: fontSizeClass ? undefined : customFontSize,
 			};
 
-			const textClasses = classnames( 'gt-button-text', {
+			const buttonClasses = classnames( 'gt-button', {
 				[ `gt-button-${ buttonSize }` ]: buttonSize,
+				'gt-is-bold': 'bold' === fontStyle || 'bold-italic' === fontStyle,
+				'gt-is-italic': 'italic' === fontStyle || 'bold-italic' === fontStyle,
+				'gt-is-uppercase': uppercase,
 				'has-background': backgroundColor || customBackgroundColor,
 				[ backgroundClass ]: backgroundClass,
 				'has-text-color': textColor || customTextColor,
 				[ textColorClass ]: textColorClass,
+				[ fontSizeClass ]: fontSizeClass,
 			} );
 
-			const textStyles = {
+			const buttonStyles = {
 				paddingTop: ! buttonSize && paddingVertical !== 6 ? paddingVertical + 'px' : undefined,
 				paddingBottom: ! buttonSize && paddingVertical !== 6 ? paddingVertical + 'px' : undefined,
 				paddingLeft: ! buttonSize && paddingHorizontal !== 18 ? paddingHorizontal + 'px' : undefined,
 				paddingRight: ! buttonSize && paddingHorizontal !== 18 ? paddingHorizontal + 'px' : undefined,
 				backgroundColor: backgroundClass ? undefined : customBackgroundColor,
 				color: textColorClass ? undefined : customTextColor,
+				fontSize: fontSizeClass ? undefined : customFontSize,
 			};
 
 			return (
 				<div className={ blockClasses ? blockClasses : undefined } style={ blockStyles }>
 
-					<a
-						href={ url }
-						title={ title }
-						className={ buttonClasses }
-						style={ buttonStyles }
-					>
+					<span className={ hoverClasses } style={ hoverStyles }>
 						<RichText.Content
-							tagName="span"
-							className={ textClasses }
-							style={ textStyles }
+							tagName="a"
+							href={ url }
+							title={ title }
+							className={ buttonClasses }
+							style={ buttonStyles }
 							value={ text }
 						/>
-					</a>
+					</span>
 
 				</div>
 			);

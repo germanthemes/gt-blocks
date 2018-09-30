@@ -165,38 +165,38 @@ class gtButtonEdit extends Component {
 
 		const blockStyles = {};
 
-		const buttonClasses = classnames( 'gt-button', {
-			'gt-is-bold': ( 'bold' === fontStyle || 'bold-italic' === fontStyle ),
-			'gt-is-italic': ( 'italic' === fontStyle || 'bold-italic' === fontStyle ),
-			'gt-is-uppercase': uppercase,
+		const hoverClasses = classnames( 'gt-button-wrap', {
 			'has-hover-text-color': hoverColor.color,
 			[ hoverColor.class ]: hoverColor.class,
 			'has-hover-background': hoverBackgroundColor.color,
 			[ hoverBackgroundColor.class ]: hoverBackgroundColor.class,
-			[ fontSize.class ]: fontSize.class,
 		} );
 
-		const buttonStyles = {
-			color: hoverColor.color,
+		const hoverStyles = {
+			color: hoverColor.class ? undefined : hoverColor.color,
 			backgroundColor: hoverBackgroundColor.class ? undefined : hoverBackgroundColor.color,
-			fontSize: fontSize.size ? fontSize.size + 'px' : undefined,
 		};
 
-		const textClasses = classnames( 'gt-button-text', {
+		const buttonClasses = classnames( 'gt-button', {
 			[ `gt-button-${ buttonSize }` ]: buttonSize,
+			'gt-is-bold': ( 'bold' === fontStyle || 'bold-italic' === fontStyle ),
+			'gt-is-italic': ( 'italic' === fontStyle || 'bold-italic' === fontStyle ),
+			'gt-is-uppercase': uppercase,
 			'has-background': backgroundColor.color,
 			[ backgroundColor.class ]: backgroundColor.class,
 			'has-text-color': textColor.color,
 			[ textColor.class ]: textColor.class,
+			[ fontSize.class ]: fontSize.class,
 		} );
 
-		const textStyles = {
+		const buttonStyles = {
 			paddingTop: ! buttonSize && paddingVertical !== 6 ? paddingVertical + 'px' : undefined,
 			paddingBottom: ! buttonSize && paddingVertical !== 6 ? paddingVertical + 'px' : undefined,
 			paddingLeft: ! buttonSize && paddingHorizontal !== 18 ? paddingHorizontal + 'px' : undefined,
 			paddingRight: ! buttonSize && paddingHorizontal !== 18 ? paddingHorizontal + 'px' : undefined,
 			backgroundColor: backgroundColor.class ? undefined : backgroundColor.color,
 			color: textColor.class ? undefined : textColor.color,
+			fontSize: fontSize.size ? fontSize.size + 'px' : undefined,
 		};
 
 		return (
@@ -336,22 +336,19 @@ class gtButtonEdit extends Component {
 				</InspectorControls>
 
 				<div className={ className } style={ blockStyles }>
-					<a
-						href={ url }
-						title={ title }
-						className={ buttonClasses }
-						style={ buttonStyles }
-					>
+
+					<span className={ hoverClasses } style={ hoverStyles }>
 						<RichText
-							tagName="span"
-							className={ textClasses }
-							style={ textStyles }
+							className={ buttonClasses }
+							style={ buttonStyles }
 							onChange={ ( newText ) => setAttributes( { text: newText } ) }
+							formattingControls={ [ 'bold', 'italic', 'strikethrough' ] }
 							value={ text }
-							placeholder={ placeholder || __( 'Write button…' ) }
+							placeholder={ placeholder || __( 'Add text…' ) }
 							keepPlaceholderOnFocus
 						/>
-					</a>
+					</span>
+
 				</div>
 
 			</Fragment>

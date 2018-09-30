@@ -1,26 +1,26 @@
 .wp-block-gt-layout-blocks-button {
 
-	.gt-button {
+	.gt-button-wrap {
 		display: inline-block;
 		margin: 0;
 		padding: 0;
-		font-weight: normal;
-		font-style: normal;
-		line-height: 1.4;
-		text-align: center;
-		text-decoration: none;
-		text-transform: none;
-		border: none;
-		border-radius: 0;
-		box-shadow: none;
-		cursor: pointer;
-		white-space: normal;
-		word-break: break-all;
 
-		.gt-button-text {
+		.gt-button {
 			display: inline-block;
 			margin: 0;
 			padding: 6px 18px;
+			font-weight: normal;
+			font-style: normal;
+			line-height: 1.4;
+			text-align: center;
+			text-decoration: none;
+			text-transform: none;
+			border: none;
+			border-radius: 0;
+			box-shadow: none;
+			cursor: pointer;
+			white-space: normal;
+			word-break: break-all;
 
 			&:not(.has-background) {
 				background-color: #303030;
@@ -41,6 +41,18 @@
 			&.gt-button-large {
 				padding: 16px 48px;
 			}
+
+			&.gt-is-bold {
+				font-weight: bold;
+			}
+	
+			&.gt-is-italic {
+				font-style: italic;
+			}
+	
+			&.gt-is-uppercase {
+				text-transform: uppercase;
+			}
 		}
 
 		&:not(.has-hover-background) {
@@ -51,23 +63,11 @@
 			color: #fff;
 		}
 
-		&:hover .gt-button-text,
-		&:active .gt-button-text,
-		&:focus .gt-button-text {
+		&:hover .gt-button,
+		&:active .gt-button,
+		&:focus .gt-button {
 			color: inherit;
 			background: transparent;
-		}
-
-		&.gt-is-bold {
-			font-weight: bold;
-		}
-
-		&.gt-is-italic {
-			font-style: italic;
-		}
-
-		&.gt-is-uppercase {
-			text-transform: uppercase;
 		}
 	}
 }
