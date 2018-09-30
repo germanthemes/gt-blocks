@@ -20,6 +20,7 @@ const {
 const { compose } = wp.compose;
 
 const {
+	AlignmentToolbar,
 	BlockControls,
 	ContrastChecker,
 	InspectorControls,
@@ -160,6 +161,7 @@ class gtButtonEdit extends Component {
 			title,
 			text,
 			placeholder,
+			textAlignment,
 			buttonSize,
 			paddingVertical,
 			paddingHorizontal,
@@ -167,7 +169,9 @@ class gtButtonEdit extends Component {
 			uppercase,
 		} = attributes;
 
-		const blockStyles = {};
+		const blockClasses = classnames( className, {
+			[ `gt-align-${ textAlignment }` ]: textAlignment,
+		} );
 
 		const hoverClasses = classnames( 'gt-button-wrap', {
 			'has-hover-text-color': hoverColor.color,
@@ -206,6 +210,11 @@ class gtButtonEdit extends Component {
 		return (
 			<Fragment>
 				<BlockControls>
+
+					<AlignmentToolbar
+						value={ textAlignment }
+						onChange={ ( newAlignment ) => setAttributes( { textAlignment: newAlignment } ) }
+					/>
 
 				</BlockControls>
 
@@ -339,7 +348,7 @@ class gtButtonEdit extends Component {
 
 				</InspectorControls>
 
-				<div className={ className } style={ blockStyles }>
+				<div className={ blockClasses }>
 
 					<span className={ hoverClasses } style={ hoverStyles } title={ title }>
 						<RichText

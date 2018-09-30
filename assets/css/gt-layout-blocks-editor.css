@@ -1,6 +1,13 @@
 .wp-block-gt-layout-blocks-button .gt-button-wrap .gt-button {
   cursor: text; }
 
+.wp-block-gt-layout-blocks-button.gt-align-center .block-library-button__inline-link {
+  margin-left: auto;
+  margin-right: auto; }
+
+.wp-block-gt-layout-blocks-button.gt-align-right .block-library-button__inline-link {
+  margin-left: auto; }
+
 .gt-panel-button-size .gt-button-size-picker {
   display: -ms-flexbox;
   display: flex;

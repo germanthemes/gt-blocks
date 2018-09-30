@@ -62,6 +62,9 @@ registerBlockType(
 			placeholder: {
 				type: 'string',
 			},
+			textAlignment: {
+				type: 'string',
+			},
 			buttonSize: {
 				type: 'string',
 			},
@@ -120,6 +123,7 @@ registerBlockType(
 				url,
 				title,
 				text,
+				textAlignment,
 				buttonSize,
 				paddingVertical,
 				paddingHorizontal,
@@ -145,8 +149,9 @@ registerBlockType(
 
 			const fontSizeClass = getFontSizeClass( fontSize );
 
-			const blockClasses = {};
-			const blockStyles = {};
+			const blockClasses = classnames( {
+				[ `gt-align-${ textAlignment }` ]: textAlignment,
+			} );
 
 			const hoverClasses = classnames( 'gt-button-wrap', {
 				'has-hover-text-color': hoverColor || customHoverColor,
@@ -183,7 +188,7 @@ registerBlockType(
 			};
 
 			return (
-				<div className={ blockClasses ? blockClasses : undefined } style={ blockStyles }>
+				<div className={ blockClasses ? blockClasses : undefined }>
 
 					<span className={ hoverClasses } style={ hoverStyles }>
 						<RichText.Content

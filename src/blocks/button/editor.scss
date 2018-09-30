@@ -6,6 +6,15 @@
 			cursor: text;
 		}
 	}
+
+	&.gt-align-center .block-library-button__inline-link {
+		margin-left: auto;
+		margin-right: auto;
+	}
+
+	&.gt-align-right .block-library-button__inline-link {
+		margin-left: auto;
+	}
 }
 
 .gt-panel-button-size .gt-button-size-picker {

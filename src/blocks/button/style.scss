@@ -1,4 +1,5 @@
 .wp-block-gt-layout-blocks-button {
+	margin-bottom: 1.5em;
 
 	.gt-button-wrap {
 		display: inline-block;
@@ -70,5 +71,13 @@
 			color: inherit;
 			background: transparent;
 		}
+	}
+
+	&.gt-align-center {
+		text-align: center;
+	}
+
+	&.gt-align-right {
+		text-align: right;
 	}
 }
