@@ -1,14 +1,15 @@
 .wp-block-gt-layout-blocks-button .gt-button-wrap {
   display: inline-block;
   margin: 0;
-  padding: 0; }
+  padding: 0;
+  line-height: 1; }
   .wp-block-gt-layout-blocks-button .gt-button-wrap .gt-button {
     display: inline-block;
     margin: 0;
-    padding: 6px 18px;
+    padding: 12px 21px;
     font-weight: normal;
     font-style: normal;
-    line-height: 1.4;
+    line-height: 1;
     text-align: center;
     text-decoration: none;
     text-transform: none;
@@ -16,19 +17,19 @@
     border-radius: 0;
     -webkit-box-shadow: none;
             box-shadow: none;
-    cursor: pointer;
     white-space: normal;
-    word-break: break-all; }
+    word-break: break-all;
+    cursor: pointer; }
     .wp-block-gt-layout-blocks-button .gt-button-wrap .gt-button:not(.has-background) {
       background-color: #303030; }
     .wp-block-gt-layout-blocks-button .gt-button-wrap .gt-button:not(.has-text-color) {
       color: #fff; }
     .wp-block-gt-layout-blocks-button .gt-button-wrap .gt-button.gt-button-small {
-      padding: 4px 12px; }
+      padding: 8px 14px; }
     .wp-block-gt-layout-blocks-button .gt-button-wrap .gt-button.gt-button-medium {
-      padding: 8px 24px; }
+      padding: 16px 28px; }
     .wp-block-gt-layout-blocks-button .gt-button-wrap .gt-button.gt-button-large {
-      padding: 16px 48px; }
+      padding: 24px 42px; }
     .wp-block-gt-layout-blocks-button .gt-button-wrap .gt-button.gt-is-bold {
       font-weight: bold; }
     .wp-block-gt-layout-blocks-button .gt-button-wrap .gt-button.gt-is-italic {

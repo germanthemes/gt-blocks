@@ -75,7 +75,7 @@ registerBlockType(
 			},
 			fontStyle: {
 				type: 'string',
-				default: 'bold',
+				default: 'none',
 			},
 			uppercase: {
 				type: 'boolean',

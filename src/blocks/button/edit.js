@@ -62,18 +62,18 @@ const applyFallbackStyles = withFallbackStyles( ( node, ownProps ) => {
 const buttonSizes = {
 	small: {
 		name: 'S',
-		paddingVertical: 4,
-		paddingHorizontal: 12,
+		paddingVertical: 8,
+		paddingHorizontal: 14,
 	},
 	medium: {
 		name: 'M',
-		paddingVertical: 8,
-		paddingHorizontal: 24,
+		paddingVertical: 16,
+		paddingHorizontal: 28,
 	},
 	large: {
 		name: 'L',
-		paddingVertical: 16,
-		paddingHorizontal: 48,
+		paddingVertical: 24,
+		paddingHorizontal: 42,
 	},
 };
 
