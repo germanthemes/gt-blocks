@@ -25,6 +25,7 @@ const {
 	InspectorControls,
 	PanelColorSettings,
 	RichText,
+	URLInput,
 	withColors,
 	withFontSizes,
 } = wp.editor;
@@ -33,7 +34,9 @@ const {
 	BaseControl,
 	Button,
 	ButtonGroup,
+	Dashicon,
 	FontSizePicker,
+	IconButton,
 	PanelBody,
 	RangeControl,
 	SelectControl,
@@ -149,6 +152,7 @@ class gtButtonEdit extends Component {
 			fontSizes,
 			setAttributes,
 			className,
+			isSelected,
 		} = this.props;
 
 		const {
@@ -348,6 +352,19 @@ class gtButtonEdit extends Component {
 							keepPlaceholderOnFocus
 						/>
 					</span>
+
+					{ isSelected && (
+						<form
+							className="block-library-button__inline-link"
+							onSubmit={ ( event ) => event.preventDefault() }>
+							<Dashicon icon="admin-links" />
+							<URLInput
+								value={ url }
+								onChange={ ( newURL ) => setAttributes( { url: newURL } ) }
+							/>
+							<IconButton icon="editor-break" label={ __( 'Apply' ) } type="submit" />
+						</form>
+					) }
 
 				</div>
 
