@@ -39,34 +39,34 @@ const synchronizeButtons = createHigherOrderComponent( ( BlockEdit ) => {
 			let siblings = [];
 
 			// Get all blocks.
-			const blocks = select( 'core/editor' ).getBlocks();
+			select( 'core/editor' ).getBlocks()
 
-			// Get Columns blocks.
-			const columnsBlocks = blocks.filter( block => block.name === 'core/columns' );
+				// Filter out columns blocks.
+				.filter( block => block.name === 'core/columns' )
 
-			// Loop through columns blocks.
-			columnsBlocks.some( ( block ) => {
-				// Get SingleColumn block.
-				const singleColumn = block.innerBlocks;
+				// Loop through columns blocks until siblings are found.
+				.some( block => {
+					// Get single column blocks.
+					const siblingIds = block.innerBlocks
 
-				// Get children.
-				const children = singleColumn.map( item => item.innerBlocks );
+						// Get child blocks of column.
+						.map( item => item.innerBlocks )
 
-				// Reduce to one array.
-				const reduce = children.reduce( ( a, b ) => a.concat( b ), [] );
+						// Reduce child blocks to one array.
+						.reduce( ( a, b ) => a.concat( b ), [] )
 
-				// Filter out all sibling blocks.
-				const siblingBlocks = reduce.filter( c => c.name === blockType );
+						// Filter out sibling blocks (= blocks with same block type).
+						.filter( child => child.name === blockType )
 
-				// Reduce to clientIds.
-				const siblingIds = siblingBlocks.map( d => d.clientId );
+						// Get clientIds for all siblings.
+						.map( child => child.clientId );
 
-				// Return siblings for our blockID.
-				if ( siblingIds.includes( blockId ) ) {
-					siblings = siblingIds;
-					return true;
-				}
-			} );
+					// Check if blockId matches siblings.
+					if ( siblingIds.includes( blockId ) ) {
+						siblings = siblingIds;
+						return true;
+					}
+				} );
 
 			return siblings;
 		};
