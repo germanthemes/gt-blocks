@@ -1,12 +1,13 @@
 /**
  * Setup Localization Domain
  */
-wp.i18n.setLocaleData( { '' : {} }, 'gt-layout-blocks' );
+wp.i18n.setLocaleData( { '': {} }, 'gt-layout-blocks' );
 
 /**
  * Import Data Store
  */
 import './data/store.js';
+import './data/synchronize-buttons';
 
 /**
  * Import Blocks

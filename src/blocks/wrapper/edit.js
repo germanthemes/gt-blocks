@@ -15,10 +15,23 @@ const {
 	InnerBlocks,
 } = wp.editor;
 
+const { dispatch, select } = wp.data;
+
 /**
  * Block Edit Component
  */
 class gtWrapperEdit extends Component {
+	componentDidMount() {
+		// Get Child Blocks.
+		const children = select( 'core/editor' ).getBlocksByClientId( this.props.clientId )[ 0 ].innerBlocks;
+		const childBlocks = children.map( child => child.clientId );
+
+		// Save siblings in each child block.
+		childBlocks.forEach( child => {
+			dispatch( 'core/editor' ).updateBlockAttributes( child, { siblings: childBlocks } );
+		} );
+	}
+
 	render() {
 		const {
 			attributes,
