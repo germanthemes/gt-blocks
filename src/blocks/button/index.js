@@ -76,6 +76,14 @@ registerBlockType(
 				type: 'number',
 				default: 18,
 			},
+			buttonShape: {
+				type: 'string',
+				default: 'square',
+			},
+			roundedCorners: {
+				type: 'number',
+				default: 12,
+			},
 			fontStyle: {
 				type: 'string',
 				default: 'none',
@@ -127,6 +135,8 @@ registerBlockType(
 				buttonSize,
 				paddingVertical,
 				paddingHorizontal,
+				buttonShape,
+				roundedCorners,
 				fontStyle,
 				uppercase,
 				textColor,
@@ -154,6 +164,7 @@ registerBlockType(
 			} );
 
 			const hoverClasses = classnames( 'gt-button-wrap', {
+				[ `gt-button-${ buttonShape }` ]: 'square' !== buttonShape,
 				'has-hover-text-color': hoverColor || customHoverColor,
 				[ hoverColorClass ]: hoverColorClass,
 				'has-hover-background': hoverBackgroundColor || customHoverBackgroundColor,
@@ -161,6 +172,7 @@ registerBlockType(
 			} );
 
 			const hoverStyles = {
+				borderRadius: 'rounded' === buttonShape && 12 !== roundedCorners ? roundedCorners + 'px' : undefined,
 				color: hoverColorClass ? undefined : customHoverColor,
 				backgroundColor: hoverBackgroundClass ? undefined : customHoverBackgroundColor,
 			};

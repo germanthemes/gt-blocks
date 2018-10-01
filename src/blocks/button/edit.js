@@ -165,6 +165,8 @@ class gtButtonEdit extends Component {
 			buttonSize,
 			paddingVertical,
 			paddingHorizontal,
+			buttonShape,
+			roundedCorners,
 			fontStyle,
 			uppercase,
 		} = attributes;
@@ -174,6 +176,7 @@ class gtButtonEdit extends Component {
 		} );
 
 		const hoverClasses = classnames( 'gt-button-wrap', {
+			[ `gt-button-${ buttonShape }` ]: 'square' !== buttonShape,
 			'has-hover-text-color': hoverColor.color,
 			[ hoverColor.class ]: hoverColor.class,
 			'has-hover-background': hoverBackgroundColor.color,
@@ -181,6 +184,7 @@ class gtButtonEdit extends Component {
 		} );
 
 		const hoverStyles = {
+			borderRadius: 'rounded' === buttonShape && 12 !== roundedCorners ? roundedCorners + 'px' : undefined,
 			color: hoverColor.class ? undefined : hoverColor.color,
 			backgroundColor: hoverBackgroundColor.class ? undefined : hoverBackgroundColor.color,
 		};
@@ -202,6 +206,7 @@ class gtButtonEdit extends Component {
 			paddingBottom: ! buttonSize && paddingVertical !== 6 ? paddingVertical + 'px' : undefined,
 			paddingLeft: ! buttonSize && paddingHorizontal !== 18 ? paddingHorizontal + 'px' : undefined,
 			paddingRight: ! buttonSize && paddingHorizontal !== 18 ? paddingHorizontal + 'px' : undefined,
+			borderRadius: 'rounded' === buttonShape && 12 !== roundedCorners ? roundedCorners + 'px' : undefined,
 			backgroundColor: backgroundColor.class ? undefined : backgroundColor.color,
 			color: textColor.class ? undefined : textColor.color,
 			fontSize: fontSize.size ? fontSize.size + 'px' : undefined,
@@ -220,7 +225,7 @@ class gtButtonEdit extends Component {
 
 				<InspectorControls>
 
-					<PanelBody title={ __( 'Button Size' ) } initialOpen={ false } className="gt-panel-button-size gt-panel">
+					<PanelBody title={ __( 'Button Settings' ) } initialOpen={ false } className="gt-panel-button-settings gt-panel">
 
 						<BaseControl id="gt-button-size" label={ __( 'Button Size' ) }>
 
@@ -266,6 +271,27 @@ class gtButtonEdit extends Component {
 							min={ 0 }
 							max={ 64 }
 						/>
+
+						<SelectControl
+							label={ __( 'Button Shape' ) }
+							value={ buttonShape }
+							onChange={ ( newShape ) => setAttributes( { buttonShape: newShape } ) }
+							options={ [
+								{ value: 'square', label: __( 'Square' ) },
+								{ value: 'rounded', label: __( 'Rounded Corners' ) },
+								{ value: 'circle', label: __( 'Circle' ) },
+							] }
+						/>
+
+						{ buttonShape === 'rounded' && (
+							<RangeControl
+								label={ __( 'Rounded Corners' ) }
+								value={ roundedCorners }
+								onChange={ ( newRadius ) => setAttributes( { roundedCorners: newRadius } ) }
+								min={ 0 }
+								max={ 64 }
+							/>
+						) }
 
 					</PanelBody>
 

@@ -16,7 +16,7 @@
       text-decoration: none;
       text-transform: none;
       border: none;
-      border-radius: 0;
+      border-radius: inherit;
       -webkit-box-shadow: none;
               box-shadow: none;
       white-space: normal;
@@ -47,6 +47,10 @@
     .wp-block-gt-layout-blocks-button .gt-button-wrap:focus .gt-button {
       color: inherit;
       background: transparent; }
+    .wp-block-gt-layout-blocks-button .gt-button-wrap.gt-button-circle {
+      border-radius: 100%; }
+    .wp-block-gt-layout-blocks-button .gt-button-wrap.gt-button-rounded {
+      border-radius: 12px; }
   .wp-block-gt-layout-blocks-button.gt-align-center {
     text-align: center; }
   .wp-block-gt-layout-blocks-button.gt-align-right {

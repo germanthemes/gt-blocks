@@ -5,6 +5,14 @@
 		.gt-button {
 			cursor: text;
 		}
+
+		&.gt-button-circle .gt-button {
+			border-radius: 100%;
+		}
+
+		&.gt-button-rounded .gt-button {
+			border-radius: 12px;
+		}
 	}
 
 	&.gt-align-center .block-library-button__inline-link {
@@ -17,7 +25,7 @@
 	}
 }
 
-.gt-panel-button-size .gt-button-size-picker {
+.gt-panel-button-settings .gt-button-size-picker {
 	display: flex;
 	justify-content: space-between;
 	margin-bottom: 1em;

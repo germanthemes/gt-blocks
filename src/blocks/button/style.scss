@@ -18,7 +18,7 @@
 			text-decoration: none;
 			text-transform: none;
 			border: none;
-			border-radius: 0;
+			border-radius: inherit;
 			box-shadow: none;
 			white-space: normal;
 			word-break: break-all;
@@ -70,6 +70,14 @@
 		&:focus .gt-button {
 			color: inherit;
 			background: transparent;
+		}
+
+		&.gt-button-circle {
+			border-radius: 100%;
+		}
+
+		&.gt-button-rounded {
+			border-radius: 12px;
 		}
 	}
 
