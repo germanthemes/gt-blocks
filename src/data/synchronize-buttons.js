@@ -21,7 +21,7 @@ function addParentBlockAttribute( settings, name ) {
 
 	settings.attributes = assign( settings.attributes, {
 		parentBlock: {
-			type: 'string',
+			type: 'boolean',
 		},
 	} );
 
@@ -35,13 +35,51 @@ const synchronizeButtons = createHigherOrderComponent( ( BlockEdit ) => {
 			return <BlockEdit { ...props } />;
 		}
 
-		if ( ! props.attributes.siblings || props.attributes.siblings.length < 1 ) {
-			return <BlockEdit { ...props } />;
-		}
+		const getSiblings = ( blockId, blockType ) => {
+			let siblings = [];
+
+			// Get all blocks.
+			const blocks = select( 'core/editor' ).getBlocks();
+
+			// Get Columns blocks.
+			const columnsBlocks = blocks.filter( block => block.name === 'core/columns' );
+
+			// Loop through columns blocks.
+			columnsBlocks.some( ( block ) => {
+				// Get SingleColumn block.
+				const singleColumn = block.innerBlocks;
+
+				// Get children.
+				const children = singleColumn.map( item => item.innerBlocks );
+
+				// Reduce to one array.
+				const reduce = children.reduce( ( a, b ) => a.concat( b ), [] );
+
+				// Filter out all sibling blocks.
+				const siblingBlocks = reduce.filter( c => c.name === blockType );
+
+				// Reduce to clientIds.
+				const siblingIds = siblingBlocks.map( d => d.clientId );
+
+				// Return siblings for our blockID.
+				if ( siblingIds.includes( blockId ) ) {
+					siblings = siblingIds;
+					return true;
+				}
+			} );
+
+			return siblings;
+		};
 
 		const synchronizeAttributes = () => {
+			const siblings = getSiblings( props.clientId, props.name );
+
+			// Synchronize Button blocks.
+			synchronizeButtonBlocks( siblings );
+		};
+
+		const synchronizeButtonBlocks = ( siblings ) => {
 			const {
-				siblings,
 				buttonSize,
 				paddingVertical,
 				paddingHorizontal,
@@ -81,8 +119,8 @@ const synchronizeButtons = createHigherOrderComponent( ( BlockEdit ) => {
 				customFontSize,
 			};
 
-			siblings.forEach( child => {
-				dispatch( 'core/editor' ).updateBlockAttributes( child, newAttributes );
+			siblings.forEach( block => {
+				dispatch( 'core/editor' ).updateBlockAttributes( block, newAttributes );
 			} );
 		};
 
