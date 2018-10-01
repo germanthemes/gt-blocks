@@ -12,7 +12,22 @@ const { InspectorControls } = wp.editor;
 const { Button, PanelBody } = wp.components;
 const { __ } = wp.i18n;
 const { addFilter } = wp.hooks;
-const { dispatch } = wp.data;
+const { dispatch, select } = wp.data;
+
+function addParentBlockAttribute( settings, name ) {
+	if ( name !== 'gt-layout-blocks/button' ) {
+		return settings;
+	}
+
+	settings.attributes = assign( settings.attributes, {
+		parentBlock: {
+			type: 'string',
+		},
+	} );
+
+	return settings;
+}
+addFilter( 'blocks.registerBlockType', 'gt-layout-blocks/button/parent', addParentBlockAttribute );
 
 const synchronizeButtons = createHigherOrderComponent( ( BlockEdit ) => {
 	return ( props ) => {
