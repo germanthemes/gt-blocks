@@ -61,9 +61,13 @@ class gtGridColumnEdit extends Component {
 							template={ [
 								[ 'gt-layout-blocks/heading', {
 									placeholder: __( 'Write icon title...' ),
+									synchronizeStyling: true,
+									parentBlock: 'gt-layout-blocks/icon-grid',
 								} ],
 								[ 'core/paragraph', {
 									placeholder: __( 'Write icon description...' ),
+									synchronizeStyling: true,
+									parentBlock: 'gt-layout-blocks/icon-grid',
 								} ],
 							] }
 							templateLock="all"

@@ -261,6 +261,7 @@
     margin: 0 auto;
     z-index: 2; }
 .wp-block-gt-layout-blocks-icon-grid {
+  margin-bottom: 1.5em;
   /* IconGrid Grid Layout */ }
   .wp-block-gt-layout-blocks-icon-grid .gt-grid-container {
     display: grid;
