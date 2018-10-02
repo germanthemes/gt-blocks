@@ -8,12 +8,17 @@ const {
 } = wp.editor;
 
 /**
+ * Internal dependencies
+ */
+import edit from './edit';
+
+/**
  * Register block
  */
 registerBlockType(
-	'gt-layout-blocks/icon-grid-item',
+	'gt-layout-blocks/icon-grid-column',
 	{
-		title: __( 'GT Icon Grid Item' ),
+		title: __( 'GT Icon Grid Column' ),
 
 		category: 'gt-layout-blocks',
 
@@ -25,34 +30,13 @@ registerBlockType(
 			inserter: false,
 		},
 
-		edit() {
-			const itemClasses = {};
-
-			return (
-				<div className={ itemClasses }>
-
-					<InnerBlocks
-						allowedBlocks={ [ 'gt-layout-blocks/heading', 'core/paragraph' ] }
-						template={ [
-							[ 'gt-layout-blocks/heading', {
-								placeholder: __( 'Write icon title...' ),
-							} ],
-							[ 'core/paragraph', {
-								placeholder: __( 'Write icon description...' ),
-							} ],
-						] }
-						templateLock="all"
-					/>
-
-				</div>
-			);
-		},
+		edit,
 
 		save( { attributes } ) {
 			const itemClasses = {};
 
 			return (
-				<div className={ itemClasses }>
+				<div>
 
 					<InnerBlocks.Content />
 

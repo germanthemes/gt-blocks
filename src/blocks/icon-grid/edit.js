@@ -72,7 +72,7 @@ const applyFallbackStyles = withFallbackStyles( ( node, ownProps ) => {
  * @return {Object[]} Items layout configuration.
  */
 const getItemsTemplate = memoize( ( items ) => {
-	return times( items, () => [ 'gt-layout-blocks/icon-grid-item' ] );
+	return times( items, () => [ 'gt-layout-blocks/icon-grid-column' ] );
 } );
 
 /**
@@ -205,7 +205,7 @@ class gtIconGridEdit extends Component {
 						<InnerBlocks
 							template={ getItemsTemplate( items ) }
 							templateLock="all"
-							allowedBlocks={ [ 'gt-layout-blocks/icon-grid-item' ] }
+							allowedBlocks={ [ 'gt-layout-blocks/icon-grid-column' ] }
 						/>
 
 					</div>

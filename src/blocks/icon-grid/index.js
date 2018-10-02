@@ -16,7 +16,7 @@ const { InnerBlocks } = wp.editor;
 import './style.scss';
 import './editor.scss';
 import edit from './edit';
-import './item';
+import './grid-column';
 
 /**
  * Register block
