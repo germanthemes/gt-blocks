@@ -1,9 +1,15 @@
 /**
+ * External dependencies
+ */
+import classnames from 'classnames';
+
+/**
  * WordPress dependencies
  */
 const { __ } = wp.i18n;
 const { registerBlockType } = wp.blocks;
 const {
+	getColorClassName,
 	InnerBlocks,
 } = wp.editor;
 
@@ -26,6 +32,21 @@ registerBlockType(
 
 		parent: [ 'gt-layout-blocks/icon-grid' ],
 
+		attributes: {
+			textColor: {
+				type: 'string',
+			},
+			backgroundColor: {
+				type: 'string',
+			},
+			customTextColor: {
+				type: 'string',
+			},
+			customBackgroundColor: {
+				type: 'string',
+			},
+		},
+
 		supports: {
 			inserter: false,
 		},
@@ -33,13 +54,35 @@ registerBlockType(
 		edit,
 
 		save( { attributes } ) {
-			const itemClasses = {};
+			const {
+				textColor,
+				backgroundColor,
+				customTextColor,
+				customBackgroundColor,
+			} = attributes;
+
+			const textColorClass = getColorClassName( 'color', textColor );
+			const backgroundClass = getColorClassName( 'background-color', backgroundColor );
+
+			const itemClasses = classnames( 'gt-grid-item', {
+				'has-text-color': textColor || customTextColor,
+				[ textColorClass ]: textColorClass,
+				'has-background': backgroundColor || customBackgroundColor,
+				[ backgroundClass ]: backgroundClass,
+			} );
+
+			const itemStyles = {
+				color: textColorClass ? undefined : customTextColor,
+				backgroundColor: backgroundClass ? undefined : customBackgroundColor,
+			};
 
 			return (
 				<div>
+					<div className={ itemClasses } style={ itemStyles }>
 
-					<InnerBlocks.Content />
+						<InnerBlocks.Content />
 
+					</div>
 				</div>
 			);
 		},

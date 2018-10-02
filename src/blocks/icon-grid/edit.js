@@ -19,8 +19,8 @@ const {
 	sprintf,
 } = wp.i18n;
 
-const { withSelect } = wp.data;
 const { compose } = wp.compose;
+const { dispatch, select } = wp.data;
 
 const {
 	BlockAlignmentToolbar,
@@ -30,7 +30,6 @@ const {
 	InspectorControls,
 	PanelColorSettings,
 	withColors,
-	withFontSizes,
 } = wp.editor;
 
 const {
@@ -82,6 +81,49 @@ class gtIconGridEdit extends Component {
 	constructor() {
 		super( ...arguments );
 		this.addIconGridItem = this.addIconGridItem.bind( this );
+
+		this.state = {
+			childBlocks: [],
+		};
+	}
+
+	componentDidMount() {
+		// Get Child Blocks.
+		const children = select( 'core/editor' ).getBlocksByClientId( this.props.clientId )[ 0 ].innerBlocks;
+		const childBlocks = children.map( child => child.clientId );
+
+		this.setState( { childBlocks: childBlocks } );
+	}
+
+	componentDidUpdate( prevProps ) {
+		const {
+			textColor,
+			backgroundColor,
+			customTextColor,
+			customBackgroundColor,
+		} = this.props.attributes;
+
+		if ( textColor !== prevProps.attributes.textColor ) {
+			this.updateChildBlocks( 'textColor', textColor );
+		}
+
+		if ( backgroundColor !== prevProps.attributes.backgroundColor ) {
+			this.updateChildBlocks( 'backgroundColor', backgroundColor );
+		}
+
+		if ( customTextColor !== prevProps.attributes.customTextColor ) {
+			this.updateChildBlocks( 'customTextColor', customTextColor );
+		}
+
+		if ( customBackgroundColor !== prevProps.attributes.customBackgroundColor ) {
+			this.updateChildBlocks( 'customBackgroundColor', customBackgroundColor );
+		}
+	}
+
+	updateChildBlocks( attribute, value ) {
+		this.state.childBlocks.forEach( child => {
+			dispatch( 'core/editor' ).updateBlockAttributes( child, { [ attribute ]: value } );
+		} );
 	}
 
 	addIconGridItem() {
@@ -99,7 +141,6 @@ class gtIconGridEdit extends Component {
 			textColor,
 			setTextColor,
 			fallbackTextColor,
-			fontSize,
 			setAttributes,
 			isSelected,
 			className,
@@ -193,7 +234,6 @@ class gtIconGridEdit extends Component {
 								fallbackTextColor,
 								fallbackBackgroundColor,
 							} }
-							fontSize={ fontSize.size }
 						/>
 					</PanelColorSettings>
 
@@ -228,12 +268,5 @@ class gtIconGridEdit extends Component {
 
 export default compose( [
 	withColors( 'backgroundColor', { textColor: 'color' } ),
-	withFontSizes( 'fontSize' ),
 	applyFallbackStyles,
-	withSelect(
-		( select ) => {
-			const { fontSizes } = select( 'core/editor' ).getEditorSettings();
-			return { fontSizes };
-		}
-	),
 ] )( gtIconGridEdit );

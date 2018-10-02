@@ -13,6 +13,7 @@ const {
 } = wp.element;
 
 const {
+	getColorClassName,
 	InnerBlocks,
 } = wp.editor;
 
@@ -22,11 +23,31 @@ const {
 class gtGridColumnEdit extends Component {
 	render() {
 		const {
+			attributes,
 			className,
 		} = this.props;
 
-		const itemClasses = {};
-		const itemStyles = {};
+		const {
+			textColor,
+			backgroundColor,
+			customTextColor,
+			customBackgroundColor,
+		} = attributes;
+
+		const textColorClass = getColorClassName( 'color', textColor );
+		const backgroundClass = getColorClassName( 'background-color', backgroundColor );
+
+		const itemClasses = classnames( 'gt-grid-item', {
+			'has-text-color': textColor || customTextColor,
+			[ textColorClass ]: textColorClass,
+			'has-background': backgroundColor || customBackgroundColor,
+			[ backgroundClass ]: backgroundClass,
+		} );
+
+		const itemStyles = {
+			color: textColorClass ? undefined : customTextColor,
+			backgroundColor: backgroundClass ? undefined : customBackgroundColor,
+		};
 
 		return (
 			<Fragment>
