@@ -169,7 +169,7 @@
         flex-direction: column;
     -ms-flex-align: center;
         align-items: center;
-    margin-top: 1.5rem;
+    margin: 0;
     padding: 25px 20px 20px;
     width: 100%;
     height: auto;

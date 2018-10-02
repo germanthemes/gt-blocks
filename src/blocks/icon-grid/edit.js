@@ -80,7 +80,6 @@ const getItemsTemplate = memoize( ( items ) => {
 class gtIconGridEdit extends Component {
 	constructor() {
 		super( ...arguments );
-		this.addIconGridItem = this.addIconGridItem.bind( this );
 
 		this.state = {
 			childBlocks: [],
@@ -124,12 +123,6 @@ class gtIconGridEdit extends Component {
 		this.state.childBlocks.forEach( child => {
 			dispatch( 'core/editor' ).updateBlockAttributes( child, { [ attribute ]: value } );
 		} );
-	}
-
-	addIconGridItem() {
-		const newItems = [ ...this.props.attributes.items ];
-		newItems.push( {} );
-		this.props.setAttributes( { items: newItems } );
 	}
 
 	render() {
@@ -190,6 +183,14 @@ class gtIconGridEdit extends Component {
 				<InspectorControls key="inspector">
 
 					<PanelBody title={ __( 'Layout Settings' ) } initialOpen={ false } className="gt-panel-layout-settings gt-panel">
+
+						<RangeControl
+							label={ __( 'Number of Items' ) }
+							value={ items }
+							onChange={ ( newNumber ) => setAttributes( { items: newNumber } ) }
+							min={ 1 }
+							max={ 32 }
+						/>
 
 						<RangeControl
 							label={ __( 'Columns' ) }
@@ -253,7 +254,7 @@ class gtIconGridEdit extends Component {
 					{ isSelected && (
 						<Button
 							isLarge
-							onClick={ this.addIconGridItem }
+							onClick={ () => setAttributes( { items: items + 1 } ) }
 							className="gt-add-icon-grid-item"
 						>
 							<Dashicon icon="insert" />
