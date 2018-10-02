@@ -16,6 +16,8 @@ const {
 /**
  * Internal dependencies
  */
+import './style.scss';
+import './editor.scss';
 import edit from './edit';
 
 /**

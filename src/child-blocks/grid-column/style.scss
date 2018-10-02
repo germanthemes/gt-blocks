@@ -1,0 +1,13 @@
+.wp-block-gt-layout-blocks-icon-grid-column {
+
+	/* Features Item Styling */
+	.gt-grid-item {
+		display: flex;
+		flex-direction: column;
+
+		&.has-background {
+			padding-left: 1.5em;
+			padding-right: 1.5em;
+		}
+	}
+}
