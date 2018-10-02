@@ -7,7 +7,7 @@ wp.i18n.setLocaleData( { '': {} }, 'gt-layout-blocks' );
  * Import Data Store
  */
 import './data/store.js';
-import './data/synchronize-buttons';
+import './data/synchronize-styling';
 
 /**
  * Import Child Blocks

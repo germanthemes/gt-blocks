@@ -32,18 +32,18 @@ const getSiblings = ( blockId, blockType, parentBlock ) => {
 	// Get all blocks.
 	select( 'core/editor' ).getBlocks()
 
-		// Filter out columns blocks.
+		// Filter out parent blocks.
 		.filter( block => block.name === parentBlock )
 
-		// Loop through columns blocks until siblings are found.
+		// Loop through parent blocks until siblings are found.
 		.some( block => {
-			// Get inner blocks.
+			// Get child blocks of parent blocks.
 			const siblingIds = block.innerBlocks
 
-				// Filter out container blocks..
+				// Filter out container blocks.
 				.filter( child => child.name === containerBlock )
 
-				// Get child blocks of column.
+				// Get child blocks of container blocks.
 				.map( item => item.innerBlocks )
 
 				// Reduce child blocks to one array.
