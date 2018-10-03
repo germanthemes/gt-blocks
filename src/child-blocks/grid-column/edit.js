@@ -62,6 +62,28 @@ class gtGridColumnEdit extends Component {
 		updateBlockAttributes( rootClientId, { items: parentBlock.attributes.items + 1 } );
 	}
 
+	removeItem() {
+		const {
+			getBlocksByClientId,
+			getBlockRootClientId,
+		} = select( 'core/editor' );
+
+		const {
+			removeBlocks,
+			updateBlockAttributes,
+		} = dispatch( 'core/editor' );
+
+		// Get parent block.
+		const rootClientId = getBlockRootClientId( this.props.clientId );
+		const parentBlock = getBlocksByClientId( rootClientId )[ 0 ];
+
+		// Remove block.
+		removeBlocks( this.props.clientId );
+
+		// Update number of items in parent block.
+		updateBlockAttributes( rootClientId, { items: parentBlock.attributes.items - 1 } );
+	}
+
 	render() {
 		const {
 			attributes,
@@ -148,7 +170,7 @@ class gtGridColumnEdit extends Component {
 								className="remove-item"
 								label={ __( 'Remove' ) }
 								icon="trash"
-								onClick={ () => this.removeItem( index ) }
+								onClick={ () => this.removeItem() }
 							/>
 						</div>
 					) }
