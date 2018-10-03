@@ -34,7 +34,7 @@ registerBlockType(
 		keywords: [
 			__( 'German Themes' ),
 			__( 'Icon Grid' ),
-			__( 'Layout' ),
+			__( 'Features' ),
 		],
 
 		attributes: {

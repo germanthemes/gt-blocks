@@ -245,7 +245,7 @@ class gtIconGridEdit extends Component {
 
 						<InnerBlocks
 							template={ getItemsTemplate( items ) }
-							templateLock="all"
+							templateLock={ false }
 							allowedBlocks={ [ 'gt-layout-blocks/icon-grid-column' ] }
 						/>
 
@@ -258,7 +258,7 @@ class gtIconGridEdit extends Component {
 							className="gt-add-icon-grid-item"
 						>
 							<Dashicon icon="insert" />
-							{ __( 'Add item' ) }
+							{ __( 'Add block' ) }
 						</Button>
 					) }
 				</div>

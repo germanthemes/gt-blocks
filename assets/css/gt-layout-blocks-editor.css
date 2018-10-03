@@ -1,3 +1,21 @@
+.wp-block-gt-layout-blocks-icon-grid-column {
+  /* Grid Item Controls*/ }
+  .wp-block-gt-layout-blocks-icon-grid-column .gt-grid-item-controls {
+    display: -ms-flexbox;
+    display: flex;
+    margin-top: 16px;
+    padding: 8px;
+    width: 100%;
+    background: #edeff0;
+    border: 1px solid #e2e4e7; }
+    .wp-block-gt-layout-blocks-icon-grid-column .gt-grid-item-controls .components-icon-button {
+      padding: 4px 5px; }
+      .wp-block-gt-layout-blocks-icon-grid-column .gt-grid-item-controls .components-icon-button:hover, .wp-block-gt-layout-blocks-icon-grid-column .gt-grid-item-controls .components-icon-button:active, .wp-block-gt-layout-blocks-icon-grid-column .gt-grid-item-controls .components-icon-button:focus {
+        background: #fff; }
+      .wp-block-gt-layout-blocks-icon-grid-column .gt-grid-item-controls .components-icon-button .dashicon {
+        width: 18px; }
+    .wp-block-gt-layout-blocks-icon-grid-column .gt-grid-item-controls .remove-item {
+      margin-left: auto; }
 .wp-block-gt-layout-blocks-wrapper .editor-block-list__layout {
   display: -ms-flexbox;
   display: flex;

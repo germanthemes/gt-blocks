@@ -2,11 +2,13 @@
  * External dependencies
  */
 import classnames from 'classnames';
+import { castArray, last } from 'lodash';
 
 /**
  * WordPress dependencies
  */
 const { __ } = wp.i18n;
+const { dispatch, select } = wp.data;
 const {
 	Component,
 	Fragment,
@@ -17,14 +19,54 @@ const {
 	InnerBlocks,
 } = wp.editor;
 
+const {
+	IconButton,
+} = wp.components;
+
+const {
+	cloneBlock,
+} = wp.blocks;
+
 /**
  * Block Edit Component
  */
 class gtGridColumnEdit extends Component {
+	duplicateItem() {
+		const {
+			getBlocksByClientId,
+			getBlockIndex,
+			getBlockRootClientId,
+		} = select( 'core/editor' );
+
+		const {
+			insertBlocks,
+			updateBlockAttributes,
+		} = dispatch( 'core/editor' );
+
+		// Get current block.
+		const { clientId } = this.props;
+		const block = getBlocksByClientId( clientId )[ 0 ];
+
+		// Get parent block.
+		const rootClientId = getBlockRootClientId( clientId );
+		const parentBlock = getBlocksByClientId( rootClientId )[ 0 ];
+
+		// Get position to insert duplicated block.
+		const lastSelectedIndex = getBlockIndex( last( castArray( clientId ) ), rootClientId );
+
+		// Clone and insert block.
+		const clonedBlock = cloneBlock( block );
+		insertBlocks( clonedBlock, lastSelectedIndex + 1, rootClientId );
+
+		// Update number of items in parent block.
+		updateBlockAttributes( rootClientId, { items: parentBlock.attributes.items + 1 } );
+	}
+
 	render() {
 		const {
 			attributes,
 			className,
+			isSelected,
 		} = this.props;
 
 		const {
@@ -48,6 +90,8 @@ class gtGridColumnEdit extends Component {
 			color: textColorClass ? undefined : customTextColor,
 			backgroundColor: backgroundClass ? undefined : customBackgroundColor,
 		};
+
+		const index = 2;
 
 		return (
 			<Fragment>
@@ -74,6 +118,40 @@ class gtGridColumnEdit extends Component {
 						/>
 
 					</div>
+
+					{ isSelected && (
+						<div className="gt-grid-item-controls">
+							<IconButton
+								className="move-up-item"
+								label={ __( 'Move up' ) }
+								icon="arrow-up-alt2"
+								onClick={ () => this.moveUpItem( index ) }
+								disabled={ index === 0 }
+							/>
+
+							<IconButton
+								className="move-down-item"
+								label={ __( 'Move down' ) }
+								icon="arrow-down-alt2"
+								onClick={ () => this.moveDownItem( index ) }
+								disabled={ ( index + 1 ) === 4 }
+							/>
+
+							<IconButton
+								className="duplicate-item"
+								label={ __( 'Duplicate' ) }
+								icon="admin-page"
+								onClick={ () => this.duplicateItem() }
+							/>
+
+							<IconButton
+								className="remove-item"
+								label={ __( 'Remove' ) }
+								icon="trash"
+								onClick={ () => this.removeItem( index ) }
+							/>
+						</div>
+					) }
 
 				</div>
 
