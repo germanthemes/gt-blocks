@@ -8,7 +8,8 @@ import { castArray, last } from 'lodash';
  * WordPress dependencies
  */
 const { __ } = wp.i18n;
-const { dispatch, select } = wp.data;
+const { compose } = wp.compose;
+const { dispatch, select, withSelect } = wp.data;
 const {
 	Component,
 	Fragment,
@@ -89,6 +90,8 @@ class gtGridColumnEdit extends Component {
 			attributes,
 			className,
 			isSelected,
+			isParentBlockSelected,
+			isChildBlockSelected,
 		} = this.props;
 
 		const {
@@ -141,13 +144,13 @@ class gtGridColumnEdit extends Component {
 
 					</div>
 
-					{ isSelected && (
+					{ ( isSelected || isParentBlockSelected || isChildBlockSelected ) && (
 						<div className="gt-grid-item-controls">
 							<IconButton
 								className="move-up-item"
 								label={ __( 'Move up' ) }
 								icon="arrow-up-alt2"
-								onClick={ () => this.moveUpItem( index ) }
+								onClick={ () => this.moveDownItem() }
 								disabled={ index === 0 }
 							/>
 
@@ -182,4 +185,18 @@ class gtGridColumnEdit extends Component {
 	}
 }
 
-export default gtGridColumnEdit;
+export default compose( [
+	withSelect( ( select, { clientId } ) => {
+		const {
+			isBlockSelected,
+			getBlockRootClientId,
+			hasSelectedInnerBlock,
+		} = select( 'core/editor' );
+
+		const rootClientId = getBlockRootClientId( clientId );
+		const isParentBlockSelected = isBlockSelected( rootClientId );
+		const isChildBlockSelected = hasSelectedInnerBlock( rootClientId, true );
+
+		return { isParentBlockSelected, isChildBlockSelected };
+	} ),
+] )( gtGridColumnEdit );
