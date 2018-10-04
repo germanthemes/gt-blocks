@@ -2,14 +2,14 @@
  * External dependencies
  */
 import classnames from 'classnames';
-import { castArray, last } from 'lodash';
+import { partial, castArray, last } from 'lodash';
 
 /**
  * WordPress dependencies
  */
 const { __ } = wp.i18n;
 const { compose } = wp.compose;
-const { dispatch, select, withSelect } = wp.data;
+const { dispatch, select, withDispatch, withSelect } = wp.data;
 const {
 	Component,
 	Fragment,
@@ -92,6 +92,10 @@ class gtGridColumnEdit extends Component {
 			isSelected,
 			isParentBlockSelected,
 			isChildBlockSelected,
+			onMoveUp,
+			onMoveDown,
+			isFirstColumn,
+			isLastColumn,
 		} = this.props;
 
 		const {
@@ -115,8 +119,6 @@ class gtGridColumnEdit extends Component {
 			color: textColorClass ? undefined : customTextColor,
 			backgroundColor: backgroundClass ? undefined : customBackgroundColor,
 		};
-
-		const index = 2;
 
 		return (
 			<Fragment>
@@ -146,20 +148,21 @@ class gtGridColumnEdit extends Component {
 
 					{ ( isSelected || isParentBlockSelected || isChildBlockSelected ) && (
 						<div className="gt-grid-item-controls">
+
 							<IconButton
 								className="move-up-item"
 								label={ __( 'Move up' ) }
-								icon="arrow-up-alt2"
-								onClick={ () => this.moveDownItem() }
-								disabled={ index === 0 }
+								icon="arrow-left-alt2"
+								onClick={ isFirstColumn ? null : onMoveUp }
+								disabled={ isFirstColumn }
 							/>
 
 							<IconButton
 								className="move-down-item"
 								label={ __( 'Move down' ) }
-								icon="arrow-down-alt2"
-								onClick={ () => this.moveDownItem( index ) }
-								disabled={ ( index + 1 ) === 4 }
+								icon="arrow-right-alt2"
+								onClick={ isLastColumn ? null : onMoveDown }
+								disabled={ isLastColumn }
 							/>
 
 							<IconButton
@@ -188,15 +191,30 @@ class gtGridColumnEdit extends Component {
 export default compose( [
 	withSelect( ( select, { clientId } ) => {
 		const {
-			isBlockSelected,
+			getBlockCount,
+			getBlockIndex,
 			getBlockRootClientId,
+			isBlockSelected,
 			hasSelectedInnerBlock,
 		} = select( 'core/editor' );
 
 		const rootClientId = getBlockRootClientId( clientId );
-		const isParentBlockSelected = isBlockSelected( rootClientId );
-		const isChildBlockSelected = hasSelectedInnerBlock( rootClientId, true );
+		const columnIndex = getBlockIndex( clientId, rootClientId );
+		const columnCount = getBlockCount( rootClientId );
 
-		return { isParentBlockSelected, isChildBlockSelected };
+		return {
+			isParentBlockSelected: isBlockSelected( rootClientId ),
+			isChildBlockSelected: hasSelectedInnerBlock( rootClientId, true ),
+			isFirstColumn: 0 === columnIndex,
+			isLastColumn: columnCount === ( columnIndex + 1 ),
+			rootClientId,
+		};
+	} ),
+	withDispatch( ( dispatch, { clientId, rootClientId } ) => {
+		const { moveBlocksDown, moveBlocksUp } = dispatch( 'core/editor' );
+		return {
+			onMoveDown: partial( moveBlocksDown, clientId, rootClientId ),
+			onMoveUp: partial( moveBlocksUp, clientId, rootClientId ),
+		};
 	} ),
 ] )( gtGridColumnEdit );

@@ -245,7 +245,7 @@ class gtIconGridEdit extends Component {
 
 						<InnerBlocks
 							template={ getItemsTemplate( items ) }
-							templateLock={ false }
+							templateLock="all"
 							allowedBlocks={ [ 'gt-layout-blocks/icon-grid-column' ] }
 						/>
 
