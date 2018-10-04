@@ -90,8 +90,6 @@ class gtHeadingEdit extends Component {
 			blockAlignment,
 			textAlignment,
 			headingWidth,
-			marginTop,
-			marginBottom,
 			paddingTop,
 			paddingBottom,
 			paddingLeft,
@@ -104,8 +102,6 @@ class gtHeadingEdit extends Component {
 
 		const blockStyles = {
 			textAlign: textAlignment,
-			marginTop: marginTop !== 24 ? marginTop + 'px' : undefined,
-			marginBottom: marginBottom !== 24 ? marginBottom + 'px' : undefined,
 		};
 
 		const headingClasses = classnames( 'gt-title', {
@@ -122,10 +118,10 @@ class gtHeadingEdit extends Component {
 
 		const headingStyles = {
 			display: 'auto' === headingWidth ? 'inline-block' : undefined,
-			paddingTop: paddingTop !== 12 ? paddingTop + 'px' : undefined,
-			paddingBottom: paddingBottom !== 12 ? paddingBottom + 'px' : undefined,
-			paddingLeft: paddingLeft !== 24 ? paddingLeft + 'px' : undefined,
-			paddingRight: paddingRight !== 24 ? paddingRight + 'px' : undefined,
+			paddingTop: paddingTop !== 0 ? paddingTop + 'px' : undefined,
+			paddingBottom: paddingBottom !== 0 ? paddingBottom + 'px' : undefined,
+			paddingLeft: paddingLeft !== 0 ? paddingLeft + 'px' : undefined,
+			paddingRight: paddingRight !== 0 ? paddingRight + 'px' : undefined,
 			backgroundColor: backgroundColor.class ? undefined : backgroundColor.color,
 			color: textColor.class ? undefined : textColor.color,
 			fontSize: fontSize.size ? fontSize.size + 'px' : undefined,
@@ -201,23 +197,7 @@ class gtHeadingEdit extends Component {
 
 					</PanelBody>
 
-					<PanelBody title={ __( 'Spacing Options' ) } initialOpen={ false } className="gt-panel-spacing-options gt-panel">
-
-						<RangeControl
-							label={ __( 'Margin Top' ) }
-							value={ marginTop }
-							onChange={ ( newMargin ) => setAttributes( { marginTop: newMargin } ) }
-							min={ 0 }
-							max={ 64 }
-						/>
-
-						<RangeControl
-							label={ __( 'Margin Bottom' ) }
-							value={ marginBottom }
-							onChange={ ( newMargin ) => setAttributes( { marginBottom: newMargin } ) }
-							min={ 0 }
-							max={ 64 }
-						/>
+					<PanelBody title={ __( 'Padding Options' ) } initialOpen={ false } className="gt-panel-padding-options gt-panel">
 
 						<RangeControl
 							label={ __( 'Padding Top' ) }
