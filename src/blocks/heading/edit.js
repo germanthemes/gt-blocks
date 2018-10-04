@@ -24,7 +24,6 @@ const { compose } = wp.compose;
 
 const {
 	AlignmentToolbar,
-	BlockAlignmentToolbar,
 	BlockControls,
 	ContrastChecker,
 	InspectorControls,
@@ -87,7 +86,6 @@ class gtHeadingEdit extends Component {
 			title,
 			titleTag,
 			placeholder,
-			blockAlignment,
 			textAlignment,
 			headingWidth,
 			paddingTop,
@@ -166,14 +164,6 @@ class gtHeadingEdit extends Component {
 										subscript: level,
 									} ) )
 								}
-							/>
-						</BaseControl>
-
-						<BaseControl id="gt-block-alignment" label={ __( 'Block Alignment' ) }>
-							<BlockAlignmentToolbar
-								value={ blockAlignment }
-								onChange={ ( newAlign ) => setAttributes( { blockAlignment: newAlign ? newAlign : blockAlignment } ) }
-								controls={ [ 'center', 'wide', 'full' ] }
 							/>
 						</BaseControl>
 

@@ -54,10 +54,6 @@ registerBlockType(
 			placeholder: {
 				type: 'string',
 			},
-			blockAlignment: {
-				type: 'string',
-				default: 'center',
-			},
 			textAlignment: {
 				type: 'string',
 			},
@@ -113,20 +109,12 @@ registerBlockType(
 			},
 		},
 
-		getEditWrapperProps( attributes ) {
-			const { blockAlignment } = attributes;
-			if ( 'wide' === blockAlignment || 'full' === blockAlignment ) {
-				return { 'data-align': blockAlignment };
-			}
-		},
-
 		edit,
 
 		save( { attributes } ) {
 			const {
 				title,
 				titleTag,
-				blockAlignment,
 				textAlignment,
 				headingWidth,
 				paddingTop,
@@ -148,10 +136,6 @@ registerBlockType(
 			const textColorClass = getColorClassName( 'color', textColor );
 			const backgroundClass = getColorClassName( 'background-color', backgroundColor );
 			const fontSizeClass = getFontSizeClass( fontSize );
-
-			const blockClasses = classnames( {
-				[ `align${ blockAlignment }` ]: 'center' !== blockAlignment,
-			} );
 
 			const blockStyles = {
 				textAlign: textAlignment,
@@ -181,7 +165,7 @@ registerBlockType(
 			};
 
 			return (
-				<div className={ blockClasses ? blockClasses : undefined } style={ blockStyles }>
+				<div style={ blockStyles }>
 					<RichText.Content
 						tagName={ 'h' + titleTag }
 						className={ headingClasses }
