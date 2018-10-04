@@ -191,7 +191,39 @@ const synchronizeHeadings = ( blockList, attributes ) => {
 	} );
 };
 
-const supportedBlocks = [ 'core/paragraph', 'gt-layout-blocks/button', 'gt-layout-blocks/heading' ];
+const synchronizeIcons = ( blockList, attributes ) => {
+	const {
+		textAlignment,
+		iconLayout,
+		iconSize,
+		iconPadding,
+		outlineBorderWidth,
+		roundedCorners,
+		textColor,
+		backgroundColor,
+		customTextColor,
+		customBackgroundColor,
+	} = attributes;
+
+	const newAttributes = {
+		textAlignment,
+		iconLayout,
+		iconSize,
+		iconPadding,
+		outlineBorderWidth,
+		roundedCorners,
+		textColor,
+		backgroundColor,
+		customTextColor,
+		customBackgroundColor,
+	};
+
+	blockList.forEach( block => {
+		dispatch( 'core/editor' ).updateBlockAttributes( block, newAttributes );
+	} );
+};
+
+const supportedBlocks = [ 'core/paragraph', 'gt-layout-blocks/button', 'gt-layout-blocks/heading', 'gt-layout-blocks/icon' ];
 
 const synchronizeStyling = createHigherOrderComponent( ( BlockEdit ) => {
 	return ( props ) => {
@@ -217,6 +249,11 @@ const synchronizeStyling = createHigherOrderComponent( ( BlockEdit ) => {
 				}
 				case 'gt-layout-blocks/heading': {
 					synchronizeHeadings( siblings, props.attributes );
+					break;
+				}
+
+				case 'gt-layout-blocks/icon': {
+					synchronizeIcons( siblings, props.attributes );
 					break;
 				}
 			}

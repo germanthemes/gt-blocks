@@ -130,13 +130,17 @@ class gtGridColumnEdit extends Component {
 						<InnerBlocks
 							allowedBlocks={ [ 'gt-layout-blocks/heading', 'core/paragraph' ] }
 							template={ [
+								[ 'gt-layout-blocks/icon', {
+									synchronizeStyling: true,
+									parentBlock: 'gt-layout-blocks/icon-grid',
+								} ],
 								[ 'gt-layout-blocks/heading', {
-									placeholder: __( 'Write icon title...' ),
+									placeholder: __( 'Feature' ),
 									synchronizeStyling: true,
 									parentBlock: 'gt-layout-blocks/icon-grid',
 								} ],
 								[ 'core/paragraph', {
-									placeholder: __( 'Write icon description...' ),
+									placeholder: __( 'Write feature description...' ),
 									synchronizeStyling: true,
 									parentBlock: 'gt-layout-blocks/icon-grid',
 								} ],
