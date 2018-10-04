@@ -23,6 +23,7 @@ import './blocks/container';
 import './blocks/features';
 import './blocks/heading';
 import './blocks/hero-image';
+import './blocks/icon';
 import './blocks/icon-grid';
 import './blocks/image-text';
 import './blocks/portfolio';

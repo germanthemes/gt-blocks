@@ -1,0 +1,76 @@
+// containerWidth.
+$padding: 1.25rem;
+$iconPadding: 32px;
+
+.wp-block-gt-layout-blocks-icon {
+
+	.gt-icon {
+
+		&.has-background {
+			padding: $padding;
+		}
+
+		.gt-icon-svg {
+			display: inline-block;
+			line-height: 0;
+
+			.icon {
+				margin: 0;
+				width: 32px;
+				height: 32px;
+				vertical-align: middle;
+				fill: currentColor;
+			}
+		}
+
+		&.gt-icon-full {
+			display: block;
+			padding: 0 $padding;
+
+			.gt-icon-svg {
+				padding-top: $iconPadding;
+				padding-bottom: $iconPadding;
+			}
+		}
+
+		&.gt-icon-square {
+			display: inline-block;
+			padding: 0;
+
+			.gt-icon-svg {
+				padding: $iconPadding;
+			}
+		}
+
+		&.gt-icon-circle {
+			display: inline-block;
+			padding: 0;
+			border-radius: 100%;
+
+			.gt-icon-svg {
+				padding: $iconPadding;
+			}
+		}
+
+		&.gt-icon-outline {
+			padding: 0;
+
+			.gt-icon-svg {
+				display: inline-block;
+				padding: $iconPadding;
+				border-radius: 100%;
+				border: 2px solid currentColor;
+			}
+
+			&.has-background {
+				padding: $padding;
+			}
+		}
+
+		&.gt-icon-circle:not(.has-background),
+		&.gt-icon-square:not(.has-background),
+		&.gt-icon-full:not(.has-background) {
+			background-color: rgba(0,0,0,0.1);
+		}
+	}
+}
