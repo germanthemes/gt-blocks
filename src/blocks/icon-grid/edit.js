@@ -20,7 +20,13 @@ const {
 } = wp.i18n;
 
 const { compose } = wp.compose;
-const { dispatch, select } = wp.data;
+const { createBlock } = wp.blocks;
+
+const {
+	dispatch,
+	select,
+	withSelect,
+} = wp.data;
 
 const {
 	BlockAlignmentToolbar,
@@ -80,6 +86,7 @@ const getItemsTemplate = memoize( ( items ) => {
 class gtIconGridEdit extends Component {
 	constructor() {
 		super( ...arguments );
+		this.addBlock = this.addBlock.bind( this );
 
 		this.state = {
 			childBlocks: [],
@@ -125,6 +132,36 @@ class gtIconGridEdit extends Component {
 		} );
 	}
 
+	addBlock() {
+		const {
+			attributes,
+			clientId,
+			setAttributes,
+		} = this.props;
+
+		const {
+			items,
+			textColor,
+			backgroundColor,
+			customTextColor,
+			customBackgroundColor,
+		} = attributes;
+
+		// Create Block.
+		const block = createBlock( 'gt-layout-blocks/icon-grid-column', {
+			textColor,
+			backgroundColor,
+			customTextColor,
+			customBackgroundColor,
+		} );
+
+		// Insert Block.
+		dispatch( 'core/editor' ).insertBlocks( block, items, clientId );
+
+		// Update number of items.
+		setAttributes( { items: items + 1 } );
+	}
+
 	render() {
 		const {
 			attributes,
@@ -136,6 +173,7 @@ class gtIconGridEdit extends Component {
 			fallbackTextColor,
 			setAttributes,
 			isSelected,
+			isChildBlockSelected,
 			className,
 			wideControlsEnabled,
 		} = this.props;
@@ -183,14 +221,6 @@ class gtIconGridEdit extends Component {
 				<InspectorControls key="inspector">
 
 					<PanelBody title={ __( 'Layout Settings' ) } initialOpen={ false } className="gt-panel-layout-settings gt-panel">
-
-						<RangeControl
-							label={ __( 'Number of Items' ) }
-							value={ items }
-							onChange={ ( newNumber ) => setAttributes( { items: newNumber } ) }
-							min={ 1 }
-							max={ 32 }
-						/>
 
 						<RangeControl
 							label={ __( 'Columns' ) }
@@ -251,10 +281,10 @@ class gtIconGridEdit extends Component {
 
 					</div>
 
-					{ isSelected && (
+					{ ( isSelected || isChildBlockSelected ) && (
 						<Button
 							isLarge
-							onClick={ () => setAttributes( { items: items + 1 } ) }
+							onClick={ this.addBlock }
 							className="gt-add-icon-grid-item"
 						>
 							<Dashicon icon="insert" />
@@ -268,6 +298,12 @@ class gtIconGridEdit extends Component {
 }
 
 export default compose( [
+	withSelect( ( select, { clientId } ) => {
+		const { hasSelectedInnerBlock } = select( 'core/editor' );
+		return {
+			isChildBlockSelected: hasSelectedInnerBlock( clientId, true ),
+		};
+	} ),
 	withColors( 'backgroundColor', { textColor: 'color' } ),
 	applyFallbackStyles,
 ] )( gtIconGridEdit );
