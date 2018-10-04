@@ -9,7 +9,7 @@ import { assign } from 'lodash';
 const { createHigherOrderComponent } = wp.compose;
 const { Fragment } = wp.element;
 const { InspectorControls } = wp.editor;
-const { Button, PanelBody } = wp.components;
+const { Button, Dashicon, PanelBody } = wp.components;
 const { __ } = wp.i18n;
 const { addFilter } = wp.hooks;
 const { dispatch, select } = wp.data;
@@ -224,18 +224,19 @@ const synchronizeStyling = createHigherOrderComponent( ( BlockEdit ) => {
 
 		return (
 			<Fragment>
+				<BlockEdit { ...props } />
 				<InspectorControls>
-					<PanelBody>
+					<PanelBody className="gt-panel-synchronize-styling gt-panel">
 						<Button
 							key="synchronize-buttons"
 							isLarge
 							onClick={ synchronizeAttributes }
 						>
+							<Dashicon icon="controls-repeat" />
 							{ __( 'Synchronize Styling' ) }
 						</Button>
 					</PanelBody>
 				</InspectorControls>
-				<BlockEdit { ...props } />
 			</Fragment>
 		);
 	};
