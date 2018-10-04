@@ -12,6 +12,11 @@
 			padding: 12px 24px;
 		}
 
+		&.gt-is-inline-block {
+			display: inline-block;
+			margin-top: 0.25em;
+		}
+
 		&.gt-is-bold {
 			font-weight: bold;
 		}

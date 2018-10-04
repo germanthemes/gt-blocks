@@ -286,6 +286,9 @@
     border: none; }
     .wp-block-gt-layout-blocks-heading .gt-title.has-background {
       padding: 12px 24px; }
+    .wp-block-gt-layout-blocks-heading .gt-title.gt-is-inline-block {
+      display: inline-block;
+      margin-top: 0.25em; }
     .wp-block-gt-layout-blocks-heading .gt-title.gt-is-bold {
       font-weight: bold; }
     .wp-block-gt-layout-blocks-heading .gt-title.gt-is-italic {

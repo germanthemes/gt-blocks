@@ -103,6 +103,7 @@ class gtHeadingEdit extends Component {
 		};
 
 		const headingClasses = classnames( 'gt-title', {
+			'gt-is-inline-block': 'auto' === headingWidth,
 			'gt-is-bold': ( 'bold' === fontStyle || 'bold-italic' === fontStyle ),
 			'gt-is-italic': ( 'italic' === fontStyle || 'bold-italic' === fontStyle ),
 			'gt-is-uppercase': uppercase,
@@ -115,7 +116,6 @@ class gtHeadingEdit extends Component {
 		} );
 
 		const headingStyles = {
-			display: 'auto' === headingWidth ? 'inline-block' : undefined,
 			paddingTop: paddingTop !== 0 ? paddingTop + 'px' : undefined,
 			paddingBottom: paddingBottom !== 0 ? paddingBottom + 'px' : undefined,
 			paddingLeft: paddingLeft !== 0 ? paddingLeft + 'px' : undefined,
