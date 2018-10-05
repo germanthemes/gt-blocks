@@ -77,7 +77,7 @@ const applyFallbackStyles = withFallbackStyles( ( node, ownProps ) => {
  * @return {Object[]} Items layout configuration.
  */
 const getItemsTemplate = memoize( ( items ) => {
-	const template = [ 'gt-layout-blocks/icon-grid-column', {
+	const template = [ 'gt-layout-blocks/column', {
 		allowedBlocks: [ 'gt-layout-blocks/icon', 'gt-layout-blocks/heading', 'core/paragraph' ],
 		template: [
 			[ 'gt-layout-blocks/icon', {
@@ -169,7 +169,7 @@ class gtIconGridEdit extends Component {
 		} = attributes;
 
 		// Create Block.
-		const block = createBlock( 'gt-layout-blocks/icon-grid-column', {
+		const block = createBlock( 'gt-layout-blocks/column', {
 			textColor,
 			backgroundColor,
 			customTextColor,
@@ -297,7 +297,7 @@ class gtIconGridEdit extends Component {
 						<InnerBlocks
 							template={ getItemsTemplate( items ) }
 							templateLock="all"
-							allowedBlocks={ [ 'gt-layout-blocks/icon-grid-column' ] }
+							allowedBlocks={ [ 'gt-layout-blocks/column' ] }
 						/>
 
 					</div>

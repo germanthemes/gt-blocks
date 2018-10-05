@@ -24,9 +24,9 @@ import edit from './edit';
  * Register block
  */
 registerBlockType(
-	'gt-layout-blocks/icon-grid-column',
+	'gt-layout-blocks/column',
 	{
-		title: __( 'GT Icon Grid Column' ),
+		title: __( 'GT Column' ),
 
 		category: 'gt-layout-blocks',
 
@@ -75,21 +75,21 @@ registerBlockType(
 			const textColorClass = getColorClassName( 'color', textColor );
 			const backgroundClass = getColorClassName( 'background-color', backgroundColor );
 
-			const itemClasses = classnames( 'gt-grid-item', {
+			const columnClasses = classnames( 'gt-column', {
 				'has-text-color': textColor || customTextColor,
 				[ textColorClass ]: textColorClass,
 				'has-background': backgroundColor || customBackgroundColor,
 				[ backgroundClass ]: backgroundClass,
 			} );
 
-			const itemStyles = {
+			const columnStyles = {
 				color: textColorClass ? undefined : customTextColor,
 				backgroundColor: backgroundClass ? undefined : customBackgroundColor,
 			};
 
 			return (
 				<div>
-					<div className={ itemClasses } style={ itemStyles }>
+					<div className={ columnClasses } style={ columnStyles }>
 
 						<InnerBlocks.Content />
 

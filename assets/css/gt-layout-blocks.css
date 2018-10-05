@@ -7,14 +7,14 @@
     .edit-post-sidebar .gt-panel-synchronize-styling .components-button.is-large svg.dashicon {
       margin: 7px 7px 0 0; }
 
-.wp-block-gt-layout-blocks-icon-grid-column {
+.wp-block-gt-layout-blocks-column {
   /* Features Item Styling */ }
-  .wp-block-gt-layout-blocks-icon-grid-column .gt-grid-item {
+  .wp-block-gt-layout-blocks-column .gt-column {
     display: -ms-flexbox;
     display: flex;
     -ms-flex-direction: column;
         flex-direction: column; }
-    .wp-block-gt-layout-blocks-icon-grid-column .gt-grid-item.has-background {
+    .wp-block-gt-layout-blocks-column .gt-column.has-background {
       padding-left: 1.5em;
       padding-right: 1.5em; }
 .edit-post-sidebar .gt-panel-synchronize-styling {
@@ -400,7 +400,7 @@
   .wp-block-gt-layout-blocks-icon-grid .gt-grid-container {
     display: grid;
     grid-gap: 1.5rem; }
-    .wp-block-gt-layout-blocks-icon-grid .gt-grid-container .wp-block-gt-layout-blocks-icon-grid-column {
+    .wp-block-gt-layout-blocks-icon-grid .gt-grid-container .wp-block-gt-layout-blocks-column {
       min-width: 0;
       overflow: hidden; }
     .wp-block-gt-layout-blocks-icon-grid .gt-grid-container.gt-columns-2 {

@@ -7,9 +7,9 @@
     .edit-post-sidebar .gt-panel-synchronize-styling .components-button.is-large svg.dashicon {
       margin: 7px 7px 0 0; }
 
-.wp-block-gt-layout-blocks-icon-grid-column {
-  /* Grid Item Controls*/ }
-  .wp-block-gt-layout-blocks-icon-grid-column .gt-grid-item-controls {
+.wp-block-gt-layout-blocks-column {
+  /* Column Controls*/ }
+  .wp-block-gt-layout-blocks-column .gt-column-controls {
     display: -ms-flexbox;
     display: flex;
     margin-top: 16px;
@@ -17,13 +17,13 @@
     width: 100%;
     background: #edeff0;
     border: 1px solid #e2e4e7; }
-    .wp-block-gt-layout-blocks-icon-grid-column .gt-grid-item-controls .components-icon-button {
+    .wp-block-gt-layout-blocks-column .gt-column-controls .components-icon-button {
       padding: 4px 5px; }
-      .wp-block-gt-layout-blocks-icon-grid-column .gt-grid-item-controls .components-icon-button:hover, .wp-block-gt-layout-blocks-icon-grid-column .gt-grid-item-controls .components-icon-button:active, .wp-block-gt-layout-blocks-icon-grid-column .gt-grid-item-controls .components-icon-button:focus {
+      .wp-block-gt-layout-blocks-column .gt-column-controls .components-icon-button:hover, .wp-block-gt-layout-blocks-column .gt-column-controls .components-icon-button:active, .wp-block-gt-layout-blocks-column .gt-column-controls .components-icon-button:focus {
         background: #fff; }
-      .wp-block-gt-layout-blocks-icon-grid-column .gt-grid-item-controls .components-icon-button .dashicon {
+      .wp-block-gt-layout-blocks-column .gt-column-controls .components-icon-button .dashicon {
         width: 18px; }
-    .wp-block-gt-layout-blocks-icon-grid-column .gt-grid-item-controls .remove-item {
+    .wp-block-gt-layout-blocks-column .gt-column-controls .remove-column {
       margin-left: auto; }
 .edit-post-sidebar .gt-panel-synchronize-styling {
   background-color: #edeff0; }
@@ -249,7 +249,7 @@
     .wp-block-gt-layout-blocks-icon-grid .gt-grid-container > .editor-inner-blocks > .editor-block-list__layout {
       display: grid;
       grid-gap: 0; }
-      .wp-block-gt-layout-blocks-icon-grid .gt-grid-container > .editor-inner-blocks > .editor-block-list__layout > [data-type="gt-layout-blocks/icon-grid-column"] {
+      .wp-block-gt-layout-blocks-icon-grid .gt-grid-container > .editor-inner-blocks > .editor-block-list__layout > [data-type="gt-layout-blocks/column"] {
         min-width: 0;
         width: 100%; }
       .wp-block-gt-layout-blocks-icon-grid .gt-grid-container > .editor-inner-blocks > .editor-block-list__layout .editor-block-list__block > .editor-block-list__block-edit {

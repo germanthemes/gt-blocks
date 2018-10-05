@@ -24,7 +24,7 @@ const getSiblings = ( blockId, blockType, parentBlock ) => {
 			break;
 		}
 		case 'gt-layout-blocks/icon-grid': {
-			containerBlock = 'gt-layout-blocks/icon-grid-column';
+			containerBlock = 'gt-layout-blocks/column';
 			break;
 		}
 	}

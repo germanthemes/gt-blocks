@@ -12,7 +12,7 @@ import './data/synchronize-styling';
 /**
  * Import Child Blocks
  */
-import './child-blocks/grid-column';
+import './child-blocks/column';
 import './child-blocks/wrapper';
 
 /**

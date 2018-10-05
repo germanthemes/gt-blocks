@@ -36,8 +36,8 @@ const {
 /**
  * Block Edit Component
  */
-class gtGridColumnEdit extends Component {
-	duplicateItem() {
+class columnEdit extends Component {
+	duplicateColumn() {
 		const {
 			getBlocksByClientId,
 			getBlockIndex,
@@ -68,7 +68,7 @@ class gtGridColumnEdit extends Component {
 		updateBlockAttributes( rootClientId, { items: parentBlock.attributes.items + 1 } );
 	}
 
-	removeItem() {
+	removeColumn() {
 		const {
 			getBlocksByClientId,
 			getBlockRootClientId,
@@ -115,14 +115,14 @@ class gtGridColumnEdit extends Component {
 			templateLock,
 		} = attributes;
 
-		const itemClasses = classnames( 'gt-grid-item', {
+		const columnClasses = classnames( 'gt-column', {
 			'has-text-color': textColor.color,
 			[ textColor.class ]: textColor.class,
 			'has-background': backgroundColor.color,
 			[ backgroundColor.class ]: backgroundColor.class,
 		} );
 
-		const itemStyles = {
+		const columnStyles = {
 			color: textColor.class ? undefined : textColor.color,
 			backgroundColor: backgroundColor.class ? undefined : backgroundColor.color,
 		};
@@ -162,7 +162,7 @@ class gtGridColumnEdit extends Component {
 
 				<div className={ className }>
 
-					<div className={ itemClasses } style={ itemStyles }>
+					<div className={ columnClasses } style={ columnStyles }>
 
 						<InnerBlocks
 							allowedBlocks={ allowedBlocks || undefined }
@@ -173,10 +173,10 @@ class gtGridColumnEdit extends Component {
 					</div>
 
 					{ ( isSelected || isParentBlockSelected || isChildBlockSelected ) && (
-						<div className="gt-grid-item-controls">
+						<div className="gt-column-controls">
 
 							<IconButton
-								className="move-up-item"
+								className="move-up-column"
 								label={ __( 'Move up' ) }
 								icon="arrow-left-alt2"
 								onClick={ isFirstColumn ? null : onMoveUp }
@@ -184,7 +184,7 @@ class gtGridColumnEdit extends Component {
 							/>
 
 							<IconButton
-								className="move-down-item"
+								className="move-down-column"
 								label={ __( 'Move down' ) }
 								icon="arrow-right-alt2"
 								onClick={ isLastColumn ? null : onMoveDown }
@@ -192,17 +192,17 @@ class gtGridColumnEdit extends Component {
 							/>
 
 							<IconButton
-								className="duplicate-item"
+								className="duplicate-column"
 								label={ __( 'Duplicate' ) }
 								icon="admin-page"
-								onClick={ () => this.duplicateItem() }
+								onClick={ () => this.duplicateColumn() }
 							/>
 
 							<IconButton
-								className="remove-item"
+								className="remove-column"
 								label={ __( 'Remove' ) }
 								icon="trash"
-								onClick={ () => this.removeItem() }
+								onClick={ () => this.removeColumn() }
 							/>
 						</div>
 					) }
@@ -254,4 +254,4 @@ export default compose( [
 			fallbackTextColor: textColor || ! computedStyles ? undefined : computedStyles.color,
 		};
 	} ),
-] )( gtGridColumnEdit );
+] )( columnEdit );

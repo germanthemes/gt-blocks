@@ -1,7 +1,7 @@
-.wp-block-gt-layout-blocks-icon-grid-column {
+.wp-block-gt-layout-blocks-column {
 
-	/* Grid Item Controls*/
-	.gt-grid-item-controls {
+	/* Column Controls*/
+	.gt-column-controls {
 		display: flex;
 		margin-top: 16px;
 		padding: 8px;
@@ -23,7 +23,7 @@
 			}
 		}
 
-		.remove-item {
+		.remove-column {
 			margin-left: auto;
 		}
 	}
