@@ -12,7 +12,27 @@ const { InspectorControls } = wp.editor;
 const { Button, Dashicon, PanelBody } = wp.components;
 const { __ } = wp.i18n;
 const { addFilter } = wp.hooks;
-const { dispatch, select } = wp.data;
+const { select } = wp.data;
+
+/**
+ * Internal dependencies
+ */
+import {
+	synchronizeButtons,
+	synchronizeColumns,
+	synchronizeHeadings,
+	synchronizeIcons,
+	synchronizeParagraphs,
+} from './synchronize-functions';
+
+// Define supported blocks.
+const supportedBlocks = [
+	'gt-layout-blocks/button',
+	'gt-layout-blocks/column',
+	'gt-layout-blocks/heading',
+	'gt-layout-blocks/icon',
+	'core/paragraph',
+];
 
 const getSiblings = ( blockId, blockType, parentBlock ) => {
 	let siblings = [];
@@ -65,166 +85,6 @@ const getSiblings = ( blockId, blockType, parentBlock ) => {
 	return siblings;
 };
 
-const synchronizeParagraphs = ( blockList, attributes ) => {
-	const {
-		align,
-		dropCap,
-		backgroundColor,
-		textColor,
-		customBackgroundColor,
-		customTextColor,
-		fontSize,
-		customFontSize,
-	} = attributes;
-
-	const newAttributes = {
-		align,
-		dropCap,
-		backgroundColor,
-		textColor,
-		customBackgroundColor,
-		customTextColor,
-		fontSize,
-		customFontSize,
-	};
-
-	blockList.forEach( block => {
-		dispatch( 'core/editor' ).updateBlockAttributes( block, newAttributes );
-	} );
-};
-
-const synchronizeButtons = ( blockList, attributes ) => {
-	const {
-		buttonSize,
-		paddingVertical,
-		paddingHorizontal,
-		buttonShape,
-		roundedCorners,
-		fontStyle,
-		uppercase,
-		textColor,
-		backgroundColor,
-		customTextColor,
-		customBackgroundColor,
-		hoverColor,
-		hoverBackgroundColor,
-		customHoverColor,
-		customHoverBackgroundColor,
-		fontSize,
-		customFontSize,
-	} = attributes;
-
-	const newAttributes = {
-		buttonSize,
-		paddingVertical,
-		paddingHorizontal,
-		buttonShape,
-		roundedCorners,
-		fontStyle,
-		uppercase,
-		textColor,
-		backgroundColor,
-		customTextColor,
-		customBackgroundColor,
-		hoverColor,
-		hoverBackgroundColor,
-		customHoverColor,
-		customHoverBackgroundColor,
-		fontSize,
-		customFontSize,
-	};
-
-	blockList.forEach( block => {
-		dispatch( 'core/editor' ).updateBlockAttributes( block, newAttributes );
-	} );
-};
-
-const synchronizeHeadings = ( blockList, attributes ) => {
-	const {
-		titleTag,
-		blockAlignment,
-		textAlignment,
-		headingWidth,
-		marginTop,
-		marginBottom,
-		paddingTop,
-		paddingBottom,
-		paddingLeft,
-		paddingRight,
-		fontStyle,
-		uppercase,
-		textColor,
-		backgroundColor,
-		customTextColor,
-		customBackgroundColor,
-		fontSize,
-		customFontSize,
-		border,
-		borderWidth,
-	} = attributes;
-
-	const newAttributes = {
-		titleTag,
-		blockAlignment,
-		textAlignment,
-		headingWidth,
-		marginTop,
-		marginBottom,
-		paddingTop,
-		paddingBottom,
-		paddingLeft,
-		paddingRight,
-		fontStyle,
-		uppercase,
-		textColor,
-		backgroundColor,
-		customTextColor,
-		customBackgroundColor,
-		fontSize,
-		customFontSize,
-		border,
-		borderWidth,
-	};
-
-	blockList.forEach( block => {
-		dispatch( 'core/editor' ).updateBlockAttributes( block, newAttributes );
-	} );
-};
-
-const synchronizeIcons = ( blockList, attributes ) => {
-	const {
-		textAlignment,
-		iconLayout,
-		iconSize,
-		iconPadding,
-		outlineBorderWidth,
-		roundedCorners,
-		textColor,
-		backgroundColor,
-		customTextColor,
-		customBackgroundColor,
-	} = attributes;
-
-	const newAttributes = {
-		textAlignment,
-		iconLayout,
-		iconSize,
-		iconPadding,
-		outlineBorderWidth,
-		roundedCorners,
-		textColor,
-		backgroundColor,
-		customTextColor,
-		customBackgroundColor,
-	};
-
-	blockList.forEach( block => {
-		dispatch( 'core/editor' ).updateBlockAttributes( block, newAttributes );
-	} );
-};
-
-const supportedBlocks = [ 'core/paragraph', 'gt-layout-blocks/button', 'gt-layout-blocks/heading', 'gt-layout-blocks/icon' ];
-
 const synchronizeStyling = createHigherOrderComponent( ( BlockEdit ) => {
 	return ( props ) => {
 		if ( ! supportedBlocks.includes( props.name ) ) {
@@ -239,21 +99,24 @@ const synchronizeStyling = createHigherOrderComponent( ( BlockEdit ) => {
 			const siblings = getSiblings( props.clientId, props.name, props.attributes.parentBlock );
 
 			switch ( props.name ) {
-				case 'core/paragraph': {
-					synchronizeParagraphs( siblings, props.attributes );
-					break;
-				}
 				case 'gt-layout-blocks/button': {
 					synchronizeButtons( siblings, props.attributes );
+					break;
+				}
+				case 'gt-layout-blocks/columns': {
+					synchronizeColumns( siblings, props.attributes );
 					break;
 				}
 				case 'gt-layout-blocks/heading': {
 					synchronizeHeadings( siblings, props.attributes );
 					break;
 				}
-
 				case 'gt-layout-blocks/icon': {
 					synchronizeIcons( siblings, props.attributes );
+					break;
+				}
+				case 'core/paragraph': {
+					synchronizeParagraphs( siblings, props.attributes );
 					break;
 				}
 			}
