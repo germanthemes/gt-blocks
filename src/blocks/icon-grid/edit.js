@@ -69,6 +69,25 @@ const applyFallbackStyles = withFallbackStyles( ( node, ownProps ) => {
 	};
 } );
 
+// Define column child blocks.
+const ALLOWED_BLOCKS = [ 'gt-layout-blocks/icon', 'gt-layout-blocks/heading', 'core/paragraph' ];
+const TEMPLATE = [
+	[ 'gt-layout-blocks/icon', {
+		synchronizeStyling: true,
+		parentBlock: 'gt-layout-blocks/icon-grid',
+	} ],
+	[ 'gt-layout-blocks/heading', {
+		placeholder: __( 'Feature' ),
+		synchronizeStyling: true,
+		parentBlock: 'gt-layout-blocks/icon-grid',
+	} ],
+	[ 'core/paragraph', {
+		placeholder: __( 'Write feature description...' ),
+		synchronizeStyling: true,
+		parentBlock: 'gt-layout-blocks/icon-grid',
+	} ],
+];
+
 /**
  * Returns the layouts configuration for a given number of items.
  *
@@ -78,23 +97,8 @@ const applyFallbackStyles = withFallbackStyles( ( node, ownProps ) => {
  */
 const getItemsTemplate = memoize( ( items ) => {
 	const template = [ 'gt-layout-blocks/column', {
-		allowedBlocks: [ 'gt-layout-blocks/icon', 'gt-layout-blocks/heading', 'core/paragraph' ],
-		template: [
-			[ 'gt-layout-blocks/icon', {
-				synchronizeStyling: true,
-				parentBlock: 'gt-layout-blocks/icon-grid',
-			} ],
-			[ 'gt-layout-blocks/heading', {
-				placeholder: __( 'Feature' ),
-				synchronizeStyling: true,
-				parentBlock: 'gt-layout-blocks/icon-grid',
-			} ],
-			[ 'core/paragraph', {
-				placeholder: __( 'Write feature description...' ),
-				synchronizeStyling: true,
-				parentBlock: 'gt-layout-blocks/icon-grid',
-			} ],
-		],
+		allowedBlocks: ALLOWED_BLOCKS,
+		template: TEMPLATE,
 		templateLock: 'all',
 	} ];
 
@@ -170,6 +174,9 @@ class gtIconGridEdit extends Component {
 
 		// Create Block.
 		const block = createBlock( 'gt-layout-blocks/column', {
+			allowedBlocks: ALLOWED_BLOCKS,
+			template: TEMPLATE,
+			templateLock: 'all',
 			textColor,
 			backgroundColor,
 			customTextColor,
