@@ -35,6 +35,15 @@ registerBlockType(
 		parent: [ 'gt-layout-blocks/icon-grid' ],
 
 		attributes: {
+			allowedBlocks: {
+				type: 'array',
+			},
+			template: {
+				type: 'array',
+			},
+			templateLock: {
+				type: 'string',
+			},
 			textColor: {
 				type: 'string',
 			},

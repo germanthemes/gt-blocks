@@ -92,6 +92,7 @@ class gtGridColumnEdit extends Component {
 
 	render() {
 		const {
+			attributes,
 			backgroundColor,
 			setBackgroundColor,
 			fallbackBackgroundColor,
@@ -107,6 +108,12 @@ class gtGridColumnEdit extends Component {
 			isFirstColumn,
 			isLastColumn,
 		} = this.props;
+
+		const {
+			allowedBlocks,
+			template,
+			templateLock,
+		} = attributes;
 
 		const itemClasses = classnames( 'gt-grid-item', {
 			'has-text-color': textColor.color,
@@ -158,24 +165,9 @@ class gtGridColumnEdit extends Component {
 					<div className={ itemClasses } style={ itemStyles }>
 
 						<InnerBlocks
-							allowedBlocks={ [ 'gt-layout-blocks/heading', 'core/paragraph' ] }
-							template={ [
-								[ 'gt-layout-blocks/icon', {
-									synchronizeStyling: true,
-									parentBlock: 'gt-layout-blocks/icon-grid',
-								} ],
-								[ 'gt-layout-blocks/heading', {
-									placeholder: __( 'Feature' ),
-									synchronizeStyling: true,
-									parentBlock: 'gt-layout-blocks/icon-grid',
-								} ],
-								[ 'core/paragraph', {
-									placeholder: __( 'Write feature description...' ),
-									synchronizeStyling: true,
-									parentBlock: 'gt-layout-blocks/icon-grid',
-								} ],
-							] }
-							templateLock="all"
+							allowedBlocks={ allowedBlocks || undefined }
+							template={ template || [ [ 'core/paragraph', {} ] ] }
+							templateLock={ templateLock || false }
 						/>
 
 					</div>

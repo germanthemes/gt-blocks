@@ -77,7 +77,28 @@ const applyFallbackStyles = withFallbackStyles( ( node, ownProps ) => {
  * @return {Object[]} Items layout configuration.
  */
 const getItemsTemplate = memoize( ( items ) => {
-	return times( items, () => [ 'gt-layout-blocks/icon-grid-column' ] );
+	const template = [ 'gt-layout-blocks/icon-grid-column', {
+		allowedBlocks: [ 'gt-layout-blocks/icon', 'gt-layout-blocks/heading', 'core/paragraph' ],
+		template: [
+			[ 'gt-layout-blocks/icon', {
+				synchronizeStyling: true,
+				parentBlock: 'gt-layout-blocks/icon-grid',
+			} ],
+			[ 'gt-layout-blocks/heading', {
+				placeholder: __( 'Feature' ),
+				synchronizeStyling: true,
+				parentBlock: 'gt-layout-blocks/icon-grid',
+			} ],
+			[ 'core/paragraph', {
+				placeholder: __( 'Write feature description...' ),
+				synchronizeStyling: true,
+				parentBlock: 'gt-layout-blocks/icon-grid',
+			} ],
+		],
+		templateLock: 'all',
+	} ];
+
+	return times( items, () => template );
 } );
 
 /**
