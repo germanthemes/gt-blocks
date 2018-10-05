@@ -3,6 +3,7 @@
  */
 import classnames from 'classnames';
 import { partial, castArray, last } from 'lodash';
+const { getComputedStyle } = window;
 
 /**
  * WordPress dependencies
@@ -16,12 +17,16 @@ const {
 } = wp.element;
 
 const {
-	getColorClassName,
+	ContrastChecker,
 	InnerBlocks,
+	InspectorControls,
+	PanelColorSettings,
+	withColors,
 } = wp.editor;
 
 const {
 	IconButton,
+	withFallbackStyles,
 } = wp.components;
 
 const {
@@ -87,7 +92,12 @@ class gtGridColumnEdit extends Component {
 
 	render() {
 		const {
-			attributes,
+			backgroundColor,
+			setBackgroundColor,
+			fallbackBackgroundColor,
+			textColor,
+			setTextColor,
+			fallbackTextColor,
 			className,
 			isSelected,
 			isParentBlockSelected,
@@ -98,30 +108,50 @@ class gtGridColumnEdit extends Component {
 			isLastColumn,
 		} = this.props;
 
-		const {
-			textColor,
-			backgroundColor,
-			customTextColor,
-			customBackgroundColor,
-		} = attributes;
-
-		const textColorClass = getColorClassName( 'color', textColor );
-		const backgroundClass = getColorClassName( 'background-color', backgroundColor );
-
 		const itemClasses = classnames( 'gt-grid-item', {
-			'has-text-color': textColor || customTextColor,
-			[ textColorClass ]: textColorClass,
-			'has-background': backgroundColor || customBackgroundColor,
-			[ backgroundClass ]: backgroundClass,
+			'has-text-color': textColor.color,
+			[ textColor.class ]: textColor.class,
+			'has-background': backgroundColor.color,
+			[ backgroundColor.class ]: backgroundColor.class,
 		} );
 
 		const itemStyles = {
-			color: textColorClass ? undefined : customTextColor,
-			backgroundColor: backgroundClass ? undefined : customBackgroundColor,
+			color: textColor.class ? undefined : textColor.color,
+			backgroundColor: backgroundColor.class ? undefined : backgroundColor.color,
 		};
 
 		return (
 			<Fragment>
+
+				<InspectorControls key="inspector">
+
+					<PanelColorSettings
+						title={ __( 'Color Settings' ) }
+						initialOpen={ false }
+						colorSettings={ [
+							{
+								value: backgroundColor.color,
+								onChange: setBackgroundColor,
+								label: __( 'Background Color' ),
+							},
+							{
+								value: textColor.color,
+								onChange: setTextColor,
+								label: __( 'Text Color' ),
+							},
+						] }
+					>
+						<ContrastChecker
+							{ ...{
+								textColor: textColor.color,
+								backgroundColor: backgroundColor.color,
+								fallbackTextColor,
+								fallbackBackgroundColor,
+							} }
+						/>
+					</PanelColorSettings>
+
+				</InspectorControls>
 
 				<div className={ className }>
 
@@ -219,6 +249,17 @@ export default compose( [
 		return {
 			onMoveDown: partial( moveBlocksDown, clientId, rootClientId ),
 			onMoveUp: partial( moveBlocksUp, clientId, rootClientId ),
+		};
+	} ),
+	withColors( 'backgroundColor', { textColor: 'color' } ),
+	withFallbackStyles( ( node, ownProps ) => {
+		const { textColor, backgroundColor } = ownProps.attributes;
+		const editableNode = node.querySelector( '[contenteditable="true"]' );
+		//verify if editableNode is available, before using getComputedStyle.
+		const computedStyles = editableNode ? getComputedStyle( editableNode ) : null;
+		return {
+			fallbackBackgroundColor: backgroundColor || ! computedStyles ? undefined : computedStyles.backgroundColor,
+			fallbackTextColor: textColor || ! computedStyles ? undefined : computedStyles.color,
 		};
 	} ),
 ] )( gtGridColumnEdit );
