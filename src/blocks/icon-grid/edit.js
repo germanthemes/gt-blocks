@@ -75,16 +75,19 @@ const TEMPLATE = [
 	[ 'gt-layout-blocks/icon', {
 		synchronizeStyling: true,
 		parentBlock: 'gt-layout-blocks/icon-grid',
+		containerBlock: 'gt-layout-blocks/column',
 	} ],
 	[ 'gt-layout-blocks/heading', {
 		placeholder: __( 'Feature' ),
 		synchronizeStyling: true,
 		parentBlock: 'gt-layout-blocks/icon-grid',
+		containerBlock: 'gt-layout-blocks/column',
 	} ],
 	[ 'core/paragraph', {
 		placeholder: __( 'Write feature description...' ),
 		synchronizeStyling: true,
 		parentBlock: 'gt-layout-blocks/icon-grid',
+		containerBlock: 'gt-layout-blocks/column',
 	} ],
 ];
 
@@ -100,6 +103,8 @@ const getItemsTemplate = memoize( ( items ) => {
 		allowedBlocks: ALLOWED_BLOCKS,
 		template: TEMPLATE,
 		templateLock: 'all',
+		synchronizeStyling: true,
+		parentBlock: 'gt-layout-blocks/icon-grid',
 	} ];
 
 	return times( items, () => template );
@@ -181,6 +186,8 @@ class gtIconGridEdit extends Component {
 			backgroundColor,
 			customTextColor,
 			customBackgroundColor,
+			synchronizeStyling: true,
+			parentBlock: 'gt-layout-blocks/icon-grid',
 		} );
 
 		// Insert Block.

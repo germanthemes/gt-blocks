@@ -329,6 +329,7 @@ class gtHeroImageEdit extends Component {
 											customFontSize: 20,
 											synchronizeStyling: true,
 											parentBlock: 'gt-layout-blocks/hero-image',
+											containerBlock: 'gt-layout-blocks/wrapper',
 										} ],
 										[ 'gt-layout-blocks/button', {
 											placeholder: __( 'Button 2' ),
@@ -336,6 +337,7 @@ class gtHeroImageEdit extends Component {
 											customFontSize: 20,
 											synchronizeStyling: true,
 											parentBlock: 'gt-layout-blocks/hero-image',
+											containerBlock: 'gt-layout-blocks/wrapper',
 										} ],
 									],
 									templateLock: 'all',

@@ -34,53 +34,74 @@ const supportedBlocks = [
 	'core/paragraph',
 ];
 
-const getSiblings = ( blockId, blockType, parentBlock ) => {
-	let siblings = [];
-	let containerBlock = '';
+const getSiblings = ( blockId, blockType, parentBlock, containerBlock = '' ) => {
+	// Get all blocks.
+	const blocks = select( 'core/editor' ).getBlocks();
 
-	switch ( parentBlock ) {
-		case 'gt-layout-blocks/hero-image': {
-			containerBlock = 'gt-layout-blocks/wrapper';
-			break;
-		}
-		case 'gt-layout-blocks/icon-grid': {
-			containerBlock = 'gt-layout-blocks/column';
-			break;
-		}
+	// Filter out parent blocks.
+	const parentBlocks = blocks.filter( block => block.name === parentBlock );
+
+	// Retrieve siblings.
+	if ( '' !== containerBlock ) {
+		return getSecondLevelSiblings( blockId, blockType, parentBlocks, containerBlock );
 	}
 
-	// Get all blocks.
-	select( 'core/editor' ).getBlocks()
+	return getFirstLevelSiblings( blockId, blockType, parentBlocks );
+};
 
-		// Filter out parent blocks.
-		.filter( block => block.name === parentBlock )
+const getFirstLevelSiblings = ( blockId, blockType, parentBlocks ) => {
+	let siblings = [];
 
-		// Loop through parent blocks until siblings are found.
-		.some( block => {
-			// Get child blocks of parent blocks.
-			const siblingIds = block.innerBlocks
+	// Loop through parent blocks until siblings are found.
+	parentBlocks.some( block => {
+		// Get child blocks of parent blocks.
+		const siblingIds = block.innerBlocks
 
-				// Filter out container blocks.
-				.filter( child => child.name === containerBlock )
+			// Filter out sibling blocks (= blocks with same block type).
+			.filter( child => child.name === blockType )
 
-				// Get child blocks of container blocks.
-				.map( item => item.innerBlocks )
+			// Get clientIds for all siblings.
+			.map( child => child.clientId );
 
-				// Reduce child blocks to one array.
-				.reduce( ( a, b ) => a.concat( b ), [] )
+		// Check if blockId matches siblings.
+		if ( siblingIds.includes( blockId ) ) {
+			siblings = siblingIds;
+			return true;
+		}
+	} );
 
-				// Filter out sibling blocks (= blocks with same block type).
-				.filter( child => child.name === blockType )
+	return siblings;
+};
 
-				// Get clientIds for all siblings.
-				.map( child => child.clientId );
+const getSecondLevelSiblings = ( blockId, blockType, parentBlocks, containerBlock ) => {
+	let siblings = [];
 
-			// Check if blockId matches siblings.
-			if ( siblingIds.includes( blockId ) ) {
-				siblings = siblingIds;
-				return true;
-			}
-		} );
+	// Loop through parent blocks until siblings are found.
+	parentBlocks.some( block => {
+		// Get child blocks of parent blocks.
+		const siblingIds = block.innerBlocks
+
+			// Filter out container blocks.
+			.filter( child => child.name === containerBlock )
+
+			// Get child blocks of container blocks.
+			.map( item => item.innerBlocks )
+
+			// Reduce child blocks to one array.
+			.reduce( ( a, b ) => a.concat( b ), [] )
+
+			// Filter out sibling blocks (= blocks with same block type).
+			.filter( child => child.name === blockType )
+
+			// Get clientIds for all siblings.
+			.map( child => child.clientId );
+
+		// Check if blockId matches siblings.
+		if ( siblingIds.includes( blockId ) ) {
+			siblings = siblingIds;
+			return true;
+		}
+	} );
 
 	return siblings;
 };
@@ -96,14 +117,14 @@ const synchronizeStyling = createHigherOrderComponent( ( BlockEdit ) => {
 		}
 
 		const synchronizeAttributes = () => {
-			const siblings = getSiblings( props.clientId, props.name, props.attributes.parentBlock );
+			const siblings = getSiblings( props.clientId, props.name, props.attributes.parentBlock, props.attributes.containerBlock );
 
 			switch ( props.name ) {
 				case 'gt-layout-blocks/button': {
 					synchronizeButtons( siblings, props.attributes );
 					break;
 				}
-				case 'gt-layout-blocks/columns': {
+				case 'gt-layout-blocks/column': {
 					synchronizeColumns( siblings, props.attributes );
 					break;
 				}
@@ -153,6 +174,9 @@ function addSynchronizeStylingAttribute( settings, name ) {
 			type: 'boolean',
 		},
 		parentBlock: {
+			type: 'string',
+		},
+		containerBlock: {
 			type: 'string',
 		},
 	} );
