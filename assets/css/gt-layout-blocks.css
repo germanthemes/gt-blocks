@@ -399,10 +399,9 @@
   /* IconGrid Grid Layout */ }
   .wp-block-gt-layout-blocks-icon-grid .gt-grid-container {
     display: grid;
-    grid-gap: 1.5rem; }
+    grid-gap: 2rem; }
     .wp-block-gt-layout-blocks-icon-grid .gt-grid-container .wp-block-gt-layout-blocks-column {
-      min-width: 0;
-      overflow: hidden; }
+      min-width: 0; }
     .wp-block-gt-layout-blocks-icon-grid .gt-grid-container.gt-columns-2 {
       grid-template-columns: repeat(2, 1fr); }
     .wp-block-gt-layout-blocks-icon-grid .gt-grid-container.gt-columns-3 {

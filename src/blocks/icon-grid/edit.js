@@ -19,7 +19,7 @@ const {
 	sprintf,
 } = wp.i18n;
 
-const { compose } = wp.compose;
+const { compose, withInstanceId } = wp.compose;
 const { createBlock } = wp.blocks;
 
 const {
@@ -210,6 +210,7 @@ class gtIconGridEdit extends Component {
 			isSelected,
 			isChildBlockSelected,
 			className,
+			instanceId,
 			wideControlsEnabled,
 		} = this.props;
 
@@ -217,11 +218,23 @@ class gtIconGridEdit extends Component {
 			items,
 			blockAlignment,
 			columns,
+			columnGap,
 		} = attributes;
+
+		const blockId = `gt-icon-grid-block-${ instanceId }`;
 
 		const gridClasses = classnames( 'gt-grid-container', {
 			[ `gt-columns-${ columns }` ]: columns,
 		} );
+
+		const gridGap = 32 !== columnGap ? ( columnGap / 16 ).toFixed( 2 ) : '2.0';
+
+		const gridInlineStyles = `
+			#${ blockId } .gt-grid-container > .editor-inner-blocks > .editor-block-list__layout {
+				grid-column-gap: calc( ${ gridGap }rem - 28px );
+				grid-row-gap: calc( ${ gridGap }rem - 28px );
+			}
+		`;
 
 		const columnIcons = {
 			2: gtIconNumberTwo,
@@ -265,6 +278,14 @@ class gtIconGridEdit extends Component {
 							max={ 6 }
 						/>
 
+						<RangeControl
+							label={ __( 'Column Gap' ) }
+							value={ columnGap }
+							onChange={ ( newGap ) => setAttributes( { columnGap: newGap } ) }
+							min={ 0 }
+							max={ 64 }
+						/>
+
 						{ wideControlsEnabled && (
 							<BaseControl id="gt-block-alignment" label={ __( 'Block Alignment' ) }>
 								<BlockAlignmentToolbar
@@ -305,7 +326,9 @@ class gtIconGridEdit extends Component {
 
 				</InspectorControls>
 
-				<div className={ className }>
+				<div id={ blockId } className={ className }>
+
+					<style>{ gridInlineStyles }</style>
 					<div className={ gridClasses }>
 
 						<InnerBlocks
@@ -341,4 +364,5 @@ export default compose( [
 	} ),
 	withColors( 'backgroundColor', { textColor: 'color' } ),
 	applyFallbackStyles,
+	withInstanceId,
 ] )( gtIconGridEdit );

@@ -46,6 +46,10 @@ registerBlockType(
 				type: 'number',
 				default: 3,
 			},
+			columnGap: {
+				type: 'number',
+				default: 32,
+			},
 			blockAlignment: {
 				type: 'string',
 				default: 'center',
@@ -77,6 +81,7 @@ registerBlockType(
 			const {
 				blockAlignment,
 				columns,
+				columnGap,
 			} = attributes;
 
 			const blockClasses = classnames( {
@@ -87,9 +92,13 @@ registerBlockType(
 				[ `gt-columns-${ columns }` ]: columns,
 			} );
 
+			const gridStyles = {
+				gridGap: 32 !== columnGap ? ( columnGap / 16 ).toFixed( 2 ) + 'rem' : undefined,
+			};
+
 			return (
 				<div className={ blockClasses ? blockClasses : undefined }>
-					<div className={ gridClasses }>
+					<div className={ gridClasses } style={ gridStyles }>
 
 						<InnerBlocks.Content />
 

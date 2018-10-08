@@ -4,11 +4,10 @@
 	/* IconGrid Grid Layout */
 	.gt-grid-container {
 		display: grid;
-		grid-gap: 1.5rem;
+		grid-gap: 2rem;
 
 		.wp-block-gt-layout-blocks-column {
 			min-width: 0;
-			overflow: hidden;
 		}
 
 		&.gt-columns-2 {
