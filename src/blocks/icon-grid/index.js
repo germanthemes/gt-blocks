@@ -50,10 +50,6 @@ registerBlockType(
 				type: 'number',
 				default: 32,
 			},
-			blockAlignment: {
-				type: 'string',
-				default: 'center',
-			},
 			textColor: {
 				type: 'string',
 			},
@@ -68,25 +64,13 @@ registerBlockType(
 			},
 		},
 
-		getEditWrapperProps( attributes ) {
-			const { blockAlignment } = attributes;
-			if ( 'wide' === blockAlignment || 'full' === blockAlignment ) {
-				return { 'data-align': blockAlignment };
-			}
-		},
-
 		edit,
 
 		save( { attributes } ) {
 			const {
-				blockAlignment,
 				columns,
 				columnGap,
 			} = attributes;
-
-			const blockClasses = classnames( {
-				[ `align${ blockAlignment }` ]: ( 'wide' === blockAlignment || 'full' === blockAlignment ),
-			} );
 
 			const gridClasses = classnames( 'gt-grid-container', {
 				[ `gt-columns-${ columns }` ]: columns,
@@ -97,7 +81,7 @@ registerBlockType(
 			};
 
 			return (
-				<div className={ blockClasses ? blockClasses : undefined }>
+				<div>
 					<div className={ gridClasses } style={ gridStyles }>
 
 						<InnerBlocks.Content />

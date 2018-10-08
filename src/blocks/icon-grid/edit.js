@@ -211,12 +211,10 @@ class gtIconGridEdit extends Component {
 			isChildBlockSelected,
 			className,
 			instanceId,
-			wideControlsEnabled,
 		} = this.props;
 
 		const {
 			items,
-			blockAlignment,
 			columns,
 			columnGap,
 		} = attributes;
@@ -246,12 +244,6 @@ class gtIconGridEdit extends Component {
 			<Fragment>
 
 				<BlockControls key="controls">
-
-					<BlockAlignmentToolbar
-						value={ blockAlignment }
-						onChange={ ( newAlign ) => setAttributes( { blockAlignment: newAlign ? newAlign : blockAlignment } ) }
-						controls={ [ 'center', 'wide', 'full' ] }
-					/>
 
 					<Toolbar
 						controls={
@@ -285,16 +277,6 @@ class gtIconGridEdit extends Component {
 							min={ 0 }
 							max={ 64 }
 						/>
-
-						{ wideControlsEnabled && (
-							<BaseControl id="gt-block-alignment" label={ __( 'Block Alignment' ) }>
-								<BlockAlignmentToolbar
-									value={ blockAlignment }
-									onChange={ ( newAlign ) => setAttributes( { blockAlignment: newAlign ? newAlign : blockAlignment } ) }
-									controls={ [ 'center', 'wide', 'full' ] }
-								/>
-							</BaseControl>
-						) }
 
 					</PanelBody>
 
