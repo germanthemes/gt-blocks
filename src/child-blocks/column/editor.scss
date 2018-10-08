@@ -1,4 +1,17 @@
 .wp-block-gt-layout-blocks-column {
+	display: block;
+
+	.gt-column {
+		display: block;
+
+		&.has-background {
+
+			> .editor-inner-blocks {
+				margin-top: -10px;
+				margin-bottom: -30px;
+			}
+		}
+	}
 
 	/* Column Controls*/
 	.gt-column-controls {
@@ -27,4 +40,10 @@
 			margin-left: auto;
 		}
 	}
+}
+
+.gt-panel-spacing-options .gt-padding-size-picker {
+	display: flex;
+	justify-content: space-between;
+	margin-bottom: 1em;
 }

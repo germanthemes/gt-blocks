@@ -44,6 +44,17 @@ registerBlockType(
 			templateLock: {
 				type: 'string',
 			},
+			paddingClass: {
+				type: 'string',
+			},
+			paddingVertical: {
+				type: 'number',
+				default: 24,
+			},
+			paddingHorizontal: {
+				type: 'number',
+				default: 24,
+			},
 			textColor: {
 				type: 'string',
 			},
@@ -66,6 +77,9 @@ registerBlockType(
 
 		save( { attributes } ) {
 			const {
+				paddingClass,
+				paddingVertical,
+				paddingHorizontal,
 				textColor,
 				backgroundColor,
 				customTextColor,
@@ -76,13 +90,20 @@ registerBlockType(
 			const backgroundClass = getColorClassName( 'background-color', backgroundColor );
 
 			const columnClasses = classnames( 'gt-column', {
+				[ `gt-padding-${ paddingClass }` ]: paddingClass,
 				'has-text-color': textColor || customTextColor,
 				[ textColorClass ]: textColorClass,
 				'has-background': backgroundColor || customBackgroundColor,
 				[ backgroundClass ]: backgroundClass,
 			} );
 
+			const paddingStyles = ! paddingClass && ( textColor || customTextColor );
+
 			const columnStyles = {
+				paddingTop: paddingStyles && paddingVertical !== 24 ? paddingVertical + 'px' : undefined,
+				paddingBottom: paddingStyles && paddingVertical !== 24 ? paddingVertical + 'px' : undefined,
+				paddingLeft: paddingStyles && paddingHorizontal !== 24 ? paddingHorizontal + 'px' : undefined,
+				paddingRight: paddingStyles && paddingHorizontal !== 24 ? paddingHorizontal + 'px' : undefined,
 				color: textColorClass ? undefined : customTextColor,
 				backgroundColor: backgroundClass ? undefined : customBackgroundColor,
 			};
