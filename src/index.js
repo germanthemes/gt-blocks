@@ -13,6 +13,7 @@ import './data/synchronize-styling';
  * Import Child Blocks
  */
 import './child-blocks/column';
+import './child-blocks/image';
 import './child-blocks/wrapper';
 
 /**

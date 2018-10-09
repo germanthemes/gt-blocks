@@ -12,11 +12,11 @@ import { default as GridEdit } from '../../components/grid-container/edit';
 import { default as GridContainer } from '../../components/grid-container';
 
 // Define allowed child blocks.
-const ALLOWED_BLOCKS = [ 'core/image', 'gt-layout-blocks/heading', 'core/paragraph' ];
+const ALLOWED_BLOCKS = [ 'gt-layout-blocks/image', 'gt-layout-blocks/heading', 'core/paragraph' ];
 
 // Define blocks for each column.
 const TEMPLATE = [
-	[ 'core/image', {
+	[ 'gt-layout-blocks/image', {
 		synchronizeStyling: true,
 		parentBlock: 'gt-layout-blocks/services',
 		containerBlock: 'gt-layout-blocks/column',

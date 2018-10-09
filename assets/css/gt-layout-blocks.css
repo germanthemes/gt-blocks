@@ -38,6 +38,47 @@
     .edit-post-sidebar .gt-panel-synchronize-styling .components-button.is-large svg.dashicon {
       margin: 7px 7px 0 0; }
 
+.wp-block-gt-layout-blocks-image img {
+  margin: 0;
+  vertical-align: top; }
+.edit-post-sidebar .gt-panel-synchronize-styling {
+  background-color: #edeff0; }
+  .edit-post-sidebar .gt-panel-synchronize-styling .components-button.is-large {
+    height: 36px;
+    line-height: 34px;
+    padding: 0 12px 2px; }
+    .edit-post-sidebar .gt-panel-synchronize-styling .components-button.is-large svg.dashicon {
+      margin: 7px 7px 0 0; }
+
+.gt-image-placeholder-wrapper {
+  /* Image Placeholder */
+  /* Image added in Editor */ }
+  .gt-image-placeholder-wrapper .gt-image-placeholder {
+    height: 100%; }
+    .gt-image-placeholder-wrapper .gt-image-placeholder .components-form-file-upload {
+      margin-bottom: 12px; }
+  .gt-image-placeholder-wrapper .gt-image-editor {
+    position: relative; }
+    .gt-image-placeholder-wrapper .gt-image-editor .gt-replace-image {
+      display: block;
+      padding: 0; }
+    .gt-image-placeholder-wrapper .gt-image-editor .gt-remove-image {
+      position: absolute;
+      top: 8px;
+      right: 8px;
+      color: #fff;
+      background: rgba(0, 0, 0, 0.6);
+      padding: 5px;
+      border: 3px solid transparent; }
+.edit-post-sidebar .gt-panel-synchronize-styling {
+  background-color: #edeff0; }
+  .edit-post-sidebar .gt-panel-synchronize-styling .components-button.is-large {
+    height: 36px;
+    line-height: 34px;
+    padding: 0 12px 2px; }
+    .edit-post-sidebar .gt-panel-synchronize-styling .components-button.is-large svg.dashicon {
+      margin: 7px 7px 0 0; }
+
 .wp-block-gt-layout-blocks-wrapper {
   display: -ms-flexbox;
   display: flex;
@@ -413,35 +454,6 @@
     width: 66.6666666666%; }
   .wp-block-gt-layout-blocks-image-text.gt-column-66 .gt-content {
     width: 33.3333333333%; }
-.edit-post-sidebar .gt-panel-synchronize-styling {
-  background-color: #edeff0; }
-  .edit-post-sidebar .gt-panel-synchronize-styling .components-button.is-large {
-    height: 36px;
-    line-height: 34px;
-    padding: 0 12px 2px; }
-    .edit-post-sidebar .gt-panel-synchronize-styling .components-button.is-large svg.dashicon {
-      margin: 7px 7px 0 0; }
-
-.gt-image-placeholder-wrapper {
-  /* Image Placeholder */
-  /* Image added in Editor */ }
-  .gt-image-placeholder-wrapper .gt-image-placeholder {
-    height: 100%; }
-    .gt-image-placeholder-wrapper .gt-image-placeholder .components-form-file-upload {
-      margin-bottom: 12px; }
-  .gt-image-placeholder-wrapper .gt-image-editor {
-    position: relative; }
-    .gt-image-placeholder-wrapper .gt-image-editor .gt-replace-image {
-      display: block;
-      padding: 0; }
-    .gt-image-placeholder-wrapper .gt-image-editor .gt-remove-image {
-      position: absolute;
-      top: 8px;
-      right: 8px;
-      color: #fff;
-      background: rgba(0, 0, 0, 0.6);
-      padding: 5px;
-      border: 3px solid transparent; }
 .edit-post-sidebar .gt-panel-synchronize-styling {
   background-color: #edeff0; }
   .edit-post-sidebar .gt-panel-synchronize-styling .components-button.is-large {
