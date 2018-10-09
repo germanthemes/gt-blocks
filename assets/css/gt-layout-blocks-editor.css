@@ -278,7 +278,7 @@
     grid-template-columns: repeat(6, 1fr); }
 
 /* Add Grid Item*/
-.gt-add-grid-item {
+.gt-add-grid-item.components-button.is-large {
   display: -ms-flexbox;
   display: flex;
   -ms-flex-direction: column;
@@ -293,7 +293,7 @@
           box-shadow: none;
   border: 1px solid #ddd;
   border-radius: 0; }
-  .gt-add-grid-item:hover, .gt-add-grid-item:focus {
+  .gt-add-grid-item.components-button.is-large:hover, .gt-add-grid-item.components-button.is-large:focus {
     border: 1px solid #999;
     -webkit-box-shadow: none;
             box-shadow: none; }
