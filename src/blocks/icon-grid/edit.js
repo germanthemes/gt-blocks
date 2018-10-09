@@ -4,7 +4,6 @@
 import classnames from 'classnames';
 import { times } from 'lodash';
 import memoize from 'memize';
-const { getComputedStyle } = window;
 
 /**
  * WordPress dependencies
@@ -24,28 +23,21 @@ const { createBlock } = wp.blocks;
 
 const {
 	dispatch,
-	select,
 	withSelect,
 } = wp.data;
 
 const {
-	BlockAlignmentToolbar,
 	BlockControls,
-	ContrastChecker,
 	InnerBlocks,
 	InspectorControls,
-	PanelColorSettings,
-	withColors,
 } = wp.editor;
 
 const {
-	BaseControl,
 	Button,
 	Dashicon,
 	PanelBody,
 	RangeControl,
 	Toolbar,
-	withFallbackStyles,
 } = wp.components;
 
 /**
@@ -56,18 +48,6 @@ import {
 	gtIconNumberThree,
 	gtIconNumberFour,
 } from '../../components/icons';
-
-/* Set Fallback Styles */
-const applyFallbackStyles = withFallbackStyles( ( node, ownProps ) => {
-	const { textColor, backgroundColor } = ownProps.attributes;
-	const editableNode = node.querySelector( '[contenteditable="true"]' );
-	//verify if editableNode is available, before using getComputedStyle.
-	const computedStyles = editableNode ? getComputedStyle( editableNode ) : null;
-	return {
-		fallbackBackgroundColor: backgroundColor || ! computedStyles ? undefined : computedStyles.backgroundColor,
-		fallbackTextColor: textColor || ! computedStyles ? undefined : computedStyles.color,
-	};
-} );
 
 // Define column child blocks.
 const ALLOWED_BLOCKS = [ 'gt-layout-blocks/icon', 'gt-layout-blocks/heading', 'core/paragraph' ];
@@ -117,49 +97,6 @@ class gtIconGridEdit extends Component {
 	constructor() {
 		super( ...arguments );
 		this.addBlock = this.addBlock.bind( this );
-
-		this.state = {
-			childBlocks: [],
-		};
-	}
-
-	componentDidMount() {
-		// Get Child Blocks.
-		const children = select( 'core/editor' ).getBlocksByClientId( this.props.clientId )[ 0 ].innerBlocks;
-		const childBlocks = children.map( child => child.clientId );
-
-		this.setState( { childBlocks: childBlocks } );
-	}
-
-	componentDidUpdate( prevProps ) {
-		const {
-			textColor,
-			backgroundColor,
-			customTextColor,
-			customBackgroundColor,
-		} = this.props.attributes;
-
-		if ( textColor !== prevProps.attributes.textColor ) {
-			this.updateChildBlocks( 'textColor', textColor );
-		}
-
-		if ( backgroundColor !== prevProps.attributes.backgroundColor ) {
-			this.updateChildBlocks( 'backgroundColor', backgroundColor );
-		}
-
-		if ( customTextColor !== prevProps.attributes.customTextColor ) {
-			this.updateChildBlocks( 'customTextColor', customTextColor );
-		}
-
-		if ( customBackgroundColor !== prevProps.attributes.customBackgroundColor ) {
-			this.updateChildBlocks( 'customBackgroundColor', customBackgroundColor );
-		}
-	}
-
-	updateChildBlocks( attribute, value ) {
-		this.state.childBlocks.forEach( child => {
-			dispatch( 'core/editor' ).updateBlockAttributes( child, { [ attribute ]: value } );
-		} );
 	}
 
 	addBlock() {
@@ -171,10 +108,6 @@ class gtIconGridEdit extends Component {
 
 		const {
 			items,
-			textColor,
-			backgroundColor,
-			customTextColor,
-			customBackgroundColor,
 		} = attributes;
 
 		// Create Block.
@@ -182,10 +115,6 @@ class gtIconGridEdit extends Component {
 			allowedBlocks: ALLOWED_BLOCKS,
 			template: TEMPLATE,
 			templateLock: 'all',
-			textColor,
-			backgroundColor,
-			customTextColor,
-			customBackgroundColor,
 			synchronizeStyling: true,
 			parentBlock: 'gt-layout-blocks/icon-grid',
 		} );
@@ -200,12 +129,6 @@ class gtIconGridEdit extends Component {
 	render() {
 		const {
 			attributes,
-			backgroundColor,
-			setBackgroundColor,
-			fallbackBackgroundColor,
-			textColor,
-			setTextColor,
-			fallbackTextColor,
 			setAttributes,
 			isSelected,
 			isChildBlockSelected,
@@ -260,7 +183,7 @@ class gtIconGridEdit extends Component {
 
 				<InspectorControls key="inspector">
 
-					<PanelBody title={ __( 'Layout Settings' ) } initialOpen={ false } className="gt-panel-layout-settings gt-panel">
+					<PanelBody title={ __( 'Layout Settings' ) } initialOpen={ true } className="gt-panel-layout-settings gt-panel">
 
 						<RangeControl
 							label={ __( 'Columns' ) }
@@ -279,32 +202,6 @@ class gtIconGridEdit extends Component {
 						/>
 
 					</PanelBody>
-
-					<PanelColorSettings
-						title={ __( 'Color Settings' ) }
-						initialOpen={ false }
-						colorSettings={ [
-							{
-								value: backgroundColor.color,
-								onChange: setBackgroundColor,
-								label: __( 'Background Color' ),
-							},
-							{
-								value: textColor.color,
-								onChange: setTextColor,
-								label: __( 'Text Color' ),
-							},
-						] }
-					>
-						<ContrastChecker
-							{ ...{
-								textColor: textColor.color,
-								backgroundColor: backgroundColor.color,
-								fallbackTextColor,
-								fallbackBackgroundColor,
-							} }
-						/>
-					</PanelColorSettings>
 
 				</InspectorControls>
 
@@ -344,7 +241,5 @@ export default compose( [
 			isChildBlockSelected: hasSelectedInnerBlock( clientId, true ),
 		};
 	} ),
-	withColors( 'backgroundColor', { textColor: 'color' } ),
-	applyFallbackStyles,
 	withInstanceId,
 ] )( gtIconGridEdit );

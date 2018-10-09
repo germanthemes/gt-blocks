@@ -50,18 +50,6 @@ registerBlockType(
 				type: 'number',
 				default: 32,
 			},
-			textColor: {
-				type: 'string',
-			},
-			backgroundColor: {
-				type: 'string',
-			},
-			customTextColor: {
-				type: 'string',
-			},
-			customBackgroundColor: {
-				type: 'string',
-			},
 		},
 
 		edit,
