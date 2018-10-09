@@ -43,57 +43,17 @@ const {
 /**
  * Internal dependencies
  */
+import './editor.scss';
 import {
 	gtIconNumberTwo,
 	gtIconNumberThree,
 	gtIconNumberFour,
 } from '../../components/icons';
 
-// Define column child blocks.
-const ALLOWED_BLOCKS = [ 'gt-layout-blocks/icon', 'gt-layout-blocks/heading', 'core/paragraph' ];
-const TEMPLATE = [
-	[ 'gt-layout-blocks/icon', {
-		synchronizeStyling: true,
-		parentBlock: 'gt-layout-blocks/icon-grid',
-		containerBlock: 'gt-layout-blocks/column',
-	} ],
-	[ 'gt-layout-blocks/heading', {
-		placeholder: __( 'Feature' ),
-		synchronizeStyling: true,
-		parentBlock: 'gt-layout-blocks/icon-grid',
-		containerBlock: 'gt-layout-blocks/column',
-	} ],
-	[ 'core/paragraph', {
-		placeholder: __( 'Write feature description...' ),
-		synchronizeStyling: true,
-		parentBlock: 'gt-layout-blocks/icon-grid',
-		containerBlock: 'gt-layout-blocks/column',
-	} ],
-];
-
-/**
- * Returns the layouts configuration for a given number of items.
- *
- * @param {number} items Number of items.
- *
- * @return {Object[]} Items layout configuration.
- */
-const getItemsTemplate = memoize( ( items ) => {
-	const template = [ 'gt-layout-blocks/column', {
-		allowedBlocks: ALLOWED_BLOCKS,
-		template: TEMPLATE,
-		templateLock: 'all',
-		synchronizeStyling: true,
-		parentBlock: 'gt-layout-blocks/icon-grid',
-	} ];
-
-	return times( items, () => template );
-} );
-
 /**
  * Block Edit Component
  */
-class gtIconGridEdit extends Component {
+class GridEdit extends Component {
 	constructor() {
 		super( ...arguments );
 		this.addBlock = this.addBlock.bind( this );
@@ -104,6 +64,9 @@ class gtIconGridEdit extends Component {
 			attributes,
 			clientId,
 			setAttributes,
+			allowedBlocks,
+			template,
+			parentBlock,
 		} = this.props;
 
 		const {
@@ -112,11 +75,11 @@ class gtIconGridEdit extends Component {
 
 		// Create Block.
 		const block = createBlock( 'gt-layout-blocks/column', {
-			allowedBlocks: ALLOWED_BLOCKS,
-			template: TEMPLATE,
+			allowedBlocks: allowedBlocks,
+			template: template,
 			templateLock: 'all',
 			synchronizeStyling: true,
-			parentBlock: 'gt-layout-blocks/icon-grid',
+			parentBlock: parentBlock,
 		} );
 
 		// Insert Block.
@@ -137,6 +100,9 @@ class gtIconGridEdit extends Component {
 			isChildBlockSelected,
 			className,
 			instanceId,
+			allowedBlocks,
+			template,
+			parentBlock,
 		} = this.props;
 
 		const {
@@ -165,6 +131,25 @@ class gtIconGridEdit extends Component {
 			3: gtIconNumberThree,
 			4: gtIconNumberFour,
 		};
+
+		/**
+		 * Returns the layouts configuration for a given number of items.
+		 *
+		 * @param {number} number Number of items.
+		 *
+		 * @return {Object[]} Items layout configuration.
+		 */
+		const getItemsTemplate = memoize( ( number ) => {
+			const block = [ 'gt-layout-blocks/column', {
+				allowedBlocks: allowedBlocks,
+				template: template,
+				templateLock: 'all',
+				synchronizeStyling: true,
+				parentBlock: parentBlock,
+			} ];
+
+			return times( number, () => block );
+		} );
 
 		return (
 			<Fragment>
@@ -225,7 +210,7 @@ class gtIconGridEdit extends Component {
 						<Button
 							isLarge
 							onClick={ this.addBlock }
-							className="gt-add-icon-grid-item"
+							className="gt-add-grid-item"
 						>
 							<Dashicon icon="insert" />
 							{ __( 'Add block' ) }
@@ -245,4 +230,4 @@ export default compose( [
 		};
 	} ),
 	withInstanceId,
-] )( gtIconGridEdit );
+] )( GridEdit );

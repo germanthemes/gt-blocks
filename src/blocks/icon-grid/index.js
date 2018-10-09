@@ -8,9 +8,32 @@ const { registerBlockType } = wp.blocks;
  * Internal dependencies
  */
 import './style.scss';
-import './editor.scss';
-import edit from './edit';
+import { default as GridEdit } from '../../components/grid-container/edit';
 import { default as GridContainer } from '../../components/grid-container';
+
+// Define allowed child blocks.
+const ALLOWED_BLOCKS = [ 'gt-layout-blocks/icon', 'gt-layout-blocks/heading', 'core/paragraph' ];
+
+// Define blocks for each column.
+const TEMPLATE = [
+	[ 'gt-layout-blocks/icon', {
+		synchronizeStyling: true,
+		parentBlock: 'gt-layout-blocks/icon-grid',
+		containerBlock: 'gt-layout-blocks/column',
+	} ],
+	[ 'gt-layout-blocks/heading', {
+		placeholder: __( 'Feature' ),
+		synchronizeStyling: true,
+		parentBlock: 'gt-layout-blocks/icon-grid',
+		containerBlock: 'gt-layout-blocks/column',
+	} ],
+	[ 'core/paragraph', {
+		placeholder: __( 'Write feature description...' ),
+		synchronizeStyling: true,
+		parentBlock: 'gt-layout-blocks/icon-grid',
+		containerBlock: 'gt-layout-blocks/column',
+	} ],
+];
 
 /**
  * Register block
@@ -47,19 +70,22 @@ registerBlockType(
 			},
 		},
 
-		edit,
+		edit( props ) {
+			return (
+				<GridEdit
+					allowedBlocks={ ALLOWED_BLOCKS }
+					template={ TEMPLATE }
+					parentBlock={ props.name }
+					{ ...props }
+				/>
+			);
+		},
 
-		save( { attributes } ) {
-			const {
-				columns,
-				columnGap,
-			} = attributes;
-
+		save( props ) {
 			return (
 				<div>
 					<GridContainer
-						columns={ columns }
-						columnGap={ columnGap }
+						{ ...props }
 					/>
 				</div>
 			);

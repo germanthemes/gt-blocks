@@ -9,12 +9,17 @@ import classnames from 'classnames';
 const { Component } = wp.element;
 const { InnerBlocks } = wp.editor;
 
+/**
+ * Internal dependencies
+ */
+import './style.scss';
+
 class GridContainer extends Component {
 	render() {
 		const {
 			columns,
 			columnGap,
-		} = this.props;
+		} = this.props.attributes;
 
 		const gridClasses = classnames( 'gt-grid-container', {
 			[ `gt-columns-${ columns }` ]: columns,
