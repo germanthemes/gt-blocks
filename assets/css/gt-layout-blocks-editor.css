@@ -135,27 +135,27 @@
     .edit-post-sidebar .gt-panel-synchronize-styling .components-button.is-large svg.dashicon {
       margin: 7px 7px 0 0; }
 
-.gt-grid-container {
+.editor-block-list__block .gt-grid-container {
   display: block; }
-  .gt-grid-container > .editor-inner-blocks > .editor-block-list__layout {
+  .editor-block-list__block .gt-grid-container > .editor-inner-blocks > .editor-block-list__layout {
     display: grid;
     grid-column-gap: calc( 2rem - 28px);
     grid-row-gap: calc( 2rem - 28px); }
-    .gt-grid-container > .editor-inner-blocks > .editor-block-list__layout > [data-type="gt-layout-blocks/column"] {
+    .editor-block-list__block .gt-grid-container > .editor-inner-blocks > .editor-block-list__layout > [data-type="gt-layout-blocks/column"] {
       min-width: 0;
       width: 100%; }
-      .gt-grid-container > .editor-inner-blocks > .editor-block-list__layout > [data-type="gt-layout-blocks/column"] > .editor-block-list__block-edit {
+      .editor-block-list__block .gt-grid-container > .editor-inner-blocks > .editor-block-list__layout > [data-type="gt-layout-blocks/column"] > .editor-block-list__block-edit {
         margin-top: 12px;
         margin-bottom: 18px; }
-  .gt-grid-container.gt-columns-2 > .editor-inner-blocks > .editor-block-list__layout {
+  .editor-block-list__block .gt-grid-container.gt-columns-2 > .editor-inner-blocks > .editor-block-list__layout {
     grid-template-columns: repeat(2, 1fr); }
-  .gt-grid-container.gt-columns-3 > .editor-inner-blocks > .editor-block-list__layout {
+  .editor-block-list__block .gt-grid-container.gt-columns-3 > .editor-inner-blocks > .editor-block-list__layout {
     grid-template-columns: repeat(3, 1fr); }
-  .gt-grid-container.gt-columns-4 > .editor-inner-blocks > .editor-block-list__layout {
+  .editor-block-list__block .gt-grid-container.gt-columns-4 > .editor-inner-blocks > .editor-block-list__layout {
     grid-template-columns: repeat(4, 1fr); }
-  .gt-grid-container.gt-columns-5 > .editor-inner-blocks > .editor-block-list__layout {
+  .editor-block-list__block .gt-grid-container.gt-columns-5 > .editor-inner-blocks > .editor-block-list__layout {
     grid-template-columns: repeat(5, 1fr); }
-  .gt-grid-container.gt-columns-6 > .editor-inner-blocks > .editor-block-list__layout {
+  .editor-block-list__block .gt-grid-container.gt-columns-6 > .editor-inner-blocks > .editor-block-list__layout {
     grid-template-columns: repeat(6, 1fr); }
 
 /* Add Grid Item*/
