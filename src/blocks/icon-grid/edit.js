@@ -122,6 +122,9 @@ class gtIconGridEdit extends Component {
 		// Insert Block.
 		dispatch( 'core/editor' ).insertBlocks( block, items, clientId );
 
+		// Select parent block.
+		dispatch( 'core/editor' ).selectBlock( clientId );
+
 		// Update number of items.
 		setAttributes( { items: items + 1 } );
 	}
