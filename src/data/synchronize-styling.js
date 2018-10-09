@@ -12,12 +12,12 @@ const { InspectorControls } = wp.editor;
 const { Button, Dashicon, PanelBody } = wp.components;
 const { __ } = wp.i18n;
 const { addFilter } = wp.hooks;
-const { select } = wp.data;
 
 /**
  * Internal dependencies
  */
 import {
+	getSiblings,
 	synchronizeButtons,
 	synchronizeColumns,
 	synchronizeHeadings,
@@ -33,78 +33,6 @@ const supportedBlocks = [
 	'gt-layout-blocks/icon',
 	'core/paragraph',
 ];
-
-const getSiblings = ( blockId, blockType, parentBlock, containerBlock = '' ) => {
-	// Get all blocks.
-	const blocks = select( 'core/editor' ).getBlocks();
-
-	// Filter out parent blocks.
-	const parentBlocks = blocks.filter( block => block.name === parentBlock );
-
-	// Retrieve siblings.
-	if ( '' !== containerBlock ) {
-		return getSecondLevelSiblings( blockId, blockType, parentBlocks, containerBlock );
-	}
-
-	return getFirstLevelSiblings( blockId, blockType, parentBlocks );
-};
-
-const getFirstLevelSiblings = ( blockId, blockType, parentBlocks ) => {
-	let siblings = [];
-
-	// Loop through parent blocks until siblings are found.
-	parentBlocks.some( block => {
-		// Get child blocks of parent blocks.
-		const siblingIds = block.innerBlocks
-
-			// Filter out sibling blocks (= blocks with same block type).
-			.filter( child => child.name === blockType )
-
-			// Get clientIds for all siblings.
-			.map( child => child.clientId );
-
-		// Check if blockId matches siblings.
-		if ( siblingIds.includes( blockId ) ) {
-			siblings = siblingIds;
-			return true;
-		}
-	} );
-
-	return siblings;
-};
-
-const getSecondLevelSiblings = ( blockId, blockType, parentBlocks, containerBlock ) => {
-	let siblings = [];
-
-	// Loop through parent blocks until siblings are found.
-	parentBlocks.some( block => {
-		// Get child blocks of parent blocks.
-		const siblingIds = block.innerBlocks
-
-			// Filter out container blocks.
-			.filter( child => child.name === containerBlock )
-
-			// Get child blocks of container blocks.
-			.map( item => item.innerBlocks )
-
-			// Reduce child blocks to one array.
-			.reduce( ( a, b ) => a.concat( b ), [] )
-
-			// Filter out sibling blocks (= blocks with same block type).
-			.filter( child => child.name === blockType )
-
-			// Get clientIds for all siblings.
-			.map( child => child.clientId );
-
-		// Check if blockId matches siblings.
-		if ( siblingIds.includes( blockId ) ) {
-			siblings = siblingIds;
-			return true;
-		}
-	} );
-
-	return siblings;
-};
 
 const synchronizeStyling = createHigherOrderComponent( ( BlockEdit ) => {
 	return ( props ) => {

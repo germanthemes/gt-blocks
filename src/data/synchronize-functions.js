@@ -1,7 +1,7 @@
 /**
  * WordPress dependencies
  */
-const { dispatch } = wp.data;
+const { dispatch, select } = wp.data;
 
 export const synchronizeButtons = ( blockList, attributes ) => {
 	const {
@@ -185,4 +185,76 @@ export const synchronizeParagraphs = ( blockList, attributes ) => {
 	blockList.forEach( block => {
 		dispatch( 'core/editor' ).updateBlockAttributes( block, newAttributes );
 	} );
+};
+
+export const getSiblings = ( blockId, blockType, parentBlock, containerBlock = '' ) => {
+	// Get all blocks.
+	const blocks = select( 'core/editor' ).getBlocks();
+
+	// Filter out parent blocks.
+	const parentBlocks = blocks.filter( block => block.name === parentBlock );
+
+	// Retrieve siblings.
+	if ( '' !== containerBlock ) {
+		return getSecondLevelSiblings( blockId, blockType, parentBlocks, containerBlock );
+	}
+
+	return getFirstLevelSiblings( blockId, blockType, parentBlocks );
+};
+
+export const getFirstLevelSiblings = ( blockId, blockType, parentBlocks ) => {
+	let siblings = [];
+
+	// Loop through parent blocks until siblings are found.
+	parentBlocks.some( block => {
+		// Get child blocks of parent blocks.
+		const siblingIds = block.innerBlocks
+
+			// Filter out sibling blocks (= blocks with same block type).
+			.filter( child => child.name === blockType )
+
+			// Get clientIds for all siblings.
+			.map( child => child.clientId );
+
+		// Check if blockId matches siblings.
+		if ( siblingIds.includes( blockId ) ) {
+			siblings = siblingIds;
+			return true;
+		}
+	} );
+
+	return siblings;
+};
+
+export const getSecondLevelSiblings = ( blockId, blockType, parentBlocks, containerBlock ) => {
+	let siblings = [];
+
+	// Loop through parent blocks until siblings are found.
+	parentBlocks.some( block => {
+		// Get child blocks of parent blocks.
+		const siblingIds = block.innerBlocks
+
+			// Filter out container blocks.
+			.filter( child => child.name === containerBlock )
+
+			// Get child blocks of container blocks.
+			.map( item => item.innerBlocks )
+
+			// Reduce child blocks to one array.
+			.reduce( ( a, b ) => a.concat( b ), [] )
+
+			// Filter out sibling blocks (= blocks with same block type).
+			.filter( child => child.name === blockType )
+
+			// Get clientIds for all siblings.
+			.map( child => child.clientId );
+
+		// Check if blockId matches siblings.
+		if ( siblingIds.includes( blockId ) ) {
+			siblings = siblingIds;
+			return true;
+		}
+	} );
+
+	return siblings;
 };
