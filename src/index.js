@@ -26,3 +26,4 @@ import './blocks/hero-image';
 import './blocks/icon';
 import './blocks/image-text';
 import './blocks/portfolio';
+import './blocks/services';
