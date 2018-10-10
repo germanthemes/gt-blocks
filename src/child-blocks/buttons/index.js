@@ -34,14 +34,12 @@ registerBlockType(
 			customClass: {
 				type: 'string',
 			},
-			allowedBlocks: {
-				type: 'array',
+			items: {
+				type: 'number',
+				default: 2,
 			},
-			template: {
+			itemTemplate: {
 				type: 'array',
-			},
-			templateLock: {
-				type: 'string',
 			},
 		},
 

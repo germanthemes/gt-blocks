@@ -321,26 +321,14 @@ class gtHeroImageEdit extends Component {
 								} ],
 								[ 'gt-layout-blocks/buttons', {
 									customClass: 'gt-buttons-wrapper',
-									allowedBlocks: [ 'gt-layout-blocks/button' ],
-									template: [
-										[ 'gt-layout-blocks/button', {
-											placeholder: __( 'Button 1' ),
-											buttonSize: 'medium',
-											customFontSize: 20,
-											synchronizeStyling: true,
-											parentBlock: 'gt-layout-blocks/hero-image',
-											containerBlock: 'gt-layout-blocks/buttons',
-										} ],
-										[ 'gt-layout-blocks/button', {
-											placeholder: __( 'Button 2' ),
-											buttonSize: 'medium',
-											customFontSize: 20,
-											synchronizeStyling: true,
-											parentBlock: 'gt-layout-blocks/hero-image',
-											containerBlock: 'gt-layout-blocks/buttons',
-										} ],
-									],
-									templateLock: 'all',
+									items: 2,
+									itemTemplate: [ 'gt-layout-blocks/button', {
+										buttonSize: 'medium',
+										customFontSize: 20,
+										synchronizeStyling: true,
+										parentBlock: 'gt-layout-blocks/hero-image',
+										containerBlock: 'gt-layout-blocks/buttons',
+									} ],
 								} ],
 							] }
 							templateLock="all"
