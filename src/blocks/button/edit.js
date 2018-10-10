@@ -167,7 +167,8 @@ class gtButtonEdit extends Component {
 			paddingHorizontal,
 			buttonShape,
 			roundedCorners,
-			fontStyle,
+			fontWeight,
+			italic,
 			uppercase,
 		} = attributes;
 
@@ -191,8 +192,9 @@ class gtButtonEdit extends Component {
 
 		const buttonClasses = classnames( 'gt-button', {
 			[ `gt-button-${ buttonSize }` ]: buttonSize,
-			'gt-is-bold': ( 'bold' === fontStyle || 'bold-italic' === fontStyle ),
-			'gt-is-italic': ( 'italic' === fontStyle || 'bold-italic' === fontStyle ),
+			'gt-is-bold': 'bold' === fontWeight,
+			'gt-is-thin': 'thin' === fontWeight,
+			'gt-is-italic': italic,
 			'gt-is-uppercase': uppercase,
 			'has-background': backgroundColor.color,
 			[ backgroundColor.class ]: backgroundColor.class,
@@ -307,15 +309,20 @@ class gtButtonEdit extends Component {
 						</BaseControl>
 
 						<SelectControl
-							label={ __( 'Font Style' ) }
-							value={ fontStyle }
-							onChange={ ( newStyle ) => setAttributes( { fontStyle: newStyle } ) }
+							label={ __( 'Font Weight' ) }
+							value={ fontWeight }
+							onChange={ ( newWeight ) => setAttributes( { fontWeight: newWeight } ) }
 							options={ [
-								{ value: 'none', label: __( 'None' ) },
+								{ value: 'thin', label: __( 'Thin' ) },
+								{ value: 'normal', label: __( 'Normal' ) },
 								{ value: 'bold', label: __( 'Bold' ) },
-								{ value: 'italic', label: __( 'Italic' ) },
-								{ value: 'bold-italic', label: __( 'Bold & Italic' ) },
 							] }
+						/>
+
+						<ToggleControl
+							label={ __( 'Italic?' ) }
+							checked={ !! italic }
+							onChange={ () => setAttributes( { italic: ! italic } ) }
 						/>
 
 						<ToggleControl

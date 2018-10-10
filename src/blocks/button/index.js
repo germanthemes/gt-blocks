@@ -84,9 +84,13 @@ registerBlockType(
 				type: 'number',
 				default: 12,
 			},
-			fontStyle: {
+			fontWeight: {
 				type: 'string',
-				default: 'none',
+				default: 'bold',
+			},
+			italic: {
+				type: 'boolean',
+				default: false,
 			},
 			uppercase: {
 				type: 'boolean',
@@ -137,7 +141,8 @@ registerBlockType(
 				paddingHorizontal,
 				buttonShape,
 				roundedCorners,
-				fontStyle,
+				fontWeight,
+				italic,
 				uppercase,
 				textColor,
 				backgroundColor,
@@ -179,8 +184,9 @@ registerBlockType(
 
 			const buttonClasses = classnames( 'gt-button', {
 				[ `gt-button-${ buttonSize }` ]: buttonSize,
-				'gt-is-bold': 'bold' === fontStyle || 'bold-italic' === fontStyle,
-				'gt-is-italic': 'italic' === fontStyle || 'bold-italic' === fontStyle,
+				'gt-is-bold': 'bold' === fontWeight,
+				'gt-is-thin': 'thin' === fontWeight,
+				'gt-is-italic': italic,
 				'gt-is-uppercase': uppercase,
 				'has-background': backgroundColor || customBackgroundColor,
 				[ backgroundClass ]: backgroundClass,

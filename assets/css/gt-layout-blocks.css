@@ -151,6 +151,8 @@
         padding: 24px 42px; }
       .wp-block-gt-layout-blocks-button .gt-button-wrap .gt-button.gt-is-bold {
         font-weight: bold; }
+      .wp-block-gt-layout-blocks-button .gt-button-wrap .gt-button.gt-is-thin {
+        font-weight: 200; }
       .wp-block-gt-layout-blocks-button .gt-button-wrap .gt-button.gt-is-italic {
         font-style: italic; }
       .wp-block-gt-layout-blocks-button .gt-button-wrap .gt-button.gt-is-uppercase {
