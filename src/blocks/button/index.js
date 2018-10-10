@@ -126,6 +126,14 @@ registerBlockType(
 			customFontSize: {
 				type: 'number',
 			},
+			border: {
+				type: 'string',
+				default: 'none',
+			},
+			borderWidth: {
+				type: 'number',
+				default: 2,
+			},
 		},
 
 		edit,
@@ -154,6 +162,8 @@ registerBlockType(
 				customHoverBackgroundColor,
 				fontSize,
 				customFontSize,
+				border,
+				borderWidth,
 			} = attributes;
 
 			const textColorClass = getColorClassName( 'color', textColor );
@@ -193,6 +203,7 @@ registerBlockType(
 				'has-text-color': textColor || customTextColor,
 				[ textColorClass ]: textColorClass,
 				[ fontSizeClass ]: fontSizeClass,
+				[ `gt-border-${ border }` ]: 'none' !== border,
 			} );
 
 			const buttonStyles = {
@@ -203,6 +214,7 @@ registerBlockType(
 				backgroundColor: backgroundClass ? undefined : customBackgroundColor,
 				color: textColorClass ? undefined : customTextColor,
 				fontSize: fontSizeClass ? undefined : customFontSize,
+				borderWidth: borderWidth !== 2 ? borderWidth + 'px' : undefined,
 			};
 
 			return (

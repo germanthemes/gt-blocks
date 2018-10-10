@@ -157,6 +157,13 @@
         font-style: italic; }
       .wp-block-gt-layout-blocks-button .gt-button-wrap .gt-button.gt-is-uppercase {
         text-transform: uppercase; }
+      .wp-block-gt-layout-blocks-button .gt-button-wrap .gt-button.gt-border-top, .wp-block-gt-layout-blocks-button .gt-button-wrap .gt-button.gt-border-horizontal, .wp-block-gt-layout-blocks-button .gt-button-wrap .gt-button.gt-border-full {
+        border-top: 2px solid currentColor; }
+      .wp-block-gt-layout-blocks-button .gt-button-wrap .gt-button.gt-border-bottom, .wp-block-gt-layout-blocks-button .gt-button-wrap .gt-button.gt-border-horizontal, .wp-block-gt-layout-blocks-button .gt-button-wrap .gt-button.gt-border-full {
+        border-bottom: 2px solid currentColor; }
+      .wp-block-gt-layout-blocks-button .gt-button-wrap .gt-button.gt-border-vertical, .wp-block-gt-layout-blocks-button .gt-button-wrap .gt-button.gt-border-full {
+        border-left: 2px solid currentColor;
+        border-right: 2px solid currentColor; }
     .wp-block-gt-layout-blocks-button .gt-button-wrap:not(.has-hover-background) {
       background-color: #424242; }
     .wp-block-gt-layout-blocks-button .gt-button-wrap:not(.has-hover-text-color) {

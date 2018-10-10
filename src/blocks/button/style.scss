@@ -59,6 +59,24 @@
 			&.gt-is-uppercase {
 				text-transform: uppercase;
 			}
+
+			&.gt-border-top,
+			&.gt-border-horizontal,
+			&.gt-border-full {
+				border-top: 2px solid currentColor;
+			}
+	
+			&.gt-border-bottom,
+			&.gt-border-horizontal,
+			&.gt-border-full {
+				border-bottom: 2px solid currentColor;
+			}
+	
+			&.gt-border-vertical,
+			&.gt-border-full {
+				border-left: 2px solid currentColor;
+				border-right: 2px solid currentColor;
+			}
 		}
 
 		&:not(.has-hover-background) {
