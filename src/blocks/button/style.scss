@@ -28,7 +28,7 @@
 				background-color: #303030;
 			}
 
-			&:not(.has-text-color) {
+			&:not(.has-text-color):not(.gt-ghost-button) {
 				color: #fff;
 			}
 
@@ -89,13 +89,17 @@
 			&.gt-border-transparent-black {
 				border-color: rgba(0,0,0,0.15);
 			}
+
+			&.gt-ghost-button {
+				background: transparent;
+			}
 		}
 
 		&:not(.has-hover-background) {
 			background-color: #424242;
 		}
 
-		&:not(.has-hover-text-color) {
+		&:not(.has-hover-text-color):not(.gt-ghost-button) {
 			color: #fff;
 		}
 
@@ -112,6 +116,10 @@
 
 		&.gt-button-rounded {
 			border-radius: 12px;
+		}
+
+		&.gt-ghost-button {
+			background: transparent;
 		}
 	}
 

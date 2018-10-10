@@ -138,6 +138,10 @@ registerBlockType(
 				type: 'string',
 				default: 'text-color',
 			},
+			ghostButton: {
+				type: 'boolean',
+				default: false,
+			},
 		},
 
 		edit,
@@ -169,6 +173,7 @@ registerBlockType(
 				border,
 				borderWidth,
 				borderColor,
+				ghostButton,
 			} = attributes;
 
 			const textColorClass = getColorClassName( 'color', textColor );
@@ -185,6 +190,7 @@ registerBlockType(
 
 			const hoverClasses = classnames( 'gt-button-wrap', {
 				[ `gt-button-${ buttonShape }` ]: 'square' !== buttonShape,
+				'gt-ghost-button': ghostButton,
 				'has-hover-text-color': hoverColor || customHoverColor,
 				[ hoverColorClass ]: hoverColorClass,
 				'has-hover-background': hoverBackgroundColor || customHoverBackgroundColor,
@@ -211,6 +217,7 @@ registerBlockType(
 				'has-border': 'none' !== border,
 				[ `gt-border-${ border }` ]: 'none' !== border,
 				[ `gt-border-${ borderColor }` ]: 'text-color' !== borderColor,
+				'gt-ghost-button': ghostButton,
 			} );
 
 			const buttonStyles = {

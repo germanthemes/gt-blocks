@@ -173,6 +173,7 @@ class gtButtonEdit extends Component {
 			border,
 			borderWidth,
 			borderColor,
+			ghostButton,
 		} = attributes;
 
 		const blockClasses = classnames( className, {
@@ -181,6 +182,7 @@ class gtButtonEdit extends Component {
 
 		const hoverClasses = classnames( 'gt-button-wrap', {
 			[ `gt-button-${ buttonShape }` ]: 'square' !== buttonShape,
+			'gt-ghost-button': ghostButton,
 			'has-hover-text-color': hoverColor.color,
 			[ hoverColor.class ]: hoverColor.class,
 			'has-hover-background': hoverBackgroundColor.color,
@@ -207,6 +209,7 @@ class gtButtonEdit extends Component {
 			'has-border': 'none' !== border,
 			[ `gt-border-${ border }` ]: 'none' !== border,
 			[ `gt-border-${ borderColor }` ]: 'text-color' !== borderColor,
+			'gt-ghost-button': ghostButton,
 		} );
 
 		const buttonStyles = {
@@ -220,6 +223,18 @@ class gtButtonEdit extends Component {
 			fontSize: fontSize.size ? fontSize.size + 'px' : undefined,
 			borderWidth: borderWidth !== 2 ? borderWidth + 'px' : undefined,
 		};
+
+		const backgroundColorSettings = ! ghostButton ? [ {
+			value: backgroundColor.color,
+			onChange: setBackgroundColor,
+			label: __( 'Background Color' ),
+		} ] : [];
+
+		const hoverBackgroundColorSettings = ! ghostButton ? [ {
+			value: hoverBackgroundColor.color,
+			onChange: setHoverBackgroundColor,
+			label: __( 'Background Color' ),
+		} ] : [];
 
 		return (
 			<Fragment>
@@ -279,6 +294,12 @@ class gtButtonEdit extends Component {
 							onChange={ this.setHorizontalPadding }
 							min={ 0 }
 							max={ 64 }
+						/>
+
+						<ToggleControl
+							label={ __( 'Ghost Button?' ) }
+							checked={ !! ghostButton }
+							onChange={ () => setAttributes( { ghostButton: ! ghostButton } ) }
 						/>
 
 						<SelectControl
@@ -343,47 +364,63 @@ class gtButtonEdit extends Component {
 					<PanelColorSettings
 						title={ __( 'Color Settings' ) }
 						initialOpen={ false }
-						colorSettings={ [
-							{
-								value: backgroundColor.color,
-								onChange: setBackgroundColor,
-								label: __( 'Background Color' ),
-							},
-							{
+						colorSettings={
+							backgroundColorSettings.concat( [ {
 								value: textColor.color,
 								onChange: setTextColor,
 								label: __( 'Text Color' ),
-							},
-						] }
+							} ] )
+						}
 					>
 
-						<ContrastChecker
-							{ ...{
-								textColor: textColor.color,
-								backgroundColor: backgroundColor.color,
-								fallbackTextColor,
-								fallbackBackgroundColor,
-							} }
-							fontSize={ fontSize.size }
-						/>
+						{ ghostButton && (
+							<p className="components-base-control__help">
+								{ __( 'Background colors are disabled because Ghost Button style is enabled.' ) }
+							</p>
+						) }
+
+						{ ! ghostButton && (
+							<ContrastChecker
+								{ ...{
+									textColor: textColor.color,
+									backgroundColor: backgroundColor.color,
+									fallbackTextColor,
+									fallbackBackgroundColor,
+								} }
+								fontSize={ fontSize.size }
+							/>
+						) }
 					</PanelColorSettings>
 
 					<PanelColorSettings
 						title={ __( 'Hover Color Settings' ) }
 						initialOpen={ false }
-						colorSettings={ [
-							{
-								value: hoverBackgroundColor.color,
-								onChange: setHoverBackgroundColor,
-								label: __( 'Background Color' ),
-							},
-							{
+						colorSettings={
+							hoverBackgroundColorSettings.concat( [ {
 								value: hoverColor.color,
 								onChange: this.setHoverTextColor,
 								label: __( 'Text Color' ),
-							},
-						] }
+							} ] )
+						}
 					>
+
+						{ ghostButton && (
+							<p className="components-base-control__help">
+								{ __( 'Background colors are disabled because Ghost Button style is enabled.' ) }
+							</p>
+						) }
+
+						{ ! ghostButton && (
+							<ContrastChecker
+								{ ...{
+									textColor: hoverColor.color,
+									backgroundColor: hoverBackgroundColor.color,
+									fallbackTextColor,
+									fallbackBackgroundColor,
+								} }
+								fontSize={ fontSize.size }
+							/>
+						) }
 					</PanelColorSettings>
 
 					<PanelBody title={ __( 'Border Settings' ) } initialOpen={ false } className="gt-panel-border-settings gt-panel">
