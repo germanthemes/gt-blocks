@@ -172,6 +172,7 @@ class gtButtonEdit extends Component {
 			uppercase,
 			border,
 			borderWidth,
+			borderColor,
 		} = attributes;
 
 		const blockClasses = classnames( className, {
@@ -205,6 +206,7 @@ class gtButtonEdit extends Component {
 			[ fontSize.class ]: fontSize.class,
 			'has-border': 'none' !== border,
 			[ `gt-border-${ border }` ]: 'none' !== border,
+			[ `gt-border-${ borderColor }` ]: 'text-color' !== borderColor,
 		} );
 
 		const buttonStyles = {
@@ -387,7 +389,7 @@ class gtButtonEdit extends Component {
 					<PanelBody title={ __( 'Border Settings' ) } initialOpen={ false } className="gt-panel-border-settings gt-panel">
 
 						<SelectControl
-							label={ __( 'Border' ) }
+							label={ __( 'Border Style' ) }
 							value={ border }
 							onChange={ ( newBorderStyle ) => setAttributes( { border: newBorderStyle } ) }
 							options={ [
@@ -407,6 +409,20 @@ class gtButtonEdit extends Component {
 								onChange={ ( newWidth ) => setAttributes( { borderWidth: newWidth } ) }
 								min={ 1 }
 								max={ 12 }
+							/>
+						) }
+
+						{ 'none' !== border && (
+							<SelectControl
+								label={ __( 'Border Color' ) }
+								value={ borderColor }
+								onChange={ ( newBorderColor ) => setAttributes( { borderColor: newBorderColor } ) }
+								options={ [
+									{ value: 'text-color', label: __( 'Text Color' ) },
+									{ value: 'transparent-white', label: __( 'Transparent White' ) },
+									{ value: 'transparent-black', label: __( 'Transparent Black' ) },
+									{ value: 'transparent', label: __( 'Background Color' ) },
+								] }
 							/>
 						) }
 

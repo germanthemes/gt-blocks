@@ -164,6 +164,12 @@
       .wp-block-gt-layout-blocks-button .gt-button-wrap .gt-button.gt-border-vertical, .wp-block-gt-layout-blocks-button .gt-button-wrap .gt-button.gt-border-full {
         border-left: 2px solid currentColor;
         border-right: 2px solid currentColor; }
+      .wp-block-gt-layout-blocks-button .gt-button-wrap .gt-button.gt-border-transparent {
+        border-color: transparent; }
+      .wp-block-gt-layout-blocks-button .gt-button-wrap .gt-button.gt-border-transparent-white {
+        border-color: rgba(255, 255, 255, 0.15); }
+      .wp-block-gt-layout-blocks-button .gt-button-wrap .gt-button.gt-border-transparent-black {
+        border-color: rgba(0, 0, 0, 0.15); }
     .wp-block-gt-layout-blocks-button .gt-button-wrap:not(.has-hover-background) {
       background-color: #424242; }
     .wp-block-gt-layout-blocks-button .gt-button-wrap:not(.has-hover-text-color) {

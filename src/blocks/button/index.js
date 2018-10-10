@@ -134,6 +134,10 @@ registerBlockType(
 				type: 'number',
 				default: 2,
 			},
+			borderColor: {
+				type: 'string',
+				default: 'text-color',
+			},
 		},
 
 		edit,
@@ -164,6 +168,7 @@ registerBlockType(
 				customFontSize,
 				border,
 				borderWidth,
+				borderColor,
 			} = attributes;
 
 			const textColorClass = getColorClassName( 'color', textColor );
@@ -205,6 +210,7 @@ registerBlockType(
 				[ fontSizeClass ]: fontSizeClass,
 				'has-border': 'none' !== border,
 				[ `gt-border-${ border }` ]: 'none' !== border,
+				[ `gt-border-${ borderColor }` ]: 'text-color' !== borderColor,
 			} );
 
 			const buttonStyles = {

@@ -77,6 +77,18 @@
 				border-left: 2px solid currentColor;
 				border-right: 2px solid currentColor;
 			}
+
+			&.gt-border-transparent {
+				border-color: transparent;
+			}
+
+			&.gt-border-transparent-white {
+				border-color: rgba(255,255,255,0.15);
+			}
+
+			&.gt-border-transparent-black {
+				border-color: rgba(0,0,0,0.15);
+			}
 		}
 
 		&:not(.has-hover-background) {
