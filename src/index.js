@@ -12,9 +12,9 @@ import './data/synchronize-styling';
 /**
  * Import Child Blocks
  */
+import './child-blocks/buttons';
 import './child-blocks/column';
 import './child-blocks/image';
-import './child-blocks/wrapper';
 
 /**
  * Import Blocks

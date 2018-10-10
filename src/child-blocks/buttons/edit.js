@@ -18,7 +18,7 @@ const {
 /**
  * Block Edit Component
  */
-class gtWrapperEdit extends Component {
+class ButtonsEdit extends Component {
 	render() {
 		const {
 			attributes,
@@ -54,4 +54,4 @@ class gtWrapperEdit extends Component {
 	}
 }
 
-export default gtWrapperEdit;
+export default ButtonsEdit;

@@ -319,9 +319,9 @@ class gtHeroImageEdit extends Component {
 									placeholder: __( 'Write Hero text...' ),
 									customFontSize: 20,
 								} ],
-								[ 'gt-layout-blocks/wrapper', {
-									customClass: 'gt-button-wrapper',
-									allowedBlocks: [ 'core/button' ],
+								[ 'gt-layout-blocks/buttons', {
+									customClass: 'gt-buttons-wrapper',
+									allowedBlocks: [ 'gt-layout-blocks/button' ],
 									template: [
 										[ 'gt-layout-blocks/button', {
 											placeholder: __( 'Button 1' ),
@@ -329,7 +329,7 @@ class gtHeroImageEdit extends Component {
 											customFontSize: 20,
 											synchronizeStyling: true,
 											parentBlock: 'gt-layout-blocks/hero-image',
-											containerBlock: 'gt-layout-blocks/wrapper',
+											containerBlock: 'gt-layout-blocks/buttons',
 										} ],
 										[ 'gt-layout-blocks/button', {
 											placeholder: __( 'Button 2' ),
@@ -337,13 +337,10 @@ class gtHeroImageEdit extends Component {
 											customFontSize: 20,
 											synchronizeStyling: true,
 											parentBlock: 'gt-layout-blocks/hero-image',
-											containerBlock: 'gt-layout-blocks/wrapper',
+											containerBlock: 'gt-layout-blocks/buttons',
 										} ],
 									],
 									templateLock: 'all',
-								} ],
-								[ 'core/spacer', {
-									height: 24,
 								} ],
 							] }
 							templateLock="all"

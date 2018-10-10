@@ -18,9 +18,11 @@ import edit from './edit';
  * Register block
  */
 registerBlockType(
-	'gt-layout-blocks/wrapper',
+	'gt-layout-blocks/buttons',
 	{
-		title: __( 'GT Wrapper' ),
+		title: __( 'GT Buttons' ),
+
+		description: __( 'Add a description here' ),
 
 		category: 'gt-layout-blocks',
 
