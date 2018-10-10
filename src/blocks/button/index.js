@@ -203,6 +203,7 @@ registerBlockType(
 				'has-text-color': textColor || customTextColor,
 				[ textColorClass ]: textColorClass,
 				[ fontSizeClass ]: fontSizeClass,
+				'has-border': 'none' !== border,
 				[ `gt-border-${ border }` ]: 'none' !== border,
 			} );
 

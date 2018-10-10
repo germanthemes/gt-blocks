@@ -203,6 +203,7 @@ class gtButtonEdit extends Component {
 			'has-text-color': textColor.color,
 			[ textColor.class ]: textColor.class,
 			[ fontSize.class ]: fontSize.class,
+			'has-border': 'none' !== border,
 			[ `gt-border-${ border }` ]: 'none' !== border,
 		} );
 
