@@ -39,14 +39,14 @@ registerBlockType(
 			customClass: {
 				type: 'string',
 			},
-			items: {
+			buttons: {
 				type: 'number',
 				default: 2,
 			},
-			itemTemplate: {
+			buttonAttributes: {
 				type: 'array',
 			},
-			columnGap: {
+			buttonGap: {
 				type: 'string',
 				default: 'medium',
 			},
@@ -64,13 +64,13 @@ registerBlockType(
 		save( { attributes } ) {
 			const {
 				customClass,
-				columnGap,
+				buttonGap,
 				alignment,
 			} = attributes;
 
 			const blockClasses = classnames( {
 				[ `${ customClass }` ]: customClass,
-				[ `gt-${ columnGap }-gap` ]: 'none' !== columnGap,
+				[ `gt-${ buttonGap }-gap` ]: 'none' !== buttonGap,
 				[ `gt-align-${ alignment }` ]: 'center' === alignment || 'right' === alignment,
 			} );
 

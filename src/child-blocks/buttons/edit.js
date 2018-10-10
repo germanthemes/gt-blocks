@@ -44,28 +44,27 @@ class ButtonsEdit extends Component {
 
 		const {
 			customClass,
-			items,
-			itemTemplate,
-			columnGap,
+			buttons,
+			buttonAttributes,
+			buttonGap,
 			alignment,
 		} = attributes;
 
 		const blockClasses = classnames( className, {
 			[ `${ customClass }` ]: customClass,
-			[ `gt-${ columnGap }-gap` ]: 'none' !== columnGap,
+			[ `gt-${ buttonGap }-gap` ]: 'none' !== buttonGap,
 			[ `gt-align-${ alignment }` ]: 'center' === alignment || 'right' === alignment,
 		} );
 
 		/**
-		 * Returns the layouts configuration for a given number of items.
+		 * Returns the layouts configuration for a given number of buttons.
 		 *
-		 * @param {number} number Number of items.
+		 * @param {number} number Number of buttons.
 		 *
 		 * @return {Object[]} Items layout configuration.
 		 */
 		const getTemplate = memoize( ( number ) => {
-			const blockTemplate = itemTemplate || [ 'gt-layout-blocks/button' ];
-			return times( number, () => blockTemplate );
+			return times( number, () => [ 'gt-layout-blocks/button', buttonAttributes || {} ] );
 		} );
 
 		return (
@@ -86,16 +85,16 @@ class ButtonsEdit extends Component {
 
 						<RangeControl
 							label={ __( 'Number of buttons' ) }
-							value={ items }
-							onChange={ ( newValue ) => setAttributes( { items: newValue } ) }
+							value={ buttons }
+							onChange={ ( newValue ) => setAttributes( { buttons: newValue } ) }
 							min={ 1 }
 							max={ 6 }
 						/>
 
 						<SelectControl
-							label={ __( 'Column Gap' ) }
-							value={ columnGap }
-							onChange={ ( newValue ) => setAttributes( { columnGap: newValue } ) }
+							label={ __( 'Button Gap' ) }
+							value={ buttonGap }
+							onChange={ ( newValue ) => setAttributes( { buttonGap: newValue } ) }
 							options={ [
 								{ value: 'none', label: __( 'None' ) },
 								{ value: 'small', label: __( 'Small' ) },
@@ -119,7 +118,7 @@ class ButtonsEdit extends Component {
 				<div className={ blockClasses }>
 
 					<InnerBlocks
-						template={ getTemplate( items ) }
+						template={ getTemplate( buttons ) }
 						templateLock="all"
 					/>
 

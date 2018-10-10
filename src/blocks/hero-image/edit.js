@@ -321,14 +321,14 @@ class gtHeroImageEdit extends Component {
 								} ],
 								[ 'gt-layout-blocks/buttons', {
 									customClass: 'gt-buttons-wrapper',
-									items: 2,
-									itemTemplate: [ 'gt-layout-blocks/button', {
+									buttons: 2,
+									buttonAttributes: {
 										buttonSize: 'medium',
 										customFontSize: 20,
 										synchronizeStyling: true,
 										parentBlock: 'gt-layout-blocks/hero-image',
 										containerBlock: 'gt-layout-blocks/buttons',
-									} ],
+									},
 								} ],
 							] }
 							templateLock="all"
