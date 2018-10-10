@@ -1,4 +1,9 @@
 /**
+ * External dependencies
+ */
+import classnames from 'classnames';
+
+/**
  * WordPress dependencies
  */
 const { __ } = wp.i18n;
@@ -41,6 +46,10 @@ registerBlockType(
 			itemTemplate: {
 				type: 'array',
 			},
+			columnGap: {
+				type: 'string',
+				default: 'medium',
+			},
 		},
 
 		supports: {
@@ -52,10 +61,16 @@ registerBlockType(
 		save( { attributes } ) {
 			const {
 				customClass,
+				columnGap,
 			} = attributes;
 
+			const blockClasses = classnames( {
+				[ `${ customClass }` ]: customClass,
+				[ `gt-${ columnGap }-gap` ]: 'none' !== columnGap,
+			} );
+
 			return (
-				<div className={ customClass ? customClass : undefined }>
+				<div className={ blockClasses ? blockClasses : undefined }>
 
 					<InnerBlocks.Content />
 

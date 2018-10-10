@@ -12,6 +12,22 @@
   display: flex;
   -ms-flex-wrap: nowrap;
       flex-wrap: nowrap; }
+  .wp-block-gt-layout-blocks-buttons.gt-small-gap {
+    margin-right: -0.5rem; }
+    .wp-block-gt-layout-blocks-buttons.gt-small-gap .wp-block-gt-layout-blocks-button {
+      margin-right: 0.5rem; }
+  .wp-block-gt-layout-blocks-buttons.gt-medium-gap {
+    margin-right: -1rem; }
+    .wp-block-gt-layout-blocks-buttons.gt-medium-gap .wp-block-gt-layout-blocks-button {
+      margin-right: 1rem; }
+  .wp-block-gt-layout-blocks-buttons.gt-large-gap {
+    margin-right: -1.5rem; }
+    .wp-block-gt-layout-blocks-buttons.gt-large-gap .wp-block-gt-layout-blocks-button {
+      margin-right: 1.5rem; }
+  .wp-block-gt-layout-blocks-buttons.gt-extra-large-gap {
+    margin-right: -2rem; }
+    .wp-block-gt-layout-blocks-buttons.gt-extra-large-gap .wp-block-gt-layout-blocks-button {
+      margin-right: 2rem; }
 .edit-post-sidebar .gt-panel-synchronize-styling {
   background-color: #edeff0; }
   .edit-post-sidebar .gt-panel-synchronize-styling .components-button.is-large {

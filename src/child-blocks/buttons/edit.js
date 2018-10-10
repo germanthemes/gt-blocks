@@ -25,6 +25,7 @@ const {
 const {
 	PanelBody,
 	RangeControl,
+	SelectControl,
 } = wp.components;
 
 /**
@@ -42,10 +43,12 @@ class ButtonsEdit extends Component {
 			customClass,
 			items,
 			itemTemplate,
+			columnGap,
 		} = attributes;
 
-		const classes = classnames( className, {
+		const blockClasses = classnames( className, {
 			[ `${ customClass }` ]: customClass,
+			[ `gt-${ columnGap }-gap` ]: 'none' !== columnGap,
 		} );
 
 		/**
@@ -75,11 +78,24 @@ class ButtonsEdit extends Component {
 							max={ 6 }
 						/>
 
+						<SelectControl
+							label={ __( 'Column Gap' ) }
+							value={ columnGap }
+							onChange={ ( newValue ) => setAttributes( { columnGap: newValue } ) }
+							options={ [
+								{ value: 'none', label: __( 'None' ) },
+								{ value: 'small', label: __( 'Small' ) },
+								{ value: 'medium', label: __( 'Medium' ) },
+								{ value: 'large', label: __( 'Large' ) },
+								{ value: 'extra-large', label: __( 'Extra Large' ) },
+							] }
+						/>
+
 					</PanelBody>
 
 				</InspectorControls>
 
-				<div className={ classes }>
+				<div className={ blockClasses }>
 
 					<InnerBlocks
 						template={ getTemplate( items ) }
