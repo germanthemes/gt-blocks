@@ -92,7 +92,8 @@ class gtHeadingEdit extends Component {
 			paddingBottom,
 			paddingLeft,
 			paddingRight,
-			fontStyle,
+			fontWeight,
+			italic,
 			uppercase,
 			border,
 			borderWidth,
@@ -104,8 +105,9 @@ class gtHeadingEdit extends Component {
 
 		const headingClasses = classnames( 'gt-title', {
 			'gt-is-inline-block': 'auto' === headingWidth,
-			'gt-is-bold': ( 'bold' === fontStyle || 'bold-italic' === fontStyle ),
-			'gt-is-italic': ( 'italic' === fontStyle || 'bold-italic' === fontStyle ),
+			'gt-is-bold': 'bold' === fontWeight,
+			'gt-is-thin': 'thin' === fontWeight,
+			'gt-is-italic': italic,
 			'gt-is-uppercase': uppercase,
 			'has-background': backgroundColor.color,
 			[ backgroundColor.class ]: backgroundColor.class,
@@ -235,15 +237,20 @@ class gtHeadingEdit extends Component {
 						</BaseControl>
 
 						<SelectControl
-							label={ __( 'Font Style' ) }
-							value={ fontStyle }
-							onChange={ ( newStyle ) => setAttributes( { fontStyle: newStyle } ) }
+							label={ __( 'Font Weight' ) }
+							value={ fontWeight }
+							onChange={ ( newWeight ) => setAttributes( { fontWeight: newWeight } ) }
 							options={ [
-								{ value: 'none', label: __( 'None' ) },
+								{ value: 'thin', label: __( 'Thin' ) },
+								{ value: 'normal', label: __( 'Normal' ) },
 								{ value: 'bold', label: __( 'Bold' ) },
-								{ value: 'italic', label: __( 'Italic' ) },
-								{ value: 'bold-italic', label: __( 'Bold & Italic' ) },
 							] }
+						/>
+
+						<ToggleControl
+							label={ __( 'Italic?' ) }
+							checked={ !! italic }
+							onChange={ () => setAttributes( { italic: ! italic } ) }
 						/>
 
 						<ToggleControl

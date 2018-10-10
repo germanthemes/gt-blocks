@@ -73,9 +73,13 @@ registerBlockType(
 			paddingRight: {
 				type: 'number',
 			},
-			fontStyle: {
+			fontWeight: {
 				type: 'string',
 				default: 'bold',
+			},
+			italic: {
+				type: 'boolean',
+				default: false,
 			},
 			uppercase: {
 				type: 'boolean',
@@ -121,7 +125,8 @@ registerBlockType(
 				paddingBottom,
 				paddingLeft,
 				paddingRight,
-				fontStyle,
+				fontWeight,
+				italic,
 				uppercase,
 				textColor,
 				backgroundColor,
@@ -143,8 +148,9 @@ registerBlockType(
 
 			const headingClasses = classnames( 'gt-title', {
 				'gt-is-inline-block': 'auto' === headingWidth,
-				'gt-is-bold': 'bold' === fontStyle || 'bold-italic' === fontStyle,
-				'gt-is-italic': 'italic' === fontStyle || 'bold-italic' === fontStyle,
+				'gt-is-bold': 'bold' === fontWeight,
+				'gt-is-thin': 'thin' === fontWeight,
+				'gt-is-italic': italic,
 				'gt-is-uppercase': uppercase,
 				'has-background': backgroundColor || customBackgroundColor,
 				[ textColorClass ]: textColorClass,

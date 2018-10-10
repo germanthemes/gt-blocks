@@ -18,7 +18,11 @@
 		}
 
 		&.gt-is-bold {
-			font-weight: bold;
+			font-weight: 700;
+		}
+
+		&.gt-is-thin {
+			font-weight: 200;
 		}
 
 		&.gt-is-italic {
