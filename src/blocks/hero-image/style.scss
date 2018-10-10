@@ -1,7 +1,7 @@
 .wp-block-gt-layout-blocks-hero-image {
 	position: relative;
-	padding-top: 2rem;
-	padding-bottom: 2rem;
+	padding-top: 3rem;
+	padding-bottom: 3rem;
 
 	&.gt-has-background-image {
 		background-size: cover;
@@ -25,5 +25,11 @@
 		position: relative;
 		margin: 0 auto;
 		z-index: 2;
+
+		.gt-buttons-wrapper {
+			.wp-block-gt-layout-blocks-button {
+				margin-bottom: 0;
+			}
+		}
 	}
 }

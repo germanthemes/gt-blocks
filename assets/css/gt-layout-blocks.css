@@ -28,6 +28,12 @@
     margin-right: -2rem; }
     .wp-block-gt-layout-blocks-buttons.gt-extra-large-gap .wp-block-gt-layout-blocks-button {
       margin-right: 2rem; }
+  .wp-block-gt-layout-blocks-buttons.gt-align-center {
+    -ms-flex-pack: center;
+        justify-content: center; }
+  .wp-block-gt-layout-blocks-buttons.gt-align-right {
+    -ms-flex-pack: end;
+        justify-content: flex-end; }
 .edit-post-sidebar .gt-panel-synchronize-styling {
   background-color: #edeff0; }
   .edit-post-sidebar .gt-panel-synchronize-styling .components-button.is-large {
@@ -276,8 +282,8 @@
 
 .wp-block-gt-layout-blocks-hero-image {
   position: relative;
-  padding-top: 2rem;
-  padding-bottom: 2rem; }
+  padding-top: 3rem;
+  padding-bottom: 3rem; }
   .wp-block-gt-layout-blocks-hero-image.gt-has-background-image {
     background-size: cover;
     background-repeat: no-repeat; }
@@ -294,6 +300,8 @@
     position: relative;
     margin: 0 auto;
     z-index: 2; }
+    .wp-block-gt-layout-blocks-hero-image .gt-inner-content .gt-buttons-wrapper .wp-block-gt-layout-blocks-button {
+      margin-bottom: 0; }
 .edit-post-sidebar .gt-panel-synchronize-styling {
   background-color: #edeff0; }
   .edit-post-sidebar .gt-panel-synchronize-styling .components-button.is-large {

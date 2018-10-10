@@ -50,6 +50,9 @@ registerBlockType(
 				type: 'string',
 				default: 'medium',
 			},
+			alignment: {
+				type: 'string',
+			},
 		},
 
 		supports: {
@@ -62,11 +65,13 @@ registerBlockType(
 			const {
 				customClass,
 				columnGap,
+				alignment,
 			} = attributes;
 
 			const blockClasses = classnames( {
 				[ `${ customClass }` ]: customClass,
 				[ `gt-${ columnGap }-gap` ]: 'none' !== columnGap,
+				[ `gt-align-${ alignment }` ]: 'center' === alignment || 'right' === alignment,
 			} );
 
 			return (

@@ -33,4 +33,12 @@
 			margin-right: 2rem;
 		}
 	}
+
+	&.gt-align-center {
+		justify-content: center;
+	}
+
+	&.gt-align-right {
+		justify-content: flex-end;
+	}
 }

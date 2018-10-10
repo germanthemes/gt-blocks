@@ -18,11 +18,14 @@ const {
 } = wp.i18n;
 
 const {
+	AlignmentToolbar,
+	BlockControls,
 	InnerBlocks,
 	InspectorControls,
 } = wp.editor;
 
 const {
+	BaseControl,
 	PanelBody,
 	RangeControl,
 	SelectControl,
@@ -44,11 +47,13 @@ class ButtonsEdit extends Component {
 			items,
 			itemTemplate,
 			columnGap,
+			alignment,
 		} = attributes;
 
 		const blockClasses = classnames( className, {
 			[ `${ customClass }` ]: customClass,
 			[ `gt-${ columnGap }-gap` ]: 'none' !== columnGap,
+			[ `gt-align-${ alignment }` ]: 'center' === alignment || 'right' === alignment,
 		} );
 
 		/**
@@ -65,6 +70,15 @@ class ButtonsEdit extends Component {
 
 		return (
 			<Fragment>
+
+				<BlockControls>
+
+					<AlignmentToolbar
+						value={ alignment }
+						onChange={ ( newAlignment ) => setAttributes( { alignment: newAlignment } ) }
+					/>
+
+				</BlockControls>
 
 				<InspectorControls key="inspector">
 
@@ -90,6 +104,13 @@ class ButtonsEdit extends Component {
 								{ value: 'extra-large', label: __( 'Extra Large' ) },
 							] }
 						/>
+
+						<BaseControl id="gt-alignment-control" label={ __( 'Alignment' ) }>
+							<AlignmentToolbar
+								value={ alignment }
+								onChange={ ( newAlignment ) => setAttributes( { alignment: newAlignment } ) }
+							/>
+						</BaseControl>
 
 					</PanelBody>
 
