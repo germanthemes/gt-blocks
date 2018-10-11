@@ -7,7 +7,7 @@ import classnames from 'classnames';
  * WordPress dependencies
  */
 const { Component } = wp.element;
-const { getColorClassName, InnerBlocks } = wp.editor;
+const { getColorClassName } = wp.editor;
 
 /**
  * Internal dependencies
@@ -23,8 +23,10 @@ class BackgroundSection extends Component {
 		} = this.props;
 
 		const {
-			blockAlignment,
 			contentWidth,
+			paddingTop,
+			paddingBottom,
+			blockAlignment,
 			textColor,
 			backgroundColor,
 			customTextColor,
@@ -50,6 +52,8 @@ class BackgroundSection extends Component {
 		} );
 
 		const blockStyles = {
+			paddingTop: 64 !== paddingTop ? paddingTop + 'px' : undefined,
+			paddingBottom: 64 !== paddingBottom ? paddingBottom + 'px' : undefined,
 			color: textColorClass ? undefined : customTextColor,
 			backgroundColor: backgroundClass ? undefined : customBackgroundColor,
 			backgroundImage: backgroundImageId ? `url(${ backgroundImageUrl })` : undefined,

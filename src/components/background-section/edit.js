@@ -22,7 +22,6 @@ const {
 	BlockAlignmentToolbar,
 	BlockControls,
 	ContrastChecker,
-	InnerBlocks,
 	MediaUpload,
 	InspectorControls,
 	PanelColorSettings,
@@ -30,6 +29,7 @@ const {
 } = wp.editor;
 
 const {
+	BaseControl,
 	Button,
 	PanelBody,
 	RangeControl,
@@ -84,8 +84,10 @@ class BackgroundEdit extends Component {
 		} = this.props;
 
 		const {
-			blockAlignment,
 			contentWidth,
+			paddingTop,
+			paddingBottom,
+			blockAlignment,
 			backgroundImageId,
 			backgroundImageUrl,
 			imageOpacity,
@@ -105,6 +107,8 @@ class BackgroundEdit extends Component {
 		} );
 
 		const blockStyles = {
+			paddingTop: 64 !== paddingTop ? paddingTop + 'px' : undefined,
+			paddingBottom: 64 !== paddingBottom ? paddingBottom + 'px' : undefined,
 			backgroundColor: backgroundColor.class ? undefined : backgroundColor.color,
 			color: textColor.class ? undefined : textColor.color,
 			backgroundImage: backgroundImageId ? `url(${ backgroundImageUrl })` : undefined,
@@ -146,19 +150,40 @@ class BackgroundEdit extends Component {
 
 					<PanelBody title={ __( 'Layout Settings' ) } initialOpen={ false }>
 
-						<BlockAlignmentToolbar
-							value={ blockAlignment }
-							onChange={ ( newAlign ) => setAttributes( { blockAlignment: newAlign } ) }
-							controls={ [ 'wide', 'full' ] }
+						<RangeControl
+							label={ __( 'Maximum Content Width' ) }
+							value={ contentWidth }
+							onChange={ ( maxWidth ) => setAttributes( { contentWidth: maxWidth } ) }
+							min={ 240 }
+							max={ 2400 }
+							step={ 80 }
 						/>
 
 						<RangeControl
-							label={ __( 'Content Width (in px)' ) }
-							value={ contentWidth }
-							onChange={ ( maxWidth ) => setAttributes( { contentWidth: maxWidth } ) }
-							min={ 100 }
-							max={ 2500 }
+							label={ __( 'Padding Top' ) }
+							value={ paddingTop }
+							onChange={ ( newPadding ) => setAttributes( { paddingTop: newPadding } ) }
+							min={ 0 }
+							max={ 128 }
+							step={ 16 }
 						/>
+
+						<RangeControl
+							label={ __( 'Padding Bottom' ) }
+							value={ paddingBottom }
+							onChange={ ( newPadding ) => setAttributes( { paddingBottom: newPadding } ) }
+							min={ 0 }
+							max={ 128 }
+							step={ 16 }
+						/>
+
+						<BaseControl id="gt-block-alignment" label={ __( 'Block Alignment' ) }>
+							<BlockAlignmentToolbar
+								value={ blockAlignment }
+								onChange={ ( newAlign ) => setAttributes( { blockAlignment: newAlign } ) }
+								controls={ [ 'wide', 'full' ] }
+							/>
+						</BaseControl>
 
 					</PanelBody>
 

@@ -1,11 +1,19 @@
 const backgroundAttributes = {
-	blockAlignment: {
-		type: 'string',
-		default: 'center',
-	},
 	contentWidth: {
 		type: 'number',
 		default: 720,
+	},
+	paddingTop: {
+		type: 'number',
+		default: 64,
+	},
+	paddingBottom: {
+		type: 'number',
+		default: 64,
+	},
+	blockAlignment: {
+		type: 'string',
+		default: 'center',
 	},
 	textColor: {
 		type: 'string',
