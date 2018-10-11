@@ -45,7 +45,7 @@ const synchronizeStyling = createHigherOrderComponent( ( BlockEdit ) => {
 		}
 
 		const synchronizeAttributes = () => {
-			const siblings = getSiblings( props.clientId, props.name, props.attributes.parentBlock, props.attributes.containerBlock );
+			const siblings = getSiblings( props.clientId, props.name, props.attributes.parentBlock );
 
 			switch ( props.name ) {
 				case 'gt-layout-blocks/button': {
@@ -102,9 +102,6 @@ function addSynchronizeStylingAttribute( settings, name ) {
 			type: 'boolean',
 		},
 		parentBlock: {
-			type: 'string',
-		},
-		containerBlock: {
 			type: 'string',
 		},
 	} );

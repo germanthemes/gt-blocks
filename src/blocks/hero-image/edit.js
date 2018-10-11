@@ -38,7 +38,6 @@ class HeroImageEdit extends Component {
 									customFontSize: 20,
 									synchronizeStyling: true,
 									parentBlock: 'gt-layout-blocks/hero-image',
-									containerBlock: 'gt-layout-blocks/buttons',
 								},
 							} ],
 						] }

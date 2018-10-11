@@ -191,74 +191,74 @@ export const synchronizeParagraphs = ( blockList, attributes ) => {
 	} );
 };
 
-export const getSiblings = ( blockId, blockType, parentBlock, containerBlock = '' ) => {
-	// Get all blocks.
-	const blocks = select( 'core/editor' ).getBlocks();
+export const getSiblings = ( blockId, blockType, parentBlockName ) => {
+	const {
+		getBlocksByClientId,
+		getBlockRootClientId,
+	} = select( 'core/editor' );
 
-	// Filter out parent blocks.
-	const parentBlocks = blocks.filter( block => block.name === parentBlock );
+	// Get container block.
+	const containerClientId = getBlockRootClientId( blockId );
+	const containerBlock = getBlocksByClientId( containerClientId )[ 0 ];
 
-	// Retrieve siblings.
-	if ( '' !== containerBlock ) {
-		return getSecondLevelSiblings( blockId, blockType, parentBlocks, containerBlock );
+	// Return early if container block does not exist.
+	if ( ! containerBlock ) {
+		return [];
 	}
 
-	return getFirstLevelSiblings( blockId, blockType, parentBlocks );
+	// Get siblings in case we have reached the root level.
+	if ( parentBlockName === containerBlock.name ) {
+		return getFirstLevelSiblings( blockType, containerBlock );
+	}
+
+	// Get root block.
+	const rootClientId = getBlockRootClientId( containerClientId );
+	const rootBlock = getBlocksByClientId( rootClientId )[ 0 ];
+
+	// Return early if root block does not exist.
+	if ( ! rootBlock ) {
+		return [];
+	}
+
+	// Get siblings in case we have reached the root level.
+	if ( parentBlockName === rootBlock.name ) {
+		return getSecondLevelSiblings( blockType, rootBlock, containerBlock.name );
+	}
+
+	return [];
 };
 
-export const getFirstLevelSiblings = ( blockId, blockType, parentBlocks ) => {
-	let siblings = [];
+export const getFirstLevelSiblings = ( blockType, parentBlock ) => {
+	// Get child blocks of parent block.
+	const siblings = parentBlock.innerBlocks
 
-	// Loop through parent blocks until siblings are found.
-	parentBlocks.some( block => {
-		// Get child blocks of parent blocks.
-		const siblingIds = block.innerBlocks
+		// Filter out sibling blocks (= blocks with same block type).
+		.filter( child => child.name === blockType )
 
-			// Filter out sibling blocks (= blocks with same block type).
-			.filter( child => child.name === blockType )
-
-			// Get clientIds for all siblings.
-			.map( child => child.clientId );
-
-		// Check if blockId matches siblings.
-		if ( siblingIds.includes( blockId ) ) {
-			siblings = siblingIds;
-			return true;
-		}
-	} );
+		// Get clientIds for all siblings.
+		.map( child => child.clientId );
 
 	return siblings;
 };
 
-export const getSecondLevelSiblings = ( blockId, blockType, parentBlocks, containerBlock ) => {
-	let siblings = [];
+export const getSecondLevelSiblings = ( blockType, parentBlock, containerBlockName ) => {
+	// Get child blocks of parent blocks.
+	const siblings = parentBlock.innerBlocks
 
-	// Loop through parent blocks until siblings are found.
-	parentBlocks.some( block => {
-		// Get child blocks of parent blocks.
-		const siblingIds = block.innerBlocks
+		// Filter out container blocks.
+		.filter( child => child.name === containerBlockName )
 
-			// Filter out container blocks.
-			.filter( child => child.name === containerBlock )
+		// Get child blocks of container blocks.
+		.map( item => item.innerBlocks )
 
-			// Get child blocks of container blocks.
-			.map( item => item.innerBlocks )
+		// Reduce child blocks to one array.
+		.reduce( ( a, b ) => a.concat( b ), [] )
 
-			// Reduce child blocks to one array.
-			.reduce( ( a, b ) => a.concat( b ), [] )
+		// Filter out sibling blocks (= blocks with same block type).
+		.filter( child => child.name === blockType )
 
-			// Filter out sibling blocks (= blocks with same block type).
-			.filter( child => child.name === blockType )
-
-			// Get clientIds for all siblings.
-			.map( child => child.clientId );
-
-		// Check if blockId matches siblings.
-		if ( siblingIds.includes( blockId ) ) {
-			siblings = siblingIds;
-			return true;
-		}
-	} );
+		// Get clientIds for all siblings.
+		.map( child => child.clientId );
 
 	return siblings;
 };

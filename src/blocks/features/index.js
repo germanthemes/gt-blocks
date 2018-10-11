@@ -19,19 +19,16 @@ const TEMPLATE = [
 	[ 'gt-layout-blocks/icon', {
 		synchronizeStyling: true,
 		parentBlock: 'gt-layout-blocks/features',
-		containerBlock: 'gt-layout-blocks/column',
 	} ],
 	[ 'gt-layout-blocks/heading', {
 		placeholder: __( 'Feature' ),
 		synchronizeStyling: true,
 		parentBlock: 'gt-layout-blocks/features',
-		containerBlock: 'gt-layout-blocks/column',
 	} ],
 	[ 'core/paragraph', {
 		placeholder: __( 'Write feature description...' ),
 		synchronizeStyling: true,
 		parentBlock: 'gt-layout-blocks/features',
-		containerBlock: 'gt-layout-blocks/column',
 	} ],
 ];
 
