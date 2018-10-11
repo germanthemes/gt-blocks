@@ -71,6 +71,7 @@ class BackgroundEdit extends Component {
 	render() {
 		const {
 			attributes,
+			children,
 			backgroundColor,
 			setBackgroundColor,
 			fallbackBackgroundColor,
@@ -300,8 +301,11 @@ class BackgroundEdit extends Component {
 					) }
 
 					<style>{ contentStyles }</style>
+
 					<div className="gt-inner-content">
-						<InnerBlocks />
+
+						{ children }
+
 					</div>
 
 				</div>

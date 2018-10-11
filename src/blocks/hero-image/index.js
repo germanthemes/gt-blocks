@@ -1,17 +1,9 @@
 /**
- * External dependencies
- */
-import classnames from 'classnames';
-
-/**
  * WordPress dependencies
  */
 const { __ } = wp.i18n;
 const { registerBlockType } = wp.blocks;
-const {
-	getColorClassName,
-	InnerBlocks,
-} = wp.editor;
+const { InnerBlocks } = wp.editor;
 
 /**
  * Internal dependencies
@@ -19,6 +11,7 @@ const {
 import './style.scss';
 import './editor.scss';
 import edit from './edit';
+import { default as BackgroundSection } from '../../components/background-section';
 
 /**
  * Register block
@@ -93,71 +86,15 @@ registerBlockType(
 
 		edit,
 
-		save( { attributes } ) {
-			const {
-				blockAlignment,
-				contentWidth,
-				textColor,
-				backgroundColor,
-				customTextColor,
-				customBackgroundColor,
-				backgroundImageId,
-				backgroundImageUrl,
-				imageOpacity,
-				backgroundPosition,
-				fixedBackground,
-			} = attributes;
-
-			const textColorClass = getColorClassName( 'color', textColor );
-			const backgroundClass = getColorClassName( 'background-color', backgroundColor );
-
-			const blockClasses = classnames( {
-				[ `align${ blockAlignment }` ]: ( blockAlignment !== 'center' ),
-				'has-text-color': textColor || customTextColor,
-				[ textColorClass ]: textColorClass,
-				'has-background': backgroundColor || customBackgroundColor,
-				[ backgroundClass ]: backgroundClass,
-				'gt-has-background-image': backgroundImageId,
-				'gt-fixed-background': fixedBackground,
-			} );
-
-			const blockStyles = {
-				color: textColorClass ? undefined : customTextColor,
-				backgroundColor: backgroundClass ? undefined : customBackgroundColor,
-				backgroundImage: backgroundImageId ? `url(${ backgroundImageUrl })` : undefined,
-				backgroundPosition: backgroundPosition,
-			};
-
-			const overlayClasses = classnames( 'gt-background-overlay', {
-				'has-background': backgroundColor || customBackgroundColor,
-				[ backgroundClass ]: backgroundClass,
-			} );
-
-			const overlayColor = customBackgroundColor ? customBackgroundColor : '#ffffff';
-
-			const overlayStyles = {
-				backgroundColor: backgroundClass ? undefined : overlayColor,
-				opacity: ( 100 - imageOpacity ) / 100,
-			};
-
-			const contentStyles = {
-				maxWidth: contentWidth + 'px',
-			};
-
-			const dataBackgroundImage = backgroundImageId ? backgroundImageUrl : undefined;
-
+		save( props ) {
 			return (
-				<div className={ blockClasses ? blockClasses : undefined } style={ blockStyles } data-background-image={ dataBackgroundImage }>
+				<BackgroundSection { ...props }>
 
-					{ backgroundImageId && (
-						<div className={ overlayClasses } style={ overlayStyles }></div>
-					) }
-
-					<div className="gt-inner-content" style={ contentStyles }>
+					<div className="gt-hero-section">
 						<InnerBlocks.Content />
 					</div>
 
-				</div>
+				</BackgroundSection>
 			);
 		},
 	},

@@ -229,38 +229,6 @@
     padding: 0 12px 2px; }
     .edit-post-sidebar .gt-panel-synchronize-styling .components-button.is-large svg.dashicon {
       margin: 7px 7px 0 0; }
-
-.wp-block-gt-layout-blocks-hero-image .gt-inner-content h1, .wp-block-gt-layout-blocks-hero-image .gt-inner-content h2, .wp-block-gt-layout-blocks-hero-image .gt-inner-content h3, .wp-block-gt-layout-blocks-hero-image .gt-inner-content h4, .wp-block-gt-layout-blocks-hero-image .gt-inner-content h5, .wp-block-gt-layout-blocks-hero-image .gt-inner-content h6, .wp-block-gt-layout-blocks-hero-image .gt-inner-content p {
-  color: inherit; }
-
-.gt-blocks-hero-image-background-image-panel .gt-background-image .gt-set-image {
-  display: block;
-  -webkit-transition: all .1s ease-out;
-  -o-transition: all .1s ease-out;
-  transition: all .1s ease-out;
-  width: 100%;
-  background-color: #edeff0;
-  border: 1px dashed #a2aab2;
-  line-height: 20px;
-  padding: 10px 0;
-  text-align: center; }
-  .gt-blocks-hero-image-background-image-panel .gt-background-image .gt-set-image:hover {
-    background-color: #f8f9f9; }
-
-.gt-blocks-hero-image-background-image-panel .gt-background-image .gt-image-button {
-  display: block;
-  padding: 0; }
-  .gt-blocks-hero-image-background-image-panel .gt-background-image .gt-image-button img {
-    vertical-align: top; }
-
-.gt-blocks-hero-image-background-image-panel .gt-background-image .gt-image-controls {
-  display: -ms-flexbox;
-  display: flex;
-  margin-top: 5px;
-  margin-bottom: 1.5em; }
-  .gt-blocks-hero-image-background-image-panel .gt-background-image .gt-image-controls .gt-replace-image {
-    margin-top: 3px;
-    margin-right: 12px; }
 .edit-post-sidebar .gt-panel-synchronize-styling {
   background-color: #edeff0; }
   .edit-post-sidebar .gt-panel-synchronize-styling .components-button.is-large {

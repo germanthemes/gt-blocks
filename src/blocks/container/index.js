@@ -85,7 +85,9 @@ registerBlockType(
 
 		edit( props ) {
 			return (
-				<BackgroundEdit { ...props } />
+				<BackgroundEdit { ...props }>
+					<InnerBlocks />
+				</BackgroundEdit>
 			);
 		},
 
