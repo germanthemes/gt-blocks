@@ -38,22 +38,15 @@ const {
 	withFallbackStyles,
 } = wp.components;
 
-/* Set Fallback Styles */
-const applyFallbackStyles = withFallbackStyles( ( node, ownProps ) => {
-	const { textColor, backgroundColor } = ownProps.attributes;
-	const editableNode = node.querySelector( '[contenteditable="true"]' );
-	//verify if editableNode is available, before using getComputedStyle.
-	const computedStyles = editableNode ? getComputedStyle( editableNode ) : null;
-	return {
-		fallbackBackgroundColor: backgroundColor || ! computedStyles ? undefined : computedStyles.backgroundColor,
-		fallbackTextColor: textColor || ! computedStyles ? undefined : computedStyles.color,
-	};
-} );
+/**
+ * Internal dependencies
+ */
+import './editor.scss';
 
 /**
  * Block Edit Component
  */
-class gtContainerEdit extends Component {
+class BackgroundEdit extends Component {
 	constructor() {
 		super( ...arguments );
 
@@ -101,7 +94,7 @@ class gtContainerEdit extends Component {
 
 		const blockId = `gt-container-block-${ instanceId }`;
 
-		const blockClasses = classnames( className, {
+		const blockClasses = classnames( className, 'gt-background-section', {
 			'has-text-color': textColor.color,
 			[ textColor.class ]: textColor.class,
 			'has-background': backgroundColor.color,
@@ -195,7 +188,7 @@ class gtContainerEdit extends Component {
 						/>
 					</PanelColorSettings>
 
-					<PanelBody title={ __( 'Background Image' ) } initialOpen={ false } className="gt-blocks-container-background-image-panel">
+					<PanelBody title={ __( 'Background Image' ) } initialOpen={ false } className="gt-background-image-panel">
 
 						<div className="gt-background-image">
 
@@ -321,5 +314,14 @@ class gtContainerEdit extends Component {
 export default compose(
 	withInstanceId,
 	withColors( 'backgroundColor', { textColor: 'color' } ),
-	applyFallbackStyles,
-)( gtContainerEdit );
+	withFallbackStyles( ( node, ownProps ) => {
+		const { textColor, backgroundColor } = ownProps.attributes;
+		const editableNode = node.querySelector( '[contenteditable="true"]' );
+		//verify if editableNode is available, before using getComputedStyle.
+		const computedStyles = editableNode ? getComputedStyle( editableNode ) : null;
+		return {
+			fallbackBackgroundColor: backgroundColor || ! computedStyles ? undefined : computedStyles.backgroundColor,
+			fallbackTextColor: textColor || ! computedStyles ? undefined : computedStyles.color,
+		};
+	} ),
+)( BackgroundEdit );
