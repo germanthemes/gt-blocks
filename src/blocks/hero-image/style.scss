@@ -1,9 +1,17 @@
 .wp-block-gt-layout-blocks-hero-image {
 	margin-bottom: 1.5em;
 
-	.gt-buttons-wrapper {
-		.wp-block-gt-layout-blocks-button {
-			margin-bottom: 0;
+	.gt-hero-section {
+
+		.gt-title {
+			margin-top: 0;
+			margin-bottom: 1.5rem;
+		}
+
+		.gt-buttons-wrapper {
+			.wp-block-gt-layout-blocks-button {
+				margin-bottom: 0;
+			}
 		}
 	}
 }

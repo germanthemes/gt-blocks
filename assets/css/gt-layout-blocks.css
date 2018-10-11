@@ -213,8 +213,8 @@
 
 .gt-background-section {
   position: relative;
-  padding-top: 2rem;
-  padding-bottom: 2rem; }
+  padding-top: 4rem;
+  padding-bottom: 4rem; }
   .gt-background-section.gt-has-background-image {
     background-size: cover;
     background-repeat: no-repeat; }
@@ -314,7 +314,10 @@
 
 .wp-block-gt-layout-blocks-hero-image {
   margin-bottom: 1.5em; }
-  .wp-block-gt-layout-blocks-hero-image .gt-buttons-wrapper .wp-block-gt-layout-blocks-button {
+  .wp-block-gt-layout-blocks-hero-image .gt-hero-section .gt-title {
+    margin-top: 0;
+    margin-bottom: 1.5rem; }
+  .wp-block-gt-layout-blocks-hero-image .gt-hero-section .gt-buttons-wrapper .wp-block-gt-layout-blocks-button {
     margin-bottom: 0; }
 .edit-post-sidebar .gt-panel-synchronize-styling {
   background-color: #edeff0; }

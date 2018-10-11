@@ -11,6 +11,7 @@ const { InnerBlocks } = wp.editor;
 import './style.scss';
 import './editor.scss';
 import edit from './edit';
+import { default as backgroundAttributes } from '../../components/background-section/attributes';
 import { default as BackgroundSection } from '../../components/background-section';
 
 /**
@@ -34,46 +35,10 @@ registerBlockType(
 		],
 
 		attributes: {
-			blockAlignment: {
-				type: 'string',
-				default: 'center',
-			},
+			...backgroundAttributes,
 			contentWidth: {
 				type: 'number',
-				default: 720,
-			},
-			textColor: {
-				type: 'string',
-			},
-			backgroundColor: {
-				type: 'string',
-			},
-			customTextColor: {
-				type: 'string',
-			},
-			customBackgroundColor: {
-				type: 'string',
-			},
-			backgroundImageId: {
-				type: 'number',
-			},
-			backgroundImageUrl: {
-				type: 'string',
-				source: 'attribute',
-				selector: '.gt-has-background-image',
-				attribute: 'data-background-image',
-			},
-			imageOpacity: {
-				type: 'number',
-				default: 100,
-			},
-			backgroundPosition: {
-				type: 'string',
-				default: 'center center',
-			},
-			fixedBackground: {
-				type: 'boolean',
-				default: false,
+				default: 960,
 			},
 		},
 
