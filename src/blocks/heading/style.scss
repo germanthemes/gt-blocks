@@ -1,54 +1,50 @@
-.wp-block-gt-layout-blocks-heading {
-	margin: 0;
+.gt-heading {
+	display: block;
+	font-weight: normal;
+	font-style: normal;
+	text-transform: none;
+	border: none;
 
-	.gt-title {
-		display: block;
-		font-weight: normal;
-		font-style: normal;
-		text-transform: none;
-		border: none;
+	&.has-background {
+		padding: 12px 24px;
+	}
 
-		&.has-background {
-			padding: 12px 24px;
-		}
+	&.gt-is-inline-block {
+		display: inline-block;
+		margin-top: 0.25em;
+	}
 
-		&.gt-is-inline-block {
-			display: inline-block;
-			margin-top: 0.25em;
-		}
+	&.gt-is-bold {
+		font-weight: 700;
+	}
 
-		&.gt-is-bold {
-			font-weight: 700;
-		}
+	&.gt-is-thin {
+		font-weight: 200;
+	}
 
-		&.gt-is-thin {
-			font-weight: 200;
-		}
+	&.gt-is-italic {
+		font-style: italic;
+	}
 
-		&.gt-is-italic {
-			font-style: italic;
-		}
+	&.gt-is-uppercase {
+		text-transform: uppercase;
+	}
 
-		&.gt-is-uppercase {
-			text-transform: uppercase;
-		}
+	&.gt-border-top,
+	&.gt-border-horizontal,
+	&.gt-border-full {
+		border-top: 4px solid currentColor;
+	}
 
-		&.gt-border-top,
-		&.gt-border-horizontal,
-		&.gt-border-full {
-			border-top: 4px solid currentColor;
-		}
+	&.gt-border-bottom,
+	&.gt-border-horizontal,
+	&.gt-border-full {
+		border-bottom: 4px solid currentColor;
+	}
 
-		&.gt-border-bottom,
-		&.gt-border-horizontal,
-		&.gt-border-full {
-			border-bottom: 4px solid currentColor;
-		}
-
-		&.gt-border-vertical,
-		&.gt-border-full {
-			border-left: 4px solid currentColor;
-			border-right: 4px solid currentColor;
-		}
+	&.gt-border-vertical,
+	&.gt-border-full {
+		border-left: 4px solid currentColor;
+		border-right: 4px solid currentColor;
 	}
 }

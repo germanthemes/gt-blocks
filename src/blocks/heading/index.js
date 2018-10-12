@@ -45,7 +45,7 @@ registerBlockType(
 			title: {
 				type: 'array',
 				source: 'children',
-				selector: '.gt-title',
+				selector: '.gt-heading',
 			},
 			titleTag: {
 				type: 'number',
@@ -57,9 +57,9 @@ registerBlockType(
 			textAlignment: {
 				type: 'string',
 			},
-			headingWidth: {
+			headingLayout: {
 				type: 'string',
-				default: 'full',
+				default: 'block',
 			},
 			paddingTop: {
 				type: 'number',
@@ -120,7 +120,7 @@ registerBlockType(
 				title,
 				titleTag,
 				textAlignment,
-				headingWidth,
+				headingLayout,
 				paddingTop,
 				paddingBottom,
 				paddingLeft,
@@ -146,8 +146,8 @@ registerBlockType(
 				textAlign: textAlignment,
 			};
 
-			const headingClasses = classnames( 'gt-title', {
-				'gt-is-inline-block': 'auto' === headingWidth,
+			const headingClasses = classnames( 'gt-heading', {
+				'gt-is-inline-block': 'inline-block' === headingLayout,
 				'gt-is-bold': 'bold' === fontWeight,
 				'gt-is-thin': 'thin' === fontWeight,
 				'gt-is-italic': italic,
@@ -160,26 +160,33 @@ registerBlockType(
 			} );
 
 			const headingStyles = {
-				paddingTop: paddingTop && 0 !== paddingTop ? paddingTop + 'px' : undefined,
-				paddingBottom: paddingBottom && 0 !== paddingBottom ? paddingBottom + 'px' : undefined,
-				paddingLeft: paddingLeft && 0 !== paddingLeft ? paddingLeft + 'px' : undefined,
-				paddingRight: paddingRight && 0 !== paddingRight ? paddingRight + 'px' : undefined,
+				textAlign: 'block' === headingLayout ? textAlignment : undefined,
+				paddingTop: 'undefined' !== typeof paddingTop ? paddingTop + 'px' : undefined,
+				paddingBottom: 'undefined' !== typeof paddingBottom ? paddingBottom + 'px' : undefined,
+				paddingLeft: 'undefined' !== typeof paddingLeft ? paddingLeft + 'px' : undefined,
+				paddingRight: 'undefined' !== typeof paddingRight ? paddingRight + 'px' : undefined,
 				backgroundColor: backgroundClass ? undefined : customBackgroundColor,
 				color: textColorClass ? undefined : customTextColor,
 				fontSize: fontSizeClass ? undefined : customFontSize,
 				borderWidth: borderWidth !== 4 ? borderWidth + 'px' : undefined,
 			};
 
-			return (
-				<div style={ blockStyles }>
-					<RichText.Content
-						tagName={ 'h' + titleTag }
-						className={ headingClasses }
-						style={ headingStyles }
-						value={ title }
-					/>
-				</div>
-			);
+			const heading = <RichText.Content
+				tagName={ 'h' + titleTag }
+				className={ headingClasses }
+				style={ headingStyles }
+				value={ title }
+			/>;
+
+			if ( 'inline-block' === headingLayout ) {
+				return (
+					<div style={ blockStyles }>
+						{ heading }
+					</div>
+				);
+			}
+
+			return heading;
 		},
 	},
 );

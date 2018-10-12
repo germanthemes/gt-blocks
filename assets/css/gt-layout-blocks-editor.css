@@ -215,10 +215,10 @@
     .edit-post-sidebar .gt-panel-synchronize-styling .components-button.is-large svg.dashicon {
       margin: 7px 7px 0 0; }
 
-.wp-block-gt-layout-blocks-heading .gt-title.editor-rich-text__tinymce.mce-content-body {
+.gt-heading.editor-rich-text__tinymce.mce-content-body {
   line-height: 1.4; }
 
-.wp-block-gt-layout-blocks-heading .gt-title.gt-is-inline-block {
+.gt-heading.gt-is-inline-block {
   margin-top: 0;
   margin-bottom: 0; }
 .edit-post-sidebar .gt-panel-synchronize-styling {

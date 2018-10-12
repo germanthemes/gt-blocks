@@ -87,7 +87,7 @@ class gtHeadingEdit extends Component {
 			titleTag,
 			placeholder,
 			textAlignment,
-			headingWidth,
+			headingLayout,
 			paddingTop,
 			paddingBottom,
 			paddingLeft,
@@ -103,8 +103,8 @@ class gtHeadingEdit extends Component {
 			textAlign: textAlignment,
 		};
 
-		const headingClasses = classnames( 'gt-title', {
-			'gt-is-inline-block': 'auto' === headingWidth,
+		const headingClasses = classnames( 'gt-heading', {
+			'gt-is-inline-block': 'inline-block' === headingLayout,
 			'gt-is-bold': 'bold' === fontWeight,
 			'gt-is-thin': 'thin' === fontWeight,
 			'gt-is-italic': italic,
@@ -118,10 +118,10 @@ class gtHeadingEdit extends Component {
 		} );
 
 		const headingStyles = {
-			paddingTop: paddingTop && 0 !== paddingTop ? paddingTop + 'px' : undefined,
-			paddingBottom: paddingBottom && 0 !== paddingBottom ? paddingBottom + 'px' : undefined,
-			paddingLeft: paddingLeft && 0 !== paddingLeft ? paddingLeft + 'px' : undefined,
-			paddingRight: paddingRight && 0 !== paddingRight ? paddingRight + 'px' : undefined,
+			paddingTop: 'undefined' !== typeof paddingTop ? paddingTop + 'px' : undefined,
+			paddingBottom: 'undefined' !== typeof paddingBottom ? paddingBottom + 'px' : undefined,
+			paddingLeft: 'undefined' !== typeof paddingLeft ? paddingLeft + 'px' : undefined,
+			paddingRight: 'undefined' !== typeof paddingRight ? paddingRight + 'px' : undefined,
 			backgroundColor: backgroundColor.class ? undefined : backgroundColor.color,
 			color: textColor.class ? undefined : textColor.color,
 			fontSize: fontSize.size ? fontSize.size + 'px' : undefined,
@@ -177,12 +177,12 @@ class gtHeadingEdit extends Component {
 						</BaseControl>
 
 						<SelectControl
-							label={ __( 'Heading Width' ) }
-							value={ headingWidth }
-							onChange={ ( newWidth ) => setAttributes( { headingWidth: newWidth } ) }
+							label={ __( 'Layout' ) }
+							value={ headingLayout }
+							onChange={ ( newStyle ) => setAttributes( { headingLayout: newStyle } ) }
 							options={ [
-								{ value: 'auto', label: __( 'Auto' ) },
-								{ value: 'full', label: __( '100%' ) },
+								{ value: 'block', label: __( 'Block' ) },
+								{ value: 'inline-block', label: __( 'Inline Block' ) },
 							] }
 							help={ __( 'The effect of this setting is only visible with a border or background color assigned.' ) }
 						/>

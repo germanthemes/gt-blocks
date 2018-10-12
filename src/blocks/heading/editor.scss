@@ -1,14 +1,11 @@
-.wp-block-gt-layout-blocks-heading {
+.gt-heading {
 
-	.gt-title {
+	&.editor-rich-text__tinymce.mce-content-body {
+		line-height: 1.4;
+	}
 
-		&.editor-rich-text__tinymce.mce-content-body {
-			line-height: 1.4;
-		}
-
-		&.gt-is-inline-block {
-			margin-top: 0;
-			margin-bottom: 0;
-		}
+	&.gt-is-inline-block {
+		margin-top: 0;
+		margin-bottom: 0;
 	}
 }
