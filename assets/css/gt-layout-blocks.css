@@ -74,6 +74,38 @@
     .edit-post-sidebar .gt-panel-synchronize-styling .components-button.is-large svg.dashicon {
       margin: 7px 7px 0 0; }
 
+.gt-hero-section {
+  display: -ms-flexbox;
+  display: flex; }
+  .gt-hero-section .gt-hero-content .gt-heading {
+    margin-top: 0;
+    margin-bottom: 1.5rem; }
+  .gt-hero-section .gt-hero-content .gt-buttons-wrapper .wp-block-gt-layout-blocks-button {
+    margin-bottom: 0; }
+  .gt-hero-section.gt-hero-layout-center {
+    -ms-flex-pack: center;
+        justify-content: center; }
+    .gt-hero-section.gt-hero-layout-center .gt-hero-content {
+      width: 50%; }
+  .gt-hero-section.gt-hero-layout-left {
+    -ms-flex-pack: start;
+        justify-content: flex-start; }
+    .gt-hero-section.gt-hero-layout-left .gt-hero-content {
+      width: 50%; }
+  .gt-hero-section.gt-hero-layout-right {
+    -ms-flex-pack: end;
+        justify-content: flex-end; }
+    .gt-hero-section.gt-hero-layout-right .gt-hero-content {
+      width: 50%; }
+.edit-post-sidebar .gt-panel-synchronize-styling {
+  background-color: #edeff0; }
+  .edit-post-sidebar .gt-panel-synchronize-styling .components-button.is-large {
+    height: 36px;
+    line-height: 34px;
+    padding: 0 12px 2px; }
+    .edit-post-sidebar .gt-panel-synchronize-styling .components-button.is-large svg.dashicon {
+      margin: 7px 7px 0 0; }
+
 .wp-block-gt-layout-blocks-image img {
   margin: 0;
   vertical-align: top; }
@@ -227,7 +259,7 @@
     width: 100%;
     height: 100%;
     z-index: 1; }
-  .gt-background-section .gt-inner-content {
+  .gt-background-section .gt-background-content {
     position: relative;
     margin: 0 auto;
     z-index: 2; }
@@ -312,11 +344,6 @@
 
 .wp-block-gt-layout-blocks-hero-image {
   margin-bottom: 1.5em; }
-  .wp-block-gt-layout-blocks-hero-image .gt-hero-section .gt-title {
-    margin-top: 0;
-    margin-bottom: 1.5rem; }
-  .wp-block-gt-layout-blocks-hero-image .gt-hero-section .gt-buttons-wrapper .wp-block-gt-layout-blocks-button {
-    margin-bottom: 0; }
 .edit-post-sidebar .gt-panel-synchronize-styling {
   background-color: #edeff0; }
   .edit-post-sidebar .gt-panel-synchronize-styling .components-button.is-large {

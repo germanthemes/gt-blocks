@@ -14,6 +14,7 @@ import './data/synchronize-styling';
  */
 import './child-blocks/buttons';
 import './child-blocks/column';
+import './child-blocks/hero-content';
 import './child-blocks/image';
 
 /**

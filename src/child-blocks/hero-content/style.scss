@@ -1,0 +1,41 @@
+.gt-hero-section {
+	display: flex;
+
+	.gt-hero-content {
+
+		.gt-heading {
+			margin-top: 0;
+			margin-bottom: 1.5rem;
+		}
+
+		.gt-buttons-wrapper {
+			.wp-block-gt-layout-blocks-button {
+				margin-bottom: 0;
+			}
+		}
+	}
+
+	&.gt-hero-layout-center {
+		justify-content: center;
+
+		.gt-hero-content {
+			width: 50%;
+		}
+	}
+	
+	&.gt-hero-layout-left {
+		justify-content: flex-start;
+
+		.gt-hero-content {
+			width: 50%;
+		}
+	}
+
+	&.gt-hero-layout-right {
+		justify-content: flex-end;
+
+		.gt-hero-content {
+			width: 50%;
+		}
+	}
+}
