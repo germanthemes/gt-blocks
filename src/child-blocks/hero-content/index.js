@@ -8,7 +8,10 @@ import classnames from 'classnames';
  */
 const { __ } = wp.i18n;
 const { registerBlockType } = wp.blocks;
-const { InnerBlocks } = wp.editor;
+const {
+	getColorClassName,
+	InnerBlocks,
+} = wp.editor;
 
 /**
  * Internal dependencies
@@ -38,6 +41,18 @@ registerBlockType(
 				type: 'string',
 				default: 'full',
 			},
+			textColor: {
+				type: 'string',
+			},
+			backgroundColor: {
+				type: 'string',
+			},
+			customTextColor: {
+				type: 'string',
+			},
+			customBackgroundColor: {
+				type: 'string',
+			},
 		},
 
 		getEditWrapperProps( attributes ) {
@@ -52,16 +67,35 @@ registerBlockType(
 		save( props ) {
 			const {
 				heroLayout,
+				textColor,
+				backgroundColor,
+				customTextColor,
+				customBackgroundColor,
 			} = props.attributes;
+
+			const textColorClass = getColorClassName( 'color', textColor );
+			const backgroundClass = getColorClassName( 'background-color', backgroundColor );
 
 			const blockClasses = classnames( 'gt-hero-section', {
 				[ `gt-hero-layout-${ heroLayout }` ]: heroLayout,
 			} );
 
+			const contentClasses = classnames( 'gt-hero-content', {
+				'has-text-color': textColor || customTextColor,
+				[ textColorClass ]: textColorClass,
+				'has-background': backgroundColor || customBackgroundColor,
+				[ backgroundClass ]: backgroundClass,
+			} );
+
+			const contentStyles = {
+				color: textColorClass ? undefined : customTextColor,
+				backgroundColor: backgroundClass ? undefined : customBackgroundColor,
+			};
+
 			return (
 				<div className={ blockClasses }>
 
-					<div className="gt-hero-content">
+					<div className={ contentClasses } style={ contentStyles }>
 
 						<InnerBlocks.Content />
 

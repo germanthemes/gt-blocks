@@ -2,25 +2,30 @@
  * External dependencies
  */
 import classnames from 'classnames';
+const { getComputedStyle } = window;
 
 /**
  * WordPress dependencies
  */
+const { __ } = wp.i18n;
+const { compose } = wp.compose;
 const {
 	Component,
 	Fragment,
 } = wp.element;
 
-const { __ } = wp.i18n;
-
 const {
+	ContrastChecker,
 	InnerBlocks,
 	InspectorControls,
+	PanelColorSettings,
+	withColors,
 } = wp.editor;
 
 const {
 	PanelBody,
 	SelectControl,
+	withFallbackStyles,
 } = wp.components;
 
 /**
@@ -31,6 +36,12 @@ class HeroContentEdit extends Component {
 		const {
 			attributes,
 			setAttributes,
+			backgroundColor,
+			setBackgroundColor,
+			fallbackBackgroundColor,
+			textColor,
+			setTextColor,
+			fallbackTextColor,
 		} = this.props;
 
 		const {
@@ -41,12 +52,24 @@ class HeroContentEdit extends Component {
 			[ `gt-hero-layout-${ heroLayout }` ]: heroLayout,
 		} );
 
+		const contentClasses = classnames( 'gt-hero-content', {
+			'has-text-color': textColor.color,
+			[ textColor.class ]: textColor.class,
+			'has-background': backgroundColor.color,
+			[ backgroundColor.class ]: backgroundColor.class,
+		} );
+
+		const contentStyles = {
+			color: textColor.class ? undefined : textColor.color,
+			backgroundColor: backgroundColor.class ? undefined : backgroundColor.color,
+		};
+
 		return (
 			<Fragment>
 
 				<InspectorControls>
 
-					<PanelBody title={ __( 'Hero Content Settings' ) } initialOpen={ false } className="gt-panel-hero-content-settings gt-panel">
+					<PanelBody title={ __( 'Layout Settings' ) } initialOpen={ false } className="gt-panel-layout-settings gt-panel">
 
 						<SelectControl
 							label={ __( 'Hero Layout' ) }
@@ -62,11 +85,37 @@ class HeroContentEdit extends Component {
 
 					</PanelBody>
 
+					<PanelColorSettings
+						title={ __( 'Color Settings' ) }
+						initialOpen={ false }
+						colorSettings={ [
+							{
+								value: backgroundColor.color,
+								onChange: setBackgroundColor,
+								label: __( 'Background Color' ),
+							},
+							{
+								value: textColor.color,
+								onChange: setTextColor,
+								label: __( 'Text Color' ),
+							},
+						] }
+					>
+						<ContrastChecker
+							{ ...{
+								textColor: textColor.color,
+								backgroundColor: backgroundColor.color,
+								fallbackTextColor,
+								fallbackBackgroundColor,
+							} }
+						/>
+					</PanelColorSettings>
+
 				</InspectorControls>
 
 				<div className={ blockClasses }>
 
-					<div className="gt-hero-content">
+					<div className={ contentClasses } style={ contentStyles }>
 
 						<InnerBlocks
 							allowedBlocks={ [ 'gt-layout-blocks/heading', 'core/paragraph' ] }
@@ -86,7 +135,7 @@ class HeroContentEdit extends Component {
 										buttonSize: 'medium',
 										customFontSize: 20,
 										synchronizeStyling: true,
-										parentBlock: 'gt-layout-blocks/hero-content',
+										parentBlock: 'gt-layout-blocks/buttons',
 									},
 								} ],
 							] }
@@ -102,4 +151,16 @@ class HeroContentEdit extends Component {
 	}
 }
 
-export default HeroContentEdit;
+export default compose( [
+	withColors( 'backgroundColor', { textColor: 'color' } ),
+	withFallbackStyles( ( node, ownProps ) => {
+		const { textColor, backgroundColor } = ownProps.attributes;
+		const editableNode = node.querySelector( '[contenteditable="true"]' );
+		//verify if editableNode is available, before using getComputedStyle.
+		const computedStyles = editableNode ? getComputedStyle( editableNode ) : null;
+		return {
+			fallbackBackgroundColor: backgroundColor || ! computedStyles ? undefined : computedStyles.backgroundColor,
+			fallbackTextColor: textColor || ! computedStyles ? undefined : computedStyles.color,
+		};
+	} ),
+] )( HeroContentEdit );
