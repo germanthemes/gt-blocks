@@ -160,10 +160,10 @@ registerBlockType(
 			} );
 
 			const headingStyles = {
-				paddingTop: paddingTop !== 0 ? paddingTop + 'px' : undefined,
-				paddingBottom: paddingBottom !== 0 ? paddingBottom + 'px' : undefined,
-				paddingLeft: paddingLeft !== 0 ? paddingLeft + 'px' : undefined,
-				paddingRight: paddingRight !== 0 ? paddingRight + 'px' : undefined,
+				paddingTop: paddingTop && 0 !== paddingTop ? paddingTop + 'px' : undefined,
+				paddingBottom: paddingBottom && 0 !== paddingBottom ? paddingBottom + 'px' : undefined,
+				paddingLeft: paddingLeft && 0 !== paddingLeft ? paddingLeft + 'px' : undefined,
+				paddingRight: paddingRight && 0 !== paddingRight ? paddingRight + 'px' : undefined,
 				backgroundColor: backgroundClass ? undefined : customBackgroundColor,
 				color: textColorClass ? undefined : customTextColor,
 				fontSize: fontSizeClass ? undefined : customFontSize,

@@ -118,10 +118,10 @@ class gtHeadingEdit extends Component {
 		} );
 
 		const headingStyles = {
-			paddingTop: paddingTop !== 0 ? paddingTop + 'px' : undefined,
-			paddingBottom: paddingBottom !== 0 ? paddingBottom + 'px' : undefined,
-			paddingLeft: paddingLeft !== 0 ? paddingLeft + 'px' : undefined,
-			paddingRight: paddingRight !== 0 ? paddingRight + 'px' : undefined,
+			paddingTop: paddingTop && 0 !== paddingTop ? paddingTop + 'px' : undefined,
+			paddingBottom: paddingBottom && 0 !== paddingBottom ? paddingBottom + 'px' : undefined,
+			paddingLeft: paddingLeft && 0 !== paddingLeft ? paddingLeft + 'px' : undefined,
+			paddingRight: paddingRight && 0 !== paddingRight ? paddingRight + 'px' : undefined,
 			backgroundColor: backgroundColor.class ? undefined : backgroundColor.color,
 			color: textColor.class ? undefined : textColor.color,
 			fontSize: fontSize.size ? fontSize.size + 'px' : undefined,
