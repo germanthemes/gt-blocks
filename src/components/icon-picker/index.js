@@ -7,8 +7,9 @@ import classnames from 'classnames';
  * WordPress dependencies
  */
 const { Component, Fragment } = wp.element;
+const { compose } = wp.compose;
 const { __ } = wp.i18n;
-const { select } = wp.data;
+const { withSelect } = wp.data;
 const { PlainText } = wp.editor;
 
 const {
@@ -102,7 +103,7 @@ class IconPicker extends Component {
 	}
 
 	displayIcon( icon, iconSize = 32, paddingStyles = {} ) {
-		const pluginURL = select( 'gt-layout-blocks-store' ).getPluginURL();
+		const { pluginURL } = this.props;
 
 		const svgURL = pluginURL + 'assets/icons/fontawesome.svg#' + icon;
 		const svgClass = classnames( 'icon', `icon-${ icon }` );
@@ -139,7 +140,7 @@ class IconPicker extends Component {
 						<Placeholder
 							className="gt-icon-placeholder"
 							instructions={ __( 'Choose an icon here.' ) }
-							icon="carrot"
+							icon="info"
 							label={ __( 'Icon' ) }
 						>
 							<Button isLarge onClick={ this.openModal }>
@@ -183,6 +184,9 @@ class IconPicker extends Component {
 		const title = (
 			<span className="gt-icon-picker-title">
 				{ __( 'Select Icon' ) }
+				<Button onClick={ () => this.setIcon( undefined ) } className="gt-remove-icon">
+					{ __( 'Remove icon' ) }
+				</Button>
 			</span>
 		);
 
@@ -218,4 +222,10 @@ class IconPicker extends Component {
 	}
 }
 
-export default IconPicker;
+export default compose( [
+	withSelect( ( select ) => {
+		const pluginURL = select( 'gt-layout-blocks-store' ).getPluginURL();
+
+		return { pluginURL };
+	} ),
+] )( IconPicker );

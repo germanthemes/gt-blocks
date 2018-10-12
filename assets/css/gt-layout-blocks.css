@@ -379,9 +379,17 @@
 /* Icon Picker Modal */
 .gt-layout-blocks-icon-picker-modal {
   width: 100%; }
+  .gt-layout-blocks-icon-picker-modal .components-modal__header-heading {
+    width: 100%; }
   .gt-layout-blocks-icon-picker-modal .gt-icon-picker-title {
+    display: -ms-flexbox;
+    display: flex;
     font-size: 1rem;
     font-weight: bold; }
+    .gt-layout-blocks-icon-picker-modal .gt-icon-picker-title .gt-remove-icon {
+      margin-left: auto;
+      margin-right: 1em;
+      color: #bc0b0b; }
   .gt-layout-blocks-icon-picker-modal .gt-icon-picker-search {
     width: 100%;
     height: auto;
@@ -411,6 +419,9 @@
           pointer-events: none; }
 
 /* Icon Picker Placeholder */
+.gt-icon-placeholder-wrapper .gt-icon-placeholder {
+  min-height: 150px; }
+
 .gt-icon-placeholder-wrapper .gt-show-icon-picker {
   display: block;
   color: inherit;
