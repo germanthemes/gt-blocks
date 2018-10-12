@@ -38,7 +38,7 @@ const {
 	cloneBlock,
 } = wp.blocks;
 
-/* Define Button Sizes */
+/* Define Padding Sizes */
 const paddingSizes = {
 	small: {
 		name: 'S',

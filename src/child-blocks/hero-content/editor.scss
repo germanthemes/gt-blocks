@@ -1,0 +1,19 @@
+.gt-hero-section {
+
+	.gt-hero-content {
+
+		&.has-background {
+
+			> .editor-inner-blocks {
+				margin-top: -10px;
+				margin-bottom: -30px;
+			}
+		}
+	}
+}
+
+.gt-panel-padding-options .gt-padding-size-picker {
+	display: flex;
+	justify-content: space-between;
+	margin-bottom: 1em;
+}

@@ -13,6 +13,22 @@
 				margin-bottom: 0;
 			}
 		}
+
+		&.has-background {
+			padding: 1.5rem;
+
+			&.gt-padding-small {
+				padding: 0.5rem;
+			}
+
+			&.gt-padding-medium {
+				padding: 1rem;
+			}
+
+			&.gt-padding-large {
+				padding: 2rem;
+			}
+		}
 	}
 
 	&.gt-hero-layout-center {

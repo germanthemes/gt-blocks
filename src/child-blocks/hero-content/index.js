@@ -41,6 +41,17 @@ registerBlockType(
 				type: 'string',
 				default: 'full',
 			},
+			paddingClass: {
+				type: 'string',
+			},
+			paddingVertical: {
+				type: 'number',
+				default: 24,
+			},
+			paddingHorizontal: {
+				type: 'number',
+				default: 24,
+			},
 			textColor: {
 				type: 'string',
 			},
@@ -67,6 +78,9 @@ registerBlockType(
 		save( props ) {
 			const {
 				heroLayout,
+				paddingClass,
+				paddingVertical,
+				paddingHorizontal,
 				textColor,
 				backgroundColor,
 				customTextColor,
@@ -81,13 +95,20 @@ registerBlockType(
 			} );
 
 			const contentClasses = classnames( 'gt-hero-content', {
+				[ `gt-padding-${ paddingClass }` ]: paddingClass,
 				'has-text-color': textColor || customTextColor,
 				[ textColorClass ]: textColorClass,
 				'has-background': backgroundColor || customBackgroundColor,
 				[ backgroundClass ]: backgroundClass,
 			} );
 
+			const paddingStyles = ! paddingClass && ( textColor || customTextColor );
+
 			const contentStyles = {
+				paddingTop: paddingStyles && paddingVertical !== 24 ? paddingVertical + 'px' : undefined,
+				paddingBottom: paddingStyles && paddingVertical !== 24 ? paddingVertical + 'px' : undefined,
+				paddingLeft: paddingStyles && paddingHorizontal !== 24 ? paddingHorizontal + 'px' : undefined,
+				paddingRight: paddingStyles && paddingHorizontal !== 24 ? paddingHorizontal + 'px' : undefined,
 				color: textColorClass ? undefined : customTextColor,
 				backgroundColor: backgroundClass ? undefined : customBackgroundColor,
 			};

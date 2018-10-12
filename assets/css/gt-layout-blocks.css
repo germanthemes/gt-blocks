@@ -82,6 +82,14 @@
     margin-bottom: 1.5rem; }
   .gt-hero-section .gt-hero-content .gt-buttons-wrapper .wp-block-gt-layout-blocks-button {
     margin-bottom: 0; }
+  .gt-hero-section .gt-hero-content.has-background {
+    padding: 1.5rem; }
+    .gt-hero-section .gt-hero-content.has-background.gt-padding-small {
+      padding: 0.5rem; }
+    .gt-hero-section .gt-hero-content.has-background.gt-padding-medium {
+      padding: 1rem; }
+    .gt-hero-section .gt-hero-content.has-background.gt-padding-large {
+      padding: 2rem; }
   .gt-hero-section.gt-hero-layout-center {
     -ms-flex-pack: center;
         justify-content: center; }
