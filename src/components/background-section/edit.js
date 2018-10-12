@@ -125,8 +125,12 @@ class BackgroundEdit extends Component {
 			opacity: ( 100 - imageOpacity ) / 100,
 		};
 
-		const contentStyles = `
-			#${ blockId } .gt-inner-content .editor-block-list__block {
+		const contentStyles = {
+			maxWidth: contentWidth + 'px',
+		};
+
+		const inlineStyles = `
+			#${ blockId } .gt-background-content .editor-block-list__block {
 				max-width: ${ contentWidth }px;
 			}
 		`;
@@ -325,9 +329,9 @@ class BackgroundEdit extends Component {
 						<div className={ overlayClasses } style={ overlayStyles }></div>
 					) }
 
-					<style>{ contentStyles }</style>
+					<style>{ inlineStyles }</style>
 
-					<div className="gt-inner-content">
+					<div className="gt-background-content" style={ contentStyles }>
 
 						{ children }
 

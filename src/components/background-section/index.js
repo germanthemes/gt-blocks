@@ -85,7 +85,7 @@ class BackgroundSection extends Component {
 					<div className={ overlayClasses } style={ overlayStyles }></div>
 				) }
 
-				<div className="gt-inner-content" style={ contentStyles }>
+				<div className="gt-background-content" style={ contentStyles }>
 
 					{ children }
 
