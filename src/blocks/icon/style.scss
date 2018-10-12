@@ -3,12 +3,10 @@ $padding: 1.25rem;
 $iconPadding: 32px;
 
 .wp-block-gt-layout-blocks-icon {
+	margin-bottom: 1.5em;
 
 	.gt-icon {
-
-		&.has-background {
-			padding: $padding;
-		}
+		display: inline-block;
 
 		.gt-icon-svg {
 			display: inline-block;

@@ -2,7 +2,6 @@
  * External dependencies
  */
 import classnames from 'classnames';
-import { range } from 'lodash';
 const { getComputedStyle } = window;
 
 /**
@@ -13,36 +12,22 @@ const {
 	Fragment,
 } = wp.element;
 
-const {
-	__,
-	sprintf,
-} = wp.i18n;
-
-const { withSelect } = wp.data;
+const { __ } = wp.i18n;
 const { compose } = wp.compose;
 
 const {
 	AlignmentToolbar,
-	BlockAlignmentToolbar,
 	BlockControls,
 	ContrastChecker,
 	InspectorControls,
 	PanelColorSettings,
-	RichText,
 	withColors,
-	withFontSizes,
 } = wp.editor;
 
 const {
-	BaseControl,
-	Button,
-	Dashicon,
-	FontSizePicker,
-	IconButton,
 	PanelBody,
 	RangeControl,
 	SelectControl,
-	Toolbar,
 	withFallbackStyles,
 } = wp.components;
 
@@ -50,28 +35,11 @@ const {
  * Internal dependencies
  */
 import { default as IconPicker } from '../../components/icon-picker';
-import {
-	gtIconNumberTwo,
-	gtIconNumberThree,
-	gtIconNumberFour,
-} from '../../components/icons';
-
-/* Set Fallback Styles */
-const applyFallbackStyles = withFallbackStyles( ( node, ownProps ) => {
-	const { textColor, backgroundColor } = ownProps.attributes;
-	const editableNode = node.querySelector( '[contenteditable="true"]' );
-	//verify if editableNode is available, before using getComputedStyle.
-	const computedStyles = editableNode ? getComputedStyle( editableNode ) : null;
-	return {
-		fallbackBackgroundColor: backgroundColor || ! computedStyles ? undefined : computedStyles.backgroundColor,
-		fallbackTextColor: textColor || ! computedStyles ? undefined : computedStyles.color,
-	};
-} );
 
 /**
  * Block Edit Component
  */
-class gtIconEdit extends Component {
+class IconEdit extends Component {
 	render() {
 		const {
 			attributes,
@@ -238,5 +206,14 @@ class gtIconEdit extends Component {
 
 export default compose( [
 	withColors( 'backgroundColor', { textColor: 'color' } ),
-	applyFallbackStyles,
-] )( gtIconEdit );
+	withFallbackStyles( ( node, ownProps ) => {
+		const { textColor, backgroundColor } = ownProps.attributes;
+		const editableNode = node.querySelector( '[contenteditable="true"]' );
+		//verify if editableNode is available, before using getComputedStyle.
+		const computedStyles = editableNode ? getComputedStyle( editableNode ) : null;
+		return {
+			fallbackBackgroundColor: backgroundColor || ! computedStyles ? undefined : computedStyles.backgroundColor,
+			fallbackTextColor: textColor || ! computedStyles ? undefined : computedStyles.color,
+		};
+	} ),
+] )( IconEdit );
