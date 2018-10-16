@@ -129,6 +129,10 @@
 .gt-image-placeholder-wrapper {
   /* Image Placeholder */
   /* Image added in Editor */ }
+  .gt-image-placeholder-wrapper figure {
+    width: auto;
+    margin: 0;
+    padding: 0; }
   .gt-image-placeholder-wrapper .gt-image-placeholder {
     height: 100%; }
     .gt-image-placeholder-wrapper .gt-image-placeholder .components-form-file-upload {

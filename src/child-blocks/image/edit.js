@@ -32,7 +32,7 @@ const {
 	IconButton,
 	PanelBody,
 	SelectControl,
-	TextControl,
+	TextareaControl,
 	Toolbar,
 } = wp.components;
 
@@ -60,22 +60,22 @@ class ImageEdit extends Component {
 
 	onSelectImage( img ) {
 		this.props.setAttributes( {
-			imgID: img.id,
-			imgURL: img.url,
-			imgAlt: img.alt,
+			id: img.id,
+			url: img.url,
+			alt: img.alt,
 		} );
 	}
 
 	onRemoveImage() {
 		this.props.setAttributes( {
-			imgID: undefined,
-			imgURL: undefined,
-			imgAlt: undefined,
+			id: undefined,
+			url: undefined,
+			alt: undefined,
 		} );
 	}
 
 	updateImageURL( url ) {
-		this.props.setAttributes( { imgURL: url } );
+		this.props.setAttributes( { url: url } );
 	}
 
 	getAvailableSizes() {
@@ -91,9 +91,9 @@ class ImageEdit extends Component {
 		} = this.props;
 
 		const {
-			imgURL,
-			imgID,
-			imgAlt,
+			url,
+			id,
+			alt,
 		} = attributes;
 
 		const availableSizes = this.getAvailableSizes();
@@ -106,7 +106,7 @@ class ImageEdit extends Component {
 						<MediaUpload
 							onSelect={ this.onSelectImage }
 							type="image"
-							value={ imgID }
+							value={ id }
 							render={ ( { open } ) => (
 								<IconButton
 									className="components-toolbar__control"
@@ -124,10 +124,17 @@ class ImageEdit extends Component {
 
 					<PanelBody title={ __( 'Image Settings' ) } initialOpen={ false } className="gt-panel-image-settings gt-panel">
 
+						<TextareaControl
+							label={ __( 'Alt Text (Alternative Text)' ) }
+							value={ alt }
+							onChange={ ( newAlt ) => setAttributes( { alt: newAlt } ) }
+							help={ __( 'Describe the purpose of the image. Leave empty if the image is not a key part of the content.' ) }
+						/>
+
 						{ ! isEmpty( availableSizes ) && (
 							<SelectControl
-								label={ __( 'Size' ) }
-								value={ imgURL }
+								label={ __( 'Image Size' ) }
+								value={ url }
 								options={ map( availableSizes, ( size, name ) => ( {
 									value: size.source_url,
 									label: startCase( name ),
@@ -136,29 +143,19 @@ class ImageEdit extends Component {
 							/>
 						) }
 
-						<TextControl
-							label={ __( 'Textual Alternative' ) }
-							value={ imgAlt }
-							onChange={ ( newAlt ) => setAttributes( { imgAlt: newAlt } ) }
-							help={ __( 'Describe the purpose of the image. Leave empty if the image is not a key part of the content.' ) }
-						/>
-
 					</PanelBody>
 
 				</InspectorControls>
 
-				<div className={ className }>
-
-					<GtImagePlaceholder
-						imgID={ imgID }
-						imgURL={ imgURL }
-						imgAlt={ imgAlt }
-						onSelect={ ( img ) => this.onSelectImage( img ) }
-						onRemove={ () => this.onRemoveImage() }
-						isSelected={ isSelected }
-					/>
-
-				</div>
+				<GtImagePlaceholder
+					imgID={ id }
+					imgURL={ url }
+					imgAlt={ alt }
+					onSelect={ ( img ) => this.onSelectImage( img ) }
+					onRemove={ () => this.onRemoveImage() }
+					isSelected={ isSelected }
+					className={ className }
+				/>
 
 			</Fragment>
 		);
@@ -168,12 +165,10 @@ class ImageEdit extends Component {
 export default compose( [
 	withSelect( ( select, props ) => {
 		const { getMedia } = select( 'core' );
-		const { imgID } = props.attributes;
-		const { fontSizes } = select( 'core/editor' ).getEditorSettings();
+		const { id } = props.attributes;
 
 		return {
-			image: imgID ? getMedia( imgID ) : null,
-			fontSizes,
+			image: id ? getMedia( id ) : null,
 		};
 	} ),
 ] )( ImageEdit );

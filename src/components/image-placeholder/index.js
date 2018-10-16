@@ -20,7 +20,18 @@ class GtImagePlaceholder extends Component {
 			onSelect,
 			onRemove,
 			isSelected,
+			className,
 		} = this.props;
+
+		const figure = (
+			<figure className={ className }>
+				<img
+					src={ imgURL }
+					alt={ imgAlt }
+					data-img-id={ imgID }
+				/>
+			</figure>
+		);
 
 		return (
 			<div className="gt-image-placeholder-wrapper">
@@ -53,11 +64,7 @@ class GtImagePlaceholder extends Component {
 									value={ imgID }
 									render={ ( { open } ) => (
 										<Button onClick={ open } className="gt-replace-image">
-											<img
-												src={ imgURL }
-												alt={ imgAlt }
-												data-img-id={ imgID }
-											/>
+											{ figure }
 										</Button>
 									) }
 								/>
@@ -73,11 +80,7 @@ class GtImagePlaceholder extends Component {
 
 						) : (
 
-							<img
-								src={ imgURL }
-								alt={ imgAlt }
-								data-img-id={ imgID }
-							/>
+							figure
 
 						) }
 

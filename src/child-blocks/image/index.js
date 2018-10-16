@@ -28,20 +28,21 @@ registerBlockType(
 		parent: [ 'gt-layout-blocks/column' ],
 
 		attributes: {
-			imgURL: {
-				type: 'string',
-				source: 'attribute',
-				attribute: 'src',
-				selector: 'img',
-			},
-			imgID: {
+			id: {
 				type: 'number',
 			},
-			imgAlt: {
+			url: {
 				type: 'string',
 				source: 'attribute',
-				attribute: 'alt',
 				selector: 'img',
+				attribute: 'src',
+			},
+			alt: {
+				type: 'string',
+				source: 'attribute',
+				selector: 'img',
+				attribute: 'alt',
+				default: '',
 			},
 		},
 
@@ -49,17 +50,23 @@ registerBlockType(
 
 		save( { attributes } ) {
 			const {
-				imgURL,
-				imgAlt,
+				id,
+				url,
+				alt,
 			} = attributes;
 
+			const image = (
+				<img
+					src={ url }
+					alt={ alt }
+					className={ id ? `wp-image-${ id }` : null }
+				/>
+			);
+
 			return (
-				<div>
-					<img
-						src={ imgURL }
-						alt={ imgAlt }
-					/>
-				</div>
+				<figure>
+					{ image }
+				</figure>
 			);
 		},
 	},
