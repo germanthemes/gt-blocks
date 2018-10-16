@@ -44,6 +44,10 @@ registerBlockType(
 				attribute: 'alt',
 				default: '',
 			},
+			size: {
+				type: 'string',
+				default: 'full',
+			},
 		},
 
 		edit,

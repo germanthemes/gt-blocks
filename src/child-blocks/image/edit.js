@@ -54,8 +54,39 @@ class ImageEdit extends Component {
 
 		this.onSelectImage = this.onSelectImage.bind( this );
 		this.onRemoveImage = this.onRemoveImage.bind( this );
-		this.updateImageURL = this.updateImageURL.bind( this );
+		this.updateImageSize = this.updateImageSize.bind( this );
+		this.updateImageUrl = this.updateImageUrl.bind( this );
 		this.getAvailableSizes = this.getAvailableSizes.bind( this );
+
+		this.state = {
+			currentId: 0,
+			currentSize: '',
+		};
+	}
+
+	static getDerivedStateFromProps( nextProps ) {
+		if ( nextProps.image ) {
+			return {
+				currentId: nextProps.attributes.id,
+				currentSize: nextProps.attributes.size,
+			};
+		}
+		return null;
+	}
+
+	componentDidUpdate( prevProps, prevState ) {
+		const { id, size } = this.props.attributes;
+		const { currentId, currentSize } = prevState;
+
+		// Update image url if new image size was chosen.
+		if ( size !== prevProps.attributes.size ) {
+			this.updateImageUrl( size );
+		}
+
+		// Update image size if new image was uploaded or selected from media library.
+		if ( this.props.image && currentId && id !== currentId ) {
+			this.updateImageSize( currentSize );
+		}
 	}
 
 	onSelectImage( img ) {
@@ -63,6 +94,7 @@ class ImageEdit extends Component {
 			id: img.id,
 			url: img.url,
 			alt: img.alt,
+			size: 'full',
 		} );
 	}
 
@@ -71,11 +103,31 @@ class ImageEdit extends Component {
 			id: undefined,
 			url: undefined,
 			alt: undefined,
+			size: 'full',
 		} );
 	}
 
-	updateImageURL( url ) {
-		this.props.setAttributes( { url: url } );
+	updateImageSize( size ) {
+		this.props.setAttributes( { size: size } );
+	}
+
+	updateImageUrl( size ) {
+		const availableSizes = this.getAvailableSizes();
+
+		// Return early if image sizes are not available yet.
+		if ( isEmpty( availableSizes ) ) {
+			return;
+		}
+
+		// Check if image size exists.
+		if ( availableSizes.hasOwnProperty( size ) ) {
+			this.props.setAttributes( { url: availableSizes[ size ].source_url } );
+		} else {
+			this.props.setAttributes( {
+				url: availableSizes.full.source_url,
+				size: 'full',
+			} );
+		}
 	}
 
 	getAvailableSizes() {
@@ -94,6 +146,7 @@ class ImageEdit extends Component {
 			url,
 			id,
 			alt,
+			size,
 		} = attributes;
 
 		const availableSizes = this.getAvailableSizes();
@@ -134,12 +187,12 @@ class ImageEdit extends Component {
 						{ ! isEmpty( availableSizes ) && (
 							<SelectControl
 								label={ __( 'Image Size' ) }
-								value={ url }
-								options={ map( availableSizes, ( size, name ) => ( {
-									value: size.source_url,
+								value={ size }
+								options={ map( availableSizes, ( tet, name ) => ( {
+									value: name,
 									label: startCase( name ),
 								} ) ) }
-								onChange={ this.updateImageURL }
+								onChange={ this.updateImageSize }
 							/>
 						) }
 

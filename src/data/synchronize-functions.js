@@ -163,6 +163,20 @@ export const synchronizeIcons = ( blockList, attributes ) => {
 	} );
 };
 
+export const synchronizeImages = ( blockList, attributes ) => {
+	const {
+		size,
+	} = attributes;
+
+	const newAttributes = {
+		size,
+	};
+
+	blockList.forEach( block => {
+		dispatch( 'core/editor' ).updateBlockAttributes( block, newAttributes );
+	} );
+};
+
 export const synchronizeParagraphs = ( blockList, attributes ) => {
 	const {
 		align,

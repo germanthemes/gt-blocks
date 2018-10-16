@@ -22,6 +22,7 @@ import {
 	synchronizeColumns,
 	synchronizeHeadings,
 	synchronizeIcons,
+	synchronizeImages,
 	synchronizeParagraphs,
 } from './synchronize-functions';
 
@@ -31,6 +32,7 @@ const supportedBlocks = [
 	'gt-layout-blocks/column',
 	'gt-layout-blocks/heading',
 	'gt-layout-blocks/icon',
+	'gt-layout-blocks/image',
 	'core/paragraph',
 ];
 
@@ -62,6 +64,10 @@ const synchronizeStyling = createHigherOrderComponent( ( BlockEdit ) => {
 				}
 				case 'gt-layout-blocks/icon': {
 					synchronizeIcons( siblings, props.attributes );
+					break;
+				}
+				case 'gt-layout-blocks/image': {
+					synchronizeImages( siblings, props.attributes );
 					break;
 				}
 				case 'core/paragraph': {
