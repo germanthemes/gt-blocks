@@ -1,3 +1,35 @@
 .wp-block-gt-layout-blocks-hero-image {
 	margin-bottom: 1.5em;
+
+	.gt-hero-section {
+		display: flex;
+
+		.wp-block-gt-layout-blocks-column {
+			width: 100%;
+		}
+	
+		&.gt-hero-layout-center {
+			justify-content: center;
+	
+			.wp-block-gt-layout-blocks-column {
+				width: 50%;
+			}
+		}
+		
+		&.gt-hero-layout-left {
+			justify-content: flex-start;
+	
+			.wp-block-gt-layout-blocks-column {
+				width: 50%;
+			}
+		}
+	
+		&.gt-hero-layout-right {
+			justify-content: flex-end;
+	
+			.wp-block-gt-layout-blocks-column {
+				width: 50%;
+			}
+		}
+	}
 }

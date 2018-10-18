@@ -1,4 +1,9 @@
 /**
+ * External dependencies
+ */
+import classnames from 'classnames';
+
+/**
  * WordPress dependencies
  */
 const { __ } = wp.i18n;
@@ -34,7 +39,16 @@ registerBlockType(
 			__( 'Text' ),
 		],
 
-		attributes: { ...backgroundAttributes },
+		attributes: {
+			heroLayout: {
+				type: 'string',
+				default: 'full',
+			},
+			heroImage: {
+				type: 'boolean',
+			},
+			...backgroundAttributes,
+		},
 
 		getEditWrapperProps( attributes ) {
 			const { blockAlignment } = attributes;
@@ -46,10 +60,22 @@ registerBlockType(
 		edit,
 
 		save( props ) {
+			const {
+				heroLayout,
+			} = props.attributes;
+
+			const heroClasses = classnames( 'gt-hero-section', {
+				[ `gt-hero-layout-${ heroLayout }` ]: heroLayout,
+			} );
+
 			return (
 				<BackgroundSection { ...props }>
 
-					<InnerBlocks.Content />
+					<div className={ heroClasses }>
+
+						<InnerBlocks.Content />
+
+					</div>
 
 				</BackgroundSection>
 			);
