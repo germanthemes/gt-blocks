@@ -4,28 +4,24 @@
 wp.i18n.setLocaleData( { '': {} }, 'gt-layout-blocks' );
 
 /**
- * Import Data Store
+ * Import Plugins
  */
-import './data/store.js';
-import './data/synchronize-styling';
-
-/**
- * Import Child Blocks
- */
-import './child-blocks/buttons';
-import './child-blocks/column';
-import './child-blocks/hero-content';
-import './child-blocks/image';
+import './plugins/data-store';
+import './plugins/synchronize-styling';
 
 /**
  * Import Blocks
  */
 import './blocks/button';
+import './blocks/buttons';
+import './blocks/column';
 import './blocks/container';
 import './blocks/features';
 import './blocks/heading';
 import './blocks/hero-image';
+import './blocks/hero-content';
 import './blocks/icon';
+import './blocks/image';
 import './blocks/image-text';
 import './blocks/portfolio';
 import './blocks/services';

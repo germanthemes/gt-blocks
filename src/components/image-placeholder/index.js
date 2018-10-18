@@ -9,7 +9,7 @@ const { Button, IconButton } = wp.components;
 /**
  * Internal dependencies
  */
-import './style.scss';
+import './editor.scss';
 
 class GtImagePlaceholder extends Component {
 	render() {

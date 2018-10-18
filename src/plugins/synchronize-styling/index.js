@@ -24,7 +24,8 @@ import {
 	synchronizeIcons,
 	synchronizeImages,
 	synchronizeParagraphs,
-} from './synchronize-functions';
+} from './functions';
+import './editor.scss';
 
 // Define supported blocks.
 const supportedBlocks = [
