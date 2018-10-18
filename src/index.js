@@ -23,5 +23,4 @@ import './blocks/hero-content';
 import './blocks/icon';
 import './blocks/image';
 import './blocks/image-text';
-import './blocks/portfolio';
 import './blocks/services';

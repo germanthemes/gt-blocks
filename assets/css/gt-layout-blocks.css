@@ -319,42 +319,5 @@
     width: 66.6666666666%; }
   .wp-block-gt-layout-blocks-image-text.gt-column-66 .gt-content {
     width: 33.3333333333%; }
-.wp-block-gt-layout-blocks-portfolio {
-  /* Portfolio Grid Layout */
-  /* Portfolio Item Styling */ }
-  .wp-block-gt-layout-blocks-portfolio .gt-grid-container {
-    display: grid;
-    grid-gap: 1.5rem; }
-    .wp-block-gt-layout-blocks-portfolio .gt-grid-container .gt-grid-column {
-      min-width: 0;
-      overflow: hidden; }
-    .wp-block-gt-layout-blocks-portfolio .gt-grid-container.gt-columns-2 {
-      grid-template-columns: repeat(2, 1fr); }
-    .wp-block-gt-layout-blocks-portfolio .gt-grid-container.gt-columns-3 {
-      grid-template-columns: repeat(3, 1fr); }
-    .wp-block-gt-layout-blocks-portfolio .gt-grid-container.gt-columns-4 {
-      grid-template-columns: repeat(4, 1fr); }
-    .wp-block-gt-layout-blocks-portfolio .gt-grid-container.gt-columns-5 {
-      grid-template-columns: repeat(5, 1fr); }
-    .wp-block-gt-layout-blocks-portfolio .gt-grid-container.gt-columns-6 {
-      grid-template-columns: repeat(6, 1fr); }
-  .wp-block-gt-layout-blocks-portfolio .gt-grid-item {
-    display: -ms-flexbox;
-    display: flex;
-    -ms-flex-direction: column;
-        flex-direction: column; }
-    .wp-block-gt-layout-blocks-portfolio .gt-grid-item .gt-image {
-      margin: 0;
-      overflow: hidden; }
-      .wp-block-gt-layout-blocks-portfolio .gt-grid-item .gt-image img {
-        margin: 0;
-        vertical-align: top; }
-    .wp-block-gt-layout-blocks-portfolio .gt-grid-item .gt-content {
-      padding-top: 1rem; }
-      .wp-block-gt-layout-blocks-portfolio .gt-grid-item .gt-content .gt-title {
-        margin-top: 0; }
-    .wp-block-gt-layout-blocks-portfolio .gt-grid-item .gt-content.has-background {
-      padding-left: 1rem;
-      padding-right: 1rem; }
 .wp-block-gt-layout-blocks-services {
   margin-bottom: 1.5em; }
