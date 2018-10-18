@@ -8,24 +8,36 @@
 			display: flex;
 
 			.wp-block-gt-layout-blocks-column,
+			.wp-block-gt-layout-blocks-image,
 			> .editor-block-list__block {
 				width: 100%;
+
+				> .editor-block-list__block-edit {
+					margin-top: 12px;
+					margin-bottom: 18px;
+				}
+			}
+
+			> .editor-block-list__block[data-type="gt-layout-blocks/column"] {
+				order: 2;
+			}
+			
+			> .editor-block-list__block[data-type="gt-layout-blocks/image"] {
+				order: 1;
 			}
 		}
 	
+		&.gt-hero-layout-full > .editor-inner-blocks > .editor-block-list__layout,
 		&.gt-hero-layout-center > .editor-inner-blocks > .editor-block-list__layout {
-			justify-content: center;
-	
-			> .editor-block-list__block {
-				width: 50%;
-			}
+			flex-direction: column;
+			align-items: center;
 		}
 		
 		&.gt-hero-layout-left > .editor-inner-blocks > .editor-block-list__layout {
+			flex-direction: row-reverse;
 			justify-content: flex-start;
 	
 			> .editor-block-list__block {
-				width: 50%;
 				margin-left: 0;
 			}
 		}
@@ -34,8 +46,27 @@
 			justify-content: flex-end;
 	
 			> .editor-block-list__block {
-				width: 50%;
 				margin-right: 0;
+			}
+		}
+
+		&.gt-hero-layout-center > .editor-inner-blocks > .editor-block-list__layout,
+		&.gt-hero-layout-left > .editor-inner-blocks > .editor-block-list__layout,
+		&.gt-hero-layout-right > .editor-inner-blocks > .editor-block-list__layout {
+			> .editor-block-list__block {
+				width: 50%;
+			}
+		}
+	}
+}
+
+@media (min-width: 600px) {
+	.wp-block-gt-layout-blocks-hero-image .gt-hero-section {
+
+		> .editor-inner-blocks > .editor-block-list__layout {
+
+			> .editor-block-list__block > .editor-block-contextual-toolbar {
+				transform: translateY( -40px );
 			}
 		}
 	}

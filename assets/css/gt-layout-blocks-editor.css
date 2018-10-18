@@ -175,25 +175,48 @@
       display: -ms-flexbox;
       display: flex; }
       .wp-block-gt-layout-blocks-hero-image .gt-hero-section > .editor-inner-blocks > .editor-block-list__layout .wp-block-gt-layout-blocks-column,
+      .wp-block-gt-layout-blocks-hero-image .gt-hero-section > .editor-inner-blocks > .editor-block-list__layout .wp-block-gt-layout-blocks-image,
       .wp-block-gt-layout-blocks-hero-image .gt-hero-section > .editor-inner-blocks > .editor-block-list__layout > .editor-block-list__block {
         width: 100%; }
+        .wp-block-gt-layout-blocks-hero-image .gt-hero-section > .editor-inner-blocks > .editor-block-list__layout .wp-block-gt-layout-blocks-column > .editor-block-list__block-edit,
+        .wp-block-gt-layout-blocks-hero-image .gt-hero-section > .editor-inner-blocks > .editor-block-list__layout .wp-block-gt-layout-blocks-image > .editor-block-list__block-edit,
+        .wp-block-gt-layout-blocks-hero-image .gt-hero-section > .editor-inner-blocks > .editor-block-list__layout > .editor-block-list__block > .editor-block-list__block-edit {
+          margin-top: 12px;
+          margin-bottom: 18px; }
+      .wp-block-gt-layout-blocks-hero-image .gt-hero-section > .editor-inner-blocks > .editor-block-list__layout > .editor-block-list__block[data-type="gt-layout-blocks/column"] {
+        -ms-flex-order: 2;
+            order: 2; }
+      .wp-block-gt-layout-blocks-hero-image .gt-hero-section > .editor-inner-blocks > .editor-block-list__layout > .editor-block-list__block[data-type="gt-layout-blocks/image"] {
+        -ms-flex-order: 1;
+            order: 1; }
+    .wp-block-gt-layout-blocks-hero-image .gt-hero-section.gt-hero-layout-full > .editor-inner-blocks > .editor-block-list__layout,
     .wp-block-gt-layout-blocks-hero-image .gt-hero-section.gt-hero-layout-center > .editor-inner-blocks > .editor-block-list__layout {
-      -ms-flex-pack: center;
-          justify-content: center; }
-      .wp-block-gt-layout-blocks-hero-image .gt-hero-section.gt-hero-layout-center > .editor-inner-blocks > .editor-block-list__layout > .editor-block-list__block {
-        width: 50%; }
+      -ms-flex-direction: column;
+          flex-direction: column;
+      -ms-flex-align: center;
+          align-items: center; }
     .wp-block-gt-layout-blocks-hero-image .gt-hero-section.gt-hero-layout-left > .editor-inner-blocks > .editor-block-list__layout {
+      -ms-flex-direction: row-reverse;
+          flex-direction: row-reverse;
       -ms-flex-pack: start;
           justify-content: flex-start; }
       .wp-block-gt-layout-blocks-hero-image .gt-hero-section.gt-hero-layout-left > .editor-inner-blocks > .editor-block-list__layout > .editor-block-list__block {
-        width: 50%;
         margin-left: 0; }
     .wp-block-gt-layout-blocks-hero-image .gt-hero-section.gt-hero-layout-right > .editor-inner-blocks > .editor-block-list__layout {
       -ms-flex-pack: end;
           justify-content: flex-end; }
       .wp-block-gt-layout-blocks-hero-image .gt-hero-section.gt-hero-layout-right > .editor-inner-blocks > .editor-block-list__layout > .editor-block-list__block {
-        width: 50%;
         margin-right: 0; }
+    .wp-block-gt-layout-blocks-hero-image .gt-hero-section.gt-hero-layout-center > .editor-inner-blocks > .editor-block-list__layout > .editor-block-list__block,
+    .wp-block-gt-layout-blocks-hero-image .gt-hero-section.gt-hero-layout-left > .editor-inner-blocks > .editor-block-list__layout > .editor-block-list__block,
+    .wp-block-gt-layout-blocks-hero-image .gt-hero-section.gt-hero-layout-right > .editor-inner-blocks > .editor-block-list__layout > .editor-block-list__block {
+      width: 50%; }
+
+@media (min-width: 600px) {
+  .wp-block-gt-layout-blocks-hero-image .gt-hero-section > .editor-inner-blocks > .editor-block-list__layout > .editor-block-list__block > .editor-block-contextual-toolbar {
+    -webkit-transform: translateY(-40px);
+        -ms-transform: translateY(-40px);
+            transform: translateY(-40px); } }
 .gt-hero-section .gt-hero-content.has-background > .editor-inner-blocks {
   margin-top: -10px;
   margin-bottom: -30px; }

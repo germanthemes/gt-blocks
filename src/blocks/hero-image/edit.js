@@ -58,7 +58,7 @@ const TEMPLATE = [
  *
  * @return {Object[]} Items layout configuration.
  */
-const getTemplate = memoize( ( showImage ) => {
+const getTemplate = memoize( ( heroImage ) => {
 	const column = [ 'gt-layout-blocks/column', {
 		allowedBlocks: [],
 		template: TEMPLATE,
@@ -67,7 +67,7 @@ const getTemplate = memoize( ( showImage ) => {
 
 	const image = [ 'gt-layout-blocks/image', {} ];
 
-	if ( showImage ) {
+	if ( heroImage ) {
 		return [ column, image ];
 	}
 
@@ -88,8 +88,6 @@ class HeroImageEdit extends Component {
 			heroLayout,
 			heroImage,
 		} = attributes;
-
-		const showImage = heroImage && ( 'left' === heroLayout || 'right' === heroLayout );
 
 		const heroClasses = classnames( 'gt-hero-section', {
 			[ `gt-hero-layout-${ heroLayout }` ]: heroLayout,
@@ -114,13 +112,11 @@ class HeroImageEdit extends Component {
 							] }
 						/>
 
-						{ ( 'left' === heroLayout || 'right' === heroLayout ) && (
-							<ToggleControl
-								label={ __( 'Show Image?' ) }
-								checked={ !! heroImage }
-								onChange={ () => setAttributes( { heroImage: ! heroImage } ) }
-							/>
-						) }
+						<ToggleControl
+							label={ __( 'Show Image?' ) }
+							checked={ !! heroImage }
+							onChange={ () => setAttributes( { heroImage: ! heroImage } ) }
+						/>
 
 					</PanelBody>
 
@@ -132,7 +128,7 @@ class HeroImageEdit extends Component {
 
 						<InnerBlocks
 							allowedBlocks={ [ 'gt-layout-blocks/image', 'gt-layout-blocks/column' ] }
-							template={ getTemplate( showImage ) }
+							template={ getTemplate( heroImage ) }
 							templateLock="all"
 						/>
 
