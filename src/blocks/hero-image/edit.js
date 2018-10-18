@@ -59,7 +59,7 @@ const TEMPLATE = [
  * @return {Object[]} Items layout configuration.
  */
 const getTemplate = memoize( ( heroImage ) => {
-	const column = [ 'gt-layout-blocks/column', {
+	const content = [ 'gt-layout-blocks/content', {
 		allowedBlocks: [],
 		template: TEMPLATE,
 		templateLock: 'all',
@@ -68,10 +68,10 @@ const getTemplate = memoize( ( heroImage ) => {
 	const image = [ 'gt-layout-blocks/image', {} ];
 
 	if ( heroImage ) {
-		return [ column, image ];
+		return [ content, image ];
 	}
 
-	return [ column ];
+	return [ content ];
 } );
 
 /**
@@ -127,7 +127,7 @@ class HeroImageEdit extends Component {
 					<div className={ heroClasses }>
 
 						<InnerBlocks
-							allowedBlocks={ [ 'gt-layout-blocks/image', 'gt-layout-blocks/column' ] }
+							allowedBlocks={ [ 'gt-layout-blocks/image', 'gt-layout-blocks/content' ] }
 							template={ getTemplate( heroImage ) }
 							templateLock="all"
 						/>

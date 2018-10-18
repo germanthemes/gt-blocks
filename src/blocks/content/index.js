@@ -24,11 +24,9 @@ import edit from './edit';
  * Register block
  */
 registerBlockType(
-	'gt-layout-blocks/hero-content',
+	'gt-layout-blocks/content',
 	{
-		title: __( 'GT Hero Content' ),
-
-		description: __( 'Add a description here' ),
+		title: __( 'GT Content' ),
 
 		category: 'gt-layout-blocks',
 
@@ -37,9 +35,14 @@ registerBlockType(
 		parent: [ 'gt-layout-blocks/hero-image' ],
 
 		attributes: {
-			heroLayout: {
+			allowedBlocks: {
+				type: 'array',
+			},
+			template: {
+				type: 'array',
+			},
+			templateLock: {
 				type: 'string',
-				default: 'full',
 			},
 			paddingClass: {
 				type: 'string',
@@ -66,18 +69,14 @@ registerBlockType(
 			},
 		},
 
-		getEditWrapperProps( attributes ) {
-			const { blockAlignment } = attributes;
-			if ( 'wide' === blockAlignment || 'full' === blockAlignment ) {
-				return { 'data-align': blockAlignment };
-			}
+		supports: {
+			inserter: false,
 		},
 
 		edit,
 
-		save( props ) {
+		save( { attributes } ) {
 			const {
-				heroLayout,
 				paddingClass,
 				paddingVertical,
 				paddingHorizontal,
@@ -85,16 +84,12 @@ registerBlockType(
 				backgroundColor,
 				customTextColor,
 				customBackgroundColor,
-			} = props.attributes;
+			} = attributes;
 
 			const textColorClass = getColorClassName( 'color', textColor );
 			const backgroundClass = getColorClassName( 'background-color', backgroundColor );
 
-			const blockClasses = classnames( 'gt-hero-section', {
-				[ `gt-hero-layout-${ heroLayout }` ]: heroLayout,
-			} );
-
-			const contentClasses = classnames( 'gt-hero-content', {
+			const contentClasses = classnames( 'gt-content', {
 				[ `gt-padding-${ paddingClass }` ]: paddingClass,
 				'has-text-color': textColor || customTextColor,
 				[ textColorClass ]: textColorClass,
@@ -102,7 +97,7 @@ registerBlockType(
 				[ backgroundClass ]: backgroundClass,
 			} );
 
-			const paddingStyles = ! paddingClass && ( textColor || customTextColor );
+			const paddingStyles = ! paddingClass && ( backgroundColor || customBackgroundColor );
 
 			const contentStyles = {
 				paddingTop: paddingStyles && paddingVertical !== 24 ? paddingVertical + 'px' : undefined,
@@ -114,14 +109,12 @@ registerBlockType(
 			};
 
 			return (
-				<div className={ blockClasses }>
-
+				<div>
 					<div className={ contentClasses } style={ contentStyles }>
 
 						<InnerBlocks.Content />
 
 					</div>
-
 				</div>
 			);
 		},

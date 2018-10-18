@@ -1,6 +1,8 @@
-.gt-hero-section {
+.wp-block-gt-layout-blocks-content {
+	display: block;
 
-	.gt-hero-content {
+	.gt-content {
+		display: block;
 
 		&.has-background {
 
@@ -12,7 +14,7 @@
 	}
 }
 
-.gt-panel-padding-options .gt-padding-size-picker {
+.gt-panel-spacing-options .gt-padding-size-picker {
 	display: flex;
 	justify-content: space-between;
 	margin-bottom: 1em;

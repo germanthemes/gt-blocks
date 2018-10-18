@@ -29,7 +29,6 @@ const {
 	ButtonGroup,
 	PanelBody,
 	RangeControl,
-	SelectControl,
 	withFallbackStyles,
 } = wp.components;
 
@@ -55,7 +54,7 @@ const paddingSizes = {
 /**
  * Block Edit Component
  */
-class HeroContentEdit extends Component {
+class contentEdit extends Component {
 	constructor() {
 		super( ...arguments );
 
@@ -98,27 +97,25 @@ class HeroContentEdit extends Component {
 	render() {
 		const {
 			attributes,
-			setAttributes,
 			backgroundColor,
 			setBackgroundColor,
 			fallbackBackgroundColor,
 			textColor,
 			setTextColor,
 			fallbackTextColor,
+			className,
 		} = this.props;
 
 		const {
-			heroLayout,
+			allowedBlocks,
+			template,
+			templateLock,
 			paddingClass,
 			paddingVertical,
 			paddingHorizontal,
 		} = attributes;
 
-		const blockClasses = classnames( 'gt-hero-section', {
-			[ `gt-hero-layout-${ heroLayout }` ]: heroLayout,
-		} );
-
-		const contentClasses = classnames( 'gt-hero-content', {
+		const contentClasses = classnames( 'gt-content', {
 			[ `gt-padding-${ paddingClass }` ]: paddingClass,
 			'has-text-color': textColor.color,
 			[ textColor.class ]: textColor.class,
@@ -129,6 +126,7 @@ class HeroContentEdit extends Component {
 		const paddingStyles = ! paddingClass && backgroundColor.color;
 
 		const contentStyles = {
+			display: paddingStyles && paddingVertical === 0 ? 'flex' : undefined,
 			paddingTop: paddingStyles && paddingVertical !== 24 ? paddingVertical + 'px' : undefined,
 			paddingBottom: paddingStyles && paddingVertical !== 24 ? paddingVertical + 'px' : undefined,
 			paddingLeft: paddingStyles && paddingHorizontal !== 24 ? paddingHorizontal + 'px' : undefined,
@@ -140,26 +138,10 @@ class HeroContentEdit extends Component {
 		return (
 			<Fragment>
 
-				<InspectorControls>
-
-					<PanelBody title={ __( 'Layout Settings' ) } initialOpen={ false } className="gt-panel-layout-settings gt-panel">
-
-						<SelectControl
-							label={ __( 'Hero Layout' ) }
-							value={ heroLayout }
-							onChange={ ( newLayout ) => setAttributes( { heroLayout: newLayout } ) }
-							options={ [
-								{ value: 'full', label: __( 'Fullwidth' ) },
-								{ value: 'center', label: __( 'Center' ) },
-								{ value: 'left', label: __( 'Left' ) },
-								{ value: 'right', label: __( 'Right' ) },
-							] }
-						/>
-
-					</PanelBody>
+				<InspectorControls key="inspector">
 
 					{ backgroundColor.color && (
-						<PanelBody title={ __( 'Padding Options' ) } initialOpen={ false } className="gt-panel-padding-options gt-panel">
+						<PanelBody title={ __( 'Spacing Options' ) } initialOpen={ false } className="gt-panel-spacing-options gt-panel">
 
 							<BaseControl id="gt-padding-size" label={ __( 'Padding' ) }>
 
@@ -237,33 +219,14 @@ class HeroContentEdit extends Component {
 
 				</InspectorControls>
 
-				<div className={ blockClasses }>
+				<div className={ className }>
 
 					<div className={ contentClasses } style={ contentStyles }>
 
 						<InnerBlocks
-							allowedBlocks={ [ 'gt-layout-blocks/heading', 'core/paragraph' ] }
-							template={ [
-								[ 'gt-layout-blocks/heading', {
-									placeholder: __( 'Write Hero Heading...' ),
-									customFontSize: 48,
-								} ],
-								[ 'core/paragraph', {
-									placeholder: __( 'Write Hero text...' ),
-									customFontSize: 20,
-								} ],
-								[ 'gt-layout-blocks/buttons', {
-									customClass: 'gt-buttons-wrapper',
-									buttons: 2,
-									buttonAttributes: {
-										buttonSize: 'medium',
-										customFontSize: 20,
-										synchronizeStyling: true,
-										parentBlock: 'gt-layout-blocks/buttons',
-									},
-								} ],
-							] }
-							templateLock="all"
+							allowedBlocks={ allowedBlocks || undefined }
+							template={ template || [ [ 'core/paragraph', {} ] ] }
+							templateLock={ templateLock || false }
 						/>
 
 					</div>
@@ -287,4 +250,4 @@ export default compose( [
 			fallbackTextColor: textColor || ! computedStyles ? undefined : computedStyles.color,
 		};
 	} ),
-] )( HeroContentEdit );
+] )( contentEdit );

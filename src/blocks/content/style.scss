@@ -1,0 +1,26 @@
+.wp-block-gt-layout-blocks-content {
+	display: flex;
+	flex-direction: column;
+
+	.gt-content {
+		display: flex;
+		flex-direction: column;
+		flex-grow: 1;
+
+		&.has-background {
+			padding: 1.5rem;
+
+			&.gt-padding-small {
+				padding: 0.5rem;
+			}
+
+			&.gt-padding-medium {
+				padding: 1rem;
+			}
+
+			&.gt-padding-large {
+				padding: 2rem;
+			}
+		}
+	}
+}
