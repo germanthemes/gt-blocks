@@ -3,6 +3,7 @@
  */
 const { __ } = wp.i18n;
 const { registerBlockType } = wp.blocks;
+const { Fragment } = wp.element;
 
 /**
  * Internal dependencies
@@ -19,7 +20,7 @@ registerBlockType(
 	{
 		title: __( 'GT Image' ),
 
-		description: __( 'Add a description here' ),
+		description: __( 'Insert a single image.' ),
 
 		category: 'gt-layout-blocks',
 
@@ -48,6 +49,16 @@ registerBlockType(
 				type: 'string',
 				default: 'full',
 			},
+			href: {
+				type: 'string',
+				source: 'attribute',
+				selector: 'figure > a',
+				attribute: 'href',
+			},
+			linkDestination: {
+				type: 'string',
+				default: 'none',
+			},
 		},
 
 		edit,
@@ -57,6 +68,7 @@ registerBlockType(
 				id,
 				url,
 				alt,
+				href,
 			} = attributes;
 
 			const image = (
@@ -67,9 +79,15 @@ registerBlockType(
 				/>
 			);
 
+			const figure = (
+				<Fragment>
+					{ href ? <a href={ href }>{ image }</a> : image }
+				</Fragment>
+			);
+
 			return (
 				<figure>
-					{ image }
+					{ figure }
 				</figure>
 			);
 		},

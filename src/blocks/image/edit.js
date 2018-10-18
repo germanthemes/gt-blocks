@@ -33,6 +33,7 @@ const {
 	PanelBody,
 	SelectControl,
 	TextareaControl,
+	TextControl,
 	Toolbar,
 } = wp.components;
 
@@ -45,6 +46,12 @@ const {
  */
 import { default as GtImagePlaceholder } from '../../components/image-placeholder';
 
+/* Constants */
+const LINK_DESTINATION_NONE = 'none';
+const LINK_DESTINATION_MEDIA = 'media';
+const LINK_DESTINATION_ATTACHMENT = 'attachment';
+const LINK_DESTINATION_CUSTOM = 'custom';
+
 /**
  * Block Edit Component
  */
@@ -55,8 +62,9 @@ class ImageEdit extends Component {
 		this.onSelectImage = this.onSelectImage.bind( this );
 		this.onRemoveImage = this.onRemoveImage.bind( this );
 		this.updateImageSize = this.updateImageSize.bind( this );
-		this.updateImageUrl = this.updateImageUrl.bind( this );
-		this.getAvailableSizes = this.getAvailableSizes.bind( this );
+		this.updateImageURL = this.updateImageURL.bind( this );
+		this.onSetCustomHref = this.onSetCustomHref.bind( this );
+		this.onSetLinkDestination = this.onSetLinkDestination.bind( this );
 
 		this.state = {
 			currentId: 0,
@@ -80,7 +88,7 @@ class ImageEdit extends Component {
 
 		// Update image url if new image size was chosen.
 		if ( size !== prevProps.attributes.size ) {
-			this.updateImageUrl( size );
+			this.updateImageURL( size );
 		}
 
 		// Update image size if new image was uploaded or selected from media library.
@@ -111,7 +119,7 @@ class ImageEdit extends Component {
 		this.props.setAttributes( { size: size } );
 	}
 
-	updateImageUrl( size ) {
+	updateImageURL( size ) {
 		const availableSizes = this.getAvailableSizes();
 
 		// Return early if image sizes are not available yet.
@@ -130,8 +138,40 @@ class ImageEdit extends Component {
 		}
 	}
 
+	onSetLinkDestination( value ) {
+		let href;
+
+		if ( value === LINK_DESTINATION_NONE ) {
+			href = undefined;
+		} else if ( value === LINK_DESTINATION_MEDIA ) {
+			href = this.props.attributes.url;
+		} else if ( value === LINK_DESTINATION_ATTACHMENT ) {
+			href = this.props.image && this.props.image.link;
+		} else {
+			href = this.props.attributes.href;
+		}
+
+		this.props.setAttributes( {
+			linkDestination: value,
+			href,
+		} );
+	}
+
+	onSetCustomHref( value ) {
+		this.props.setAttributes( { href: value } );
+	}
+
 	getAvailableSizes() {
 		return get( this.props.image, [ 'media_details', 'sizes' ], {} );
+	}
+
+	getLinkDestinationOptions() {
+		return [
+			{ value: LINK_DESTINATION_NONE, label: __( 'None' ) },
+			{ value: LINK_DESTINATION_MEDIA, label: __( 'Media File' ) },
+			{ value: LINK_DESTINATION_ATTACHMENT, label: __( 'Attachment Page' ) },
+			{ value: LINK_DESTINATION_CUSTOM, label: __( 'Custom URL' ) },
+		];
 	}
 
 	render() {
@@ -147,9 +187,12 @@ class ImageEdit extends Component {
 			id,
 			alt,
 			size,
+			href,
+			linkDestination,
 		} = attributes;
 
 		const availableSizes = this.getAvailableSizes();
+		const isLinkURLInputDisabled = linkDestination !== LINK_DESTINATION_CUSTOM;
 
 		return (
 			<Fragment>
@@ -193,6 +236,27 @@ class ImageEdit extends Component {
 									label: startCase( name ),
 								} ) ) }
 								onChange={ this.updateImageSize }
+							/>
+						) }
+
+					</PanelBody>
+
+					<PanelBody title={ __( 'Link Settings' ) } initialOpen={ false } className="gt-panel-link-settings gt-panel">
+
+						<SelectControl
+							label={ __( 'Link To' ) }
+							value={ linkDestination }
+							options={ this.getLinkDestinationOptions() }
+							onChange={ this.onSetLinkDestination }
+						/>
+
+						{ linkDestination !== LINK_DESTINATION_NONE && (
+							<TextControl
+								label={ __( 'Link URL' ) }
+								value={ href || '' }
+								onChange={ this.onSetCustomHref }
+								placeholder={ ! isLinkURLInputDisabled ? 'https://' : undefined }
+								disabled={ isLinkURLInputDisabled }
 							/>
 						) }
 
