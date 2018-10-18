@@ -18,17 +18,17 @@ const ALLOWED_BLOCKS = [ 'gt-layout-blocks/image', 'gt-layout-blocks/heading', '
 const TEMPLATE = [
 	[ 'gt-layout-blocks/image', {
 		synchronizeStyling: true,
-		parentBlock: 'gt-layout-blocks/services',
+		parentBlock: 'gt-layout-blocks/portfolio',
 	} ],
 	[ 'gt-layout-blocks/heading', {
-		placeholder: __( 'Service' ),
+		placeholder: __( 'Project' ),
 		synchronizeStyling: true,
-		parentBlock: 'gt-layout-blocks/services',
+		parentBlock: 'gt-layout-blocks/portfolio',
 	} ],
 	[ 'core/paragraph', {
-		placeholder: __( 'Write feature description...' ),
+		placeholder: __( 'Write project description...' ),
 		synchronizeStyling: true,
-		parentBlock: 'gt-layout-blocks/services',
+		parentBlock: 'gt-layout-blocks/portfolio',
 	} ],
 ];
 
@@ -36,9 +36,9 @@ const TEMPLATE = [
  * Register block
  */
 registerBlockType(
-	'gt-layout-blocks/services',
+	'gt-layout-blocks/portfolio',
 	{
-		title: __( 'GT Services' ),
+		title: __( 'GT Portfolio' ),
 
 		description: __( 'Add a description here' ),
 
@@ -48,7 +48,7 @@ registerBlockType(
 
 		keywords: [
 			__( 'German Themes' ),
-			__( 'Icon' ),
+			__( 'Image' ),
 			__( 'Grid' ),
 		],
 

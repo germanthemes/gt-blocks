@@ -6,7 +6,7 @@ wp.i18n.setLocaleData( { '': {} }, 'gt-layout-blocks' );
 /**
  * Import Plugins
  */
-import './plugins/data-store/';
+import './plugins/data-store';
 import './plugins/synchronize-styling';
 
 /**
@@ -23,4 +23,4 @@ import './blocks/hero-content';
 import './blocks/icon';
 import './blocks/image';
 import './blocks/image-text';
-import './blocks/services';
+import './blocks/portfolio';
