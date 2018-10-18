@@ -97,7 +97,7 @@ registerBlockType(
 				[ backgroundClass ]: backgroundClass,
 			} );
 
-			const paddingStyles = ! paddingClass && ( textColor || customTextColor );
+			const paddingStyles = ! paddingClass && ( backgroundColor || customBackgroundColor );
 
 			const columnStyles = {
 				paddingTop: paddingStyles && paddingVertical !== 24 ? paddingVertical + 'px' : undefined,
