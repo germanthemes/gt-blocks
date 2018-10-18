@@ -231,6 +231,15 @@
     -webkit-transform: translateY(-40px);
         -ms-transform: translateY(-40px);
             transform: translateY(-40px); } }
+
+.gt-panel-hero-banner-settings .gt-image-block-button {
+  height: 36px;
+  line-height: 34px;
+  padding: 0 12px 2px; }
+  .gt-panel-hero-banner-settings .gt-image-block-button svg.dashicon {
+    margin: 8px 8px 0 0;
+    width: 18px;
+    height: 18px; }
 /* Icon Picker Modal */
 .gt-layout-blocks-icon-picker-modal {
   width: 100%; }

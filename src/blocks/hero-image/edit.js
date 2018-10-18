@@ -19,9 +19,11 @@ const {
 } = wp.editor;
 
 const {
+	BaseControl,
+	Button,
+	Dashicon,
 	PanelBody,
 	SelectControl,
-	ToggleControl,
 } = wp.components;
 
 /**
@@ -112,11 +114,16 @@ class HeroImageEdit extends Component {
 							] }
 						/>
 
-						<ToggleControl
-							label={ __( 'Show Image?' ) }
-							checked={ !! heroImage }
-							onChange={ () => setAttributes( { heroImage: ! heroImage } ) }
-						/>
+						<BaseControl id="gt-image-block" label={ __( 'Hero Image Block' ) }>
+							<Button
+								isLarge
+								className="gt-image-block-button"
+								onClick={ () => setAttributes( { heroImage: ! heroImage } ) }
+							>
+								<Dashicon icon={ heroImage ? 'trash' : 'insert' } />
+								{ heroImage ? __( 'Remove Block' ) : __( 'Add Block' ) }
+							</Button>
+						</BaseControl>
 
 					</PanelBody>
 
