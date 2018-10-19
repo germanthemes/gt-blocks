@@ -184,6 +184,8 @@
     grid-template-columns: repeat(5, 1fr); }
   .gt-grid-container.gt-columns-6 {
     grid-template-columns: repeat(6, 1fr); }
+.wp-block-gt-layout-blocks-grid-layout {
+  margin-bottom: 1.5em; }
 .gt-heading {
   display: block;
   font-weight: normal;

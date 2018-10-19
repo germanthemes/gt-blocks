@@ -291,7 +291,7 @@ class columnEdit extends Component {
 
 						<InnerBlocks
 							allowedBlocks={ allowedBlocks || undefined }
-							template={ template || [ [ 'core/paragraph', {} ] ] }
+							template={ template || undefined }
 							templateLock={ templateLock || false }
 						/>
 

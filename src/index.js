@@ -18,6 +18,7 @@ import './blocks/column';
 import './blocks/container';
 import './blocks/content';
 import './blocks/features';
+import './blocks/grid-layout';
 import './blocks/heading';
 import './blocks/hero-image';
 import './blocks/icon';

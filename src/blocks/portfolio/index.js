@@ -72,6 +72,7 @@ registerBlockType(
 				<GridEdit
 					allowedBlocks={ ALLOWED_BLOCKS }
 					template={ TEMPLATE }
+					templateLock="all"
 					parentBlock={ props.name }
 					{ ...props }
 				/>

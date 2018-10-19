@@ -66,6 +66,7 @@ class GridEdit extends Component {
 			setAttributes,
 			allowedBlocks,
 			template,
+			templateLock,
 			parentBlock,
 		} = this.props;
 
@@ -77,7 +78,7 @@ class GridEdit extends Component {
 		const block = createBlock( 'gt-layout-blocks/column', {
 			allowedBlocks: allowedBlocks,
 			template: template,
-			templateLock: 'all',
+			templateLock: templateLock || false,
 			synchronizeStyling: true,
 			parentBlock: parentBlock,
 		} );
@@ -102,6 +103,7 @@ class GridEdit extends Component {
 			instanceId,
 			allowedBlocks,
 			template,
+			templateLock,
 			parentBlock,
 		} = this.props;
 
@@ -143,7 +145,7 @@ class GridEdit extends Component {
 			const block = [ 'gt-layout-blocks/column', {
 				allowedBlocks: allowedBlocks,
 				template: template,
-				templateLock: 'all',
+				templateLock: templateLock || false,
 				synchronizeStyling: true,
 				parentBlock: parentBlock,
 			} ];
