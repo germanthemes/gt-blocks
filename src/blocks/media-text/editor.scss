@@ -23,6 +23,14 @@
 	&.gt-media-position-right > .editor-inner-blocks > .editor-block-list__layout {
 		flex-direction: row-reverse;
 	}
+	
+	&.gt-vertical-align-center > .editor-inner-blocks > .editor-block-list__layout {
+		align-items: center;
+	}
+
+	&.gt-vertical-align-bottom > .editor-inner-blocks > .editor-block-list__layout {
+		align-items: flex-end;
+	}
 }
 
 @media (min-width: 600px) {

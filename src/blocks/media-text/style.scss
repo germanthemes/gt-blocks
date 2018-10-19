@@ -10,4 +10,12 @@
 	&.gt-media-position-right {
 		flex-direction: row-reverse;
 	}
+
+	&.gt-vertical-align-center {
+		align-items: center;
+	}
+
+	&.gt-vertical-align-bottom {
+		align-items: flex-end;
+	}
 }

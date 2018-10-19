@@ -357,5 +357,11 @@
   .wp-block-gt-layout-blocks-media-text.gt-media-position-right {
     -ms-flex-direction: row-reverse;
         flex-direction: row-reverse; }
+  .wp-block-gt-layout-blocks-media-text.gt-vertical-align-center {
+    -ms-flex-align: center;
+        align-items: center; }
+  .wp-block-gt-layout-blocks-media-text.gt-vertical-align-bottom {
+    -ms-flex-align: end;
+        align-items: flex-end; }
 .wp-block-gt-layout-blocks-portfolio {
   margin-bottom: 1.5em; }

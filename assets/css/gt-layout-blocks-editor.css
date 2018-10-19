@@ -348,6 +348,12 @@
   .wp-block-gt-layout-blocks-media-text.gt-media-position-right > .editor-inner-blocks > .editor-block-list__layout {
     -ms-flex-direction: row-reverse;
         flex-direction: row-reverse; }
+  .wp-block-gt-layout-blocks-media-text.gt-vertical-align-center > .editor-inner-blocks > .editor-block-list__layout {
+    -ms-flex-align: center;
+        align-items: center; }
+  .wp-block-gt-layout-blocks-media-text.gt-vertical-align-bottom > .editor-inner-blocks > .editor-block-list__layout {
+    -ms-flex-align: end;
+        align-items: flex-end; }
 
 @media (min-width: 600px) {
   .wp-block-gt-layout-blocks-media-text > .editor-inner-blocks > .editor-block-list__layout > .editor-block-list__block > .editor-block-contextual-toolbar {

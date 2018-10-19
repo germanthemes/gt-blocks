@@ -18,9 +18,37 @@ const {
 } = wp.editor;
 
 const {
+	BaseControl,
 	PanelBody,
 	SelectControl,
+	Toolbar,
 } = wp.components;
+
+/**
+ * Internal dependencies
+ */
+import {
+	gtIconVerticalAlignTop,
+	gtIconVerticalAlignCenter,
+	gtIconVerticalAlignBottom,
+	gtIconImagePosition,
+} from '../../components/icons';
+
+// Define vertical alignment controls.
+const verticalAlignmentControls = {
+	top: {
+		icon: gtIconVerticalAlignTop,
+		title: __( 'Top' ),
+	},
+	center: {
+		icon: gtIconVerticalAlignCenter,
+		title: __( 'Center' ),
+	},
+	bottom: {
+		icon: gtIconVerticalAlignBottom,
+		title: __( 'Bottom' ),
+	},
+};
 
 // Define block template.
 const TEMPLATE = [
@@ -46,10 +74,12 @@ class MediaTextEdit extends Component {
 
 		const {
 			mediaPosition,
+			verticalAlignment,
 		} = attributes;
 
 		const blockClasses = classnames( className, {
 			[ `gt-media-position-${ mediaPosition }` ]: 'left' !== mediaPosition,
+			[ `gt-vertical-align-${ verticalAlignment }` ]: 'top' !== verticalAlignment,
 		} );
 
 		return (
@@ -68,6 +98,21 @@ class MediaTextEdit extends Component {
 								{ value: 'right', label: __( 'Right' ) },
 							] }
 						/>
+
+						<BaseControl id="gt-vertical-alignment" label={ __( 'Vertical Alignment' ) }>
+							<Toolbar
+								className="gt-vertical-align-control"
+								controls={
+									[ 'top', 'center', 'bottom' ].map( control => {
+										return {
+											...verticalAlignmentControls[ control ],
+											isActive: verticalAlignment === control,
+											onClick: () => setAttributes( { verticalAlignment: control } ),
+										};
+									} )
+								}
+							/>
+						</BaseControl>
 
 					</PanelBody>
 
