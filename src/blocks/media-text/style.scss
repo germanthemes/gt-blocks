@@ -1,0 +1,13 @@
+.wp-block-gt-layout-blocks-media-text {
+	display: flex;
+	margin-bottom: 1.5em;
+
+	.wp-block-gt-layout-blocks-content,
+	.wp-block-gt-layout-blocks-image {
+		width: 50%;
+	}
+
+	&.gt-media-position-right {
+		flex-direction: row-reverse;
+	}
+}

@@ -290,7 +290,6 @@ class columnEdit extends Component {
 					<div className={ columnClasses } style={ columnStyles }>
 
 						<InnerBlocks
-							allowedBlocks={ allowedBlocks || undefined }
 							template={ template || undefined }
 							templateLock={ templateLock || false }
 						/>

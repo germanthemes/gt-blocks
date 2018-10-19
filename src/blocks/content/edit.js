@@ -224,8 +224,7 @@ class contentEdit extends Component {
 					<div className={ contentClasses } style={ contentStyles }>
 
 						<InnerBlocks
-							allowedBlocks={ allowedBlocks || undefined }
-							template={ template || [ [ 'core/paragraph', {} ] ] }
+							template={ template || undefined }
 							templateLock={ templateLock || false }
 						/>
 
