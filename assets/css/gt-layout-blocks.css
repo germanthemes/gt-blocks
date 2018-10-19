@@ -127,11 +127,11 @@
   margin-bottom: 1.5em; }
 .gt-background-section {
   position: relative;
-  padding-top: 4rem;
-  padding-bottom: 4rem; }
+  padding: 4rem 2rem; }
   .gt-background-section.gt-has-background-image {
     background-size: cover;
-    background-repeat: no-repeat; }
+    background-repeat: no-repeat;
+    background-position: center center; }
   .gt-background-section.gt-fixed-background {
     background-attachment: fixed; }
   .gt-background-section .gt-background-overlay {
@@ -145,6 +145,8 @@
     position: relative;
     margin: 0 auto;
     z-index: 2; }
+    .gt-background-section .gt-background-content > *:last-child {
+      margin-bottom: 0; }
 .wp-block-gt-layout-blocks-content {
   display: -ms-flexbox;
   display: flex;

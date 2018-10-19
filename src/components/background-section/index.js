@@ -57,7 +57,7 @@ class BackgroundSection extends Component {
 			color: textColorClass ? undefined : customTextColor,
 			backgroundColor: backgroundClass ? undefined : customBackgroundColor,
 			backgroundImage: backgroundImageId ? `url(${ backgroundImageUrl })` : undefined,
-			backgroundPosition: backgroundPosition,
+			backgroundPosition: 'center center' !== backgroundPosition ? backgroundPosition : undefined,
 		};
 
 		const overlayClasses = classnames( 'gt-background-overlay', {

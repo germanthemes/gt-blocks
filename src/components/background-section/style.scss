@@ -1,11 +1,11 @@
 .gt-background-section {
 	position: relative;
-	padding-top: 4rem;
-	padding-bottom: 4rem;
+	padding: 4rem 2rem;
 
 	&.gt-has-background-image {
 		background-size: cover;
 		background-repeat: no-repeat;
+		background-position: center center;
 	}
 
 	&.gt-fixed-background {
@@ -25,5 +25,9 @@
 		position: relative;
 		margin: 0 auto;
 		z-index: 2;
+
+		> *:last-child {
+			margin-bottom: 0;
+		}
 	}
 }

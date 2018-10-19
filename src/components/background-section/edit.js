@@ -112,7 +112,7 @@ class BackgroundEdit extends Component {
 			backgroundColor: backgroundColor.class ? undefined : backgroundColor.color,
 			color: textColor.class ? undefined : textColor.color,
 			backgroundImage: backgroundImageId ? `url(${ backgroundImageUrl })` : undefined,
-			backgroundPosition: backgroundPosition,
+			backgroundPosition: 'center center' !== backgroundPosition ? backgroundPosition : undefined,
 		};
 
 		const overlayClasses = classnames( 'gt-background-overlay', {
