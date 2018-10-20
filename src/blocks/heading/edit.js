@@ -26,6 +26,7 @@ const {
 	AlignmentToolbar,
 	BlockControls,
 	ContrastChecker,
+	FontSizePicker,
 	InspectorControls,
 	PanelColorSettings,
 	RichText,
@@ -35,7 +36,6 @@ const {
 
 const {
 	BaseControl,
-	FontSizePicker,
 	PanelBody,
 	RangeControl,
 	SelectControl,
@@ -43,23 +43,6 @@ const {
 	Toolbar,
 	withFallbackStyles,
 } = wp.components;
-
-const {
-	withSelect,
-} = wp.data;
-
-/* Set Fallback Styles */
-const applyFallbackStyles = withFallbackStyles( ( node, ownProps ) => {
-	const { textColor, backgroundColor, fontSize, customFontSize } = ownProps.attributes;
-	const editableNode = node.querySelector( '[contenteditable="true"]' );
-	//verify if editableNode is available, before using getComputedStyle.
-	const computedStyles = editableNode ? getComputedStyle( editableNode ) : null;
-	return {
-		fallbackBackgroundColor: backgroundColor || ! computedStyles ? undefined : computedStyles.backgroundColor,
-		fallbackTextColor: textColor || ! computedStyles ? undefined : computedStyles.color,
-		fallbackFontSize: fontSize || customFontSize || ! computedStyles ? undefined : parseInt( computedStyles.fontSize ) || undefined,
-	};
-} );
 
 /**
  * Block Edit Component
@@ -77,7 +60,6 @@ class gtHeadingEdit extends Component {
 			fontSize,
 			setFontSize,
 			fallbackFontSize,
-			fontSizes,
 			setAttributes,
 			className,
 		} = this.props;
@@ -227,14 +209,11 @@ class gtHeadingEdit extends Component {
 
 					<PanelBody title={ __( 'Font Settings' ) } initialOpen={ false } className="gt-panel-font-settings gt-panel">
 
-						<BaseControl id="gt-font-size" label={ __( 'Font Size' ) }>
-							<FontSizePicker
-								fontSizes={ fontSizes }
-								fallbackFontSize={ fallbackFontSize }
-								value={ fontSize.size }
-								onChange={ setFontSize }
-							/>
-						</BaseControl>
+						<FontSizePicker
+							fallbackFontSize={ fallbackFontSize }
+							value={ fontSize.size }
+							onChange={ setFontSize }
+						/>
 
 						<SelectControl
 							label={ __( 'Font Weight' ) }
@@ -339,12 +318,15 @@ class gtHeadingEdit extends Component {
 export default compose( [
 	withColors( 'backgroundColor', { textColor: 'color' } ),
 	withFontSizes( 'fontSize' ),
-	applyFallbackStyles,
-	withSelect( ( select ) => {
-		const { fontSizes } = select( 'core/editor' ).getEditorSettings();
-
+	withFallbackStyles( ( node, ownProps ) => {
+		const { textColor, backgroundColor, fontSize, customFontSize } = ownProps.attributes;
+		const editableNode = node.querySelector( '[contenteditable="true"]' );
+		//verify if editableNode is available, before using getComputedStyle.
+		const computedStyles = editableNode ? getComputedStyle( editableNode ) : null;
 		return {
-			fontSizes,
+			fallbackBackgroundColor: backgroundColor || ! computedStyles ? undefined : computedStyles.backgroundColor,
+			fallbackTextColor: textColor || ! computedStyles ? undefined : computedStyles.color,
+			fallbackFontSize: fontSize || customFontSize || ! computedStyles ? undefined : parseInt( computedStyles.fontSize ) || undefined,
 		};
 	} ),
 ] )( gtHeadingEdit );
