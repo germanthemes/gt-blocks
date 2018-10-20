@@ -11,11 +11,11 @@
 		flex-direction: row-reverse;
 	}
 
-	&.gt-vertical-align-center {
-		align-items: center;
+	&.gt-vertical-align-center .wp-block-gt-layout-blocks-content .gt-content {
+		justify-content: center;
 	}
 
-	&.gt-vertical-align-bottom {
-		align-items: flex-end;
+	&.gt-vertical-align-bottom .wp-block-gt-layout-blocks-content .gt-content {
+		justify-content: flex-end;
 	}
 }

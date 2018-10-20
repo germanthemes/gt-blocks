@@ -23,6 +23,14 @@
 	&.gt-align-right .block-library-button__inline-link {
 		margin-left: auto;
 	}
+
+	.block-library-button__inline-link {
+		width: auto;
+
+		.editor-url-input input[type=text] {
+			width: auto;
+		}
+	}
 }
 
 .gt-panel-button-settings .gt-button-size-picker {
