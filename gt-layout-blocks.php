@@ -1,18 +1,18 @@
 <?php
 /*
 Plugin Name: GT Layout Blocks
-Plugin URI: https://germanthemes.dem/gt-layout-blocks/
-Description: Page Building Blocks from germanThemes
-Author: germanThemes
-Author URI: https://germanthemes.de/
-Version: 0.1
+Plugin URI: https://gtblocks.de/gt-layout-blocks/
+Description: Page Building Blocks
+Author: gtblocks
+Author URI: https://gtblocks.de/
+Version: 0.2
 Text Domain: gt-layout-blocks
 Domain Path: /languages/
 License: GPL v3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
 GT Layout Blocks
-Copyright(C) 2018, germanthemes.de - support@germanthemes.de
+Copyright(C) 2018, gtblocks.de - support@gtblocks.de
 */
 
 // Exit if accessed directly.
@@ -58,7 +58,7 @@ class GT_Layout_Blocks {
 		define( 'GTLB_NAME', 'GT Layout Blocks' );
 
 		// Define Version Number.
-		define( 'GTLB_VERSION', '0.1' );
+		define( 'GTLB_VERSION', '0.2' );
 
 		// Plugin Folder Path.
 		define( 'GTLB_PLUGIN_DIR', plugin_dir_path( __FILE__ ) );
