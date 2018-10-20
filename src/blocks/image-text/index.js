@@ -21,11 +21,11 @@ import edit from './edit';
  * Register block
  */
 registerBlockType(
-	'gt-layout-blocks/media-text',
+	'gt-layout-blocks/image-text',
 	{
-		title: __( 'GT Media & Text' ),
+		title: __( 'GT Image & Text' ),
 
-		description: __( 'Display media and content in a two column layout.' ),
+		description: __( 'Display an image and any content blocks in a two column layout.' ),
 
 		category: 'gt-layout-blocks',
 
@@ -38,7 +38,7 @@ registerBlockType(
 		],
 
 		attributes: {
-			mediaPosition: {
+			imagePosition: {
 				type: 'string',
 				default: 'left',
 			},
@@ -59,12 +59,12 @@ registerBlockType(
 
 		save( props ) {
 			const {
-				mediaPosition,
+				imagePosition,
 				verticalAlignment,
 			} = props.attributes;
 
 			const blockClasses = classnames( {
-				[ `gt-media-position-${ mediaPosition }` ]: 'left' !== mediaPosition,
+				[ `gt-image-position-${ imagePosition }` ]: 'left' !== imagePosition,
 				[ `gt-vertical-align-${ verticalAlignment }` ]: 'top' !== verticalAlignment,
 			} );
 

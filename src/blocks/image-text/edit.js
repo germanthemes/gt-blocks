@@ -64,7 +64,7 @@ const TEMPLATE = [
 /**
  * Block Edit Component
  */
-class MediaTextEdit extends Component {
+class ImageTextEdit extends Component {
 	render() {
 		const {
 			attributes,
@@ -73,12 +73,12 @@ class MediaTextEdit extends Component {
 		} = this.props;
 
 		const {
-			mediaPosition,
+			imagePosition,
 			verticalAlignment,
 		} = attributes;
 
 		const blockClasses = classnames( className, {
-			[ `gt-media-position-${ mediaPosition }` ]: 'left' !== mediaPosition,
+			[ `gt-image-position-${ imagePosition }` ]: 'left' !== imagePosition,
 			[ `gt-vertical-align-${ verticalAlignment }` ]: 'top' !== verticalAlignment,
 		} );
 
@@ -90,9 +90,9 @@ class MediaTextEdit extends Component {
 					<PanelBody title={ __( 'Layout Settings' ) } initialOpen={ false } className="gt-panel-layout-settings gt-panel">
 
 						<SelectControl
-							label={ __( 'Media Position' ) }
-							value={ mediaPosition }
-							onChange={ ( newLayout ) => setAttributes( { mediaPosition: newLayout } ) }
+							label={ __( 'Image Position' ) }
+							value={ imagePosition }
+							onChange={ ( newLayout ) => setAttributes( { imagePosition: newLayout } ) }
 							options={ [
 								{ value: 'left', label: __( 'Left' ) },
 								{ value: 'right', label: __( 'Right' ) },
@@ -133,4 +133,4 @@ class MediaTextEdit extends Component {
 	}
 }
 
-export default MediaTextEdit;
+export default ImageTextEdit;

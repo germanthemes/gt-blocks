@@ -1,4 +1,4 @@
-.wp-block-gt-layout-blocks-media-text {
+.wp-block-gt-layout-blocks-image-text {
 	display: block;
 
 	> .editor-inner-blocks > .editor-block-list__layout {
@@ -20,7 +20,7 @@
 		}
 	}
 
-	&.gt-media-position-right > .editor-inner-blocks > .editor-block-list__layout {
+	&.gt-image-position-right > .editor-inner-blocks > .editor-block-list__layout {
 		flex-direction: row-reverse;
 	}
 	
@@ -34,7 +34,7 @@
 }
 
 @media (min-width: 600px) {
-	.wp-block-gt-layout-blocks-media-text {
+	.wp-block-gt-layout-blocks-image-text {
 
 		> .editor-inner-blocks > .editor-block-list__layout {
 
