@@ -2,7 +2,6 @@
  * External dependencies
  */
 import classnames from 'classnames';
-import { forEach, map } from 'lodash';
 const { getComputedStyle } = window;
 
 /**
@@ -24,79 +23,23 @@ const {
 } = wp.editor;
 
 const {
-	BaseControl,
-	Button,
-	ButtonGroup,
 	PanelBody,
-	RangeControl,
 	withFallbackStyles,
 } = wp.components;
 
-/* Define Padding Sizes */
-const paddingSizes = {
-	small: {
-		name: 'S',
-		paddingVertical: 8,
-		paddingHorizontal: 8,
-	},
-	medium: {
-		name: 'M',
-		paddingVertical: 16,
-		paddingHorizontal: 16,
-	},
-	large: {
-		name: 'L',
-		paddingVertical: 32,
-		paddingHorizontal: 32,
-	},
-};
+/**
+ * Internal dependencies
+ */
+import { default as PaddingOptions } from '../../components/padding-options';
 
 /**
  * Block Edit Component
  */
 class contentEdit extends Component {
-	constructor() {
-		super( ...arguments );
-
-		this.setPaddingClass = this.setPaddingClass.bind( this );
-		this.setVerticalPadding = this.setVerticalPadding.bind( this );
-		this.setHorizontalPadding = this.setHorizontalPadding.bind( this );
-	}
-
-	setPaddingClass( size ) {
-		const paddingV = paddingSizes[ size ] && paddingSizes[ size ].paddingVertical ? paddingSizes[ size ].paddingVertical : 24;
-		const paddingH = paddingSizes[ size ] && paddingSizes[ size ].paddingHorizontal ? paddingSizes[ size ].paddingHorizontal : 24;
-
-		this.props.setAttributes( {
-			paddingClass: size,
-			paddingVertical: paddingV,
-			paddingHorizontal: paddingH,
-		} );
-	}
-
-	setVerticalPadding( padding ) {
-		this.props.setAttributes( { paddingVertical: padding } );
-		this.updatePaddingClass( padding, this.props.attributes.paddingHorizontal );
-	}
-
-	setHorizontalPadding( padding ) {
-		this.props.setAttributes( { paddingHorizontal: padding } );
-		this.updatePaddingClass( this.props.attributes.paddingVertical, padding );
-	}
-
-	updatePaddingClass( vertical, horizontal ) {
-		forEach( paddingSizes, ( { paddingVertical, paddingHorizontal }, size ) => {
-			if ( paddingVertical === vertical && paddingHorizontal === horizontal ) {
-				this.props.setAttributes( { paddingClass: size } );
-				return false;
-			}
-			this.props.setAttributes( { paddingClass: undefined } );
-		} );
-	}
-
 	render() {
 		const {
 			attributes,
+			setAttributes,
 			backgroundColor,
 			setBackgroundColor,
 			fallbackBackgroundColor,
@@ -141,51 +84,13 @@ class contentEdit extends Component {
 				<InspectorControls key="inspector">
 
 					{ backgroundColor.color && (
-						<PanelBody title={ __( 'Spacing Options' ) } initialOpen={ false } className="gt-panel-spacing-options gt-panel">
+						<PanelBody title={ __( 'Padding Options' ) } initialOpen={ false } className="gt-panel-padding-options gt-panel">
 
-							<BaseControl id="gt-padding-size" label={ __( 'Padding' ) }>
-
-								<div className="gt-padding-size-picker">
-
-									<ButtonGroup aria-label={ __( 'Padding' ) }>
-										{ map( paddingSizes, ( { name }, size ) => (
-											<Button
-												key={ size }
-												isLarge
-												isPrimary={ paddingClass === size }
-												aria-pressed={ paddingClass === size }
-												onClick={ () => this.setPaddingClass( size ) }
-											>
-												{ name }
-											</Button>
-										) ) }
-									</ButtonGroup>
-
-									<Button
-										isLarge
-										onClick={ () => this.setPaddingClass( undefined ) }
-									>
-										{ __( 'Reset' ) }
-									</Button>
-
-								</div>
-
-							</BaseControl>
-
-							<RangeControl
-								label={ __( 'Vertical Padding' ) }
-								value={ paddingVertical }
-								onChange={ this.setVerticalPadding }
-								min={ 0 }
-								max={ 64 }
-							/>
-
-							<RangeControl
-								label={ __( 'Horizontal Padding' ) }
-								value={ paddingHorizontal }
-								onChange={ this.setHorizontalPadding }
-								min={ 0 }
-								max={ 64 }
+							<PaddingOptions
+								paddingClass={ paddingClass }
+								paddingVertical={ paddingVertical }
+								paddingHorizontal={ paddingHorizontal }
+								setPadding={ ( atts ) => setAttributes( atts ) }
 							/>
 
 						</PanelBody>

@@ -65,7 +65,7 @@ registerBlockType(
 			textAlignment: {
 				type: 'string',
 			},
-			buttonSize: {
+			paddingClass: {
 				type: 'string',
 			},
 			paddingVertical: {
@@ -152,7 +152,7 @@ registerBlockType(
 				title,
 				text,
 				textAlignment,
-				buttonSize,
+				paddingClass,
 				paddingVertical,
 				paddingHorizontal,
 				buttonShape,
@@ -204,7 +204,7 @@ registerBlockType(
 			};
 
 			const buttonClasses = classnames( 'gt-button', {
-				[ `gt-button-${ buttonSize }` ]: buttonSize,
+				[ `gt-button-${ paddingClass }` ]: paddingClass,
 				'gt-is-bold': 'bold' === fontWeight,
 				'gt-is-thin': 'thin' === fontWeight,
 				'gt-is-italic': italic,
@@ -221,10 +221,10 @@ registerBlockType(
 			} );
 
 			const buttonStyles = {
-				paddingTop: ! buttonSize && paddingVertical !== 6 ? paddingVertical + 'px' : undefined,
-				paddingBottom: ! buttonSize && paddingVertical !== 6 ? paddingVertical + 'px' : undefined,
-				paddingLeft: ! buttonSize && paddingHorizontal !== 18 ? paddingHorizontal + 'px' : undefined,
-				paddingRight: ! buttonSize && paddingHorizontal !== 18 ? paddingHorizontal + 'px' : undefined,
+				paddingTop: ! paddingClass && paddingVertical !== 6 ? paddingVertical + 'px' : undefined,
+				paddingBottom: ! paddingClass && paddingVertical !== 6 ? paddingVertical + 'px' : undefined,
+				paddingLeft: ! paddingClass && paddingHorizontal !== 18 ? paddingHorizontal + 'px' : undefined,
+				paddingRight: ! paddingClass && paddingHorizontal !== 18 ? paddingHorizontal + 'px' : undefined,
 				backgroundColor: backgroundClass ? undefined : customBackgroundColor,
 				color: textColorClass ? undefined : customTextColor,
 				fontSize: fontSizeClass ? undefined : customFontSize,

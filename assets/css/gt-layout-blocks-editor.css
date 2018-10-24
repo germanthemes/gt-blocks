@@ -1,11 +1,9 @@
-.edit-post-sidebar .gt-panel-synchronize-styling {
-  background-color: #edeff0; }
-  .edit-post-sidebar .gt-panel-synchronize-styling .components-button.is-large {
-    height: 36px;
-    line-height: 34px;
-    padding: 0 12px 2px; }
-    .edit-post-sidebar .gt-panel-synchronize-styling .components-button.is-large svg.dashicon {
-      margin: 7px 7px 0 0; }
+.edit-post-sidebar .gt-panel-synchronize-styling .components-button.is-large {
+  height: 36px;
+  line-height: 34px;
+  padding: 0 12px 2px; }
+  .edit-post-sidebar .gt-panel-synchronize-styling .components-button.is-large svg.dashicon {
+    margin: 7px 7px 0 0; }
 .wp-block-gt-layout-blocks-button .gt-button-wrap .gt-button {
   cursor: text; }
 
@@ -26,8 +24,7 @@
   width: auto; }
   .wp-block-gt-layout-blocks-button .block-library-button__inline-link .editor-url-input input[type=text] {
     width: auto; }
-
-.gt-panel-button-settings .gt-button-size-picker {
+.gt-padding-options-size-picker {
   display: -ms-flexbox;
   display: flex;
   -ms-flex-pack: justify;
@@ -80,13 +77,6 @@
         width: 18px; }
     .wp-block-gt-layout-blocks-column .gt-column-controls .remove-column {
       margin-left: auto; }
-
-.gt-panel-spacing-options .gt-padding-size-picker {
-  display: -ms-flexbox;
-  display: flex;
-  -ms-flex-pack: justify;
-      justify-content: space-between;
-  margin-bottom: 1em; }
 .gt-background-section .gt-background-content h1, .gt-background-section .gt-background-content h2, .gt-background-section .gt-background-content h3, .gt-background-section .gt-background-content h4, .gt-background-section .gt-background-content h5, .gt-background-section .gt-background-content h6, .gt-background-section .gt-background-content p {
   color: inherit; }
 
@@ -126,13 +116,6 @@
   .wp-block-gt-layout-blocks-content .gt-content.has-background > .editor-inner-blocks {
     margin-top: -30px;
     margin-bottom: -30px; }
-
-.gt-panel-spacing-options .gt-padding-size-picker {
-  display: -ms-flexbox;
-  display: flex;
-  -ms-flex-pack: justify;
-      justify-content: space-between;
-  margin-bottom: 1em; }
 .editor-block-list__block .gt-grid-container {
   display: block; }
   .editor-block-list__block .gt-grid-container > .editor-inner-blocks > .editor-block-list__layout {

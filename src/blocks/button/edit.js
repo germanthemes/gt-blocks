@@ -2,7 +2,6 @@
  * External dependencies
  */
 import classnames from 'classnames';
-import { forEach, map } from 'lodash';
 const { getComputedStyle } = window;
 
 /**
@@ -33,9 +32,6 @@ const {
 } = wp.editor;
 
 const {
-	BaseControl,
-	Button,
-	ButtonGroup,
 	Dashicon,
 	IconButton,
 	PanelBody,
@@ -45,24 +41,10 @@ const {
 	withFallbackStyles,
 } = wp.components;
 
-/* Define Button Sizes */
-const buttonSizes = {
-	small: {
-		name: 'S',
-		paddingVertical: 8,
-		paddingHorizontal: 14,
-	},
-	medium: {
-		name: 'M',
-		paddingVertical: 16,
-		paddingHorizontal: 28,
-	},
-	large: {
-		name: 'L',
-		paddingVertical: 24,
-		paddingHorizontal: 42,
-	},
-};
+/**
+ * Internal dependencies
+ */
+import { default as PaddingOptions } from '../../components/padding-options';
 
 /**
  * Block Edit Component
@@ -70,42 +52,7 @@ const buttonSizes = {
 class ButtonEdit extends Component {
 	constructor() {
 		super( ...arguments );
-
-		this.setButtonSize = this.setButtonSize.bind( this );
-		this.setVerticalPadding = this.setVerticalPadding.bind( this );
-		this.setHorizontalPadding = this.setHorizontalPadding.bind( this );
 		this.setHoverTextColor = this.setHoverTextColor.bind( this );
-	}
-
-	setButtonSize( size ) {
-		const paddingV = buttonSizes[ size ] && buttonSizes[ size ].paddingVertical ? buttonSizes[ size ].paddingVertical : 6;
-		const paddingH = buttonSizes[ size ] && buttonSizes[ size ].paddingHorizontal ? buttonSizes[ size ].paddingHorizontal : 18;
-
-		this.props.setAttributes( {
-			buttonSize: size,
-			paddingVertical: paddingV,
-			paddingHorizontal: paddingH,
-		} );
-	}
-
-	setVerticalPadding( padding ) {
-		this.props.setAttributes( { paddingVertical: padding } );
-		this.updateButtonSize( padding, this.props.attributes.paddingHorizontal );
-	}
-
-	setHorizontalPadding( padding ) {
-		this.props.setAttributes( { paddingHorizontal: padding } );
-		this.updateButtonSize( this.props.attributes.paddingVertical, padding );
-	}
-
-	updateButtonSize( vertical, horizontal ) {
-		forEach( buttonSizes, ( { paddingVertical, paddingHorizontal }, size ) => {
-			if ( paddingVertical === vertical && paddingHorizontal === horizontal ) {
-				this.props.setAttributes( { buttonSize: size } );
-				return false;
-			}
-			this.props.setAttributes( { buttonSize: undefined } );
-		} );
 	}
 
 	setHoverTextColor( color ) {
@@ -144,7 +91,7 @@ class ButtonEdit extends Component {
 			text,
 			placeholder,
 			textAlignment,
-			buttonSize,
+			paddingClass,
 			paddingVertical,
 			paddingHorizontal,
 			buttonShape,
@@ -178,7 +125,7 @@ class ButtonEdit extends Component {
 		};
 
 		const buttonClasses = classnames( 'gt-button', {
-			[ `gt-button-${ buttonSize }` ]: buttonSize,
+			[ `gt-button-${ paddingClass }` ]: paddingClass,
 			'gt-is-bold': 'bold' === fontWeight,
 			'gt-is-thin': 'thin' === fontWeight,
 			'gt-is-italic': italic,
@@ -195,10 +142,10 @@ class ButtonEdit extends Component {
 		} );
 
 		const buttonStyles = {
-			paddingTop: ! buttonSize && paddingVertical !== 6 ? paddingVertical + 'px' : undefined,
-			paddingBottom: ! buttonSize && paddingVertical !== 6 ? paddingVertical + 'px' : undefined,
-			paddingLeft: ! buttonSize && paddingHorizontal !== 18 ? paddingHorizontal + 'px' : undefined,
-			paddingRight: ! buttonSize && paddingHorizontal !== 18 ? paddingHorizontal + 'px' : undefined,
+			paddingTop: ! paddingClass && paddingVertical !== 6 ? paddingVertical + 'px' : undefined,
+			paddingBottom: ! paddingClass && paddingVertical !== 6 ? paddingVertical + 'px' : undefined,
+			paddingLeft: ! paddingClass && paddingHorizontal !== 18 ? paddingHorizontal + 'px' : undefined,
+			paddingRight: ! paddingClass && paddingHorizontal !== 18 ? paddingHorizontal + 'px' : undefined,
 			borderRadius: 'rounded' === buttonShape && 12 !== roundedCorners ? roundedCorners + 'px' : undefined,
 			backgroundColor: backgroundColor.class ? undefined : backgroundColor.color,
 			color: textColor.class ? undefined : textColor.color,
@@ -233,57 +180,6 @@ class ButtonEdit extends Component {
 
 					<PanelBody title={ __( 'Button Settings' ) } initialOpen={ false } className="gt-panel-button-settings gt-panel">
 
-						<BaseControl id="gt-button-size" label={ __( 'Button Size' ) }>
-
-							<div className="gt-button-size-picker">
-
-								<ButtonGroup aria-label={ __( 'Button Size' ) }>
-									{ map( buttonSizes, ( { name }, size ) => (
-										<Button
-											key={ size }
-											isLarge
-											isPrimary={ buttonSize === size }
-											aria-pressed={ buttonSize === size }
-											onClick={ () => this.setButtonSize( size ) }
-										>
-											{ name }
-										</Button>
-									) ) }
-								</ButtonGroup>
-
-								<Button
-									isLarge
-									onClick={ () => this.setButtonSize( undefined ) }
-								>
-									{ __( 'Reset' ) }
-								</Button>
-
-							</div>
-
-						</BaseControl>
-
-						<RangeControl
-							label={ __( 'Vertical Padding' ) }
-							value={ paddingVertical }
-							onChange={ this.setVerticalPadding }
-							min={ 0 }
-							max={ 64 }
-						/>
-
-						<RangeControl
-							label={ __( 'Horizontal Padding' ) }
-							value={ paddingHorizontal }
-							onChange={ this.setHorizontalPadding }
-							min={ 0 }
-							max={ 64 }
-						/>
-
-						<ToggleControl
-							label={ __( 'Ghost Button?' ) }
-							checked={ !! ghostButton }
-							onChange={ () => setAttributes( { ghostButton: ! ghostButton } ) }
-						/>
-
 						<SelectControl
 							label={ __( 'Button Shape' ) }
 							value={ buttonShape }
@@ -304,6 +200,43 @@ class ButtonEdit extends Component {
 								max={ 64 }
 							/>
 						) }
+
+						<ToggleControl
+							label={ __( 'Ghost Button?' ) }
+							checked={ !! ghostButton }
+							onChange={ () => setAttributes( { ghostButton: ! ghostButton } ) }
+						/>
+
+					</PanelBody>
+
+					<PanelBody title={ __( 'Padding Options' ) } initialOpen={ false } className="gt-panel-padding-options gt-panel">
+
+						<PaddingOptions
+							title={ __( 'Button Size' ) }
+							paddingClass={ paddingClass }
+							paddingVertical={ paddingVertical }
+							paddingHorizontal={ paddingHorizontal }
+							setPadding={ ( atts ) => setAttributes( atts ) }
+							defaultVertical={ 6 }
+							defaultHorizontal={ 18 }
+							paddingSizes={ {
+								small: {
+									name: 'S',
+									paddingVertical: 8,
+									paddingHorizontal: 14,
+								},
+								medium: {
+									name: 'M',
+									paddingVertical: 16,
+									paddingHorizontal: 28,
+								},
+								large: {
+									name: 'L',
+									paddingVertical: 24,
+									paddingHorizontal: 42,
+								},
+							} }
+						/>
 
 					</PanelBody>
 
