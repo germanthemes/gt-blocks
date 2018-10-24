@@ -112,7 +112,7 @@ class gtHeadingEdit extends Component {
 
 				<InspectorControls>
 
-					<PanelBody title={ __( 'Heading Settings' ) } initialOpen={ false } className="gt-panel-heading-settings gt-panel">
+					<PanelBody title={ __( 'Heading Settings' ) } initialOpen={ true } className="gt-panel-heading-settings gt-panel">
 
 						<BaseControl id="gt-title-tag" label={ __( 'Level' ) }>
 							<Toolbar
