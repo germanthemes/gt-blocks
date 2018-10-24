@@ -196,9 +196,6 @@
   border: none; }
   .gt-heading.has-background {
     padding: 12px 24px; }
-  .gt-heading.gt-is-inline-block {
-    display: inline-block;
-    margin-top: 0.25em; }
   .gt-heading.gt-is-bold {
     font-weight: 700; }
   .gt-heading.gt-is-thin {
@@ -207,13 +204,6 @@
     font-style: italic; }
   .gt-heading.gt-is-uppercase {
     text-transform: uppercase; }
-  .gt-heading.gt-border-top, .gt-heading.gt-border-horizontal, .gt-heading.gt-border-full {
-    border-top: 4px solid currentColor; }
-  .gt-heading.gt-border-bottom, .gt-heading.gt-border-horizontal, .gt-heading.gt-border-full {
-    border-bottom: 4px solid currentColor; }
-  .gt-heading.gt-border-vertical, .gt-heading.gt-border-full {
-    border-left: 4px solid currentColor;
-    border-right: 4px solid currentColor; }
 .wp-block-gt-layout-blocks-hero-image {
   margin-bottom: 1.5em; }
   .wp-block-gt-layout-blocks-hero-image .gt-hero-section {

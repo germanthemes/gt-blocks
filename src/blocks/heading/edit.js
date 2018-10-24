@@ -37,7 +37,6 @@ const {
 const {
 	BaseControl,
 	PanelBody,
-	RangeControl,
 	SelectControl,
 	ToggleControl,
 	Toolbar,
@@ -69,24 +68,12 @@ class gtHeadingEdit extends Component {
 			titleTag,
 			placeholder,
 			textAlignment,
-			headingLayout,
-			paddingTop,
-			paddingBottom,
-			paddingLeft,
-			paddingRight,
 			fontWeight,
 			italic,
 			uppercase,
-			border,
-			borderWidth,
 		} = attributes;
 
-		const blockStyles = {
-			textAlign: textAlignment,
-		};
-
-		const headingClasses = classnames( 'gt-heading', {
-			'gt-is-inline-block': 'inline-block' === headingLayout,
+		const headingClasses = classnames( className, 'gt-heading', {
 			'gt-is-bold': 'bold' === fontWeight,
 			'gt-is-thin': 'thin' === fontWeight,
 			'gt-is-italic': italic,
@@ -96,32 +83,22 @@ class gtHeadingEdit extends Component {
 			'has-text-color': textColor.color,
 			[ textColor.class ]: textColor.class,
 			[ fontSize.class ]: fontSize.class,
-			[ `gt-border-${ border }` ]: ( 'none' !== border ),
 		} );
 
 		const headingStyles = {
-			paddingTop: 'undefined' !== typeof paddingTop ? paddingTop + 'px' : undefined,
-			paddingBottom: 'undefined' !== typeof paddingBottom ? paddingBottom + 'px' : undefined,
-			paddingLeft: 'undefined' !== typeof paddingLeft ? paddingLeft + 'px' : undefined,
-			paddingRight: 'undefined' !== typeof paddingRight ? paddingRight + 'px' : undefined,
+			textAlign: textAlignment,
 			backgroundColor: backgroundColor.class ? undefined : backgroundColor.color,
 			color: textColor.class ? undefined : textColor.color,
 			fontSize: fontSize.size ? fontSize.size + 'px' : undefined,
-			borderWidth: borderWidth !== 4 ? borderWidth + 'px' : undefined,
 		};
 
 		return (
 			<Fragment>
 				<BlockControls>
 
-					<AlignmentToolbar
-						value={ textAlignment }
-						onChange={ ( newAlignment ) => setAttributes( { textAlignment: newAlignment } ) }
-					/>
-
 					<Toolbar
 						controls={
-							range( 1, 5 ).map( ( level ) => ( {
+							range( 2, 5 ).map( ( level ) => ( {
 								icon: 'heading',
 								title: sprintf( __( 'Heading %s' ), level ),
 								isActive: level === titleTag,
@@ -157,53 +134,6 @@ class gtHeadingEdit extends Component {
 								onChange={ ( newAlignment ) => setAttributes( { textAlignment: newAlignment } ) }
 							/>
 						</BaseControl>
-
-						<SelectControl
-							label={ __( 'Layout' ) }
-							value={ headingLayout }
-							onChange={ ( newStyle ) => setAttributes( { headingLayout: newStyle } ) }
-							options={ [
-								{ value: 'block', label: __( 'Block' ) },
-								{ value: 'inline-block', label: __( 'Inline Block' ) },
-							] }
-							help={ __( 'The effect of this setting is only visible with a border or background color assigned.' ) }
-						/>
-
-					</PanelBody>
-
-					<PanelBody title={ __( 'Padding Options' ) } initialOpen={ false } className="gt-panel-padding-options gt-panel">
-
-						<RangeControl
-							label={ __( 'Padding Top' ) }
-							value={ paddingTop }
-							onChange={ ( newPadding ) => setAttributes( { paddingTop: newPadding } ) }
-							min={ 0 }
-							max={ 64 }
-						/>
-
-						<RangeControl
-							label={ __( 'Padding Bottom' ) }
-							value={ paddingBottom }
-							onChange={ ( newPadding ) => setAttributes( { paddingBottom: newPadding } ) }
-							min={ 0 }
-							max={ 64 }
-						/>
-
-						<RangeControl
-							label={ __( 'Padding Left' ) }
-							value={ paddingLeft }
-							onChange={ ( newPadding ) => setAttributes( { paddingLeft: newPadding } ) }
-							min={ 0 }
-							max={ 64 }
-						/>
-
-						<RangeControl
-							label={ __( 'Padding Right' ) }
-							value={ paddingRight }
-							onChange={ ( newPadding ) => setAttributes( { paddingRight: newPadding } ) }
-							min={ 0 }
-							max={ 64 }
-						/>
 
 					</PanelBody>
 
@@ -268,47 +198,17 @@ class gtHeadingEdit extends Component {
 						/>
 					</PanelColorSettings>
 
-					<PanelBody title={ __( 'Border Settings' ) } initialOpen={ false } className="gt-panel-border-settings gt-panel">
-
-						<SelectControl
-							label={ __( 'Border' ) }
-							value={ border }
-							onChange={ ( newBorderStyle ) => setAttributes( { border: newBorderStyle } ) }
-							options={ [
-								{ value: 'none', label: __( 'None' ) },
-								{ value: 'top', label: __( 'Top' ) },
-								{ value: 'bottom', label: __( 'Bottom' ) },
-								{ value: 'horizontal', label: __( 'Horizontal' ) },
-								{ value: 'vertical', label: __( 'Vertical' ) },
-								{ value: 'full', label: __( 'All sides' ) },
-							] }
-						/>
-
-						{ 'none' !== border && (
-							<RangeControl
-								label={ __( 'Border Width' ) }
-								value={ borderWidth }
-								onChange={ ( newWidth ) => setAttributes( { borderWidth: newWidth } ) }
-								min={ 1 }
-								max={ 12 }
-							/>
-						) }
-
-					</PanelBody>
-
 				</InspectorControls>
 
-				<div className={ className } style={ blockStyles }>
-					<RichText
-						tagName={ 'h' + titleTag }
-						value={ title }
-						className={ headingClasses }
-						style={ headingStyles }
-						onChange={ ( newTitle ) => setAttributes( { title: newTitle } ) }
-						placeholder={ placeholder || __( 'Write heading…' ) }
-						keepPlaceholderOnFocus
-					/>
-				</div>
+				<RichText
+					tagName={ 'h' + titleTag }
+					value={ title }
+					className={ headingClasses }
+					style={ headingStyles }
+					onChange={ ( newTitle ) => setAttributes( { title: newTitle } ) }
+					placeholder={ placeholder || __( 'Write heading…' ) }
+					keepPlaceholderOnFocus
+				/>
 
 			</Fragment>
 		);

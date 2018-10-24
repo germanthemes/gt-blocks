@@ -184,10 +184,6 @@
             transform: translateY(-40px); } }
 .gt-heading.editor-rich-text__tinymce.mce-content-body {
   line-height: 1.4; }
-
-.gt-heading.gt-is-inline-block {
-  margin-top: 0;
-  margin-bottom: 0; }
 .wp-block-gt-layout-blocks-hero-image .gt-hero-section {
   display: block; }
   .wp-block-gt-layout-blocks-hero-image .gt-hero-section > .editor-inner-blocks > .editor-block-list__layout {

@@ -57,22 +57,6 @@ registerBlockType(
 			textAlignment: {
 				type: 'string',
 			},
-			headingLayout: {
-				type: 'string',
-				default: 'block',
-			},
-			paddingTop: {
-				type: 'number',
-			},
-			paddingBottom: {
-				type: 'number',
-			},
-			paddingLeft: {
-				type: 'number',
-			},
-			paddingRight: {
-				type: 'number',
-			},
 			fontWeight: {
 				type: 'string',
 				default: 'bold',
@@ -103,14 +87,6 @@ registerBlockType(
 			customFontSize: {
 				type: 'number',
 			},
-			border: {
-				type: 'string',
-				default: 'none',
-			},
-			borderWidth: {
-				type: 'number',
-				default: 4,
-			},
 		},
 
 		edit,
@@ -120,11 +96,6 @@ registerBlockType(
 				title,
 				titleTag,
 				textAlignment,
-				headingLayout,
-				paddingTop,
-				paddingBottom,
-				paddingLeft,
-				paddingRight,
 				fontWeight,
 				italic,
 				uppercase,
@@ -134,20 +105,13 @@ registerBlockType(
 				customBackgroundColor,
 				fontSize,
 				customFontSize,
-				border,
-				borderWidth,
 			} = attributes;
 
 			const textColorClass = getColorClassName( 'color', textColor );
 			const backgroundClass = getColorClassName( 'background-color', backgroundColor );
 			const fontSizeClass = getFontSizeClass( fontSize );
 
-			const blockStyles = {
-				textAlign: textAlignment,
-			};
-
 			const headingClasses = classnames( 'gt-heading', {
-				'gt-is-inline-block': 'inline-block' === headingLayout,
 				'gt-is-bold': 'bold' === fontWeight,
 				'gt-is-thin': 'thin' === fontWeight,
 				'gt-is-italic': italic,
@@ -156,37 +120,23 @@ registerBlockType(
 				[ textColorClass ]: textColorClass,
 				[ backgroundClass ]: backgroundClass,
 				[ fontSizeClass ]: fontSizeClass,
-				[ `gt-border-${ border }` ]: 'none' !== border,
 			} );
 
 			const headingStyles = {
-				textAlign: 'block' === headingLayout ? textAlignment : undefined,
-				paddingTop: 'undefined' !== typeof paddingTop ? paddingTop + 'px' : undefined,
-				paddingBottom: 'undefined' !== typeof paddingBottom ? paddingBottom + 'px' : undefined,
-				paddingLeft: 'undefined' !== typeof paddingLeft ? paddingLeft + 'px' : undefined,
-				paddingRight: 'undefined' !== typeof paddingRight ? paddingRight + 'px' : undefined,
+				textAlign: textAlignment,
 				backgroundColor: backgroundClass ? undefined : customBackgroundColor,
 				color: textColorClass ? undefined : customTextColor,
 				fontSize: fontSizeClass ? undefined : customFontSize,
-				borderWidth: borderWidth !== 4 ? borderWidth + 'px' : undefined,
 			};
 
-			const heading = <RichText.Content
-				tagName={ 'h' + titleTag }
-				className={ headingClasses }
-				style={ headingStyles }
-				value={ title }
-			/>;
-
-			if ( 'inline-block' === headingLayout ) {
-				return (
-					<div style={ blockStyles }>
-						{ heading }
-					</div>
-				);
-			}
-
-			return heading;
+			return (
+				<RichText.Content
+					tagName={ 'h' + titleTag }
+					className={ headingClasses }
+					style={ headingStyles }
+					value={ title }
+				/>
+			);
 		},
 	},
 );
