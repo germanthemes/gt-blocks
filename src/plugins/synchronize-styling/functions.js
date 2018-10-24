@@ -5,11 +5,13 @@ const { dispatch, select } = wp.data;
 
 export const synchronizeButtons = ( blockList, attributes ) => {
 	const {
-		buttonSize,
-		paddingVertical,
-		paddingHorizontal,
+		textAlignment,
 		buttonShape,
 		roundedCorners,
+		borderWidth,
+		paddingClass,
+		paddingVertical,
+		paddingHorizontal,
 		fontWeight,
 		italic,
 		uppercase,
@@ -26,11 +28,13 @@ export const synchronizeButtons = ( blockList, attributes ) => {
 	} = attributes;
 
 	const newAttributes = {
-		buttonSize,
-		paddingVertical,
-		paddingHorizontal,
+		textAlignment,
 		buttonShape,
 		roundedCorners,
+		borderWidth,
+		paddingClass,
+		paddingVertical,
+		paddingHorizontal,
 		fontWeight,
 		italic,
 		uppercase,
@@ -80,15 +84,7 @@ export const synchronizeColumns = ( blockList, attributes ) => {
 export const synchronizeHeadings = ( blockList, attributes ) => {
 	const {
 		titleTag,
-		blockAlignment,
 		textAlignment,
-		headingLayout,
-		marginTop,
-		marginBottom,
-		paddingTop,
-		paddingBottom,
-		paddingLeft,
-		paddingRight,
 		fontWeight,
 		italic,
 		uppercase,
@@ -98,21 +94,11 @@ export const synchronizeHeadings = ( blockList, attributes ) => {
 		customBackgroundColor,
 		fontSize,
 		customFontSize,
-		border,
-		borderWidth,
 	} = attributes;
 
 	const newAttributes = {
 		titleTag,
-		blockAlignment,
 		textAlignment,
-		headingLayout,
-		marginTop,
-		marginBottom,
-		paddingTop,
-		paddingBottom,
-		paddingLeft,
-		paddingRight,
 		fontWeight,
 		italic,
 		uppercase,
@@ -122,8 +108,6 @@ export const synchronizeHeadings = ( blockList, attributes ) => {
 		customBackgroundColor,
 		fontSize,
 		customFontSize,
-		border,
-		borderWidth,
 	};
 
 	blockList.forEach( block => {
