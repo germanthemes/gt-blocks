@@ -10,7 +10,8 @@
 .wp-block-gt-layout-blocks-button .gt-button-wrap.gt-button-circle .gt-button {
   border-radius: 100%; }
 
-.wp-block-gt-layout-blocks-button .gt-button-wrap.gt-button-rounded .gt-button {
+.wp-block-gt-layout-blocks-button .gt-button-wrap.gt-button-rounded .gt-button,
+.wp-block-gt-layout-blocks-button .gt-button-wrap.gt-button-outline .gt-button {
   border-radius: 12px; }
 
 .wp-block-gt-layout-blocks-button.gt-align-center .block-library-button__inline-link {

@@ -40,24 +40,9 @@
         font-style: italic; }
       .wp-block-gt-layout-blocks-button .gt-button-wrap .gt-button.gt-is-uppercase {
         text-transform: uppercase; }
-      .wp-block-gt-layout-blocks-button .gt-button-wrap .gt-button.gt-border-top, .wp-block-gt-layout-blocks-button .gt-button-wrap .gt-button.gt-border-horizontal, .wp-block-gt-layout-blocks-button .gt-button-wrap .gt-button.gt-border-full {
-        border-top: 2px solid currentColor; }
-      .wp-block-gt-layout-blocks-button .gt-button-wrap .gt-button.gt-border-bottom, .wp-block-gt-layout-blocks-button .gt-button-wrap .gt-button.gt-border-horizontal, .wp-block-gt-layout-blocks-button .gt-button-wrap .gt-button.gt-border-full {
-        border-bottom: 2px solid currentColor; }
-      .wp-block-gt-layout-blocks-button .gt-button-wrap .gt-button.gt-border-vertical, .wp-block-gt-layout-blocks-button .gt-button-wrap .gt-button.gt-border-full {
-        border-left: 2px solid currentColor;
-        border-right: 2px solid currentColor; }
-      .wp-block-gt-layout-blocks-button .gt-button-wrap .gt-button.gt-border-transparent {
-        border-color: transparent; }
-      .wp-block-gt-layout-blocks-button .gt-button-wrap .gt-button.gt-border-transparent-white {
-        border-color: rgba(255, 255, 255, 0.15); }
-      .wp-block-gt-layout-blocks-button .gt-button-wrap .gt-button.gt-border-transparent-black {
-        border-color: rgba(0, 0, 0, 0.15); }
-      .wp-block-gt-layout-blocks-button .gt-button-wrap .gt-button.gt-ghost-button {
-        background: transparent; }
     .wp-block-gt-layout-blocks-button .gt-button-wrap:not(.has-hover-background) {
       background-color: #424242; }
-    .wp-block-gt-layout-blocks-button .gt-button-wrap:not(.has-hover-text-color):not(.gt-ghost-button) {
+    .wp-block-gt-layout-blocks-button .gt-button-wrap:not(.has-hover-text-color):not(.gt-button-outline) {
       color: #fff; }
     .wp-block-gt-layout-blocks-button .gt-button-wrap:hover .gt-button,
     .wp-block-gt-layout-blocks-button .gt-button-wrap:active .gt-button,
@@ -68,8 +53,12 @@
       border-radius: 100%; }
     .wp-block-gt-layout-blocks-button .gt-button-wrap.gt-button-rounded {
       border-radius: 12px; }
-    .wp-block-gt-layout-blocks-button .gt-button-wrap.gt-ghost-button {
-      background: transparent; }
+    .wp-block-gt-layout-blocks-button .gt-button-wrap.gt-button-outline {
+      background: transparent;
+      border-radius: 12px; }
+      .wp-block-gt-layout-blocks-button .gt-button-wrap.gt-button-outline .gt-button {
+        background: transparent;
+        border: 2px solid currentColor; }
   .wp-block-gt-layout-blocks-button.gt-align-center {
     text-align: center; }
   .wp-block-gt-layout-blocks-button.gt-align-right {

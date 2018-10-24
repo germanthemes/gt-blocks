@@ -91,18 +91,15 @@ class ButtonEdit extends Component {
 			text,
 			placeholder,
 			textAlignment,
+			buttonShape,
+			roundedCorners,
+			borderWidth,
 			paddingClass,
 			paddingVertical,
 			paddingHorizontal,
-			buttonShape,
-			roundedCorners,
 			fontWeight,
 			italic,
 			uppercase,
-			border,
-			borderWidth,
-			borderColor,
-			ghostButton,
 		} = attributes;
 
 		const blockClasses = classnames( className, {
@@ -111,7 +108,6 @@ class ButtonEdit extends Component {
 
 		const hoverClasses = classnames( 'gt-button-wrap', {
 			[ `gt-button-${ buttonShape }` ]: 'square' !== buttonShape,
-			'gt-ghost-button': ghostButton,
 			'has-hover-text-color': hoverColor.color,
 			[ hoverColor.class ]: hoverColor.class,
 			'has-hover-background': hoverBackgroundColor.color,
@@ -126,6 +122,7 @@ class ButtonEdit extends Component {
 
 		const buttonClasses = classnames( 'gt-button', {
 			[ `gt-button-${ paddingClass }` ]: paddingClass,
+			'gt-ghost-button': 'outline' === buttonShape,
 			'gt-is-bold': 'bold' === fontWeight,
 			'gt-is-thin': 'thin' === fontWeight,
 			'gt-is-italic': italic,
@@ -135,10 +132,6 @@ class ButtonEdit extends Component {
 			'has-text-color': textColor.color,
 			[ textColor.class ]: textColor.class,
 			[ fontSize.class ]: fontSize.class,
-			'has-border': 'none' !== border,
-			[ `gt-border-${ border }` ]: 'none' !== border,
-			[ `gt-border-${ borderColor }` ]: 'text-color' !== borderColor,
-			'gt-ghost-button': ghostButton,
 		} );
 
 		const buttonStyles = {
@@ -146,20 +139,20 @@ class ButtonEdit extends Component {
 			paddingBottom: ! paddingClass && paddingVertical !== 6 ? paddingVertical + 'px' : undefined,
 			paddingLeft: ! paddingClass && paddingHorizontal !== 18 ? paddingHorizontal + 'px' : undefined,
 			paddingRight: ! paddingClass && paddingHorizontal !== 18 ? paddingHorizontal + 'px' : undefined,
-			borderRadius: 'rounded' === buttonShape && 12 !== roundedCorners ? roundedCorners + 'px' : undefined,
+			borderRadius: ( 'rounded' === buttonShape || 'outline' === buttonShape ) && 12 !== roundedCorners ? roundedCorners + 'px' : undefined,
 			backgroundColor: backgroundColor.class ? undefined : backgroundColor.color,
 			color: textColor.class ? undefined : textColor.color,
 			fontSize: fontSize.size ? fontSize.size + 'px' : undefined,
-			borderWidth: borderWidth !== 2 ? borderWidth + 'px' : undefined,
+			borderWidth: 'outline' === buttonShape && borderWidth !== 2 ? borderWidth + 'px' : undefined,
 		};
 
-		const backgroundColorSettings = ! ghostButton ? [ {
+		const backgroundColorSettings = 'outline' !== buttonShape ? [ {
 			value: backgroundColor.color,
 			onChange: setBackgroundColor,
 			label: __( 'Background Color' ),
 		} ] : [];
 
-		const hoverBackgroundColorSettings = ! ghostButton ? [ {
+		const hoverBackgroundColorSettings = 'outline' !== buttonShape ? [ {
 			value: hoverBackgroundColor.color,
 			onChange: setHoverBackgroundColor,
 			label: __( 'Background Color' ),
@@ -181,17 +174,18 @@ class ButtonEdit extends Component {
 					<PanelBody title={ __( 'Button Settings' ) } initialOpen={ false } className="gt-panel-button-settings gt-panel">
 
 						<SelectControl
-							label={ __( 'Button Shape' ) }
+							label={ __( 'Button Style' ) }
 							value={ buttonShape }
 							onChange={ ( newShape ) => setAttributes( { buttonShape: newShape } ) }
 							options={ [
-								{ value: 'square', label: __( 'Square' ) },
-								{ value: 'rounded', label: __( 'Rounded Corners' ) },
+								{ value: 'squared', label: __( 'Squared' ) },
+								{ value: 'rounded', label: __( 'Rounded' ) },
 								{ value: 'circle', label: __( 'Circle' ) },
+								{ value: 'outline', label: __( 'Outline' ) },
 							] }
 						/>
 
-						{ buttonShape === 'rounded' && (
+						{ ( 'rounded' === buttonShape || 'outline' === buttonShape ) && (
 							<RangeControl
 								label={ __( 'Rounded Corners' ) }
 								value={ roundedCorners }
@@ -201,11 +195,15 @@ class ButtonEdit extends Component {
 							/>
 						) }
 
-						<ToggleControl
-							label={ __( 'Ghost Button?' ) }
-							checked={ !! ghostButton }
-							onChange={ () => setAttributes( { ghostButton: ! ghostButton } ) }
-						/>
+						{ 'outline' === buttonShape && (
+							<RangeControl
+								label={ __( 'Border Width' ) }
+								value={ borderWidth }
+								onChange={ ( newWidth ) => setAttributes( { borderWidth: newWidth } ) }
+								min={ 1 }
+								max={ 12 }
+							/>
+						) }
 
 					</PanelBody>
 
@@ -285,13 +283,13 @@ class ButtonEdit extends Component {
 						}
 					>
 
-						{ ghostButton && (
+						{ 'outline' === buttonShape && (
 							<p className="components-base-control__help">
-								{ __( 'Background colors are disabled because Ghost Button style is enabled.' ) }
+								{ __( 'Background colors are disabled because outline style is enabled.' ) }
 							</p>
 						) }
 
-						{ ! ghostButton && (
+						{ ! 'outline' === buttonShape && (
 							<ContrastChecker
 								{ ...{
 									textColor: textColor.color,
@@ -305,7 +303,7 @@ class ButtonEdit extends Component {
 					</PanelColorSettings>
 
 					<PanelColorSettings
-						title={ __( 'Hover Color Settings' ) }
+						title={ __( 'Hover Colors' ) }
 						initialOpen={ false }
 						colorSettings={
 							hoverBackgroundColorSettings.concat( [ {
@@ -316,13 +314,13 @@ class ButtonEdit extends Component {
 						}
 					>
 
-						{ ghostButton && (
+						{ 'outline' === buttonShape && (
 							<p className="components-base-control__help">
-								{ __( 'Background colors are disabled because Ghost Button style is enabled.' ) }
+								{ __( 'Background colors are disabled because outline style is enabled.' ) }
 							</p>
 						) }
 
-						{ ! ghostButton && (
+						{ ! 'outline' === buttonShape && (
 							<ContrastChecker
 								{ ...{
 									textColor: hoverColor.color,
@@ -334,48 +332,6 @@ class ButtonEdit extends Component {
 							/>
 						) }
 					</PanelColorSettings>
-
-					<PanelBody title={ __( 'Border Settings' ) } initialOpen={ false } className="gt-panel-border-settings gt-panel">
-
-						<SelectControl
-							label={ __( 'Border Style' ) }
-							value={ border }
-							onChange={ ( newBorderStyle ) => setAttributes( { border: newBorderStyle } ) }
-							options={ [
-								{ value: 'none', label: __( 'None' ) },
-								{ value: 'top', label: __( 'Top' ) },
-								{ value: 'bottom', label: __( 'Bottom' ) },
-								{ value: 'horizontal', label: __( 'Horizontal' ) },
-								{ value: 'vertical', label: __( 'Vertical' ) },
-								{ value: 'full', label: __( 'All sides' ) },
-							] }
-						/>
-
-						{ 'none' !== border && (
-							<RangeControl
-								label={ __( 'Border Width' ) }
-								value={ borderWidth }
-								onChange={ ( newWidth ) => setAttributes( { borderWidth: newWidth } ) }
-								min={ 1 }
-								max={ 12 }
-							/>
-						) }
-
-						{ 'none' !== border && (
-							<SelectControl
-								label={ __( 'Border Color' ) }
-								value={ borderColor }
-								onChange={ ( newBorderColor ) => setAttributes( { borderColor: newBorderColor } ) }
-								options={ [
-									{ value: 'text-color', label: __( 'Text Color' ) },
-									{ value: 'transparent-white', label: __( 'Transparent White' ) },
-									{ value: 'transparent-black', label: __( 'Transparent Black' ) },
-									{ value: 'transparent', label: __( 'Background Color' ) },
-								] }
-							/>
-						) }
-
-					</PanelBody>
 
 				</InspectorControls>
 

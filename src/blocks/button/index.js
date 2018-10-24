@@ -65,6 +65,18 @@ registerBlockType(
 			textAlignment: {
 				type: 'string',
 			},
+			buttonShape: {
+				type: 'string',
+				default: 'squared',
+			},
+			roundedCorners: {
+				type: 'number',
+				default: 12,
+			},
+			borderWidth: {
+				type: 'number',
+				default: 2,
+			},
 			paddingClass: {
 				type: 'string',
 			},
@@ -75,14 +87,6 @@ registerBlockType(
 			paddingHorizontal: {
 				type: 'number',
 				default: 18,
-			},
-			buttonShape: {
-				type: 'string',
-				default: 'square',
-			},
-			roundedCorners: {
-				type: 'number',
-				default: 12,
 			},
 			fontWeight: {
 				type: 'string',
@@ -126,22 +130,6 @@ registerBlockType(
 			customFontSize: {
 				type: 'number',
 			},
-			border: {
-				type: 'string',
-				default: 'none',
-			},
-			borderWidth: {
-				type: 'number',
-				default: 2,
-			},
-			borderColor: {
-				type: 'string',
-				default: 'text-color',
-			},
-			ghostButton: {
-				type: 'boolean',
-				default: false,
-			},
 		},
 
 		edit,
@@ -152,11 +140,12 @@ registerBlockType(
 				title,
 				text,
 				textAlignment,
+				buttonShape,
+				roundedCorners,
+				borderWidth,
 				paddingClass,
 				paddingVertical,
 				paddingHorizontal,
-				buttonShape,
-				roundedCorners,
 				fontWeight,
 				italic,
 				uppercase,
@@ -170,10 +159,6 @@ registerBlockType(
 				customHoverBackgroundColor,
 				fontSize,
 				customFontSize,
-				border,
-				borderWidth,
-				borderColor,
-				ghostButton,
 			} = attributes;
 
 			const textColorClass = getColorClassName( 'color', textColor );
@@ -189,8 +174,7 @@ registerBlockType(
 			} );
 
 			const hoverClasses = classnames( 'gt-button-wrap', {
-				[ `gt-button-${ buttonShape }` ]: 'square' !== buttonShape,
-				'gt-ghost-button': ghostButton,
+				[ `gt-button-${ buttonShape }` ]: 'squared' !== buttonShape,
 				'has-hover-text-color': hoverColor || customHoverColor,
 				[ hoverColorClass ]: hoverColorClass,
 				'has-hover-background': hoverBackgroundColor || customHoverBackgroundColor,
@@ -205,6 +189,7 @@ registerBlockType(
 
 			const buttonClasses = classnames( 'gt-button', {
 				[ `gt-button-${ paddingClass }` ]: paddingClass,
+				'gt-ghost-button': 'outline' === buttonShape,
 				'gt-is-bold': 'bold' === fontWeight,
 				'gt-is-thin': 'thin' === fontWeight,
 				'gt-is-italic': italic,
@@ -214,10 +199,6 @@ registerBlockType(
 				'has-text-color': textColor || customTextColor,
 				[ textColorClass ]: textColorClass,
 				[ fontSizeClass ]: fontSizeClass,
-				'has-border': 'none' !== border,
-				[ `gt-border-${ border }` ]: 'none' !== border,
-				[ `gt-border-${ borderColor }` ]: 'text-color' !== borderColor,
-				'gt-ghost-button': ghostButton,
 			} );
 
 			const buttonStyles = {
@@ -228,7 +209,7 @@ registerBlockType(
 				backgroundColor: backgroundClass ? undefined : customBackgroundColor,
 				color: textColorClass ? undefined : customTextColor,
 				fontSize: fontSizeClass ? undefined : customFontSize,
-				borderWidth: borderWidth !== 2 ? borderWidth + 'px' : undefined,
+				borderWidth: 'outline' === buttonShape && borderWidth !== 2 ? borderWidth + 'px' : undefined,
 			};
 
 			return (
