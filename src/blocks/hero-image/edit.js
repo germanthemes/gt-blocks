@@ -23,6 +23,7 @@ const {
 	Button,
 	Dashicon,
 	PanelBody,
+	RangeControl,
 	SelectControl,
 } = wp.components;
 
@@ -88,11 +89,13 @@ class HeroImageEdit extends Component {
 
 		const {
 			heroLayout,
+			heroWidth,
 			heroImage,
 		} = attributes;
 
 		const heroClasses = classnames( 'gt-hero-section', {
 			[ `gt-hero-layout-${ heroLayout }` ]: heroLayout,
+			[ `gt-hero-content-width-${ heroWidth }` ]: 50 !== heroWidth,
 		} );
 
 		return (
@@ -103,7 +106,7 @@ class HeroImageEdit extends Component {
 					<PanelBody title={ __( 'Hero Banner Settings' ) } initialOpen={ false } className="gt-panel-hero-banner-settings gt-panel">
 
 						<SelectControl
-							label={ __( 'Hero Layout' ) }
+							label={ __( 'Hero Content Position' ) }
 							value={ heroLayout }
 							onChange={ ( newLayout ) => setAttributes( { heroLayout: newLayout } ) }
 							options={ [
@@ -113,6 +116,17 @@ class HeroImageEdit extends Component {
 								{ value: 'right', label: __( 'Right' ) },
 							] }
 						/>
+
+						{ 'full' !== heroWidth && (
+							<RangeControl
+								label={ __( 'Hero Content Width' ) }
+								value={ heroWidth }
+								onChange={ ( newWidth ) => setAttributes( { heroWidth: newWidth } ) }
+								min={ 20 }
+								max={ 80 }
+								step={ 10 }
+							/>
+						) }
 
 						<BaseControl id="gt-image-block" label={ __( 'Hero Image Block' ) }>
 							<Button

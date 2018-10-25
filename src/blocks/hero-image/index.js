@@ -44,6 +44,10 @@ registerBlockType(
 				type: 'string',
 				default: 'full',
 			},
+			heroWidth: {
+				type: 'number',
+				default: 50,
+			},
 			heroImage: {
 				type: 'boolean',
 			},
@@ -62,10 +66,12 @@ registerBlockType(
 		save( props ) {
 			const {
 				heroLayout,
+				heroWidth,
 			} = props.attributes;
 
 			const heroClasses = classnames( 'gt-hero-section', {
 				[ `gt-hero-layout-${ heroLayout }` ]: heroLayout,
+				[ `gt-hero-content-width-${ heroWidth }` ]: 50 !== heroWidth,
 			} );
 
 			return (

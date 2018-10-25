@@ -11,10 +11,13 @@
 		
 		.wp-block-gt-layout-blocks-content {
 			order: 2;
+			flex-grow: 0;
+			flex-shrink: 0;
 		}
 		
 		.wp-block-gt-layout-blocks-image {
 			order: 1;
+			flex-grow: 1;
 		}
 
 		&.gt-hero-layout-full,
@@ -32,12 +35,84 @@
 			justify-content: flex-end;
 		}
 
-		&.gt-hero-layout-center,
 		&.gt-hero-layout-left,
 		&.gt-hero-layout-right {
+			.wp-block-gt-layout-blocks-content {
+				flex-basis: 50%;
+			}
+		}
+
+		&.gt-hero-content-width-20 .wp-block-gt-layout-blocks-content {
+			flex-basis: 20%;
+		}
+
+		&.gt-hero-content-width-30 .wp-block-gt-layout-blocks-content {
+			flex-basis: 30%;
+		}
+
+		&.gt-hero-content-width-40 .wp-block-gt-layout-blocks-content {
+			flex-basis: 40%;
+		}
+
+		&.gt-hero-content-width-60 .wp-block-gt-layout-blocks-content {
+			flex-basis: 60%;
+		}
+
+		&.gt-hero-content-width-70 .wp-block-gt-layout-blocks-content {
+			flex-basis: 70%;
+		}
+
+		&.gt-hero-content-width-80 .wp-block-gt-layout-blocks-content {
+			flex-basis: 80%;
+		}
+
+		&.gt-hero-layout-center {
 			.wp-block-gt-layout-blocks-content,
 			.wp-block-gt-layout-blocks-image {
 				width: 50%;
+				flex-basis: auto;
+			}
+		}
+		
+		&.gt-hero-layout-center.gt-hero-content-width-20 {
+			.wp-block-gt-layout-blocks-content,
+			.wp-block-gt-layout-blocks-image {
+				width: 20%;
+			}
+		}
+
+		&.gt-hero-layout-center.gt-hero-content-width-30 {
+			.wp-block-gt-layout-blocks-content,
+			.wp-block-gt-layout-blocks-image {
+				width: 30%;
+			}
+		}
+
+		&.gt-hero-layout-center.gt-hero-content-width-40 {
+			.wp-block-gt-layout-blocks-content,
+			.wp-block-gt-layout-blocks-image {
+				width: 40%;
+			}
+		}
+
+		&.gt-hero-layout-center.gt-hero-content-width-60 {
+			.wp-block-gt-layout-blocks-content,
+			.wp-block-gt-layout-blocks-image {
+				width: 60%;
+			}
+		}
+
+		&.gt-hero-layout-center.gt-hero-content-width-70 {
+			.wp-block-gt-layout-blocks-content,
+			.wp-block-gt-layout-blocks-image {
+				width: 70%;
+			}
+		}
+
+		&.gt-hero-layout-center.gt-hero-content-width-80 {
+			.wp-block-gt-layout-blocks-content,
+			.wp-block-gt-layout-blocks-image {
+				width: 80%;
 			}
 		}
 	}
