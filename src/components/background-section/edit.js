@@ -152,7 +152,7 @@ class BackgroundEdit extends Component {
 
 				<InspectorControls>
 
-					<PanelBody title={ __( 'Layout Settings' ) } initialOpen={ false }>
+					<PanelBody title={ __( 'Container Settings' ) } initialOpen={ false } className="gt-container-settings-panel gt-panel">
 
 						<RangeControl
 							label={ __( 'Maximum Content Width' ) }
@@ -218,7 +218,7 @@ class BackgroundEdit extends Component {
 						/>
 					</PanelColorSettings>
 
-					<PanelBody title={ __( 'Background Image' ) } initialOpen={ false } className="gt-background-image-panel">
+					<PanelBody title={ __( 'Background Image' ) } initialOpen={ false } className="gt-background-image-panel gt-panel">
 
 						<div className="gt-background-image">
 
