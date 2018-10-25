@@ -46,7 +46,7 @@ const TEMPLATE = [
 		customClass: 'gt-buttons-wrapper',
 		buttons: 2,
 		buttonAttributes: {
-			buttonSize: 'medium',
+			paddingClass: 'medium',
 			customFontSize: 20,
 			synchronizeStyling: true,
 			parentBlock: 'gt-layout-blocks/buttons',
@@ -63,9 +63,7 @@ const TEMPLATE = [
  */
 const getTemplate = memoize( ( heroImage ) => {
 	const content = [ 'gt-layout-blocks/content', {
-		allowedBlocks: [],
 		template: TEMPLATE,
-		templateLock: 'all',
 	} ];
 
 	const image = [ 'gt-layout-blocks/image', {} ];
