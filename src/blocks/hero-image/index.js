@@ -51,6 +51,10 @@ registerBlockType(
 			heroImage: {
 				type: 'boolean',
 			},
+			columnGap: {
+				type: 'number',
+				default: 32,
+			},
 			...backgroundAttributes,
 		},
 
@@ -67,11 +71,16 @@ registerBlockType(
 			const {
 				heroLayout,
 				heroWidth,
+				heroImage,
+				columnGap,
 			} = props.attributes;
 
 			const heroClasses = classnames( 'gt-hero-section', {
 				[ `gt-hero-layout-${ heroLayout }` ]: heroLayout,
 				[ `gt-hero-content-width-${ heroWidth }` ]: 50 !== heroWidth,
+				'gt-has-hero-image': heroImage,
+				[ `gt-column-gap-${ columnGap }` ]: 0 !== columnGap && heroImage && ( 'left' === heroLayout || 'right' === heroLayout ),
+				[ `gt-margin-bottom-${ columnGap }` ]: 0 !== columnGap && heroImage && ( 'full' === heroLayout || 'center' === heroLayout ),
 			} );
 
 			return (

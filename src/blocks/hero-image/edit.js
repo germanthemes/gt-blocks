@@ -91,11 +91,15 @@ class HeroImageEdit extends Component {
 			heroLayout,
 			heroWidth,
 			heroImage,
+			columnGap,
 		} = attributes;
 
 		const heroClasses = classnames( 'gt-hero-section', {
 			[ `gt-hero-layout-${ heroLayout }` ]: heroLayout,
 			[ `gt-hero-content-width-${ heroWidth }` ]: 50 !== heroWidth,
+			'gt-has-hero-image': heroImage,
+			[ `gt-edit-column-gap-${ columnGap }` ]: 32 !== columnGap && heroImage && ( 'left' === heroLayout || 'right' === heroLayout ),
+			[ `gt-edit-margin-bottom-${ columnGap }` ]: 32 !== columnGap && heroImage && ( 'full' === heroLayout || 'center' === heroLayout ),
 		} );
 
 		return (
@@ -103,7 +107,7 @@ class HeroImageEdit extends Component {
 
 				<InspectorControls>
 
-					<PanelBody title={ __( 'Hero Banner Settings' ) } initialOpen={ false } className="gt-panel-hero-banner-settings gt-panel">
+					<PanelBody title={ __( 'Hero Image Settings' ) } initialOpen={ false } className="gt-panel-hero-image-settings gt-panel">
 
 						<SelectControl
 							label={ __( 'Hero Content Position' ) }
@@ -117,7 +121,7 @@ class HeroImageEdit extends Component {
 							] }
 						/>
 
-						{ 'full' !== heroWidth && (
+						{ 'full' !== heroLayout && (
 							<RangeControl
 								label={ __( 'Hero Content Width' ) }
 								value={ heroWidth }
@@ -138,6 +142,17 @@ class HeroImageEdit extends Component {
 								{ heroImage ? __( 'Remove Block' ) : __( 'Add Block' ) }
 							</Button>
 						</BaseControl>
+
+						{ heroImage && (
+							<RangeControl
+								label={ __( 'Column Gap' ) }
+								value={ columnGap }
+								onChange={ ( newGap ) => setAttributes( { columnGap: newGap } ) }
+								min={ 0 }
+								max={ 64 }
+								step={ 8 }
+							/>
+						) }
 
 					</PanelBody>
 
