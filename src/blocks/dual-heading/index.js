@@ -150,10 +150,28 @@ registerBlockType(
 			customBackgroundColor: {
 				type: 'string',
 			},
+			subtitleColor: {
+				type: 'string',
+			},
+			subtitleBackgroundColor: {
+				type: 'string',
+			},
+			subtitleCustomTextColor: {
+				type: 'string',
+			},
+			subtitleCustomBackgroundColor: {
+				type: 'string',
+			},
 			fontSize: {
 				type: 'string',
 			},
 			customFontSize: {
+				type: 'number',
+			},
+			subtitleFontSize: {
+				type: 'string',
+			},
+			subtitleCustomFontSize: {
 				type: 'number',
 			},
 		},
@@ -176,13 +194,23 @@ registerBlockType(
 				backgroundColor,
 				customTextColor,
 				customBackgroundColor,
+				subtitleColor,
+				subtitleBackgroundColor,
+				subtitleCustomTextColor,
+				subtitleCustomBackgroundColor,
 				fontSize,
 				customFontSize,
+				subtitleFontSize,
+				subtitleCustomFontSize,
 			} = attributes;
 
 			const textColorClass = getColorClassName( 'color', textColor );
 			const backgroundClass = getColorClassName( 'background-color', backgroundColor );
 			const fontSizeClass = getFontSizeClass( fontSize );
+
+			const subtitleColorClass = getColorClassName( 'color', subtitleColor );
+			const subtitleBackgroundClass = getColorClassName( 'background-color', subtitleBackgroundColor );
+			const subtitleFontSizeClass = getFontSizeClass( subtitleFontSize );
 
 			const blockStyles = {
 				textAlign: textAlignment,
@@ -210,13 +238,17 @@ registerBlockType(
 				'gt-is-thin': 'thin' === subtitleFontWeight,
 				'gt-is-italic': subtitleFontStyle,
 				'gt-is-uppercase': subtitleTextTransform,
-				'has-background': backgroundColor || customBackgroundColor,
-				[ textColorClass ]: textColorClass,
-				[ backgroundClass ]: backgroundClass,
-				[ fontSizeClass ]: fontSizeClass,
+				'has-background': subtitleBackgroundColor || subtitleCustomBackgroundColor,
+				[ subtitleColorClass ]: subtitleColorClass,
+				[ subtitleBackgroundClass ]: subtitleBackgroundClass,
+				[ subtitleFontSizeClass ]: subtitleFontSizeClass,
 			} );
 
-			const subheadingStyles = {};
+			const subheadingStyles = {
+				backgroundColor: subtitleBackgroundClass ? undefined : subtitleCustomBackgroundColor,
+				color: subtitleColorClass ? undefined : subtitleCustomTextColor,
+				fontSize: subtitleFontSizeClass ? undefined : subtitleCustomFontSize,
+			};
 
 			return (
 				<header style={ blockStyles }>

@@ -2,15 +2,21 @@
 	margin-bottom: 1.5em;
 
 	.gt-heading {
+		display: inline-block;
 		margin-top: 0;
-		margin-bottom: 0.25em;
+		margin-bottom: 0.5em;
 	}
 
 	.gt-subheading {
+		display: inline-block;
 		margin: 0;
 		font-weight: normal;
 		font-style: normal;
 		text-transform: none;
+
+		&.has-background {
+			padding: 8px 16px;
+		}
 
 		&.gt-is-bold {
 			font-weight: 700;

@@ -161,13 +161,17 @@
 .wp-block-gt-layout-blocks-dual-heading {
   margin-bottom: 1.5em; }
   .wp-block-gt-layout-blocks-dual-heading .gt-heading {
+    display: inline-block;
     margin-top: 0;
-    margin-bottom: 0.25em; }
+    margin-bottom: 0.5em; }
   .wp-block-gt-layout-blocks-dual-heading .gt-subheading {
+    display: inline-block;
     margin: 0;
     font-weight: normal;
     font-style: normal;
     text-transform: none; }
+    .wp-block-gt-layout-blocks-dual-heading .gt-subheading.has-background {
+      padding: 8px 16px; }
     .wp-block-gt-layout-blocks-dual-heading .gt-subheading.gt-is-bold {
       font-weight: 700; }
     .wp-block-gt-layout-blocks-dual-heading .gt-subheading.gt-is-thin {

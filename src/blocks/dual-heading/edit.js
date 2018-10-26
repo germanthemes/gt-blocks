@@ -56,9 +56,18 @@ class DualHeadingEdit extends Component {
 			textColor,
 			setTextColor,
 			fallbackTextColor,
+			subtitleBackgroundColor,
+			setSubtitleBackgroundColor,
+			subtitleFallbackBackgroundColor,
+			subtitleColor,
+			setSubtitleColor,
+			subtitleFallbackTextColor,
 			fontSize,
 			setFontSize,
 			fallbackFontSize,
+			subtitleFontSize,
+			setSubtitleFontSize,
+			subtitleFallbackFontSize,
 			setAttributes,
 			className,
 		} = this.props;
@@ -95,7 +104,6 @@ class DualHeadingEdit extends Component {
 		} );
 
 		const headingStyles = {
-			textAlign: textAlignment,
 			backgroundColor: backgroundColor.class ? undefined : backgroundColor.color,
 			color: textColor.class ? undefined : textColor.color,
 			fontSize: fontSize.size ? fontSize.size + 'px' : undefined,
@@ -106,14 +114,18 @@ class DualHeadingEdit extends Component {
 			'gt-is-thin': 'thin' === subtitleFontWeight,
 			'gt-is-italic': subtitleFontStyle,
 			'gt-is-uppercase': subtitleTextTransform,
-			'has-background': backgroundColor.color,
-			[ backgroundColor.class ]: backgroundColor.class,
-			'has-text-color': textColor.color,
-			[ textColor.class ]: textColor.class,
-			[ fontSize.class ]: fontSize.class,
+			'has-background': subtitleBackgroundColor.color,
+			[ subtitleBackgroundColor.class ]: subtitleBackgroundColor.class,
+			'has-text-color': subtitleColor.color,
+			[ subtitleColor.class ]: subtitleColor.class,
+			[ subtitleFontSize.class ]: subtitleFontSize.class,
 		} );
 
-		const subheadingStyles = {};
+		const subheadingStyles = {
+			backgroundColor: subtitleBackgroundColor.class ? undefined : subtitleBackgroundColor.color,
+			color: subtitleColor.class ? undefined : subtitleColor.color,
+			fontSize: subtitleFontSize.size ? subtitleFontSize.size + 'px' : undefined,
+		};
 
 		return (
 			<Fragment>
@@ -178,9 +190,9 @@ class DualHeadingEdit extends Component {
 					<PanelBody title={ __( 'Subheading Settings' ) } initialOpen={ false } className="gt-panel-subheading-settings gt-panel">
 
 						<FontSizePicker
-							fallbackFontSize={ fallbackFontSize }
-							value={ fontSize.size }
-							onChange={ setFontSize }
+							fallbackFontSize={ subtitleFallbackFontSize }
+							value={ subtitleFontSize.size }
+							onChange={ setSubtitleFontSize }
 						/>
 
 						<SelectControl
@@ -236,6 +248,34 @@ class DualHeadingEdit extends Component {
 						/>
 					</PanelColorSettings>
 
+					<PanelColorSettings
+						title={ __( 'Subheading Colors' ) }
+						initialOpen={ false }
+						colorSettings={ [
+							{
+								value: subtitleBackgroundColor.color,
+								onChange: setSubtitleBackgroundColor,
+								label: __( 'Background Color' ),
+							},
+							{
+								value: subtitleColor.color,
+								onChange: setSubtitleColor,
+								label: __( 'Text Color' ),
+							},
+						] }
+					>
+
+						<ContrastChecker
+							{ ...{
+								textColor: subtitleColor.color,
+								backgroundColor: subtitleBackgroundColor.color,
+								subtitleFallbackTextColor,
+								subtitleFallbackBackgroundColor,
+							} }
+							fontSize={ subtitleFontSize.size }
+						/>
+					</PanelColorSettings>
+
 				</InspectorControls>
 
 				<header className={ className } style={ blockStyles }>
@@ -266,10 +306,19 @@ class DualHeadingEdit extends Component {
 }
 
 export default compose( [
-	withColors( 'backgroundColor', { textColor: 'color' } ),
-	withFontSizes( 'fontSize' ),
+	withColors( 'backgroundColor', { textColor: 'color' }, { subtitleColor: 'color' }, { subtitleBackgroundColor: 'background-color' } ),
+	withFontSizes( 'fontSize', 'subtitleFontSize' ),
 	withFallbackStyles( ( node, ownProps ) => {
-		const { textColor, backgroundColor, fontSize, customFontSize } = ownProps.attributes;
+		const {
+			textColor,
+			backgroundColor,
+			subtitleColor,
+			subtitleBackgroundColor,
+			fontSize,
+			customFontSize,
+			subtitleFontSize,
+			subtitleCustomFontSize,
+		} = ownProps.attributes;
 		const editableNode = node.querySelector( '[contenteditable="true"]' );
 		//verify if editableNode is available, before using getComputedStyle.
 		const computedStyles = editableNode ? getComputedStyle( editableNode ) : null;
@@ -277,6 +326,9 @@ export default compose( [
 			fallbackBackgroundColor: backgroundColor || ! computedStyles ? undefined : computedStyles.backgroundColor,
 			fallbackTextColor: textColor || ! computedStyles ? undefined : computedStyles.color,
 			fallbackFontSize: fontSize || customFontSize || ! computedStyles ? undefined : parseInt( computedStyles.fontSize ) || undefined,
+			subtitleFallbackBackgroundColor: subtitleBackgroundColor || ! computedStyles ? undefined : computedStyles.backgroundColor,
+			subtitleFallbackTextColor: subtitleColor || ! computedStyles ? undefined : computedStyles.color,
+			subtitleFallbackFontSize: subtitleFontSize || subtitleCustomFontSize || ! computedStyles ? undefined : parseInt( computedStyles.fontSize ) || undefined,
 		};
 	} ),
 ] )( DualHeadingEdit );
