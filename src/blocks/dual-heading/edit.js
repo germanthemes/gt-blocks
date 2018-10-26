@@ -73,6 +73,9 @@ class DualHeadingEdit extends Component {
 			titleFontWeight,
 			titleFontStyle,
 			titleTextTransform,
+			subtitleFontWeight,
+			subtitleFontStyle,
+			subtitleTextTransform,
 		} = attributes;
 
 		const blockStyles = {
@@ -99,10 +102,10 @@ class DualHeadingEdit extends Component {
 		};
 
 		const subheadingClasses = classnames( 'gt-subheading', {
-			'gt-is-bold': 'bold' === titleFontWeight,
-			'gt-is-thin': 'thin' === titleFontWeight,
-			'gt-is-italic': titleFontStyle,
-			'gt-is-uppercase': titleTextTransform,
+			'gt-is-bold': 'bold' === subtitleFontWeight,
+			'gt-is-thin': 'thin' === subtitleFontWeight,
+			'gt-is-italic': subtitleFontStyle,
+			'gt-is-uppercase': subtitleTextTransform,
 			'has-background': backgroundColor.color,
 			[ backgroundColor.class ]: backgroundColor.class,
 			'has-text-color': textColor.color,
@@ -116,23 +119,16 @@ class DualHeadingEdit extends Component {
 			<Fragment>
 				<BlockControls>
 
-					<Toolbar
-						controls={
-							range( 2, 5 ).map( ( level ) => ( {
-								icon: 'heading',
-								title: sprintf( __( 'Heading %s' ), level ),
-								isActive: level === titleTag,
-								onClick: () => setAttributes( { titleTag: level } ),
-								subscript: level,
-							} ) )
-						}
+					<AlignmentToolbar
+						value={ textAlignment }
+						onChange={ ( newAlignment ) => setAttributes( { textAlignment: newAlignment } ) }
 					/>
 
 				</BlockControls>
 
 				<InspectorControls>
 
-					<PanelBody title={ __( 'Heading Settings' ) } initialOpen={ true } className="gt-panel-heading-settings gt-panel">
+					<PanelBody title={ __( 'Heading Settings' ) } initialOpen={ false } className="gt-panel-heading-settings gt-panel">
 
 						<BaseControl id="gt-title-tag" label={ __( 'Level' ) }>
 							<Toolbar
@@ -147,17 +143,6 @@ class DualHeadingEdit extends Component {
 								}
 							/>
 						</BaseControl>
-
-						<BaseControl id="gt-text-alignment" label={ __( 'Text Alignment' ) }>
-							<AlignmentToolbar
-								value={ textAlignment }
-								onChange={ ( newAlignment ) => setAttributes( { textAlignment: newAlignment } ) }
-							/>
-						</BaseControl>
-
-					</PanelBody>
-
-					<PanelBody title={ __( 'Font Settings' ) } initialOpen={ false } className="gt-panel-font-settings gt-panel">
 
 						<FontSizePicker
 							fallbackFontSize={ fallbackFontSize }
@@ -186,6 +171,39 @@ class DualHeadingEdit extends Component {
 							label={ __( 'Uppercase?' ) }
 							checked={ !! titleTextTransform }
 							onChange={ () => setAttributes( { titleTextTransform: ! titleTextTransform } ) }
+						/>
+
+					</PanelBody>
+
+					<PanelBody title={ __( 'Subheading Settings' ) } initialOpen={ false } className="gt-panel-subheading-settings gt-panel">
+
+						<FontSizePicker
+							fallbackFontSize={ fallbackFontSize }
+							value={ fontSize.size }
+							onChange={ setFontSize }
+						/>
+
+						<SelectControl
+							label={ __( 'Font Weight' ) }
+							value={ subtitleFontWeight }
+							onChange={ ( newWeight ) => setAttributes( { subtitleFontWeight: newWeight } ) }
+							options={ [
+								{ value: 'thin', label: __( 'Thin' ) },
+								{ value: 'normal', label: __( 'Normal' ) },
+								{ value: 'bold', label: __( 'Bold' ) },
+							] }
+						/>
+
+						<ToggleControl
+							label={ __( 'Italic?' ) }
+							checked={ !! subtitleFontStyle }
+							onChange={ () => setAttributes( { subtitleFontStyle: ! subtitleFontStyle } ) }
+						/>
+
+						<ToggleControl
+							label={ __( 'Uppercase?' ) }
+							checked={ !! subtitleTextTransform }
+							onChange={ () => setAttributes( { subtitleTextTransform: ! subtitleTextTransform } ) }
 						/>
 
 					</PanelBody>

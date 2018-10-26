@@ -117,6 +117,8 @@
   .wp-block-gt-layout-blocks-content .gt-content.has-background > .editor-inner-blocks {
     margin-top: -30px;
     margin-bottom: -30px; }
+.gt-subheading.editor-rich-text__tinymce.mce-content-body {
+  line-height: 1.4; }
 .editor-block-list__block .gt-grid-container {
   display: block; }
   .editor-block-list__block .gt-grid-container > .editor-inner-blocks > .editor-block-list__layout {

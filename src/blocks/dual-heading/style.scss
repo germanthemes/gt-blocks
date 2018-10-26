@@ -1,0 +1,31 @@
+.wp-block-gt-layout-blocks-dual-heading {
+	margin-bottom: 1.5em;
+
+	.gt-heading {
+		margin-top: 0;
+		margin-bottom: 0.25em;
+	}
+
+	.gt-subheading {
+		margin: 0;
+		font-weight: normal;
+		font-style: normal;
+		text-transform: none;
+
+		&.gt-is-bold {
+			font-weight: 700;
+		}
+
+		&.gt-is-thin {
+			font-weight: 200;
+		}
+
+		&.gt-is-italic {
+			font-style: italic;
+		}
+
+		&.gt-is-uppercase {
+			text-transform: uppercase;
+		}
+	}
+}
