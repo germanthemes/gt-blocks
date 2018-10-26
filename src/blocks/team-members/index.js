@@ -20,22 +20,26 @@ const TEMPLATE = [
 		synchronizeStyling: true,
 		parentBlock: 'gt-layout-blocks/team-members',
 	} ],
-	[ 'core/paragraph', {
-		placeholder: __( 'Name' ),
-		synchronizeStyling: true,
-		parentBlock: 'gt-layout-blocks/team-members',
-		customFontSize: 20,
-	} ],
-	[ 'core/paragraph', {
-		placeholder: __( 'Job Title' ),
-		synchronizeStyling: true,
-		parentBlock: 'gt-layout-blocks/team-members',
-		customFontSize: 15,
-	} ],
-	[ 'core/paragraph', {
-		placeholder: __( 'Write some words...' ),
-		synchronizeStyling: true,
-		parentBlock: 'gt-layout-blocks/team-members',
+	[ 'gt-layout-blocks/content', {
+		template: [
+			[ 'core/paragraph', {
+				placeholder: __( 'Name' ),
+				synchronizeStyling: true,
+				parentBlock: 'gt-layout-blocks/team-members',
+				customFontSize: 20,
+			} ],
+			[ 'core/paragraph', {
+				placeholder: __( 'Job Title' ),
+				synchronizeStyling: true,
+				parentBlock: 'gt-layout-blocks/team-members',
+				customFontSize: 15,
+			} ],
+			[ 'core/paragraph', {
+				placeholder: __( 'Write some words...' ),
+				synchronizeStyling: true,
+				parentBlock: 'gt-layout-blocks/team-members',
+			} ],
+		],
 	} ],
 ];
 

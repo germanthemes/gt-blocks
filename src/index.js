@@ -17,6 +17,7 @@ import './blocks/buttons';
 import './blocks/column';
 import './blocks/container';
 import './blocks/content';
+import './blocks/dual-heading';
 import './blocks/features';
 import './blocks/grid-layout';
 import './blocks/heading';
