@@ -142,16 +142,21 @@ class DualHeadingEdit extends Component {
 
 					<PanelBody title={ __( 'Heading Settings' ) } initialOpen={ false } className="gt-panel-heading-settings gt-panel">
 
-						<BaseControl id="gt-title-tag" label={ __( 'Level' ) }>
+						<BaseControl id="gt-title-tag" label={ __( 'Title Tag' ) }>
 							<Toolbar
 								controls={
-									range( 1, 7 ).map( ( level ) => ( {
+									range( 1, 6 ).map( ( level ) => ( {
 										icon: 'heading',
 										title: sprintf( __( 'Heading %s' ), level ),
-										isActive: level === titleTag,
-										onClick: () => setAttributes( { titleTag: level } ),
+										isActive: 'h' + level === titleTag,
+										onClick: () => setAttributes( { titleTag: 'h' + level } ),
 										subscript: level,
-									} ) )
+									} ) ).concat( [ {
+										icon: 'editor-paragraph',
+										title: __( 'Paragraph' ),
+										isActive: 'p' === titleTag,
+										onClick: () => setAttributes( { titleTag: 'p' } ),
+									} ] )
 								}
 							/>
 						</BaseControl>
@@ -280,7 +285,7 @@ class DualHeadingEdit extends Component {
 
 				<header className={ className } style={ blockStyles }>
 					<RichText
-						tagName={ 'h' + titleTag }
+						tagName={ titleTag }
 						value={ title }
 						className={ headingClasses }
 						style={ headingStyles }

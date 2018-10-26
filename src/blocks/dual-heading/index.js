@@ -98,8 +98,8 @@ registerBlockType(
 				selector: '.gt-heading',
 			},
 			titleTag: {
-				type: 'number',
-				default: 2,
+				type: 'string',
+				default: 'h2',
 			},
 			titlePlaceholder: {
 				type: 'string',
@@ -253,7 +253,7 @@ registerBlockType(
 			return (
 				<header style={ blockStyles }>
 					<RichText.Content
-						tagName={ 'h' + titleTag }
+						tagName={ titleTag }
 						className={ headingClasses }
 						style={ headingStyles }
 						value={ title }
