@@ -7,6 +7,7 @@ const { registerBlockType } = wp.blocks;
 /**
  * Internal dependencies
  */
+import './editor.scss';
 import './style.scss';
 import { default as GridEdit } from '../../components/grid-container/edit';
 import { default as GridContainer } from '../../components/grid-container';
