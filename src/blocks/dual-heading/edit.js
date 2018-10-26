@@ -70,7 +70,6 @@ class DualHeadingEdit extends Component {
 			subtitleFallbackFontSize,
 			setAttributes,
 			className,
-			isSelected,
 		} = this.props;
 
 		const {
@@ -295,18 +294,14 @@ class DualHeadingEdit extends Component {
 						keepPlaceholderOnFocus
 					/>
 
-					{ ( ! RichText.isEmpty( subtitle ) || isSelected ) && (
-
-						<RichText
-							value={ subtitle }
-							className={ subheadingClasses }
-							style={ subheadingStyles }
-							onChange={ ( newSubtitle ) => setAttributes( { subtitle: newSubtitle } ) }
-							placeholder={ subtitlePlaceholder || __( 'Write subheading…' ) }
-							keepPlaceholderOnFocus
-						/>
-
-					) }
+					<RichText
+						value={ subtitle }
+						className={ subheadingClasses }
+						style={ subheadingStyles }
+						onChange={ ( newSubtitle ) => setAttributes( { subtitle: newSubtitle } ) }
+						placeholder={ subtitlePlaceholder || __( 'Write subheading…' ) }
+						keepPlaceholderOnFocus
+					/>
 				</header>
 
 			</Fragment>
