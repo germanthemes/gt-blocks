@@ -42,7 +42,7 @@ registerBlockType(
 		attributes: {
 			heroLayout: {
 				type: 'string',
-				default: 'full',
+				default: 'center',
 			},
 			heroWidth: {
 				type: 'number',
@@ -80,7 +80,7 @@ registerBlockType(
 				[ `gt-hero-content-width-${ heroWidth }` ]: 50 !== heroWidth,
 				'gt-has-hero-image': heroImage,
 				[ `gt-column-gap-${ columnGap }` ]: 0 !== columnGap && heroImage && ( 'left' === heroLayout || 'right' === heroLayout ),
-				[ `gt-margin-bottom-${ columnGap }` ]: 0 !== columnGap && heroImage && ( 'full' === heroLayout || 'center' === heroLayout ),
+				[ `gt-margin-bottom-${ columnGap }` ]: 0 !== columnGap && heroImage && 'center' === heroLayout,
 			} );
 
 			return (

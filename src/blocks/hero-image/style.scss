@@ -20,7 +20,6 @@
 			flex-grow: 1;
 		}
 
-		&.gt-hero-layout-full,
 		&.gt-hero-layout-center {
 			flex-direction: column;
 			align-items: center;
@@ -65,57 +64,6 @@
 
 		&.gt-hero-content-width-80 .wp-block-gt-layout-blocks-content {
 			flex-basis: 80%;
-		}
-
-		/* Hero Content width for Centered Layout */
-		&.gt-hero-layout-center {
-			.wp-block-gt-layout-blocks-content,
-			.wp-block-gt-layout-blocks-image {
-				width: 50%;
-				flex-basis: auto;
-			}
-		}
-
-		&.gt-hero-layout-center.gt-hero-content-width-20 {
-			.wp-block-gt-layout-blocks-content,
-			.wp-block-gt-layout-blocks-image {
-				width: 20%;
-			}
-		}
-
-		&.gt-hero-layout-center.gt-hero-content-width-30 {
-			.wp-block-gt-layout-blocks-content,
-			.wp-block-gt-layout-blocks-image {
-				width: 30%;
-			}
-		}
-
-		&.gt-hero-layout-center.gt-hero-content-width-40 {
-			.wp-block-gt-layout-blocks-content,
-			.wp-block-gt-layout-blocks-image {
-				width: 40%;
-			}
-		}
-
-		&.gt-hero-layout-center.gt-hero-content-width-60 {
-			.wp-block-gt-layout-blocks-content,
-			.wp-block-gt-layout-blocks-image {
-				width: 60%;
-			}
-		}
-
-		&.gt-hero-layout-center.gt-hero-content-width-70 {
-			.wp-block-gt-layout-blocks-content,
-			.wp-block-gt-layout-blocks-image {
-				width: 70%;
-			}
-		}
-
-		&.gt-hero-layout-center.gt-hero-content-width-80 {
-			.wp-block-gt-layout-blocks-content,
-			.wp-block-gt-layout-blocks-image {
-				width: 80%;
-			}
 		}
 
 		/* Column Gap Styling */

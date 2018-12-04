@@ -97,7 +97,7 @@ class HeroImageEdit extends Component {
 			[ `gt-hero-content-width-${ heroWidth }` ]: 50 !== heroWidth,
 			'gt-has-hero-image': heroImage,
 			[ `gt-edit-column-gap-${ columnGap }` ]: 32 !== columnGap && heroImage && ( 'left' === heroLayout || 'right' === heroLayout ),
-			[ `gt-edit-margin-bottom-${ columnGap }` ]: 32 !== columnGap && heroImage && ( 'full' === heroLayout || 'center' === heroLayout ),
+			[ `gt-edit-margin-bottom-${ columnGap }` ]: 32 !== columnGap && heroImage && 'center' === heroLayout,
 		} );
 
 		return (
@@ -105,23 +105,22 @@ class HeroImageEdit extends Component {
 
 				<InspectorControls>
 
-					<PanelBody title={ __( 'Hero Image Settings' ) } initialOpen={ false } className="gt-panel-hero-image-settings gt-panel">
+					<PanelBody title={ __( 'Hero Settings' ) } initialOpen={ false } className="gt-panel-hero-settings gt-panel">
 
 						<SelectControl
-							label={ __( 'Hero Content Position' ) }
+							label={ __( 'Content Position' ) }
 							value={ heroLayout }
 							onChange={ ( newLayout ) => setAttributes( { heroLayout: newLayout } ) }
 							options={ [
-								{ value: 'full', label: __( 'Fullwidth' ) },
 								{ value: 'center', label: __( 'Center' ) },
 								{ value: 'left', label: __( 'Left' ) },
 								{ value: 'right', label: __( 'Right' ) },
 							] }
 						/>
 
-						{ 'full' !== heroLayout && (
+						{ 'center' !== heroLayout && (
 							<RangeControl
-								label={ __( 'Hero Content Width' ) }
+								label={ __( 'Content Width' ) }
 								value={ heroWidth }
 								onChange={ ( newWidth ) => setAttributes( { heroWidth: newWidth } ) }
 								min={ 20 }
@@ -130,7 +129,7 @@ class HeroImageEdit extends Component {
 							/>
 						) }
 
-						<BaseControl id="gt-image-block" label={ __( 'Hero Image Block' ) }>
+						<BaseControl id="gt-image-block" label={ __( 'Image Block' ) }>
 							<Button
 								isLarge
 								className="gt-image-block-button"

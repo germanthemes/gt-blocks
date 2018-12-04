@@ -148,7 +148,6 @@
 .wp-block-gt-layout-blocks-hero-image .gt-hero-section {
   display: block;
   /* Hero Content width for Left & Right Layout */
-  /* Hero Content width for Centered Layout */
   /* Column Gap Styling */
   /* Margin Bottom Styling */ }
   .wp-block-gt-layout-blocks-hero-image .gt-hero-section > .editor-inner-blocks > .editor-block-list__layout {
@@ -175,7 +174,6 @@
           order: 1;
       -ms-flex-positive: 1;
           flex-grow: 1; }
-  .wp-block-gt-layout-blocks-hero-image .gt-hero-section.gt-hero-layout-full > .editor-inner-blocks > .editor-block-list__layout,
   .wp-block-gt-layout-blocks-hero-image .gt-hero-section.gt-hero-layout-center > .editor-inner-blocks > .editor-block-list__layout {
     -ms-flex-direction: column;
         flex-direction: column;
@@ -215,22 +213,6 @@
   .wp-block-gt-layout-blocks-hero-image .gt-hero-section.gt-hero-content-width-80 > .editor-inner-blocks > .editor-block-list__layout > .editor-block-list__block[data-type="gt-layout-blocks/content"] {
     -ms-flex-preferred-size: 80%;
         flex-basis: 80%; }
-  .wp-block-gt-layout-blocks-hero-image .gt-hero-section.gt-hero-layout-center > .editor-inner-blocks > .editor-block-list__layout > .editor-block-list__block {
-    width: 50%;
-    -ms-flex-preferred-size: auto;
-        flex-basis: auto; }
-  .wp-block-gt-layout-blocks-hero-image .gt-hero-section.gt-hero-layout-center.gt-hero-content-width-20 > .editor-inner-blocks > .editor-block-list__layout > .editor-block-list__block {
-    width: 20%; }
-  .wp-block-gt-layout-blocks-hero-image .gt-hero-section.gt-hero-layout-center.gt-hero-content-width-30 > .editor-inner-blocks > .editor-block-list__layout > .editor-block-list__block {
-    width: 30%; }
-  .wp-block-gt-layout-blocks-hero-image .gt-hero-section.gt-hero-layout-center.gt-hero-content-width-40 > .editor-inner-blocks > .editor-block-list__layout > .editor-block-list__block {
-    width: 40%; }
-  .wp-block-gt-layout-blocks-hero-image .gt-hero-section.gt-hero-layout-center.gt-hero-content-width-60 > .editor-inner-blocks > .editor-block-list__layout > .editor-block-list__block {
-    width: 60%; }
-  .wp-block-gt-layout-blocks-hero-image .gt-hero-section.gt-hero-layout-center.gt-hero-content-width-70 > .editor-inner-blocks > .editor-block-list__layout > .editor-block-list__block {
-    width: 70%; }
-  .wp-block-gt-layout-blocks-hero-image .gt-hero-section.gt-hero-layout-center.gt-hero-content-width-80 > .editor-inner-blocks > .editor-block-list__layout > .editor-block-list__block {
-    width: 80%; }
   .wp-block-gt-layout-blocks-hero-image .gt-hero-section.gt-edit-column-gap-40.gt-hero-layout-left > .editor-inner-blocks > .editor-block-list__layout > .editor-block-list__block[data-type="gt-layout-blocks/content"] {
     padding-right: 48px; }
   .wp-block-gt-layout-blocks-hero-image .gt-hero-section.gt-edit-column-gap-40.gt-hero-layout-left > .editor-inner-blocks > .editor-block-list__layout > .editor-block-list__block[data-type="gt-layout-blocks/image"] {
@@ -329,14 +311,17 @@
     .wp-block-gt-layout-blocks-hero-image .gt-hero-section.gt-edit-margin-bottom-24 > .editor-inner-blocks > .editor-block-list__layout > .editor-block-list__block[data-type="gt-layout-blocks/image"] {
       margin-bottom: -3px; } }
 
-.gt-panel-hero-image-settings .gt-image-block-button {
+.gt-panel-hero-settings .gt-image-block-button {
   height: 36px;
   line-height: 34px;
   padding: 0 12px 2px; }
-  .gt-panel-hero-image-settings .gt-image-block-button svg.dashicon {
+  .gt-panel-hero-settings .gt-image-block-button svg.dashicon {
     margin: 8px 8px 0 0;
     width: 18px;
     height: 18px; }
+
+.wp-block.is-selected[data-type="gt-layout-blocks/hero-image"] .editor-block-list__layout .editor-block-list__block[data-type="gt-layout-blocks/content"] > .editor-block-list__block-edit:not(:hover):before {
+  outline: 1px dashed rgba(145, 151, 162, 0.25); }
 .gt-background-section .gt-section-content h1, .gt-background-section .gt-section-content h2, .gt-background-section .gt-section-content h3, .gt-background-section .gt-section-content h4, .gt-background-section .gt-section-content h5, .gt-background-section .gt-section-content h6, .gt-background-section .gt-section-content p {
   color: inherit; }
 
