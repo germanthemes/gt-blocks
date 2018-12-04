@@ -1,6 +1,18 @@
 .gt-background-section {
 	position: relative;
-	padding: 4rem 2rem;
+	padding: 0;
+
+	&.gt-small-padding {
+		padding: 1rem;
+	}
+
+	&.gt-medium-padding {
+		padding: 2rem;
+	}
+
+	&.gt-large-padding {
+		padding: 4rem;
+	}
 
 	&.gt-has-background-image {
 		background-size: cover;
@@ -21,13 +33,29 @@
 		z-index: 1;
 	}
 
-	.gt-background-content {
+	.gt-section-content {
 		position: relative;
 		margin: 0 auto;
 		z-index: 2;
 
 		> *:last-child {
 			margin-bottom: 0;
+		}
+
+		&.gt-narrow-width {
+			max-width: 640px;
+		}
+
+		&.gt-default-width {
+			max-width: 800px;
+		}
+
+		&.gt-wide-width {
+			max-width: 960px;
+		}
+
+		&.gt-full-width {
+			max-width: 1120px;
 		}
 	}
 }

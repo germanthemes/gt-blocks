@@ -109,7 +109,7 @@ class GT_Layout_Blocks {
 	 * @return void
 	 */
 	static function enqueue_block_scripts() {
-		wp_enqueue_style( 'gt-layout-blocks', GTLB_PLUGIN_URL . 'assets/css/gt-layout-blocks.css', array( 'wp-blocks' ), GTLB_VERSION );
+		wp_enqueue_style( 'gt-layout-blocks', GTLB_PLUGIN_URL . 'assets/css/gt-layout-blocks.css', array(), GTLB_VERSION );
 	}
 
 	/**
@@ -124,6 +124,8 @@ class GT_Layout_Blocks {
 			'wp-blocks',
 			'wp-i18n',
 			'wp-element',
+			'wp-components',
+			'wp-editor',
 		), GTLB_VERSION );
 
 		wp_add_inline_script(

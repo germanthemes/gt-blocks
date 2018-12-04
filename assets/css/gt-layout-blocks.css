@@ -112,30 +112,6 @@
         padding: 1rem; }
       .wp-block-gt-layout-blocks-column .gt-column.has-background.gt-padding-large {
         padding: 2rem; }
-.wp-block-gt-layout-blocks-container {
-  margin-bottom: 1.5em; }
-.gt-background-section {
-  position: relative;
-  padding: 4rem 2rem; }
-  .gt-background-section.gt-has-background-image {
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center center; }
-  .gt-background-section.gt-fixed-background {
-    background-attachment: fixed; }
-  .gt-background-section .gt-background-overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 1; }
-  .gt-background-section .gt-background-content {
-    position: relative;
-    margin: 0 auto;
-    z-index: 2; }
-    .gt-background-section .gt-background-content > *:last-child {
-      margin-bottom: 0; }
 .wp-block-gt-layout-blocks-content {
   display: -ms-flexbox;
   display: flex;
@@ -357,6 +333,42 @@
     margin-bottom: 1.5rem; }
   .wp-block-gt-layout-blocks-hero-image .gt-buttons-wrapper .wp-block-gt-layout-blocks-button {
     margin-bottom: 0; }
+.gt-background-section {
+  position: relative;
+  padding: 0; }
+  .gt-background-section.gt-small-padding {
+    padding: 1rem; }
+  .gt-background-section.gt-medium-padding {
+    padding: 2rem; }
+  .gt-background-section.gt-large-padding {
+    padding: 4rem; }
+  .gt-background-section.gt-has-background-image {
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center; }
+  .gt-background-section.gt-fixed-background {
+    background-attachment: fixed; }
+  .gt-background-section .gt-background-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1; }
+  .gt-background-section .gt-section-content {
+    position: relative;
+    margin: 0 auto;
+    z-index: 2; }
+    .gt-background-section .gt-section-content > *:last-child {
+      margin-bottom: 0; }
+    .gt-background-section .gt-section-content.gt-narrow-width {
+      max-width: 640px; }
+    .gt-background-section .gt-section-content.gt-default-width {
+      max-width: 800px; }
+    .gt-background-section .gt-section-content.gt-wide-width {
+      max-width: 960px; }
+    .gt-background-section .gt-section-content.gt-full-width {
+      max-width: 1120px; }
 .wp-block-gt-layout-blocks-icon {
   margin-bottom: 1.5em; }
   .wp-block-gt-layout-blocks-icon .gt-icon {
@@ -418,6 +430,8 @@
     -ms-flex-pack: end;
         justify-content: flex-end; }
 .wp-block-gt-layout-blocks-portfolio {
+  margin-bottom: 1.5em; }
+.wp-block-gt-layout-blocks-section {
   margin-bottom: 1.5em; }
 .wp-block-gt-layout-blocks-team-members {
   margin-bottom: 1.5em; }

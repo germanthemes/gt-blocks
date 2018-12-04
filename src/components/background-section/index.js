@@ -23,10 +23,9 @@ class BackgroundSection extends Component {
 		} = this.props;
 
 		const {
-			contentWidth,
-			paddingTop,
-			paddingBottom,
 			blockAlignment,
+			contentWidth,
+			padding,
 			textColor,
 			backgroundColor,
 			customTextColor,
@@ -43,6 +42,7 @@ class BackgroundSection extends Component {
 
 		const blockClasses = classnames( className, 'gt-background-section', {
 			[ `align${ blockAlignment }` ]: ( blockAlignment !== 'center' ),
+			[ `gt-${ padding }-padding` ]: 'zero' !== padding,
 			'has-text-color': textColor || customTextColor,
 			[ textColorClass ]: textColorClass,
 			'has-background': backgroundColor || customBackgroundColor,
@@ -52,8 +52,6 @@ class BackgroundSection extends Component {
 		} );
 
 		const blockStyles = {
-			paddingTop: 64 !== paddingTop ? paddingTop + 'px' : undefined,
-			paddingBottom: 64 !== paddingBottom ? paddingBottom + 'px' : undefined,
 			color: textColorClass ? undefined : customTextColor,
 			backgroundColor: backgroundClass ? undefined : customBackgroundColor,
 			backgroundImage: backgroundImageId ? `url(${ backgroundImageUrl })` : undefined,
@@ -72,9 +70,9 @@ class BackgroundSection extends Component {
 			opacity: ( 100 - imageOpacity ) / 100,
 		};
 
-		const contentStyles = {
-			maxWidth: contentWidth + 'px',
-		};
+		const contentClasses = classnames( 'gt-section-content', {
+			[ `gt-${ contentWidth }-width` ]: contentWidth,
+		} );
 
 		const dataBackgroundImage = backgroundImageId ? backgroundImageUrl : undefined;
 
@@ -85,7 +83,7 @@ class BackgroundSection extends Component {
 					<div className={ overlayClasses } style={ overlayStyles }></div>
 				) }
 
-				<div className="gt-background-content" style={ contentStyles }>
+				<div className={ contentClasses }>
 
 					{ children }
 

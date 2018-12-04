@@ -84,10 +84,9 @@ class BackgroundEdit extends Component {
 		} = this.props;
 
 		const {
-			contentWidth,
-			paddingTop,
-			paddingBottom,
 			blockAlignment,
+			contentWidth,
+			padding,
 			backgroundImageId,
 			backgroundImageUrl,
 			imageOpacity,
@@ -98,6 +97,7 @@ class BackgroundEdit extends Component {
 		const blockId = `gt-container-block-${ instanceId }`;
 
 		const blockClasses = classnames( className, 'gt-background-section', {
+			[ `gt-${ padding }-padding` ]: 'zero' !== padding,
 			'has-text-color': textColor.color,
 			[ textColor.class ]: textColor.class,
 			'has-background': backgroundColor.color,
@@ -107,8 +107,6 @@ class BackgroundEdit extends Component {
 		} );
 
 		const blockStyles = {
-			paddingTop: 64 !== paddingTop ? paddingTop + 'px' : undefined,
-			paddingBottom: 64 !== paddingBottom ? paddingBottom + 'px' : undefined,
 			backgroundColor: backgroundColor.class ? undefined : backgroundColor.color,
 			color: textColor.class ? undefined : textColor.color,
 			backgroundImage: backgroundImageId ? `url(${ backgroundImageUrl })` : undefined,
@@ -125,15 +123,9 @@ class BackgroundEdit extends Component {
 			opacity: ( 100 - imageOpacity ) / 100,
 		};
 
-		const contentStyles = {
-			maxWidth: contentWidth + 'px',
-		};
-
-		const inlineStyles = `
-			#${ blockId } .gt-background-content .editor-block-list__block {
-				max-width: ${ contentWidth }px;
-			}
-		`;
+		const contentClasses = classnames( 'gt-section-content', {
+			[ `gt-${ contentWidth }-width` ]: contentWidth,
+		} );
 
 		const dataBackgroundImage = backgroundImageId ? backgroundImageUrl : undefined;
 
@@ -152,34 +144,7 @@ class BackgroundEdit extends Component {
 
 				<InspectorControls>
 
-					<PanelBody title={ __( 'Container Settings' ) } initialOpen={ false } className="gt-container-settings-panel gt-panel">
-
-						<RangeControl
-							label={ __( 'Maximum Content Width' ) }
-							value={ contentWidth }
-							onChange={ ( maxWidth ) => setAttributes( { contentWidth: maxWidth } ) }
-							min={ 240 }
-							max={ 2400 }
-							step={ 80 }
-						/>
-
-						<RangeControl
-							label={ __( 'Padding Top' ) }
-							value={ paddingTop }
-							onChange={ ( newPadding ) => setAttributes( { paddingTop: newPadding } ) }
-							min={ 0 }
-							max={ 128 }
-							step={ 16 }
-						/>
-
-						<RangeControl
-							label={ __( 'Padding Bottom' ) }
-							value={ paddingBottom }
-							onChange={ ( newPadding ) => setAttributes( { paddingBottom: newPadding } ) }
-							min={ 0 }
-							max={ 128 }
-							step={ 16 }
-						/>
+					<PanelBody title={ __( 'Section Settings' ) } initialOpen={ false } className="gt-section-settings-panel gt-panel">
 
 						<BaseControl id="gt-block-alignment" label={ __( 'Block Alignment' ) }>
 							<BlockAlignmentToolbar
@@ -188,6 +153,30 @@ class BackgroundEdit extends Component {
 								controls={ [ 'wide', 'full' ] }
 							/>
 						</BaseControl>
+
+						<SelectControl
+							label={ __( 'Content Width' ) }
+							value={ contentWidth }
+							onChange={ ( newWidth ) => setAttributes( { contentWidth: newWidth } ) }
+							options={ [
+								{ value: 'narrow', label: __( 'Narrow width' ) },
+								{ value: 'default', label: __( 'Default width' ) },
+								{ value: 'wide', label: __( 'Wide width' ) },
+								{ value: 'full', label: __( 'Full width' ) },
+							] }
+						/>
+
+						<SelectControl
+							label={ __( 'Padding' ) }
+							value={ padding }
+							onChange={ ( newPadding ) => setAttributes( { padding: newPadding } ) }
+							options={ [
+								{ value: 'zero', label: __( 'None' ) },
+								{ value: 'small', label: __( 'Small' ) },
+								{ value: 'medium', label: __( 'Medium' ) },
+								{ value: 'large', label: __( 'Large' ) },
+							] }
+						/>
 
 					</PanelBody>
 
@@ -329,9 +318,7 @@ class BackgroundEdit extends Component {
 						<div className={ overlayClasses } style={ overlayStyles }></div>
 					) }
 
-					<style>{ inlineStyles }</style>
-
-					<div className="gt-background-content" style={ contentStyles }>
+					<div className={ contentClasses }>
 
 						{ children }
 

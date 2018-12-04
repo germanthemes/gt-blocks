@@ -78,37 +78,6 @@
         width: 18px; }
     .wp-block-gt-layout-blocks-column .gt-column-controls .remove-column {
       margin-left: auto; }
-.gt-background-section .gt-background-content h1, .gt-background-section .gt-background-content h2, .gt-background-section .gt-background-content h3, .gt-background-section .gt-background-content h4, .gt-background-section .gt-background-content h5, .gt-background-section .gt-background-content h6, .gt-background-section .gt-background-content p {
-  color: inherit; }
-
-.gt-background-image-panel .gt-background-image .gt-set-image {
-  display: block;
-  -webkit-transition: all .1s ease-out;
-  -o-transition: all .1s ease-out;
-  transition: all .1s ease-out;
-  width: 100%;
-  background-color: #edeff0;
-  border: 1px dashed #a2aab2;
-  line-height: 20px;
-  padding: 10px 0;
-  text-align: center; }
-  .gt-background-image-panel .gt-background-image .gt-set-image:hover {
-    background-color: #f8f9f9; }
-
-.gt-background-image-panel .gt-background-image .gt-image-button {
-  display: block;
-  padding: 0; }
-  .gt-background-image-panel .gt-background-image .gt-image-button img {
-    vertical-align: top; }
-
-.gt-background-image-panel .gt-background-image .gt-image-controls {
-  display: -ms-flexbox;
-  display: flex;
-  margin-top: 5px;
-  margin-bottom: 1.5em; }
-  .gt-background-image-panel .gt-background-image .gt-image-controls .gt-replace-image {
-    margin-top: 3px;
-    margin-right: 12px; }
 .wp-block-gt-layout-blocks-content {
   display: block; }
   .wp-block-gt-layout-blocks-content .gt-content > .editor-inner-blocks {
@@ -368,6 +337,49 @@
     margin: 8px 8px 0 0;
     width: 18px;
     height: 18px; }
+.gt-background-section .gt-section-content h1, .gt-background-section .gt-section-content h2, .gt-background-section .gt-section-content h3, .gt-background-section .gt-section-content h4, .gt-background-section .gt-section-content h5, .gt-background-section .gt-section-content h6, .gt-background-section .gt-section-content p {
+  color: inherit; }
+
+.gt-background-section .gt-section-content.gt-narrow-width .editor-block-list__block {
+  max-width: 640px; }
+
+.gt-background-section .gt-section-content.gt-default-width .editor-block-list__block {
+  max-width: 800px; }
+
+.gt-background-section .gt-section-content.gt-wide-width .editor-block-list__block {
+  max-width: 960px; }
+
+.gt-background-section .gt-section-content.gt-full-width .editor-block-list__block {
+  max-width: 1120px; }
+
+.gt-background-image-panel .gt-background-image .gt-set-image {
+  display: block;
+  -webkit-transition: all .1s ease-out;
+  -o-transition: all .1s ease-out;
+  transition: all .1s ease-out;
+  width: 100%;
+  background-color: #edeff0;
+  border: 1px dashed #a2aab2;
+  line-height: 20px;
+  padding: 10px 0;
+  text-align: center; }
+  .gt-background-image-panel .gt-background-image .gt-set-image:hover {
+    background-color: #f8f9f9; }
+
+.gt-background-image-panel .gt-background-image .gt-image-button {
+  display: block;
+  padding: 0; }
+  .gt-background-image-panel .gt-background-image .gt-image-button img {
+    vertical-align: top; }
+
+.gt-background-image-panel .gt-background-image .gt-image-controls {
+  display: -ms-flexbox;
+  display: flex;
+  margin-top: 5px;
+  margin-bottom: 1.5em; }
+  .gt-background-image-panel .gt-background-image .gt-image-controls .gt-replace-image {
+    margin-top: 3px;
+    margin-right: 12px; }
 /* Icon Picker Modal */
 .gt-layout-blocks-icon-picker-modal {
   width: 100%;

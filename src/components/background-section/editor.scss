@@ -1,9 +1,25 @@
 .gt-background-section {
 
-	.gt-background-content {
+	.gt-section-content {
 
 		h1, h2, h3, h4, h5, h6, p {
 			color: inherit;
+		}
+		
+		&.gt-narrow-width .editor-block-list__block {
+			max-width: 640px;
+		}
+
+		&.gt-default-width .editor-block-list__block {
+			max-width: 800px;
+		}
+
+		&.gt-wide-width .editor-block-list__block {
+			max-width: 960px;
+		}
+
+		&.gt-full-width .editor-block-list__block {
+			max-width: 1120px;
 		}
 	}
 }
