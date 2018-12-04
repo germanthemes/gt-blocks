@@ -37,8 +37,15 @@
 		/* Hero Content width for Left & Right Layout */
 		&.gt-hero-layout-left,
 		&.gt-hero-layout-right {
+			margin-right: -1.5rem;
+
 			.wp-block-gt-layout-blocks-content {
 				flex-basis: 50%;
+				padding-right: 1.5rem;
+			}
+
+			.wp-block-gt-layout-blocks-image {
+				padding-right: 1.5rem;
 			}
 		}
 
@@ -64,112 +71,6 @@
 
 		&.gt-hero-content-width-80 .wp-block-gt-layout-blocks-content {
 			flex-basis: 80%;
-		}
-
-		/* Column Gap Styling */
-		&.gt-column-gap-8 {
-			margin-right: -8px;
-
-			.wp-block-gt-layout-blocks-content,
-			.wp-block-gt-layout-blocks-image {
-				padding-right: 8px;
-			}
-		}
-
-		&.gt-column-gap-16 {
-			margin-right: -16px;
-
-			.wp-block-gt-layout-blocks-content,
-			.wp-block-gt-layout-blocks-image {
-				padding-right: 16px;
-			}
-		}
-
-		&.gt-column-gap-24 {
-			margin-right: -24px;
-
-			.wp-block-gt-layout-blocks-content,
-			.wp-block-gt-layout-blocks-image {
-				padding-right: 24px;
-			}
-		}
-
-		&.gt-column-gap-32 {
-			margin-right: -32px;
-
-			.wp-block-gt-layout-blocks-content,
-			.wp-block-gt-layout-blocks-image {
-				padding-right: 32px;
-			}
-		}
-
-		&.gt-column-gap-40 {
-			margin-right: -40px;
-
-			.wp-block-gt-layout-blocks-content,
-			.wp-block-gt-layout-blocks-image {
-				padding-right: 40px;
-			}
-		}
-
-		&.gt-column-gap-48 {
-			margin-right: -48px;
-
-			.wp-block-gt-layout-blocks-content,
-			.wp-block-gt-layout-blocks-image {
-				padding-right: 48px;
-			}
-		}
-
-		&.gt-column-gap-56 {
-			margin-right: -56px;
-
-			.wp-block-gt-layout-blocks-content,
-			.wp-block-gt-layout-blocks-image {
-				padding-right: 56px;
-			}
-		}
-
-		&.gt-column-gap-64 {
-			margin-right: -64px;
-
-			.wp-block-gt-layout-blocks-content,
-			.wp-block-gt-layout-blocks-image {
-				padding-right: 64px;
-			}
-		}
-
-		/* Margin Bottom Styling */
-		&.gt-margin-bottom-8 .wp-block-gt-layout-blocks-image {
-			margin-bottom: 8px;
-		}
-
-		&.gt-margin-bottom-16 .wp-block-gt-layout-blocks-image {
-			margin-bottom: 16px;
-		}
-
-		&.gt-margin-bottom-24 .wp-block-gt-layout-blocks-image {
-			margin-bottom: 24px;
-		}
-
-		&.gt-margin-bottom-32 .wp-block-gt-layout-blocks-image {
-			margin-bottom: 32px;
-		}
-
-		&.gt-margin-bottom-40 .wp-block-gt-layout-blocks-image {
-			margin-bottom: 40px;
-		}
-
-		&.gt-margin-bottom-48 .wp-block-gt-layout-blocks-image {
-			margin-bottom: 48px;
-		}
-
-		&.gt-margin-bottom-56 .wp-block-gt-layout-blocks-image {
-			margin-bottom: 56px;
-		}
-
-		&.gt-margin-bottom-64 .wp-block-gt-layout-blocks-image {
-			margin-bottom: 64px;
 		}
 	}
 

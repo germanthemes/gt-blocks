@@ -3,6 +3,16 @@
 	.gt-hero-section {
 		display: block;
 
+		&.gt-hero-layout-left,
+		&.gt-hero-layout-right {
+			margin-right: 0;
+
+			.wp-block-gt-layout-blocks-content,
+			.wp-block-gt-layout-blocks-image {
+				padding-right: 0;
+			}
+		}
+
 		> .editor-inner-blocks > .editor-block-list__layout {
 			display: flex;
 
@@ -82,96 +92,6 @@
 		&.gt-hero-content-width-80 > .editor-inner-blocks > .editor-block-list__layout > .editor-block-list__block[data-type="gt-layout-blocks/content"] {
 			flex-basis: 80%;
 		}
-
-		/* Column Gap Styling */
-		&.gt-edit-column-gap-40.gt-hero-layout-left {
-			> .editor-inner-blocks > .editor-block-list__layout > .editor-block-list__block[data-type="gt-layout-blocks/content"] {
-				padding-right: 48px;
-			}
-			> .editor-inner-blocks > .editor-block-list__layout > .editor-block-list__block[data-type="gt-layout-blocks/image"] {
-				padding-left: 48px;
-			}
-		}
-
-		&.gt-edit-column-gap-40.gt-hero-layout-right {
-			> .editor-inner-blocks > .editor-block-list__layout > .editor-block-list__block[data-type="gt-layout-blocks/content"] {
-				padding-left: 48px;
-			}
-			> .editor-inner-blocks > .editor-block-list__layout > .editor-block-list__block[data-type="gt-layout-blocks/image"] {
-				padding-right: 48px;
-			}
-		}
-
-		&.gt-edit-column-gap-48.gt-hero-layout-left {
-			> .editor-inner-blocks > .editor-block-list__layout > .editor-block-list__block[data-type="gt-layout-blocks/content"] {
-				padding-right: 52px;
-			}
-			> .editor-inner-blocks > .editor-block-list__layout > .editor-block-list__block[data-type="gt-layout-blocks/image"] {
-				padding-left: 52px;
-			}
-		}
-
-		&.gt-edit-column-gap-48.gt-hero-layout-right {
-			> .editor-inner-blocks > .editor-block-list__layout > .editor-block-list__block[data-type="gt-layout-blocks/content"] {
-				padding-left: 52px;
-			}
-			> .editor-inner-blocks > .editor-block-list__layout > .editor-block-list__block[data-type="gt-layout-blocks/image"] {
-				padding-right: 52px;
-			}
-		}
-
-		&.gt-edit-column-gap-56.gt-hero-layout-left {
-			> .editor-inner-blocks > .editor-block-list__layout > .editor-block-list__block[data-type="gt-layout-blocks/content"] {
-				padding-right: 56px;
-			}
-			> .editor-inner-blocks > .editor-block-list__layout > .editor-block-list__block[data-type="gt-layout-blocks/image"] {
-				padding-left: 56px;
-			}
-		}
-
-		&.gt-edit-column-gap-56.gt-hero-layout-right {
-			> .editor-inner-blocks > .editor-block-list__layout > .editor-block-list__block[data-type="gt-layout-blocks/content"] {
-				padding-left: 56px;
-			}
-			> .editor-inner-blocks > .editor-block-list__layout > .editor-block-list__block[data-type="gt-layout-blocks/image"] {
-				padding-right: 56px;
-			}
-		}
-
-		&.gt-edit-column-gap-64.gt-hero-layout-left {
-			> .editor-inner-blocks > .editor-block-list__layout > .editor-block-list__block[data-type="gt-layout-blocks/content"] {
-				padding-right: 60px;
-			}
-			> .editor-inner-blocks > .editor-block-list__layout > .editor-block-list__block[data-type="gt-layout-blocks/image"] {
-				padding-left: 60px;
-			}
-		}
-
-		&.gt-edit-column-gap-64.gt-hero-layout-right {
-			> .editor-inner-blocks > .editor-block-list__layout > .editor-block-list__block[data-type="gt-layout-blocks/content"] {
-				padding-left: 60px;
-			}
-			> .editor-inner-blocks > .editor-block-list__layout > .editor-block-list__block[data-type="gt-layout-blocks/image"] {
-				padding-right: 60px;
-			}
-		}
-
-		/* Margin Bottom Styling */
-		&.gt-edit-margin-bottom-40 > .editor-inner-blocks > .editor-block-list__layout > .editor-block-list__block[data-type="gt-layout-blocks/image"] {
-			margin-bottom: 9px;
-		}
-
-		&.gt-edit-margin-bottom-48 > .editor-inner-blocks > .editor-block-list__layout > .editor-block-list__block[data-type="gt-layout-blocks/image"] {
-			margin-bottom: 17px;
-		}
-
-		&.gt-edit-margin-bottom-56 > .editor-inner-blocks > .editor-block-list__layout > .editor-block-list__block[data-type="gt-layout-blocks/image"] {
-			margin-bottom: 25px;
-		}
-
-		&.gt-edit-margin-bottom-64 > .editor-inner-blocks > .editor-block-list__layout > .editor-block-list__block[data-type="gt-layout-blocks/image"] {
-			margin-bottom: 33px;
-		}
 	}
 }
 
@@ -182,120 +102,6 @@
 
 			> .editor-block-list__block > .editor-block-contextual-toolbar {
 				transform: translateY( -40px );
-			}
-		}
-
-		/* Column Gap Styling */
-		&.gt-edit-column-gap-0.gt-hero-layout-left {
-			> .editor-inner-blocks > .editor-block-list__layout > .editor-block-list__block[data-type="gt-layout-blocks/content"] {
-				padding-right: calc( 43px - 15px );
-			}
-			> .editor-inner-blocks > .editor-block-list__layout > .editor-block-list__block[data-type="gt-layout-blocks/image"] {
-				margin-left: -15px;
-			}
-		}
-
-		&.gt-edit-column-gap-0.gt-hero-layout-right {
-			> .editor-inner-blocks > .editor-block-list__layout > .editor-block-list__block[data-type="gt-layout-blocks/content"] {
-				padding-left: calc( 43px - 15px );
-			}
-			> .editor-inner-blocks > .editor-block-list__layout > .editor-block-list__block[data-type="gt-layout-blocks/image"] {
-				margin-right: -15px;
-			}
-		}
-
-		&.gt-edit-column-gap-8.gt-hero-layout-left {
-			> .editor-inner-blocks > .editor-block-list__layout > .editor-block-list__block[data-type="gt-layout-blocks/content"] {
-				padding-right: calc( 43px - 11px );
-			}
-			> .editor-inner-blocks > .editor-block-list__layout > .editor-block-list__block[data-type="gt-layout-blocks/image"] {
-				margin-left: -11px;
-			}
-		}
-
-		&.gt-edit-column-gap-8.gt-hero-layout-right {
-			> .editor-inner-blocks > .editor-block-list__layout > .editor-block-list__block[data-type="gt-layout-blocks/content"] {
-				padding-left: calc( 43px - 11px );
-			}
-			> .editor-inner-blocks > .editor-block-list__layout > .editor-block-list__block[data-type="gt-layout-blocks/image"] {
-				margin-right: -11px;
-			}
-		}
-
-		&.gt-edit-column-gap-16.gt-hero-layout-left {
-			> .editor-inner-blocks > .editor-block-list__layout > .editor-block-list__block[data-type="gt-layout-blocks/content"] {
-				padding-right: calc( 43px - 7px );
-			}
-			> .editor-inner-blocks > .editor-block-list__layout > .editor-block-list__block[data-type="gt-layout-blocks/image"] {
-				margin-left: -7px;
-			}
-		}
-
-		&.gt-edit-column-gap-16.gt-hero-layout-right {
-			> .editor-inner-blocks > .editor-block-list__layout > .editor-block-list__block[data-type="gt-layout-blocks/content"] {
-				padding-left: calc( 43px - 7px );
-			}
-			> .editor-inner-blocks > .editor-block-list__layout > .editor-block-list__block[data-type="gt-layout-blocks/image"] {
-				margin-right: -7px;
-			}
-		}
-
-		&.gt-edit-column-gap-24.gt-hero-layout-left {
-			> .editor-inner-blocks > .editor-block-list__layout > .editor-block-list__block[data-type="gt-layout-blocks/content"] {
-				padding-right: calc( 43px - 3px );
-			}
-			> .editor-inner-blocks > .editor-block-list__layout > .editor-block-list__block[data-type="gt-layout-blocks/image"] {
-				margin-left: -3px;
-			}
-		}
-
-		&.gt-edit-column-gap-24.gt-hero-layout-right {
-			> .editor-inner-blocks > .editor-block-list__layout > .editor-block-list__block[data-type="gt-layout-blocks/content"] {
-				padding-left: calc( 43px - 3px );
-			}
-			> .editor-inner-blocks > .editor-block-list__layout > .editor-block-list__block[data-type="gt-layout-blocks/image"] {
-				margin-right: -3px;
-			}
-		}
-
-		/* Margin Bottom Styling */
-		&.gt-edit-margin-bottom-0 > .editor-inner-blocks > .editor-block-list__layout {
-			> .editor-block-list__block[data-type="gt-layout-blocks/content"] {
-				margin-top: -15px;
-			}
-
-			> .editor-block-list__block[data-type="gt-layout-blocks/image"] {
-				margin-bottom: -15px;
-			}
-		}
-
-		&.gt-edit-margin-bottom-8 > .editor-inner-blocks > .editor-block-list__layout {
-			> .editor-block-list__block[data-type="gt-layout-blocks/content"] {
-				margin-top: -11px;
-			}
-
-			> .editor-block-list__block[data-type="gt-layout-blocks/image"] {
-				margin-bottom: -11px;
-			}
-		}
-
-		&.gt-edit-margin-bottom-16 > .editor-inner-blocks > .editor-block-list__layout {
-			> .editor-block-list__block[data-type="gt-layout-blocks/content"] {
-				margin-top: -7px;
-			}
-
-			> .editor-block-list__block[data-type="gt-layout-blocks/image"] {
-				margin-bottom: -7px;
-			}
-		}
-
-		&.gt-edit-margin-bottom-24 > .editor-inner-blocks > .editor-block-list__layout {
-			> .editor-block-list__block[data-type="gt-layout-blocks/content"] {
-				margin-top: -3px;
-			}
-
-			> .editor-block-list__block[data-type="gt-layout-blocks/image"] {
-				margin-bottom: -3px;
 			}
 		}
 	}
