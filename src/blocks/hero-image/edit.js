@@ -104,6 +104,17 @@ class HeroImageEdit extends Component {
 
 					<PanelBody title={ __( 'Hero Settings' ) } initialOpen={ false } className="gt-panel-hero-settings gt-panel">
 
+						<BaseControl id="gt-image-block" label={ __( 'Image Block' ) }>
+							<Button
+								isLarge
+								className="gt-image-block-button"
+								onClick={ () => setAttributes( { heroImage: ! heroImage } ) }
+							>
+								<Dashicon icon={ heroImage ? 'trash' : 'insert' } />
+								{ heroImage ? __( 'Remove Block' ) : __( 'Add Block' ) }
+							</Button>
+						</BaseControl>
+
 						<SelectControl
 							label={ __( 'Content Position' ) }
 							value={ heroLayout }
@@ -125,17 +136,6 @@ class HeroImageEdit extends Component {
 								step={ 10 }
 							/>
 						) }
-
-						<BaseControl id="gt-image-block" label={ __( 'Image Block' ) }>
-							<Button
-								isLarge
-								className="gt-image-block-button"
-								onClick={ () => setAttributes( { heroImage: ! heroImage } ) }
-							>
-								<Dashicon icon={ heroImage ? 'trash' : 'insert' } />
-								{ heroImage ? __( 'Remove Block' ) : __( 'Add Block' ) }
-							</Button>
-						</BaseControl>
 
 					</PanelBody>
 
