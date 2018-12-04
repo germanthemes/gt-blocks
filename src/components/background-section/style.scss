@@ -43,19 +43,19 @@
 		}
 
 		&.gt-narrow-width {
-			max-width: 640px;
+			max-width: calc( 560px + 2px );
 		}
 
 		&.gt-default-width {
-			max-width: 800px;
+			max-width: calc( 720px + 2px );
 		}
 
 		&.gt-wide-width {
-			max-width: 960px;
+			max-width: calc( 880px + 2px );
 		}
 
 		&.gt-full-width {
-			max-width: 1120px;
+			max-width: calc( 1040px + 2px );
 		}
 	}
 }

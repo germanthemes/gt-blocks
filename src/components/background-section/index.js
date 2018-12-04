@@ -41,8 +41,8 @@ class BackgroundSection extends Component {
 		const backgroundClass = getColorClassName( 'background-color', backgroundColor );
 
 		const blockClasses = classnames( className, 'gt-background-section', {
-			[ `align${ blockAlignment }` ]: ( blockAlignment !== 'center' ),
-			[ `gt-${ padding }-padding` ]: 'zero' !== padding,
+			[ `align${ blockAlignment }` ]: 'default' !== blockAlignment,
+			[ `gt-${ padding }-padding` ]: 'none' !== padding,
 			'has-text-color': textColor || customTextColor,
 			[ textColorClass ]: textColorClass,
 			'has-background': backgroundColor || customBackgroundColor,
@@ -71,7 +71,7 @@ class BackgroundSection extends Component {
 		};
 
 		const contentClasses = classnames( 'gt-section-content', {
-			[ `gt-${ contentWidth }-width` ]: contentWidth,
+			[ `gt-${ contentWidth }-width` ]: 'default' !== blockAlignment,
 		} );
 
 		const dataBackgroundImage = backgroundImageId ? backgroundImageUrl : undefined;

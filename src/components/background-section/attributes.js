@@ -1,7 +1,7 @@
 const backgroundAttributes = {
 	blockAlignment: {
 		type: 'string',
-		default: 'center',
+		default: 'full',
 	},
 	contentWidth: {
 		type: 'string',

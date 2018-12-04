@@ -17,6 +17,7 @@ const {
 } = wp.i18n;
 
 const { compose, withInstanceId } = wp.compose;
+const { withSelect } = wp.data;
 
 const {
 	BlockAlignmentToolbar,
@@ -35,6 +36,7 @@ const {
 	RangeControl,
 	SelectControl,
 	ToggleControl,
+	Toolbar,
 	withFallbackStyles,
 } = wp.components;
 
@@ -52,6 +54,19 @@ class BackgroundEdit extends Component {
 
 		this.onSelectImage = this.onSelectImage.bind( this );
 		this.onRemoveImage = this.onRemoveImage.bind( this );
+	}
+
+	componentDidUpdate() {
+		const {
+			attributes,
+			setAttributes,
+			wideControlsEnabled,
+		} = this.props;
+
+		// Set block alignment to default if theme does not support wide and full width blocks.
+		if ( ! wideControlsEnabled && 'default' !== attributes.blockAlignment ) {
+			setAttributes( { blockAlignment: 'default' } );
+		}
 	}
 
 	onSelectImage( img ) {
@@ -81,6 +96,7 @@ class BackgroundEdit extends Component {
 			setAttributes,
 			instanceId,
 			className,
+			wideControlsEnabled,
 		} = this.props;
 
 		const {
@@ -97,7 +113,7 @@ class BackgroundEdit extends Component {
 		const blockId = `gt-container-block-${ instanceId }`;
 
 		const blockClasses = classnames( className, 'gt-background-section', {
-			[ `gt-${ padding }-padding` ]: 'zero' !== padding,
+			[ `gt-${ padding }-padding` ]: 'none' !== padding,
 			'has-text-color': textColor.color,
 			[ textColor.class ]: textColor.class,
 			'has-background': backgroundColor.color,
@@ -124,21 +140,38 @@ class BackgroundEdit extends Component {
 		};
 
 		const contentClasses = classnames( 'gt-section-content', {
-			[ `gt-${ contentWidth }-width` ]: contentWidth,
+			[ `gt-${ contentWidth }-width` ]: 'default' !== blockAlignment,
 		} );
 
 		const dataBackgroundImage = backgroundImageId ? backgroundImageUrl : undefined;
+
+		const ALIGNMENT_CONTROLS = {
+			default: {
+				icon: 'align-center',
+				title: __( 'Default width' ),
+			},
+			wide: {
+				icon: 'align-wide',
+				title: __( 'Wide width' ),
+			},
+			full: {
+				icon: 'align-full-width',
+				title: __( 'Full width' ),
+			},
+		};
 
 		return (
 			<Fragment>
 
 				<BlockControls>
 
-					<BlockAlignmentToolbar
-						value={ blockAlignment }
-						onChange={ ( newAlign ) => setAttributes( { blockAlignment: newAlign } ) }
-						controls={ [ 'wide', 'full' ] }
-					/>
+					{ wideControlsEnabled && (
+						<BlockAlignmentToolbar
+							value={ blockAlignment }
+							onChange={ ( newAlign ) => setAttributes( { blockAlignment: newAlign ? newAlign : 'default' } ) }
+							controls={ [ 'wide', 'full' ] }
+						/>
+					) }
 
 				</BlockControls>
 
@@ -146,32 +179,42 @@ class BackgroundEdit extends Component {
 
 					<PanelBody title={ __( 'Section Settings' ) } initialOpen={ false } className="gt-section-settings-panel gt-panel">
 
-						<BaseControl id="gt-block-alignment" label={ __( 'Block Alignment' ) }>
-							<BlockAlignmentToolbar
-								value={ blockAlignment }
-								onChange={ ( newAlign ) => setAttributes( { blockAlignment: newAlign } ) }
-								controls={ [ 'wide', 'full' ] }
-							/>
-						</BaseControl>
+						{ wideControlsEnabled && (
+							<BaseControl id="gt-block-alignment" label={ __( 'Block Alignment' ) }>
+								<Toolbar
+									controls={
+										Object.keys( ALIGNMENT_CONTROLS ).map( ( control ) => ( {
+											...ALIGNMENT_CONTROLS[ control ],
+											isActive: blockAlignment === control,
+											onClick: () => setAttributes( { blockAlignment: control } ),
+										} ) )
+									}
+								/>
+							</BaseControl>
+						) }
 
-						<SelectControl
-							label={ __( 'Content Width' ) }
-							value={ contentWidth }
-							onChange={ ( newWidth ) => setAttributes( { contentWidth: newWidth } ) }
-							options={ [
-								{ value: 'narrow', label: __( 'Narrow width' ) },
-								{ value: 'default', label: __( 'Default width' ) },
-								{ value: 'wide', label: __( 'Wide width' ) },
-								{ value: 'full', label: __( 'Full width' ) },
-							] }
-						/>
+						{ ( wideControlsEnabled && ( 'full' === blockAlignment || 'wide' === blockAlignment ) ) && (
+
+							<SelectControl
+								label={ __( 'Content Width' ) }
+								value={ contentWidth }
+								onChange={ ( newWidth ) => setAttributes( { contentWidth: newWidth } ) }
+								options={ [
+									{ value: 'narrow', label: __( 'Narrow width' ) },
+									{ value: 'default', label: __( 'Default width' ) },
+									{ value: 'wide', label: __( 'Wide width' ) },
+									{ value: 'full', label: __( 'Full width' ) },
+								] }
+							/>
+
+						) }
 
 						<SelectControl
 							label={ __( 'Padding' ) }
 							value={ padding }
 							onChange={ ( newPadding ) => setAttributes( { padding: newPadding } ) }
 							options={ [
-								{ value: 'zero', label: __( 'None' ) },
+								{ value: 'none', label: __( 'None' ) },
 								{ value: 'small', label: __( 'Small' ) },
 								{ value: 'medium', label: __( 'Medium' ) },
 								{ value: 'large', label: __( 'Large' ) },
@@ -333,6 +376,11 @@ class BackgroundEdit extends Component {
 
 export default compose(
 	withInstanceId,
+	withSelect(
+		( select ) => ( {
+			wideControlsEnabled: select( 'core/editor' ).getEditorSettings().alignWide,
+		} )
+	),
 	withColors( 'backgroundColor', { textColor: 'color' } ),
 	withFallbackStyles( ( node, ownProps ) => {
 		const { textColor, backgroundColor } = ownProps.attributes;
