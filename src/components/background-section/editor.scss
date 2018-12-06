@@ -1,25 +1,38 @@
 .gt-background-section {
 
+	&.gt-normal-padding {
+		padding: calc( 2rem - 30px ) 2rem;
+	}
+
+	&.gt-large-padding {
+		padding: calc( 4rem - 30px ) 4rem;
+	}
+
 	.gt-section-content {
 
 		h1, h2, h3, h4, h5, h6, p {
 			color: inherit;
 		}
+
+		.editor-block-list__block {
+			margin-left: -1px;
+			margin-right: -1px;
+		}
 		
 		&.gt-narrow-width .editor-block-list__block {
-			max-width: 640px;
+			max-width: calc( 560px + 30px );
 		}
 
 		&.gt-default-width .editor-block-list__block {
-			max-width: 800px;
+			max-width: calc( 720px + 30px );
 		}
 
 		&.gt-wide-width .editor-block-list__block {
-			max-width: 960px;
+			max-width: calc( 880px + 30px );
 		}
 
 		&.gt-full-width .editor-block-list__block {
-			max-width: 1120px;
+			max-width: calc( 1040px + 30px );
 		}
 	}
 }

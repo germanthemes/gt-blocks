@@ -9,7 +9,7 @@ const backgroundAttributes = {
 	},
 	padding: {
 		type: 'string',
-		default: 'medium',
+		default: 'normal',
 	},
 	textColor: {
 		type: 'string',

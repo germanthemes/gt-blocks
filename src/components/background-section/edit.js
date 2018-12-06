@@ -215,8 +215,7 @@ class BackgroundEdit extends Component {
 							onChange={ ( newPadding ) => setAttributes( { padding: newPadding } ) }
 							options={ [
 								{ value: 'none', label: __( 'None' ) },
-								{ value: 'small', label: __( 'Small' ) },
-								{ value: 'medium', label: __( 'Medium' ) },
+								{ value: 'normal', label: __( 'Normal' ) },
 								{ value: 'large', label: __( 'Large' ) },
 							] }
 						/>

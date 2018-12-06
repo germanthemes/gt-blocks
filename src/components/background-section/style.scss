@@ -2,11 +2,7 @@
 	position: relative;
 	padding: 0;
 
-	&.gt-small-padding {
-		padding: 1rem;
-	}
-
-	&.gt-medium-padding {
+	&.gt-normal-padding {
 		padding: 2rem;
 	}
 
@@ -43,19 +39,19 @@
 		}
 
 		&.gt-narrow-width {
-			max-width: calc( 560px + 2px );
+			max-width: 560px;
 		}
 
 		&.gt-default-width {
-			max-width: calc( 720px + 2px );
+			max-width: 720px;
 		}
 
 		&.gt-wide-width {
-			max-width: calc( 880px + 2px );
+			max-width: 880px;
 		}
 
 		&.gt-full-width {
-			max-width: calc( 1040px + 2px );
+			max-width: 1040px;
 		}
 	}
 }

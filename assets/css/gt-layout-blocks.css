@@ -259,9 +259,7 @@
 .gt-background-section {
   position: relative;
   padding: 0; }
-  .gt-background-section.gt-small-padding {
-    padding: 1rem; }
-  .gt-background-section.gt-medium-padding {
+  .gt-background-section.gt-normal-padding {
     padding: 2rem; }
   .gt-background-section.gt-large-padding {
     padding: 4rem; }
@@ -285,13 +283,13 @@
     .gt-background-section .gt-section-content > *:last-child {
       margin-bottom: 0; }
     .gt-background-section .gt-section-content.gt-narrow-width {
-      max-width: calc( 560px + 2px); }
+      max-width: 560px; }
     .gt-background-section .gt-section-content.gt-default-width {
-      max-width: calc( 720px + 2px); }
+      max-width: 720px; }
     .gt-background-section .gt-section-content.gt-wide-width {
-      max-width: calc( 880px + 2px); }
+      max-width: 880px; }
     .gt-background-section .gt-section-content.gt-full-width {
-      max-width: calc( 1040px + 2px); }
+      max-width: 1040px; }
 .wp-block-gt-layout-blocks-icon {
   margin-bottom: 1.5em; }
   .wp-block-gt-layout-blocks-icon .gt-icon {

@@ -235,20 +235,30 @@
 
 .wp-block.is-selected[data-type="gt-layout-blocks/hero-image"] .editor-block-list__layout .editor-block-list__block[data-type="gt-layout-blocks/content"] > .editor-block-list__block-edit:not(:hover):before {
   outline: 1px dashed rgba(145, 151, 162, 0.25); }
+.gt-background-section.gt-normal-padding {
+  padding: calc( 2rem - 30px) 2rem; }
+
+.gt-background-section.gt-large-padding {
+  padding: calc( 4rem - 30px) 4rem; }
+
 .gt-background-section .gt-section-content h1, .gt-background-section .gt-section-content h2, .gt-background-section .gt-section-content h3, .gt-background-section .gt-section-content h4, .gt-background-section .gt-section-content h5, .gt-background-section .gt-section-content h6, .gt-background-section .gt-section-content p {
   color: inherit; }
 
+.gt-background-section .gt-section-content .editor-block-list__block {
+  margin-left: -1px;
+  margin-right: -1px; }
+
 .gt-background-section .gt-section-content.gt-narrow-width .editor-block-list__block {
-  max-width: 640px; }
+  max-width: calc( 560px + 30px); }
 
 .gt-background-section .gt-section-content.gt-default-width .editor-block-list__block {
-  max-width: 800px; }
+  max-width: calc( 720px + 30px); }
 
 .gt-background-section .gt-section-content.gt-wide-width .editor-block-list__block {
-  max-width: 960px; }
+  max-width: calc( 880px + 30px); }
 
 .gt-background-section .gt-section-content.gt-full-width .editor-block-list__block {
-  max-width: 1120px; }
+  max-width: calc( 1040px + 30px); }
 
 .gt-background-image-panel .gt-background-image .gt-set-image {
   display: block;
