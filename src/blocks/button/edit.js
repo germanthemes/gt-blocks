@@ -22,13 +22,11 @@ const {
 	AlignmentToolbar,
 	BlockControls,
 	ContrastChecker,
-	FontSizePicker,
 	InspectorControls,
 	PanelColorSettings,
 	RichText,
 	URLInput,
 	withColors,
-	withFontSizes,
 } = wp.editor;
 
 const {
@@ -72,9 +70,6 @@ class ButtonEdit extends Component {
 			hoverColor,
 			hoverBackgroundColor,
 			setHoverBackgroundColor,
-			fontSize,
-			setFontSize,
-			fallbackFontSize,
 			setAttributes,
 			className,
 			isSelected,
@@ -90,8 +85,6 @@ class ButtonEdit extends Component {
 			buttonShape,
 			roundedCorners,
 			borderWidth,
-			fontWeight,
-			italic,
 			uppercase,
 		} = attributes;
 
@@ -116,22 +109,17 @@ class ButtonEdit extends Component {
 		const buttonClasses = classnames( 'gt-button', {
 			[ `gt-button-${ buttonSize }` ]: buttonSize,
 			'gt-ghost-button': 'outline' === buttonShape,
-			'gt-is-bold': 'bold' === fontWeight,
-			'gt-is-thin': 'thin' === fontWeight,
-			'gt-is-italic': italic,
 			'gt-is-uppercase': uppercase,
 			'has-background': backgroundColor.color,
 			[ backgroundColor.class ]: backgroundColor.class,
 			'has-text-color': textColor.color,
 			[ textColor.class ]: textColor.class,
-			[ fontSize.class ]: fontSize.class,
 		} );
 
 		const buttonStyles = {
 			borderRadius: ( 'rounded' === buttonShape || 'outline' === buttonShape ) && 12 !== roundedCorners ? roundedCorners + 'px' : undefined,
 			backgroundColor: backgroundColor.class ? undefined : backgroundColor.color,
 			color: textColor.class ? undefined : textColor.color,
-			fontSize: fontSize.size ? fontSize.size + 'px' : undefined,
 			borderWidth: 'outline' === buttonShape && borderWidth !== 2 ? borderWidth + 'px' : undefined,
 		};
 
@@ -206,33 +194,6 @@ class ButtonEdit extends Component {
 							/>
 						) }
 
-					</PanelBody>
-
-					<PanelBody title={ __( 'Font Settings' ) } initialOpen={ false } className="gt-panel-font-settings gt-panel">
-
-						<FontSizePicker
-							fallbackFontSize={ fallbackFontSize }
-							value={ fontSize.size }
-							onChange={ setFontSize }
-						/>
-
-						<SelectControl
-							label={ __( 'Font Weight' ) }
-							value={ fontWeight }
-							onChange={ ( newWeight ) => setAttributes( { fontWeight: newWeight } ) }
-							options={ [
-								{ value: 'thin', label: __( 'Thin' ) },
-								{ value: 'normal', label: __( 'Normal' ) },
-								{ value: 'bold', label: __( 'Bold' ) },
-							] }
-						/>
-
-						<ToggleControl
-							label={ __( 'Italic?' ) }
-							checked={ !! italic }
-							onChange={ () => setAttributes( { italic: ! italic } ) }
-						/>
-
 						<ToggleControl
 							label={ __( 'Uppercase?' ) }
 							checked={ !! uppercase }
@@ -267,7 +228,6 @@ class ButtonEdit extends Component {
 									fallbackTextColor,
 									fallbackBackgroundColor,
 								} }
-								fontSize={ fontSize.size }
 							/>
 						) }
 					</PanelColorSettings>
@@ -298,7 +258,6 @@ class ButtonEdit extends Component {
 									fallbackTextColor,
 									fallbackBackgroundColor,
 								} }
-								fontSize={ fontSize.size }
 							/>
 						) }
 					</PanelColorSettings>
@@ -342,16 +301,14 @@ class ButtonEdit extends Component {
 
 export default compose( [
 	withColors( 'backgroundColor', { textColor: 'color' }, { hoverColor: 'color' }, { hoverBackgroundColor: 'background-color' } ),
-	withFontSizes( 'fontSize' ),
 	withFallbackStyles( ( node, ownProps ) => {
-		const { textColor, backgroundColor, fontSize, customFontSize } = ownProps.attributes;
+		const { textColor, backgroundColor } = ownProps.attributes;
 		const editableNode = node.querySelector( '[contenteditable="true"]' );
 		//verify if editableNode is available, before using getComputedStyle.
 		const computedStyles = editableNode ? getComputedStyle( editableNode ) : null;
 		return {
 			fallbackBackgroundColor: backgroundColor || ! computedStyles ? undefined : computedStyles.backgroundColor,
 			fallbackTextColor: textColor || ! computedStyles ? undefined : computedStyles.color,
-			fallbackFontSize: fontSize || customFontSize || ! computedStyles ? undefined : parseInt( computedStyles.fontSize ) || undefined,
 		};
 	} ),
 ] )( ButtonEdit );

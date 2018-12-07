@@ -11,7 +11,6 @@ const { registerBlockType } = wp.blocks;
 const {
 	RichText,
 	getColorClassName,
-	getFontSizeClass,
 } = wp.editor;
 
 /**
@@ -81,14 +80,6 @@ registerBlockType(
 				type: 'number',
 				default: 2,
 			},
-			fontWeight: {
-				type: 'string',
-				default: 'bold',
-			},
-			italic: {
-				type: 'boolean',
-				default: false,
-			},
 			uppercase: {
 				type: 'boolean',
 				default: false,
@@ -117,12 +108,6 @@ registerBlockType(
 			customHoverBackgroundColor: {
 				type: 'string',
 			},
-			fontSize: {
-				type: 'string',
-			},
-			customFontSize: {
-				type: 'number',
-			},
 		},
 
 		edit,
@@ -137,8 +122,6 @@ registerBlockType(
 				buttonShape,
 				roundedCorners,
 				borderWidth,
-				fontWeight,
-				italic,
 				uppercase,
 				textColor,
 				backgroundColor,
@@ -148,8 +131,6 @@ registerBlockType(
 				hoverBackgroundColor,
 				customHoverColor,
 				customHoverBackgroundColor,
-				fontSize,
-				customFontSize,
 			} = attributes;
 
 			const textColorClass = getColorClassName( 'color', textColor );
@@ -157,8 +138,6 @@ registerBlockType(
 
 			const hoverColorClass = getColorClassName( 'color', hoverColor );
 			const hoverBackgroundClass = getColorClassName( 'background-color', hoverBackgroundColor );
-
-			const fontSizeClass = getFontSizeClass( fontSize );
 
 			const blockClasses = classnames( {
 				[ `gt-align-${ textAlignment }` ]: textAlignment,
@@ -181,21 +160,16 @@ registerBlockType(
 			const buttonClasses = classnames( 'gt-button', {
 				[ `gt-button-${ buttonSize }` ]: buttonSize,
 				'gt-ghost-button': 'outline' === buttonShape,
-				'gt-is-bold': 'bold' === fontWeight,
-				'gt-is-thin': 'thin' === fontWeight,
-				'gt-is-italic': italic,
 				'gt-is-uppercase': uppercase,
 				'has-background': backgroundColor || customBackgroundColor,
 				[ backgroundClass ]: backgroundClass,
 				'has-text-color': textColor || customTextColor,
 				[ textColorClass ]: textColorClass,
-				[ fontSizeClass ]: fontSizeClass,
 			} );
 
 			const buttonStyles = {
 				backgroundColor: backgroundClass ? undefined : customBackgroundColor,
 				color: textColorClass ? undefined : customTextColor,
-				fontSize: fontSizeClass ? undefined : customFontSize,
 				borderWidth: 'outline' === buttonShape && borderWidth !== 2 ? borderWidth + 'px' : undefined,
 			};
 
