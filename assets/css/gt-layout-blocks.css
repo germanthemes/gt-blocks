@@ -149,7 +149,7 @@
   margin-bottom: 1.5em; }
 .gt-grid-container {
   display: grid;
-  grid-gap: 2rem; }
+  grid-gap: 1.5em; }
   .gt-grid-container .wp-block-gt-layout-blocks-column {
     min-width: 0; }
   .gt-grid-container.gt-columns-2 {

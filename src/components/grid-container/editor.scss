@@ -3,8 +3,7 @@
 		
 	> .editor-inner-blocks > .editor-block-list__layout {
 		display: grid;
-		grid-column-gap: calc( 2rem - 28px );
-		grid-row-gap: calc( 2rem - 28px );
+		grid-gap: 0;
 
 		> [data-type="gt-layout-blocks/column"] {
 			min-width: 0;

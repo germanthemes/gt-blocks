@@ -110,7 +110,6 @@ class GridEdit extends Component {
 		const {
 			items,
 			columns,
-			columnGap,
 		} = attributes;
 
 		const blockId = `gt-icon-grid-block-${ instanceId }`;
@@ -118,15 +117,6 @@ class GridEdit extends Component {
 		const gridClasses = classnames( 'gt-grid-container', {
 			[ `gt-columns-${ columns }` ]: columns,
 		} );
-
-		const gridGap = 32 !== columnGap ? ( columnGap / 16 ).toFixed( 2 ) : '2.0';
-
-		const gridInlineStyles = `
-			#${ blockId } .gt-grid-container > .editor-inner-blocks > .editor-block-list__layout {
-				grid-column-gap: calc( ${ gridGap }rem - 28px );
-				grid-row-gap: calc( ${ gridGap }rem - 28px );
-			}
-		`;
 
 		const columnIcons = {
 			2: gtIconNumberTwo,
@@ -183,21 +173,12 @@ class GridEdit extends Component {
 							max={ 6 }
 						/>
 
-						<RangeControl
-							label={ __( 'Column Gap' ) }
-							value={ columnGap }
-							onChange={ ( newGap ) => setAttributes( { columnGap: newGap } ) }
-							min={ 0 }
-							max={ 64 }
-						/>
-
 					</PanelBody>
 
 				</InspectorControls>
 
 				<div id={ blockId } className={ className }>
 
-					<style>{ gridInlineStyles }</style>
 					<div className={ gridClasses }>
 
 						<InnerBlocks

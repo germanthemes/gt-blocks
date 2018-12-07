@@ -40,10 +40,6 @@ registerBlockType(
 				type: 'number',
 				default: 3,
 			},
-			columnGap: {
-				type: 'number',
-				default: 32,
-			},
 		},
 
 		edit( props ) {
