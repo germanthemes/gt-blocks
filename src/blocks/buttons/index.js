@@ -46,10 +46,6 @@ registerBlockType(
 			buttonAttributes: {
 				type: 'array',
 			},
-			buttonGap: {
-				type: 'string',
-				default: 'medium',
-			},
 			alignment: {
 				type: 'string',
 			},
@@ -64,13 +60,11 @@ registerBlockType(
 		save( { attributes } ) {
 			const {
 				customClass,
-				buttonGap,
 				alignment,
 			} = attributes;
 
 			const blockClasses = classnames( {
 				[ `${ customClass }` ]: customClass,
-				[ `gt-${ buttonGap }-gap` ]: 'none' !== buttonGap,
 				[ `gt-align-${ alignment }` ]: 'center' === alignment || 'right' === alignment,
 			} );
 

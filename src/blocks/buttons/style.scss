@@ -1,37 +1,12 @@
 .wp-block-gt-layout-blocks-buttons {
 	display: flex;
 	flex-wrap: nowrap;
+	margin-right: -1.5em;
+	margin-bottom: 1.5em;
 
-	&.gt-small-gap {
-		margin-right: -0.5rem;
-	
-		.wp-block-gt-layout-blocks-button {
-			margin-right: 0.5rem;
-		}
-	}
-
-	&.gt-medium-gap {
-		margin-right: -1rem;
-	
-		.wp-block-gt-layout-blocks-button {
-			margin-right: 1rem;
-		}
-	}
-
-	&.gt-large-gap {
-		margin-right: -1.5rem;
-	
-		.wp-block-gt-layout-blocks-button {
-			margin-right: 1.5rem;
-		}
-	}
-
-	&.gt-extra-large-gap {
-		margin-right: -2rem;
-	
-		.wp-block-gt-layout-blocks-button {
-			margin-right: 2rem;
-		}
+	.wp-block-gt-layout-blocks-button {
+		margin-right: 1.5em;
+		margin-bottom: 0;
 	}
 
 	&.gt-align-center {

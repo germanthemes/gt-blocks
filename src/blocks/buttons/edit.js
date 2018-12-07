@@ -28,7 +28,6 @@ const {
 	BaseControl,
 	PanelBody,
 	RangeControl,
-	SelectControl,
 } = wp.components;
 
 /**
@@ -46,13 +45,11 @@ class ButtonsEdit extends Component {
 			customClass,
 			buttons,
 			buttonAttributes,
-			buttonGap,
 			alignment,
 		} = attributes;
 
 		const blockClasses = classnames( className, {
 			[ `${ customClass }` ]: customClass,
-			[ `gt-${ buttonGap }-gap` ]: 'none' !== buttonGap,
 			[ `gt-align-${ alignment }` ]: 'center' === alignment || 'right' === alignment,
 		} );
 
@@ -89,19 +86,6 @@ class ButtonsEdit extends Component {
 							onChange={ ( newValue ) => setAttributes( { buttons: newValue } ) }
 							min={ 1 }
 							max={ 6 }
-						/>
-
-						<SelectControl
-							label={ __( 'Button Gap' ) }
-							value={ buttonGap }
-							onChange={ ( newValue ) => setAttributes( { buttonGap: newValue } ) }
-							options={ [
-								{ value: 'none', label: __( 'None' ) },
-								{ value: 'small', label: __( 'Small' ) },
-								{ value: 'medium', label: __( 'Medium' ) },
-								{ value: 'large', label: __( 'Large' ) },
-								{ value: 'extra-large', label: __( 'Extra Large' ) },
-							] }
 						/>
 
 						<BaseControl id="gt-alignment-control" label={ __( 'Alignment' ) }>
