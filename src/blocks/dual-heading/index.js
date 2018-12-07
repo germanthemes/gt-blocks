@@ -115,24 +115,16 @@ registerBlockType(
 				type: 'string',
 			},
 			titleFontWeight: {
-				type: 'string',
-				default: 'bold',
-			},
-			titleFontStyle: {
 				type: 'boolean',
-				default: false,
+				default: true,
 			},
 			titleTextTransform: {
 				type: 'boolean',
 				default: false,
 			},
 			subtitleFontWeight: {
-				type: 'string',
-				default: 'normal',
-			},
-			subtitleFontStyle: {
 				type: 'boolean',
-				default: true,
+				default: false,
 			},
 			subtitleTextTransform: {
 				type: 'boolean',
@@ -185,10 +177,8 @@ registerBlockType(
 				subtitle,
 				textAlignment,
 				titleFontWeight,
-				titleFontStyle,
 				titleTextTransform,
 				subtitleFontWeight,
-				subtitleFontStyle,
 				subtitleTextTransform,
 				textColor,
 				backgroundColor,
@@ -217,9 +207,7 @@ registerBlockType(
 			};
 
 			const headingClasses = classnames( 'gt-heading', {
-				'gt-is-bold': 'bold' === titleFontWeight,
-				'gt-is-thin': 'thin' === titleFontWeight,
-				'gt-is-italic': titleFontStyle,
+				'gt-is-bold': titleFontWeight,
 				'gt-is-uppercase': titleTextTransform,
 				'has-background': backgroundColor || customBackgroundColor,
 				[ textColorClass ]: textColorClass,
@@ -234,9 +222,7 @@ registerBlockType(
 			};
 
 			const subheadingClasses = classnames( 'gt-subheading', {
-				'gt-is-bold': 'bold' === subtitleFontWeight,
-				'gt-is-thin': 'thin' === subtitleFontWeight,
-				'gt-is-italic': subtitleFontStyle,
+				'gt-is-bold': subtitleFontWeight,
 				'gt-is-uppercase': subtitleTextTransform,
 				'has-background': subtitleBackgroundColor || subtitleCustomBackgroundColor,
 				[ subtitleColorClass ]: subtitleColorClass,

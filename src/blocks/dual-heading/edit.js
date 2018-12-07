@@ -80,10 +80,8 @@ class DualHeadingEdit extends Component {
 			subtitlePlaceholder,
 			textAlignment,
 			titleFontWeight,
-			titleFontStyle,
 			titleTextTransform,
 			subtitleFontWeight,
-			subtitleFontStyle,
 			subtitleTextTransform,
 		} = attributes;
 
@@ -92,9 +90,7 @@ class DualHeadingEdit extends Component {
 		};
 
 		const headingClasses = classnames( 'gt-heading', {
-			'gt-is-bold': 'bold' === titleFontWeight,
-			'gt-is-thin': 'thin' === titleFontWeight,
-			'gt-is-italic': titleFontStyle,
+			'gt-is-bold': titleFontWeight,
 			'gt-is-uppercase': titleTextTransform,
 			'has-background': backgroundColor.color,
 			[ backgroundColor.class ]: backgroundColor.class,
@@ -110,9 +106,7 @@ class DualHeadingEdit extends Component {
 		};
 
 		const subheadingClasses = classnames( 'gt-subheading', {
-			'gt-is-bold': 'bold' === subtitleFontWeight,
-			'gt-is-thin': 'thin' === subtitleFontWeight,
-			'gt-is-italic': subtitleFontStyle,
+			'gt-is-bold': subtitleFontWeight,
 			'gt-is-uppercase': subtitleTextTransform,
 			'has-background': subtitleBackgroundColor.color,
 			[ subtitleBackgroundColor.class ]: subtitleBackgroundColor.class,
@@ -167,21 +161,10 @@ class DualHeadingEdit extends Component {
 							onChange={ setFontSize }
 						/>
 
-						<SelectControl
-							label={ __( 'Font Weight' ) }
-							value={ titleFontWeight }
-							onChange={ ( newWeight ) => setAttributes( { titleFontWeight: newWeight } ) }
-							options={ [
-								{ value: 'thin', label: __( 'Thin' ) },
-								{ value: 'normal', label: __( 'Normal' ) },
-								{ value: 'bold', label: __( 'Bold' ) },
-							] }
-						/>
-
 						<ToggleControl
-							label={ __( 'Italic?' ) }
-							checked={ !! titleFontStyle }
-							onChange={ () => setAttributes( { titleFontStyle: ! titleFontStyle } ) }
+							label={ __( 'Bold?' ) }
+							checked={ !! titleFontWeight }
+							onChange={ () => setAttributes( { titleFontWeight: ! titleFontWeight } ) }
 						/>
 
 						<ToggleControl
@@ -200,21 +183,10 @@ class DualHeadingEdit extends Component {
 							onChange={ setSubtitleFontSize }
 						/>
 
-						<SelectControl
-							label={ __( 'Font Weight' ) }
-							value={ subtitleFontWeight }
-							onChange={ ( newWeight ) => setAttributes( { subtitleFontWeight: newWeight } ) }
-							options={ [
-								{ value: 'thin', label: __( 'Thin' ) },
-								{ value: 'normal', label: __( 'Normal' ) },
-								{ value: 'bold', label: __( 'Bold' ) },
-							] }
-						/>
-
 						<ToggleControl
-							label={ __( 'Italic?' ) }
-							checked={ !! subtitleFontStyle }
-							onChange={ () => setAttributes( { subtitleFontStyle: ! subtitleFontStyle } ) }
+							label={ __( 'Bold?' ) }
+							checked={ !! subtitleFontWeight }
+							onChange={ () => setAttributes( { subtitleFontWeight: ! subtitleFontWeight } ) }
 						/>
 
 						<ToggleControl
