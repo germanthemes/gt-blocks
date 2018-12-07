@@ -8,7 +8,7 @@
     .wp-block-gt-layout-blocks-button .gt-button-wrap .gt-button {
       display: inline-block;
       margin: 0;
-      padding: 12px 21px;
+      padding: 0;
       font-weight: normal;
       font-style: normal;
       line-height: 1;
@@ -27,11 +27,13 @@
       .wp-block-gt-layout-blocks-button .gt-button-wrap .gt-button:not(.has-text-color):not(.gt-ghost-button) {
         color: #fff; }
       .wp-block-gt-layout-blocks-button .gt-button-wrap .gt-button.gt-button-small {
-        padding: 8px 14px; }
+        padding: 0.5em 0.75em; }
       .wp-block-gt-layout-blocks-button .gt-button-wrap .gt-button.gt-button-medium {
-        padding: 16px 28px; }
+        padding: 1em 1.25em; }
       .wp-block-gt-layout-blocks-button .gt-button-wrap .gt-button.gt-button-large {
-        padding: 24px 42px; }
+        padding: 1.5em 2em; }
+      .wp-block-gt-layout-blocks-button .gt-button-wrap .gt-button.gt-button-extra-large {
+        padding: 2em 3em; }
       .wp-block-gt-layout-blocks-button .gt-button-wrap .gt-button.gt-is-bold {
         font-weight: bold; }
       .wp-block-gt-layout-blocks-button .gt-button-wrap .gt-button.gt-is-thin {

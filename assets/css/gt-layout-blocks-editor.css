@@ -25,12 +25,6 @@
   width: auto; }
   .wp-block-gt-layout-blocks-button .block-library-button__inline-link .editor-url-input input[type=text] {
     width: auto; }
-.gt-padding-options-size-picker {
-  display: -ms-flexbox;
-  display: flex;
-  -ms-flex-pack: justify;
-      justify-content: space-between;
-  margin-bottom: 1em; }
 .wp-block-gt-layout-blocks-buttons {
   margin-right: 0; }
   .wp-block-gt-layout-blocks-buttons .editor-block-list__layout {

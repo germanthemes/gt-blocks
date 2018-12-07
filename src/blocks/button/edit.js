@@ -42,11 +42,6 @@ const {
 } = wp.components;
 
 /**
- * Internal dependencies
- */
-import { default as PaddingOptions } from '../../components/padding-options';
-
-/**
  * Block Edit Component
  */
 class ButtonEdit extends Component {
@@ -91,12 +86,10 @@ class ButtonEdit extends Component {
 			text,
 			placeholder,
 			textAlignment,
+			buttonSize,
 			buttonShape,
 			roundedCorners,
 			borderWidth,
-			paddingClass,
-			paddingVertical,
-			paddingHorizontal,
 			fontWeight,
 			italic,
 			uppercase,
@@ -121,7 +114,7 @@ class ButtonEdit extends Component {
 		};
 
 		const buttonClasses = classnames( 'gt-button', {
-			[ `gt-button-${ paddingClass }` ]: paddingClass,
+			[ `gt-button-${ buttonSize }` ]: buttonSize,
 			'gt-ghost-button': 'outline' === buttonShape,
 			'gt-is-bold': 'bold' === fontWeight,
 			'gt-is-thin': 'thin' === fontWeight,
@@ -135,10 +128,6 @@ class ButtonEdit extends Component {
 		} );
 
 		const buttonStyles = {
-			paddingTop: ! paddingClass && paddingVertical !== 6 ? paddingVertical + 'px' : undefined,
-			paddingBottom: ! paddingClass && paddingVertical !== 6 ? paddingVertical + 'px' : undefined,
-			paddingLeft: ! paddingClass && paddingHorizontal !== 18 ? paddingHorizontal + 'px' : undefined,
-			paddingRight: ! paddingClass && paddingHorizontal !== 18 ? paddingHorizontal + 'px' : undefined,
 			borderRadius: ( 'rounded' === buttonShape || 'outline' === buttonShape ) && 12 !== roundedCorners ? roundedCorners + 'px' : undefined,
 			backgroundColor: backgroundColor.class ? undefined : backgroundColor.color,
 			color: textColor.class ? undefined : textColor.color,
@@ -174,6 +163,18 @@ class ButtonEdit extends Component {
 					<PanelBody title={ __( 'Button Settings' ) } initialOpen={ false } className="gt-panel-button-settings gt-panel">
 
 						<SelectControl
+							label={ __( 'Button Size' ) }
+							value={ buttonSize }
+							onChange={ ( newSize ) => setAttributes( { buttonSize: newSize } ) }
+							options={ [
+								{ value: 'small', label: __( 'Small' ) },
+								{ value: 'medium', label: __( 'Medium' ) },
+								{ value: 'large', label: __( 'Large' ) },
+								{ value: 'extra-large', label: __( 'Extra Large' ) },
+							] }
+						/>
+
+						<SelectControl
 							label={ __( 'Button Style' ) }
 							value={ buttonShape }
 							onChange={ ( newShape ) => setAttributes( { buttonShape: newShape } ) }
@@ -204,37 +205,6 @@ class ButtonEdit extends Component {
 								max={ 12 }
 							/>
 						) }
-
-					</PanelBody>
-
-					<PanelBody title={ __( 'Padding Options' ) } initialOpen={ false } className="gt-panel-padding-options gt-panel">
-
-						<PaddingOptions
-							title={ __( 'Button Size' ) }
-							paddingClass={ paddingClass }
-							paddingVertical={ paddingVertical }
-							paddingHorizontal={ paddingHorizontal }
-							setPadding={ ( atts ) => setAttributes( atts ) }
-							defaultVertical={ 6 }
-							defaultHorizontal={ 18 }
-							paddingSizes={ {
-								small: {
-									name: 'S',
-									paddingVertical: 8,
-									paddingHorizontal: 14,
-								},
-								medium: {
-									name: 'M',
-									paddingVertical: 16,
-									paddingHorizontal: 28,
-								},
-								large: {
-									name: 'L',
-									paddingVertical: 24,
-									paddingHorizontal: 42,
-								},
-							} }
-						/>
 
 					</PanelBody>
 
