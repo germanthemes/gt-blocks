@@ -28,11 +28,6 @@ const {
 } = wp.components;
 
 /**
- * Internal dependencies
- */
-import { default as PaddingOptions } from '../../components/padding-options';
-
-/**
  * Block Edit Component
  */
 class contentEdit extends Component {
@@ -53,27 +48,16 @@ class contentEdit extends Component {
 			allowedBlocks,
 			template,
 			templateLock,
-			paddingClass,
-			paddingVertical,
-			paddingHorizontal,
 		} = attributes;
 
 		const contentClasses = classnames( 'gt-content', {
-			[ `gt-padding-${ paddingClass }` ]: paddingClass,
 			'has-text-color': textColor.color,
 			[ textColor.class ]: textColor.class,
 			'has-background': backgroundColor.color,
 			[ backgroundColor.class ]: backgroundColor.class,
 		} );
 
-		const paddingStyles = ! paddingClass && backgroundColor.color;
-
 		const contentStyles = {
-			display: paddingStyles && paddingVertical === 0 ? 'flex' : undefined,
-			paddingTop: paddingStyles && paddingVertical !== 24 ? paddingVertical + 'px' : undefined,
-			paddingBottom: paddingStyles && paddingVertical !== 24 ? paddingVertical + 'px' : undefined,
-			paddingLeft: paddingStyles && paddingHorizontal !== 24 ? paddingHorizontal + 'px' : undefined,
-			paddingRight: paddingStyles && paddingHorizontal !== 24 ? paddingHorizontal + 'px' : undefined,
 			color: textColor.class ? undefined : textColor.color,
 			backgroundColor: backgroundColor.class ? undefined : backgroundColor.color,
 		};
@@ -82,19 +66,6 @@ class contentEdit extends Component {
 			<Fragment>
 
 				<InspectorControls key="inspector">
-
-					{ backgroundColor.color && (
-						<PanelBody title={ __( 'Padding Options' ) } initialOpen={ false } className="gt-panel-padding-options gt-panel">
-
-							<PaddingOptions
-								paddingClass={ paddingClass }
-								paddingVertical={ paddingVertical }
-								paddingHorizontal={ paddingHorizontal }
-								setPadding={ ( atts ) => setAttributes( atts ) }
-							/>
-
-						</PanelBody>
-					) }
 
 					<PanelColorSettings
 						title={ __( 'Color Settings' ) }

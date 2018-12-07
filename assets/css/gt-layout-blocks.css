@@ -83,28 +83,12 @@
   padding: 1.5em; }
   .wp-block-gt-layout-blocks-column .gt-column.has-background > *:last-child {
     margin-bottom: 0; }
-.wp-block-gt-layout-blocks-content {
-  display: -ms-flexbox;
-  display: flex;
-  -ms-flex-direction: column;
-      flex-direction: column; }
-  .wp-block-gt-layout-blocks-content .gt-content {
-    display: -ms-flexbox;
-    display: flex;
-    -ms-flex-direction: column;
-        flex-direction: column;
-    -ms-flex-positive: 1;
-        flex-grow: 1; }
-    .wp-block-gt-layout-blocks-content .gt-content.has-background {
-      padding: 1.5rem; }
-      .wp-block-gt-layout-blocks-content .gt-content.has-background > h1, .wp-block-gt-layout-blocks-content .gt-content.has-background > h2, .wp-block-gt-layout-blocks-content .gt-content.has-background > h3, .wp-block-gt-layout-blocks-content .gt-content.has-background > h4, .wp-block-gt-layout-blocks-content .gt-content.has-background > h5, .wp-block-gt-layout-blocks-content .gt-content.has-background > h6 {
-        margin-top: 0; }
-      .wp-block-gt-layout-blocks-content .gt-content.has-background.gt-padding-small {
-        padding: 0.5rem; }
-      .wp-block-gt-layout-blocks-content .gt-content.has-background.gt-padding-medium {
-        padding: 1rem; }
-      .wp-block-gt-layout-blocks-content .gt-content.has-background.gt-padding-large {
-        padding: 2rem; }
+.wp-block-gt-layout-blocks-content .gt-content.has-background {
+  padding: 1.5em; }
+  .wp-block-gt-layout-blocks-content .gt-content.has-background > h1, .wp-block-gt-layout-blocks-content .gt-content.has-background > h2, .wp-block-gt-layout-blocks-content .gt-content.has-background > h3, .wp-block-gt-layout-blocks-content .gt-content.has-background > h4, .wp-block-gt-layout-blocks-content .gt-content.has-background > h5, .wp-block-gt-layout-blocks-content .gt-content.has-background > h6 {
+    margin-top: 0; }
+  .wp-block-gt-layout-blocks-content .gt-content.has-background > *:last-child {
+    margin-bottom: 0; }
 .wp-block-gt-layout-blocks-dual-heading {
   margin-bottom: 1.5em; }
   .wp-block-gt-layout-blocks-dual-heading .gt-heading {
