@@ -1,29 +1,12 @@
 .wp-block-gt-layout-blocks-column {
-	display: flex;
-	flex-direction: column;
 
 	.gt-column {
-		display: flex;
-		flex-direction: column;
-		flex-grow: 1;
-
-		p {
-			margin-bottom: 0;
-		}
 
 		&.has-background {
-			padding: 1.5rem;
+			padding: 1.5em;
 
-			&.gt-padding-small {
-				padding: 0.5rem;
-			}
-
-			&.gt-padding-medium {
-				padding: 1rem;
-			}
-
-			&.gt-padding-large {
-				padding: 2rem;
+			> *:last-child {
+				margin-bottom: 0;
 			}
 		}
 	}

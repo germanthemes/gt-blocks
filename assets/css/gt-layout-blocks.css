@@ -79,28 +79,10 @@
   .wp-block-gt-layout-blocks-buttons.gt-align-right {
     -ms-flex-pack: end;
         justify-content: flex-end; }
-.wp-block-gt-layout-blocks-column {
-  display: -ms-flexbox;
-  display: flex;
-  -ms-flex-direction: column;
-      flex-direction: column; }
-  .wp-block-gt-layout-blocks-column .gt-column {
-    display: -ms-flexbox;
-    display: flex;
-    -ms-flex-direction: column;
-        flex-direction: column;
-    -ms-flex-positive: 1;
-        flex-grow: 1; }
-    .wp-block-gt-layout-blocks-column .gt-column p {
-      margin-bottom: 0; }
-    .wp-block-gt-layout-blocks-column .gt-column.has-background {
-      padding: 1.5rem; }
-      .wp-block-gt-layout-blocks-column .gt-column.has-background.gt-padding-small {
-        padding: 0.5rem; }
-      .wp-block-gt-layout-blocks-column .gt-column.has-background.gt-padding-medium {
-        padding: 1rem; }
-      .wp-block-gt-layout-blocks-column .gt-column.has-background.gt-padding-large {
-        padding: 2rem; }
+.wp-block-gt-layout-blocks-column .gt-column.has-background {
+  padding: 1.5em; }
+  .wp-block-gt-layout-blocks-column .gt-column.has-background > *:last-child {
+    margin-bottom: 0; }
 .wp-block-gt-layout-blocks-content {
   display: -ms-flexbox;
   display: flex;
