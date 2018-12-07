@@ -68,16 +68,13 @@ class gtHeadingEdit extends Component {
 			titleTag,
 			placeholder,
 			textAlignment,
-			fontWeight,
-			italic,
-			uppercase,
+			isBold,
+			isUppercase,
 		} = attributes;
 
 		const headingClasses = classnames( className, 'gt-heading', {
-			'gt-is-bold': 'bold' === fontWeight,
-			'gt-is-thin': 'thin' === fontWeight,
-			'gt-is-italic': italic,
-			'gt-is-uppercase': uppercase,
+			'gt-is-bold': isBold,
+			'gt-is-uppercase': isUppercase,
 			'has-background': backgroundColor.color,
 			[ backgroundColor.class ]: backgroundColor.class,
 			'has-text-color': textColor.color,
@@ -135,37 +132,22 @@ class gtHeadingEdit extends Component {
 							/>
 						</BaseControl>
 
-					</PanelBody>
-
-					<PanelBody title={ __( 'Font Settings' ) } initialOpen={ false } className="gt-panel-font-settings gt-panel">
-
 						<FontSizePicker
 							fallbackFontSize={ fallbackFontSize }
 							value={ fontSize.size }
 							onChange={ setFontSize }
 						/>
 
-						<SelectControl
-							label={ __( 'Font Weight' ) }
-							value={ fontWeight }
-							onChange={ ( newWeight ) => setAttributes( { fontWeight: newWeight } ) }
-							options={ [
-								{ value: 'thin', label: __( 'Thin' ) },
-								{ value: 'normal', label: __( 'Normal' ) },
-								{ value: 'bold', label: __( 'Bold' ) },
-							] }
-						/>
-
 						<ToggleControl
-							label={ __( 'Italic?' ) }
-							checked={ !! italic }
-							onChange={ () => setAttributes( { italic: ! italic } ) }
+							label={ __( 'Bold?' ) }
+							checked={ !! isBold }
+							onChange={ () => setAttributes( { isBold: ! isBold } ) }
 						/>
 
 						<ToggleControl
 							label={ __( 'Uppercase?' ) }
-							checked={ !! uppercase }
-							onChange={ () => setAttributes( { uppercase: ! uppercase } ) }
+							checked={ !! isUppercase }
+							onChange={ () => setAttributes( { isUppercase: ! isUppercase } ) }
 						/>
 
 					</PanelBody>

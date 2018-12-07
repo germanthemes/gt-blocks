@@ -286,6 +286,7 @@ class ButtonEdit extends Component {
 							<URLInput
 								value={ url }
 								onChange={ ( newURL ) => setAttributes( { url: newURL } ) }
+								// eslint-disable-next-line jsx-a11y/no-autofocus
 								autoFocus={ false }
 							/>
 							<IconButton icon="editor-break" label={ __( 'Apply' ) } type="submit" />

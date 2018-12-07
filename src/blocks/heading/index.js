@@ -107,15 +107,11 @@ registerBlockType(
 			textAlignment: {
 				type: 'string',
 			},
-			fontWeight: {
-				type: 'string',
-				default: 'bold',
-			},
-			italic: {
+			isBold: {
 				type: 'boolean',
-				default: false,
+				default: true,
 			},
-			uppercase: {
+			isUppercase: {
 				type: 'boolean',
 				default: false,
 			},
@@ -146,9 +142,8 @@ registerBlockType(
 				title,
 				titleTag,
 				textAlignment,
-				fontWeight,
-				italic,
-				uppercase,
+				isBold,
+				isUppercase,
 				textColor,
 				backgroundColor,
 				customTextColor,
@@ -162,10 +157,8 @@ registerBlockType(
 			const fontSizeClass = getFontSizeClass( fontSize );
 
 			const headingClasses = classnames( 'gt-heading', {
-				'gt-is-bold': 'bold' === fontWeight,
-				'gt-is-thin': 'thin' === fontWeight,
-				'gt-is-italic': italic,
-				'gt-is-uppercase': uppercase,
+				'gt-is-bold': isBold,
+				'gt-is-uppercase': isUppercase,
 				'has-background': backgroundColor || customBackgroundColor,
 				[ textColorClass ]: textColorClass,
 				[ backgroundClass ]: backgroundClass,
