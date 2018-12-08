@@ -26,7 +26,6 @@ const {
 
 const {
 	IconButton,
-	PanelBody,
 	withFallbackStyles,
 } = wp.components;
 
@@ -94,7 +93,6 @@ class columnEdit extends Component {
 	render() {
 		const {
 			attributes,
-			setAttributes,
 			backgroundColor,
 			setBackgroundColor,
 			fallbackBackgroundColor,
@@ -135,18 +133,18 @@ class columnEdit extends Component {
 				<InspectorControls key="inspector">
 
 					<PanelColorSettings
-						title={ __( 'Color Settings' ) }
+						title={ __( 'Color Settings', 'gt-layout-blocks' ) }
 						initialOpen={ false }
 						colorSettings={ [
 							{
 								value: backgroundColor.color,
 								onChange: setBackgroundColor,
-								label: __( 'Background Color' ),
+								label: __( 'Background Color', 'gt-layout-blocks' ),
 							},
 							{
 								value: textColor.color,
 								onChange: setTextColor,
-								label: __( 'Text Color' ),
+								label: __( 'Text Color', 'gt-layout-blocks' ),
 							},
 						] }
 					>
@@ -179,7 +177,7 @@ class columnEdit extends Component {
 
 							<IconButton
 								className="move-up-column"
-								label={ __( 'Move up' ) }
+								label={ __( 'Move up', 'gt-layout-blocks' ) }
 								icon="arrow-left-alt2"
 								onClick={ isFirstColumn ? null : onMoveUp }
 								disabled={ isFirstColumn }
@@ -187,7 +185,7 @@ class columnEdit extends Component {
 
 							<IconButton
 								className="move-down-column"
-								label={ __( 'Move down' ) }
+								label={ __( 'Move down', 'gt-layout-blocks' ) }
 								icon="arrow-right-alt2"
 								onClick={ isLastColumn ? null : onMoveDown }
 								disabled={ isLastColumn }
@@ -195,14 +193,14 @@ class columnEdit extends Component {
 
 							<IconButton
 								className="duplicate-column"
-								label={ __( 'Duplicate' ) }
+								label={ __( 'Duplicate', 'gt-layout-blocks' ) }
 								icon="admin-page"
 								onClick={ () => this.duplicateColumn() }
 							/>
 
 							<IconButton
 								className="remove-column"
-								label={ __( 'Remove' ) }
+								label={ __( 'Remove', 'gt-layout-blocks' ) }
 								icon="trash"
 								onClick={ () => this.removeColumn() }
 							/>

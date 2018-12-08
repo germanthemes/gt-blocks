@@ -152,7 +152,7 @@ class GridEdit extends Component {
 						controls={
 							[ 2, 3, 4 ].map( column => ( {
 								icon: columnIcons[ column ],
-								title: sprintf( __( '%s Columns' ), column ),
+								title: sprintf( __( '%s Columns', 'gt-layout-blocks' ), column ),
 								isActive: column === columns,
 								onClick: () => setAttributes( { columns: column } ),
 							} ) )
@@ -163,10 +163,10 @@ class GridEdit extends Component {
 
 				<InspectorControls key="inspector">
 
-					<PanelBody title={ __( 'Layout Settings' ) } initialOpen={ true } className="gt-panel-layout-settings gt-panel">
+					<PanelBody title={ __( 'Layout Settings', 'gt-layout-blocks' ) } initialOpen={ true } className="gt-panel-layout-settings gt-panel">
 
 						<RangeControl
-							label={ __( 'Columns' ) }
+							label={ __( 'Columns', 'gt-layout-blocks' ) }
 							value={ columns }
 							onChange={ ( nextColumns ) => setAttributes( { columns: nextColumns } ) }
 							min={ 2 }
@@ -196,7 +196,7 @@ class GridEdit extends Component {
 							className="gt-add-grid-item"
 						>
 							<Dashicon icon="insert" />
-							{ __( 'Add block' ) }
+							{ __( 'Add block', 'gt-layout-blocks' ) }
 						</Button>
 					) }
 				</div>

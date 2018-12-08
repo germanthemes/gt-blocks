@@ -26,9 +26,9 @@ import edit from './edit';
 registerBlockType(
 	'gt-layout-blocks/column',
 	{
-		title: __( 'GT Column' ),
+		title: __( 'GT Column', 'gt-layout-blocks' ),
 
-		description: __( 'A single column within a grid block.' ),
+		description: __( 'A single column within a grid block.', 'gt-layout-blocks' ),
 
 		category: 'gt-layout-blocks',
 

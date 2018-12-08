@@ -170,7 +170,7 @@ class GT_Layout_Blocks {
 			array(
 				array(
 					'slug'  => 'gt-layout-blocks',
-					'title' => __( 'GT Layout Blocks test', 'gt-layout-blocks' ),
+					'title' => __( 'GT Layout Blocks', 'gt-layout-blocks' ),
 				),
 			)
 		);

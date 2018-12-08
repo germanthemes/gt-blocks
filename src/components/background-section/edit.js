@@ -148,15 +148,15 @@ class BackgroundEdit extends Component {
 		const ALIGNMENT_CONTROLS = {
 			default: {
 				icon: 'align-center',
-				title: __( 'Default width' ),
+				title: __( 'Default width', 'gt-layout-blocks' ),
 			},
 			wide: {
 				icon: 'align-wide',
-				title: __( 'Wide width' ),
+				title: __( 'Wide width', 'gt-layout-blocks' ),
 			},
 			full: {
 				icon: 'align-full-width',
-				title: __( 'Full width' ),
+				title: __( 'Full width', 'gt-layout-blocks' ),
 			},
 		};
 
@@ -177,10 +177,10 @@ class BackgroundEdit extends Component {
 
 				<InspectorControls>
 
-					<PanelBody title={ __( 'Section Settings' ) } initialOpen={ false } className="gt-section-settings-panel gt-panel">
+					<PanelBody title={ __( 'Section Settings', 'gt-layout-blocks' ) } initialOpen={ false } className="gt-section-settings-panel gt-panel">
 
 						{ wideControlsEnabled && (
-							<BaseControl id="gt-block-alignment" label={ __( 'Block Alignment' ) }>
+							<BaseControl id="gt-block-alignment" label={ __( 'Block Alignment', 'gt-layout-blocks' ) }>
 								<Toolbar
 									controls={
 										Object.keys( ALIGNMENT_CONTROLS ).map( ( control ) => ( {
@@ -196,45 +196,45 @@ class BackgroundEdit extends Component {
 						{ ( wideControlsEnabled && ( 'full' === blockAlignment || 'wide' === blockAlignment ) ) && (
 
 							<SelectControl
-								label={ __( 'Content Width' ) }
+								label={ __( 'Content Width', 'gt-layout-blocks' ) }
 								value={ contentWidth }
 								onChange={ ( newWidth ) => setAttributes( { contentWidth: newWidth } ) }
 								options={ [
-									{ value: 'narrow', label: __( 'Narrow width' ) },
-									{ value: 'default', label: __( 'Default width' ) },
-									{ value: 'wide', label: __( 'Wide width' ) },
-									{ value: 'full', label: __( 'Full width' ) },
+									{ value: 'narrow', label: __( 'Narrow width', 'gt-layout-blocks' ) },
+									{ value: 'default', label: __( 'Default width', 'gt-layout-blocks' ) },
+									{ value: 'wide', label: __( 'Wide width', 'gt-layout-blocks' ) },
+									{ value: 'full', label: __( 'Full width', 'gt-layout-blocks' ) },
 								] }
 							/>
 
 						) }
 
 						<SelectControl
-							label={ __( 'Padding' ) }
+							label={ __( 'Padding', 'gt-layout-blocks' ) }
 							value={ padding }
 							onChange={ ( newPadding ) => setAttributes( { padding: newPadding } ) }
 							options={ [
-								{ value: 'none', label: __( 'None' ) },
-								{ value: 'normal', label: __( 'Normal' ) },
-								{ value: 'large', label: __( 'Large' ) },
+								{ value: 'none', label: __( 'None', 'gt-layout-blocks' ) },
+								{ value: 'normal', label: __( 'Normal', 'gt-layout-blocks' ) },
+								{ value: 'large', label: __( 'Large', 'gt-layout-blocks' ) },
 							] }
 						/>
 
 					</PanelBody>
 
 					<PanelColorSettings
-						title={ __( 'Color Settings' ) }
+						title={ __( 'Color Settings', 'gt-layout-blocks' ) }
 						initialOpen={ false }
 						colorSettings={ [
 							{
 								value: backgroundColor.color,
 								onChange: setBackgroundColor,
-								label: __( 'Background Color' ),
+								label: __( 'Background Color', 'gt-layout-blocks' ),
 							},
 							{
 								value: textColor.color,
 								onChange: setTextColor,
-								label: __( 'Text Color' ),
+								label: __( 'Text Color', 'gt-layout-blocks' ),
 							},
 						] }
 					>
@@ -249,19 +249,19 @@ class BackgroundEdit extends Component {
 						/>
 					</PanelColorSettings>
 
-					<PanelBody title={ __( 'Background Image' ) } initialOpen={ false } className="gt-background-image-panel gt-panel">
+					<PanelBody title={ __( 'Background Image', 'gt-layout-blocks' ) } initialOpen={ false } className="gt-background-image-panel gt-panel">
 
 						<div className="gt-background-image">
 
 							{ ! backgroundImageId ? (
 
 								<MediaUpload
-									title={ __( 'Set background image' ) }
+									title={ __( 'Set background image', 'gt-layout-blocks' ) }
 									onSelect={ this.onSelectImage }
 									type="image"
 									render={ ( { open } ) => (
 										<Button onClick={ open } className="gt-set-image">
-											{ __( 'Set background image' ) }
+											{ __( 'Set background image', 'gt-layout-blocks' ) }
 										</Button>
 									) }
 								/>
@@ -271,7 +271,7 @@ class BackgroundEdit extends Component {
 								<Fragment>
 
 									<MediaUpload
-										title={ __( 'Set background image' ) }
+										title={ __( 'Set background image', 'gt-layout-blocks' ) }
 										onSelect={ this.onSelectImage }
 										type="image"
 										value={ backgroundImageId }
@@ -279,7 +279,7 @@ class BackgroundEdit extends Component {
 											<Button onClick={ open } className="gt-image-button">
 												<img
 													src={ backgroundImageUrl }
-													alt={ __( 'Background image' ) }
+													alt={ __( 'Background image', 'gt-layout-blocks' ) }
 												/>
 											</Button>
 										) }
@@ -288,19 +288,19 @@ class BackgroundEdit extends Component {
 									<div className="gt-image-controls">
 
 										<MediaUpload
-											title={ __( 'Set background image' ) }
+											title={ __( 'Set background image', 'gt-layout-blocks' ) }
 											onSelect={ this.onSelectImage }
 											type="image"
 											value={ backgroundImageId }
 											render={ ( { open } ) => (
 												<Button onClick={ open } isDefault isLarge className="gt-replace-image">
-													{ __( 'Replace image' ) }
+													{ __( 'Replace image', 'gt-layout-blocks' ) }
 												</Button>
 											) }
 										/>
 
 										<Button onClick={ this.onRemoveImage } isLink isDestructive>
-											{ __( 'Remove image' ) }
+											{ __( 'Remove image', 'gt-layout-blocks' ) }
 										</Button>
 
 									</div>
@@ -316,7 +316,7 @@ class BackgroundEdit extends Component {
 							<Fragment>
 
 								<RangeControl
-									label={ __( 'Image Opacity' ) }
+									label={ __( 'Image Opacity', 'gt-layout-blocks' ) }
 									value={ imageOpacity }
 									onChange={ ( newOpacity ) => setAttributes( { imageOpacity: newOpacity } ) }
 									min={ 0 }
@@ -324,24 +324,24 @@ class BackgroundEdit extends Component {
 								/>
 
 								<SelectControl
-									label={ __( 'Background Position' ) }
+									label={ __( 'Background Position', 'gt-layout-blocks' ) }
 									value={ backgroundPosition }
 									onChange={ ( newPosition ) => setAttributes( { backgroundPosition: newPosition } ) }
 									options={ [
-										{ value: 'left top', label: __( 'Left Top' ) },
-										{ value: 'left center', label: __( 'Left Center' ) },
-										{ value: 'left bottom', label: __( 'Left Bottom' ) },
-										{ value: 'center top', label: __( 'Center Top' ) },
-										{ value: 'center center', label: __( 'Center Center' ) },
-										{ value: 'center bottom', label: __( 'Center Bottom' ) },
-										{ value: 'right top', label: __( 'Right Top' ) },
-										{ value: 'right center', label: __( 'Right Center' ) },
-										{ value: 'right bottom', label: __( 'Right Bottom' ) },
+										{ value: 'left top', label: __( 'Left Top', 'gt-layout-blocks' ) },
+										{ value: 'left center', label: __( 'Left Center', 'gt-layout-blocks' ) },
+										{ value: 'left bottom', label: __( 'Left Bottom', 'gt-layout-blocks' ) },
+										{ value: 'center top', label: __( 'Center Top', 'gt-layout-blocks' ) },
+										{ value: 'center center', label: __( 'Center Center', 'gt-layout-blocks' ) },
+										{ value: 'center bottom', label: __( 'Center Bottom', 'gt-layout-blocks' ) },
+										{ value: 'right top', label: __( 'Right Top', 'gt-layout-blocks' ) },
+										{ value: 'right center', label: __( 'Right Center', 'gt-layout-blocks' ) },
+										{ value: 'right bottom', label: __( 'Right Bottom', 'gt-layout-blocks' ) },
 									] }
 								/>
 
 								<ToggleControl
-									label={ __( 'Fixed Background' ) }
+									label={ __( 'Fixed Background', 'gt-layout-blocks' ) }
 									checked={ !! fixedBackground }
 									onChange={ () => setAttributes( { fixedBackground: ! fixedBackground } ) }
 								/>

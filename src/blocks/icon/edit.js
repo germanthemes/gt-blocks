@@ -104,23 +104,23 @@ class IconEdit extends Component {
 
 				<InspectorControls key="inspector">
 
-					<PanelBody title={ __( 'Icon Settings' ) } initialOpen={ false } className="gt-panel-icon-settings gt-panel">
+					<PanelBody title={ __( 'Icon Settings', 'gt-layout-blocks' ) } initialOpen={ false } className="gt-panel-icon-settings gt-panel">
 
 						<SelectControl
-							label={ __( 'Icon Style' ) }
+							label={ __( 'Icon Style', 'gt-layout-blocks' ) }
 							value={ iconLayout }
 							onChange={ ( newStyle ) => setAttributes( { iconLayout: newStyle } ) }
 							options={ [
-								{ value: 'default', label: __( 'Default' ) },
-								{ value: 'circle', label: __( 'Circle' ) },
-								{ value: 'outline', label: __( 'Outline' ) },
-								{ value: 'square', label: __( 'Square' ) },
-								{ value: 'full', label: __( 'Full' ) },
+								{ value: 'default', label: __( 'Default', 'gt-layout-blocks' ) },
+								{ value: 'circle', label: __( 'Circle', 'gt-layout-blocks' ) },
+								{ value: 'outline', label: __( 'Outline', 'gt-layout-blocks' ) },
+								{ value: 'square', label: __( 'Square', 'gt-layout-blocks' ) },
+								{ value: 'full', label: __( 'Full', 'gt-layout-blocks' ) },
 							] }
 						/>
 
 						<RangeControl
-							label={ __( 'Icon Size' ) }
+							label={ __( 'Icon Size', 'gt-layout-blocks' ) }
 							value={ iconSize }
 							onChange={ ( newSize ) => setAttributes( { iconSize: newSize } ) }
 							min={ 16 }
@@ -129,7 +129,7 @@ class IconEdit extends Component {
 
 						{ iconLayout !== 'default' && (
 							<RangeControl
-								label={ __( 'Icon Padding' ) }
+								label={ __( 'Icon Padding', 'gt-layout-blocks' ) }
 								value={ iconPadding }
 								onChange={ ( newPadding ) => setAttributes( { iconPadding: newPadding } ) }
 								min={ 16 }
@@ -139,7 +139,7 @@ class IconEdit extends Component {
 
 						{ iconLayout === 'outline' && (
 							<RangeControl
-								label={ __( 'Border Width' ) }
+								label={ __( 'Border Width', 'gt-layout-blocks' ) }
 								value={ outlineBorderWidth }
 								onChange={ ( newWidth ) => setAttributes( { outlineBorderWidth: newWidth } ) }
 								min={ 1 }
@@ -149,7 +149,7 @@ class IconEdit extends Component {
 
 						{ iconLayout === 'square' && (
 							<RangeControl
-								label={ __( 'Rounded Corners' ) }
+								label={ __( 'Rounded Corners', 'gt-layout-blocks' ) }
 								value={ roundedCorners }
 								onChange={ ( newRadius ) => setAttributes( { roundedCorners: newRadius } ) }
 								min={ 0 }
@@ -160,18 +160,18 @@ class IconEdit extends Component {
 					</PanelBody>
 
 					<PanelColorSettings
-						title={ __( 'Color Settings' ) }
+						title={ __( 'Color Settings', 'gt-layout-blocks' ) }
 						initialOpen={ false }
 						colorSettings={ [
 							{
 								value: backgroundColor.color,
 								onChange: setBackgroundColor,
-								label: __( 'Background Color' ),
+								label: __( 'Background Color', 'gt-layout-blocks' ),
 							},
 							{
 								value: textColor.color,
 								onChange: setTextColor,
-								label: __( 'Text Color' ),
+								label: __( 'Text Color', 'gt-layout-blocks' ),
 							},
 						] }
 					>

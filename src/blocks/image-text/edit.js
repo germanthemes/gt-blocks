@@ -31,22 +31,21 @@ import {
 	gtIconVerticalAlignTop,
 	gtIconVerticalAlignCenter,
 	gtIconVerticalAlignBottom,
-	gtIconImagePosition,
 } from '../../components/icons';
 
 // Define vertical alignment controls.
 const verticalAlignmentControls = {
 	top: {
 		icon: gtIconVerticalAlignTop,
-		title: __( 'Top' ),
+		title: __( 'Top', 'gt-layout-blocks' ),
 	},
 	center: {
 		icon: gtIconVerticalAlignCenter,
-		title: __( 'Center' ),
+		title: __( 'Center', 'gt-layout-blocks' ),
 	},
 	bottom: {
 		icon: gtIconVerticalAlignBottom,
-		title: __( 'Bottom' ),
+		title: __( 'Bottom', 'gt-layout-blocks' ),
 	},
 };
 
@@ -87,19 +86,19 @@ class ImageTextEdit extends Component {
 
 				<InspectorControls>
 
-					<PanelBody title={ __( 'Layout Settings' ) } initialOpen={ false } className="gt-panel-layout-settings gt-panel">
+					<PanelBody title={ __( 'Layout Settings', 'gt-layout-blocks' ) } initialOpen={ false } className="gt-panel-layout-settings gt-panel">
 
 						<SelectControl
-							label={ __( 'Image Position' ) }
+							label={ __( 'Image Position', 'gt-layout-blocks' ) }
 							value={ imagePosition }
 							onChange={ ( newLayout ) => setAttributes( { imagePosition: newLayout } ) }
 							options={ [
-								{ value: 'left', label: __( 'Left' ) },
-								{ value: 'right', label: __( 'Right' ) },
+								{ value: 'left', label: __( 'Left', 'gt-layout-blocks' ) },
+								{ value: 'right', label: __( 'Right', 'gt-layout-blocks' ) },
 							] }
 						/>
 
-						<BaseControl id="gt-vertical-alignment" label={ __( 'Vertical Alignment' ) }>
+						<BaseControl id="gt-vertical-alignment" label={ __( 'Vertical Alignment', 'gt-layout-blocks' ) }>
 							<Toolbar
 								className="gt-vertical-align-control"
 								controls={

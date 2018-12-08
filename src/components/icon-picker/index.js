@@ -139,12 +139,12 @@ class IconPicker extends Component {
 					<Fragment>
 						<Placeholder
 							className="gt-icon-placeholder"
-							instructions={ __( 'Choose an icon here.' ) }
+							instructions={ __( 'Choose an icon here.', 'gt-layout-blocks' ) }
 							icon="info"
-							label={ __( 'Icon' ) }
+							label={ __( 'Icon', 'gt-layout-blocks' ) }
 						>
 							<Button isLarge onClick={ this.openModal }>
-								{ __( 'Select icon' ) }
+								{ __( 'Select icon', 'gt-layout-blocks' ) }
 							</Button>
 						</Placeholder>
 
@@ -157,7 +157,7 @@ class IconPicker extends Component {
 						{ isSelected ? (
 
 							<Button className="gt-show-icon-picker" onClick={ this.openModal }>
-								<Tooltip text={ __( 'Edit icon' ) }>
+								<Tooltip text={ __( 'Edit icon', 'gt-layout-blocks' ) }>
 									<div className={ iconClasses } style={ iconStyles }>
 										{ this.displayIcon( icon, iconSize, paddingStyles ) }
 									</div>
@@ -183,9 +183,9 @@ class IconPicker extends Component {
 	render() {
 		const title = (
 			<span className="gt-icon-picker-title">
-				{ __( 'Select Icon' ) }
+				{ __( 'Select Icon', 'gt-layout-blocks' ) }
 				<Button onClick={ () => this.setIcon( undefined ) } className="gt-remove-icon">
-					{ __( 'Remove icon' ) }
+					{ __( 'Remove icon', 'gt-layout-blocks' ) }
 				</Button>
 			</span>
 		);
@@ -199,14 +199,15 @@ class IconPicker extends Component {
 					<Modal
 						className="gt-layout-blocks-icon-picker-modal"
 						title={ title }
-						closeLabel={ __( 'Close' ) }
+						closeLabel={ __( 'Close', 'gt-layout-blocks' ) }
 						onRequestClose={ this.closeModal }
 						focusOnMount={ false }
 					>
 						<PlainText
 							className="gt-icon-picker-search"
-							placeholder={ __( 'Search for icon' ) }
+							placeholder={ __( 'Search for icon', 'gt-layout-blocks' ) }
 							onChange={ this.searchIcon }
+							// eslint-disable-next-line jsx-a11y/no-autofocus
 							autoFocus={ true }
 						/>
 

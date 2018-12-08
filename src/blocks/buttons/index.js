@@ -25,9 +25,9 @@ import edit from './edit';
 registerBlockType(
 	'gt-layout-blocks/buttons',
 	{
-		title: __( 'GT Buttons' ),
+		title: __( 'GT Buttons', 'gt-layout-blocks' ),
 
-		description: __( 'Insert multiple buttons.' ),
+		description: __( 'Insert multiple buttons.', 'gt-layout-blocks' ),
 
 		category: 'gt-layout-blocks',
 

@@ -23,7 +23,6 @@ const {
 } = wp.editor;
 
 const {
-	PanelBody,
 	withFallbackStyles,
 } = wp.components;
 
@@ -34,7 +33,6 @@ class contentEdit extends Component {
 	render() {
 		const {
 			attributes,
-			setAttributes,
 			backgroundColor,
 			setBackgroundColor,
 			fallbackBackgroundColor,
@@ -68,18 +66,18 @@ class contentEdit extends Component {
 				<InspectorControls key="inspector">
 
 					<PanelColorSettings
-						title={ __( 'Color Settings' ) }
+						title={ __( 'Color Settings', 'gt-layout-blocks' ) }
 						initialOpen={ false }
 						colorSettings={ [
 							{
 								value: backgroundColor.color,
 								onChange: setBackgroundColor,
-								label: __( 'Background Color' ),
+								label: __( 'Background Color', 'gt-layout-blocks' ),
 							},
 							{
 								value: textColor.color,
 								onChange: setTextColor,
-								label: __( 'Text Color' ),
+								label: __( 'Text Color', 'gt-layout-blocks' ),
 							},
 						] }
 					>

@@ -23,7 +23,7 @@ const advancedPanel = createHigherOrderComponent( ( BlockEdit ) => {
 						{ ( fills ) => ! isEmpty( fills ) && (
 							<PanelBody
 								className="editor-block-inspector__advanced"
-								title={ __( 'Advanced' ) }
+								title={ __( 'Advanced', 'gt-layout-blocks' ) }
 								initialOpen={ false }
 							>
 								{ fills }

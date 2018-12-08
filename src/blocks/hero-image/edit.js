@@ -35,11 +35,11 @@ import { default as BackgroundEdit } from '../../components/background-section/e
 // Define blocks for hero content.
 const TEMPLATE = [
 	[ 'gt-layout-blocks/heading', {
-		placeholder: __( 'Write Hero Heading...' ),
+		placeholder: __( 'Write Hero Heading...', 'gt-layout-blocks' ),
 		customFontSize: 48,
 	} ],
 	[ 'core/paragraph', {
-		placeholder: __( 'Write Hero text...' ),
+		placeholder: __( 'Write Hero text...', 'gt-layout-blocks' ),
 		customFontSize: 20,
 	} ],
 	[ 'gt-layout-blocks/buttons', {
@@ -102,33 +102,33 @@ class HeroImageEdit extends Component {
 
 				<InspectorControls>
 
-					<PanelBody title={ __( 'Hero Settings' ) } initialOpen={ false } className="gt-panel-hero-settings gt-panel">
+					<PanelBody title={ __( 'Hero Settings', 'gt-layout-blocks' ) } initialOpen={ false } className="gt-panel-hero-settings gt-panel">
 
-						<BaseControl id="gt-image-block" label={ __( 'Image Block' ) }>
+						<BaseControl id="gt-image-block" label={ __( 'Image Block', 'gt-layout-blocks' ) }>
 							<Button
 								isLarge
 								className="gt-image-block-button"
 								onClick={ () => setAttributes( { heroImage: ! heroImage } ) }
 							>
 								<Dashicon icon={ heroImage ? 'trash' : 'insert' } />
-								{ heroImage ? __( 'Remove Block' ) : __( 'Add Block' ) }
+								{ heroImage ? __( 'Remove Block', 'gt-layout-blocks' ) : __( 'Add Block', 'gt-layout-blocks' ) }
 							</Button>
 						</BaseControl>
 
 						<SelectControl
-							label={ __( 'Content Position' ) }
+							label={ __( 'Content Position', 'gt-layout-blocks' ) }
 							value={ heroLayout }
 							onChange={ ( newLayout ) => setAttributes( { heroLayout: newLayout } ) }
 							options={ [
-								{ value: 'center', label: __( 'Center' ) },
-								{ value: 'left', label: __( 'Left' ) },
-								{ value: 'right', label: __( 'Right' ) },
+								{ value: 'center', label: __( 'Center', 'gt-layout-blocks' ) },
+								{ value: 'left', label: __( 'Left', 'gt-layout-blocks' ) },
+								{ value: 'right', label: __( 'Right', 'gt-layout-blocks' ) },
 							] }
 						/>
 
 						{ 'center' !== heroLayout && (
 							<RangeControl
-								label={ __( 'Content Width' ) }
+								label={ __( 'Content Width', 'gt-layout-blocks' ) }
 								value={ heroWidth }
 								onChange={ ( newWidth ) => setAttributes( { heroWidth: newWidth } ) }
 								min={ 20 }

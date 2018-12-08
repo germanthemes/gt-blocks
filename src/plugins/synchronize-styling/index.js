@@ -89,7 +89,7 @@ const synchronizeStyling = createHigherOrderComponent( ( BlockEdit ) => {
 							onClick={ synchronizeAttributes }
 						>
 							<Dashicon icon="controls-repeat" />
-							{ __( 'Synchronize Styling' ) }
+							{ __( 'Synchronize Styling', 'gt-layout-blocks' ) }
 						</Button>
 					</PanelBody>
 				</InspectorControls>

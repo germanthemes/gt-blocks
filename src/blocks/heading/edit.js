@@ -2,9 +2,7 @@
  * External dependencies
  */
 import classnames from 'classnames';
-import {
-	range,
-} from 'lodash';
+import { range } from 'lodash';
 const { getComputedStyle } = window;
 
 /**
@@ -37,7 +35,6 @@ const {
 const {
 	BaseControl,
 	PanelBody,
-	SelectControl,
 	ToggleControl,
 	Toolbar,
 	withFallbackStyles,
@@ -97,7 +94,7 @@ class gtHeadingEdit extends Component {
 						controls={
 							range( 2, 5 ).map( ( level ) => ( {
 								icon: 'heading',
-								title: sprintf( __( 'Heading %s' ), level ),
+								title: sprintf( __( 'Heading %s', 'gt-layout-blocks' ), level ),
 								isActive: level === titleTag,
 								onClick: () => setAttributes( { titleTag: level } ),
 								subscript: level,
@@ -109,14 +106,14 @@ class gtHeadingEdit extends Component {
 
 				<InspectorControls>
 
-					<PanelBody title={ __( 'Heading Settings' ) } initialOpen={ true } className="gt-panel-heading-settings gt-panel">
+					<PanelBody title={ __( 'Heading Settings', 'gt-layout-blocks' ) } initialOpen={ true } className="gt-panel-heading-settings gt-panel">
 
-						<BaseControl id="gt-title-tag" label={ __( 'Level' ) }>
+						<BaseControl id="gt-title-tag" label={ __( 'Level', 'gt-layout-blocks' ) }>
 							<Toolbar
 								controls={
 									range( 1, 7 ).map( ( level ) => ( {
 										icon: 'heading',
-										title: sprintf( __( 'Heading %s' ), level ),
+										title: sprintf( __( 'Heading %s', 'gt-layout-blocks' ), level ),
 										isActive: level === titleTag,
 										onClick: () => setAttributes( { titleTag: level } ),
 										subscript: level,
@@ -125,7 +122,7 @@ class gtHeadingEdit extends Component {
 							/>
 						</BaseControl>
 
-						<BaseControl id="gt-text-alignment" label={ __( 'Text Alignment' ) }>
+						<BaseControl id="gt-text-alignment" label={ __( 'Text Alignment', 'gt-layout-blocks' ) }>
 							<AlignmentToolbar
 								value={ textAlignment }
 								onChange={ ( newAlignment ) => setAttributes( { textAlignment: newAlignment } ) }
@@ -139,13 +136,13 @@ class gtHeadingEdit extends Component {
 						/>
 
 						<ToggleControl
-							label={ __( 'Bold?' ) }
+							label={ __( 'Bold?', 'gt-layout-blocks' ) }
 							checked={ !! isBold }
 							onChange={ () => setAttributes( { isBold: ! isBold } ) }
 						/>
 
 						<ToggleControl
-							label={ __( 'Uppercase?' ) }
+							label={ __( 'Uppercase?', 'gt-layout-blocks' ) }
 							checked={ !! isUppercase }
 							onChange={ () => setAttributes( { isUppercase: ! isUppercase } ) }
 						/>
@@ -153,18 +150,18 @@ class gtHeadingEdit extends Component {
 					</PanelBody>
 
 					<PanelColorSettings
-						title={ __( 'Color Settings' ) }
+						title={ __( 'Color Settings', 'gt-layout-blocks' ) }
 						initialOpen={ false }
 						colorSettings={ [
 							{
 								value: backgroundColor.color,
 								onChange: setBackgroundColor,
-								label: __( 'Background Color' ),
+								label: __( 'Background Color', 'gt-layout-blocks' ),
 							},
 							{
 								value: textColor.color,
 								onChange: setTextColor,
-								label: __( 'Text Color' ),
+								label: __( 'Text Color', 'gt-layout-blocks' ),
 							},
 						] }
 					>
@@ -188,7 +185,7 @@ class gtHeadingEdit extends Component {
 					className={ headingClasses }
 					style={ headingStyles }
 					onChange={ ( newTitle ) => setAttributes( { title: newTitle } ) }
-					placeholder={ placeholder || __( 'Write heading…' ) }
+					placeholder={ placeholder || __( 'Write heading…', 'gt-layout-blocks' ) }
 					keepPlaceholderOnFocus
 				/>
 

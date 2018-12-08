@@ -18,9 +18,9 @@ import edit from './edit';
 registerBlockType(
 	'gt-layout-blocks/image',
 	{
-		title: __( 'GT Image' ),
+		title: __( 'GT Image', 'gt-layout-blocks' ),
 
-		description: __( 'Insert a single image.' ),
+		description: __( 'Insert a single image.', 'gt-layout-blocks' ),
 
 		category: 'gt-layout-blocks',
 

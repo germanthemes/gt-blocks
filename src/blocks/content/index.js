@@ -26,9 +26,9 @@ import edit from './edit';
 registerBlockType(
 	'gt-layout-blocks/content',
 	{
-		title: __( 'GT Content' ),
+		title: __( 'GT Content', 'gt-layout-blocks' ),
 
-		description: __( 'A wrapper for your content blocks.' ),
+		description: __( 'A wrapper for your content blocks.', 'gt-layout-blocks' ),
 
 		category: 'gt-layout-blocks',
 
