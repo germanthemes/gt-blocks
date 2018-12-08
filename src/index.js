@@ -1,7 +1,7 @@
 /**
  * Setup Localization Domain
  */
-wp.i18n.setLocaleData( { '': {} }, 'gt-layout-blocks' );
+//wp.i18n.setLocaleData( { '': {} }, 'gt-layout-blocks' );
 
 /**
  * Import Plugins

@@ -1,0 +1,21 @@
+# Translation of Themes + Pro Versions + Add-ons in German
+# This file is distributed under the same license as the Themes + Pro Versions + Add-ons package.
+msgid ""
+msgstr ""
+"Project-Id-Version: GT Layout Blocks\n"
+"Report-Msgid-Bugs-To: https://themezee.com/\n"
+"POT-Creation-Date: 2018-12-08 16:35+0100\n"
+"PO-Revision-Date: 2018-12-08 16:36+0100\n"
+"Last-Translator: \n"
+"Language-Team: GT Blocks<support@germanthemes.de>\n"
+"Language: de_DE\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Poedit 2.2\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+
+#: gt-layout-blocks.php:173
+msgid "GT Layout Blocks test"
+msgstr "GT Layout Blocks blub"

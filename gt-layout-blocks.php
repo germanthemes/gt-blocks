@@ -41,7 +41,7 @@ class GT_Layout_Blocks {
 		self::constants();
 
 		// Setup Translation.
-		add_action( 'plugins_loaded', array( __CLASS__, 'translation' ) );
+		add_action( 'init', array( __CLASS__, 'translation' ) );
 
 		// Setup Action Hooks.
 		self::setup_actions();
@@ -77,7 +77,7 @@ class GT_Layout_Blocks {
 	 */
 	static function translation() {
 
-		load_plugin_textdomain( 'gt-layout-blocks', false, dirname( plugin_basename( GTLB_PLUGIN_FILE ) ) . '/languages/' );
+		load_plugin_textdomain( 'gt-layout-blocks', false, dirname( plugin_basename( GTLB_PLUGIN_FILE ) ) . '/languages/php/' );
 	}
 
 	/**
@@ -109,7 +109,7 @@ class GT_Layout_Blocks {
 	 * @return void
 	 */
 	static function enqueue_block_scripts() {
-		wp_enqueue_style( 'gt-layout-blocks', GTLB_PLUGIN_URL . 'assets/css/gt-layout-blocks.css', array( 'wp-blocks' ), GTLB_VERSION );
+		wp_enqueue_style( 'gt-layout-blocks', GTLB_PLUGIN_URL . 'assets/css/gt-layout-blocks.css', array(), GTLB_VERSION );
 	}
 
 	/**
@@ -134,7 +134,9 @@ class GT_Layout_Blocks {
 			'after'
 		);
 
-		wp_enqueue_style( 'gt-layout-blocks-editor', GTLB_PLUGIN_URL . 'assets/css/gt-layout-blocks-editor.css', array( 'wp-edit-blocks' ), GTLB_VERSION );
+		wp_set_script_translations( 'gt-layout-blocks-editor', 'gt-layout-blocks', GTLB_PLUGIN_DIR . 'languages/js' );
+
+		wp_enqueue_style( 'gt-layout-blocks-editor', GTLB_PLUGIN_URL . 'assets/css/gt-layout-blocks-editor.css', array( 'wp-edit-blocks', 'gt-layout-blocks' ), GTLB_VERSION );
 	}
 
 	/**
@@ -168,7 +170,7 @@ class GT_Layout_Blocks {
 			array(
 				array(
 					'slug'  => 'gt-layout-blocks',
-					'title' => __( 'GT Layout Blocks', 'gt-layout-blocks' ),
+					'title' => __( 'GT Layout Blocks test', 'gt-layout-blocks' ),
 				),
 			)
 		);
