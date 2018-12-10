@@ -3,6 +3,7 @@
  */
 import './plugins/data-store';
 import './plugins/synchronize-styling';
+import './plugins/section-insert';
 
 /**
  * Import Blocks
