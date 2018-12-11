@@ -61,6 +61,11 @@ registerBlockType(
 			},
 		},
 
+		styles: [
+			{ name: 'default', label: __( 'Squared', 'gt-layout-blocks' ), isDefault: true },
+			{ name: 'circle', label: __( 'Circle', 'gt-layout-blocks' ) },
+		],
+
 		edit,
 
 		save( { attributes } ) {

@@ -163,7 +163,7 @@ class GridEdit extends Component {
 
 				<InspectorControls key="inspector">
 
-					<PanelBody title={ __( 'Layout Settings', 'gt-layout-blocks' ) } initialOpen={ true } className="gt-panel-layout-settings gt-panel">
+					<PanelBody title={ __( 'Layout Settings', 'gt-layout-blocks' ) } initialOpen={ false } className="gt-panel-layout-settings gt-panel">
 
 						<RangeControl
 							label={ __( 'Columns', 'gt-layout-blocks' ) }

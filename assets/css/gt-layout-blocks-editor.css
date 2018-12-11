@@ -391,6 +391,12 @@
     -webkit-transform: translateY(-40px);
         -ms-transform: translateY(-40px);
             transform: translateY(-40px); } }
+.wp-block-gt-layout-blocks-portfolio.is-style-card .wp-block-gt-layout-blocks-column .gt-column {
+  padding: 24px 24px 1px; }
+  .wp-block-gt-layout-blocks-portfolio.is-style-card .wp-block-gt-layout-blocks-column .gt-column > .editor-inner-blocks > .editor-block-list__layout > .editor-block-list__block[data-type="gt-layout-blocks/image"] {
+    margin-top: -56px;
+    margin-left: -25px;
+    margin-right: -25px; }
 @media (min-width: 600px) {
   .wp-block-gt-layout-blocks-team-members .gt-column > .editor-inner-blocks > .editor-block-list__layout > .editor-block-list__block[data-type="gt-layout-blocks/image"] {
     margin-bottom: -32px; } }

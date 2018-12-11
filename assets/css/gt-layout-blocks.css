@@ -277,6 +277,9 @@
 .wp-block-gt-layout-blocks-image img {
   margin: 0;
   vertical-align: top; }
+
+.wp-block-gt-layout-blocks-image.is-style-circle img {
+  border-radius: 100%; }
 .wp-block-gt-layout-blocks-image-text {
   display: -ms-flexbox;
   display: flex;
@@ -295,6 +298,20 @@
         justify-content: flex-end; }
 .wp-block-gt-layout-blocks-portfolio {
   margin-bottom: 1.5em; }
+  .wp-block-gt-layout-blocks-portfolio.is-style-card .wp-block-gt-layout-blocks-column .gt-column {
+    padding: 1.5em;
+    -webkit-box-shadow: inset 0 0 2px rgba(0, 0, 0, 0.5);
+            box-shadow: inset 0 0 2px rgba(0, 0, 0, 0.5); }
+    .wp-block-gt-layout-blocks-portfolio.is-style-card .wp-block-gt-layout-blocks-column .gt-column.has-background {
+      -webkit-box-shadow: none;
+              box-shadow: none; }
+    .wp-block-gt-layout-blocks-portfolio.is-style-card .wp-block-gt-layout-blocks-column .gt-column > *:first-child.wp-block-gt-layout-blocks-image {
+      margin-top: -1.5em;
+      margin-left: -1.5em;
+      margin-right: -1.5em;
+      margin-bottom: 1.5em; }
+    .wp-block-gt-layout-blocks-portfolio.is-style-card .wp-block-gt-layout-blocks-column .gt-column > *:last-child {
+      margin-bottom: 0; }
 .wp-block-gt-layout-blocks-section {
   margin-bottom: 1.5em; }
 .wp-block-gt-layout-blocks-team-members {

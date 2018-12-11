@@ -3,4 +3,8 @@
 		margin: 0;
 		vertical-align: top;
 	}
+
+	&.is-style-circle img {
+		border-radius: 100%;
+	}
 }
