@@ -1,15 +1,10 @@
 /**
- * External dependencies
- */
-import { castArray, last } from 'lodash';
-
-/**
  * WordPress dependencies
  */
 const { createHigherOrderComponent } = wp.compose;
 const { Fragment } = wp.element;
 const { InspectorControls } = wp.editor;
-const { Button, Dashicon, PanelBody } = wp.components;
+const { BaseControl, Button, Dashicon, PanelBody } = wp.components;
 const { __ } = wp.i18n;
 const { addFilter } = wp.hooks;
 const { dispatch, select } = wp.data;
@@ -39,13 +34,11 @@ const insertIntoSection = createHigherOrderComponent( ( BlockEdit ) => {
 		// Get Block functions.
 		const {
 			getBlocksByClientId,
-			getBlockIndex,
 			getBlockRootClientId,
 		} = select( 'core/editor' );
 
 		const {
-			insertBlocks,
-			removeBlocks,
+			replaceBlock,
 		} = dispatch( 'core/editor' );
 
 		// Get current block.
@@ -64,33 +57,34 @@ const insertIntoSection = createHigherOrderComponent( ( BlockEdit ) => {
 			// Get current block.
 			const block = getBlocksByClientId( clientId )[ 0 ];
 
-			// Get position to insert section block.
-			const lastSelectedIndex = getBlockIndex( last( castArray( clientId ) ), rootClientId );
-
 			// Clone block and wrap into section block.
 			const clonedBlock = cloneBlock( block );
 			const sectionBlock = createBlock( 'gt-layout-blocks/section', {}, [ clonedBlock ] );
 
-			// Insert Section block.
-			insertBlocks( sectionBlock, lastSelectedIndex + 1, rootClientId );
-
-			// Remove old block.
-			removeBlocks( clientId );
+			// Replace block.
+			replaceBlock( clientId, sectionBlock );
 		};
 
 		return (
 			<Fragment>
 				<BlockEdit { ...props } />
 				<InspectorControls>
-					<PanelBody className="gt-panel-section-insert gt-panel">
-						<Button
-							key="synchronize-buttons"
-							isLarge
-							onClick={ createSection }
+
+					<PanelBody title={ __( 'Section Settings', 'gt-layout-blocks' ) } initialOpen={ false } className="gt-panel-section-insert gt-panel">
+						<BaseControl
+							id="gt-section-control"
+							label={ __( 'Insert into Section', 'gt-layout-blocks' ) }
+							help={ __( 'Insert this block into a section block.', 'gt-layout-blocks' ) }
 						>
-							<Dashicon icon="controls-repeat" />
-							{ __( 'Insert into GT Section block', 'gt-layout-blocks' ) }
-						</Button>
+							<Button
+								key="add-section"
+								isLarge
+								onClick={ createSection }
+							>
+								<Dashicon icon="insert" />
+								{ __( 'Add GT Section block', 'gt-layout-blocks' ) }
+							</Button>
+						</BaseControl>
 					</PanelBody>
 				</InspectorControls>
 			</Fragment>
