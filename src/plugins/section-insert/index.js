@@ -4,7 +4,7 @@
 const { createHigherOrderComponent } = wp.compose;
 const { Fragment } = wp.element;
 const { InspectorControls } = wp.editor;
-const { BaseControl, Button, Dashicon, PanelBody } = wp.components;
+const { Button, Dashicon, PanelBody } = wp.components;
 const { __ } = wp.i18n;
 const { addFilter } = wp.hooks;
 const { dispatch, select } = wp.data;
@@ -68,28 +68,29 @@ const insertIntoSection = createHigherOrderComponent( ( BlockEdit ) => {
 		return (
 			<Fragment>
 				<BlockEdit { ...props } />
+
 				<InspectorControls>
 
 					<PanelBody title={ __( 'Section Settings', 'gt-layout-blocks' ) } initialOpen={ false } className="gt-panel-section-insert gt-panel">
-						<BaseControl
-							id="gt-section-control"
-							label={ __( 'Insert into Section', 'gt-layout-blocks' ) }
-							help={ __( 'Insert this block into a section block.', 'gt-layout-blocks' ) }
+
+						<p id="gt-synchronize-styling__help" className="components-base-control__help">
+							{ __( 'Insert this block into a section block.', 'gt-layout-blocks' ) }
+						</p>
+
+						<Button
+							key="add-section"
+							isLarge
+							onClick={ createSection }
 						>
-							<Button
-								key="add-section"
-								isLarge
-								onClick={ createSection }
-							>
-								<Dashicon icon="insert" />
-								{ __( 'Add GT Section block', 'gt-layout-blocks' ) }
-							</Button>
-						</BaseControl>
+							<Dashicon icon="insert" />
+							{ __( 'Add GT Section block', 'gt-layout-blocks' ) }
+						</Button>
+
 					</PanelBody>
+
 				</InspectorControls>
 			</Fragment>
 		);
 	};
 }, 'insertIntoSection' );
 addFilter( 'editor.BlockEdit', 'gt-layout-blocks/plugins/section-insert', insertIntoSection );
-
