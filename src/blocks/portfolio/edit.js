@@ -9,6 +9,7 @@ const { find } = window.lodash;
 const { __ } = wp.i18n;
 const { compose } = wp.compose;
 const { withDispatch } = wp.data;
+const TokenList = wp.tokenList;
 
 const {
 	Component,
@@ -53,33 +54,31 @@ const TEMPLATE = [
  */
 class PortfolioEdit extends Component {
 	getActiveStyle( styles, className ) {
-		if ( className ) {
-			for ( const style of className.split( ' ' ) ) {
-				if ( 'is-style-' !== style.substring( 0, 9 ) ) {
-					continue;
-				}
+		for ( const style of new TokenList( className ).values() ) {
+			if ( style.indexOf( 'is-style-' ) === -1 ) {
+				continue;
+			}
 
-				const activeStyle = find( styles, { value: style.substring( 9 ) } );
-
-				if ( activeStyle ) {
-					return activeStyle.value;
-				}
+			const potentialStyleName = style.substring( 9 );
+			const activeStyle = find( styles, { value: potentialStyleName } );
+			if ( activeStyle ) {
+				return activeStyle;
 			}
 		}
 
-		return 'default';
+		return find( styles, 'isDefault' );
 	}
 
-	replaceActiveStyle( className = '', activeStyle, newStyle ) {
-		let classes = className.split( ' ' );
+	replaceActiveStyle( className, activeStyle, newStyle ) {
+		const list = new TokenList( className );
 
-		// Remove active Style.
-		classes = classes.filter( ( style ) => style !== 'is-style-' + activeStyle );
+		if ( activeStyle ) {
+			list.remove( 'is-style-' + activeStyle.value );
+		}
 
-		// Add new style.
-		classes.push( 'is-style-' + newStyle );
+		list.add( 'is-style-' + newStyle );
 
-		return classes.join( ' ' );
+		return list.value;
 	}
 
 	render() {
@@ -89,7 +88,7 @@ class PortfolioEdit extends Component {
 		} = this.props;
 
 		const blockStyles = [
-			{ value: 'default', label: __( 'Default', 'gt-layout-blocks' ) },
+			{ value: 'default', label: __( 'Default', 'gt-layout-blocks' ), isDefault: true },
 			{ value: 'card', label: __( 'Card', 'gt-layout-blocks' ) },
 		];
 
@@ -109,7 +108,7 @@ class PortfolioEdit extends Component {
 
 						<SelectControl
 							label={ __( 'Styles', 'gt-layout-blocks' ) }
-							value={ activeStyle }
+							value={ activeStyle.value }
 							onChange={ ( newStyle ) => updateClassName( newStyle ) }
 							options={ blockStyles }
 						/>
