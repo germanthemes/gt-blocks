@@ -2,8 +2,8 @@
  * External dependencies
  */
 import classnames from 'classnames';
-import { times } from 'lodash';
 import memoize from 'memize';
+const { times } = window.lodash;
 
 /**
  * WordPress dependencies

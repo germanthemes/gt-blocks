@@ -2,9 +2,7 @@
  * External dependencies
  */
 import classnames from 'classnames';
-import {
-	range,
-} from 'lodash';
+const { range } = window.lodash;
 const { getComputedStyle } = window;
 
 /**

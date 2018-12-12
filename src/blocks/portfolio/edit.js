@@ -1,7 +1,7 @@
 /**
  * External dependencies
  */
-import { find } from 'lodash';
+const { find } = window.lodash;
 
 /**
  * WordPress dependencies

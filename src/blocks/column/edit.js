@@ -2,8 +2,8 @@
  * External dependencies
  */
 import classnames from 'classnames';
-import { partial, castArray, last } from 'lodash';
 const { getComputedStyle } = window;
+const { partial, castArray, last } = window.lodash;
 
 /**
  * WordPress dependencies

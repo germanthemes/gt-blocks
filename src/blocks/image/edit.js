@@ -1,12 +1,12 @@
 /**
  * External dependencies
  */
-import {
+const {
 	startCase,
 	isEmpty,
 	map,
 	get,
-} from 'lodash';
+} = window.lodash;
 
 /**
  * WordPress dependencies

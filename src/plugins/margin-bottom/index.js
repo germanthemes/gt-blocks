@@ -1,8 +1,8 @@
 /**
  * External dependencies
  */
-import { assign } from 'lodash';
 import classnames from 'classnames';
+const { assign } = window.lodash;
 
 /**
  * WordPress dependencies
