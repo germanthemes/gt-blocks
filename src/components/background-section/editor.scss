@@ -14,26 +14,44 @@
 			color: inherit;
 		}
 
-		.editor-block-list__block {
+		> .editor-inner-blocks > .editor-block-list__layout > .editor-block-list__block {
 			margin-left: -1px;
 			margin-right: -1px;
 		}
 		
-		&.gt-narrow-width .editor-block-list__block {
+		&.gt-narrow-width > .editor-inner-blocks > .editor-block-list__layout > .editor-block-list__block {
 			max-width: calc( 560px + 30px );
 		}
 
-		&.gt-default-width .editor-block-list__block {
+		&.gt-default-width > .editor-inner-blocks > .editor-block-list__layout > .editor-block-list__block {
 			max-width: calc( 720px + 30px );
 		}
 
-		&.gt-wide-width .editor-block-list__block {
+		&.gt-wide-width > .editor-inner-blocks > .editor-block-list__layout > .editor-block-list__block {
 			max-width: calc( 880px + 30px );
 		}
 
-		&.gt-full-width .editor-block-list__block {
+		&.gt-full-width > .editor-inner-blocks > .editor-block-list__layout > .editor-block-list__block {
 			max-width: calc( 1040px + 30px );
 		}
+
+		/* Block Appender
+		.wp-block.editor-default-block-appender {
+			height: 36px;
+
+			textarea {
+				height: 0;
+			}
+
+			.editor-inserter {
+				width: 100%;
+				text-align: center;
+				
+				.editor-inserter__toggle {
+					background: #fff;
+				}
+			}
+		} */
 	}
 }
 

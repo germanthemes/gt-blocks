@@ -76,7 +76,7 @@
     -ms-flex-pack: end;
         justify-content: flex-end; }
 .wp-block-gt-layout-blocks-column .gt-column.has-background {
-  padding: 1.5em; }
+  padding: 1.5rem; }
   .wp-block-gt-layout-blocks-column .gt-column.has-background > *:last-child {
     margin-bottom: 0; }
 .wp-block-gt-layout-blocks-content .gt-content.has-background {
@@ -299,17 +299,17 @@
 .wp-block-gt-layout-blocks-portfolio {
   margin-bottom: 1.5em; }
   .wp-block-gt-layout-blocks-portfolio.is-style-card .wp-block-gt-layout-blocks-column .gt-column {
-    padding: 1.5em;
+    padding: 1.5rem;
     -webkit-box-shadow: inset 0 0 2px rgba(0, 0, 0, 0.5);
             box-shadow: inset 0 0 2px rgba(0, 0, 0, 0.5); }
     .wp-block-gt-layout-blocks-portfolio.is-style-card .wp-block-gt-layout-blocks-column .gt-column.has-background {
       -webkit-box-shadow: none;
               box-shadow: none; }
     .wp-block-gt-layout-blocks-portfolio.is-style-card .wp-block-gt-layout-blocks-column .gt-column > *:first-child.wp-block-gt-layout-blocks-image {
-      margin-top: -1.5em;
-      margin-left: -1.5em;
-      margin-right: -1.5em;
-      margin-bottom: 1.5em; }
+      margin-top: -1.5rem;
+      margin-left: -1.5rem;
+      margin-right: -1.5rem;
+      margin-bottom: 1.5rem; }
     .wp-block-gt-layout-blocks-portfolio.is-style-card .wp-block-gt-layout-blocks-column .gt-column > *:last-child {
       margin-bottom: 0; }
 .wp-block-gt-layout-blocks-section {
