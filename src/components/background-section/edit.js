@@ -222,6 +222,8 @@ class BackgroundEdit extends Component {
 
 					</PanelBody>
 
+					{ this.props.contentSettings ? this.props.contentSettings : null }
+
 					<PanelColorSettings
 						title={ __( 'Color Settings', 'gt-layout-blocks' ) }
 						initialOpen={ false }

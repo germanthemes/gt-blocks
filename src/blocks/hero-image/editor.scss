@@ -1,7 +1,17 @@
-.wp-block-gt-layout-blocks-hero-image {
+.wp-block-gt-layout-blocks-hero-image.gt-background-section {
+
+	&.gt-normal-padding {
+		padding: 2rem;
+	}
+
+	&.gt-large-padding {
+		padding: 4rem;
+	}
 
 	.gt-hero-section {
 		display: block;
+		margin-left: -1px;
+		margin-right: -1px;
 
 		&.gt-hero-layout-left,
 		&.gt-hero-layout-right {
@@ -22,8 +32,8 @@
 				width: 100%;
 
 				> .editor-block-list__block-edit {
-					margin-top: 12px;
-					margin-bottom: 18px;
+					margin-top: 0;
+					margin-bottom: 0;
 				}
 			}
 
@@ -95,18 +105,6 @@
 	}
 }
 
-@media (min-width: 600px) {
-	.wp-block-gt-layout-blocks-hero-image .gt-hero-section {
-
-		> .editor-inner-blocks > .editor-block-list__layout {
-
-			> .editor-block-list__block > .editor-block-contextual-toolbar {
-				transform: translateY( -40px );
-			}
-		}
-	}
-}
-
 .gt-panel-hero-settings {
 	.gt-image-block-button {
 		height: 36px;
@@ -117,15 +115,6 @@
 			margin: 8px 8px 0 0;
 			width: 18px;
 			height: 18px;
-		}
-	}
-}
-
-.wp-block.is-selected[data-type="gt-layout-blocks/hero-image"] {
-
-	.editor-block-list__layout .editor-block-list__block[data-type="gt-layout-blocks/content"] {
-		> .editor-block-list__block-edit:not(:hover):before {
-			outline: 1px dashed rgba(145,151,162,.25);
 		}
 	}
 }

@@ -15,7 +15,6 @@ const {
 
 const {
 	InnerBlocks,
-	InspectorControls,
 } = wp.editor;
 
 const {
@@ -36,18 +35,15 @@ import { default as BackgroundEdit } from '../../components/background-section/e
 const TEMPLATE = [
 	[ 'gt-layout-blocks/heading', {
 		placeholder: __( 'Write Hero Heading...', 'gt-layout-blocks' ),
-		customFontSize: 48,
+		customFontSize: 36,
 	} ],
 	[ 'core/paragraph', {
 		placeholder: __( 'Write Hero text...', 'gt-layout-blocks' ),
-		customFontSize: 20,
 	} ],
 	[ 'gt-layout-blocks/buttons', {
 		customClass: 'gt-buttons-wrapper',
 		buttons: 2,
 		buttonAttributes: {
-			paddingClass: 'medium',
-			customFontSize: 20,
 			synchronizeStyling: true,
 			parentBlock: 'gt-layout-blocks/buttons',
 		},
@@ -97,51 +93,51 @@ class HeroImageEdit extends Component {
 			'gt-has-hero-image': heroImage,
 		} );
 
+		const contentSettings = <Fragment>
+			<PanelBody title={ __( 'Hero Settings', 'gt-layout-blocks' ) } initialOpen={ false } className="gt-panel-hero-settings gt-panel">
+				<BaseControl id="gt-image-block" label={ __( 'Image Block', 'gt-layout-blocks' ) }>
+					<Button
+						isLarge
+						className="gt-image-block-button"
+						onClick={ () => setAttributes( { heroImage: ! heroImage } ) }
+					>
+						<Dashicon icon={ heroImage ? 'trash' : 'insert' } />
+						{ heroImage ? __( 'Remove Block', 'gt-layout-blocks' ) : __( 'Add Block', 'gt-layout-blocks' ) }
+					</Button>
+				</BaseControl>
+
+				<SelectControl
+					label={ __( 'Content Position', 'gt-layout-blocks' ) }
+					value={ heroLayout }
+					onChange={ ( newLayout ) => setAttributes( { heroLayout: newLayout } ) }
+					options={ [
+						{ value: 'center', label: __( 'Center', 'gt-layout-blocks' ) },
+						{ value: 'left', label: __( 'Left', 'gt-layout-blocks' ) },
+						{ value: 'right', label: __( 'Right', 'gt-layout-blocks' ) },
+					] }
+				/>
+
+				{ 'center' !== heroLayout && (
+					<RangeControl
+						label={ __( 'Content Width', 'gt-layout-blocks' ) }
+						value={ heroWidth }
+						onChange={ ( newWidth ) => setAttributes( { heroWidth: newWidth } ) }
+						min={ 20 }
+						max={ 80 }
+						step={ 10 }
+					/>
+				) }
+
+			</PanelBody>
+		</Fragment>;
+
 		return (
 			<Fragment>
 
-				<InspectorControls>
-
-					<PanelBody title={ __( 'Hero Settings', 'gt-layout-blocks' ) } initialOpen={ false } className="gt-panel-hero-settings gt-panel">
-
-						<BaseControl id="gt-image-block" label={ __( 'Image Block', 'gt-layout-blocks' ) }>
-							<Button
-								isLarge
-								className="gt-image-block-button"
-								onClick={ () => setAttributes( { heroImage: ! heroImage } ) }
-							>
-								<Dashicon icon={ heroImage ? 'trash' : 'insert' } />
-								{ heroImage ? __( 'Remove Block', 'gt-layout-blocks' ) : __( 'Add Block', 'gt-layout-blocks' ) }
-							</Button>
-						</BaseControl>
-
-						<SelectControl
-							label={ __( 'Content Position', 'gt-layout-blocks' ) }
-							value={ heroLayout }
-							onChange={ ( newLayout ) => setAttributes( { heroLayout: newLayout } ) }
-							options={ [
-								{ value: 'center', label: __( 'Center', 'gt-layout-blocks' ) },
-								{ value: 'left', label: __( 'Left', 'gt-layout-blocks' ) },
-								{ value: 'right', label: __( 'Right', 'gt-layout-blocks' ) },
-							] }
-						/>
-
-						{ 'center' !== heroLayout && (
-							<RangeControl
-								label={ __( 'Content Width', 'gt-layout-blocks' ) }
-								value={ heroWidth }
-								onChange={ ( newWidth ) => setAttributes( { heroWidth: newWidth } ) }
-								min={ 20 }
-								max={ 80 }
-								step={ 10 }
-							/>
-						) }
-
-					</PanelBody>
-
-				</InspectorControls>
-
-				<BackgroundEdit { ...this.props }>
+				<BackgroundEdit
+					contentSettings={ contentSettings }
+					{ ...this.props }
+				>
 
 					<div className={ heroClasses }>
 
