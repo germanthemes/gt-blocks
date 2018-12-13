@@ -1,6 +1,13 @@
 .wp-block-gt-layout-blocks-column {
+	display: flex;
+	flex-direction: column;
+	margin-bottom: 1.5em;
+	min-width: 0;
+    word-break: break-word;
+    overflow-wrap: break-word;
 
 	.gt-column {
+		flex-grow: 1;
 
 		&.has-background {
 			padding: 1.5rem;

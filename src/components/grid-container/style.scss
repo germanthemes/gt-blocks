@@ -1,28 +1,53 @@
-.gt-grid-container {
-	display: grid;
-	grid-gap: 1.5em;
+@media only screen and (min-width: 480px) {
+	.gt-columns-2,
+	.gt-columns-4,
+	.gt-columns-5,
+	.gt-columns-6 {
+		display: flex;
+		flex-wrap: wrap;
+		margin-right: -1.5em;
+		margin-bottom: -1.5em;
 
-	.wp-block-gt-layout-blocks-column {
-		min-width: 0;
+		.wp-block-gt-layout-blocks-column {
+			padding-right: 1.5em;
+			width: 50%;
+		}
+	}
+}
+
+@media only screen and (min-width: 720px) {
+	.gt-columns-3 {
+		display: flex;
+		flex-wrap: wrap;
+		margin-right: -1.5em;
+		margin-bottom: -1.5em;
+
+		.wp-block-gt-layout-blocks-column {
+			padding-right: 1.5em;
+			width: 33.3333333333333%;
+		}
 	}
 
-	&.gt-columns-2 {
-		grid-template-columns: repeat(2, 1fr);
+	.gt-columns-5 .wp-block-gt-layout-blocks-column,
+	.gt-columns-6 .wp-block-gt-layout-blocks-column {
+		width: 33.3333333333333%;
 	}
+}
 
-	&.gt-columns-3 {
-		grid-template-columns: repeat(3, 1fr);
+@media only screen and (min-width: 960px) {
+	.gt-columns-4 .wp-block-gt-layout-blocks-column {
+		width: 25%;
 	}
+}
 
-	&.gt-columns-4 {
-		grid-template-columns: repeat(4, 1fr);
+@media only screen and (min-width: 1040px) {
+	.gt-columns-5 .wp-block-gt-layout-blocks-column {
+		width: 20%;
 	}
+}
 
-	&.gt-columns-5 {
-		grid-template-columns: repeat(5, 1fr);
-	}
-
-	&.gt-columns-6 {
-		grid-template-columns: repeat(6, 1fr);
+@media only screen and (min-width: 1120px) {
+	.gt-columns-6 .wp-block-gt-layout-blocks-column {
+		width: 16.666666666666%;
 	}
 }
