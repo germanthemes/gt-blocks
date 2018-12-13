@@ -1,17 +1,21 @@
 .gt-background-section {
 
 	&.gt-normal-padding {
-		padding: calc( 2rem - 30px ) 2rem;
+		padding-bottom: calc( 2rem - 30px );
 	}
 
 	&.gt-large-padding {
-		padding: calc( 4rem - 30px ) 4rem;
+		padding-bottom: calc( 4rem - 30px );
 	}
 
 	.gt-section-content {
 
 		h1, h2, h3, h4, h5, h6, p {
 			color: inherit;
+		}
+
+		> .editor-inner-blocks > .editor-block-list__layout > .editor-block-list__block:first-child > .editor-block-list__block-edit {
+			margin-top: 0;
 		}
 
 		> .editor-inner-blocks > .editor-block-list__layout > .editor-block-list__block {

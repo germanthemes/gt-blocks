@@ -159,10 +159,10 @@
 .gt-heading.editor-rich-text__tinymce.mce-content-body {
   line-height: 1.4; }
 .wp-block-gt-layout-blocks-hero-image.gt-background-section.gt-normal-padding {
-  padding: 2rem; }
+  padding-bottom: 2rem; }
 
 .wp-block-gt-layout-blocks-hero-image.gt-background-section.gt-large-padding {
-  padding: 4rem; }
+  padding-bottom: 4rem; }
 
 .wp-block-gt-layout-blocks-hero-image.gt-background-section .gt-hero-section {
   display: block;
@@ -248,10 +248,10 @@
     width: 18px;
     height: 18px; }
 .gt-background-section.gt-normal-padding {
-  padding: calc( 2rem - 30px) 2rem; }
+  padding-bottom: calc( 2rem - 30px); }
 
 .gt-background-section.gt-large-padding {
-  padding: calc( 4rem - 30px) 4rem; }
+  padding-bottom: calc( 4rem - 30px); }
 
 .gt-background-section .gt-section-content {
   /* Block Appender
@@ -273,6 +273,8 @@
 		} */ }
   .gt-background-section .gt-section-content h1, .gt-background-section .gt-section-content h2, .gt-background-section .gt-section-content h3, .gt-background-section .gt-section-content h4, .gt-background-section .gt-section-content h5, .gt-background-section .gt-section-content h6, .gt-background-section .gt-section-content p {
     color: inherit; }
+  .gt-background-section .gt-section-content > .editor-inner-blocks > .editor-block-list__layout > .editor-block-list__block:first-child > .editor-block-list__block-edit {
+    margin-top: 0; }
   .gt-background-section .gt-section-content > .editor-inner-blocks > .editor-block-list__layout > .editor-block-list__block {
     margin-left: -1px;
     margin-right: -1px; }
