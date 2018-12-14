@@ -89,6 +89,12 @@
     display: none; }
   .wp-block-gt-layout-blocks-content .gt-content > .editor-inner-blocks > .editor-block-list__layout > div:first-child > .wp-block.editor-default-block-appender {
     display: block; }
+.wp-block-gt-layout-blocks-features.is-style-card .wp-block-gt-layout-blocks-column .gt-column {
+  padding: 24px 24px 1px; }
+  .wp-block-gt-layout-blocks-features.is-style-card .wp-block-gt-layout-blocks-column .gt-column > .editor-inner-blocks > .editor-block-list__layout > .editor-block-list__block[data-type="gt-layout-blocks/icon"] {
+    margin-top: -56px;
+    margin-left: -25px;
+    margin-right: -25px; }
 .editor-block-list__block .gt-grid-container {
   display: block;
   margin: 0; }

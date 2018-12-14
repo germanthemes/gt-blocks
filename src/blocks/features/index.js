@@ -8,26 +8,9 @@ const { registerBlockType } = wp.blocks;
  * Internal dependencies
  */
 import './style.scss';
-import { default as GridEdit } from '../../components/grid-container/edit';
+import './editor.scss';
+import edit from './edit';
 import { default as GridContainer } from '../../components/grid-container';
-
-// Define blocks for each column.
-const TEMPLATE = [
-	[ 'gt-layout-blocks/icon', {
-		synchronizeStyling: true,
-		parentBlock: 'gt-layout-blocks/features',
-	} ],
-	[ 'gt-layout-blocks/heading', {
-		placeholder: __( 'Feature', 'gt-layout-blocks' ),
-		synchronizeStyling: true,
-		parentBlock: 'gt-layout-blocks/features',
-	} ],
-	[ 'core/paragraph', {
-		placeholder: __( 'Write feature description...', 'gt-layout-blocks' ),
-		synchronizeStyling: true,
-		parentBlock: 'gt-layout-blocks/features',
-	} ],
-];
 
 /**
  * Register block
@@ -60,15 +43,7 @@ registerBlockType(
 			},
 		},
 
-		edit( props ) {
-			return (
-				<GridEdit
-					template={ TEMPLATE }
-					parentBlock={ props.name }
-					{ ...props }
-				/>
-			);
-		},
+		edit,
 
 		save( props ) {
 			return (

@@ -1,3 +1,23 @@
 .wp-block-gt-layout-blocks-features {
 	margin-bottom: 1.5em;
+
+	&.is-style-card .wp-block-gt-layout-blocks-column .gt-column {
+		padding: 1.5rem;
+		box-shadow: inset 0 0 2px rgba(0,0,0,0.5);
+
+		&.has-background {
+			box-shadow: none;
+		}
+
+		> *:first-child.wp-block-gt-layout-blocks-icon {
+			margin-top: -1.5rem;
+			margin-left: -1.5rem;
+			margin-right: -1.5rem;
+			margin-bottom: 1.5rem;
+		}
+
+		> *:last-child {
+			margin-bottom: 0;
+		}
+	}
 }
