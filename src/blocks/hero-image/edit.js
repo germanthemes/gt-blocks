@@ -22,7 +22,6 @@ const {
 	Button,
 	Dashicon,
 	PanelBody,
-	RangeControl,
 	SelectControl,
 } = wp.components;
 
@@ -120,13 +119,17 @@ class HeroImageEdit extends Component {
 				/>
 
 				{ 'center' !== heroLayout && (
-					<RangeControl
+					<SelectControl
 						label={ __( 'Content Width', 'gt-layout-blocks' ) }
 						value={ heroWidth }
 						onChange={ ( newWidth ) => setAttributes( { heroWidth: newWidth } ) }
-						min={ 20 }
-						max={ 80 }
-						step={ 10 }
+						options={ [
+							{ value: '30', label: __( '30%', 'gt-layout-blocks' ) },
+							{ value: '40', label: __( '40%', 'gt-layout-blocks' ) },
+							{ value: '50', label: __( '50%', 'gt-layout-blocks' ) },
+							{ value: '60', label: __( '60%', 'gt-layout-blocks' ) },
+							{ value: '70', label: __( '70%', 'gt-layout-blocks' ) },
+						] }
 					/>
 				) }
 

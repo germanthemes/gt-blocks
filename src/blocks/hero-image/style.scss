@@ -2,7 +2,6 @@
 	margin-bottom: 1.5em;
 
 	.gt-hero-section {
-		display: flex;
 
 		.wp-block-gt-layout-blocks-content,
 		.wp-block-gt-layout-blocks-image {
@@ -10,29 +9,28 @@
 		}
 
 		.wp-block-gt-layout-blocks-content {
-			order: 2;
 			flex-grow: 0;
 			flex-shrink: 0;
 		}
 
 		.wp-block-gt-layout-blocks-image {
-			order: 1;
 			flex-grow: 1;
 		}
 
-		/* Horizontal Align */
+		/* Center Hero Layout */
 		&.gt-hero-layout-center {
+			display: flex;
 			flex-direction: column;
 			align-items: center;
-		}
 
-		&.gt-hero-layout-left.gt-has-hero-image {
-			flex-direction: row-reverse;
-			justify-content: flex-start;
-		}
+			.wp-block-gt-layout-blocks-content {
+				order: 2;
+				margin-bottom: 0;
+			}
 
-		&.gt-hero-layout-right {
-			justify-content: flex-end;
+			.wp-block-gt-layout-blocks-image {
+				order: 1;
+			}
 		}
 
 		/* Vertical Align */
@@ -48,26 +46,52 @@
 		&.gt-hero-vertical-align-bottom {
 			padding-top: 150px;
 		}
+	}
 
-		/* Hero Content width for Left & Right Layout */
+	.gt-heading {
+		margin-top: 0;
+		margin-bottom: 1.5rem;
+	}
+
+	.gt-buttons-wrapper {
+		margin-bottom: 0;
+	}
+}
+
+@media only screen and (min-width: 480px) {
+	.wp-block-gt-layout-blocks-hero-image .gt-hero-section {
+
+		/* Left & Right Hero Layout */
 		&.gt-hero-layout-left,
 		&.gt-hero-layout-right {
+			display: flex;
 			margin-right: -1.5rem;
 
 			.wp-block-gt-layout-blocks-content {
 				flex-basis: 50%;
 				padding-right: 1.5rem;
+				margin-bottom: 0;
 			}
 
 			.wp-block-gt-layout-blocks-image {
 				padding-right: 1.5rem;
+				margin-bottom: 0;
 			}
 		}
 
-		&.gt-hero-content-width-20 .wp-block-gt-layout-blocks-content {
-			flex-basis: 20%;
+		&.gt-hero-layout-left {
+			justify-content: flex-start;
 		}
 
+		&.gt-hero-layout-right {
+			justify-content: flex-end;
+		}
+
+		&.gt-hero-layout-right.gt-has-hero-image {
+			flex-direction: row-reverse;
+		}
+
+		/* Hero Content Width */
 		&.gt-hero-content-width-30 .wp-block-gt-layout-blocks-content {
 			flex-basis: 30%;
 		}
@@ -82,21 +106,6 @@
 
 		&.gt-hero-content-width-70 .wp-block-gt-layout-blocks-content {
 			flex-basis: 70%;
-		}
-
-		&.gt-hero-content-width-80 .wp-block-gt-layout-blocks-content {
-			flex-basis: 80%;
-		}
-	}
-
-	.gt-heading {
-		margin-top: 0;
-		margin-bottom: 1.5rem;
-	}
-
-	.gt-buttons-wrapper {
-		.wp-block-gt-layout-blocks-button {
-			margin-bottom: 0;
 		}
 	}
 }

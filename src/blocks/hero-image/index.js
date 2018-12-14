@@ -45,8 +45,8 @@ registerBlockType(
 				default: 'center',
 			},
 			heroWidth: {
-				type: 'number',
-				default: 50,
+				type: 'string',
+				default: '50',
 			},
 			heroImage: {
 				type: 'boolean',
@@ -77,7 +77,7 @@ registerBlockType(
 
 			const heroClasses = classnames( 'gt-hero-section', {
 				[ `gt-hero-layout-${ heroLayout }` ]: heroLayout,
-				[ `gt-hero-content-width-${ heroWidth }` ]: 50 !== heroWidth,
+				[ `gt-hero-content-width-${ heroWidth }` ]: '50' !== heroWidth,
 				[ `gt-hero-vertical-align-${ verticalAlign }` ]: 'none' !== verticalAlign,
 				'gt-has-hero-image': heroImage,
 			} );
