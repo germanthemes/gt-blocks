@@ -11,5 +11,14 @@
 				margin-bottom: -30px;
 			}
 		}
+
+		/* Hide Block Appender */
+		.wp-block.editor-default-block-appender {
+			display: none;
+		}
+
+		> .editor-inner-blocks > .editor-block-list__layout > div:first-child > .wp-block.editor-default-block-appender {
+			display: block;
+		}
 	}
 }

@@ -39,23 +39,21 @@
 			max-width: calc( 1040px + 30px );
 		}
 
-		/* Block Appender
+		/* Hide Block Appender */
 		.wp-block.editor-default-block-appender {
-			height: 36px;
+			display: none;
+		}
 
-			textarea {
-				height: 0;
-			}
+		> .editor-inner-blocks > .editor-block-list__layout > div:first-child > .wp-block.editor-default-block-appender {
+			display: block;
+		}
+	}
+}
 
-			.editor-inserter {
-				width: 100%;
-				text-align: center;
-				
-				.editor-inserter__toggle {
-					background: #fff;
-				}
-			}
-		} */
+/* Show Block Appender if block is selected */
+.editor-block-list__block.is-selected[data-type="gt-layout-blocks/section"] {
+	.gt-background-section .gt-section-content .wp-block.editor-default-block-appender {
+		display: block;
 	}
 }
 
