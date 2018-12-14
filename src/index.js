@@ -24,3 +24,4 @@ import './blocks/image';
 import './blocks/portfolio';
 import './blocks/section';
 //import './blocks/team-members';
+import './blocks/testimonial-grid';
