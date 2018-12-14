@@ -164,6 +164,8 @@
   .wp-block-gt-layout-blocks-hero-image .gt-hero-section {
     display: -ms-flexbox;
     display: flex;
+    /* Horizontal Align */
+    /* Vertical Align */
     /* Hero Content width for Left & Right Layout */ }
     .wp-block-gt-layout-blocks-hero-image .gt-hero-section .wp-block-gt-layout-blocks-content,
     .wp-block-gt-layout-blocks-hero-image .gt-hero-section .wp-block-gt-layout-blocks-image {
@@ -193,6 +195,13 @@
     .wp-block-gt-layout-blocks-hero-image .gt-hero-section.gt-hero-layout-right {
       -ms-flex-pack: end;
           justify-content: flex-end; }
+    .wp-block-gt-layout-blocks-hero-image .gt-hero-section.gt-hero-vertical-align-top {
+      padding-bottom: 150px; }
+    .wp-block-gt-layout-blocks-hero-image .gt-hero-section.gt-hero-vertical-align-center {
+      padding-top: 75px;
+      padding-bottom: 75px; }
+    .wp-block-gt-layout-blocks-hero-image .gt-hero-section.gt-hero-vertical-align-bottom {
+      padding-top: 150px; }
     .wp-block-gt-layout-blocks-hero-image .gt-hero-section.gt-hero-layout-left, .wp-block-gt-layout-blocks-hero-image .gt-hero-section.gt-hero-layout-right {
       margin-right: -1.5rem; }
       .wp-block-gt-layout-blocks-hero-image .gt-hero-section.gt-hero-layout-left .wp-block-gt-layout-blocks-content, .wp-block-gt-layout-blocks-hero-image .gt-hero-section.gt-hero-layout-right .wp-block-gt-layout-blocks-content {

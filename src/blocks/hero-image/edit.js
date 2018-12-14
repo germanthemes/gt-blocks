@@ -85,11 +85,13 @@ class HeroImageEdit extends Component {
 			heroLayout,
 			heroWidth,
 			heroImage,
+			verticalAlign,
 		} = attributes;
 
 		const heroClasses = classnames( 'gt-hero-section', {
 			[ `gt-hero-layout-${ heroLayout }` ]: heroLayout,
 			[ `gt-hero-content-width-${ heroWidth }` ]: 50 !== heroWidth,
+			[ `gt-hero-vertical-align-${ verticalAlign }` ]: 'none' !== verticalAlign,
 			'gt-has-hero-image': heroImage,
 		} );
 
@@ -127,6 +129,18 @@ class HeroImageEdit extends Component {
 						step={ 10 }
 					/>
 				) }
+
+				<SelectControl
+					label={ __( 'Vertical Align', 'gt-layout-blocks' ) }
+					value={ verticalAlign }
+					onChange={ ( newAlign ) => setAttributes( { verticalAlign: newAlign } ) }
+					options={ [
+						{ value: 'none', label: __( 'None', 'gt-layout-blocks' ) },
+						{ value: 'top', label: __( 'Top', 'gt-layout-blocks' ) },
+						{ value: 'center', label: __( 'Center', 'gt-layout-blocks' ) },
+						{ value: 'bottom', label: __( 'Bottom', 'gt-layout-blocks' ) },
+					] }
+				/>
 
 			</PanelBody>
 		</Fragment>;

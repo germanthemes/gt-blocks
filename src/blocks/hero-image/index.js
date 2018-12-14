@@ -51,6 +51,10 @@ registerBlockType(
 			heroImage: {
 				type: 'boolean',
 			},
+			verticalAlign: {
+				type: 'string',
+				default: 'none',
+			},
 			...backgroundAttributes,
 		},
 
@@ -68,11 +72,13 @@ registerBlockType(
 				heroLayout,
 				heroWidth,
 				heroImage,
+				verticalAlign,
 			} = props.attributes;
 
 			const heroClasses = classnames( 'gt-hero-section', {
 				[ `gt-hero-layout-${ heroLayout }` ]: heroLayout,
 				[ `gt-hero-content-width-${ heroWidth }` ]: 50 !== heroWidth,
+				[ `gt-hero-vertical-align-${ verticalAlign }` ]: 'none' !== verticalAlign,
 				'gt-has-hero-image': heroImage,
 			} );
 

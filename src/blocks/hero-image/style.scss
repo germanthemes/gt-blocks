@@ -20,6 +20,7 @@
 			flex-grow: 1;
 		}
 
+		/* Horizontal Align */
 		&.gt-hero-layout-center {
 			flex-direction: column;
 			align-items: center;
@@ -32,6 +33,20 @@
 
 		&.gt-hero-layout-right {
 			justify-content: flex-end;
+		}
+
+		/* Vertical Align */
+		&.gt-hero-vertical-align-top {
+			padding-bottom: 150px;
+		}
+
+		&.gt-hero-vertical-align-center {
+			padding-top: 75px;
+			padding-bottom: 75px;
+		}
+
+		&.gt-hero-vertical-align-bottom {
+			padding-top: 150px;
 		}
 
 		/* Hero Content width for Left & Right Layout */
