@@ -28,9 +28,6 @@ const {
  */
 import { default as GridEdit } from '../../components/grid-container/edit';
 
-// Define allowed child blocks.
-const ALLOWED_BLOCKS = [ 'gt-layout-blocks/image', 'gt-layout-blocks/heading', 'core/paragraph' ];
-
 // Define blocks for each column.
 const TEMPLATE = [
 	[ 'gt-layout-blocks/image', {
@@ -118,9 +115,7 @@ class PortfolioEdit extends Component {
 				</InspectorControls>
 
 				<GridEdit
-					allowedBlocks={ ALLOWED_BLOCKS }
 					template={ TEMPLATE }
-					templateLock="all"
 					parentBlock={ this.props.name }
 					{ ...this.props }
 				/>

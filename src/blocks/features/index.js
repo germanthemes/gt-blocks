@@ -11,9 +11,6 @@ import './style.scss';
 import { default as GridEdit } from '../../components/grid-container/edit';
 import { default as GridContainer } from '../../components/grid-container';
 
-// Define allowed child blocks.
-const ALLOWED_BLOCKS = [ 'gt-layout-blocks/icon', 'gt-layout-blocks/heading', 'core/paragraph' ];
-
 // Define blocks for each column.
 const TEMPLATE = [
 	[ 'gt-layout-blocks/icon', {
@@ -66,9 +63,7 @@ registerBlockType(
 		edit( props ) {
 			return (
 				<GridEdit
-					allowedBlocks={ ALLOWED_BLOCKS }
 					template={ TEMPLATE }
-					templateLock="all"
 					parentBlock={ props.name }
 					{ ...props }
 				/>
