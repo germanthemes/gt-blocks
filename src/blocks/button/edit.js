@@ -35,9 +35,19 @@ const {
 	PanelBody,
 	RangeControl,
 	SelectControl,
-	ToggleControl,
+	Toolbar,
+	ToolbarButton,
 	withFallbackStyles,
 } = wp.components;
+
+/**
+ * Internal dependencies
+ */
+import {
+	iconBold,
+	iconItalic,
+	iconUppercase,
+} from '../../components/icons';
 
 /**
  * Block Edit Component
@@ -81,11 +91,13 @@ class ButtonEdit extends Component {
 			text,
 			placeholder,
 			textAlignment,
+			isUppercase,
+			isBold,
+			isItalic,
 			buttonSize,
 			buttonShape,
 			roundedCorners,
 			borderWidth,
-			uppercase,
 		} = attributes;
 
 		const blockClasses = classnames( className, {
@@ -109,7 +121,9 @@ class ButtonEdit extends Component {
 		const buttonClasses = classnames( 'gt-button', {
 			[ `gt-button-${ buttonSize }` ]: buttonSize,
 			'gt-ghost-button': 'outline' === buttonShape,
-			'gt-is-uppercase': uppercase,
+			'gt-is-uppercase': isUppercase,
+			'gt-is-bold': isBold,
+			'gt-is-italic': isItalic,
 			'has-background': backgroundColor.color,
 			[ backgroundColor.class ]: backgroundColor.class,
 			'has-text-color': textColor.color,
@@ -143,6 +157,32 @@ class ButtonEdit extends Component {
 						value={ textAlignment }
 						onChange={ ( newAlignment ) => setAttributes( { textAlignment: newAlignment } ) }
 					/>
+
+					<Toolbar className="components-toolbar">
+						<ToolbarButton
+							className="components-toolbar__control"
+							title={ __( 'Uppercase', 'gt-blocks' ) }
+							icon={ iconUppercase }
+							isActive={ !! isUppercase }
+							onClick={ () => setAttributes( { isUppercase: ! isUppercase } ) }
+						/>
+
+						<ToolbarButton
+							className="components-toolbar__control"
+							title={ __( 'Bold', 'gt-blocks' ) }
+							icon={ iconBold }
+							isActive={ !! isBold }
+							onClick={ () => setAttributes( { isBold: ! isBold } ) }
+						/>
+
+						<ToolbarButton
+							className="components-toolbar__control"
+							title={ __( 'Italic', 'gt-blocks' ) }
+							icon={ iconItalic }
+							isActive={ !! isItalic }
+							onClick={ () => setAttributes( { isItalic: ! isItalic } ) }
+						/>
+					</Toolbar>
 
 				</BlockControls>
 
@@ -193,12 +233,6 @@ class ButtonEdit extends Component {
 								max={ 12 }
 							/>
 						) }
-
-						<ToggleControl
-							label={ __( 'Uppercase?', 'gt-blocks' ) }
-							checked={ !! uppercase }
-							onChange={ () => setAttributes( { uppercase: ! uppercase } ) }
-						/>
 
 					</PanelBody>
 
@@ -271,7 +305,7 @@ class ButtonEdit extends Component {
 							className={ buttonClasses }
 							style={ buttonStyles }
 							onChange={ ( newText ) => setAttributes( { text: newText } ) }
-							formattingControls={ [ 'bold', 'italic', 'strikethrough' ] }
+							formattingControls={ [] }
 							value={ text }
 							placeholder={ placeholder || __( 'Add text…', 'gt-blocks' ) }
 							keepPlaceholderOnFocus

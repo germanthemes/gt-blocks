@@ -29,15 +29,20 @@
       .wp-block-gt-blocks-button .gt-button-wrap .gt-button:not(.has-text-color):not(.gt-ghost-button) {
         color: #fff; }
       .wp-block-gt-blocks-button .gt-button-wrap .gt-button.gt-button-small {
-        padding: 0.5em 0.75em; }
+        padding: 0.5rem 0.75rem; }
       .wp-block-gt-blocks-button .gt-button-wrap .gt-button.gt-button-medium {
-        padding: 1em 1.25em; }
+        padding: 1rem 1.25rem; }
       .wp-block-gt-blocks-button .gt-button-wrap .gt-button.gt-button-large {
-        padding: 1.5em 2em; }
+        padding: 1.5rem 2rem; }
       .wp-block-gt-blocks-button .gt-button-wrap .gt-button.gt-button-extra-large {
-        padding: 2em 3em; }
+        padding: 2rem 3rem; }
       .wp-block-gt-blocks-button .gt-button-wrap .gt-button.gt-is-uppercase {
-        text-transform: uppercase; }
+        text-transform: uppercase;
+        font-size: 0.95em; }
+      .wp-block-gt-blocks-button .gt-button-wrap .gt-button.gt-is-bold {
+        font-weight: bold; }
+      .wp-block-gt-blocks-button .gt-button-wrap .gt-button.gt-is-italic {
+        font-style: italic; }
     .wp-block-gt-blocks-button .gt-button-wrap:not(.has-hover-background) {
       background-color: #424242; }
     .wp-block-gt-blocks-button .gt-button-wrap:not(.has-hover-text-color):not(.gt-button-outline) {

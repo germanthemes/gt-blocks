@@ -64,6 +64,18 @@ registerBlockType(
 			textAlignment: {
 				type: 'string',
 			},
+			isUppercase: {
+				type: 'boolean',
+				default: false,
+			},
+			isBold: {
+				type: 'boolean',
+				default: false,
+			},
+			isItalic: {
+				type: 'boolean',
+				default: false,
+			},
 			buttonSize: {
 				type: 'string',
 				default: 'medium',
@@ -79,10 +91,6 @@ registerBlockType(
 			borderWidth: {
 				type: 'number',
 				default: 2,
-			},
-			uppercase: {
-				type: 'boolean',
-				default: false,
 			},
 			textColor: {
 				type: 'string',
@@ -118,11 +126,13 @@ registerBlockType(
 				title,
 				text,
 				textAlignment,
+				isUppercase,
+				isBold,
+				isItalic,
 				buttonSize,
 				buttonShape,
 				roundedCorners,
 				borderWidth,
-				uppercase,
 				textColor,
 				backgroundColor,
 				customTextColor,
@@ -160,7 +170,9 @@ registerBlockType(
 			const buttonClasses = classnames( 'gt-button', {
 				[ `gt-button-${ buttonSize }` ]: buttonSize,
 				'gt-ghost-button': 'outline' === buttonShape,
-				'gt-is-uppercase': uppercase,
+				'gt-is-uppercase': isUppercase,
+				'gt-is-bold': isBold,
+				'gt-is-italic': isItalic,
 				'has-background': backgroundColor || customBackgroundColor,
 				[ backgroundClass ]: backgroundClass,
 				'has-text-color': textColor || customTextColor,

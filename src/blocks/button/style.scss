@@ -33,23 +33,32 @@
 			}
 
 			&.gt-button-small {
-				padding: 0.5em 0.75em;
+				padding: 0.5rem 0.75rem;
 			}
 
 			&.gt-button-medium {
-				padding: 1em 1.25em;
+				padding: 1rem 1.25rem;
 			}
 
 			&.gt-button-large {
-				padding: 1.5em 2em;
+				padding: 1.5rem 2rem;
 			}
 
 			&.gt-button-extra-large {
-				padding: 2em 3em;
+				padding: 2rem 3rem;
 			}
 	
 			&.gt-is-uppercase {
 				text-transform: uppercase;
+				font-size: 0.95em;
+			}
+
+			&.gt-is-bold {
+				font-weight: bold;
+			}
+
+			&.gt-is-italic {
+				font-style: italic;
 			}
 		}
 
