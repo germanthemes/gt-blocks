@@ -174,8 +174,6 @@
     -webkit-transform: translateY(-40px);
         -ms-transform: translateY(-40px);
             transform: translateY(-40px); } }
-.gt-heading.editor-rich-text__tinymce.mce-content-body {
-  line-height: 1.4; }
 .wp-block-gt-layout-blocks-hero-image.gt-background-section.gt-normal-padding {
   padding-bottom: 2rem; }
 
@@ -277,8 +275,6 @@
 
 .gt-background-section .gt-section-content {
   /* Hide Block Appender */ }
-  .gt-background-section .gt-section-content h1, .gt-background-section .gt-section-content h2, .gt-background-section .gt-section-content h3, .gt-background-section .gt-section-content h4, .gt-background-section .gt-section-content h5, .gt-background-section .gt-section-content h6, .gt-background-section .gt-section-content p {
-    color: inherit; }
   .gt-background-section .gt-section-content > .editor-inner-blocks > .editor-block-list__layout > .editor-block-list__block:first-child > .editor-block-list__block-edit {
     margin-top: 0; }
   .gt-background-section .gt-section-content > .editor-inner-blocks > .editor-block-list__layout > .editor-block-list__block {

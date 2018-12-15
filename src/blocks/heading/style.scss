@@ -1,19 +1,7 @@
 .gt-heading {
-	display: block;
-	font-weight: normal;
-	font-style: normal;
-	text-transform: none;
-	border: none;
+	color: inherit;
 
 	&.has-background {
 		padding: 12px 24px;
-	}
-
-	&.gt-is-bold {
-		font-weight: 700;
-	}
-
-	&.gt-is-uppercase {
-		text-transform: uppercase;
 	}
 }

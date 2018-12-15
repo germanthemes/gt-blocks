@@ -164,17 +164,9 @@
 .wp-block-gt-layout-blocks-grid-layout {
   margin-bottom: 1.5em; }
 .gt-heading {
-  display: block;
-  font-weight: normal;
-  font-style: normal;
-  text-transform: none;
-  border: none; }
+  color: inherit; }
   .gt-heading.has-background {
     padding: 12px 24px; }
-  .gt-heading.gt-is-bold {
-    font-weight: 700; }
-  .gt-heading.gt-is-uppercase {
-    text-transform: uppercase; }
 .wp-block-gt-layout-blocks-hero-image {
   margin-bottom: 1.5em; }
   .wp-block-gt-layout-blocks-hero-image .gt-hero-section {

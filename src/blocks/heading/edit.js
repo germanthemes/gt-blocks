@@ -35,7 +35,6 @@ const {
 const {
 	BaseControl,
 	PanelBody,
-	ToggleControl,
 	Toolbar,
 	withFallbackStyles,
 } = wp.components;
@@ -65,13 +64,9 @@ class gtHeadingEdit extends Component {
 			titleTag,
 			placeholder,
 			textAlignment,
-			isBold,
-			isUppercase,
 		} = attributes;
 
 		const headingClasses = classnames( className, 'gt-heading', {
-			'gt-is-bold': isBold,
-			'gt-is-uppercase': isUppercase,
 			'has-background': backgroundColor.color,
 			[ backgroundColor.class ]: backgroundColor.class,
 			'has-text-color': textColor.color,
@@ -133,18 +128,6 @@ class gtHeadingEdit extends Component {
 							fallbackFontSize={ fallbackFontSize }
 							value={ fontSize.size }
 							onChange={ setFontSize }
-						/>
-
-						<ToggleControl
-							label={ __( 'Bold?', 'gt-layout-blocks' ) }
-							checked={ !! isBold }
-							onChange={ () => setAttributes( { isBold: ! isBold } ) }
-						/>
-
-						<ToggleControl
-							label={ __( 'Uppercase?', 'gt-layout-blocks' ) }
-							checked={ !! isUppercase }
-							onChange={ () => setAttributes( { isUppercase: ! isUppercase } ) }
 						/>
 
 					</PanelBody>
