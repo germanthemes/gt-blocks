@@ -21,20 +21,20 @@ import edit from './edit';
  * Register block
  */
 registerBlockType(
-	'gt-layout-blocks/image-text',
+	'gt-blocks/image-text',
 	{
-		title: __( 'GT Image & Text', 'gt-layout-blocks' ),
+		title: __( 'GT Image & Text', 'gt-blocks' ),
 
-		description: __( 'Display an image and any content blocks in a two column layout.', 'gt-layout-blocks' ),
+		description: __( 'Display an image and any content blocks in a two column layout.', 'gt-blocks' ),
 
-		category: 'gt-layout-blocks',
+		category: 'gt-blocks',
 
 		icon: <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M464 0c26.51 0 48 21.49 48 48v288c0 26.51-21.49 48-48 48H176c-26.51 0-48-21.49-48-48V48c0-26.51 21.49-48 48-48h288M176 416c-44.112 0-80-35.888-80-80V128H48c-26.51 0-48 21.49-48 48v288c0 26.51 21.49 48 48 48h288c26.51 0 48-21.49 48-48v-48H176z" /></svg>,
 
 		keywords: [
-			__( 'GT Blocks', 'gt-layout-blocks' ),
-			__( 'Image', 'gt-layout-blocks' ),
-			__( 'Text', 'gt-layout-blocks' ),
+			__( 'GT Blocks', 'gt-blocks' ),
+			__( 'Image', 'gt-blocks' ),
+			__( 'Text', 'gt-blocks' ),
 		],
 
 		attributes: {

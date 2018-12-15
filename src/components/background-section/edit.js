@@ -148,15 +148,15 @@ class BackgroundEdit extends Component {
 		const ALIGNMENT_CONTROLS = {
 			default: {
 				icon: 'align-center',
-				title: __( 'Default width', 'gt-layout-blocks' ),
+				title: __( 'Default width', 'gt-blocks' ),
 			},
 			wide: {
 				icon: 'align-wide',
-				title: __( 'Wide width', 'gt-layout-blocks' ),
+				title: __( 'Wide width', 'gt-blocks' ),
 			},
 			full: {
 				icon: 'align-full-width',
-				title: __( 'Full width', 'gt-layout-blocks' ),
+				title: __( 'Full width', 'gt-blocks' ),
 			},
 		};
 
@@ -177,10 +177,10 @@ class BackgroundEdit extends Component {
 
 				<InspectorControls>
 
-					<PanelBody title={ __( 'Section Settings', 'gt-layout-blocks' ) } initialOpen={ false } className="gt-section-settings-panel gt-panel">
+					<PanelBody title={ __( 'Section Settings', 'gt-blocks' ) } initialOpen={ false } className="gt-section-settings-panel gt-panel">
 
 						{ wideControlsEnabled && (
-							<BaseControl id="gt-block-alignment" label={ __( 'Block Alignment', 'gt-layout-blocks' ) }>
+							<BaseControl id="gt-block-alignment" label={ __( 'Block Alignment', 'gt-blocks' ) }>
 								<Toolbar
 									controls={
 										Object.keys( ALIGNMENT_CONTROLS ).map( ( control ) => ( {
@@ -196,27 +196,27 @@ class BackgroundEdit extends Component {
 						{ ( wideControlsEnabled && ( 'full' === blockAlignment || 'wide' === blockAlignment ) ) && (
 
 							<SelectControl
-								label={ __( 'Content Width', 'gt-layout-blocks' ) }
+								label={ __( 'Content Width', 'gt-blocks' ) }
 								value={ contentWidth }
 								onChange={ ( newWidth ) => setAttributes( { contentWidth: newWidth } ) }
 								options={ [
-									{ value: 'narrow', label: __( 'Narrow width', 'gt-layout-blocks' ) },
-									{ value: 'default', label: __( 'Default width', 'gt-layout-blocks' ) },
-									{ value: 'wide', label: __( 'Wide width', 'gt-layout-blocks' ) },
-									{ value: 'full', label: __( 'Full width', 'gt-layout-blocks' ) },
+									{ value: 'narrow', label: __( 'Narrow width', 'gt-blocks' ) },
+									{ value: 'default', label: __( 'Default width', 'gt-blocks' ) },
+									{ value: 'wide', label: __( 'Wide width', 'gt-blocks' ) },
+									{ value: 'full', label: __( 'Full width', 'gt-blocks' ) },
 								] }
 							/>
 
 						) }
 
 						<SelectControl
-							label={ __( 'Padding', 'gt-layout-blocks' ) }
+							label={ __( 'Padding', 'gt-blocks' ) }
 							value={ padding }
 							onChange={ ( newPadding ) => setAttributes( { padding: newPadding } ) }
 							options={ [
-								{ value: 'none', label: __( 'None', 'gt-layout-blocks' ) },
-								{ value: 'normal', label: __( 'Normal', 'gt-layout-blocks' ) },
-								{ value: 'large', label: __( 'Large', 'gt-layout-blocks' ) },
+								{ value: 'none', label: __( 'None', 'gt-blocks' ) },
+								{ value: 'normal', label: __( 'Normal', 'gt-blocks' ) },
+								{ value: 'large', label: __( 'Large', 'gt-blocks' ) },
 							] }
 						/>
 
@@ -225,18 +225,18 @@ class BackgroundEdit extends Component {
 					{ this.props.contentSettings ? this.props.contentSettings : null }
 
 					<PanelColorSettings
-						title={ __( 'Color Settings', 'gt-layout-blocks' ) }
+						title={ __( 'Color Settings', 'gt-blocks' ) }
 						initialOpen={ false }
 						colorSettings={ [
 							{
 								value: backgroundColor.color,
 								onChange: setBackgroundColor,
-								label: __( 'Background Color', 'gt-layout-blocks' ),
+								label: __( 'Background Color', 'gt-blocks' ),
 							},
 							{
 								value: textColor.color,
 								onChange: setTextColor,
-								label: __( 'Text Color', 'gt-layout-blocks' ),
+								label: __( 'Text Color', 'gt-blocks' ),
 							},
 						] }
 					>
@@ -251,19 +251,19 @@ class BackgroundEdit extends Component {
 						/>
 					</PanelColorSettings>
 
-					<PanelBody title={ __( 'Background Image', 'gt-layout-blocks' ) } initialOpen={ false } className="gt-background-image-panel gt-panel">
+					<PanelBody title={ __( 'Background Image', 'gt-blocks' ) } initialOpen={ false } className="gt-background-image-panel gt-panel">
 
 						<div className="gt-background-image">
 
 							{ ! backgroundImageId ? (
 
 								<MediaUpload
-									title={ __( 'Set background image', 'gt-layout-blocks' ) }
+									title={ __( 'Set background image', 'gt-blocks' ) }
 									onSelect={ this.onSelectImage }
 									type="image"
 									render={ ( { open } ) => (
 										<Button onClick={ open } className="gt-set-image">
-											{ __( 'Set background image', 'gt-layout-blocks' ) }
+											{ __( 'Set background image', 'gt-blocks' ) }
 										</Button>
 									) }
 								/>
@@ -273,7 +273,7 @@ class BackgroundEdit extends Component {
 								<Fragment>
 
 									<MediaUpload
-										title={ __( 'Set background image', 'gt-layout-blocks' ) }
+										title={ __( 'Set background image', 'gt-blocks' ) }
 										onSelect={ this.onSelectImage }
 										type="image"
 										value={ backgroundImageId }
@@ -281,7 +281,7 @@ class BackgroundEdit extends Component {
 											<Button onClick={ open } className="gt-image-button">
 												<img
 													src={ backgroundImageUrl }
-													alt={ __( 'Background image', 'gt-layout-blocks' ) }
+													alt={ __( 'Background image', 'gt-blocks' ) }
 												/>
 											</Button>
 										) }
@@ -290,19 +290,19 @@ class BackgroundEdit extends Component {
 									<div className="gt-image-controls">
 
 										<MediaUpload
-											title={ __( 'Set background image', 'gt-layout-blocks' ) }
+											title={ __( 'Set background image', 'gt-blocks' ) }
 											onSelect={ this.onSelectImage }
 											type="image"
 											value={ backgroundImageId }
 											render={ ( { open } ) => (
 												<Button onClick={ open } isDefault isLarge className="gt-replace-image">
-													{ __( 'Replace image', 'gt-layout-blocks' ) }
+													{ __( 'Replace image', 'gt-blocks' ) }
 												</Button>
 											) }
 										/>
 
 										<Button onClick={ this.onRemoveImage } isLink isDestructive>
-											{ __( 'Remove image', 'gt-layout-blocks' ) }
+											{ __( 'Remove image', 'gt-blocks' ) }
 										</Button>
 
 									</div>
@@ -318,7 +318,7 @@ class BackgroundEdit extends Component {
 							<Fragment>
 
 								<RangeControl
-									label={ __( 'Image Opacity', 'gt-layout-blocks' ) }
+									label={ __( 'Image Opacity', 'gt-blocks' ) }
 									value={ imageOpacity }
 									onChange={ ( newOpacity ) => setAttributes( { imageOpacity: newOpacity } ) }
 									min={ 0 }
@@ -326,24 +326,24 @@ class BackgroundEdit extends Component {
 								/>
 
 								<SelectControl
-									label={ __( 'Background Position', 'gt-layout-blocks' ) }
+									label={ __( 'Background Position', 'gt-blocks' ) }
 									value={ backgroundPosition }
 									onChange={ ( newPosition ) => setAttributes( { backgroundPosition: newPosition } ) }
 									options={ [
-										{ value: 'left top', label: __( 'Left Top', 'gt-layout-blocks' ) },
-										{ value: 'left center', label: __( 'Left Center', 'gt-layout-blocks' ) },
-										{ value: 'left bottom', label: __( 'Left Bottom', 'gt-layout-blocks' ) },
-										{ value: 'center top', label: __( 'Center Top', 'gt-layout-blocks' ) },
-										{ value: 'center center', label: __( 'Center Center', 'gt-layout-blocks' ) },
-										{ value: 'center bottom', label: __( 'Center Bottom', 'gt-layout-blocks' ) },
-										{ value: 'right top', label: __( 'Right Top', 'gt-layout-blocks' ) },
-										{ value: 'right center', label: __( 'Right Center', 'gt-layout-blocks' ) },
-										{ value: 'right bottom', label: __( 'Right Bottom', 'gt-layout-blocks' ) },
+										{ value: 'left top', label: __( 'Left Top', 'gt-blocks' ) },
+										{ value: 'left center', label: __( 'Left Center', 'gt-blocks' ) },
+										{ value: 'left bottom', label: __( 'Left Bottom', 'gt-blocks' ) },
+										{ value: 'center top', label: __( 'Center Top', 'gt-blocks' ) },
+										{ value: 'center center', label: __( 'Center Center', 'gt-blocks' ) },
+										{ value: 'center bottom', label: __( 'Center Bottom', 'gt-blocks' ) },
+										{ value: 'right top', label: __( 'Right Top', 'gt-blocks' ) },
+										{ value: 'right center', label: __( 'Right Center', 'gt-blocks' ) },
+										{ value: 'right bottom', label: __( 'Right Bottom', 'gt-blocks' ) },
 									] }
 								/>
 
 								<ToggleControl
-									label={ __( 'Fixed Background', 'gt-layout-blocks' ) }
+									label={ __( 'Fixed Background', 'gt-blocks' ) }
 									checked={ !! fixedBackground }
 									onChange={ () => setAttributes( { fixedBackground: ! fixedBackground } ) }
 								/>

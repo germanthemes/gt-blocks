@@ -139,12 +139,12 @@ class IconPicker extends Component {
 					<Fragment>
 						<Placeholder
 							className="gt-icon-placeholder"
-							instructions={ __( 'Choose an icon here.', 'gt-layout-blocks' ) }
+							instructions={ __( 'Choose an icon here.', 'gt-blocks' ) }
 							icon="info"
-							label={ __( 'Icon', 'gt-layout-blocks' ) }
+							label={ __( 'Icon', 'gt-blocks' ) }
 						>
 							<Button isLarge onClick={ this.openModal }>
-								{ __( 'Select icon', 'gt-layout-blocks' ) }
+								{ __( 'Select icon', 'gt-blocks' ) }
 							</Button>
 						</Placeholder>
 
@@ -157,7 +157,7 @@ class IconPicker extends Component {
 						{ isSelected ? (
 
 							<Button className="gt-show-icon-picker" onClick={ this.openModal }>
-								<Tooltip text={ __( 'Edit icon', 'gt-layout-blocks' ) }>
+								<Tooltip text={ __( 'Edit icon', 'gt-blocks' ) }>
 									<div className={ iconClasses } style={ iconStyles }>
 										{ this.displayIcon( icon, iconSize, paddingStyles ) }
 									</div>
@@ -183,9 +183,9 @@ class IconPicker extends Component {
 	render() {
 		const title = (
 			<span className="gt-icon-picker-title">
-				{ __( 'Select Icon', 'gt-layout-blocks' ) }
+				{ __( 'Select Icon', 'gt-blocks' ) }
 				<Button onClick={ () => this.setIcon( undefined ) } className="gt-remove-icon">
-					{ __( 'Remove icon', 'gt-layout-blocks' ) }
+					{ __( 'Remove icon', 'gt-blocks' ) }
 				</Button>
 			</span>
 		);
@@ -197,15 +197,15 @@ class IconPicker extends Component {
 
 				{ this.state.isModalActive && (
 					<Modal
-						className="gt-layout-blocks-icon-picker-modal"
+						className="gt-blocks-icon-picker-modal"
 						title={ title }
-						closeLabel={ __( 'Close', 'gt-layout-blocks' ) }
+						closeLabel={ __( 'Close', 'gt-blocks' ) }
 						onRequestClose={ this.closeModal }
 						focusOnMount={ false }
 					>
 						<PlainText
 							className="gt-icon-picker-search"
-							placeholder={ __( 'Search for icon', 'gt-layout-blocks' ) }
+							placeholder={ __( 'Search for icon', 'gt-blocks' ) }
 							onChange={ this.searchIcon }
 							// eslint-disable-next-line jsx-a11y/no-autofocus
 							autoFocus={ true }
@@ -225,7 +225,7 @@ class IconPicker extends Component {
 
 export default compose( [
 	withSelect( ( select ) => {
-		const pluginURL = select( 'gt-layout-blocks-store' ).getPluginURL();
+		const pluginURL = select( 'gt-blocks-store' ).getPluginURL();
 
 		return { pluginURL };
 	} ),

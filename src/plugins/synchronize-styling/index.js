@@ -29,11 +29,11 @@ import './editor.scss';
 
 // Define supported blocks.
 const supportedBlocks = [
-	'gt-layout-blocks/button',
-	'gt-layout-blocks/column',
-	'gt-layout-blocks/heading',
-	'gt-layout-blocks/icon',
-	'gt-layout-blocks/image',
+	'gt-blocks/button',
+	'gt-blocks/column',
+	'gt-blocks/heading',
+	'gt-blocks/icon',
+	'gt-blocks/image',
 	'core/paragraph',
 ];
 
@@ -51,23 +51,23 @@ const synchronizeStyling = createHigherOrderComponent( ( BlockEdit ) => {
 			const siblings = getSiblings( props.clientId, props.name, props.attributes.parentBlock );
 
 			switch ( props.name ) {
-				case 'gt-layout-blocks/button': {
+				case 'gt-blocks/button': {
 					synchronizeButtons( siblings, props.attributes );
 					break;
 				}
-				case 'gt-layout-blocks/column': {
+				case 'gt-blocks/column': {
 					synchronizeColumns( siblings, props.attributes );
 					break;
 				}
-				case 'gt-layout-blocks/heading': {
+				case 'gt-blocks/heading': {
 					synchronizeHeadings( siblings, props.attributes );
 					break;
 				}
-				case 'gt-layout-blocks/icon': {
+				case 'gt-blocks/icon': {
 					synchronizeIcons( siblings, props.attributes );
 					break;
 				}
-				case 'gt-layout-blocks/image': {
+				case 'gt-blocks/image': {
 					synchronizeImages( siblings, props.attributes );
 					break;
 				}
@@ -80,23 +80,23 @@ const synchronizeStyling = createHigherOrderComponent( ( BlockEdit ) => {
 
 		const synchronizeDescriptionText = () => {
 			switch ( props.name ) {
-				case 'gt-layout-blocks/button': {
-					return __( 'Copy button settings and colors of this block and apply them to all sibling blocks.', 'gt-layout-blocks' );
+				case 'gt-blocks/button': {
+					return __( 'Copy button settings and colors of this block and apply them to all sibling blocks.', 'gt-blocks' );
 				}
-				case 'gt-layout-blocks/column': {
-					return __( 'Copy colors of this block and apply them to all sibling blocks.', 'gt-layout-blocks' );
+				case 'gt-blocks/column': {
+					return __( 'Copy colors of this block and apply them to all sibling blocks.', 'gt-blocks' );
 				}
-				case 'gt-layout-blocks/heading': {
-					return __( 'Copy heading settings and colors of this block and apply them to all sibling blocks.', 'gt-layout-blocks' );
+				case 'gt-blocks/heading': {
+					return __( 'Copy heading settings and colors of this block and apply them to all sibling blocks.', 'gt-blocks' );
 				}
-				case 'gt-layout-blocks/icon': {
-					return __( 'Copy icon settings and colors of this block and apply them to all sibling blocks.', 'gt-layout-blocks' );
+				case 'gt-blocks/icon': {
+					return __( 'Copy icon settings and colors of this block and apply them to all sibling blocks.', 'gt-blocks' );
 				}
-				case 'gt-layout-blocks/image': {
-					return __( 'Copy image size and URL settings of this block and apply them to all sibling blocks.', 'gt-layout-blocks' );
+				case 'gt-blocks/image': {
+					return __( 'Copy image size and URL settings of this block and apply them to all sibling blocks.', 'gt-blocks' );
 				}
 				case 'core/paragraph': {
-					return __( 'Copy text settings and colors of this block and apply them to all sibling blocks.', 'gt-layout-blocks' );
+					return __( 'Copy text settings and colors of this block and apply them to all sibling blocks.', 'gt-blocks' );
 				}
 			}
 		};
@@ -107,7 +107,7 @@ const synchronizeStyling = createHigherOrderComponent( ( BlockEdit ) => {
 
 				<InspectorControls>
 
-					<PanelBody title={ __( 'Synchronize Styling', 'gt-layout-blocks' ) } initialOpen={ false } className="gt-panel-synchronize-styling gt-panel">
+					<PanelBody title={ __( 'Synchronize Styling', 'gt-blocks' ) } initialOpen={ false } className="gt-panel-synchronize-styling gt-panel">
 
 						<p id="gt-synchronize-styling__help" className="components-base-control__help">
 							{ synchronizeDescriptionText() }
@@ -119,7 +119,7 @@ const synchronizeStyling = createHigherOrderComponent( ( BlockEdit ) => {
 							onClick={ synchronizeAttributes }
 						>
 							<Dashicon icon="controls-repeat" />
-							{ __( 'Synchronize Styling', 'gt-layout-blocks' ) }
+							{ __( 'Synchronize Styling', 'gt-blocks' ) }
 						</Button>
 
 					</PanelBody>
@@ -129,7 +129,7 @@ const synchronizeStyling = createHigherOrderComponent( ( BlockEdit ) => {
 		);
 	};
 }, 'synchronizeStyling' );
-addFilter( 'editor.BlockEdit', 'gt-layout-blocks/plugins/synchronize-styling', synchronizeStyling );
+addFilter( 'editor.BlockEdit', 'gt-blocks/plugins/synchronize-styling', synchronizeStyling );
 
 function addSynchronizeStylingAttribute( settings, name ) {
 	if ( ! supportedBlocks.includes( name ) ) {
@@ -147,4 +147,4 @@ function addSynchronizeStylingAttribute( settings, name ) {
 
 	return settings;
 }
-addFilter( 'blocks.registerBlockType', 'gt-layout-blocks/attributes/synchronize-styling', addSynchronizeStylingAttribute );
+addFilter( 'blocks.registerBlockType', 'gt-blocks/attributes/synchronize-styling', addSynchronizeStylingAttribute );

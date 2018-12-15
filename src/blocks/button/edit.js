@@ -126,13 +126,13 @@ class ButtonEdit extends Component {
 		const backgroundColorSettings = 'outline' !== buttonShape ? [ {
 			value: backgroundColor.color,
 			onChange: setBackgroundColor,
-			label: __( 'Background Color', 'gt-layout-blocks' ),
+			label: __( 'Background Color', 'gt-blocks' ),
 		} ] : [];
 
 		const hoverBackgroundColorSettings = 'outline' !== buttonShape ? [ {
 			value: hoverBackgroundColor.color,
 			onChange: setHoverBackgroundColor,
-			label: __( 'Background Color', 'gt-layout-blocks' ),
+			label: __( 'Background Color', 'gt-blocks' ),
 		} ] : [];
 
 		return (
@@ -148,35 +148,35 @@ class ButtonEdit extends Component {
 
 				<InspectorControls>
 
-					<PanelBody title={ __( 'Button Settings', 'gt-layout-blocks' ) } initialOpen={ false } className="gt-panel-button-settings gt-panel">
+					<PanelBody title={ __( 'Button Settings', 'gt-blocks' ) } initialOpen={ false } className="gt-panel-button-settings gt-panel">
 
 						<SelectControl
-							label={ __( 'Button Size', 'gt-layout-blocks' ) }
+							label={ __( 'Button Size', 'gt-blocks' ) }
 							value={ buttonSize }
 							onChange={ ( newSize ) => setAttributes( { buttonSize: newSize } ) }
 							options={ [
-								{ value: 'small', label: __( 'Small', 'gt-layout-blocks' ) },
-								{ value: 'medium', label: __( 'Medium', 'gt-layout-blocks' ) },
-								{ value: 'large', label: __( 'Large', 'gt-layout-blocks' ) },
-								{ value: 'extra-large', label: __( 'Extra Large', 'gt-layout-blocks' ) },
+								{ value: 'small', label: __( 'Small', 'gt-blocks' ) },
+								{ value: 'medium', label: __( 'Medium', 'gt-blocks' ) },
+								{ value: 'large', label: __( 'Large', 'gt-blocks' ) },
+								{ value: 'extra-large', label: __( 'Extra Large', 'gt-blocks' ) },
 							] }
 						/>
 
 						<SelectControl
-							label={ __( 'Button Style', 'gt-layout-blocks' ) }
+							label={ __( 'Button Style', 'gt-blocks' ) }
 							value={ buttonShape }
 							onChange={ ( newShape ) => setAttributes( { buttonShape: newShape } ) }
 							options={ [
-								{ value: 'squared', label: __( 'Squared', 'gt-layout-blocks' ) },
-								{ value: 'rounded', label: __( 'Rounded', 'gt-layout-blocks' ) },
-								{ value: 'circle', label: __( 'Circle', 'gt-layout-blocks' ) },
-								{ value: 'outline', label: __( 'Outline', 'gt-layout-blocks' ) },
+								{ value: 'squared', label: __( 'Squared', 'gt-blocks' ) },
+								{ value: 'rounded', label: __( 'Rounded', 'gt-blocks' ) },
+								{ value: 'circle', label: __( 'Circle', 'gt-blocks' ) },
+								{ value: 'outline', label: __( 'Outline', 'gt-blocks' ) },
 							] }
 						/>
 
 						{ ( 'rounded' === buttonShape || 'outline' === buttonShape ) && (
 							<RangeControl
-								label={ __( 'Rounded Corners', 'gt-layout-blocks' ) }
+								label={ __( 'Rounded Corners', 'gt-blocks' ) }
 								value={ roundedCorners }
 								onChange={ ( newRadius ) => setAttributes( { roundedCorners: newRadius } ) }
 								min={ 0 }
@@ -186,7 +186,7 @@ class ButtonEdit extends Component {
 
 						{ 'outline' === buttonShape && (
 							<RangeControl
-								label={ __( 'Border Width', 'gt-layout-blocks' ) }
+								label={ __( 'Border Width', 'gt-blocks' ) }
 								value={ borderWidth }
 								onChange={ ( newWidth ) => setAttributes( { borderWidth: newWidth } ) }
 								min={ 1 }
@@ -195,7 +195,7 @@ class ButtonEdit extends Component {
 						) }
 
 						<ToggleControl
-							label={ __( 'Uppercase?', 'gt-layout-blocks' ) }
+							label={ __( 'Uppercase?', 'gt-blocks' ) }
 							checked={ !! uppercase }
 							onChange={ () => setAttributes( { uppercase: ! uppercase } ) }
 						/>
@@ -203,20 +203,20 @@ class ButtonEdit extends Component {
 					</PanelBody>
 
 					<PanelColorSettings
-						title={ __( 'Color Settings', 'gt-layout-blocks' ) }
+						title={ __( 'Color Settings', 'gt-blocks' ) }
 						initialOpen={ false }
 						colorSettings={
 							backgroundColorSettings.concat( [ {
 								value: textColor.color,
 								onChange: setTextColor,
-								label: __( 'Text Color', 'gt-layout-blocks' ),
+								label: __( 'Text Color', 'gt-blocks' ),
 							} ] )
 						}
 					>
 
 						{ 'outline' === buttonShape && (
 							<p className="components-base-control__help">
-								{ __( 'Background colors are disabled because outline style is enabled.', 'gt-layout-blocks' ) }
+								{ __( 'Background colors are disabled because outline style is enabled.', 'gt-blocks' ) }
 							</p>
 						) }
 
@@ -233,20 +233,20 @@ class ButtonEdit extends Component {
 					</PanelColorSettings>
 
 					<PanelColorSettings
-						title={ __( 'Hover Colors', 'gt-layout-blocks' ) }
+						title={ __( 'Hover Colors', 'gt-blocks' ) }
 						initialOpen={ false }
 						colorSettings={
 							hoverBackgroundColorSettings.concat( [ {
 								value: hoverColor.color,
 								onChange: this.setHoverTextColor,
-								label: __( 'Text Color', 'gt-layout-blocks' ),
+								label: __( 'Text Color', 'gt-blocks' ),
 							} ] )
 						}
 					>
 
 						{ 'outline' === buttonShape && (
 							<p className="components-base-control__help">
-								{ __( 'Background colors are disabled because outline style is enabled.', 'gt-layout-blocks' ) }
+								{ __( 'Background colors are disabled because outline style is enabled.', 'gt-blocks' ) }
 							</p>
 						) }
 
@@ -273,7 +273,7 @@ class ButtonEdit extends Component {
 							onChange={ ( newText ) => setAttributes( { text: newText } ) }
 							formattingControls={ [ 'bold', 'italic', 'strikethrough' ] }
 							value={ text }
-							placeholder={ placeholder || __( 'Add text…', 'gt-layout-blocks' ) }
+							placeholder={ placeholder || __( 'Add text…', 'gt-blocks' ) }
 							keepPlaceholderOnFocus
 						/>
 					</span>
@@ -289,7 +289,7 @@ class ButtonEdit extends Component {
 								// eslint-disable-next-line jsx-a11y/no-autofocus
 								autoFocus={ false }
 							/>
-							<IconButton icon="editor-break" label={ __( 'Apply', 'gt-layout-blocks' ) } type="submit" />
+							<IconButton icon="editor-break" label={ __( 'Apply', 'gt-blocks' ) } type="submit" />
 						</form>
 					) }
 

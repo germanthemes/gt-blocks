@@ -2,14 +2,14 @@
 	display: block;
 	margin: 0;
 
-	.wp-block-gt-layout-blocks-column {
+	.wp-block-gt-blocks-column {
 		padding-right: 0;
 		width: 100%;
 	}
 		
 	> .editor-inner-blocks > .editor-block-list__layout {
 
-		> [data-type="gt-layout-blocks/column"] {
+		> [data-type="gt-blocks/column"] {
 			margin-left: 0;
 			margin-right: 0;
 			min-width: 0;
@@ -31,7 +31,7 @@
 			display: flex;
 			flex-wrap: wrap;
 
-			> [data-type="gt-layout-blocks/column"] {
+			> [data-type="gt-blocks/column"] {
 				width: 50%;
 			}
 		}
@@ -44,7 +44,7 @@
 			display: flex;
 			flex-wrap: wrap;
 
-			> [data-type="gt-layout-blocks/column"] {
+			> [data-type="gt-blocks/column"] {
 				width: 33.3333333333333%;
 			}
 		}
@@ -53,7 +53,7 @@
 	.editor-block-list__block .gt-columns-5,
 	.editor-block-list__block .gt-columns-6 {
 		> .editor-inner-blocks > .editor-block-list__layout {
-			> [data-type="gt-layout-blocks/column"] {
+			> [data-type="gt-blocks/column"] {
 				width: 33.3333333333333%;
 			}
 		}
@@ -63,7 +63,7 @@
 @media only screen and (min-width: 960px) {
 	.editor-block-list__block .gt-columns-4 {
 		> .editor-inner-blocks > .editor-block-list__layout {
-			> [data-type="gt-layout-blocks/column"] {
+			> [data-type="gt-blocks/column"] {
 				width: 25%;
 			}
 		}
@@ -73,7 +73,7 @@
 @media only screen and (min-width: 1040px) {
 	.editor-block-list__block .gt-columns-5 {
 		> .editor-inner-blocks > .editor-block-list__layout {
-			> [data-type="gt-layout-blocks/column"] {
+			> [data-type="gt-blocks/column"] {
 				width: 20%;
 			}
 		}
@@ -83,7 +83,7 @@
 @media only screen and (min-width: 1120px) {
 	.editor-block-list__block .gt-columns-6 {
 		> .editor-inner-blocks > .editor-block-list__layout {
-			> [data-type="gt-layout-blocks/column"] {
+			> [data-type="gt-blocks/column"] {
 				width: 16.666666666666%;
 			}
 		}
@@ -115,7 +115,7 @@
 
 		> .editor-inner-blocks > .editor-block-list__layout {
 
-			> [data-type="gt-layout-blocks/column"] > .editor-block-contextual-toolbar {
+			> [data-type="gt-blocks/column"] > .editor-block-contextual-toolbar {
 				transform: translateY( -40px );
 			}
 		}

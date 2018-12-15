@@ -75,7 +75,7 @@ class GridEdit extends Component {
 		} = attributes;
 
 		// Create Block.
-		const block = createBlock( 'gt-layout-blocks/column', {
+		const block = createBlock( 'gt-blocks/column', {
 			allowedBlocks: allowedBlocks,
 			template: template,
 			templateLock: templateLock || false,
@@ -132,7 +132,7 @@ class GridEdit extends Component {
 		 * @return {Object[]} Items layout configuration.
 		 */
 		const getItemsTemplate = memoize( ( number ) => {
-			const block = [ 'gt-layout-blocks/column', {
+			const block = [ 'gt-blocks/column', {
 				allowedBlocks: allowedBlocks,
 				template: template,
 				templateLock: templateLock || false,
@@ -152,7 +152,7 @@ class GridEdit extends Component {
 						controls={
 							[ 2, 3, 4 ].map( column => ( {
 								icon: columnIcons[ column ],
-								title: sprintf( __( '%s Columns', 'gt-layout-blocks' ), column ),
+								title: sprintf( __( '%s Columns', 'gt-blocks' ), column ),
 								isActive: column === columns,
 								onClick: () => setAttributes( { columns: column } ),
 							} ) )
@@ -163,10 +163,10 @@ class GridEdit extends Component {
 
 				<InspectorControls key="inspector">
 
-					<PanelBody title={ __( 'Layout Settings', 'gt-layout-blocks' ) } initialOpen={ false } className="gt-panel-layout-settings gt-panel">
+					<PanelBody title={ __( 'Layout Settings', 'gt-blocks' ) } initialOpen={ false } className="gt-panel-layout-settings gt-panel">
 
 						<RangeControl
-							label={ __( 'Columns', 'gt-layout-blocks' ) }
+							label={ __( 'Columns', 'gt-blocks' ) }
 							value={ columns }
 							onChange={ ( nextColumns ) => setAttributes( { columns: nextColumns } ) }
 							min={ 2 }
@@ -184,7 +184,7 @@ class GridEdit extends Component {
 						<InnerBlocks
 							template={ getItemsTemplate( items ) }
 							templateLock="all"
-							allowedBlocks={ [ 'gt-layout-blocks/column' ] }
+							allowedBlocks={ [ 'gt-blocks/column' ] }
 						/>
 
 					</div>
@@ -196,7 +196,7 @@ class GridEdit extends Component {
 							className="gt-add-grid-item"
 						>
 							<Dashicon icon="insert" />
-							{ __( 'Add block', 'gt-layout-blocks' ) }
+							{ __( 'Add block', 'gt-blocks' ) }
 						</Button>
 					) }
 				</div>

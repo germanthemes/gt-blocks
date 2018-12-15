@@ -30,19 +30,19 @@ import { default as GridEdit } from '../../components/grid-container/edit';
 
 // Define blocks for each column.
 const TEMPLATE = [
-	[ 'gt-layout-blocks/icon', {
+	[ 'gt-blocks/icon', {
 		synchronizeStyling: true,
-		parentBlock: 'gt-layout-blocks/features',
+		parentBlock: 'gt-blocks/features',
 	} ],
-	[ 'gt-layout-blocks/heading', {
-		placeholder: __( 'Feature', 'gt-layout-blocks' ),
+	[ 'gt-blocks/heading', {
+		placeholder: __( 'Feature', 'gt-blocks' ),
 		synchronizeStyling: true,
-		parentBlock: 'gt-layout-blocks/features',
+		parentBlock: 'gt-blocks/features',
 	} ],
 	[ 'core/paragraph', {
-		placeholder: __( 'Write feature description...', 'gt-layout-blocks' ),
+		placeholder: __( 'Write feature description...', 'gt-blocks' ),
 		synchronizeStyling: true,
-		parentBlock: 'gt-layout-blocks/features',
+		parentBlock: 'gt-blocks/features',
 	} ],
 ];
 
@@ -85,8 +85,8 @@ class FeaturesEdit extends Component {
 		} = this.props;
 
 		const blockStyles = [
-			{ value: 'default', label: __( 'Default', 'gt-layout-blocks' ), isDefault: true },
-			{ value: 'card', label: __( 'Card', 'gt-layout-blocks' ) },
+			{ value: 'default', label: __( 'Default', 'gt-blocks' ), isDefault: true },
+			{ value: 'card', label: __( 'Card', 'gt-blocks' ) },
 		];
 
 		const activeStyle = this.getActiveStyle( blockStyles, attributes.className );
@@ -101,10 +101,10 @@ class FeaturesEdit extends Component {
 
 				<InspectorControls>
 
-					<PanelBody title={ __( 'Styles', 'gt-layout-blocks' ) } initialOpen={ false } className="gt-panel-styles gt-panel">
+					<PanelBody title={ __( 'Styles', 'gt-blocks' ) } initialOpen={ false } className="gt-panel-styles gt-panel">
 
 						<SelectControl
-							label={ __( 'Styles', 'gt-layout-blocks' ) }
+							label={ __( 'Styles', 'gt-blocks' ) }
 							value={ activeStyle.value }
 							onChange={ ( newStyle ) => updateClassName( newStyle ) }
 							options={ blockStyles }

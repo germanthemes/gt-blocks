@@ -34,7 +34,7 @@ const withInspectorControl = createHigherOrderComponent( ( BlockEdit ) => {
 					<InspectorAdvancedControls>
 
 						<ToggleControl
-							label={ __( 'Remove bottom margin?', 'gt-layout-blocks' ) }
+							label={ __( 'Remove bottom margin?', 'gt-blocks' ) }
 							checked={ !! gtRemoveMarginBottom }
 							onChange={ () => props.setAttributes( { gtRemoveMarginBottom: ! gtRemoveMarginBottom } ) }
 						/>
@@ -47,7 +47,7 @@ const withInspectorControl = createHigherOrderComponent( ( BlockEdit ) => {
 		return <BlockEdit { ...props } />;
 	};
 }, 'withInspectorControl' );
-addFilter( 'editor.BlockEdit', 'gt-layout-blocks/plugins/margin-bottom', withInspectorControl );
+addFilter( 'editor.BlockEdit', 'gt-blocks/plugins/margin-bottom', withInspectorControl );
 
 function addAttribute( settings ) {
 	if ( hasBlockSupport( settings, 'customClassName', true ) ) {
@@ -61,7 +61,7 @@ function addAttribute( settings ) {
 
 	return settings;
 }
-addFilter( 'blocks.registerBlockType', 'gt-layout-blocks/attributes/margin-bottom', addAttribute );
+addFilter( 'blocks.registerBlockType', 'gt-blocks/attributes/margin-bottom', addAttribute );
 
 function addSaveProps( extraProps, blockType, attributes ) {
 	if ( hasBlockSupport( blockType, 'customClassName', true ) && attributes.gtRemoveMarginBottom ) {
@@ -70,4 +70,4 @@ function addSaveProps( extraProps, blockType, attributes ) {
 
 	return extraProps;
 }
-addFilter( 'blocks.getSaveContent.extraProps', 'gt-layout-blocks/save-props/margin-bottom', addSaveProps );
+addFilter( 'blocks.getSaveContent.extraProps', 'gt-blocks/save-props/margin-bottom', addSaveProps );

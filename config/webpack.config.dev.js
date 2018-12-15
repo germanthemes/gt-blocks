@@ -26,12 +26,12 @@ const ExtractTextPlugin = require( 'extract-text-webpack-plugin' );
 
 // Extract style.css for both editor and frontend styles.
 const blocksCSSPlugin = new ExtractTextPlugin( {
-	filename: './assets/css/gt-layout-blocks.css',
+	filename: './assets/css/gt-blocks.css',
 } );
 
 // Extract editor.css for editor styles.
 const editBlocksCSSPlugin = new ExtractTextPlugin( {
-	filename: './assets/css/gt-layout-blocks-editor.css',
+	filename: './assets/css/gt-blocks-editor.css',
 } );
 
 // Configuration for the ExtractTextPlugin — DRY rule.
@@ -71,14 +71,14 @@ const extractConfig = {
 // Export configuration.
 module.exports = {
 	entry: {
-		'./assets/js/gt-layout-blocks-editor': paths.pluginBlocksJs, // 'name' : 'path/file.ext'.
+		'./assets/js/gt-blocks-editor': paths.pluginBlocksJs, // 'name' : 'path/file.ext'.
 	},
 	output: {
 		// Add /* filename */ comments to generated require()s in the output.
 		pathinfo: true,
 		// The dist folder.
 		path: paths.pluginDist,
-		filename: '[name].js', // [name] = './assets/js/gt-layout-blocks-editor' as defined above.
+		filename: '[name].js', // [name] = './assets/js/gt-blocks-editor' as defined above.
 	},
 	// You may want 'eval' instead if you prefer to see the compiled output in DevTools.
 	devtool: 'cheap-eval-source-map',

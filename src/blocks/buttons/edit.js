@@ -61,7 +61,7 @@ class ButtonsEdit extends Component {
 		 * @return {Object[]} Items layout configuration.
 		 */
 		const getTemplate = memoize( ( number ) => {
-			return times( number, () => [ 'gt-layout-blocks/button', buttonAttributes || {} ] );
+			return times( number, () => [ 'gt-blocks/button', buttonAttributes || {} ] );
 		} );
 
 		return (
@@ -78,17 +78,17 @@ class ButtonsEdit extends Component {
 
 				<InspectorControls key="inspector">
 
-					<PanelBody title={ __( 'Layout Settings', 'gt-layout-blocks' ) } initialOpen={ true } className="gt-panel-layout-settings gt-panel">
+					<PanelBody title={ __( 'Layout Settings', 'gt-blocks' ) } initialOpen={ true } className="gt-panel-layout-settings gt-panel">
 
 						<RangeControl
-							label={ __( 'Number of buttons', 'gt-layout-blocks' ) }
+							label={ __( 'Number of buttons', 'gt-blocks' ) }
 							value={ buttons }
 							onChange={ ( newValue ) => setAttributes( { buttons: newValue } ) }
 							min={ 1 }
 							max={ 6 }
 						/>
 
-						<BaseControl id="gt-alignment-control" label={ __( 'Alignment', 'gt-layout-blocks' ) }>
+						<BaseControl id="gt-alignment-control" label={ __( 'Alignment', 'gt-blocks' ) }>
 							<AlignmentToolbar
 								value={ alignment }
 								onChange={ ( newAlignment ) => setAttributes( { alignment: newAlignment } ) }

@@ -42,8 +42,8 @@ class GtImagePlaceholder extends Component {
 						icon="format-image"
 						className="gt-image-placeholder"
 						labels={ {
-							title: __( 'Image', 'gt-layout-blocks' ),
-							name: __( 'an image', 'gt-layout-blocks' ),
+							title: __( 'Image', 'gt-blocks' ),
+							name: __( 'an image', 'gt-blocks' ),
 						} }
 						onSelect={ onSelect }
 						accept="image/*"
@@ -71,7 +71,7 @@ class GtImagePlaceholder extends Component {
 
 								<IconButton
 									className="gt-remove-image"
-									label={ __( 'Remove Image', 'gt-layout-blocks' ) }
+									label={ __( 'Remove Image', 'gt-blocks' ) }
 									icon="no-alt"
 									onClick={ onRemove }
 								/>

@@ -32,19 +32,19 @@ import { default as BackgroundEdit } from '../../components/background-section/e
 
 // Define blocks for hero content.
 const TEMPLATE = [
-	[ 'gt-layout-blocks/heading', {
-		placeholder: __( 'Write Hero Heading...', 'gt-layout-blocks' ),
+	[ 'gt-blocks/heading', {
+		placeholder: __( 'Write Hero Heading...', 'gt-blocks' ),
 		customFontSize: 36,
 	} ],
 	[ 'core/paragraph', {
-		placeholder: __( 'Write Hero text...', 'gt-layout-blocks' ),
+		placeholder: __( 'Write Hero text...', 'gt-blocks' ),
 	} ],
-	[ 'gt-layout-blocks/buttons', {
+	[ 'gt-blocks/buttons', {
 		customClass: 'gt-buttons-wrapper',
 		buttons: 2,
 		buttonAttributes: {
 			synchronizeStyling: true,
-			parentBlock: 'gt-layout-blocks/buttons',
+			parentBlock: 'gt-blocks/buttons',
 		},
 	} ],
 ];
@@ -57,11 +57,11 @@ const TEMPLATE = [
  * @return {Object[]} Items layout configuration.
  */
 const getTemplate = memoize( ( heroImage ) => {
-	const content = [ 'gt-layout-blocks/content', {
+	const content = [ 'gt-blocks/content', {
 		template: TEMPLATE,
 	} ];
 
-	const image = [ 'gt-layout-blocks/image', {} ];
+	const image = [ 'gt-blocks/image', {} ];
 
 	if ( heroImage ) {
 		return [ content, image ];
@@ -95,53 +95,53 @@ class HeroImageEdit extends Component {
 		} );
 
 		const contentSettings = <Fragment>
-			<PanelBody title={ __( 'Hero Settings', 'gt-layout-blocks' ) } initialOpen={ false } className="gt-panel-hero-settings gt-panel">
-				<BaseControl id="gt-image-block" label={ __( 'Image Block', 'gt-layout-blocks' ) }>
+			<PanelBody title={ __( 'Hero Settings', 'gt-blocks' ) } initialOpen={ false } className="gt-panel-hero-settings gt-panel">
+				<BaseControl id="gt-image-block" label={ __( 'Image Block', 'gt-blocks' ) }>
 					<Button
 						isLarge
 						className="gt-image-block-button"
 						onClick={ () => setAttributes( { heroImage: ! heroImage } ) }
 					>
 						<Dashicon icon={ heroImage ? 'trash' : 'insert' } />
-						{ heroImage ? __( 'Remove Block', 'gt-layout-blocks' ) : __( 'Add Block', 'gt-layout-blocks' ) }
+						{ heroImage ? __( 'Remove Block', 'gt-blocks' ) : __( 'Add Block', 'gt-blocks' ) }
 					</Button>
 				</BaseControl>
 
 				<SelectControl
-					label={ __( 'Content Position', 'gt-layout-blocks' ) }
+					label={ __( 'Content Position', 'gt-blocks' ) }
 					value={ heroLayout }
 					onChange={ ( newLayout ) => setAttributes( { heroLayout: newLayout } ) }
 					options={ [
-						{ value: 'center', label: __( 'Center', 'gt-layout-blocks' ) },
-						{ value: 'left', label: __( 'Left', 'gt-layout-blocks' ) },
-						{ value: 'right', label: __( 'Right', 'gt-layout-blocks' ) },
+						{ value: 'center', label: __( 'Center', 'gt-blocks' ) },
+						{ value: 'left', label: __( 'Left', 'gt-blocks' ) },
+						{ value: 'right', label: __( 'Right', 'gt-blocks' ) },
 					] }
 				/>
 
 				{ 'center' !== heroLayout && (
 					<SelectControl
-						label={ __( 'Content Width', 'gt-layout-blocks' ) }
+						label={ __( 'Content Width', 'gt-blocks' ) }
 						value={ heroWidth }
 						onChange={ ( newWidth ) => setAttributes( { heroWidth: newWidth } ) }
 						options={ [
-							{ value: '30', label: __( '30%', 'gt-layout-blocks' ) },
-							{ value: '40', label: __( '40%', 'gt-layout-blocks' ) },
-							{ value: '50', label: __( '50%', 'gt-layout-blocks' ) },
-							{ value: '60', label: __( '60%', 'gt-layout-blocks' ) },
-							{ value: '70', label: __( '70%', 'gt-layout-blocks' ) },
+							{ value: '30', label: __( '30%', 'gt-blocks' ) },
+							{ value: '40', label: __( '40%', 'gt-blocks' ) },
+							{ value: '50', label: __( '50%', 'gt-blocks' ) },
+							{ value: '60', label: __( '60%', 'gt-blocks' ) },
+							{ value: '70', label: __( '70%', 'gt-blocks' ) },
 						] }
 					/>
 				) }
 
 				<SelectControl
-					label={ __( 'Vertical Align', 'gt-layout-blocks' ) }
+					label={ __( 'Vertical Align', 'gt-blocks' ) }
 					value={ verticalAlign }
 					onChange={ ( newAlign ) => setAttributes( { verticalAlign: newAlign } ) }
 					options={ [
-						{ value: 'none', label: __( 'None', 'gt-layout-blocks' ) },
-						{ value: 'top', label: __( 'Top', 'gt-layout-blocks' ) },
-						{ value: 'center', label: __( 'Center', 'gt-layout-blocks' ) },
-						{ value: 'bottom', label: __( 'Bottom', 'gt-layout-blocks' ) },
+						{ value: 'none', label: __( 'None', 'gt-blocks' ) },
+						{ value: 'top', label: __( 'Top', 'gt-blocks' ) },
+						{ value: 'center', label: __( 'Center', 'gt-blocks' ) },
+						{ value: 'bottom', label: __( 'Bottom', 'gt-blocks' ) },
 					] }
 				/>
 
@@ -159,7 +159,7 @@ class HeroImageEdit extends Component {
 					<div className={ heroClasses }>
 
 						<InnerBlocks
-							allowedBlocks={ [ 'gt-layout-blocks/image', 'gt-layout-blocks/content' ] }
+							allowedBlocks={ [ 'gt-blocks/image', 'gt-blocks/content' ] }
 							template={ getTemplate( heroImage ) }
 							templateLock="all"
 						/>

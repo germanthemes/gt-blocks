@@ -66,18 +66,18 @@ class contentEdit extends Component {
 				<InspectorControls key="inspector">
 
 					<PanelColorSettings
-						title={ __( 'Color Settings', 'gt-layout-blocks' ) }
+						title={ __( 'Color Settings', 'gt-blocks' ) }
 						initialOpen={ false }
 						colorSettings={ [
 							{
 								value: backgroundColor.color,
 								onChange: setBackgroundColor,
-								label: __( 'Background Color', 'gt-layout-blocks' ),
+								label: __( 'Background Color', 'gt-blocks' ),
 							},
 							{
 								value: textColor.color,
 								onChange: setTextColor,
-								label: __( 'Text Color', 'gt-layout-blocks' ),
+								label: __( 'Text Color', 'gt-blocks' ),
 							},
 						] }
 					>

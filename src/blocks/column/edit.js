@@ -133,18 +133,18 @@ class columnEdit extends Component {
 				<InspectorControls key="inspector">
 
 					<PanelColorSettings
-						title={ __( 'Color Settings', 'gt-layout-blocks' ) }
+						title={ __( 'Color Settings', 'gt-blocks' ) }
 						initialOpen={ false }
 						colorSettings={ [
 							{
 								value: backgroundColor.color,
 								onChange: setBackgroundColor,
-								label: __( 'Background Color', 'gt-layout-blocks' ),
+								label: __( 'Background Color', 'gt-blocks' ),
 							},
 							{
 								value: textColor.color,
 								onChange: setTextColor,
-								label: __( 'Text Color', 'gt-layout-blocks' ),
+								label: __( 'Text Color', 'gt-blocks' ),
 							},
 						] }
 					>
@@ -177,7 +177,7 @@ class columnEdit extends Component {
 
 							<IconButton
 								className="move-up-column"
-								label={ __( 'Move up', 'gt-layout-blocks' ) }
+								label={ __( 'Move up', 'gt-blocks' ) }
 								icon="arrow-left-alt2"
 								onClick={ isFirstColumn ? null : onMoveUp }
 								disabled={ isFirstColumn }
@@ -185,7 +185,7 @@ class columnEdit extends Component {
 
 							<IconButton
 								className="move-down-column"
-								label={ __( 'Move down', 'gt-layout-blocks' ) }
+								label={ __( 'Move down', 'gt-blocks' ) }
 								icon="arrow-right-alt2"
 								onClick={ isLastColumn ? null : onMoveDown }
 								disabled={ isLastColumn }
@@ -193,14 +193,14 @@ class columnEdit extends Component {
 
 							<IconButton
 								className="duplicate-column"
-								label={ __( 'Duplicate', 'gt-layout-blocks' ) }
+								label={ __( 'Duplicate', 'gt-blocks' ) }
 								icon="admin-page"
 								onClick={ () => this.duplicateColumn() }
 							/>
 
 							<IconButton
 								className="remove-column"
-								label={ __( 'Remove', 'gt-layout-blocks' ) }
+								label={ __( 'Remove', 'gt-blocks' ) }
 								icon="trash"
 								onClick={ () => this.removeColumn() }
 							/>

@@ -89,7 +89,7 @@ class gtHeadingEdit extends Component {
 						controls={
 							range( 2, 5 ).map( ( level ) => ( {
 								icon: 'heading',
-								title: sprintf( __( 'Heading %s', 'gt-layout-blocks' ), level ),
+								title: sprintf( __( 'Heading %s', 'gt-blocks' ), level ),
 								isActive: level === titleTag,
 								onClick: () => setAttributes( { titleTag: level } ),
 								subscript: level,
@@ -101,14 +101,14 @@ class gtHeadingEdit extends Component {
 
 				<InspectorControls>
 
-					<PanelBody title={ __( 'Heading Settings', 'gt-layout-blocks' ) } initialOpen={ true } className="gt-panel-heading-settings gt-panel">
+					<PanelBody title={ __( 'Heading Settings', 'gt-blocks' ) } initialOpen={ true } className="gt-panel-heading-settings gt-panel">
 
-						<BaseControl id="gt-title-tag" label={ __( 'Level', 'gt-layout-blocks' ) }>
+						<BaseControl id="gt-title-tag" label={ __( 'Level', 'gt-blocks' ) }>
 							<Toolbar
 								controls={
 									range( 1, 7 ).map( ( level ) => ( {
 										icon: 'heading',
-										title: sprintf( __( 'Heading %s', 'gt-layout-blocks' ), level ),
+										title: sprintf( __( 'Heading %s', 'gt-blocks' ), level ),
 										isActive: level === titleTag,
 										onClick: () => setAttributes( { titleTag: level } ),
 										subscript: level,
@@ -117,7 +117,7 @@ class gtHeadingEdit extends Component {
 							/>
 						</BaseControl>
 
-						<BaseControl id="gt-text-alignment" label={ __( 'Text Alignment', 'gt-layout-blocks' ) }>
+						<BaseControl id="gt-text-alignment" label={ __( 'Text Alignment', 'gt-blocks' ) }>
 							<AlignmentToolbar
 								value={ textAlignment }
 								onChange={ ( newAlignment ) => setAttributes( { textAlignment: newAlignment } ) }
@@ -133,18 +133,18 @@ class gtHeadingEdit extends Component {
 					</PanelBody>
 
 					<PanelColorSettings
-						title={ __( 'Color Settings', 'gt-layout-blocks' ) }
+						title={ __( 'Color Settings', 'gt-blocks' ) }
 						initialOpen={ false }
 						colorSettings={ [
 							{
 								value: backgroundColor.color,
 								onChange: setBackgroundColor,
-								label: __( 'Background Color', 'gt-layout-blocks' ),
+								label: __( 'Background Color', 'gt-blocks' ),
 							},
 							{
 								value: textColor.color,
 								onChange: setTextColor,
-								label: __( 'Text Color', 'gt-layout-blocks' ),
+								label: __( 'Text Color', 'gt-blocks' ),
 							},
 						] }
 					>
@@ -168,7 +168,7 @@ class gtHeadingEdit extends Component {
 					className={ headingClasses }
 					style={ headingStyles }
 					onChange={ ( newTitle ) => setAttributes( { title: newTitle } ) }
-					placeholder={ placeholder || __( 'Write heading…', 'gt-layout-blocks' ) }
+					placeholder={ placeholder || __( 'Write heading…', 'gt-blocks' ) }
 					keepPlaceholderOnFocus
 				/>
 

@@ -20,8 +20,8 @@ import './editor.scss';
 
 // Define supported blocks.
 const supportedBlocks = [
-	'gt-layout-blocks/portfolio',
-	'gt-layout-blocks/features',
+	'gt-blocks/portfolio',
+	'gt-blocks/features',
 ];
 
 const insertIntoSection = createHigherOrderComponent( ( BlockEdit ) => {
@@ -59,7 +59,7 @@ const insertIntoSection = createHigherOrderComponent( ( BlockEdit ) => {
 
 			// Clone block and wrap into section block.
 			const clonedBlock = cloneBlock( block );
-			const sectionBlock = createBlock( 'gt-layout-blocks/section', {}, [ clonedBlock ] );
+			const sectionBlock = createBlock( 'gt-blocks/section', {}, [ clonedBlock ] );
 
 			// Replace block.
 			replaceBlock( clientId, sectionBlock );
@@ -71,10 +71,10 @@ const insertIntoSection = createHigherOrderComponent( ( BlockEdit ) => {
 
 				<InspectorControls>
 
-					<PanelBody title={ __( 'Section Settings', 'gt-layout-blocks' ) } initialOpen={ false } className="gt-panel-section-insert gt-panel">
+					<PanelBody title={ __( 'Section Settings', 'gt-blocks' ) } initialOpen={ false } className="gt-panel-section-insert gt-panel">
 
 						<p id="gt-synchronize-styling__help" className="components-base-control__help">
-							{ __( 'Insert this block into a section block.', 'gt-layout-blocks' ) }
+							{ __( 'Insert this block into a section block.', 'gt-blocks' ) }
 						</p>
 
 						<Button
@@ -83,7 +83,7 @@ const insertIntoSection = createHigherOrderComponent( ( BlockEdit ) => {
 							onClick={ createSection }
 						>
 							<Dashicon icon="insert" />
-							{ __( 'Add GT Section block', 'gt-layout-blocks' ) }
+							{ __( 'Add GT Section block', 'gt-blocks' ) }
 						</Button>
 
 					</PanelBody>
@@ -93,4 +93,4 @@ const insertIntoSection = createHigherOrderComponent( ( BlockEdit ) => {
 		);
 	};
 }, 'insertIntoSection' );
-addFilter( 'editor.BlockEdit', 'gt-layout-blocks/plugins/section-insert', insertIntoSection );
+addFilter( 'editor.BlockEdit', 'gt-blocks/plugins/section-insert', insertIntoSection );

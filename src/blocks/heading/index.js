@@ -25,20 +25,20 @@ import edit from './edit';
  * Register block
  */
 registerBlockType(
-	'gt-layout-blocks/heading',
+	'gt-blocks/heading',
 	{
-		title: __( 'GT Heading', 'gt-layout-blocks' ),
+		title: __( 'GT Heading', 'gt-blocks' ),
 
-		description: __( 'Add a headline and style it.', 'gt-layout-blocks' ),
+		description: __( 'Add a headline and style it.', 'gt-blocks' ),
 
-		category: 'gt-layout-blocks',
+		category: 'gt-blocks',
 
 		icon: <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M496 80V48c0-8.837-7.163-16-16-16H320c-8.837 0-16 7.163-16 16v32c0 8.837 7.163 16 16 16h37.621v128H154.379V96H192c8.837 0 16-7.163 16-16V48c0-8.837-7.163-16-16-16H32c-8.837 0-16 7.163-16 16v32c0 8.837 7.163 16 16 16h37.275v320H32c-8.837 0-16 7.163-16 16v32c0 8.837 7.163 16 16 16h160c8.837 0 16-7.163 16-16v-32c0-8.837-7.163-16-16-16h-37.621V288H357.62v128H320c-8.837 0-16 7.163-16 16v32c0 8.837 7.163 16 16 16h160c8.837 0 16-7.163 16-16v-32c0-8.837-7.163-16-16-16h-37.275V96H480c8.837 0 16-7.163 16-16z" /></svg>,
 
 		keywords: [
-			__( 'Title', 'gt-layout-blocks' ),
-			__( 'Subheading', 'gt-layout-blocks' ),
-			__( 'Subtitle', 'gt-layout-blocks' ),
+			__( 'Title', 'gt-blocks' ),
+			__( 'Subheading', 'gt-blocks' ),
+			__( 'Subtitle', 'gt-blocks' ),
 		],
 
 		supports: {
@@ -51,7 +51,7 @@ registerBlockType(
 					type: 'block',
 					blocks: [ 'core/paragraph' ],
 					transform: ( { content } ) => {
-						return createBlock( 'gt-layout-blocks/heading', {
+						return createBlock( 'gt-blocks/heading', {
 							title: content,
 						} );
 					},
@@ -60,7 +60,7 @@ registerBlockType(
 					type: 'block',
 					blocks: [ 'core/heading' ],
 					transform: ( { content, level, align } ) => {
-						return createBlock( 'gt-layout-blocks/heading', {
+						return createBlock( 'gt-blocks/heading', {
 							title: content,
 							titleTag: level,
 							textAlignment: align,

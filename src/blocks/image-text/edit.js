@@ -37,24 +37,24 @@ import {
 const verticalAlignmentControls = {
 	top: {
 		icon: gtIconVerticalAlignTop,
-		title: __( 'Top', 'gt-layout-blocks' ),
+		title: __( 'Top', 'gt-blocks' ),
 	},
 	center: {
 		icon: gtIconVerticalAlignCenter,
-		title: __( 'Center', 'gt-layout-blocks' ),
+		title: __( 'Center', 'gt-blocks' ),
 	},
 	bottom: {
 		icon: gtIconVerticalAlignBottom,
-		title: __( 'Bottom', 'gt-layout-blocks' ),
+		title: __( 'Bottom', 'gt-blocks' ),
 	},
 };
 
 // Define block template.
 const TEMPLATE = [
-	[ 'gt-layout-blocks/image', {} ],
-	[ 'gt-layout-blocks/content', {
+	[ 'gt-blocks/image', {} ],
+	[ 'gt-blocks/content', {
 		template: [
-			[ 'gt-layout-blocks/heading' ],
+			[ 'gt-blocks/heading' ],
 			[ 'core/paragraph' ],
 		],
 	} ],
@@ -86,19 +86,19 @@ class ImageTextEdit extends Component {
 
 				<InspectorControls>
 
-					<PanelBody title={ __( 'Layout Settings', 'gt-layout-blocks' ) } initialOpen={ false } className="gt-panel-layout-settings gt-panel">
+					<PanelBody title={ __( 'Layout Settings', 'gt-blocks' ) } initialOpen={ false } className="gt-panel-layout-settings gt-panel">
 
 						<SelectControl
-							label={ __( 'Image Position', 'gt-layout-blocks' ) }
+							label={ __( 'Image Position', 'gt-blocks' ) }
 							value={ imagePosition }
 							onChange={ ( newLayout ) => setAttributes( { imagePosition: newLayout } ) }
 							options={ [
-								{ value: 'left', label: __( 'Left', 'gt-layout-blocks' ) },
-								{ value: 'right', label: __( 'Right', 'gt-layout-blocks' ) },
+								{ value: 'left', label: __( 'Left', 'gt-blocks' ) },
+								{ value: 'right', label: __( 'Right', 'gt-blocks' ) },
 							] }
 						/>
 
-						<BaseControl id="gt-vertical-alignment" label={ __( 'Vertical Alignment', 'gt-layout-blocks' ) }>
+						<BaseControl id="gt-vertical-alignment" label={ __( 'Vertical Alignment', 'gt-blocks' ) }>
 							<Toolbar
 								className="gt-vertical-align-control"
 								controls={
@@ -120,7 +120,7 @@ class ImageTextEdit extends Component {
 				<div className={ blockClasses }>
 
 					<InnerBlocks
-						allowedBlocks={ [ 'gt-layout-blocks/image', 'gt-layout-blocks/content' ] }
+						allowedBlocks={ [ 'gt-blocks/image', 'gt-blocks/content' ] }
 						template={ TEMPLATE }
 						templateLock="all"
 					/>

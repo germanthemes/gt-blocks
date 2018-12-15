@@ -30,19 +30,19 @@ import { default as GridEdit } from '../../components/grid-container/edit';
 
 // Define blocks for each column.
 const TEMPLATE = [
-	[ 'gt-layout-blocks/image', {
+	[ 'gt-blocks/image', {
 		synchronizeStyling: true,
-		parentBlock: 'gt-layout-blocks/portfolio',
+		parentBlock: 'gt-blocks/portfolio',
 	} ],
-	[ 'gt-layout-blocks/heading', {
-		placeholder: __( 'Project', 'gt-layout-blocks' ),
+	[ 'gt-blocks/heading', {
+		placeholder: __( 'Project', 'gt-blocks' ),
 		synchronizeStyling: true,
-		parentBlock: 'gt-layout-blocks/portfolio',
+		parentBlock: 'gt-blocks/portfolio',
 	} ],
 	[ 'core/paragraph', {
-		placeholder: __( 'Write project description...', 'gt-layout-blocks' ),
+		placeholder: __( 'Write project description...', 'gt-blocks' ),
 		synchronizeStyling: true,
-		parentBlock: 'gt-layout-blocks/portfolio',
+		parentBlock: 'gt-blocks/portfolio',
 	} ],
 ];
 
@@ -85,8 +85,8 @@ class PortfolioEdit extends Component {
 		} = this.props;
 
 		const blockStyles = [
-			{ value: 'default', label: __( 'Default', 'gt-layout-blocks' ), isDefault: true },
-			{ value: 'card', label: __( 'Card', 'gt-layout-blocks' ) },
+			{ value: 'default', label: __( 'Default', 'gt-blocks' ), isDefault: true },
+			{ value: 'card', label: __( 'Card', 'gt-blocks' ) },
 		];
 
 		const activeStyle = this.getActiveStyle( blockStyles, attributes.className );
@@ -101,10 +101,10 @@ class PortfolioEdit extends Component {
 
 				<InspectorControls>
 
-					<PanelBody title={ __( 'Styles', 'gt-layout-blocks' ) } initialOpen={ false } className="gt-panel-styles gt-panel">
+					<PanelBody title={ __( 'Styles', 'gt-blocks' ) } initialOpen={ false } className="gt-panel-styles gt-panel">
 
 						<SelectControl
-							label={ __( 'Styles', 'gt-layout-blocks' ) }
+							label={ __( 'Styles', 'gt-blocks' ) }
 							value={ activeStyle.value }
 							onChange={ ( newStyle ) => updateClassName( newStyle ) }
 							options={ blockStyles }

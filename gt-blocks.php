@@ -1,17 +1,17 @@
 <?php
 /*
-Plugin Name: GT Layout Blocks
-Plugin URI: https://gtblocks.de/gt-layout-blocks/
+Plugin Name: GT Blocks
+Plugin URI: https://gtblocks.de/gt-blocks/
 Description: Page Building Blocks
 Author: gtblocks
 Author URI: https://gtblocks.de/
 Version: 0.2
-Text Domain: gt-layout-blocks
+Text Domain: gt-blocks
 Domain Path: /languages/
 License: GPL v3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
-GT Layout Blocks
+GT Blocks
 Copyright(C) 2018, gtblocks.de - support@gtblocks.de
 */
 
@@ -21,18 +21,18 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 /**
- * Main GT_Layout_Blocks Class
+ * Main GT_Blocks Class
  *
- * @package GT Layout Blocks
+ * @package GT Blocks
  */
-class GT_Layout_Blocks {
+class GT_Blocks {
 
 	/**
 	 * Call all Functions to setup the Plugin
 	 *
-	 * @uses GT_Layout_Blocks::constants() Setup the constants needed
-	 * @uses GT_Layout_Blocks::includes() Include the required files
-	 * @uses GT_Layout_Blocks::setup_actions() Setup the hooks and actions
+	 * @uses GT_Blocks::constants() Setup the constants needed
+	 * @uses GT_Blocks::includes() Include the required files
+	 * @uses GT_Blocks::setup_actions() Setup the hooks and actions
 	 * @return void
 	 */
 	static function setup() {
@@ -55,19 +55,19 @@ class GT_Layout_Blocks {
 	static function constants() {
 
 		// Define Plugin Name.
-		define( 'GTLB_NAME', 'GT Layout Blocks' );
+		define( 'GTB_NAME', 'GT Blocks' );
 
 		// Define Version Number.
-		define( 'GTLB_VERSION', '0.2' );
+		define( 'GTB_VERSION', '0.2' );
 
 		// Plugin Folder Path.
-		define( 'GTLB_PLUGIN_DIR', plugin_dir_path( __FILE__ ) );
+		define( 'GTB_PLUGIN_DIR', plugin_dir_path( __FILE__ ) );
 
 		// Plugin Folder URL.
-		define( 'GTLB_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
+		define( 'GTB_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
 
 		// Plugin Root File.
-		define( 'GTLB_PLUGIN_FILE', __FILE__ );
+		define( 'GTB_PLUGIN_FILE', __FILE__ );
 	}
 
 	/**
@@ -77,7 +77,7 @@ class GT_Layout_Blocks {
 	 */
 	static function translation() {
 
-		load_plugin_textdomain( 'gt-layout-blocks', false, dirname( plugin_basename( GTLB_PLUGIN_FILE ) ) . '/languages/php/' );
+		load_plugin_textdomain( 'gt-blocks', false, dirname( plugin_basename( GTB_PLUGIN_FILE ) ) . '/languages/php/' );
 	}
 
 	/**
@@ -109,7 +109,7 @@ class GT_Layout_Blocks {
 	 * @return void
 	 */
 	static function enqueue_block_scripts() {
-		wp_enqueue_style( 'gt-layout-blocks', GTLB_PLUGIN_URL . 'assets/css/gt-layout-blocks.css', array(), GTLB_VERSION );
+		wp_enqueue_style( 'gt-blocks', GTB_PLUGIN_URL . 'assets/css/gt-blocks.css', array(), GTB_VERSION );
 	}
 
 	/**
@@ -120,23 +120,23 @@ class GT_Layout_Blocks {
 	 * @return void
 	 */
 	static function enqueue_block_editor_scripts() {
-		wp_enqueue_script( 'gt-layout-blocks-editor', GTLB_PLUGIN_URL . 'assets/js/gt-layout-blocks-editor.js', array(
+		wp_enqueue_script( 'gt-blocks-editor', GTB_PLUGIN_URL . 'assets/js/gt-blocks-editor.js', array(
 			'wp-blocks',
 			'wp-i18n',
 			'wp-element',
 			'wp-components',
 			'wp-editor',
-		), GTLB_VERSION );
+		), GTB_VERSION );
 
 		wp_add_inline_script(
-			'gt-layout-blocks-editor',
-			sprintf( 'wp.data.dispatch( "gt-layout-blocks-store" ).setPluginURL( %s );', wp_json_encode( GTLB_PLUGIN_URL ) ),
+			'gt-blocks-editor',
+			sprintf( 'wp.data.dispatch( "gt-blocks-store" ).setPluginURL( %s );', wp_json_encode( GTB_PLUGIN_URL ) ),
 			'after'
 		);
 
-		wp_set_script_translations( 'gt-layout-blocks-editor', 'gt-layout-blocks', GTLB_PLUGIN_DIR . 'languages/js' );
+		wp_set_script_translations( 'gt-blocks-editor', 'gt-blocks', GTB_PLUGIN_DIR . 'languages/js' );
 
-		wp_enqueue_style( 'gt-layout-blocks-editor', GTLB_PLUGIN_URL . 'assets/css/gt-layout-blocks-editor.css', array( 'wp-edit-blocks', 'gt-layout-blocks' ), GTLB_VERSION );
+		wp_enqueue_style( 'gt-blocks-editor', GTB_PLUGIN_URL . 'assets/css/gt-blocks-editor.css', array( 'wp-edit-blocks', 'gt-blocks' ), GTB_VERSION );
 	}
 
 	/**
@@ -169,8 +169,8 @@ class GT_Layout_Blocks {
 			$categories,
 			array(
 				array(
-					'slug'  => 'gt-layout-blocks',
-					'title' => __( 'GT Layout Blocks', 'gt-layout-blocks' ),
+					'slug'  => 'gt-blocks',
+					'title' => __( 'GT Blocks', 'gt-blocks' ),
 				),
 			)
 		);
@@ -178,4 +178,4 @@ class GT_Layout_Blocks {
 }
 
 // Run Plugin.
-GT_Layout_Blocks::setup();
+GT_Blocks::setup();

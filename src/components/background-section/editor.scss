@@ -47,7 +47,7 @@
 }
 
 /* Show Block Appender if block is selected */
-.editor-block-list__block.is-selected[data-type="gt-layout-blocks/section"] {
+.editor-block-list__block.is-selected[data-type="gt-blocks/section"] {
 	.gt-background-section .gt-section-content .wp-block.editor-default-block-appender {
 		display: block;
 	}

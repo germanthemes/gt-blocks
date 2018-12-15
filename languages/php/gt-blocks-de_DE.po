@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the Themes + Pro Versions + Add-ons package.
 msgid ""
 msgstr ""
-"Project-Id-Version: GT Layout Blocks\n"
+"Project-Id-Version: GT Blocks\n"
 "Report-Msgid-Bugs-To: https://themezee.com/\n"
 "POT-Creation-Date: 2018-12-08 17:27+0100\n"
 "PO-Revision-Date: 2018-12-08 17:27+0100\n"
@@ -16,6 +16,6 @@ msgstr ""
 "X-Generator: Poedit 2.2\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 
-#: gt-layout-blocks.php:173
-msgid "GT Layout Blocks"
-msgstr "GT Layout Blocks"
+#: gt-blocks.php:173
+msgid "GT Blocks"
+msgstr "GT Blocks"

@@ -167,10 +167,10 @@ class ImageEdit extends Component {
 
 	getLinkDestinationOptions() {
 		return [
-			{ value: LINK_DESTINATION_NONE, label: __( 'None', 'gt-layout-blocks' ) },
-			{ value: LINK_DESTINATION_MEDIA, label: __( 'Media File', 'gt-layout-blocks' ) },
-			{ value: LINK_DESTINATION_ATTACHMENT, label: __( 'Attachment Page', 'gt-layout-blocks' ) },
-			{ value: LINK_DESTINATION_CUSTOM, label: __( 'Custom URL', 'gt-layout-blocks' ) },
+			{ value: LINK_DESTINATION_NONE, label: __( 'None', 'gt-blocks' ) },
+			{ value: LINK_DESTINATION_MEDIA, label: __( 'Media File', 'gt-blocks' ) },
+			{ value: LINK_DESTINATION_ATTACHMENT, label: __( 'Attachment Page', 'gt-blocks' ) },
+			{ value: LINK_DESTINATION_CUSTOM, label: __( 'Custom URL', 'gt-blocks' ) },
 		];
 	}
 
@@ -206,7 +206,7 @@ class ImageEdit extends Component {
 							render={ ( { open } ) => (
 								<IconButton
 									className="components-toolbar__control"
-									label={ __( 'Edit image', 'gt-layout-blocks' ) }
+									label={ __( 'Edit image', 'gt-blocks' ) }
 									icon="edit"
 									onClick={ open }
 								/>
@@ -218,18 +218,18 @@ class ImageEdit extends Component {
 
 				<InspectorControls>
 
-					<PanelBody title={ __( 'Image Settings', 'gt-layout-blocks' ) } initialOpen={ false } className="gt-panel-image-settings gt-panel">
+					<PanelBody title={ __( 'Image Settings', 'gt-blocks' ) } initialOpen={ false } className="gt-panel-image-settings gt-panel">
 
 						<TextareaControl
-							label={ __( 'Alt Text (Alternative Text)', 'gt-layout-blocks' ) }
+							label={ __( 'Alt Text (Alternative Text)', 'gt-blocks' ) }
 							value={ alt }
 							onChange={ ( newAlt ) => setAttributes( { alt: newAlt } ) }
-							help={ __( 'Describe the purpose of the image. Leave empty if the image is not a key part of the content.', 'gt-layout-blocks' ) }
+							help={ __( 'Describe the purpose of the image. Leave empty if the image is not a key part of the content.', 'gt-blocks' ) }
 						/>
 
 						{ ! isEmpty( availableSizes ) && (
 							<SelectControl
-								label={ __( 'Image Size', 'gt-layout-blocks' ) }
+								label={ __( 'Image Size', 'gt-blocks' ) }
 								value={ size }
 								options={ map( availableSizes, ( tet, name ) => ( {
 									value: name,
@@ -241,10 +241,10 @@ class ImageEdit extends Component {
 
 					</PanelBody>
 
-					<PanelBody title={ __( 'Link Settings', 'gt-layout-blocks' ) } initialOpen={ false } className="gt-panel-link-settings gt-panel">
+					<PanelBody title={ __( 'Link Settings', 'gt-blocks' ) } initialOpen={ false } className="gt-panel-link-settings gt-panel">
 
 						<SelectControl
-							label={ __( 'Link To', 'gt-layout-blocks' ) }
+							label={ __( 'Link To', 'gt-blocks' ) }
 							value={ linkDestination }
 							options={ this.getLinkDestinationOptions() }
 							onChange={ this.onSetLinkDestination }
@@ -252,7 +252,7 @@ class ImageEdit extends Component {
 
 						{ linkDestination !== LINK_DESTINATION_NONE && (
 							<TextControl
-								label={ __( 'Link URL', 'gt-layout-blocks' ) }
+								label={ __( 'Link URL', 'gt-blocks' ) }
 								value={ href || '' }
 								onChange={ this.onSetCustomHref }
 								placeholder={ ! isLinkURLInputDisabled ? 'https://' : undefined }

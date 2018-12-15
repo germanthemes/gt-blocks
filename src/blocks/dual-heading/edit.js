@@ -131,20 +131,20 @@ class DualHeadingEdit extends Component {
 
 				<InspectorControls>
 
-					<PanelBody title={ __( 'Heading Settings', 'gt-layout-blocks' ) } initialOpen={ false } className="gt-panel-heading-settings gt-panel">
+					<PanelBody title={ __( 'Heading Settings', 'gt-blocks' ) } initialOpen={ false } className="gt-panel-heading-settings gt-panel">
 
-						<BaseControl id="gt-title-tag" label={ __( 'Title Tag', 'gt-layout-blocks' ) }>
+						<BaseControl id="gt-title-tag" label={ __( 'Title Tag', 'gt-blocks' ) }>
 							<Toolbar
 								controls={
 									range( 1, 6 ).map( ( level ) => ( {
 										icon: 'heading',
-										title: sprintf( __( 'Heading %s', 'gt-layout-blocks' ), level ),
+										title: sprintf( __( 'Heading %s', 'gt-blocks' ), level ),
 										isActive: 'h' + level === titleTag,
 										onClick: () => setAttributes( { titleTag: 'h' + level } ),
 										subscript: level,
 									} ) ).concat( [ {
 										icon: 'editor-paragraph',
-										title: __( 'Paragraph', 'gt-layout-blocks' ),
+										title: __( 'Paragraph', 'gt-blocks' ),
 										isActive: 'p' === titleTag,
 										onClick: () => setAttributes( { titleTag: 'p' } ),
 									} ] )
@@ -159,20 +159,20 @@ class DualHeadingEdit extends Component {
 						/>
 
 						<ToggleControl
-							label={ __( 'Bold?', 'gt-layout-blocks' ) }
+							label={ __( 'Bold?', 'gt-blocks' ) }
 							checked={ !! titleFontWeight }
 							onChange={ () => setAttributes( { titleFontWeight: ! titleFontWeight } ) }
 						/>
 
 						<ToggleControl
-							label={ __( 'Uppercase?', 'gt-layout-blocks' ) }
+							label={ __( 'Uppercase?', 'gt-blocks' ) }
 							checked={ !! titleTextTransform }
 							onChange={ () => setAttributes( { titleTextTransform: ! titleTextTransform } ) }
 						/>
 
 					</PanelBody>
 
-					<PanelBody title={ __( 'Subheading Settings', 'gt-layout-blocks' ) } initialOpen={ false } className="gt-panel-subheading-settings gt-panel">
+					<PanelBody title={ __( 'Subheading Settings', 'gt-blocks' ) } initialOpen={ false } className="gt-panel-subheading-settings gt-panel">
 
 						<FontSizePicker
 							fallbackFontSize={ subtitleFallbackFontSize }
@@ -181,13 +181,13 @@ class DualHeadingEdit extends Component {
 						/>
 
 						<ToggleControl
-							label={ __( 'Bold?', 'gt-layout-blocks' ) }
+							label={ __( 'Bold?', 'gt-blocks' ) }
 							checked={ !! subtitleFontWeight }
 							onChange={ () => setAttributes( { subtitleFontWeight: ! subtitleFontWeight } ) }
 						/>
 
 						<ToggleControl
-							label={ __( 'Uppercase?', 'gt-layout-blocks' ) }
+							label={ __( 'Uppercase?', 'gt-blocks' ) }
 							checked={ !! subtitleTextTransform }
 							onChange={ () => setAttributes( { subtitleTextTransform: ! subtitleTextTransform } ) }
 						/>
@@ -195,18 +195,18 @@ class DualHeadingEdit extends Component {
 					</PanelBody>
 
 					<PanelColorSettings
-						title={ __( 'Color Settings', 'gt-layout-blocks' ) }
+						title={ __( 'Color Settings', 'gt-blocks' ) }
 						initialOpen={ false }
 						colorSettings={ [
 							{
 								value: backgroundColor.color,
 								onChange: setBackgroundColor,
-								label: __( 'Background Color', 'gt-layout-blocks' ),
+								label: __( 'Background Color', 'gt-blocks' ),
 							},
 							{
 								value: textColor.color,
 								onChange: setTextColor,
-								label: __( 'Text Color', 'gt-layout-blocks' ),
+								label: __( 'Text Color', 'gt-blocks' ),
 							},
 						] }
 					>
@@ -223,18 +223,18 @@ class DualHeadingEdit extends Component {
 					</PanelColorSettings>
 
 					<PanelColorSettings
-						title={ __( 'Subheading Colors', 'gt-layout-blocks' ) }
+						title={ __( 'Subheading Colors', 'gt-blocks' ) }
 						initialOpen={ false }
 						colorSettings={ [
 							{
 								value: subtitleBackgroundColor.color,
 								onChange: setSubtitleBackgroundColor,
-								label: __( 'Background Color', 'gt-layout-blocks' ),
+								label: __( 'Background Color', 'gt-blocks' ),
 							},
 							{
 								value: subtitleColor.color,
 								onChange: setSubtitleColor,
-								label: __( 'Text Color', 'gt-layout-blocks' ),
+								label: __( 'Text Color', 'gt-blocks' ),
 							},
 						] }
 					>
@@ -259,7 +259,7 @@ class DualHeadingEdit extends Component {
 						className={ headingClasses }
 						style={ headingStyles }
 						onChange={ ( newTitle ) => setAttributes( { title: newTitle } ) }
-						placeholder={ titlePlaceholder || __( 'Write heading…', 'gt-layout-blocks' ) }
+						placeholder={ titlePlaceholder || __( 'Write heading…', 'gt-blocks' ) }
 						keepPlaceholderOnFocus
 					/>
 
@@ -268,7 +268,7 @@ class DualHeadingEdit extends Component {
 						className={ subheadingClasses }
 						style={ subheadingStyles }
 						onChange={ ( newSubtitle ) => setAttributes( { subtitle: newSubtitle } ) }
-						placeholder={ subtitlePlaceholder || __( 'Write subheading…', 'gt-layout-blocks' ) }
+						placeholder={ subtitlePlaceholder || __( 'Write subheading…', 'gt-blocks' ) }
 						keepPlaceholderOnFocus
 					/>
 				</header>
