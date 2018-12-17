@@ -97,7 +97,6 @@ class ButtonEdit extends Component {
 			buttonSize,
 			buttonShape,
 			roundedCorners,
-			borderWidth,
 		} = attributes;
 
 		const blockClasses = classnames( className, {
@@ -113,14 +112,13 @@ class ButtonEdit extends Component {
 		} );
 
 		const hoverStyles = {
-			borderRadius: 'rounded' === buttonShape && 12 !== roundedCorners ? roundedCorners + 'px' : undefined,
+			borderRadius: 'rounded' === buttonShape && 5 !== roundedCorners ? roundedCorners + 'px' : undefined,
 			color: hoverColor.class ? undefined : hoverColor.color,
 			backgroundColor: hoverBackgroundColor.class ? undefined : hoverBackgroundColor.color,
 		};
 
 		const buttonClasses = classnames( 'gt-button', {
 			[ `gt-button-${ buttonSize }` ]: buttonSize,
-			'gt-ghost-button': 'outline' === buttonShape,
 			'gt-is-uppercase': isUppercase,
 			'gt-is-bold': isBold,
 			'gt-is-italic': isItalic,
@@ -131,23 +129,10 @@ class ButtonEdit extends Component {
 		} );
 
 		const buttonStyles = {
-			borderRadius: ( 'rounded' === buttonShape || 'outline' === buttonShape ) && 12 !== roundedCorners ? roundedCorners + 'px' : undefined,
+			borderRadius: ( 'rounded' === buttonShape ) && 5 !== roundedCorners ? roundedCorners + 'px' : undefined,
 			backgroundColor: backgroundColor.class ? undefined : backgroundColor.color,
 			color: textColor.class ? undefined : textColor.color,
-			borderWidth: 'outline' === buttonShape && borderWidth !== 2 ? borderWidth + 'px' : undefined,
 		};
-
-		const backgroundColorSettings = 'outline' !== buttonShape ? [ {
-			value: backgroundColor.color,
-			onChange: setBackgroundColor,
-			label: __( 'Background Color', 'gt-blocks' ),
-		} ] : [];
-
-		const hoverBackgroundColorSettings = 'outline' !== buttonShape ? [ {
-			value: hoverBackgroundColor.color,
-			onChange: setHoverBackgroundColor,
-			label: __( 'Background Color', 'gt-blocks' ),
-		} ] : [];
 
 		return (
 			<Fragment>
@@ -203,18 +188,17 @@ class ButtonEdit extends Component {
 						/>
 
 						<SelectControl
-							label={ __( 'Button Style', 'gt-blocks' ) }
+							label={ __( 'Button Shape', 'gt-blocks' ) }
 							value={ buttonShape }
 							onChange={ ( newShape ) => setAttributes( { buttonShape: newShape } ) }
 							options={ [
 								{ value: 'squared', label: __( 'Squared', 'gt-blocks' ) },
 								{ value: 'rounded', label: __( 'Rounded', 'gt-blocks' ) },
 								{ value: 'circle', label: __( 'Circle', 'gt-blocks' ) },
-								{ value: 'outline', label: __( 'Outline', 'gt-blocks' ) },
 							] }
 						/>
 
-						{ ( 'rounded' === buttonShape || 'outline' === buttonShape ) && (
+						{ ( 'rounded' === buttonShape ) && (
 							<RangeControl
 								label={ __( 'Rounded Corners', 'gt-blocks' ) }
 								value={ roundedCorners }
@@ -224,76 +208,58 @@ class ButtonEdit extends Component {
 							/>
 						) }
 
-						{ 'outline' === buttonShape && (
-							<RangeControl
-								label={ __( 'Border Width', 'gt-blocks' ) }
-								value={ borderWidth }
-								onChange={ ( newWidth ) => setAttributes( { borderWidth: newWidth } ) }
-								min={ 1 }
-								max={ 12 }
-							/>
-						) }
-
 					</PanelBody>
 
 					<PanelColorSettings
 						title={ __( 'Color Settings', 'gt-blocks' ) }
 						initialOpen={ false }
-						colorSettings={
-							backgroundColorSettings.concat( [ {
+						colorSettings={ [
+							{
+								value: backgroundColor.color,
+								onChange: setBackgroundColor,
+								label: __( 'Background Color', 'gt-blocks' ),
+							},
+							{
 								value: textColor.color,
 								onChange: setTextColor,
 								label: __( 'Text Color', 'gt-blocks' ),
-							} ] )
-						}
+							},
+						] }
 					>
-
-						{ 'outline' === buttonShape && (
-							<p className="components-base-control__help">
-								{ __( 'Background colors are disabled because outline style is enabled.', 'gt-blocks' ) }
-							</p>
-						) }
-
-						{ ! 'outline' === buttonShape && (
-							<ContrastChecker
-								{ ...{
-									textColor: textColor.color,
-									backgroundColor: backgroundColor.color,
-									fallbackTextColor,
-									fallbackBackgroundColor,
-								} }
-							/>
-						) }
+						<ContrastChecker
+							{ ...{
+								textColor: textColor.color,
+								backgroundColor: backgroundColor.color,
+								fallbackTextColor,
+								fallbackBackgroundColor,
+							} }
+						/>
 					</PanelColorSettings>
 
 					<PanelColorSettings
 						title={ __( 'Hover Colors', 'gt-blocks' ) }
 						initialOpen={ false }
-						colorSettings={
-							hoverBackgroundColorSettings.concat( [ {
+						colorSettings={ [
+							{
+								value: hoverBackgroundColor.color,
+								onChange: setHoverBackgroundColor,
+								label: __( 'Background Color', 'gt-blocks' ),
+							},
+							{
 								value: hoverColor.color,
 								onChange: this.setHoverTextColor,
 								label: __( 'Text Color', 'gt-blocks' ),
-							} ] )
-						}
+							},
+						] }
 					>
-
-						{ 'outline' === buttonShape && (
-							<p className="components-base-control__help">
-								{ __( 'Background colors are disabled because outline style is enabled.', 'gt-blocks' ) }
-							</p>
-						) }
-
-						{ ! 'outline' === buttonShape && (
-							<ContrastChecker
-								{ ...{
-									textColor: hoverColor.color,
-									backgroundColor: hoverBackgroundColor.color,
-									fallbackTextColor,
-									fallbackBackgroundColor,
-								} }
-							/>
-						) }
+						<ContrastChecker
+							{ ...{
+								textColor: hoverColor.color,
+								backgroundColor: hoverBackgroundColor.color,
+								fallbackTextColor,
+								fallbackBackgroundColor,
+							} }
+						/>
 					</PanelColorSettings>
 
 				</InspectorControls>

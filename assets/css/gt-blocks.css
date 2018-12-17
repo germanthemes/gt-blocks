@@ -26,7 +26,7 @@
       cursor: pointer; }
       .wp-block-gt-blocks-button .gt-button-wrap .gt-button:not(.has-background) {
         background-color: #303030; }
-      .wp-block-gt-blocks-button .gt-button-wrap .gt-button:not(.has-text-color):not(.gt-ghost-button) {
+      .wp-block-gt-blocks-button .gt-button-wrap .gt-button:not(.has-text-color) {
         color: #fff; }
       .wp-block-gt-blocks-button .gt-button-wrap .gt-button.gt-button-small {
         padding: 0.5rem 0.75rem; }
@@ -45,7 +45,7 @@
         font-style: italic; }
     .wp-block-gt-blocks-button .gt-button-wrap:not(.has-hover-background) {
       background-color: #424242; }
-    .wp-block-gt-blocks-button .gt-button-wrap:not(.has-hover-text-color):not(.gt-button-outline) {
+    .wp-block-gt-blocks-button .gt-button-wrap:not(.has-hover-text-color) {
       color: #fff; }
     .wp-block-gt-blocks-button .gt-button-wrap:hover .gt-button,
     .wp-block-gt-blocks-button .gt-button-wrap:active .gt-button,
@@ -55,13 +55,7 @@
     .wp-block-gt-blocks-button .gt-button-wrap.gt-button-circle {
       border-radius: 100%; }
     .wp-block-gt-blocks-button .gt-button-wrap.gt-button-rounded {
-      border-radius: 12px; }
-    .wp-block-gt-blocks-button .gt-button-wrap.gt-button-outline {
-      background: transparent;
-      border-radius: 12px; }
-      .wp-block-gt-blocks-button .gt-button-wrap.gt-button-outline .gt-button {
-        background: transparent;
-        border: 2px solid currentColor; }
+      border-radius: 5px; }
   .wp-block-gt-blocks-button.gt-align-center {
     text-align: center; }
   .wp-block-gt-blocks-button.gt-align-right {
