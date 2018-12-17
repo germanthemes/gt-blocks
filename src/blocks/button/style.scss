@@ -1,6 +1,10 @@
 .wp-block-gt-blocks-button {
 	margin-bottom: 1.5em;
 
+	&:not(.has-text-color) {
+		color: #fff;
+	}
+
 	.gt-button-wrap {
 		display: inline-block;
 		margin: 0;
@@ -23,13 +27,16 @@
 			white-space: normal;
 			word-break: break-all;
 			cursor: pointer;
+			color: inherit;
 
 			&:not(.has-background) {
 				background-color: #303030;
 			}
 
-			&:not(.has-text-color) {
-				color: #fff;
+			&:hover,
+			&:active,
+			&:focus {
+				color: inherit;
 			}
 
 			&.gt-button-small {
@@ -62,19 +69,14 @@
 			}
 		}
 
-		&:not(.has-hover-background) {
-			background-color: #424242;
-		}
-
-		&:not(.has-hover-text-color) {
-			color: #fff;
+		&:not(.has-hover-color) {
+			background-color: #454545;
 		}
 
 		&:hover .gt-button,
 		&:active .gt-button,
 		&:focus .gt-button {
-			color: inherit;
-			background: transparent;
+			background-color: transparent !important;
 		}
 
 		&.gt-button-circle {

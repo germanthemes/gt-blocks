@@ -78,8 +78,7 @@ class ButtonEdit extends Component {
 			setTextColor,
 			fallbackTextColor,
 			hoverColor,
-			hoverBackgroundColor,
-			setHoverBackgroundColor,
+			setHoverColor,
 			setAttributes,
 			className,
 			isSelected,
@@ -101,20 +100,23 @@ class ButtonEdit extends Component {
 
 		const blockClasses = classnames( className, {
 			[ `gt-align-${ textAlignment }` ]: textAlignment,
+			'has-text-color': textColor.color,
+			[ textColor.class ]: textColor.class,
 		} );
+
+		const blockStyles = {
+			color: textColor.class ? undefined : textColor.color,
+		};
 
 		const hoverClasses = classnames( 'gt-button-wrap', {
 			[ `gt-button-${ buttonShape }` ]: 'square' !== buttonShape,
-			'has-hover-text-color': hoverColor.color,
+			'has-hover-color': hoverColor.color,
 			[ hoverColor.class ]: hoverColor.class,
-			'has-hover-background': hoverBackgroundColor.color,
-			[ hoverBackgroundColor.class ]: hoverBackgroundColor.class,
 		} );
 
 		const hoverStyles = {
 			borderRadius: 'rounded' === buttonShape && 5 !== roundedCorners ? roundedCorners + 'px' : undefined,
-			color: hoverColor.class ? undefined : hoverColor.color,
-			backgroundColor: hoverBackgroundColor.class ? undefined : hoverBackgroundColor.color,
+			backgroundColor: hoverColor.class ? undefined : hoverColor.color,
 		};
 
 		const buttonClasses = classnames( 'gt-button', {
@@ -124,14 +126,11 @@ class ButtonEdit extends Component {
 			'gt-is-italic': isItalic,
 			'has-background': backgroundColor.color,
 			[ backgroundColor.class ]: backgroundColor.class,
-			'has-text-color': textColor.color,
-			[ textColor.class ]: textColor.class,
 		} );
 
 		const buttonStyles = {
 			borderRadius: ( 'rounded' === buttonShape ) && 5 !== roundedCorners ? roundedCorners + 'px' : undefined,
 			backgroundColor: backgroundColor.class ? undefined : backgroundColor.color,
-			color: textColor.class ? undefined : textColor.color,
 		};
 
 		return (
@@ -224,6 +223,11 @@ class ButtonEdit extends Component {
 								onChange: setTextColor,
 								label: __( 'Text Color', 'gt-blocks' ),
 							},
+							{
+								value: hoverColor.color,
+								onChange: setHoverColor,
+								label: __( 'Hover Color', 'gt-blocks' ),
+							},
 						] }
 					>
 						<ContrastChecker
@@ -236,35 +240,9 @@ class ButtonEdit extends Component {
 						/>
 					</PanelColorSettings>
 
-					<PanelColorSettings
-						title={ __( 'Hover Colors', 'gt-blocks' ) }
-						initialOpen={ false }
-						colorSettings={ [
-							{
-								value: hoverBackgroundColor.color,
-								onChange: setHoverBackgroundColor,
-								label: __( 'Background Color', 'gt-blocks' ),
-							},
-							{
-								value: hoverColor.color,
-								onChange: this.setHoverTextColor,
-								label: __( 'Text Color', 'gt-blocks' ),
-							},
-						] }
-					>
-						<ContrastChecker
-							{ ...{
-								textColor: hoverColor.color,
-								backgroundColor: hoverBackgroundColor.color,
-								fallbackTextColor,
-								fallbackBackgroundColor,
-							} }
-						/>
-					</PanelColorSettings>
-
 				</InspectorControls>
 
-				<div className={ blockClasses }>
+				<div className={ blockClasses } style={ blockStyles }>
 
 					<span className={ hoverClasses } style={ hoverStyles } title={ title }>
 						<RichText
@@ -301,7 +279,7 @@ class ButtonEdit extends Component {
 }
 
 export default compose( [
-	withColors( 'backgroundColor', { textColor: 'color' }, { hoverColor: 'color' }, { hoverBackgroundColor: 'background-color' } ),
+	withColors( 'backgroundColor', { textColor: 'color' }, { hoverColor: 'background-color' } ),
 	withFallbackStyles( ( node, ownProps ) => {
 		const { textColor, backgroundColor } = ownProps.attributes;
 		const editableNode = node.querySelector( '[contenteditable="true"]' );
