@@ -56,7 +56,7 @@ registerBlockType(
 			text: {
 				type: 'array',
 				source: 'children',
-				selector: '.gt-button',
+				selector: '.gt-button-inner',
 			},
 			placeholder: {
 				type: 'string',
@@ -87,6 +87,10 @@ registerBlockType(
 			roundedCorners: {
 				type: 'number',
 				default: 5,
+			},
+			hoverStyle: {
+				type: 'string',
+				default: 'lighten',
 			},
 			textColor: {
 				type: 'string',
@@ -122,6 +126,7 @@ registerBlockType(
 				buttonSize,
 				buttonShape,
 				roundedCorners,
+				hoverStyle,
 				textColor,
 				backgroundColor,
 				customTextColor,
@@ -144,43 +149,42 @@ registerBlockType(
 				color: textColorClass ? undefined : customTextColor,
 			};
 
-			const hoverClasses = classnames( 'gt-button-wrap', {
-				[ `gt-button-${ buttonShape }` ]: 'squared' !== buttonShape,
-				'has-hover-color': hoverColorClass || customHoverColor,
-				[ hoverColorClass ]: hoverColorClass,
-			} );
-
-			const hoverStyles = {
-				borderRadius: 'rounded' === buttonShape && 5 !== roundedCorners ? roundedCorners + 'px' : undefined,
-				backgroundColor: hoverColorClass ? undefined : customHoverColor,
-			};
-
 			const buttonClasses = classnames( 'gt-button', {
 				[ `gt-button-${ buttonSize }` ]: buttonSize,
+				[ `gt-button-${ buttonShape }` ]: 'squared' !== buttonShape,
+				[ `gt-hover-style-${ hoverStyle }` ]: 'lighten' === hoverStyle || 'darken' === hoverStyle,
 				'gt-is-uppercase': isUppercase,
 				'gt-is-bold': isBold,
 				'gt-is-italic': isItalic,
+				'has-hover-color': 'custom' === hoverStyle && ( hoverColorClass || customHoverColor ),
+				[ hoverColorClass ]: 'custom' === hoverStyle && hoverColorClass,
+			} );
+
+			const buttonStyles = {
+				borderRadius: 'rounded' === buttonShape && 5 !== roundedCorners ? roundedCorners + 'px' : undefined,
+				backgroundColor: ( 'custom' === hoverStyle && ! hoverColorClass ) ? customHoverColor : undefined,
+			};
+
+			const backgroundClasses = classnames( 'gt-button-inner', {
 				'has-background': backgroundColor || customBackgroundColor,
 				[ backgroundClass ]: backgroundClass,
 			} );
 
-			const buttonStyles = {
+			const backgroundStyles = {
 				backgroundColor: backgroundClass ? undefined : customBackgroundColor,
 			};
 
 			return (
 				<div className={ blockClasses ? blockClasses : undefined } style={ blockStyles }>
 
-					<span className={ hoverClasses } style={ hoverStyles }>
+					<a href={ url } title={ title } className={ buttonClasses } style={ buttonStyles }>
 						<RichText.Content
-							tagName="a"
-							href={ url }
-							title={ title }
-							className={ buttonClasses }
-							style={ buttonStyles }
+							tagName="span"
+							className={ backgroundClasses }
+							style={ backgroundStyles }
 							value={ text }
 						/>
-					</span>
+					</a>
 
 				</div>
 			);

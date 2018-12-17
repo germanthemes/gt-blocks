@@ -1,17 +1,17 @@
 .wp-block-gt-blocks-button {
 
-	.gt-button-wrap {
+	.gt-button {
 		
-		.gt-button {
-			cursor: text;
-		}
-
-		&.gt-button-circle .gt-button {
+		&.gt-button-circle .gt-button-inner {
 			border-radius: 100%;
 		}
 
-		&.gt-button-rounded .gt-button {
+		&.gt-button-rounded .gt-button-inner {
 			border-radius: 5px;
+		}
+
+		.gt-button-inner.editor-rich-text__tinymce {
+			line-height: 1;
 		}
 	}
 

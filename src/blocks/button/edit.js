@@ -96,6 +96,7 @@ class ButtonEdit extends Component {
 			buttonSize,
 			buttonShape,
 			roundedCorners,
+			hoverStyle,
 		} = attributes;
 
 		const blockClasses = classnames( className, {
@@ -108,27 +109,28 @@ class ButtonEdit extends Component {
 			color: textColor.class ? undefined : textColor.color,
 		};
 
-		const hoverClasses = classnames( 'gt-button-wrap', {
-			[ `gt-button-${ buttonShape }` ]: 'square' !== buttonShape,
-			'has-hover-color': hoverColor.color,
-			[ hoverColor.class ]: hoverColor.class,
-		} );
-
-		const hoverStyles = {
-			borderRadius: 'rounded' === buttonShape && 5 !== roundedCorners ? roundedCorners + 'px' : undefined,
-			backgroundColor: hoverColor.class ? undefined : hoverColor.color,
-		};
-
 		const buttonClasses = classnames( 'gt-button', {
+			[ `gt-button-${ buttonShape }` ]: 'square' !== buttonShape,
 			[ `gt-button-${ buttonSize }` ]: buttonSize,
+			[ `gt-hover-style-${ hoverStyle }` ]: 'lighten' === hoverStyle || 'darken' === hoverStyle,
 			'gt-is-uppercase': isUppercase,
 			'gt-is-bold': isBold,
 			'gt-is-italic': isItalic,
+			'has-hover-color': 'custom' === hoverStyle && hoverColor.color,
+			[ hoverColor.class ]: 'custom' === hoverStyle && hoverColor.class,
+		} );
+
+		const buttonStyles = {
+			borderRadius: 'rounded' === buttonShape && 5 !== roundedCorners ? roundedCorners + 'px' : undefined,
+			backgroundColor: ( 'custom' === hoverStyle && ! hoverColor.class ) ? hoverColor.color : undefined,
+		};
+
+		const backgroundClasses = classnames( 'gt-button-inner', {
 			'has-background': backgroundColor.color,
 			[ backgroundColor.class ]: backgroundColor.class,
 		} );
 
-		const buttonStyles = {
+		const backgroundStyles = {
 			borderRadius: ( 'rounded' === buttonShape ) && 5 !== roundedCorners ? roundedCorners + 'px' : undefined,
 			backgroundColor: backgroundColor.class ? undefined : backgroundColor.color,
 		};
@@ -207,6 +209,17 @@ class ButtonEdit extends Component {
 							/>
 						) }
 
+						<SelectControl
+							label={ __( 'Hover Style', 'gt-blocks' ) }
+							value={ hoverStyle }
+							onChange={ ( newStyle ) => setAttributes( { hoverStyle: newStyle } ) }
+							options={ [
+								{ value: 'lighten', label: __( 'Lighten', 'gt-blocks' ) },
+								{ value: 'darken', label: __( 'Darken', 'gt-blocks' ) },
+								{ value: 'custom', label: __( 'Custom Color', 'gt-blocks' ) },
+							] }
+						/>
+
 					</PanelBody>
 
 					<PanelColorSettings
@@ -223,11 +236,6 @@ class ButtonEdit extends Component {
 								onChange: setTextColor,
 								label: __( 'Text Color', 'gt-blocks' ),
 							},
-							{
-								value: hoverColor.color,
-								onChange: setHoverColor,
-								label: __( 'Hover Color', 'gt-blocks' ),
-							},
 						] }
 					>
 						<ContrastChecker
@@ -240,14 +248,29 @@ class ButtonEdit extends Component {
 						/>
 					</PanelColorSettings>
 
+					{ ( 'custom' === hoverStyle ) && (
+						<PanelColorSettings
+							title={ __( 'Hover Color', 'gt-blocks' ) }
+							initialOpen={ false }
+							colorSettings={ [
+								{
+									value: hoverColor.color,
+									onChange: setHoverColor,
+									label: __( 'Hover Color', 'gt-blocks' ),
+								},
+							] }
+						>
+						</PanelColorSettings>
+					) }
+
 				</InspectorControls>
 
 				<div className={ blockClasses } style={ blockStyles }>
 
-					<span className={ hoverClasses } style={ hoverStyles } title={ title }>
+					<span className={ buttonClasses } style={ buttonStyles } title={ title }>
 						<RichText
-							className={ buttonClasses }
-							style={ buttonStyles }
+							className={ backgroundClasses }
+							style={ backgroundStyles }
 							onChange={ ( newText ) => setAttributes( { text: newText } ) }
 							formattingControls={ [] }
 							value={ text }

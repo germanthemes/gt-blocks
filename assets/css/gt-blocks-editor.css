@@ -11,14 +11,14 @@
   padding: 0 12px 2px; }
   .edit-post-sidebar .gt-panel-section-insert .components-button.is-large svg.dashicon {
     margin: 7px 7px 0 0; }
-.wp-block-gt-blocks-button .gt-button-wrap .gt-button {
-  cursor: text; }
-
-.wp-block-gt-blocks-button .gt-button-wrap.gt-button-circle .gt-button {
+.wp-block-gt-blocks-button .gt-button.gt-button-circle .gt-button-inner {
   border-radius: 100%; }
 
-.wp-block-gt-blocks-button .gt-button-wrap.gt-button-rounded .gt-button {
+.wp-block-gt-blocks-button .gt-button.gt-button-rounded .gt-button-inner {
   border-radius: 5px; }
+
+.wp-block-gt-blocks-button .gt-button .gt-button-inner.editor-rich-text__tinymce {
+  line-height: 1; }
 
 .wp-block-gt-blocks-button.gt-align-center .block-library-button__inline-link {
   margin-left: auto;
