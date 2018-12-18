@@ -33,7 +33,6 @@ const {
 	Dashicon,
 	IconButton,
 	PanelBody,
-	RangeControl,
 	SelectControl,
 	Toolbar,
 	ToolbarButton,
