@@ -2,8 +2,8 @@
 
 	.gt-button {
 		
-		&.gt-button-circle .gt-button-inner {
-			border-radius: 100%;
+		&.gt-button-circular .gt-button-inner {
+			border-radius: 200px;
 		}
 
 		&.gt-button-rounded .gt-button-inner {
@@ -12,6 +12,10 @@
 
 		.gt-button-inner.editor-rich-text__tinymce {
 			line-height: 1;
+		}
+
+		&.gt-is-uppercase .gt-button-inner.editor-rich-text__tinymce {
+			line-height: 1.1;
 		}
 	}
 
@@ -25,10 +29,6 @@
 	}
 
 	.block-library-button__inline-link {
-		width: auto;
-
-		.editor-url-input input[type=text] {
-			width: auto;
-		}
+		margin-top: 16px;
 	}
 }

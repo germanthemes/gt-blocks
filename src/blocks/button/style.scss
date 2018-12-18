@@ -39,24 +39,29 @@
 		}
 
 		&.gt-button-small .gt-button-inner {
-			padding: 0.5rem 0.75rem;
+			padding: 0.75rem;
+			font-size: 0.9em;
 		}
 
 		&.gt-button-medium .gt-button-inner {
 			padding: 1rem 1.25rem;
+			font-size: 1.0em;
 		}
 
 		&.gt-button-large .gt-button-inner {
-			padding: 1.5rem 2rem;
+			padding: 1.25rem 1.5rem;
+			font-size: 1.1em;
 		}
 
 		&.gt-button-extra-large .gt-button-inner {
-			padding: 2rem 3rem;
+			padding: 1.5rem 2rem;
+			font-size: 1.2em;
 		}
 
 		&.gt-is-uppercase {
 			text-transform: uppercase;
-			font-size: 0.95em;
+			font-size: 0.9em;
+			line-height: 1.1;
 		}
 
 		&.gt-is-bold {
@@ -67,8 +72,8 @@
 			font-style: italic;
 		}
 
-		&.gt-button-circle {
-			border-radius: 100%;
+		&.gt-button-circular {
+			border-radius: 200px;
 		}
 
 		&.gt-button-rounded {
@@ -76,17 +81,24 @@
 		}
 
 		/* Lighten Hover Style */
-		&.gt-hover-style-lighten:hover .gt-button-inner,
-		&.gt-hover-style-lighten:active .gt-button-inner,
-		&.gt-hover-style-lighten:focus .gt-button-inner {
+		&.gt-hover-style-lightened:hover .gt-button-inner,
+		&.gt-hover-style-lightened:active .gt-button-inner,
+		&.gt-hover-style-lightened:focus .gt-button-inner {
 			box-shadow: inset 0 0 300px rgba(255,255,255,0.2);
 		}
 
 		/* Darken Hover Style */
-		&.gt-hover-style-darken:hover .gt-button-inner,
-		&.gt-hover-style-darken:active .gt-button-inner,
-		&.gt-hover-style-darken:focus .gt-button-inner {
+		&.gt-hover-style-darkened:hover .gt-button-inner,
+		&.gt-hover-style-darkened:active .gt-button-inner,
+		&.gt-hover-style-darkened:focus .gt-button-inner {
 			box-shadow: inset 0 0 300px rgba(0,0,0,0.2);
+		}
+
+		/* Underlined Hover Style */
+		&.gt-hover-style-underlined:hover .gt-button-inner,
+		&.gt-hover-style-underlined:active .gt-button-inner,
+		&.gt-hover-style-underlined:focus .gt-button-inner {
+			text-decoration: underline;
 		}
 
 		/* Custom Color Hover Style */

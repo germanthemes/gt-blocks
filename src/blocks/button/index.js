@@ -84,13 +84,9 @@ registerBlockType(
 				type: 'string',
 				default: 'squared',
 			},
-			roundedCorners: {
-				type: 'number',
-				default: 5,
-			},
 			hoverStyle: {
 				type: 'string',
-				default: 'lighten',
+				default: 'lightened',
 			},
 			textColor: {
 				type: 'string',
@@ -125,7 +121,6 @@ registerBlockType(
 				isItalic,
 				buttonSize,
 				buttonShape,
-				roundedCorners,
 				hoverStyle,
 				textColor,
 				backgroundColor,
@@ -152,7 +147,7 @@ registerBlockType(
 			const buttonClasses = classnames( 'gt-button', {
 				[ `gt-button-${ buttonSize }` ]: buttonSize,
 				[ `gt-button-${ buttonShape }` ]: 'squared' !== buttonShape,
-				[ `gt-hover-style-${ hoverStyle }` ]: 'lighten' === hoverStyle || 'darken' === hoverStyle,
+				[ `gt-hover-style-${ hoverStyle }` ]: 'custom' !== hoverStyle,
 				'gt-is-uppercase': isUppercase,
 				'gt-is-bold': isBold,
 				'gt-is-italic': isItalic,
@@ -161,7 +156,6 @@ registerBlockType(
 			} );
 
 			const buttonStyles = {
-				borderRadius: 'rounded' === buttonShape && 5 !== roundedCorners ? roundedCorners + 'px' : undefined,
 				backgroundColor: ( 'custom' === hoverStyle && ! hoverColorClass ) ? customHoverColor : undefined,
 			};
 

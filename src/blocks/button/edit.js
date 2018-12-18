@@ -95,7 +95,6 @@ class ButtonEdit extends Component {
 			isItalic,
 			buttonSize,
 			buttonShape,
-			roundedCorners,
 			hoverStyle,
 		} = attributes;
 
@@ -112,7 +111,7 @@ class ButtonEdit extends Component {
 		const buttonClasses = classnames( 'gt-button', {
 			[ `gt-button-${ buttonShape }` ]: 'square' !== buttonShape,
 			[ `gt-button-${ buttonSize }` ]: buttonSize,
-			[ `gt-hover-style-${ hoverStyle }` ]: 'lighten' === hoverStyle || 'darken' === hoverStyle,
+			[ `gt-hover-style-${ hoverStyle }` ]: 'custom' !== hoverStyle,
 			'gt-is-uppercase': isUppercase,
 			'gt-is-bold': isBold,
 			'gt-is-italic': isItalic,
@@ -121,7 +120,6 @@ class ButtonEdit extends Component {
 		} );
 
 		const buttonStyles = {
-			borderRadius: 'rounded' === buttonShape && 5 !== roundedCorners ? roundedCorners + 'px' : undefined,
 			backgroundColor: ( 'custom' === hoverStyle && ! hoverColor.class ) ? hoverColor.color : undefined,
 		};
 
@@ -131,7 +129,6 @@ class ButtonEdit extends Component {
 		} );
 
 		const backgroundStyles = {
-			borderRadius: ( 'rounded' === buttonShape ) && 5 !== roundedCorners ? roundedCorners + 'px' : undefined,
 			backgroundColor: backgroundColor.class ? undefined : backgroundColor.color,
 		};
 
@@ -194,28 +191,19 @@ class ButtonEdit extends Component {
 							onChange={ ( newShape ) => setAttributes( { buttonShape: newShape } ) }
 							options={ [
 								{ value: 'squared', label: __( 'Squared', 'gt-blocks' ) },
-								{ value: 'rounded', label: __( 'Rounded', 'gt-blocks' ) },
-								{ value: 'circle', label: __( 'Circle', 'gt-blocks' ) },
+								{ value: 'rounded', label: __( 'Rounded Corners', 'gt-blocks' ) },
+								{ value: 'circular', label: __( 'Circular', 'gt-blocks' ) },
 							] }
 						/>
-
-						{ ( 'rounded' === buttonShape ) && (
-							<RangeControl
-								label={ __( 'Rounded Corners', 'gt-blocks' ) }
-								value={ roundedCorners }
-								onChange={ ( newRadius ) => setAttributes( { roundedCorners: newRadius } ) }
-								min={ 0 }
-								max={ 64 }
-							/>
-						) }
 
 						<SelectControl
 							label={ __( 'Hover Style', 'gt-blocks' ) }
 							value={ hoverStyle }
 							onChange={ ( newStyle ) => setAttributes( { hoverStyle: newStyle } ) }
 							options={ [
-								{ value: 'lighten', label: __( 'Lighten', 'gt-blocks' ) },
-								{ value: 'darken', label: __( 'Darken', 'gt-blocks' ) },
+								{ value: 'lightened', label: __( 'Lightened', 'gt-blocks' ) },
+								{ value: 'darkened', label: __( 'Darkened', 'gt-blocks' ) },
+								{ value: 'underlined', label: __( 'Underlined', 'gt-blocks' ) },
 								{ value: 'custom', label: __( 'Custom Color', 'gt-blocks' ) },
 							] }
 						/>
