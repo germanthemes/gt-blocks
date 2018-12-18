@@ -30,19 +30,12 @@ import { default as GridEdit } from '../../components/grid-container/edit';
 
 // Define blocks for each column.
 const TEMPLATE = [
-	[ 'gt-blocks/image', {
-		synchronizeStyling: true,
-		parentBlock: 'gt-blocks/portfolio',
-	} ],
+	[ 'gt-blocks/image', {} ],
 	[ 'gt-blocks/heading', {
 		placeholder: __( 'Project', 'gt-blocks' ),
-		synchronizeStyling: true,
-		parentBlock: 'gt-blocks/portfolio',
 	} ],
 	[ 'core/paragraph', {
 		placeholder: __( 'Write project description...', 'gt-blocks' ),
-		synchronizeStyling: true,
-		parentBlock: 'gt-blocks/portfolio',
 	} ],
 ];
 
@@ -116,7 +109,6 @@ class PortfolioEdit extends Component {
 
 				<GridEdit
 					template={ TEMPLATE }
-					parentBlock={ this.props.name }
 					{ ...this.props }
 				/>
 

@@ -67,7 +67,6 @@ class GridEdit extends Component {
 			allowedBlocks,
 			template,
 			templateLock,
-			parentBlock,
 		} = this.props;
 
 		const {
@@ -79,8 +78,6 @@ class GridEdit extends Component {
 			allowedBlocks: allowedBlocks,
 			template: template,
 			templateLock: templateLock || false,
-			synchronizeStyling: true,
-			parentBlock: parentBlock,
 		} );
 
 		// Insert Block.
@@ -104,7 +101,6 @@ class GridEdit extends Component {
 			allowedBlocks,
 			template,
 			templateLock,
-			parentBlock,
 		} = this.props;
 
 		const {
@@ -136,8 +132,6 @@ class GridEdit extends Component {
 				allowedBlocks: allowedBlocks,
 				template: template,
 				templateLock: templateLock || false,
-				synchronizeStyling: true,
-				parentBlock: parentBlock,
 			} ];
 
 			return times( number, () => block );

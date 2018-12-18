@@ -45,7 +45,6 @@ registerBlockType(
 		edit( props ) {
 			return (
 				<GridEdit
-					parentBlock={ props.name }
 					{ ...props }
 				/>
 			);

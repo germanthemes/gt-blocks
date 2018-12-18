@@ -30,19 +30,12 @@ import { default as GridEdit } from '../../components/grid-container/edit';
 
 // Define blocks for each column.
 const TEMPLATE = [
-	[ 'gt-blocks/icon', {
-		synchronizeStyling: true,
-		parentBlock: 'gt-blocks/features',
-	} ],
+	[ 'gt-blocks/icon', {} ],
 	[ 'gt-blocks/heading', {
 		placeholder: __( 'Feature', 'gt-blocks' ),
-		synchronizeStyling: true,
-		parentBlock: 'gt-blocks/features',
 	} ],
 	[ 'core/paragraph', {
 		placeholder: __( 'Write feature description...', 'gt-blocks' ),
-		synchronizeStyling: true,
-		parentBlock: 'gt-blocks/features',
 	} ],
 ];
 
@@ -116,7 +109,6 @@ class FeaturesEdit extends Component {
 
 				<GridEdit
 					template={ TEMPLATE }
-					parentBlock={ this.props.name }
 					{ ...this.props }
 				/>
 

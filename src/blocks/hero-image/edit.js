@@ -42,10 +42,6 @@ const TEMPLATE = [
 	[ 'gt-blocks/multiple-buttons', {
 		customClass: 'gt-buttons-wrapper',
 		buttons: 2,
-		buttonAttributes: {
-			synchronizeStyling: true,
-			parentBlock: 'gt-blocks/multiple-buttons',
-		},
 	} ],
 ];
 

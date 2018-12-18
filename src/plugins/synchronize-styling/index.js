@@ -18,6 +18,7 @@ const { addFilter } = wp.hooks;
  */
 import {
 	getSiblings,
+	getParentBlock,
 	synchronizeButtons,
 	synchronizeColumns,
 	synchronizeHeadings,
@@ -37,19 +38,39 @@ const supportedBlocks = [
 	'core/paragraph',
 ];
 
+// Define parent blocks.
+const parentBlocks = [
+	'gt-blocks/column',
+	'gt-blocks/features',
+	'gt-blocks/portfolio',
+	'gt-blocks/grid-layout',
+	'gt-blocks/multiple-buttons',
+];
+
 const synchronizeStyling = createHigherOrderComponent( ( BlockEdit ) => {
 	return ( props ) => {
 		if ( ! supportedBlocks.includes( props.name ) ) {
 			return <BlockEdit { ...props } />;
 		}
 
-		if ( ! props.attributes.synchronizeStyling || ! props.attributes.parentBlock ) {
+		// Get Parent Block.
+		const parentBlock = getParentBlock( props.clientId );
+
+		// Return early if block has no parent.
+		if ( ! parentBlock || ! parentBlocks.includes( parentBlock.name ) ) {
 			return <BlockEdit { ...props } />;
 		}
 
-		const synchronizeAttributes = () => {
-			const siblings = getSiblings( props.clientId, props.name, props.attributes.parentBlock );
+		// Retrieve sibling blocks.
+		const siblings = getSiblings( props.name, parentBlock );
 
+		// Return early if block has no siblings.
+		if ( siblings.length < 2 ) {
+			return <BlockEdit { ...props } />;
+		}
+
+		// Synchronize Styling function.
+		const synchronizeAttributes = () => {
 			switch ( props.name ) {
 				case 'gt-blocks/button': {
 					synchronizeButtons( siblings, props.attributes );
@@ -78,6 +99,7 @@ const synchronizeStyling = createHigherOrderComponent( ( BlockEdit ) => {
 			}
 		};
 
+		// Synchronize Styling Description Text.
 		const synchronizeDescriptionText = () => {
 			switch ( props.name ) {
 				case 'gt-blocks/button': {
@@ -131,20 +153,3 @@ const synchronizeStyling = createHigherOrderComponent( ( BlockEdit ) => {
 }, 'synchronizeStyling' );
 addFilter( 'editor.BlockEdit', 'gt-blocks/plugins/synchronize-styling', synchronizeStyling );
 
-function addSynchronizeStylingAttribute( settings, name ) {
-	if ( ! supportedBlocks.includes( name ) ) {
-		return settings;
-	}
-
-	settings.attributes = assign( settings.attributes, {
-		synchronizeStyling: {
-			type: 'boolean',
-		},
-		parentBlock: {
-			type: 'string',
-		},
-	} );
-
-	return settings;
-}
-addFilter( 'blocks.registerBlockType', 'gt-blocks/attributes/synchronize-styling', addSynchronizeStylingAttribute );

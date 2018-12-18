@@ -189,38 +189,34 @@ export const synchronizeParagraphs = ( blockList, attributes ) => {
 	} );
 };
 
-export const getSiblings = ( blockId, blockType, parentBlockName ) => {
+export const getParentBlock = ( blockId ) => {
 	const {
 		getBlocksByClientId,
 		getBlockRootClientId,
 	} = select( 'core/editor' );
 
-	// Get container block.
-	const containerClientId = getBlockRootClientId( blockId );
-	const containerBlock = getBlocksByClientId( containerClientId )[ 0 ];
+	// Get parent block.
+	const rootClientId = getBlockRootClientId( blockId );
 
-	// Return early if container block does not exist.
-	if ( ! containerBlock ) {
-		return [];
+	if ( rootClientId ) {
+		return getBlocksByClientId( rootClientId )[ 0 ];
 	}
 
-	// Get siblings in case we have reached the root level.
-	if ( parentBlockName === containerBlock.name ) {
-		return getFirstLevelSiblings( blockType, containerBlock );
+	return null;
+};
+
+export const getSiblings = ( blockName, parentBlock ) => {
+	// Get first level siblings in case we have reached the root level.
+	if ( 'gt-blocks/column' !== parentBlock.name ) {
+		return getFirstLevelSiblings( blockName, parentBlock );
 	}
 
 	// Get root block.
-	const rootClientId = getBlockRootClientId( containerClientId );
-	const rootBlock = getBlocksByClientId( rootClientId )[ 0 ];
+	const rootBlock = getParentBlock( parentBlock.clientId );
 
-	// Return early if root block does not exist.
-	if ( ! rootBlock ) {
-		return [];
-	}
-
-	// Get siblings in case we have reached the root level.
-	if ( parentBlockName === rootBlock.name ) {
-		return getSecondLevelSiblings( blockType, rootBlock, containerBlock.name );
+	// Get second level siblings in case we have reached the root level.
+	if ( rootBlock ) {
+		return getSecondLevelSiblings( blockName, rootBlock, parentBlock.name );
 	}
 
 	return [];
@@ -239,12 +235,12 @@ export const getFirstLevelSiblings = ( blockType, parentBlock ) => {
 	return siblings;
 };
 
-export const getSecondLevelSiblings = ( blockType, parentBlock, containerBlockName ) => {
+export const getSecondLevelSiblings = ( blockType, rootBlock, parentBlockName ) => {
 	// Get child blocks of parent blocks.
-	const siblings = parentBlock.innerBlocks
+	const siblings = rootBlock.innerBlocks
 
 		// Filter out container blocks.
-		.filter( child => child.name === containerBlockName )
+		.filter( child => child.name === parentBlockName )
 
 		// Get child blocks of container blocks.
 		.map( item => item.innerBlocks )
