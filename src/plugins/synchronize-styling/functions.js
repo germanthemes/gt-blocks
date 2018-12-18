@@ -6,48 +6,38 @@ const { dispatch, select } = wp.data;
 export const synchronizeButtons = ( blockList, attributes ) => {
 	const {
 		textAlignment,
+		isUppercase,
+		isBold,
+		isItalic,
+		buttonSize,
 		buttonShape,
-		roundedCorners,
-		borderWidth,
-		paddingClass,
-		paddingVertical,
-		paddingHorizontal,
-		fontWeight,
-		italic,
-		uppercase,
+		hoverStyle,
 		textColor,
 		backgroundColor,
 		customTextColor,
 		customBackgroundColor,
 		hoverColor,
-		hoverBackgroundColor,
 		customHoverColor,
-		customHoverBackgroundColor,
-		fontSize,
-		customFontSize,
+		className,
+		gtRemoveMarginBottom,
 	} = attributes;
 
 	const newAttributes = {
 		textAlignment,
+		isUppercase,
+		isBold,
+		isItalic,
+		buttonSize,
 		buttonShape,
-		roundedCorners,
-		borderWidth,
-		paddingClass,
-		paddingVertical,
-		paddingHorizontal,
-		fontWeight,
-		italic,
-		uppercase,
+		hoverStyle,
 		textColor,
 		backgroundColor,
 		customTextColor,
 		customBackgroundColor,
 		hoverColor,
-		hoverBackgroundColor,
 		customHoverColor,
-		customHoverBackgroundColor,
-		fontSize,
-		customFontSize,
+		className,
+		gtRemoveMarginBottom,
 	};
 
 	blockList.forEach( block => {
@@ -57,23 +47,21 @@ export const synchronizeButtons = ( blockList, attributes ) => {
 
 export const synchronizeColumns = ( blockList, attributes ) => {
 	const {
-		paddingClass,
-		paddingVertical,
-		paddingHorizontal,
 		backgroundColor,
 		textColor,
 		customBackgroundColor,
 		customTextColor,
+		className,
+		gtRemoveMarginBottom,
 	} = attributes;
 
 	const newAttributes = {
-		paddingClass,
-		paddingVertical,
-		paddingHorizontal,
 		backgroundColor,
 		textColor,
 		customBackgroundColor,
 		customTextColor,
+		className,
+		gtRemoveMarginBottom,
 	};
 
 	blockList.forEach( block => {
@@ -85,29 +73,27 @@ export const synchronizeHeadings = ( blockList, attributes ) => {
 	const {
 		titleTag,
 		textAlignment,
-		fontWeight,
-		italic,
-		uppercase,
 		textColor,
 		backgroundColor,
 		customTextColor,
 		customBackgroundColor,
 		fontSize,
 		customFontSize,
+		className,
+		gtRemoveMarginBottom,
 	} = attributes;
 
 	const newAttributes = {
 		titleTag,
 		textAlignment,
-		fontWeight,
-		italic,
-		uppercase,
 		textColor,
 		backgroundColor,
 		customTextColor,
 		customBackgroundColor,
 		fontSize,
 		customFontSize,
+		className,
+		gtRemoveMarginBottom,
 	};
 
 	blockList.forEach( block => {
@@ -127,6 +113,8 @@ export const synchronizeIcons = ( blockList, attributes ) => {
 		backgroundColor,
 		customTextColor,
 		customBackgroundColor,
+		className,
+		gtRemoveMarginBottom,
 	} = attributes;
 
 	const newAttributes = {
@@ -140,6 +128,8 @@ export const synchronizeIcons = ( blockList, attributes ) => {
 		backgroundColor,
 		customTextColor,
 		customBackgroundColor,
+		className,
+		gtRemoveMarginBottom,
 	};
 
 	blockList.forEach( block => {
@@ -150,10 +140,16 @@ export const synchronizeIcons = ( blockList, attributes ) => {
 export const synchronizeImages = ( blockList, attributes ) => {
 	const {
 		size,
+		linkDestination,
+		className,
+		gtRemoveMarginBottom,
 	} = attributes;
 
 	const newAttributes = {
 		size,
+		linkDestination,
+		className,
+		gtRemoveMarginBottom,
 	};
 
 	blockList.forEach( block => {
@@ -171,6 +167,8 @@ export const synchronizeParagraphs = ( blockList, attributes ) => {
 		customTextColor,
 		fontSize,
 		customFontSize,
+		className,
+		gtRemoveMarginBottom,
 	} = attributes;
 
 	const newAttributes = {
@@ -182,6 +180,8 @@ export const synchronizeParagraphs = ( blockList, attributes ) => {
 		customTextColor,
 		fontSize,
 		customFontSize,
+		className,
+		gtRemoveMarginBottom,
 	};
 
 	blockList.forEach( block => {

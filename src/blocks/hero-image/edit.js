@@ -39,12 +39,12 @@ const TEMPLATE = [
 	[ 'core/paragraph', {
 		placeholder: __( 'Write Hero text...', 'gt-blocks' ),
 	} ],
-	[ 'gt-blocks/buttons', {
+	[ 'gt-blocks/multiple-buttons', {
 		customClass: 'gt-buttons-wrapper',
 		buttons: 2,
 		buttonAttributes: {
 			synchronizeStyling: true,
-			parentBlock: 'gt-blocks/buttons',
+			parentBlock: 'gt-blocks/multiple-buttons',
 		},
 	} ],
 ];
