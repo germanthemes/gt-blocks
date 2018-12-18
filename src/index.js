@@ -10,7 +10,6 @@ import './plugins/section-insert';
  * Import Blocks
  */
 import './blocks/button';
-import './blocks/buttons';
 import './blocks/column';
 import './blocks/content';
 import './blocks/features';
@@ -19,5 +18,6 @@ import './blocks/heading';
 import './blocks/hero-image';
 import './blocks/icon';
 import './blocks/image';
+import './blocks/multiple-buttons';
 import './blocks/portfolio';
 import './blocks/section';

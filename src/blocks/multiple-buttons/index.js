@@ -23,17 +23,15 @@ import edit from './edit';
  * Register block
  */
 registerBlockType(
-	'gt-blocks/buttons',
+	'gt-blocks/multiple-buttons',
 	{
-		title: __( 'GT Buttons', 'gt-blocks' ),
+		title: __( 'GT Multiple Buttons', 'gt-blocks' ),
 
 		description: __( 'Insert multiple buttons.', 'gt-blocks' ),
 
 		category: 'gt-blocks',
 
 		icon: <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M416 304H32c-17.67 0-32 14.33-32 32v32c0 17.67 14.33 32 32 32h384c17.67 0 32-14.33 32-32v-32c0-17.67-14.33-32-32-32zm0-192H32c-17.67 0-32 14.33-32 32v32c0 17.67 14.33 32 32 32h384c17.67 0 32-14.33 32-32v-32c0-17.67-14.33-32-32-32z" /></svg>,
-
-		parent: [ 'gt-blocks/column', 'gt-blocks/content' ],
 
 		attributes: {
 			customClass: {
@@ -49,10 +47,6 @@ registerBlockType(
 			alignment: {
 				type: 'string',
 			},
-		},
-
-		supports: {
-			inserter: false,
 		},
 
 		edit,

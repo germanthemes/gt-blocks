@@ -33,7 +33,7 @@ const {
 /**
  * Block Edit Component
  */
-class ButtonsEdit extends Component {
+class MultipleButtonsEdit extends Component {
 	render() {
 		const {
 			attributes,
@@ -113,4 +113,4 @@ class ButtonsEdit extends Component {
 	}
 }
 
-export default ButtonsEdit;
+export default MultipleButtonsEdit;
