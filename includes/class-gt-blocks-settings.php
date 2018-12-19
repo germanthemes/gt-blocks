@@ -130,7 +130,7 @@ class GT_Blocks_Settings {
 
 		// Add Sections
 		add_settings_section( 'gt_blocks_settings_activate_blocks', esc_html__( 'Activate Blocks', 'gt-blocks' ), '__return_false', 'gt_blocks_settings' );
-		add_settings_section( 'gt_blocks_settings_image_sizes', esc_html__( 'Image Sizes', 'gt-blocks' ), '__return_false', 'gt_blocks_settings' );
+		add_settings_section( 'gt_blocks_settings_image_sizes', esc_html__( 'Image Sizes', 'gt-blocks' ), array( $this, 'image_section_intro' ), 'gt_blocks_settings' );
 		add_settings_section( 'gt_blocks_settings_automatic_updates', esc_html__( 'Automatic Updates', 'gt-blocks' ), array( $this, 'license_section_intro' ), 'gt_blocks_settings' );
 
 		// Add Settings
@@ -162,6 +162,15 @@ class GT_Blocks_Settings {
 
 		// Creates our settings in the options table
 		register_setting( 'gt_blocks_settings', 'gt_blocks_settings', array( $this, 'sanitize_settings' ) );
+	}
+
+	/**
+	 * Image Section Intro
+	 *
+	 * @return void
+	*/
+	function image_section_intro() {
+		esc_html_e( 'Enabled custom image sizes. This setting will only affect new uploaded images unless you regenerate existing thumbnails with a plugin.', 'gt-blocks' );
 	}
 
 	/**
@@ -286,10 +295,10 @@ class GT_Blocks_Settings {
 				'type'    => 'multicheck',
 				'default' => true,
 				'options' => array(
-					'image_size_square'      => esc_html__( 'Square 800 x 800 pixel', 'gt-blocks' ),
-					'image_size_rectangular' => esc_html__( 'Rectangular 800 x 600 pixel', 'gt-blocks' ),
-					'image_size_landscape'   => esc_html__( 'Landscape 960 x 540 pixel', 'gt-blocks' ),
-					'image_size_portrait'    => esc_html__( 'Portrait 640 x 600 pixel', 'gt-blocks' ),
+					'square'      => esc_html__( 'Square 800 x 800 pixel', 'gt-blocks' ),
+					'rectangular' => esc_html__( 'Rectangular 800 x 600 pixel', 'gt-blocks' ),
+					'landscape'   => esc_html__( 'Landscape 960 x 540 pixel', 'gt-blocks' ),
+					'portrait'    => esc_html__( 'Portrait 640 x 600 pixel', 'gt-blocks' ),
 				),
 			),
 			'license_status' => array(

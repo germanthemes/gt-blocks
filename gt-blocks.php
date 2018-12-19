@@ -171,14 +171,25 @@ class GT_Blocks {
 	 * @return void
 	 */
 	static function add_image_sizes() {
+		// Get Settings.
+		$instance = GT_Blocks_Settings::instance();
+		$options  = $instance->get_all();
 
-		add_image_size( 'GT-square-800-x-800', 800, 800, true );
+		if ( true === $options['image_sizes']['square'] ) {
+			add_image_size( 'GT-square-800-x-800', 800, 800, true );
+		}
 
-		add_image_size( 'GT-rectangular-800-x-600', 800, 600, true );
+		if ( true === $options['image_sizes']['rectangular'] ) {
+			add_image_size( 'GT-rectangular-800-x-600', 800, 600, true );
+		}
 
-		add_image_size( 'GT-landscape-960-x-540', 960, 540, true );
+		if ( true === $options['image_sizes']['landscape'] ) {
+			add_image_size( 'GT-landscape-960-x-540', 960, 540, true );
+		}
 
-		add_image_size( 'GT-portrait-640-x-600', 640, 960, true );
+		if ( true === $options['image_sizes']['portrait'] ) {
+			add_image_size( 'GT-portrait-640-x-600', 640, 960, true );
+		}
 	}
 
 	/**
