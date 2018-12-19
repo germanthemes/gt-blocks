@@ -295,10 +295,10 @@ class GT_Blocks_Settings {
 				'type'    => 'multicheck',
 				'default' => true,
 				'options' => array(
-					'square'      => esc_html__( 'Square 800 x 800 pixel', 'gt-blocks' ),
-					'rectangular' => esc_html__( 'Rectangular 800 x 600 pixel', 'gt-blocks' ),
-					'landscape'   => esc_html__( 'Landscape 960 x 540 pixel', 'gt-blocks' ),
-					'portrait'    => esc_html__( 'Portrait 640 x 600 pixel', 'gt-blocks' ),
+					'square'      => esc_html__( 'Square 640 x 640 pixel', 'gt-blocks' ),
+					'rectangular' => esc_html__( 'Rectangular 640 x 480 pixel', 'gt-blocks' ),
+					'landscape'   => esc_html__( 'Landscape 640 x 360 pixel', 'gt-blocks' ),
+					'portrait'    => esc_html__( 'Portrait 480 x 640 pixel', 'gt-blocks' ),
 				),
 			),
 			'license_status' => array(
