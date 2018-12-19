@@ -43,6 +43,9 @@ class GT_Blocks {
 		// Setup Translation.
 		add_action( 'init', array( __CLASS__, 'translation' ) );
 
+		// Include Files.
+		self::includes();
+
 		// Setup Action Hooks.
 		self::setup_actions();
 	}
@@ -54,20 +57,23 @@ class GT_Blocks {
 	 */
 	static function constants() {
 
-		// Define Plugin Name.
-		define( 'GTB_NAME', 'GT Blocks' );
-
 		// Define Version Number.
-		define( 'GTB_VERSION', '0.2' );
+		define( 'GT_BLOCKS_VERSION', '0.2' );
 
 		// Plugin Folder Path.
-		define( 'GTB_PLUGIN_DIR', plugin_dir_path( __FILE__ ) );
+		define( 'GT_BLOCKS_PLUGIN_DIR', plugin_dir_path( __FILE__ ) );
 
 		// Plugin Folder URL.
-		define( 'GTB_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
+		define( 'GT_BLOCKS_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
 
 		// Plugin Root File.
-		define( 'GTB_PLUGIN_FILE', __FILE__ );
+		define( 'GT_BLOCKS_PLUGIN_FILE', __FILE__ );
+
+		// Define Product ID.
+		define( 'GT_BLOCKS_PRODUCT_ID', 171494 );
+
+		// Define Update API URL.
+		define( 'GT_BLOCKS_STORE_API_URL', 'https://themezee.com' );
 	}
 
 	/**
@@ -76,8 +82,22 @@ class GT_Blocks {
 	 * @return void
 	 */
 	static function translation() {
+		load_plugin_textdomain( 'gt-blocks', false, dirname( plugin_basename( GT_BLOCKS_PLUGIN_FILE ) ) . '/languages/php/' );
+	}
 
-		load_plugin_textdomain( 'gt-blocks', false, dirname( plugin_basename( GTB_PLUGIN_FILE ) ) . '/languages/php/' );
+	/**
+	 * Include required files
+	 *
+	 * @return void
+	 */
+	static function includes() {
+
+		// Include Plugin Updater.
+		require_once GT_BLOCKS_PLUGIN_DIR . '/includes/class-gt-blocks-plugin-updater.php';
+
+		// Include Plugin Settings.
+		require_once GT_BLOCKS_PLUGIN_DIR . '/includes/class-gt-blocks-settings.php';
+		require_once GT_BLOCKS_PLUGIN_DIR . '/includes/class-gt-blocks-settings-page.php';
 	}
 
 	/**
@@ -99,6 +119,12 @@ class GT_Blocks {
 
 		// Add block category.
 		add_filter( 'block_categories', array( __CLASS__, 'block_categories' ), 10, 2 );
+
+		// Add License Key admin notice.
+		add_action( 'admin_notices', array( __CLASS__, 'license_key_admin_notice' ) );
+
+		// Add plugin updater.
+		add_action( 'admin_init', array( __CLASS__, 'plugin_updater' ), 0 );
 	}
 
 	/**
@@ -109,7 +135,7 @@ class GT_Blocks {
 	 * @return void
 	 */
 	static function enqueue_block_scripts() {
-		wp_enqueue_style( 'gt-blocks', GTB_PLUGIN_URL . 'assets/css/gt-blocks.css', array(), GTB_VERSION );
+		wp_enqueue_style( 'gt-blocks', GT_BLOCKS_PLUGIN_URL . 'assets/css/gt-blocks.css', array(), GT_BLOCKS_VERSION );
 	}
 
 	/**
@@ -120,23 +146,23 @@ class GT_Blocks {
 	 * @return void
 	 */
 	static function enqueue_block_editor_scripts() {
-		wp_enqueue_script( 'gt-blocks-editor', GTB_PLUGIN_URL . 'assets/js/gt-blocks-editor.js', array(
+		wp_enqueue_script( 'gt-blocks-editor', GT_BLOCKS_PLUGIN_URL . 'assets/js/gt-blocks-editor.js', array(
 			'wp-blocks',
 			'wp-i18n',
 			'wp-element',
 			'wp-components',
 			'wp-editor',
-		), GTB_VERSION );
+		), GT_BLOCKS_VERSION );
 
 		wp_add_inline_script(
 			'gt-blocks-editor',
-			sprintf( 'wp.data.dispatch( "gt-blocks-store" ).setPluginURL( %s );', wp_json_encode( GTB_PLUGIN_URL ) ),
+			sprintf( 'wp.data.dispatch( "gt-blocks-store" ).setPluginURL( %s );', wp_json_encode( GT_BLOCKS_PLUGIN_URL ) ),
 			'after'
 		);
 
-		wp_set_script_translations( 'gt-blocks-editor', 'gt-blocks', GTB_PLUGIN_DIR . 'languages/js' );
+		wp_set_script_translations( 'gt-blocks-editor', 'gt-blocks', GT_BLOCKS_PLUGIN_DIR . 'languages/js' );
 
-		wp_enqueue_style( 'gt-blocks-editor', GTB_PLUGIN_URL . 'assets/css/gt-blocks-editor.css', array( 'wp-edit-blocks', 'gt-blocks' ), GTB_VERSION );
+		wp_enqueue_style( 'gt-blocks-editor', GT_BLOCKS_PLUGIN_URL . 'assets/css/gt-blocks-editor.css', array( 'wp-edit-blocks', 'gt-blocks' ), GT_BLOCKS_VERSION );
 	}
 
 	/**
@@ -146,16 +172,12 @@ class GT_Blocks {
 	 */
 	static function add_image_sizes() {
 
-		#add_image_size( 'GT-square-400-x-400', 400, 400, true );
 		add_image_size( 'GT-square-800-x-800', 800, 800, true );
 
-		#add_image_size( 'GT-rectangular-400-x-300', 400, 300, true );
 		add_image_size( 'GT-rectangular-800-x-600', 800, 600, true );
 
-		#add_image_size( 'GT-landscape-480-x-270', 480, 270, true );
 		add_image_size( 'GT-landscape-960-x-540', 960, 540, true );
 
-		#add_image_size( 'GT-portrait-320-x-480', 320, 480, true );
 		add_image_size( 'GT-portrait-640-x-600', 640, 960, true );
 	}
 
@@ -174,6 +196,64 @@ class GT_Blocks {
 				),
 			)
 		);
+	}
+
+	/**
+	 * Add license key admin notice
+	 *
+	 * @return void
+	 */
+	static function license_key_admin_notice() {
+		global $pagenow;
+
+		// Display only on Plugins and Updates page.
+		if ( ! ( 'plugins.php' == $pagenow or 'update-core.php' == $pagenow ) ) {
+			return;
+		}
+
+		// Get Settings.
+		$options = GT_Blocks_Settings::instance();
+
+		if ( 'valid' !== $options->get( 'license_status' ) ) :
+			?>
+
+			<div class="updated">
+				<p>
+					<?php
+					printf( __( 'Please activate your license key for GT Blocks in order to receive updates and support. <a href="%s">Activate License</a>', 'gt-blocks' ),
+						admin_url( 'options-general.php?page=gt-blocks' )
+					);
+					?>
+				</p>
+			</div>
+
+			<?php
+		endif;
+	}
+
+	/**
+	 * Plugin Updater
+	 *
+	 * @return void
+	 */
+	static function plugin_updater() {
+
+		if ( ! is_admin() ) :
+			return;
+		endif;
+
+		$options = GT_Blocks_Settings::instance();
+
+		if ( 'valid' === $options->get( 'license_status' ) ) :
+
+			// setup the updater
+			$tzss_updater = new GT_Blocks_Plugin_Updater( GT_BLOCKS_STORE_API_URL, __FILE__, array(
+				'version' => GT_BLOCKS_VERSION,
+				'license' => trim( $options->get( 'license_key' ) ),
+				'item_id' => GT_BLOCKS_PRODUCT_ID,
+			) );
+
+		endif;
 	}
 }
 
