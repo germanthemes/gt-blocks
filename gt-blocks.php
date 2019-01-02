@@ -1,18 +1,18 @@
 <?php
 /*
 Plugin Name: GT Blocks
-Plugin URI: https://gtblocks.de/gt-blocks/
+Plugin URI: https://germanthemes.de/blocks/
 Description: Page Building Blocks
-Author: gtblocks
-Author URI: https://gtblocks.de/
-Version: 0.2
+Author: GermanThemes
+Author URI: https://germanthemes.de/
+Version: 0.3
 Text Domain: gt-blocks
 Domain Path: /languages/
-License: GPL v3
-License URI: http://www.gnu.org/licenses/gpl-3.0.html
+License: GNU General Public License v2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
 GT Blocks
-Copyright(C) 2018, gtblocks.de - support@gtblocks.de
+Copyright(C) 2018, germanthemes.de - support@germanthemes.de
 */
 
 // Exit if accessed directly.
@@ -58,7 +58,7 @@ class GT_Blocks {
 	static function constants() {
 
 		// Define Version Number.
-		define( 'GT_BLOCKS_VERSION', '0.2' );
+		define( 'GT_BLOCKS_VERSION', '0.3' );
 
 		// Plugin Folder Path.
 		define( 'GT_BLOCKS_PLUGIN_DIR', plugin_dir_path( __FILE__ ) );
