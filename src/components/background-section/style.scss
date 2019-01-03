@@ -1,13 +1,31 @@
 .gt-background-section {
 	position: relative;
-	padding: 0;
+	padding: 0 2rem;
 
-	&.gt-normal-padding {
-		padding: 2rem;
+	/* Padding Top */
+	&.gt-normal-top-padding {
+		padding-top: 2rem;
 	}
 
-	&.gt-large-padding {
-		padding: 4rem;
+	&.gt-medium-top-padding {
+		padding-top: 4rem;
+	}
+
+	&.gt-large-top-padding {
+		padding-top: 8rem;
+	}
+
+	/* Padding Bottom */
+	&.gt-normal-bottom-padding {
+		padding-bottom: 2rem;
+	}
+
+	&.gt-medium-bottom-padding {
+		padding-bottom: 4rem;
+	}
+
+	&.gt-large-bottom-padding {
+		padding-bottom: 8rem;
 	}
 
 	&.gt-has-background-image {

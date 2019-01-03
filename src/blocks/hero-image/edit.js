@@ -89,7 +89,7 @@ class HeroImageEdit extends Component {
 		} );
 
 		const contentSettings = <Fragment>
-			<PanelBody title={ __( 'Hero Settings', 'gt-blocks' ) } initialOpen={ false } className="gt-panel-hero-settings gt-panel">
+			<PanelBody title={ __( 'Content Settings', 'gt-blocks' ) } initialOpen={ false } className="gt-panel-content-settings gt-panel-hero-settings gt-panel">
 				<BaseControl id="gt-image-block" label={ __( 'Image Block', 'gt-blocks' ) }>
 					<Button
 						isLarge

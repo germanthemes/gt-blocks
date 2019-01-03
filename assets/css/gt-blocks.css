@@ -222,11 +222,21 @@
       width: 30%; } }
 .gt-background-section {
   position: relative;
-  padding: 0; }
-  .gt-background-section.gt-normal-padding {
-    padding: 2rem; }
-  .gt-background-section.gt-large-padding {
-    padding: 4rem; }
+  padding: 0 2rem;
+  /* Padding Top */
+  /* Padding Bottom */ }
+  .gt-background-section.gt-normal-top-padding {
+    padding-top: 2rem; }
+  .gt-background-section.gt-medium-top-padding {
+    padding-top: 4rem; }
+  .gt-background-section.gt-large-top-padding {
+    padding-top: 8rem; }
+  .gt-background-section.gt-normal-bottom-padding {
+    padding-bottom: 2rem; }
+  .gt-background-section.gt-medium-bottom-padding {
+    padding-bottom: 4rem; }
+  .gt-background-section.gt-large-bottom-padding {
+    padding-bottom: 8rem; }
   .gt-background-section.gt-has-background-image {
     background-size: cover;
     background-repeat: no-repeat;

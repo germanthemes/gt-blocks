@@ -1,11 +1,16 @@
 .wp-block-gt-blocks-hero-image.gt-background-section {
 
-	&.gt-normal-padding {
+	/* Padding Bottom */
+	&.gt-normal-bottom-padding {
 		padding-bottom: 2rem;
 	}
 
-	&.gt-large-padding {
+	&.gt-medium-bottom-padding {
 		padding-bottom: 4rem;
+	}
+
+	&.gt-large-bottom-padding {
+		padding-bottom: 8rem;
 	}
 
 	.gt-hero-section {

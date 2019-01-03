@@ -7,7 +7,11 @@ const backgroundAttributes = {
 		type: 'string',
 		default: 'default',
 	},
-	padding: {
+	paddingTop: {
+		type: 'string',
+		default: 'normal',
+	},
+	paddingBottom: {
 		type: 'string',
 		default: 'normal',
 	},

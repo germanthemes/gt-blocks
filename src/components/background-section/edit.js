@@ -102,7 +102,8 @@ class BackgroundEdit extends Component {
 		const {
 			blockAlignment,
 			contentWidth,
-			padding,
+			paddingTop,
+			paddingBottom,
 			backgroundImageId,
 			backgroundImageUrl,
 			imageOpacity,
@@ -113,7 +114,8 @@ class BackgroundEdit extends Component {
 		const blockId = `gt-container-block-${ instanceId }`;
 
 		const blockClasses = classnames( className, 'gt-background-section', {
-			[ `gt-${ padding }-padding` ]: 'none' !== padding,
+			[ `gt-${ paddingTop }-top-padding` ]: 'none' !== paddingTop,
+			[ `gt-${ paddingBottom }-bottom-padding` ]: 'none' !== paddingBottom,
 			'has-text-color': textColor.color,
 			[ textColor.class ]: textColor.class,
 			'has-background': backgroundColor.color,
@@ -210,12 +212,25 @@ class BackgroundEdit extends Component {
 						) }
 
 						<SelectControl
-							label={ __( 'Padding', 'gt-blocks' ) }
-							value={ padding }
-							onChange={ ( newPadding ) => setAttributes( { padding: newPadding } ) }
+							label={ __( 'Padding Top', 'gt-blocks' ) }
+							value={ paddingTop }
+							onChange={ ( newPadding ) => setAttributes( { paddingTop: newPadding } ) }
 							options={ [
 								{ value: 'none', label: __( 'None', 'gt-blocks' ) },
 								{ value: 'normal', label: __( 'Normal', 'gt-blocks' ) },
+								{ value: 'medium', label: __( 'Medium', 'gt-blocks' ) },
+								{ value: 'large', label: __( 'Large', 'gt-blocks' ) },
+							] }
+						/>
+
+						<SelectControl
+							label={ __( 'Padding Bottom', 'gt-blocks' ) }
+							value={ paddingBottom }
+							onChange={ ( newPadding ) => setAttributes( { paddingBottom: newPadding } ) }
+							options={ [
+								{ value: 'none', label: __( 'None', 'gt-blocks' ) },
+								{ value: 'normal', label: __( 'Normal', 'gt-blocks' ) },
+								{ value: 'medium', label: __( 'Medium', 'gt-blocks' ) },
 								{ value: 'large', label: __( 'Large', 'gt-blocks' ) },
 							] }
 						/>

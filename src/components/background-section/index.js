@@ -25,7 +25,8 @@ class BackgroundSection extends Component {
 		const {
 			blockAlignment,
 			contentWidth,
-			padding,
+			paddingTop,
+			paddingBottom,
 			textColor,
 			backgroundColor,
 			customTextColor,
@@ -42,7 +43,8 @@ class BackgroundSection extends Component {
 
 		const blockClasses = classnames( className, 'gt-background-section', {
 			[ `align${ blockAlignment }` ]: 'default' !== blockAlignment,
-			[ `gt-${ padding }-padding` ]: 'none' !== padding,
+			[ `gt-${ paddingTop }-top-padding` ]: 'none' !== paddingTop,
+			[ `gt-${ paddingBottom }-bottom-padding` ]: 'none' !== paddingBottom,
 			'has-text-color': textColor || customTextColor,
 			[ textColorClass ]: textColorClass,
 			'has-background': backgroundColor || customBackgroundColor,
