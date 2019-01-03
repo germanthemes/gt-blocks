@@ -1,53 +1,6 @@
 .wp-block-gt-blocks-hero-image {
 	margin-bottom: 1.5em;
 
-	.gt-hero-section {
-
-		.wp-block-gt-blocks-content,
-		.wp-block-gt-blocks-image {
-			width: 100%;
-		}
-
-		.wp-block-gt-blocks-content {
-			flex-grow: 0;
-			flex-shrink: 0;
-		}
-
-		.wp-block-gt-blocks-image {
-			flex-grow: 1;
-		}
-
-		/* Center Hero Layout */
-		&.gt-hero-layout-center {
-			display: flex;
-			flex-direction: column;
-			align-items: center;
-
-			.wp-block-gt-blocks-content {
-				order: 2;
-				margin-bottom: 0;
-			}
-
-			.wp-block-gt-blocks-image {
-				order: 1;
-			}
-		}
-
-		/* Vertical Align */
-		&.gt-hero-vertical-align-top {
-			padding-bottom: 150px;
-		}
-
-		&.gt-hero-vertical-align-center {
-			padding-top: 75px;
-			padding-bottom: 75px;
-		}
-
-		&.gt-hero-vertical-align-bottom {
-			padding-top: 150px;
-		}
-	}
-
 	.gt-heading {
 		margin-top: 0;
 		margin-bottom: 1.5rem;
@@ -58,22 +11,19 @@
 	}
 }
 
-@media only screen and (min-width: 480px) {
+@media only screen and (min-width: 560px) {
 	.wp-block-gt-blocks-hero-image .gt-hero-section {
 
 		/* Left & Right Hero Layout */
 		&.gt-hero-layout-left,
 		&.gt-hero-layout-right {
 			display: flex;
+			align-items: center;
 			margin-right: -1.5rem;
 
-			.wp-block-gt-blocks-content {
-				flex-basis: 50%;
-				padding-right: 1.5rem;
-				margin-bottom: 0;
-			}
-
+			.wp-block-gt-blocks-content,
 			.wp-block-gt-blocks-image {
+				width: 50%;
 				padding-right: 1.5rem;
 				margin-bottom: 0;
 			}
@@ -92,20 +42,44 @@
 		}
 
 		/* Hero Content Width */
-		&.gt-hero-content-width-30 .wp-block-gt-blocks-content {
-			flex-basis: 30%;
+		&.gt-hero-content-width-30 {
+			.wp-block-gt-blocks-content {
+				width: 30%;
+			}
+
+			.wp-block-gt-blocks-image {
+				width: 70%;
+			}
 		}
 
-		&.gt-hero-content-width-40 .wp-block-gt-blocks-content {
-			flex-basis: 40%;
+		&.gt-hero-content-width-40 {
+			.wp-block-gt-blocks-content {
+				width: 40%;
+			}
+
+			.wp-block-gt-blocks-image {
+				width: 60%;
+			}
 		}
 
-		&.gt-hero-content-width-60 .wp-block-gt-blocks-content {
-			flex-basis: 60%;
+		&.gt-hero-content-width-60 {
+			.wp-block-gt-blocks-content {
+				width: 60%;
+			}
+
+			.wp-block-gt-blocks-image {
+				width: 40%;
+			}
 		}
 
-		&.gt-hero-content-width-70 .wp-block-gt-blocks-content {
-			flex-basis: 70%;
+		&.gt-hero-content-width-70 {
+			.wp-block-gt-blocks-content {
+				width: 70%;
+			}
+
+			.wp-block-gt-blocks-image {
+				width: 30%;
+			}
 		}
 	}
 }

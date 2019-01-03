@@ -80,13 +80,11 @@ class HeroImageEdit extends Component {
 			heroLayout,
 			heroWidth,
 			heroImage,
-			verticalAlign,
 		} = attributes;
 
 		const heroClasses = classnames( 'gt-hero-section', {
 			[ `gt-hero-layout-${ heroLayout }` ]: heroLayout,
 			[ `gt-hero-content-width-${ heroWidth }` ]: 50 !== heroWidth,
-			[ `gt-hero-vertical-align-${ verticalAlign }` ]: 'none' !== verticalAlign,
 			'gt-has-hero-image': heroImage,
 		} );
 
@@ -108,36 +106,21 @@ class HeroImageEdit extends Component {
 					value={ heroLayout }
 					onChange={ ( newLayout ) => setAttributes( { heroLayout: newLayout } ) }
 					options={ [
-						{ value: 'center', label: __( 'Center', 'gt-blocks' ) },
 						{ value: 'left', label: __( 'Left', 'gt-blocks' ) },
 						{ value: 'right', label: __( 'Right', 'gt-blocks' ) },
 					] }
 				/>
 
-				{ 'center' !== heroLayout && (
-					<SelectControl
-						label={ __( 'Content Width', 'gt-blocks' ) }
-						value={ heroWidth }
-						onChange={ ( newWidth ) => setAttributes( { heroWidth: newWidth } ) }
-						options={ [
-							{ value: '30', label: __( '30%', 'gt-blocks' ) },
-							{ value: '40', label: __( '40%', 'gt-blocks' ) },
-							{ value: '50', label: __( '50%', 'gt-blocks' ) },
-							{ value: '60', label: __( '60%', 'gt-blocks' ) },
-							{ value: '70', label: __( '70%', 'gt-blocks' ) },
-						] }
-					/>
-				) }
-
 				<SelectControl
-					label={ __( 'Vertical Align', 'gt-blocks' ) }
-					value={ verticalAlign }
-					onChange={ ( newAlign ) => setAttributes( { verticalAlign: newAlign } ) }
+					label={ __( 'Content Width', 'gt-blocks' ) }
+					value={ heroWidth }
+					onChange={ ( newWidth ) => setAttributes( { heroWidth: newWidth } ) }
 					options={ [
-						{ value: 'none', label: __( 'None', 'gt-blocks' ) },
-						{ value: 'top', label: __( 'Top', 'gt-blocks' ) },
-						{ value: 'center', label: __( 'Center', 'gt-blocks' ) },
-						{ value: 'bottom', label: __( 'Bottom', 'gt-blocks' ) },
+						{ value: '30', label: __( '30%', 'gt-blocks' ) },
+						{ value: '40', label: __( '40%', 'gt-blocks' ) },
+						{ value: '50', label: __( '50%', 'gt-blocks' ) },
+						{ value: '60', label: __( '60%', 'gt-blocks' ) },
+						{ value: '70', label: __( '70%', 'gt-blocks' ) },
 					] }
 				/>
 

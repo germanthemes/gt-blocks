@@ -45,29 +45,15 @@
 				flex-grow: 1;
 			}
 		}
-
-		&.gt-hero-layout-center > .editor-inner-blocks > .editor-block-list__layout {
-			display: flex;
-			flex-direction: column;
-			align-items: center;
-
-			> .editor-block-list__block[data-type="gt-blocks/content"] {
-				order: 2;
-			}
-			
-			> .editor-block-list__block[data-type="gt-blocks/image"] {
-				order: 1;
-				margin-bottom: 32px;
-			}
-		}
 	}
 }
 
-@media only screen and (min-width: 480px) {
+@media only screen and (min-width: 560px) {
 	.wp-block-gt-blocks-hero-image.gt-background-section .gt-hero-section {
 
 		&.gt-hero-layout-left > .editor-inner-blocks > .editor-block-list__layout {
 			display: flex;
+			align-items: center;
 			justify-content: flex-start;
 
 			> .editor-block-list__block {
@@ -77,6 +63,7 @@
 
 		&.gt-hero-layout-right > .editor-inner-blocks > .editor-block-list__layout {
 			display: flex;
+			align-items: center;
 			justify-content: flex-end;
 
 			> .editor-block-list__block {
