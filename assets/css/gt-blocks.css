@@ -176,6 +176,8 @@
   .wp-block-gt-blocks-hero-image .gt-heading {
     margin-top: 0;
     margin-bottom: 1.5rem; }
+  .wp-block-gt-blocks-hero-image .wp-block-gt-blocks-image {
+    margin-top: 1.5em; }
 
 @media only screen and (min-width: 720px) {
   .wp-block-gt-blocks-hero-image .gt-hero-section {
@@ -192,6 +194,8 @@
       .wp-block-gt-blocks-hero-image .gt-hero-section.gt-hero-layout-right .wp-block-gt-blocks-image {
         width: 50%;
         padding-right: 1.5rem; }
+      .wp-block-gt-blocks-hero-image .gt-hero-section.gt-hero-layout-left .wp-block-gt-blocks-image, .wp-block-gt-blocks-hero-image .gt-hero-section.gt-hero-layout-right .wp-block-gt-blocks-image {
+        margin-top: 0; }
     .wp-block-gt-blocks-hero-image .gt-hero-section.gt-hero-layout-left {
       -ms-flex-pack: start;
           justify-content: flex-start; }
@@ -222,18 +226,10 @@
   padding: 0 2rem;
   /* Padding Top */
   /* Padding Bottom */ }
-  .gt-background-section.gt-normal-top-padding {
-    padding-top: 2rem; }
-  .gt-background-section.gt-medium-top-padding {
-    padding-top: 4rem; }
-  .gt-background-section.gt-large-top-padding {
-    padding-top: 8rem; }
-  .gt-background-section.gt-normal-bottom-padding {
-    padding-bottom: 2rem; }
-  .gt-background-section.gt-medium-bottom-padding {
-    padding-bottom: 4rem; }
-  .gt-background-section.gt-large-bottom-padding {
-    padding-bottom: 8rem; }
+  .gt-background-section.gt-normal-top-padding, .gt-background-section.gt-medium-top-padding, .gt-background-section.gt-large-top-padding {
+    padding-top: 1.5rem; }
+  .gt-background-section.gt-normal-bottom-padding, .gt-background-section.gt-medium-bottom-padding, .gt-background-section.gt-large-bottom-padding {
+    padding-bottom: 1.5rem; }
   .gt-background-section.gt-has-background-image {
     background-size: cover;
     background-repeat: no-repeat;
@@ -263,6 +259,33 @@
       max-width: 880px; }
     .gt-background-section .gt-section-content.gt-full-width {
       max-width: 1040px; }
+
+@media only screen and (min-width: 480px) {
+  .gt-background-section {
+    /* Padding Top */
+    /* Padding Bottom */ }
+    .gt-background-section.gt-normal-top-padding, .gt-background-section.gt-medium-top-padding, .gt-background-section.gt-large-top-padding {
+      padding-top: 2rem; }
+    .gt-background-section.gt-normal-bottom-padding, .gt-background-section.gt-medium-bottom-padding, .gt-background-section.gt-large-bottom-padding {
+      padding-bottom: 2rem; } }
+
+@media only screen and (min-width: 640px) {
+  .gt-background-section {
+    /* Padding Top */
+    /* Padding Bottom */ }
+    .gt-background-section.gt-medium-top-padding, .gt-background-section.gt-large-top-padding {
+      padding-top: 4rem; }
+    .gt-background-section.gt-medium-bottom-padding, .gt-background-section.gt-large-bottom-padding {
+      padding-bottom: 4rem; } }
+
+@media only screen and (min-width: 800px) {
+  .gt-background-section {
+    /* Padding Top */
+    /* Padding Bottom */ }
+    .gt-background-section.gt-large-top-padding {
+      padding-top: 8rem; }
+    .gt-background-section.gt-large-bottom-padding {
+      padding-bottom: 8rem; } }
 .wp-block-gt-blocks-icon {
   margin-bottom: 1.5em; }
   .wp-block-gt-blocks-icon .gt-icon {

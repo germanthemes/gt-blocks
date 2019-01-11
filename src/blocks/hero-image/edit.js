@@ -56,6 +56,7 @@ const TEMPLATE = [
 const getTemplate = memoize( ( heroImage ) => {
 	const content = [ 'gt-blocks/content', {
 		template: TEMPLATE,
+		gtRemoveMarginBottom: true,
 	} ];
 
 	const image = [ 'gt-blocks/image', { gtRemoveMarginBottom: true } ];

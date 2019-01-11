@@ -198,7 +198,7 @@
       -ms-flex-positive: 1;
           flex-grow: 1; }
 
-@media only screen and (min-width: 560px) {
+@media only screen and (min-width: 720px) {
   .wp-block-gt-blocks-hero-image.gt-background-section .gt-hero-section {
     /* Hero Content width */ }
     .wp-block-gt-blocks-hero-image.gt-background-section .gt-hero-section.gt-hero-layout-left > .editor-inner-blocks > .editor-block-list__layout {
