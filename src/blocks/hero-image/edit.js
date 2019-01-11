@@ -42,6 +42,7 @@ const TEMPLATE = [
 	[ 'gt-blocks/multiple-buttons', {
 		customClass: 'gt-buttons-wrapper',
 		buttons: 2,
+		gtRemoveMarginBottom: true,
 	} ],
 ];
 
@@ -57,7 +58,7 @@ const getTemplate = memoize( ( heroImage ) => {
 		template: TEMPLATE,
 	} ];
 
-	const image = [ 'gt-blocks/image', {} ];
+	const image = [ 'gt-blocks/image', { gtRemoveMarginBottom: true } ];
 
 	if ( heroImage ) {
 		return [ content, image ];
