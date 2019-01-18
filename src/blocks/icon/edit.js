@@ -91,7 +91,8 @@ class IconEdit extends Component {
 		};
 
 		const iconClasses = classnames( 'gt-icon', {
-			[ `gt-icon-${ iconLayout }` ]: ( iconLayout !== 'default' ),
+			[ `gt-icon-${ iconLayout }` ]: 'default' !== iconLayout,
+			[ `gt-icon-${ iconPadding }-padding` ]: 'normal' !== iconPadding,
 			'has-text-color': textColor.color,
 			[ textColor.class ]: textColor.class,
 			'has-background': backgroundColor.color,
@@ -105,10 +106,6 @@ class IconEdit extends Component {
 		};
 
 		const paddingStyles = iconLayout === 'default' ? {} : {
-			paddingTop: iconPadding !== 32 ? iconPadding + 'px' : undefined,
-			paddingBottom: iconPadding !== 32 ? iconPadding + 'px' : undefined,
-			paddingLeft: ( iconLayout !== 'full' && iconPadding !== 32 ) ? iconPadding + 'px' : undefined,
-			paddingRight: ( iconLayout !== 'full' && iconPadding !== 32 ) ? iconPadding + 'px' : undefined,
 			borderWidth: ( iconLayout === 'outline' && outlineBorderWidth !== 2 ) ? outlineBorderWidth + 'px' : undefined,
 		};
 
@@ -156,12 +153,16 @@ class IconEdit extends Component {
 						/>
 
 						{ iconLayout !== 'default' && (
-							<RangeControl
+							<SelectControl
 								label={ __( 'Icon Padding', 'gt-blocks' ) }
 								value={ iconPadding }
 								onChange={ ( newPadding ) => setAttributes( { iconPadding: newPadding } ) }
-								min={ 16 }
-								max={ 64 }
+								options={ [
+									{ value: 'small', label: __( 'Small', 'gt-blocks' ) },
+									{ value: 'normal', label: __( 'Normal', 'gt-blocks' ) },
+									{ value: 'medium', label: __( 'Medium', 'gt-blocks' ) },
+									{ value: 'large', label: __( 'Large', 'gt-blocks' ) },
+								] }
 							/>
 						) }
 

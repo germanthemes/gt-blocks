@@ -57,8 +57,8 @@ registerBlockType(
 				default: 'normal',
 			},
 			iconPadding: {
-				type: 'number',
-				default: 32,
+				type: 'string',
+				default: 'normal',
 			},
 			outlineBorderWidth: {
 				type: 'number',
@@ -109,6 +109,7 @@ registerBlockType(
 			const iconClasses = classnames( 'gt-icon', {
 				[ `gt-icon-${ iconLayout }` ]: 'default' !== iconLayout,
 				[ `gt-icon-${ iconSize }` ]: 'normal' !== iconSize,
+				[ `gt-icon-${ iconPadding }-padding` ]: 'normal' !== iconPadding,
 				'has-text-color': textColor || customTextColor,
 				[ textColorClass ]: textColorClass,
 				'has-background': backgroundColor || customBackgroundColor,
@@ -122,10 +123,6 @@ registerBlockType(
 			};
 
 			const paddingStyles = {
-				paddingTop: iconPadding !== 32 ? iconPadding + 'px' : undefined,
-				paddingBottom: iconPadding !== 32 ? iconPadding + 'px' : undefined,
-				paddingLeft: ( iconLayout !== 'default' && iconPadding !== 32 ) ? iconPadding + 'px' : undefined,
-				paddingRight: ( iconLayout !== 'default' && iconPadding !== 32 ) ? iconPadding + 'px' : undefined,
 				borderWidth: ( iconLayout === 'outline' && outlineBorderWidth !== 2 ) ? outlineBorderWidth + 'px' : undefined,
 			};
 

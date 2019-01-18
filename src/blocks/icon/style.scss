@@ -1,6 +1,6 @@
 // containerWidth.
 $padding: 1.25rem;
-$iconPadding: 32px;
+$iconPadding: 32px; // Default padding.
 
 .wp-block-gt-blocks-icon {
 	margin-bottom: 1.5em;
@@ -21,6 +21,7 @@ $iconPadding: 32px;
 			}
 		}
 
+		/* Icon Size */
 		&.gt-icon-small {
 			.gt-icon-svg .icon {
 				width: 16px;
@@ -56,6 +57,7 @@ $iconPadding: 32px;
 			}
 		}
 
+		/* Icon Layout */
 		&.gt-icon-full {
 			display: block;
 			padding: 0 $padding;
@@ -104,6 +106,33 @@ $iconPadding: 32px;
 		&.gt-icon-square:not(.has-background),
 		&.gt-icon-full:not(.has-background) {
 			background-color: rgba(0,0,0,0.1);
+		}
+
+		/* Icon Size */
+		&.gt-icon-small-padding {
+			.gt-icon-svg {
+				padding: 16px;
+			}
+		}
+
+		&.gt-icon-medium-padding {
+			.gt-icon-svg {
+				padding: 48px;
+			}
+		}
+
+		&.gt-icon-large-padding {
+			.gt-icon-svg {
+				padding: 64px;
+			}
+		}
+
+		/* Rest Horizontal Padding for full layout */
+		&.gt-icon-full {
+			.gt-icon-svg {
+				padding-left: 0;
+				padding-right: 0;
+			}
 		}
 	}
 }
