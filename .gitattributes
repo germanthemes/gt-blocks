@@ -1,5 +1,6 @@
 /config export-ignore
 /scripts export-ignore
+/src export-ignore
 .editorconfig export-ignore
 .eslintignore export-ignore
 .eslintrc.json export-ignore

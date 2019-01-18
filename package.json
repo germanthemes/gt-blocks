@@ -4,7 +4,8 @@
   "private": true,
   "scripts": {
     "start": "node scripts/start.js",
-    "build": "node scripts/build.js"
+	"build": "node scripts/build.js",
+	"export": "git archive HEAD -9 --format=zip > ../gt-blocks.zip"
   },
   "dependencies": {
     "autoprefixer": "^7.2.4",
