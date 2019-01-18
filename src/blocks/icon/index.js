@@ -53,8 +53,8 @@ registerBlockType(
 				default: 'default',
 			},
 			iconSize: {
-				type: 'number',
-				default: 32,
+				type: 'string',
+				default: 'normal',
 			},
 			iconPadding: {
 				type: 'number',
@@ -107,7 +107,8 @@ registerBlockType(
 			};
 
 			const iconClasses = classnames( 'gt-icon', {
-				[ `gt-icon-${ iconLayout }` ]: ( iconLayout !== 'default' ),
+				[ `gt-icon-${ iconLayout }` ]: 'default' !== iconLayout,
+				[ `gt-icon-${ iconSize }` ]: 'normal' !== iconSize,
 				'has-text-color': textColor || customTextColor,
 				[ textColorClass ]: textColorClass,
 				'has-background': backgroundColor || customBackgroundColor,
@@ -128,11 +129,6 @@ registerBlockType(
 				borderWidth: ( iconLayout === 'outline' && outlineBorderWidth !== 2 ) ? outlineBorderWidth + 'px' : undefined,
 			};
 
-			const svgStyles = {
-				width: iconSize !== 32 ? iconSize + 'px' : undefined,
-				height: iconSize !== 32 ? iconSize + 'px' : undefined,
-			};
-
 			const pluginURL = select( 'gt-blocks-store' ).getPluginURL();
 			const svgURL = pluginURL + 'assets/icons/fontawesome.svg#' + icon;
 			const svgClass = classnames( 'icon', `icon-${ icon }` );
@@ -142,7 +138,7 @@ registerBlockType(
 					<div className={ iconClasses } style={ iconStyles }>
 
 						<span className="gt-icon-svg" style={ paddingStyles } data-icon={ icon }>
-							<svg className={ svgClass } style={ svgStyles } aria-hidden="true" role="img">
+							<svg className={ svgClass } aria-hidden="true" role="img">
 								<use href={ svgURL }></use>
 							</svg>
 						</span>

@@ -40,6 +40,28 @@ import { default as IconPicker } from '../../components/icon-picker';
  * Block Edit Component
  */
 class IconEdit extends Component {
+	getIconSizeInPixel( sizeStr ) {
+		switch ( sizeStr ) {
+			case 'small': {
+				return 16;
+			}
+			case 'medium': {
+				return 48;
+			}
+			case 'large': {
+				return 64;
+			}
+			case 'extra-large': {
+				return 96;
+			}
+			case 'huge': {
+				return 128;
+			}
+		}
+
+		return 32;
+	}
+
 	render() {
 		const {
 			attributes,
@@ -119,12 +141,18 @@ class IconEdit extends Component {
 							] }
 						/>
 
-						<RangeControl
+						<SelectControl
 							label={ __( 'Icon Size', 'gt-blocks' ) }
 							value={ iconSize }
 							onChange={ ( newSize ) => setAttributes( { iconSize: newSize } ) }
-							min={ 16 }
-							max={ 128 }
+							options={ [
+								{ value: 'small', label: __( 'Small', 'gt-blocks' ) },
+								{ value: 'normal', label: __( 'Normal', 'gt-blocks' ) },
+								{ value: 'medium', label: __( 'Medium', 'gt-blocks' ) },
+								{ value: 'large', label: __( 'Large', 'gt-blocks' ) },
+								{ value: 'extra-large', label: __( 'Extra Large', 'gt-blocks' ) },
+								{ value: 'huge', label: __( 'Huge', 'gt-blocks' ) },
+							] }
 						/>
 
 						{ iconLayout !== 'default' && (
@@ -182,7 +210,7 @@ class IconEdit extends Component {
 								fallbackTextColor,
 								fallbackBackgroundColor,
 							} }
-							fontSize={ iconSize }
+							fontSize={ 32 }
 						/>
 					</PanelColorSettings>
 
@@ -193,7 +221,7 @@ class IconEdit extends Component {
 						icon={ icon }
 						iconClasses={ iconClasses }
 						iconStyles={ iconStyles }
-						iconSize={ iconSize }
+						iconSize={ this.getIconSizeInPixel( iconSize ) }
 						paddingStyles={ paddingStyles }
 						isSelected={ isSelected }
 						onChange={ ( newIcon ) => setAttributes( { icon: newIcon } ) }

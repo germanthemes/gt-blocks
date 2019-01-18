@@ -21,6 +21,41 @@ $iconPadding: 32px;
 			}
 		}
 
+		&.gt-icon-small {
+			.gt-icon-svg .icon {
+				width: 16px;
+				height: 16px;
+			}
+		}
+
+		&.gt-icon-medium {
+			.gt-icon-svg .icon {
+				width: 48px;
+				height: 48px;
+			}
+		}
+
+		&.gt-icon-large {
+			.gt-icon-svg .icon {
+				width: 64px;
+				height: 64px;
+			}
+		}
+
+		&.gt-icon-extra-large {
+			.gt-icon-svg .icon {
+				width: 96px;
+				height: 96px;
+			}
+		}
+
+		&.gt-icon-huge {
+			.gt-icon-svg .icon {
+				width: 128px;
+				height: 128px;
+			}
+		}
+
 		&.gt-icon-full {
 			display: block;
 			padding: 0 $padding;
