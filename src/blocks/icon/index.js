@@ -64,10 +64,6 @@ registerBlockType(
 				type: 'string',
 				default: 'normal',
 			},
-			roundedCorners: {
-				type: 'number',
-				default: 0,
-			},
 			textColor: {
 				type: 'string',
 			},
@@ -92,7 +88,6 @@ registerBlockType(
 				iconSize,
 				iconPadding,
 				borderWidth,
-				roundedCorners,
 				textColor,
 				backgroundColor,
 				customTextColor,
@@ -109,7 +104,7 @@ registerBlockType(
 			const iconClasses = classnames( 'gt-icon', {
 				[ `gt-icon-${ iconLayout }` ]: 'default' !== iconLayout,
 				[ `gt-icon-${ iconSize }` ]: 'normal' !== iconSize,
-				[ `gt-icon-${ iconPadding }-padding` ]: 'normal' !== iconPadding,
+				[ `gt-icon-${ iconPadding }-padding` ]: 'normal' !== iconPadding && 'default' !== iconLayout,
 				[ `gt-icon-${ borderWidth }-border` ]: 'normal' !== borderWidth && 'outline' === iconLayout,
 				'has-text-color': textColor || customTextColor,
 				[ textColorClass ]: textColorClass,
@@ -120,7 +115,6 @@ registerBlockType(
 			const iconStyles = {
 				color: textColorClass ? undefined : customTextColor,
 				backgroundColor: backgroundClass ? undefined : customBackgroundColor,
-				borderRadius: ( iconLayout === 'square' && roundedCorners !== 0 ) ? roundedCorners + 'px' : undefined,
 			};
 
 			const pluginURL = select( 'gt-blocks-store' ).getPluginURL();

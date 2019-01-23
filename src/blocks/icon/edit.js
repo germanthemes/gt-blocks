@@ -83,7 +83,6 @@ class IconEdit extends Component {
 			iconSize,
 			iconPadding,
 			borderWidth,
-			roundedCorners,
 		} = attributes;
 
 		const blockStyles = {
@@ -92,7 +91,7 @@ class IconEdit extends Component {
 
 		const iconClasses = classnames( 'gt-icon', {
 			[ `gt-icon-${ iconLayout }` ]: 'default' !== iconLayout,
-			[ `gt-icon-${ iconPadding }-padding` ]: 'normal' !== iconPadding,
+			[ `gt-icon-${ iconPadding }-padding` ]: 'normal' !== iconPadding && 'default' !== iconLayout,
 			[ `gt-icon-${ borderWidth }-border` ]: 'normal' !== borderWidth && 'outline' === iconLayout,
 			'has-text-color': textColor.color,
 			[ textColor.class ]: textColor.class,
@@ -103,7 +102,6 @@ class IconEdit extends Component {
 		const iconStyles = {
 			color: textColor.class ? undefined : textColor.color,
 			backgroundColor: backgroundColor.class ? undefined : backgroundColor.color,
-			borderRadius: ( iconLayout === 'square' && roundedCorners !== 0 ) ? roundedCorners + 'px' : undefined,
 		};
 
 		return (
@@ -128,9 +126,10 @@ class IconEdit extends Component {
 							onChange={ ( newStyle ) => setAttributes( { iconLayout: newStyle } ) }
 							options={ [
 								{ value: 'default', label: __( 'Default', 'gt-blocks' ) },
-								{ value: 'circle', label: __( 'Circle', 'gt-blocks' ) },
+								{ value: 'circular', label: __( 'Circular', 'gt-blocks' ) },
 								{ value: 'outline', label: __( 'Outline', 'gt-blocks' ) },
 								{ value: 'square', label: __( 'Square', 'gt-blocks' ) },
+								{ value: 'rounded', label: __( 'Rounded', 'gt-blocks' ) },
 								{ value: 'full', label: __( 'Full', 'gt-blocks' ) },
 							] }
 						/>
@@ -173,16 +172,6 @@ class IconEdit extends Component {
 									{ value: 'normal', label: __( 'Normal', 'gt-blocks' ) },
 									{ value: 'thick', label: __( 'Thick', 'gt-blocks' ) },
 								] }
-							/>
-						) }
-
-						{ iconLayout === 'square' && (
-							<RangeControl
-								label={ __( 'Rounded Corners', 'gt-blocks' ) }
-								value={ roundedCorners }
-								onChange={ ( newRadius ) => setAttributes( { roundedCorners: newRadius } ) }
-								min={ 0 }
-								max={ 48 }
 							/>
 						) }
 
