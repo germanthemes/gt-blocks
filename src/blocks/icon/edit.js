@@ -82,7 +82,7 @@ class IconEdit extends Component {
 			iconLayout,
 			iconSize,
 			iconPadding,
-			outlineBorderWidth,
+			borderWidth,
 			roundedCorners,
 		} = attributes;
 
@@ -93,6 +93,7 @@ class IconEdit extends Component {
 		const iconClasses = classnames( 'gt-icon', {
 			[ `gt-icon-${ iconLayout }` ]: 'default' !== iconLayout,
 			[ `gt-icon-${ iconPadding }-padding` ]: 'normal' !== iconPadding,
+			[ `gt-icon-${ borderWidth }-border` ]: 'normal' !== borderWidth && 'outline' === iconLayout,
 			'has-text-color': textColor.color,
 			[ textColor.class ]: textColor.class,
 			'has-background': backgroundColor.color,
@@ -103,10 +104,6 @@ class IconEdit extends Component {
 			color: textColor.class ? undefined : textColor.color,
 			backgroundColor: backgroundColor.class ? undefined : backgroundColor.color,
 			borderRadius: ( iconLayout === 'square' && roundedCorners !== 0 ) ? roundedCorners + 'px' : undefined,
-		};
-
-		const paddingStyles = iconLayout === 'default' ? {} : {
-			borderWidth: ( iconLayout === 'outline' && outlineBorderWidth !== 2 ) ? outlineBorderWidth + 'px' : undefined,
 		};
 
 		return (
@@ -166,13 +163,16 @@ class IconEdit extends Component {
 							/>
 						) }
 
-						{ iconLayout === 'outline' && (
-							<RangeControl
+						{ 'outline' === iconLayout && (
+							<SelectControl
 								label={ __( 'Border Width', 'gt-blocks' ) }
-								value={ outlineBorderWidth }
-								onChange={ ( newWidth ) => setAttributes( { outlineBorderWidth: newWidth } ) }
-								min={ 1 }
-								max={ 12 }
+								value={ borderWidth }
+								onChange={ ( newWidth ) => setAttributes( { borderWidth: newWidth } ) }
+								options={ [
+									{ value: 'thin', label: __( 'Thin', 'gt-blocks' ) },
+									{ value: 'normal', label: __( 'Normal', 'gt-blocks' ) },
+									{ value: 'thick', label: __( 'Thick', 'gt-blocks' ) },
+								] }
 							/>
 						) }
 
@@ -223,7 +223,6 @@ class IconEdit extends Component {
 						iconClasses={ iconClasses }
 						iconStyles={ iconStyles }
 						iconSize={ this.getIconSizeInPixel( iconSize ) }
-						paddingStyles={ paddingStyles }
 						isSelected={ isSelected }
 						onChange={ ( newIcon ) => setAttributes( { icon: newIcon } ) }
 					/>
