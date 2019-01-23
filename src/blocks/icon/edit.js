@@ -26,7 +26,6 @@ const {
 
 const {
 	PanelBody,
-	RangeControl,
 	SelectControl,
 	withFallbackStyles,
 } = wp.components;

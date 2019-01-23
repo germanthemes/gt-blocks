@@ -1,18 +1,22 @@
 .gt-background-section {
 	position: relative;
-	padding: 0 2rem;
+	padding: 0 1.5rem;
 
 	/* Padding Top */
+	&.gt-small-top-padding,
 	&.gt-normal-top-padding,
 	&.gt-medium-top-padding,
-	&.gt-large-top-padding {
+	&.gt-large-top-padding,
+	&.gt-extra-large-top-padding {
 		padding-top: 1.5rem;
 	}
 
 	/* Padding Bottom */
+	&.gt-small-bottom-padding,
 	&.gt-normal-bottom-padding,
 	&.gt-medium-bottom-padding,
-	&.gt-large-bottom-padding {
+	&.gt-large-bottom-padding,
+	&.gt-extra-large-bottom-padding {
 		padding-bottom: 1.5rem;
 	}
 
@@ -66,21 +70,45 @@
 	}
 }
 
-@media only screen and (min-width: 480px) {
+@media only screen and (min-width: 320px) {
 	.gt-background-section {
+		padding: 0 2rem;
 
 		/* Padding Top */
 		&.gt-normal-top-padding,
 		&.gt-medium-top-padding,
-		&.gt-large-top-padding {
+		&.gt-large-top-padding,
+		&.gt-extra-large-top-padding {
 			padding-top: 2rem;
 		}
 
 		/* Padding Bottom */
 		&.gt-normal-bottom-padding,
 		&.gt-medium-bottom-padding,
-		&.gt-large-bottom-padding {
+		&.gt-large-bottom-padding,
+		&.gt-extra-large-bottom-padding {
 			padding-bottom: 2rem;
+		}
+	}
+}
+
+@media only screen and (min-width: 480px) {
+	.gt-background-section {
+
+		/* Padding Top */
+		&.gt-normal-top-padding,
+		&.gt-medium-top-padding,
+		&.gt-large-top-padding,
+		&.gt-extra-large-top-padding {
+			padding-top: 3rem;
+		}
+
+		/* Padding Bottom */
+		&.gt-normal-bottom-padding,
+		&.gt-medium-bottom-padding,
+		&.gt-large-bottom-padding,
+		&.gt-extra-large-bottom-padding {
+			padding-bottom: 3rem;
 		}
 	}
 }
@@ -90,14 +118,16 @@
 
 		/* Padding Top */
 		&.gt-medium-top-padding,
-		&.gt-large-top-padding {
-			padding-top: 4rem;
+		&.gt-large-top-padding,
+		&.gt-extra-large-top-padding {
+			padding-top: 5rem;
 		}
 
 		/* Padding Bottom */
 		&.gt-medium-bottom-padding,
-		&.gt-large-bottom-padding {
-			padding-bottom: 4rem;
+		&.gt-large-bottom-padding,
+		&.gt-extra-large-bottom-padding {
+			padding-bottom: 5rem;
 		}
 	}
 }
@@ -106,13 +136,30 @@
 	.gt-background-section {
 
 		/* Padding Top */
-		&.gt-large-top-padding {
+		&.gt-large-top-padding,
+		&.gt-extra-large-top-padding {
 			padding-top: 8rem;
 		}
 
 		/* Padding Bottom */
-		&.gt-large-bottom-padding {
+		&.gt-large-bottom-padding,
+		&.gt-extra-large-bottom-padding {
 			padding-bottom: 8rem;
+		}
+	}
+}
+
+@media only screen and (min-width: 960px) {
+	.gt-background-section {
+
+		/* Padding Top */
+		&.gt-extra-large-top-padding {
+			padding-top: 13rem;
+		}
+
+		/* Padding Bottom */
+		&.gt-extra-large-bottom-padding {
+			padding-bottom: 13rem;
 		}
 	}
 }

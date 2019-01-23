@@ -1,19 +1,7 @@
 .gt-background-section {
 
-	/* Padding Bottom */
-	&.gt-normal-bottom-padding {
-		padding-bottom: calc( 2rem - 30px );
-	}
-
-	&.gt-medium-bottom-padding {
-		padding-bottom: calc( 4rem - 30px );
-	}
-
-	&.gt-large-bottom-padding {
-		padding-bottom: calc( 8rem - 30px );
-	}
-
 	.gt-section-content {
+		margin-bottom: -30px;
 
 		> .editor-inner-blocks > .editor-block-list__layout > .editor-block-list__block:first-child > .editor-block-list__block-edit {
 			margin-top: 0;

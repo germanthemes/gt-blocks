@@ -217,9 +217,11 @@ class BackgroundEdit extends Component {
 							onChange={ ( newPadding ) => setAttributes( { paddingTop: newPadding } ) }
 							options={ [
 								{ value: 'none', label: __( 'None', 'gt-blocks' ) },
+								{ value: 'small', label: __( 'Small', 'gt-blocks' ) },
 								{ value: 'normal', label: __( 'Normal', 'gt-blocks' ) },
 								{ value: 'medium', label: __( 'Medium', 'gt-blocks' ) },
 								{ value: 'large', label: __( 'Large', 'gt-blocks' ) },
+								{ value: 'extra-large', label: __( 'Extra Large', 'gt-blocks' ) },
 							] }
 						/>
 
@@ -229,9 +231,11 @@ class BackgroundEdit extends Component {
 							onChange={ ( newPadding ) => setAttributes( { paddingBottom: newPadding } ) }
 							options={ [
 								{ value: 'none', label: __( 'None', 'gt-blocks' ) },
+								{ value: 'small', label: __( 'Small', 'gt-blocks' ) },
 								{ value: 'normal', label: __( 'Normal', 'gt-blocks' ) },
 								{ value: 'medium', label: __( 'Medium', 'gt-blocks' ) },
 								{ value: 'large', label: __( 'Large', 'gt-blocks' ) },
+								{ value: 'extra-large', label: __( 'Extra Large', 'gt-blocks' ) },
 							] }
 						/>
 
