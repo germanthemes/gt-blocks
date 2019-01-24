@@ -153,7 +153,6 @@ class GT_Blocks {
 			'wp-element',
 			'wp-components',
 			'wp-editor',
-			'wp-dom-ready',
 		), GT_BLOCKS_VERSION );
 
 		// Transfer Data from PHP to GT Blocks Redux Store.
@@ -174,6 +173,30 @@ class GT_Blocks {
 	 *
 	 * @return $script Data Dispatch code.
 	 */
+	static function get_dispatch_data() {
+		$script = '';
+
+		// Get Plugin Settings.
+		$instance = GT_Blocks_Settings::instance();
+		$options  = $instance->get_all();
+
+		// Allow plugins to filter options.
+		$plugin_options = apply_filters( 'gt_blocks_editor_plugin_options', $options );
+
+		// Add Plugin Options.
+		$script .= sprintf( 'wp.data.dispatch( "gt-blocks-store" ).setPluginOptions( %s );', wp_json_encode( $plugin_options ) );
+
+		// Add Plugin URL.
+		$script .= sprintf( 'wp.data.dispatch( "gt-blocks-store" ).setPluginURL( %s );', wp_json_encode( GT_BLOCKS_PLUGIN_URL ) );
+
+		return $script;
+	}
+
+	/**
+	 * Retrieve enabled and disabled blocks.
+	 *
+	 * @return $blocks Block options..
+	 */
 	static function get_block_options() {
 		// Get Plugin Settings.
 		$instance = GT_Blocks_Settings::instance();
@@ -187,23 +210,6 @@ class GT_Blocks {
 		);
 
 		return $block_options;
-	}
-
-	/**
-	 * Generate Code to dispatch data from PHP to Redux store.
-	 *
-	 * @return $script Data Dispatch code.
-	 */
-	static function get_dispatch_data() {
-		$script = '';
-
-		// Add Plugin Options.
-		$script .= sprintf( 'wp.data.dispatch( "gt-blocks-store" ).setPluginOptions( %s );', wp_json_encode( self::get_block_options() ) );
-
-		// Add Plugin URL.
-		$script .= sprintf( 'wp.data.dispatch( "gt-blocks-store" ).setPluginURL( %s );', wp_json_encode( GT_BLOCKS_PLUGIN_URL ) );
-
-		return $script;
 	}
 
 	/**
