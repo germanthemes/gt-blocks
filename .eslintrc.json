@@ -25,6 +25,7 @@
 		"wpApiSettings": true,
 		"window": true,
 		"document": true,
+		"lodash": true,
 		"gtEnabledBlocks": true
 	},
 	"plugins": ["react", "jsx-a11y", "jest"],

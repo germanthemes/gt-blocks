@@ -1,7 +1,7 @@
 /**
  * External dependencies
  */
-const { assign } = window.lodash;
+const { assign } = lodash;
 
 /**
  * WordPress dependencies

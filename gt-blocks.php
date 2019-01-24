@@ -153,6 +153,7 @@ class GT_Blocks {
 			'wp-element',
 			'wp-components',
 			'wp-editor',
+			'lodash',
 		), GT_BLOCKS_VERSION );
 
 		// Transfer Data from PHP to GT Blocks Redux Store.

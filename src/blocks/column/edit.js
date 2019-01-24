@@ -3,7 +3,7 @@
  */
 import classnames from 'classnames';
 const { getComputedStyle } = window;
-const { partial, castArray, last } = window.lodash;
+const { partial, castArray, last } = lodash;
 
 /**
  * WordPress dependencies

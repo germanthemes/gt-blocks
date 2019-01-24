@@ -144,7 +144,8 @@ module.exports = {
 	// stats: 'errors-only',
 	// Add externals.
 	externals: {
-		'react': 'React',
+		react: 'React',
 		'react-dom': 'ReactDOM',
+		lodash: 'lodash',
 	},
 };

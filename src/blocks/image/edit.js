@@ -6,7 +6,7 @@ const {
 	isEmpty,
 	map,
 	get,
-} = window.lodash;
+} = lodash;
 
 /**
  * WordPress dependencies

@@ -1,9 +1,4 @@
 /**
- * External dependencies
- */
-const { assign } = window.lodash;
-
-/**
  * WordPress dependencies
  */
 const { createHigherOrderComponent } = wp.compose;

@@ -3,7 +3,7 @@
  */
 import classnames from 'classnames';
 import memoize from 'memize';
-const { times } = window.lodash;
+const { times } = lodash;
 
 /**
  * WordPress dependencies
