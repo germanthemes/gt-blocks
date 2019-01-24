@@ -2,6 +2,7 @@
  * Import Plugins
  */
 import './plugins/data-store';
+import './plugins/deactivate-blocks';
 import './plugins/margin-bottom';
 import './plugins/synchronize-styling';
 import './plugins/section-insert';

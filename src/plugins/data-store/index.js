@@ -2,10 +2,16 @@ const { registerStore } = wp.data;
 
 const DEFAULT_STATE = {
 	pluginURL: '',
-	contentWidth: 0,
+	pluginOptions: {},
 };
 
 const actions = {
+	setPluginOptions( pluginOptions ) {
+		return {
+			type: 'SET_PLUGIN_OPTIONS',
+			pluginOptions,
+		};
+	},
 	setPluginURL( pluginURL ) {
 		return {
 			type: 'SET_PLUGIN_URL',
@@ -17,6 +23,12 @@ const actions = {
 registerStore( 'gt-blocks-store', {
 	reducer( state = DEFAULT_STATE, action ) {
 		switch ( action.type ) {
+			case 'SET_PLUGIN_OPTIONS':
+				return {
+					...state,
+					pluginOptions: action.pluginOptions,
+				};
+
 			case 'SET_PLUGIN_URL':
 				return {
 					...state,
@@ -30,6 +42,10 @@ registerStore( 'gt-blocks-store', {
 	actions,
 
 	selectors: {
+		getPluginOptions( state ) {
+			const { pluginOptions } = state;
+			return pluginOptions;
+		},
 		getPluginURL( state ) {
 			const { pluginURL } = state;
 			return pluginURL;

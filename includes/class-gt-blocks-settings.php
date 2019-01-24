@@ -262,9 +262,9 @@ class GT_Blocks_Settings {
 				'type'    => 'multicheck',
 				'default' => true,
 				'options' => array(
-					'gt_button_block'  => esc_html__( 'GT Button', 'gt-blocks' ),
-					'gt_heading_block' => esc_html__( 'GT Heading', 'gt-blocks' ),
-					'gt_icon_block'    => esc_html__( 'GT Icon', 'gt-blocks' ),
+					'gt-blocks/button'  => esc_html__( 'GT Button', 'gt-blocks' ),
+					'gt-blocks/heading' => esc_html__( 'GT Heading', 'gt-blocks' ),
+					'gt-blocks/icon'    => esc_html__( 'GT Icon', 'gt-blocks' ),
 				),
 			),
 			'layout_blocks' => array(
@@ -273,9 +273,9 @@ class GT_Blocks_Settings {
 				'type'    => 'multicheck',
 				'default' => true,
 				'options' => array(
-					'gt_hero_image_block'       => esc_html__( 'GT Hero Image', 'gt-blocks' ),
-					'gt_multiple_buttons_block' => esc_html__( 'GT Multiple Buttons', 'gt-blocks' ),
-					'gt_section_block'          => esc_html__( 'GT Section', 'gt-blocks' ),
+					'gt-blocks/hero-image'       => esc_html__( 'GT Hero Image', 'gt-blocks' ),
+					'gt-blocks/multiple-buttons' => esc_html__( 'GT Multiple Buttons', 'gt-blocks' ),
+					'gt-blocks/section'          => esc_html__( 'GT Section', 'gt-blocks' ),
 				),
 			),
 			'grid_blocks' => array(
@@ -284,9 +284,9 @@ class GT_Blocks_Settings {
 				'type'    => 'multicheck',
 				'default' => true,
 				'options' => array(
-					'gt_features_block'    => esc_html__( 'GT Features', 'gt-blocks' ),
-					'gt_grid_layout_block' => esc_html__( 'GT Grid Layout', 'gt-blocks' ),
-					'gt_portfolio_block'   => esc_html__( 'GT Portfolio', 'gt-blocks' ),
+					'gt-blocks/features'    => esc_html__( 'GT Features', 'gt-blocks' ),
+					'gt-blocks/grid-layout' => esc_html__( 'GT Grid Layout', 'gt-blocks' ),
+					'gt-blocks/portfolio'   => esc_html__( 'GT Portfolio', 'gt-blocks' ),
 				),
 			),
 			'image_sizes' => array(

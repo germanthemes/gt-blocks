@@ -146,23 +146,52 @@ class GT_Blocks {
 	 * @return void
 	 */
 	static function enqueue_block_editor_scripts() {
+		// Enqueue GT Blocks in Gutenberg.
 		wp_enqueue_script( 'gt-blocks-editor', GT_BLOCKS_PLUGIN_URL . 'assets/js/gt-blocks-editor.js', array(
 			'wp-blocks',
 			'wp-i18n',
 			'wp-element',
 			'wp-components',
 			'wp-editor',
+			'wp-dom-ready',
 		), GT_BLOCKS_VERSION );
 
-		wp_add_inline_script(
-			'gt-blocks-editor',
-			sprintf( 'wp.data.dispatch( "gt-blocks-store" ).setPluginURL( %s );', wp_json_encode( GT_BLOCKS_PLUGIN_URL ) ),
-			'after'
-		);
+		// Transfer Data from PHP to GT Blocks Redux Store.
+		wp_add_inline_script( 'gt-blocks-editor', self::get_dispatch_data(), 'after' );
 
+		// Load javascript translation files.
 		wp_set_script_translations( 'gt-blocks-editor', 'gt-blocks', GT_BLOCKS_PLUGIN_DIR . 'languages/js' );
 
+		// Enqueue Editor Stylesheet for GT Blocks.
 		wp_enqueue_style( 'gt-blocks-editor', GT_BLOCKS_PLUGIN_URL . 'assets/css/gt-blocks-editor.css', array( 'wp-edit-blocks', 'gt-blocks' ), GT_BLOCKS_VERSION );
+	}
+
+	/**
+	 * Generate Code to dispatch data from PHP to Redux store.
+	 *
+	 * @return $script Data Dispatch code.
+	 */
+	static function get_dispatch_data() {
+		$script = '';
+
+		// Get Plugin Settings.
+		$instance = GT_Blocks_Settings::instance();
+		$options  = $instance->get_all();
+
+		// Retrieve block options.
+		$block_options = array_merge(
+			$options['basic_blocks'],
+			$options['layout_blocks'],
+			$options['grid_blocks']
+		);
+
+		// Add Plugin Options.
+		$script .= sprintf( 'wp.data.dispatch( "gt-blocks-store" ).setPluginOptions( %s );', wp_json_encode( $block_options ) );
+
+		// Add Plugin URL.
+		$script .= sprintf( 'wp.data.dispatch( "gt-blocks-store" ).setPluginURL( %s );', wp_json_encode( GT_BLOCKS_PLUGIN_URL ) );
+
+		return $script;
 	}
 
 	/**
@@ -171,7 +200,7 @@ class GT_Blocks {
 	 * @return void
 	 */
 	static function add_image_sizes() {
-		// Get Settings.
+		// Get Plugin Settings.
 		$instance = GT_Blocks_Settings::instance();
 		$options  = $instance->get_all();
 
