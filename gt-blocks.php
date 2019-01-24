@@ -177,16 +177,6 @@ class GT_Blocks {
 	static function get_dispatch_data() {
 		$script = '';
 
-		// Get Plugin Settings.
-		$instance = GT_Blocks_Settings::instance();
-		$options  = $instance->get_all();
-
-		// Allow plugins to filter options.
-		$plugin_options = apply_filters( 'gt_blocks_editor_plugin_options', $options );
-
-		// Add Plugin Options.
-		$script .= sprintf( 'wp.data.dispatch( "gt-blocks-store" ).setPluginOptions( %s );', wp_json_encode( $plugin_options ) );
-
 		// Add Plugin URL.
 		$script .= sprintf( 'wp.data.dispatch( "gt-blocks-store" ).setPluginURL( %s );', wp_json_encode( GT_BLOCKS_PLUGIN_URL ) );
 
