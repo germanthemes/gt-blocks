@@ -34,6 +34,20 @@
 	}
 }
 
+@media only screen and (min-width: 800px) {
+	.gt-columns-2,
+	.gt-columns-3,
+	.gt-columns-4,
+	.gt-columns-5,
+	.gt-columns-6 {
+		margin-right: -2em;
+
+		.wp-block-gt-blocks-column {
+			padding-right: 2em;
+		}
+	}
+}
+
 @media only screen and (min-width: 960px) {
 	.gt-columns-4 .wp-block-gt-blocks-column {
 		width: 25%;
