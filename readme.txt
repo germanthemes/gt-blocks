@@ -29,3 +29,11 @@ Mit unseren flexiblen und innovativen Blocks für den neuen WordPress Editor ers
 = Dokumentation =
 
 https://germanthemes.de/docs/gt-blocks-dokumentation/
+
+== Ressources ==
+
+GT Blocks bundles the following third-party resources:
+
+1. Font Awesome - http://fontawesome.io/
+License: Distributed under the terms of the SIL OFL 1.1 (scripts.sil.org/OFL)
+Copyright: 2017 Dave Gandy, http://fontawesome.io/
