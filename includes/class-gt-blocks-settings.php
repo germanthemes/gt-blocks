@@ -324,7 +324,7 @@ class GT_Blocks_Settings {
 	 * Renders checkboxes.
 	 *
 	 * @param array $args Arguments passed by the setting
-	 * @global $this->options Array of all the ThemeZee Social Sharing Options
+	 * @global $this->options Array of all options
 	 * @return void
 	 */
 	function checkbox_callback( $args ) {
@@ -343,7 +343,7 @@ class GT_Blocks_Settings {
 	 * Renders multiple checkboxes.
 	 *
 	 * @param array $args Arguments passed by the setting
-	 * @global $this->options Array of all the ThemeZee Social Sharing Options
+	 * @global $this->options Array of all options
 	 * @return void
 	 */
 	function multicheck_callback( $args ) {

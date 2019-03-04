@@ -2,7 +2,7 @@
 /*
 Plugin Name: GT Blocks
 Plugin URI: https://germanthemes.de/blocks/
-Description: Page Building Blocks
+Description: Mit unseren flexiblen und innovativen Blocks für den neuen WordPress Editor erstellst du komplexe Layouts für deine Business-Website in wenigen Minuten.
 Author: GermanThemes
 Author URI: https://germanthemes.de/
 Version: 0.5
@@ -12,7 +12,7 @@ License: GNU General Public License v2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
 GT Blocks
-Copyright(C) 2018, germanthemes.de - support@germanthemes.de
+Copyright(C) 2019, germanthemes.de - support@germanthemes.de
 */
 
 // Exit if accessed directly.
