@@ -70,10 +70,10 @@ class GT_Blocks {
 		define( 'GT_BLOCKS_PLUGIN_FILE', __FILE__ );
 
 		// Define Product ID.
-		define( 'GT_BLOCKS_PRODUCT_ID', 171494 );
+		define( 'GT_BLOCKS_PRODUCT_ID', 338 );
 
 		// Define Update API URL.
-		define( 'GT_BLOCKS_STORE_API_URL', 'https://themezee.com' );
+		define( 'GT_BLOCKS_STORE_API_URL', 'https://germanthemes.de' );
 	}
 
 	/**
