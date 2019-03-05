@@ -86,3 +86,18 @@
 		}
 	}
 }
+
+@media only screen and (min-width: 1040px) {
+	.wp-block-gt-blocks-hero-image .gt-hero-section {
+
+		&.gt-hero-layout-left,
+		&.gt-hero-layout-right {
+			margin-right: -2rem;
+
+			.wp-block-gt-blocks-content,
+			.wp-block-gt-blocks-image {
+				padding-right: 2rem;
+			}
+		}
+	}
+}
