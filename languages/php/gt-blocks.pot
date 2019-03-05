@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: GT Blocks\n"
 "Report-Msgid-Bugs-To: https://themezee.com/\n"
-"POT-Creation-Date: 2018-12-08 17:27+0100\n"
+"POT-Creation-Date: 2019-03-05 09:43+0100\n"
 "PO-Revision-Date: 2015-12-29 14:54+0100\n"
 "Last-Translator: \n"
 "Language-Team: GT Blocks<support@germanthemes.de>\n"
@@ -11,7 +11,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 2.2\n"
+"X-Generator: Poedit 2.2.1\n"
 "X-Poedit-KeywordsList: __;_e;_x:1,2c;_ex:1,2c;_n:1,2;_nx:1,2,4c;_n_noop:1,2;"
 "_nx_noop:1,2,3c;esc_attr__;esc_html__;esc_attr_e;esc_html_e;esc_attr_x:1,2c;"
 "esc_html_x:1,2c\n"
@@ -20,7 +20,184 @@ msgstr ""
 "X-Poedit-Basepath: ../..\n"
 "X-Textdomain-Support: yes\n"
 "X-Poedit-SearchPath-0: gt-blocks.php\n"
+"X-Poedit-SearchPath-1: includes\n"
 
-#: gt-blocks.php:173
+#: gt-blocks.php:244 includes/class-gt-blocks-settings-page.php:38
+#: includes/class-gt-blocks-settings-page.php:39
+#: includes/class-gt-blocks-settings-page.php:57
 msgid "GT Blocks"
+msgstr ""
+
+#: gt-blocks.php:272
+#, php-format
+msgid ""
+"Please activate your license key for GT Blocks in order to receive updates "
+"and support. <a href=\"%s\">Activate License</a>"
+msgstr ""
+
+#: includes/class-gt-blocks-plugin-updater.php:202
+#, php-format
+msgid ""
+"There is a new version of %1$s available. %2$sView version %3$s details%4$s."
+msgstr ""
+
+#: includes/class-gt-blocks-plugin-updater.php:210
+#, php-format
+msgid ""
+"There is a new version of %1$s available. %2$sView version %3$s details%4$s "
+"or %5$supdate now%6$s."
+msgstr ""
+
+#: includes/class-gt-blocks-plugin-updater.php:396
+msgid "You do not have permission to install plugin updates"
+msgstr ""
+
+#: includes/class-gt-blocks-plugin-updater.php:396
+msgid "Error"
+msgstr ""
+
+#: includes/class-gt-blocks-settings.php:132
+msgid "Activate Blocks"
+msgstr ""
+
+#: includes/class-gt-blocks-settings.php:133
+#: includes/class-gt-blocks-settings.php:293
+msgid "Image Sizes"
+msgstr ""
+
+#: includes/class-gt-blocks-settings.php:134
+msgid "Automatic Updates"
+msgstr ""
+
+#: includes/class-gt-blocks-settings.php:173
+msgid ""
+"Enabled custom image sizes. This setting will only affect new uploaded "
+"images unless you regenerate existing thumbnails with a plugin."
+msgstr ""
+
+#: includes/class-gt-blocks-settings.php:182
+msgid ""
+"Please activate your license in order to receive automatic plugin updates "
+"and support."
+msgstr ""
+
+#: includes/class-gt-blocks-settings.php:260
+msgid "Basic Blocks"
+msgstr ""
+
+#: includes/class-gt-blocks-settings.php:265
+msgid "GT Button"
+msgstr ""
+
+#: includes/class-gt-blocks-settings.php:266
+msgid "GT Heading"
+msgstr ""
+
+#: includes/class-gt-blocks-settings.php:267
+msgid "GT Icon"
+msgstr ""
+
+#: includes/class-gt-blocks-settings.php:271
+msgid "Layout Blocks"
+msgstr ""
+
+#: includes/class-gt-blocks-settings.php:276
+msgid "GT Hero Image"
+msgstr ""
+
+#: includes/class-gt-blocks-settings.php:277
+msgid "GT Multiple Buttons"
+msgstr ""
+
+#: includes/class-gt-blocks-settings.php:278
+msgid "GT Section"
+msgstr ""
+
+#: includes/class-gt-blocks-settings.php:282
+msgid "Grid Blocks"
+msgstr ""
+
+#: includes/class-gt-blocks-settings.php:287
+msgid "GT Features"
+msgstr ""
+
+#: includes/class-gt-blocks-settings.php:288
+msgid "GT Grid Layout"
+msgstr ""
+
+#: includes/class-gt-blocks-settings.php:289
+msgid "GT Portfolio"
+msgstr ""
+
+#: includes/class-gt-blocks-settings.php:298
+msgid "Square 640 x 640 pixel"
+msgstr ""
+
+#: includes/class-gt-blocks-settings.php:299
+msgid "Rectangular 640 x 480 pixel"
+msgstr ""
+
+#: includes/class-gt-blocks-settings.php:300
+msgid "Landscape 640 x 360 pixel"
+msgstr ""
+
+#: includes/class-gt-blocks-settings.php:301
+msgid "Portrait 480 x 640 pixel"
+msgstr ""
+
+#: includes/class-gt-blocks-settings.php:305
+msgid "License Status"
+msgstr ""
+
+#: includes/class-gt-blocks-settings.php:311
+msgid "License Key"
+msgstr ""
+
+#: includes/class-gt-blocks-settings.php:377
+msgid "Active"
+msgstr ""
+
+#: includes/class-gt-blocks-settings.php:378
+msgid "You are receiving updates."
+msgstr ""
+
+#: includes/class-gt-blocks-settings.php:387
+msgid "Expired"
+msgstr ""
+
+#: includes/class-gt-blocks-settings.php:388
+msgid ""
+"Your license has expired, renew today to continue getting updates and "
+"support!"
+msgstr ""
+
+#: includes/class-gt-blocks-settings.php:389
+msgid "Renew Your License"
+msgstr ""
+
+#: includes/class-gt-blocks-settings.php:393
+msgid "Invalid"
+msgstr ""
+
+#: includes/class-gt-blocks-settings.php:394
+msgid ""
+"Please make sure you have not reached site limits and/or expiration date."
+msgstr ""
+
+#: includes/class-gt-blocks-settings.php:398
+msgid "Inactive"
+msgstr ""
+
+#: includes/class-gt-blocks-settings.php:422
+msgid "Deactivate License"
+msgstr ""
+
+#: includes/class-gt-blocks-settings.php:427
+msgid "Activate License"
+msgstr ""
+
+#: includes/class-gt-blocks-settings.php:443
+#, php-format
+msgid ""
+"The callback function used for the <strong>%s</strong> setting is missing."
 msgstr ""
