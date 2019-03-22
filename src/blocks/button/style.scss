@@ -118,3 +118,44 @@
 		text-align: right;
 	}
 }
+
+/* Ghost Button Style */
+.wp-block-gt-blocks-button.is-style-ghost-button {
+
+	&:not(.has-text-color) {
+		color: inherit;
+	}
+
+	.gt-button {
+		border: 2px solid currentColor;
+
+		.gt-button-inner {
+
+			&:not(.has-background) {
+				background-color: inherit;
+			}
+		}
+
+		/* Lighten Hover Style */
+		&.gt-hover-style-lightened:hover,
+		&.gt-hover-style-lightened:active,
+		&.gt-hover-style-lightened:focus {
+			color: rgba(255,255,255,0.5);
+
+			.gt-button-inner {
+				box-shadow: none;
+			}
+		}
+
+		/* Darken Hover Style */
+		&.gt-hover-style-darkened:hover,
+		&.gt-hover-style-darkened:active,
+		&.gt-hover-style-darkened:focus {
+			color: rgba(0,0,0,0.6);
+
+			.gt-button-inner {
+				box-shadow: none;
+			}
+		}
+	}
+}
