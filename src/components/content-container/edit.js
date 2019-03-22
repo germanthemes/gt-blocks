@@ -16,7 +16,6 @@ const {
 
 const {
 	ContrastChecker,
-	InnerBlocks,
 	InspectorControls,
 	PanelColorSettings,
 	withColors,
@@ -27,28 +26,31 @@ const {
 } = wp.components;
 
 /**
+ * Internal dependencies
+ */
+import './editor.scss';
+
+/**
  * Block Edit Component
  */
-class contentEdit extends Component {
+class ContentContainerEdit extends Component {
 	render() {
 		const {
 			attributes,
+			children,
 			backgroundColor,
 			setBackgroundColor,
 			fallbackBackgroundColor,
 			textColor,
 			setTextColor,
 			fallbackTextColor,
-			className,
 		} = this.props;
 
 		const {
-			allowedBlocks,
-			template,
-			templateLock,
+			contentClass,
 		} = attributes;
 
-		const contentClasses = classnames( 'gt-content', {
+		const contentClasses = classnames( contentClass, {
 			'has-text-color': textColor.color,
 			[ textColor.class ]: textColor.class,
 			'has-background': backgroundColor.color,
@@ -93,17 +95,9 @@ class contentEdit extends Component {
 
 				</InspectorControls>
 
-				<div className={ className }>
+				<div className={ contentClasses } style={ contentStyles }>
 
-					<div className={ contentClasses } style={ contentStyles }>
-
-						<InnerBlocks
-							template={ template || undefined }
-							templateLock={ templateLock || false }
-							{ ...( allowedBlocks && { allowedBlocks } ) }
-						/>
-
-					</div>
+					{ children }
 
 				</div>
 
@@ -124,4 +118,4 @@ export default compose( [
 			fallbackTextColor: textColor || ! computedStyles ? undefined : computedStyles.color,
 		};
 	} ),
-] )( contentEdit );
+] )( ContentContainerEdit );

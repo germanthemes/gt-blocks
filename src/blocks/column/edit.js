@@ -1,8 +1,6 @@
 /**
  * External dependencies
  */
-import classnames from 'classnames';
-const { getComputedStyle } = window;
 const { partial, castArray, last } = lodash;
 
 /**
@@ -11,27 +9,21 @@ const { partial, castArray, last } = lodash;
 const { __ } = wp.i18n;
 const { compose } = wp.compose;
 const { dispatch, select, withDispatch, withSelect } = wp.data;
-const {
-	Component,
-	Fragment,
-} = wp.element;
-
-const {
-	ContrastChecker,
-	InnerBlocks,
-	InspectorControls,
-	PanelColorSettings,
-	withColors,
-} = wp.editor;
+const { Component } = wp.element;
+const { InnerBlocks } = wp.editor;
 
 const {
 	IconButton,
-	withFallbackStyles,
 } = wp.components;
 
 const {
 	cloneBlock,
 } = wp.blocks;
+
+/**
+ * Internal dependencies
+ */
+import { default as ContentContainerEdit } from '../../components/content-container/edit';
 
 /**
  * Block Edit Component
@@ -93,12 +85,6 @@ class columnEdit extends Component {
 	render() {
 		const {
 			attributes,
-			backgroundColor,
-			setBackgroundColor,
-			fallbackBackgroundColor,
-			textColor,
-			setTextColor,
-			fallbackTextColor,
 			className,
 			isSelected,
 			isParentBlockSelected,
@@ -115,101 +101,53 @@ class columnEdit extends Component {
 			templateLock,
 		} = attributes;
 
-		const columnClasses = classnames( 'gt-column', {
-			'has-text-color': textColor.color,
-			[ textColor.class ]: textColor.class,
-			'has-background': backgroundColor.color,
-			[ backgroundColor.class ]: backgroundColor.class,
-		} );
-
-		const columnStyles = {
-			color: textColor.class ? undefined : textColor.color,
-			backgroundColor: backgroundColor.class ? undefined : backgroundColor.color,
-		};
-
 		return (
-			<Fragment>
+			<div className={ className }>
 
-				<InspectorControls key="inspector">
+				<ContentContainerEdit { ...this.props }>
+					<InnerBlocks
+						template={ template || undefined }
+						templateLock={ templateLock || false }
+						{ ...( allowedBlocks && { allowedBlocks } ) }
+					/>
+				</ContentContainerEdit>
 
-					<PanelColorSettings
-						title={ __( 'Color Settings', 'gt-blocks' ) }
-						initialOpen={ false }
-						colorSettings={ [
-							{
-								value: backgroundColor.color,
-								onChange: setBackgroundColor,
-								label: __( 'Background Color', 'gt-blocks' ),
-							},
-							{
-								value: textColor.color,
-								onChange: setTextColor,
-								label: __( 'Text Color', 'gt-blocks' ),
-							},
-						] }
-					>
-						<ContrastChecker
-							{ ...{
-								textColor: textColor.color,
-								backgroundColor: backgroundColor.color,
-								fallbackTextColor,
-								fallbackBackgroundColor,
-							} }
-						/>
-					</PanelColorSettings>
+				{ ( isSelected || isParentBlockSelected || isChildBlockSelected ) && (
+					<div className="gt-column-controls">
 
-				</InspectorControls>
-
-				<div className={ className }>
-
-					<div className={ columnClasses } style={ columnStyles }>
-
-						<InnerBlocks
-							template={ template || undefined }
-							templateLock={ templateLock || false }
-							{ ...( allowedBlocks && { allowedBlocks } ) }
+						<IconButton
+							className="move-up-column"
+							label={ __( 'Move up', 'gt-blocks' ) }
+							icon="arrow-left-alt2"
+							onClick={ isFirstColumn ? null : onMoveUp }
+							disabled={ isFirstColumn }
 						/>
 
+						<IconButton
+							className="move-down-column"
+							label={ __( 'Move down', 'gt-blocks' ) }
+							icon="arrow-right-alt2"
+							onClick={ isLastColumn ? null : onMoveDown }
+							disabled={ isLastColumn }
+						/>
+
+						<IconButton
+							className="duplicate-column"
+							label={ __( 'Duplicate', 'gt-blocks' ) }
+							icon="admin-page"
+							onClick={ () => this.duplicateColumn() }
+						/>
+
+						<IconButton
+							className="remove-column"
+							label={ __( 'Remove', 'gt-blocks' ) }
+							icon="trash"
+							onClick={ () => this.removeColumn() }
+						/>
 					</div>
+				) }
 
-					{ ( isSelected || isParentBlockSelected || isChildBlockSelected ) && (
-						<div className="gt-column-controls">
-
-							<IconButton
-								className="move-up-column"
-								label={ __( 'Move up', 'gt-blocks' ) }
-								icon="arrow-left-alt2"
-								onClick={ isFirstColumn ? null : onMoveUp }
-								disabled={ isFirstColumn }
-							/>
-
-							<IconButton
-								className="move-down-column"
-								label={ __( 'Move down', 'gt-blocks' ) }
-								icon="arrow-right-alt2"
-								onClick={ isLastColumn ? null : onMoveDown }
-								disabled={ isLastColumn }
-							/>
-
-							<IconButton
-								className="duplicate-column"
-								label={ __( 'Duplicate', 'gt-blocks' ) }
-								icon="admin-page"
-								onClick={ () => this.duplicateColumn() }
-							/>
-
-							<IconButton
-								className="remove-column"
-								label={ __( 'Remove', 'gt-blocks' ) }
-								icon="trash"
-								onClick={ () => this.removeColumn() }
-							/>
-						</div>
-					) }
-
-				</div>
-
-			</Fragment>
+			</div>
 		);
 	}
 }
@@ -241,17 +179,6 @@ export default compose( [
 		return {
 			onMoveDown: partial( moveBlocksDown, clientId, rootClientId ),
 			onMoveUp: partial( moveBlocksUp, clientId, rootClientId ),
-		};
-	} ),
-	withColors( 'backgroundColor', { textColor: 'color' } ),
-	withFallbackStyles( ( node, ownProps ) => {
-		const { textColor, backgroundColor } = ownProps.attributes;
-		const editableNode = node.querySelector( '[contenteditable="true"]' );
-		//verify if editableNode is available, before using getComputedStyle.
-		const computedStyles = editableNode ? getComputedStyle( editableNode ) : null;
-		return {
-			fallbackBackgroundColor: backgroundColor || ! computedStyles ? undefined : computedStyles.backgroundColor,
-			fallbackTextColor: textColor || ! computedStyles ? undefined : computedStyles.color,
 		};
 	} ),
 ] )( columnEdit );

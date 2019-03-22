@@ -8,13 +8,5 @@
 
 	.gt-column {
 		flex-grow: 1;
-
-		&.has-background {
-			padding: 1.5rem;
-
-			> *:last-child {
-				margin-bottom: 0;
-			}
-		}
 	}
 }
