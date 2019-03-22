@@ -1,17 +1,9 @@
 /**
- * External dependencies
- */
-import classnames from 'classnames';
-
-/**
  * WordPress dependencies
  */
 const { __ } = wp.i18n;
 const { registerBlockType } = wp.blocks;
-const {
-	getColorClassName,
-	InnerBlocks,
-} = wp.editor;
+const { InnerBlocks } = wp.editor;
 
 /**
  * Internal dependencies
@@ -19,6 +11,8 @@ const {
 import './style.scss';
 import './editor.scss';
 import edit from './edit';
+import { default as contentContainerAttributes } from '../../components/content-container/attributes';
+import { default as ContentContainer } from '../../components/content-container';
 
 /**
  * Register block
@@ -37,27 +31,11 @@ registerBlockType(
 		parent: [ 'gt-blocks/features', 'gt-blocks/grid-layout', 'gt-blocks/portfolio' ],
 
 		attributes: {
-			allowedBlocks: {
-				type: 'array',
-			},
-			template: {
-				type: 'array',
-			},
-			templateLock: {
+			contentClass: {
 				type: 'string',
+				default: 'gt-column',
 			},
-			textColor: {
-				type: 'string',
-			},
-			backgroundColor: {
-				type: 'string',
-			},
-			customTextColor: {
-				type: 'string',
-			},
-			customBackgroundColor: {
-				type: 'string',
-			},
+			...contentContainerAttributes,
 		},
 
 		supports: {
@@ -66,36 +44,12 @@ registerBlockType(
 
 		edit,
 
-		save( { attributes } ) {
-			const {
-				textColor,
-				backgroundColor,
-				customTextColor,
-				customBackgroundColor,
-			} = attributes;
-
-			const textColorClass = getColorClassName( 'color', textColor );
-			const backgroundClass = getColorClassName( 'background-color', backgroundColor );
-
-			const columnClasses = classnames( 'gt-column', {
-				'has-text-color': textColor || customTextColor,
-				[ textColorClass ]: textColorClass,
-				'has-background': backgroundColor || customBackgroundColor,
-				[ backgroundClass ]: backgroundClass,
-			} );
-
-			const columnStyles = {
-				color: textColorClass ? undefined : customTextColor,
-				backgroundColor: backgroundClass ? undefined : customBackgroundColor,
-			};
-
+		save( props ) {
 			return (
 				<div>
-					<div className={ columnClasses } style={ columnStyles }>
-
+					<ContentContainer { ...props }>
 						<InnerBlocks.Content />
-
-					</div>
+					</ContentContainer>
 				</div>
 			);
 		},

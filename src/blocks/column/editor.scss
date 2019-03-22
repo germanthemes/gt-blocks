@@ -2,31 +2,6 @@
 	display: block;
 	margin-bottom: 0;
 
-	.gt-column {
-		padding-bottom: 1px;
-
-		> .editor-inner-blocks {
-			margin-top: -17px;
-			margin-bottom: -17px;
-		}
-
-		&.has-background {
-			> .editor-inner-blocks {
-				margin-top: -30px;
-				margin-bottom: -30px;
-			}
-		}
-
-		/* Hide Block Appender */
-		.wp-block.editor-default-block-appender {
-			display: none;
-		}
-
-		> .editor-inner-blocks > .editor-block-list__layout > div:first-child > .wp-block.editor-default-block-appender {
-			display: block;
-		}
-	}
-
 	/* Column Controls*/
 	.gt-column-controls {
 		display: flex;
