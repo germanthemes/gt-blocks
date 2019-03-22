@@ -1,6 +1,5 @@
 .wp-block-gt-blocks-content .gt-content,
 .wp-block-gt-blocks-column .gt-column {
-	padding-bottom: 1px;
 
 	> .editor-inner-blocks {
 		margin-top: -17px;
@@ -12,6 +11,10 @@
 			margin-top: -30px;
 			margin-bottom: -30px;
 		}
+	}
+
+	&:not(.has-background ) {
+		padding-bottom: 1px;
 	}
 
 	/* Hide Block Appender */
