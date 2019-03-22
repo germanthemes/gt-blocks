@@ -1,13 +1,17 @@
 .wp-block-gt-blocks-hero-image {
 	margin-bottom: 1.5em;
 
-	.gt-heading {
-		margin-top: 0;
-		margin-bottom: 1.5rem;
-	}
-
 	.wp-block-gt-blocks-image {
 		margin-top: 1.5em;
+	}
+
+	.wp-block-gt-blocks-content {
+		.gt-content {
+
+			> *:first-child {
+				margin-top: 0;
+			}
+		}
 	}
 }
 

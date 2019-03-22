@@ -1,17 +1,5 @@
-.wp-block-gt-blocks-hero-image.gt-background-section {
-
-	/* Padding Bottom */
-	&.gt-normal-bottom-padding {
-		padding-bottom: 2rem;
-	}
-
-	&.gt-medium-bottom-padding {
-		padding-bottom: 4rem;
-	}
-
-	&.gt-large-bottom-padding {
-		padding-bottom: 8rem;
-	}
+.wp-block-gt-blocks-hero-image {
+	padding-bottom: 1px;
 
 	.gt-hero-section {
 		display: block;
@@ -37,7 +25,6 @@
 
 				> .editor-block-list__block-edit {
 					margin-top: 0;
-					margin-bottom: 0;
 				}
 			}
 
@@ -53,8 +40,15 @@
 	}
 }
 
+/* Override bottom padding spacing of Background Section component */
+.wp-block-gt-blocks-hero-image.gt-background-section {
+	.gt-section-content {
+		margin-bottom: -33px;
+	}
+}
+
 @media only screen and (min-width: 720px) {
-	.wp-block-gt-blocks-hero-image.gt-background-section .gt-hero-section {
+	.wp-block-gt-blocks-hero-image .gt-hero-section {
 
 		&.gt-hero-layout-left > .editor-inner-blocks > .editor-block-list__layout {
 			display: flex;
