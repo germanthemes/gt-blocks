@@ -1,24 +1,18 @@
 /**
- * External dependencies
- */
-import classnames from 'classnames';
-
-/**
  * WordPress dependencies
  */
 const { __ } = wp.i18n;
 const { registerBlockType } = wp.blocks;
-const {
-	getColorClassName,
-	InnerBlocks,
-} = wp.editor;
+const { InnerBlocks } = wp.editor;
 
 /**
  * Internal dependencies
  */
 import './style.scss';
 import './editor.scss';
-import edit from './edit';
+import { default as contentContainerAttributes } from '../../components/content-container/attributes';
+import { default as ContentContainerEdit } from '../../components/content-container/edit';
+import { default as ContentContainer } from '../../components/content-container';
 
 /**
  * Register block
@@ -37,65 +31,43 @@ registerBlockType(
 		parent: [ 'gt-blocks/hero-image', 'gt-blocks/media-text' ],
 
 		attributes: {
-			allowedBlocks: {
-				type: 'array',
-			},
-			template: {
-				type: 'array',
-			},
-			templateLock: {
+			contentClass: {
 				type: 'string',
+				default: 'gt-content',
 			},
-			textColor: {
-				type: 'string',
-			},
-			backgroundColor: {
-				type: 'string',
-			},
-			customTextColor: {
-				type: 'string',
-			},
-			customBackgroundColor: {
-				type: 'string',
-			},
+			...contentContainerAttributes,
 		},
 
 		supports: {
 			inserter: false,
 		},
 
-		edit,
-
-		save( { attributes } ) {
+		edit( props ) {
 			const {
-				textColor,
-				backgroundColor,
-				customTextColor,
-				customBackgroundColor,
-			} = attributes;
-
-			const textColorClass = getColorClassName( 'color', textColor );
-			const backgroundClass = getColorClassName( 'background-color', backgroundColor );
-
-			const contentClasses = classnames( 'gt-content', {
-				'has-text-color': textColor || customTextColor,
-				[ textColorClass ]: textColorClass,
-				'has-background': backgroundColor || customBackgroundColor,
-				[ backgroundClass ]: backgroundClass,
-			} );
-
-			const contentStyles = {
-				color: textColorClass ? undefined : customTextColor,
-				backgroundColor: backgroundClass ? undefined : customBackgroundColor,
-			};
+				allowedBlocks,
+				template,
+				templateLock,
+			} = props.attributes;
 
 			return (
+				<div className={ props.className }>
+					<ContentContainerEdit { ...props }>
+						<InnerBlocks
+							template={ template || undefined }
+							templateLock={ templateLock || false }
+							{ ...( allowedBlocks && { allowedBlocks } ) }
+						/>
+					</ContentContainerEdit>
+				</div>
+			);
+		},
+
+		save( props ) {
+			return (
 				<div>
-					<div className={ contentClasses } style={ contentStyles }>
-
+					<ContentContainer { ...props }>
 						<InnerBlocks.Content />
-
-					</div>
+					</ContentContainer>
 				</div>
 			);
 		},
