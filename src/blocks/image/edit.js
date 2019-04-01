@@ -1,6 +1,11 @@
 /**
  * External dependencies
  */
+import classnames from 'classnames';
+
+/**
+ * External dependencies
+ */
 const {
 	startCase,
 	isEmpty,
@@ -23,6 +28,7 @@ const {
 const { compose } = wp.compose;
 
 const {
+	AlignmentToolbar,
 	BlockControls,
 	InspectorControls,
 	MediaUpload,
@@ -187,9 +193,16 @@ class ImageEdit extends Component {
 			id,
 			alt,
 			size,
+			maxWidth,
 			href,
 			linkDestination,
+			textAlignment,
 		} = attributes;
+
+		const blockClasses = classnames( className, {
+			[ `gt-max-width-${ maxWidth }` ]: '100' !== maxWidth,
+			[ `gt-align-${ textAlignment }` ]: textAlignment,
+		} );
 
 		const availableSizes = this.getAvailableSizes();
 		const isLinkURLInputDisabled = linkDestination !== LINK_DESTINATION_CUSTOM;
@@ -197,6 +210,11 @@ class ImageEdit extends Component {
 		return (
 			<Fragment>
 				<BlockControls>
+
+					<AlignmentToolbar
+						value={ textAlignment }
+						onChange={ ( newAlignment ) => setAttributes( { textAlignment: newAlignment } ) }
+					/>
 
 					<Toolbar className="components-toolbar">
 						<MediaUpload
@@ -239,6 +257,21 @@ class ImageEdit extends Component {
 							/>
 						) }
 
+						<SelectControl
+							label={ __( 'Maximum Width', 'gt-blocks' ) }
+							value={ maxWidth }
+							onChange={ ( newWidth ) => setAttributes( { maxWidth: newWidth } ) }
+							options={ [
+								{ value: '100', label: __( '100%', 'gt-blocks' ) },
+								{ value: '85', label: __( '85%', 'gt-blocks' ) },
+								{ value: '75', label: __( '75%', 'gt-blocks' ) },
+								{ value: '60', label: __( '60%', 'gt-blocks' ) },
+								{ value: '50', label: __( '50%', 'gt-blocks' ) },
+								{ value: '40', label: __( '40%', 'gt-blocks' ) },
+								{ value: '25', label: __( '25%', 'gt-blocks' ) },
+							] }
+						/>
+
 					</PanelBody>
 
 					<PanelBody title={ __( 'Link Settings', 'gt-blocks' ) } initialOpen={ false } className="gt-panel-link-settings gt-panel">
@@ -271,7 +304,7 @@ class ImageEdit extends Component {
 					onSelect={ ( img ) => this.onSelectImage( img ) }
 					onRemove={ () => this.onRemoveImage() }
 					isSelected={ isSelected }
-					className={ className }
+					className={ blockClasses }
 				/>
 
 			</Fragment>

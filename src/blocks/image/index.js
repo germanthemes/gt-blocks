@@ -1,4 +1,9 @@
 /**
+ * External dependencies
+ */
+import classnames from 'classnames';
+
+/**
  * WordPress dependencies
  */
 const { __ } = wp.i18n;
@@ -26,7 +31,7 @@ registerBlockType(
 
 		icon: <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M464 448H48c-26.51 0-48-21.49-48-48V112c0-26.51 21.49-48 48-48h416c26.51 0 48 21.49 48 48v288c0 26.51-21.49 48-48 48zM112 120c-30.928 0-56 25.072-56 56s25.072 56 56 56 56-25.072 56-56-25.072-56-56-56zM64 384h384V272l-87.515-87.515c-4.686-4.686-12.284-4.686-16.971 0L208 320l-55.515-55.515c-4.686-4.686-12.284-4.686-16.971 0L64 336v48z" /></svg>,
 
-		parent: [ 'gt-blocks/column', 'gt-blocks/content' ],
+		parent: [ 'gt-blocks/column' ],
 
 		attributes: {
 			id: {
@@ -49,6 +54,10 @@ registerBlockType(
 				type: 'string',
 				default: 'full',
 			},
+			maxWidth: {
+				type: 'string',
+				default: '100',
+			},
 			href: {
 				type: 'string',
 				source: 'attribute',
@@ -59,10 +68,14 @@ registerBlockType(
 				type: 'string',
 				default: 'none',
 			},
+			textAlignment: {
+				type: 'string',
+			},
 		},
 
 		styles: [
 			{ name: 'default', label: __( 'Squared', 'gt-blocks' ), isDefault: true },
+			{ name: 'rounded', label: __( 'Rounded Corners', 'gt-blocks' ) },
 			{ name: 'circle', label: __( 'Circle', 'gt-blocks' ) },
 		],
 
@@ -73,8 +86,15 @@ registerBlockType(
 				id,
 				url,
 				alt,
+				maxWidth,
 				href,
+				textAlignment,
 			} = attributes;
+
+			const blockClasses = classnames( {
+				[ `gt-max-width-${ maxWidth }` ]: '100' !== maxWidth,
+				[ `gt-align-${ textAlignment }` ]: textAlignment,
+			} );
 
 			const image = (
 				<img
@@ -91,7 +111,7 @@ registerBlockType(
 			);
 
 			return (
-				<figure>
+				<figure className={ blockClasses ? blockClasses : undefined }>
 					{ figure }
 				</figure>
 			);

@@ -140,14 +140,18 @@ export const synchronizeIcons = ( blockList, attributes ) => {
 export const synchronizeImages = ( blockList, attributes ) => {
 	const {
 		size,
+		maxWidth,
 		linkDestination,
+		textAlignment,
 		className,
 		gtRemoveMarginBottom,
 	} = attributes;
 
 	const newAttributes = {
 		size,
+		maxWidth,
 		linkDestination,
+		textAlignment,
 		className,
 		gtRemoveMarginBottom,
 	};
