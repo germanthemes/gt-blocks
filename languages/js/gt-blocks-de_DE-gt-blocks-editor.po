@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: GT Blocks\n"
 "Report-Msgid-Bugs-To: https://themezee.com/\n"
-"POT-Creation-Date: 2019-02-26 11:04+0100\n"
-"PO-Revision-Date: 2019-03-05 09:41+0100\n"
+"POT-Creation-Date: 2019-04-01 15:50+0200\n"
+"PO-Revision-Date: 2019-04-01 15:52+0200\n"
 "Last-Translator: \n"
 "Language-Team: GT Blocks<support@germanthemes.de>\n"
 "Language: de_DE\n"
@@ -81,36 +81,33 @@ msgid "Hover Style"
 msgstr "Hover-Style"
 
 #: blocks/button/edit.js:203
-msgid "Lightened"
-msgstr "Aufgehellt"
+msgid "Transparent White"
+msgstr "Transparent Weiß"
 
 #: blocks/button/edit.js:204
-msgid "Darkened"
-msgstr "Verdunkelt"
+msgid "Transparent Black"
+msgstr "Transparent Schwarz"
 
 #: blocks/button/edit.js:205
 msgid "Underlined"
 msgstr "Unterstrichen"
 
-#: blocks/button/edit.js:206
-msgid "Custom Color"
-msgstr "Benutzerdefinierte Farbe"
-
-#: blocks/button/edit.js:213 blocks/column/edit.js:136
-#: blocks/content/edit.js:69 blocks/heading/edit.js:136 blocks/icon/edit.js:180
-#: components/background-section/edit.js:247
-msgid "Color Settings"
-msgstr "Farbeinstellungen"
-
-#: blocks/button/edit.js:219 blocks/column/edit.js:142
-#: blocks/content/edit.js:75 blocks/heading/edit.js:142 blocks/icon/edit.js:186
+#: blocks/button/edit.js:206 blocks/button/edit.js:219
+#: blocks/heading/edit.js:142 blocks/icon/edit.js:186
 #: components/background-section/edit.js:253
+#: components/content-container/edit.js:77
 msgid "Background Color"
 msgstr "Hintergrundfarbe"
 
-#: blocks/button/edit.js:224 blocks/column/edit.js:147
-#: blocks/content/edit.js:80 blocks/heading/edit.js:147 blocks/icon/edit.js:191
+#: blocks/button/edit.js:213 blocks/heading/edit.js:136 blocks/icon/edit.js:180
+#: components/background-section/edit.js:247
+#: components/content-container/edit.js:71
+msgid "Color Settings"
+msgstr "Farbeinstellungen"
+
+#: blocks/button/edit.js:224 blocks/heading/edit.js:147 blocks/icon/edit.js:191
 #: components/background-section/edit.js:258
+#: components/content-container/edit.js:82
 msgid "Text Color"
 msgstr "Textfarbe"
 
@@ -146,35 +143,44 @@ msgstr "Call to Action"
 msgid "German Themes"
 msgstr "German Themes"
 
-#: blocks/column/edit.js:180
+#: blocks/button/index.js:112 blocks/features/edit.js:81
+#: blocks/icon/edit.js:127 blocks/portfolio/edit.js:81
+msgid "Default"
+msgstr "Standard"
+
+#: blocks/button/index.js:113
+msgid "Ghost Button"
+msgstr "Ghost Button"
+
+#: blocks/column/edit.js:120
 msgid "Move up"
 msgstr "Nach oben"
 
-#: blocks/column/edit.js:188
+#: blocks/column/edit.js:128
 msgid "Move down"
 msgstr "Nach unten"
 
-#: blocks/column/edit.js:196
+#: blocks/column/edit.js:136
 msgid "Duplicate"
 msgstr "Duplizieren"
 
-#: blocks/column/edit.js:203
+#: blocks/column/edit.js:143
 msgid "Remove"
 msgstr "Entfernen"
 
-#: blocks/column/index.js:29
+#: blocks/column/index.js:23
 msgid "GT Column"
 msgstr "GT Column"
 
-#: blocks/column/index.js:31
+#: blocks/column/index.js:25
 msgid "A single column within a grid block."
 msgstr "Eine einzelne Spalte in einem Grid-Block."
 
-#: blocks/content/index.js:29
+#: blocks/content/index.js:23
 msgid "GT Content"
 msgstr "GT Content"
 
-#: blocks/content/index.js:31
+#: blocks/content/index.js:25
 msgid "A wrapper for your content blocks."
 msgstr "Ein Container für deine Content-Blocks."
 
@@ -185,11 +191,6 @@ msgstr "Feature"
 #: blocks/features/edit.js:38
 msgid "Write feature description..."
 msgstr "Feature-Beschreibung schreiben..."
-
-#: blocks/features/edit.js:81 blocks/icon/edit.js:127
-#: blocks/portfolio/edit.js:81
-msgid "Default"
-msgstr "Standard"
 
 #: blocks/features/edit.js:82 blocks/portfolio/edit.js:82
 msgid "Card"
@@ -712,39 +713,60 @@ msgid ""
 "Copy button settings and colors of this block and apply them to all sibling "
 "blocks."
 msgstr ""
+"Styling und Farben dieses Button-Blocks kopieren und auf alle "
+"Geschwisterblöcke anwenden."
 
 #: plugins/synchronize-styling/index.js:104
 msgid "Copy colors of this block and apply them to all sibling blocks."
 msgstr ""
+"Styling und Farben dieses Blocks kopieren und auf alle Geschwisterblöcke "
+"anwenden."
 
 #: plugins/synchronize-styling/index.js:107
 msgid ""
 "Copy heading settings and colors of this block and apply them to all sibling "
 "blocks."
 msgstr ""
+"Styling und Farben dieses Heading-Blocks kopieren und auf alle "
+"Geschwisterblöcke anwenden."
 
 #: plugins/synchronize-styling/index.js:110
 msgid ""
 "Copy icon settings and colors of this block and apply them to all sibling "
 "blocks."
 msgstr ""
+"Styling und Farben dieses Icon-Blocks kopieren und auf alle "
+"Geschwisterblöcke anwenden."
 
 #: plugins/synchronize-styling/index.js:113
 msgid ""
 "Copy image size and URL settings of this block and apply them to all sibling "
 "blocks."
 msgstr ""
+"Bildgröße und Link-Einstellungen dieses Bild-Blocks kopieren und auf alle "
+"Geschwisterblöcke anwenden."
 
 #: plugins/synchronize-styling/index.js:116
 msgid ""
 "Copy text settings and colors of this block and apply them to all sibling "
 "blocks."
 msgstr ""
+"Styling und Farben dieses Blocks kopieren und auf alle Geschwisterblöcke "
+"anwenden."
 
 #: plugins/synchronize-styling/index.js:127
 #: plugins/synchronize-styling/index.js:139
 msgid "Synchronize Styling"
 msgstr "Styling synchronisieren"
+
+#~ msgid "Lightened"
+#~ msgstr "Aufgehellt"
+
+#~ msgid "Darkened"
+#~ msgstr "Verdunkelt"
+
+#~ msgid "Custom Color"
+#~ msgstr "Benutzerdefinierte Farbe"
 
 #~ msgid "Button Style"
 #~ msgstr "Button-Style"
