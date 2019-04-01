@@ -68,6 +68,9 @@ registerBlockType(
 				type: 'string',
 				default: 'none',
 			},
+			textAlignment: {
+				type: 'string',
+			},
 		},
 
 		styles: [
@@ -85,10 +88,12 @@ registerBlockType(
 				alt,
 				maxWidth,
 				href,
+				textAlignment,
 			} = attributes;
 
 			const blockClasses = classnames( {
 				[ `gt-max-width-${ maxWidth }` ]: '100' !== maxWidth,
+				[ `gt-align-${ textAlignment }` ]: textAlignment,
 			} );
 
 			const image = (

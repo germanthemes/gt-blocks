@@ -28,6 +28,7 @@ const {
 const { compose } = wp.compose;
 
 const {
+	AlignmentToolbar,
 	BlockControls,
 	InspectorControls,
 	MediaUpload,
@@ -195,10 +196,12 @@ class ImageEdit extends Component {
 			maxWidth,
 			href,
 			linkDestination,
+			textAlignment,
 		} = attributes;
 
 		const blockClasses = classnames( className, {
 			[ `gt-max-width-${ maxWidth }` ]: '100' !== maxWidth,
+			[ `gt-align-${ textAlignment }` ]: textAlignment,
 		} );
 
 		const availableSizes = this.getAvailableSizes();
@@ -207,6 +210,11 @@ class ImageEdit extends Component {
 		return (
 			<Fragment>
 				<BlockControls>
+
+					<AlignmentToolbar
+						value={ textAlignment }
+						onChange={ ( newAlignment ) => setAttributes( { textAlignment: newAlignment } ) }
+					/>
 
 					<Toolbar className="components-toolbar">
 						<MediaUpload
