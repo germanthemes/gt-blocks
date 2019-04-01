@@ -200,10 +200,10 @@ class ButtonEdit extends Component {
 							value={ hoverStyle }
 							onChange={ ( newStyle ) => setAttributes( { hoverStyle: newStyle } ) }
 							options={ [
-								{ value: 'lightened', label: __( 'Lightened', 'gt-blocks' ) },
-								{ value: 'darkened', label: __( 'Darkened', 'gt-blocks' ) },
+								{ value: 'lightened', label: __( 'Transparent White', 'gt-blocks' ) },
+								{ value: 'darkened', label: __( 'Transparent Black', 'gt-blocks' ) },
 								{ value: 'underlined', label: __( 'Underlined', 'gt-blocks' ) },
-								{ value: 'custom', label: __( 'Custom Color', 'gt-blocks' ) },
+								{ value: 'custom', label: __( 'Background Color', 'gt-blocks' ) },
 							] }
 						/>
 

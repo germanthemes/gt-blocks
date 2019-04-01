@@ -118,3 +118,60 @@
 		text-align: right;
 	}
 }
+
+/* Ghost Button Style */
+.wp-block-gt-blocks-button.is-style-ghost-button {
+
+	&:not(.has-text-color) {
+		color: inherit;
+	}
+
+	.gt-button {
+		border: 2px solid currentColor;
+
+		.gt-button-inner {
+
+			&:not(.has-background) {
+				background-color: inherit;
+			}
+		}
+
+		&.gt-button-small .gt-button-inner {
+			padding: calc( 0.75rem - 2px);
+		}
+
+		&.gt-button-medium .gt-button-inner {
+			padding: calc( 1rem - 2px) calc( 1.25rem - 2px);
+		}
+
+		&.gt-button-large .gt-button-inner {
+			padding: calc( 1.25rem - 2px) calc( 1.5rem - 2px);
+		}
+
+		&.gt-button-extra-large .gt-button-inner {
+			padding: calc( 1.5rem - 2px) calc( 2rem - 2px);
+		}
+
+		/* Lighten Hover Style */
+		&.gt-hover-style-lightened:hover,
+		&.gt-hover-style-lightened:active,
+		&.gt-hover-style-lightened:focus {
+			color: rgba(255,255,255,0.5);
+
+			.gt-button-inner {
+				box-shadow: none;
+			}
+		}
+
+		/* Darken Hover Style */
+		&.gt-hover-style-darkened:hover,
+		&.gt-hover-style-darkened:active,
+		&.gt-hover-style-darkened:focus {
+			color: rgba(0,0,0,0.6);
+
+			.gt-button-inner {
+				box-shadow: none;
+			}
+		}
+	}
+}

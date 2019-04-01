@@ -108,6 +108,11 @@ registerBlockType(
 			},
 		},
 
+		styles: [
+			{ name: 'default', label: __( 'Default', 'gt-blocks' ), isDefault: true },
+			{ name: 'ghost-button', label: __( 'Ghost Button', 'gt-blocks' ) },
+		],
+
 		edit,
 
 		save( { attributes } ) {
