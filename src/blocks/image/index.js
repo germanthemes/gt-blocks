@@ -1,4 +1,9 @@
 /**
+ * External dependencies
+ */
+import classnames from 'classnames';
+
+/**
  * WordPress dependencies
  */
 const { __ } = wp.i18n;
@@ -49,6 +54,10 @@ registerBlockType(
 				type: 'string',
 				default: 'full',
 			},
+			maxWidth: {
+				type: 'string',
+				default: '100',
+			},
 			href: {
 				type: 'string',
 				source: 'attribute',
@@ -74,8 +83,13 @@ registerBlockType(
 				id,
 				url,
 				alt,
+				maxWidth,
 				href,
 			} = attributes;
+
+			const blockClasses = classnames( {
+				[ `gt-max-width-${ maxWidth }` ]: '100' !== maxWidth,
+			} );
 
 			const image = (
 				<img
@@ -92,7 +106,7 @@ registerBlockType(
 			);
 
 			return (
-				<figure>
+				<figure className={ blockClasses ? blockClasses : undefined }>
 					{ figure }
 				</figure>
 			);
