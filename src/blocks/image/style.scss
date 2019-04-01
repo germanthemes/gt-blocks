@@ -9,4 +9,8 @@
 	&.is-style-circle img {
 		border-radius: 100%;
 	}
+
+	&.is-style-rounded img {
+		border-radius: 5px;
+	}
 }

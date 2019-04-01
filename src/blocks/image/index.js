@@ -63,6 +63,7 @@ registerBlockType(
 
 		styles: [
 			{ name: 'default', label: __( 'Squared', 'gt-blocks' ), isDefault: true },
+			{ name: 'rounded', label: __( 'Rounded Corners', 'gt-blocks' ) },
 			{ name: 'circle', label: __( 'Circle', 'gt-blocks' ) },
 		],
 
