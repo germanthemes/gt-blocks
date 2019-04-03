@@ -2,6 +2,16 @@
 GT Blocks Changelog
 ===================================
 
+Version 1.0.1
+-----------------------------------
+* added Ghost Button style to GT Button
+* added Rounded Corners block style to GT Image
+* added Max Width setting to GT Image
+* added Text Alignment option to GT Image
+* added container component for Column and Content block
+* fixed padding bottom of GT Hero Image block in Editor
+* fixed top spacing of heading in GT Hero Image block
+
 Version 1.0
 -----------------------------------
 First Release
