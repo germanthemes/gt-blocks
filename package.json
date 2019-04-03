@@ -5,7 +5,7 @@
   "scripts": {
     "start": "node scripts/start.js",
 	"build": "node scripts/build.js",
-	"export": "git archive HEAD -9 --prefix gt-blocks/ --format=zip > ../gt-blocks.zip"
+	"export": "git archive HEAD -9 --prefix gt-blocks/ --format=zip > ../../gt-blocks.zip"
   },
   "dependencies": {
     "autoprefixer": "^7.2.4",
