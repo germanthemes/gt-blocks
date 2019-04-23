@@ -175,7 +175,9 @@ class ImageBlockEdit extends Component {
 			attributes,
 			setAttributes,
 			isSelected,
-			blockClass,
+			className,
+			customClasses,
+			showBlockClass,
 		} = this.props;
 
 		const {
@@ -188,7 +190,9 @@ class ImageBlockEdit extends Component {
 			linkDestination,
 		} = attributes;
 
-		const blockClasses = classnames( blockClass, {
+		const blockClasses = classnames( {
+			[ className ]: showBlockClass,
+			[ customClasses ]: customClasses,
 			[ `gt-max-width-${ maxWidth }` ]: '100' !== maxWidth,
 		} );
 

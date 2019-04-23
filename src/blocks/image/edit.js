@@ -28,11 +28,10 @@ class ImageEdit extends Component {
 		} = this.props;
 
 		const {
-			className,
 			textAlignment,
 		} = attributes;
 
-		const blockClasses = classnames( className, {
+		const blockClasses = classnames( {
 			[ `gt-align-${ textAlignment }` ]: textAlignment,
 		} );
 
@@ -49,7 +48,8 @@ class ImageEdit extends Component {
 				</BlockControls>
 
 				<ImageBlockEdit
-					blockClass={ blockClasses }
+					customClasses={ blockClasses }
+					showBlockClass={ true }
 					{ ...this.props }
 				/>
 

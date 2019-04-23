@@ -122,7 +122,7 @@ class ImageCardEdit extends Component {
 					<div className="gt-image-column">
 
 						<ImageBlockEdit
-							blockClass="gt-image"
+							customClasses="gt-image"
 							{ ...this.props }
 						/>
 

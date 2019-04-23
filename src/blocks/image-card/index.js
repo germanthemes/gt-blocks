@@ -63,7 +63,7 @@ registerBlockType(
 
 					<div className="gt-image-column">
 						<ImageBlock
-							blockClass="gt-image"
+							customClasses="gt-image"
 							{ ...props }
 						/>
 					</div>

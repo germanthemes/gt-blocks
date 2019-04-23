@@ -51,17 +51,17 @@ registerBlockType(
 
 		save( props ) {
 			const {
-				className,
 				textAlignment,
 			} = props.attributes;
 
-			const blockClasses = classnames( className, {
+			const blockClasses = classnames( {
 				[ `gt-align-${ textAlignment }` ]: textAlignment,
 			} );
 
 			return (
 				<ImageBlock
-					blockClass={ blockClasses }
+					customClasses={ blockClasses }
+					showBlockClass={ true }
 					{ ...props }
 				/>
 			);
