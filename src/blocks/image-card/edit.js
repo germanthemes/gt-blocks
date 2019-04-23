@@ -16,6 +16,7 @@ const {
 } = wp.i18n;
 
 const {
+	BlockControls,
 	InnerBlocks,
 	InspectorControls,
 } = wp.editor;
@@ -23,7 +24,6 @@ const {
 const {
 	BaseControl,
 	PanelBody,
-	SelectControl,
 	Toolbar,
 } = wp.components;
 
@@ -86,18 +86,28 @@ class ImageCardEdit extends Component {
 		return (
 			<Fragment>
 
-				<InspectorControls>
-					<PanelBody title={ __( 'Layout Settings', 'gt-blocks' ) } initialOpen={ false } className="gt-panel-layout-settings gt-panel">
+				<BlockControls>
 
-						<SelectControl
-							label={ __( 'Image Position', 'gt-blocks' ) }
-							value={ imagePosition }
-							onChange={ ( newLayout ) => setAttributes( { imagePosition: newLayout } ) }
-							options={ [
-								{ value: 'left', label: __( 'Left', 'gt-blocks' ) },
-								{ value: 'right', label: __( 'Right', 'gt-blocks' ) },
-							] }
-						/>
+					<Toolbar
+						className="gt-image-position-control"
+						controls={ [ {
+							icon: 'align-pull-left',
+							title: __( 'Show image on left', 'gt-blocks' ),
+							isActive: imagePosition === 'left',
+							onClick: () => setAttributes( { imagePosition: 'left' } ),
+						}, {
+							icon: 'align-pull-right',
+							title: __( 'Show image on right', 'gt-blocks' ),
+							isActive: imagePosition === 'right',
+							onClick: () => setAttributes( { imagePosition: 'right' } ),
+						} ] }
+					/>
+
+				</BlockControls>
+
+				<InspectorControls>
+
+					<PanelBody title={ __( 'Layout Settings', 'gt-blocks' ) } initialOpen={ false } className="gt-panel-layout-settings gt-panel">
 
 						<BaseControl id="gt-vertical-alignment" label={ __( 'Vertical Alignment', 'gt-blocks' ) }>
 							<Toolbar
@@ -115,6 +125,7 @@ class ImageCardEdit extends Component {
 						</BaseControl>
 
 					</PanelBody>
+
 				</InspectorControls>
 
 				<div className={ blockClasses }>
