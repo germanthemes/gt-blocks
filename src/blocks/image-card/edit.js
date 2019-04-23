@@ -16,6 +16,7 @@ const {
 } = wp.i18n;
 
 const {
+	InnerBlocks,
 	InspectorControls,
 } = wp.editor;
 
@@ -51,6 +52,15 @@ const verticalAlignmentControls = {
 		title: __( 'Bottom', 'gt-blocks' ),
 	},
 };
+
+// Define block template.
+const TEMPLATE = [
+	[ 'gt-blocks/content', {
+		template: [
+			[ 'core/paragraph' ],
+		],
+	} ],
+];
 
 /**
  * Block Edit Component
@@ -109,7 +119,19 @@ class ImageCardEdit extends Component {
 
 				<div className={ blockClasses }>
 
-					<ImageBlockEdit { ...this.props } />
+					<div className="gt-image-column">
+						<ImageBlockEdit { ...this.props } />
+					</div>
+
+					<div className="gt-text-column">
+
+						<InnerBlocks
+							allowedBlocks={ [ 'gt-blocks/content' ] }
+							template={ TEMPLATE }
+							templateLock="all"
+						/>
+
+					</div>
 
 				</div>
 

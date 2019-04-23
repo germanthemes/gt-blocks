@@ -8,6 +8,7 @@ import classnames from 'classnames';
  */
 const { __ } = wp.i18n;
 const { registerBlockType } = wp.blocks;
+const { InnerBlocks } = wp.editor;
 
 /**
  * Internal dependencies
@@ -59,7 +60,15 @@ registerBlockType(
 
 			return (
 				<div className={ blockClasses }>
-					<ImageBlock { ...props } />
+
+					<div className="gt-image-column">
+						<ImageBlock { ...props } />
+					</div>
+
+					<div className="gt-text-column">
+						<InnerBlocks.Content />
+					</div>
+
 				</div>
 			);
 		},
