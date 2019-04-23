@@ -14,8 +14,10 @@ const {
 
 const { __ } = wp.i18n;
 const { compose } = wp.compose;
+const { withSelect } = wp.data;
 
 const {
+	BlockAlignmentToolbar,
 	BlockControls,
 	ContrastChecker,
 	InnerBlocks,
@@ -70,6 +72,19 @@ const TEMPLATE = [
  * Block Edit Component
  */
 class ImageCardEdit extends Component {
+	componentDidUpdate() {
+		const {
+			attributes,
+			setAttributes,
+			wideControlsEnabled,
+		} = this.props;
+
+		// Set block alignment to default if theme does not support wide and full width blocks.
+		if ( ! wideControlsEnabled && 'default' !== attributes.blockAlignment ) {
+			setAttributes( { blockAlignment: 'default' } );
+		}
+	}
+
 	render() {
 		const {
 			attributes,
@@ -81,9 +96,11 @@ class ImageCardEdit extends Component {
 			textColor,
 			setTextColor,
 			fallbackTextColor,
+			wideControlsEnabled,
 		} = this.props;
 
 		const {
+			blockAlignment,
 			imagePosition,
 			verticalAlignment,
 		} = attributes;
@@ -106,6 +123,14 @@ class ImageCardEdit extends Component {
 			<Fragment>
 
 				<BlockControls>
+
+					{ wideControlsEnabled && (
+						<BlockAlignmentToolbar
+							value={ blockAlignment }
+							onChange={ ( newAlign ) => setAttributes( { blockAlignment: newAlign ? newAlign : 'default' } ) }
+							controls={ [ 'wide', 'full' ] }
+						/>
+					) }
 
 					<Toolbar
 						className="gt-image-position-control"
@@ -206,6 +231,11 @@ class ImageCardEdit extends Component {
 }
 
 export default compose( [
+	withSelect(
+		( select ) => ( {
+			wideControlsEnabled: select( 'core/editor' ).getEditorSettings().alignWide,
+		} )
+	),
 	withColors( 'backgroundColor', { textColor: 'color' } ),
 	withFallbackStyles( ( node, ownProps ) => {
 		const { textColor, backgroundColor } = ownProps.attributes;
