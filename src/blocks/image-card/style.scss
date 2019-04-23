@@ -1,13 +1,34 @@
 .wp-block-gt-blocks-image-card {
 	margin-bottom: 1.5em;
-	display: flex;
 
-	.gt-image-column,
-	.gt-text-column {
-		width: 50%;
+	.wp-block-gt-blocks-content {
+		margin-bottom: 0;
 	}
+}
 
-	&.gt-image-position-right {
-		flex-direction: row-reverse;
+@media only screen and (min-width: 720px) {
+	.wp-block-gt-blocks-image-card {
+		display: flex;
+	
+		.gt-image-column,
+		.gt-text-column {
+			display: flex;
+			flex-direction: column;
+			width: 50%;
+		}
+	
+		&.gt-image-position-right {
+			flex-direction: row-reverse;
+		}
+	
+		&.gt-vertical-align-center .gt-text-column,
+		&.gt-vertical-align-center .gt-image-column {
+			justify-content: center;
+		}
+	
+		&.gt-vertical-align-bottom .gt-text-column,
+		&.gt-vertical-align-bottom .gt-image-column {
+			justify-content: flex-end;
+		}
 	}
 }
