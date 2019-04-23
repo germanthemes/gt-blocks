@@ -19,6 +19,7 @@ import './blocks/heading';
 import './blocks/hero-image';
 import './blocks/icon';
 import './blocks/image';
+import './blocks/image-card';
 import './blocks/multiple-buttons';
 import './blocks/portfolio';
 import './blocks/section';
