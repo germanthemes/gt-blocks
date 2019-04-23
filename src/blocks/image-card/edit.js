@@ -120,7 +120,12 @@ class ImageCardEdit extends Component {
 				<div className={ blockClasses }>
 
 					<div className="gt-image-column">
-						<ImageBlockEdit { ...this.props } />
+
+						<ImageBlockEdit
+							blockClass="gt-image"
+							{ ...this.props }
+						/>
+
 					</div>
 
 					<div className="gt-text-column">

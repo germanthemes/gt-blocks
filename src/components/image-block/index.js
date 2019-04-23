@@ -17,6 +17,7 @@ class ImageBlock extends Component {
 	render() {
 		const {
 			attributes,
+			blockClass,
 		} = this.props;
 
 		const {
@@ -27,7 +28,7 @@ class ImageBlock extends Component {
 			href,
 		} = attributes;
 
-		const blockClasses = classnames( 'gt-image-block', {
+		const blockClasses = classnames( blockClass, {
 			[ `gt-max-width-${ maxWidth }` ]: '100' !== maxWidth,
 		} );
 

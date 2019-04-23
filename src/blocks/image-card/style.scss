@@ -1,3 +1,13 @@
 .wp-block-gt-blocks-image-card {
 	margin-bottom: 1.5em;
+	display: flex;
+
+	.gt-image-column,
+	.gt-text-column {
+		width: 50%;
+	}
+
+	&.gt-image-position-right {
+		flex-direction: row-reverse;
+	}
 }
