@@ -8,7 +8,6 @@ import classnames from 'classnames';
  */
 const { __ } = wp.i18n;
 const { registerBlockType } = wp.blocks;
-const { Fragment } = wp.element;
 
 /**
  * Internal dependencies
@@ -16,6 +15,8 @@ const { Fragment } = wp.element;
 import './style.scss';
 import './editor.scss';
 import edit from './edit';
+import imageBlockAttributes from '../../components/image-block/attributes';
+import ImageBlock from '../../components/image-block';
 
 /**
  * Register block
@@ -34,43 +35,10 @@ registerBlockType(
 		parent: [ 'gt-blocks/column' ],
 
 		attributes: {
-			id: {
-				type: 'number',
-			},
-			url: {
-				type: 'string',
-				source: 'attribute',
-				selector: 'img',
-				attribute: 'src',
-			},
-			alt: {
-				type: 'string',
-				source: 'attribute',
-				selector: 'img',
-				attribute: 'alt',
-				default: '',
-			},
-			size: {
-				type: 'string',
-				default: 'full',
-			},
-			maxWidth: {
-				type: 'string',
-				default: '100',
-			},
-			href: {
-				type: 'string',
-				source: 'attribute',
-				selector: 'figure > a',
-				attribute: 'href',
-			},
-			linkDestination: {
-				type: 'string',
-				default: 'none',
-			},
 			textAlignment: {
 				type: 'string',
 			},
+			...imageBlockAttributes,
 		},
 
 		styles: [
@@ -81,39 +49,21 @@ registerBlockType(
 
 		edit,
 
-		save( { attributes } ) {
+		save( props ) {
 			const {
-				id,
-				url,
-				alt,
-				maxWidth,
-				href,
+				className,
 				textAlignment,
-			} = attributes;
+			} = props.attributes;
 
-			const blockClasses = classnames( {
-				[ `gt-max-width-${ maxWidth }` ]: '100' !== maxWidth,
+			const blockClasses = classnames( className, {
 				[ `gt-align-${ textAlignment }` ]: textAlignment,
 			} );
 
-			const image = (
-				<img
-					src={ url }
-					alt={ alt }
-					className={ id ? `wp-image-${ id }` : null }
-				/>
-			);
-
-			const figure = (
-				<Fragment>
-					{ href ? <a href={ href }>{ image }</a> : image }
-				</Fragment>
-			);
-
 			return (
-				<figure className={ blockClasses ? blockClasses : undefined }>
-					{ figure }
-				</figure>
+				<ImageBlock
+					blockClass={ blockClasses }
+					{ ...props }
+				/>
 			);
 		},
 	},
