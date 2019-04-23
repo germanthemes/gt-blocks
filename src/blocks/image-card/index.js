@@ -8,7 +8,10 @@ import classnames from 'classnames';
  */
 const { __ } = wp.i18n;
 const { registerBlockType } = wp.blocks;
-const { InnerBlocks } = wp.editor;
+const {
+	getColorClassName,
+	InnerBlocks,
+} = wp.editor;
 
 /**
  * Internal dependencies
@@ -42,6 +45,18 @@ registerBlockType(
 				type: 'string',
 				default: 'top',
 			},
+			textColor: {
+				type: 'string',
+			},
+			backgroundColor: {
+				type: 'string',
+			},
+			customTextColor: {
+				type: 'string',
+			},
+			customBackgroundColor: {
+				type: 'string',
+			},
 			...imageBlockAttributes,
 		},
 
@@ -51,15 +66,31 @@ registerBlockType(
 			const {
 				imagePosition,
 				verticalAlignment,
+				textColor,
+				backgroundColor,
+				customTextColor,
+				customBackgroundColor,
 			} = props.attributes;
+
+			const textColorClass = getColorClassName( 'color', textColor );
+			const backgroundClass = getColorClassName( 'background-color', backgroundColor );
 
 			const blockClasses = classnames( {
 				[ `gt-image-position-${ imagePosition }` ]: 'left' !== imagePosition,
 				[ `gt-vertical-align-${ verticalAlignment }` ]: 'top' !== verticalAlignment,
+				'has-text-color': textColor || customTextColor,
+				[ textColorClass ]: textColorClass,
+				'has-background': backgroundColor || customBackgroundColor,
+				[ backgroundClass ]: backgroundClass,
 			} );
 
+			const blockStyles = {
+				color: textColorClass ? undefined : customTextColor,
+				backgroundColor: backgroundClass ? undefined : customBackgroundColor,
+			};
+
 			return (
-				<div className={ blockClasses }>
+				<div className={ blockClasses } style={ blockStyles }>
 
 					<div className="gt-image-column">
 						<ImageBlock
