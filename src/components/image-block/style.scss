@@ -1,0 +1,30 @@
+.gt-image {
+	img {
+		margin: 0;
+		vertical-align: top;
+	}
+
+	&.gt-max-width-25 img {
+		max-width: 25%;
+	}
+
+	&.gt-max-width-40 img {
+		max-width: 40%;
+	}
+
+	&.gt-max-width-50 img {
+		max-width: 50%;
+	}
+
+	&.gt-max-width-60 img {
+		max-width: 60%;
+	}
+
+	&.gt-max-width-75 img {
+		max-width: 75%;
+	}
+
+	&.gt-max-width-85 img {
+		max-width: 85%;
+	}
+}
