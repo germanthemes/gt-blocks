@@ -9,12 +9,14 @@
 @media only screen and (min-width: 720px) {
 	.wp-block-gt-blocks-image-card {
 		display: flex;
+		margin-right: -1.5rem;
 	
 		.gt-image-column,
 		.gt-text-column {
 			display: flex;
 			flex-direction: column;
 			width: 50%;
+			padding-right: 1.5rem;
 		}
 	
 		&.gt-image-position-right {
