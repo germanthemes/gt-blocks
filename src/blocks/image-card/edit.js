@@ -29,6 +29,7 @@ const {
 const {
 	BaseControl,
 	PanelBody,
+	SelectControl,
 	Toolbar,
 	withFallbackStyles,
 } = wp.components;
@@ -102,11 +103,13 @@ class ImageCardEdit extends Component {
 		const {
 			blockAlignment,
 			imagePosition,
+			contentWidth,
 			verticalAlignment,
 		} = attributes;
 
 		const blockClasses = classnames( className, {
 			[ `gt-image-position-${ imagePosition }` ]: 'left' !== imagePosition,
+			[ `gt-content-width-${ contentWidth }` ]: '50' !== contentWidth,
 			[ `gt-vertical-align-${ verticalAlignment }` ]: 'top' !== verticalAlignment,
 			'has-text-color': textColor.color,
 			[ textColor.class ]: textColor.class,
@@ -153,6 +156,19 @@ class ImageCardEdit extends Component {
 
 					<PanelBody title={ __( 'Layout Settings', 'gt-blocks' ) } initialOpen={ false } className="gt-panel-layout-settings gt-panel">
 
+						<SelectControl
+							label={ __( 'Content Width', 'gt-blocks' ) }
+							value={ contentWidth }
+							onChange={ ( newWidth ) => setAttributes( { contentWidth: newWidth } ) }
+							options={ [
+								{ value: '30', label: __( '30%', 'gt-blocks' ) },
+								{ value: '40', label: __( '40%', 'gt-blocks' ) },
+								{ value: '50', label: __( '50%', 'gt-blocks' ) },
+								{ value: '60', label: __( '60%', 'gt-blocks' ) },
+								{ value: '70', label: __( '70%', 'gt-blocks' ) },
+							] }
+						/>
+
 						<BaseControl id="gt-vertical-alignment" label={ __( 'Vertical Alignment', 'gt-blocks' ) }>
 							<Toolbar
 								className="gt-vertical-align-control"
@@ -174,22 +190,26 @@ class ImageCardEdit extends Component {
 
 				<div className={ blockClasses } style={ blockStyles }>
 
-					<div className="gt-image-column">
+					<div className="gt-image-card-columns">
 
-						<ImageBlockEdit
-							customClasses="gt-image"
-							{ ...this.props }
-						/>
+						<div className="gt-image-column">
 
-					</div>
+							<ImageBlockEdit
+								customClasses="gt-image"
+								{ ...this.props }
+							/>
 
-					<div className="gt-text-column">
+						</div>
 
-						<InnerBlocks
-							allowedBlocks={ [ 'gt-blocks/content' ] }
-							template={ TEMPLATE }
-							templateLock="all"
-						/>
+						<div className="gt-text-column">
+
+							<InnerBlocks
+								allowedBlocks={ [ 'gt-blocks/content' ] }
+								template={ TEMPLATE }
+								templateLock="all"
+							/>
+
+						</div>
 
 					</div>
 

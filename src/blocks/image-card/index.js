@@ -45,6 +45,10 @@ registerBlockType(
 				type: 'string',
 				default: 'left',
 			},
+			contentWidth: {
+				type: 'string',
+				default: '50',
+			},
 			verticalAlignment: {
 				type: 'string',
 				default: 'top',
@@ -77,6 +81,7 @@ registerBlockType(
 			const {
 				blockAlignment,
 				imagePosition,
+				contentWidth,
 				verticalAlignment,
 				textColor,
 				backgroundColor,
@@ -90,6 +95,7 @@ registerBlockType(
 			const blockClasses = classnames( {
 				[ `align${ blockAlignment }` ]: 'default' !== blockAlignment,
 				[ `gt-image-position-${ imagePosition }` ]: 'left' !== imagePosition,
+				[ `gt-content-width-${ contentWidth }` ]: '50' !== contentWidth,
 				[ `gt-vertical-align-${ verticalAlignment }` ]: 'top' !== verticalAlignment,
 				'has-text-color': textColor || customTextColor,
 				[ textColorClass ]: textColorClass,
@@ -105,15 +111,19 @@ registerBlockType(
 			return (
 				<div className={ blockClasses } style={ blockStyles }>
 
-					<div className="gt-image-column">
-						<ImageBlock
-							customClasses="gt-image"
-							{ ...props }
-						/>
-					</div>
+					<div className="gt-image-card-columns">
 
-					<div className="gt-text-column">
-						<InnerBlocks.Content />
+						<div className="gt-image-column">
+							<ImageBlock
+								customClasses="gt-image"
+								{ ...props }
+							/>
+						</div>
+
+						<div className="gt-text-column">
+							<InnerBlocks.Content />
+						</div>
+
 					</div>
 
 				</div>
