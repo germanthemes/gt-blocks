@@ -1,9 +1,28 @@
 .gt-content,
 .gt-column {
 
-	&.has-background {
-		padding: 1.5rem;
+	&.gt-small-padding {
+		padding: 1rem;
+	}
 
+	&.has-background:not(.gt-padding) {
+		padding: 1.5rem;
+	}
+
+	&.gt-medium-padding {
+		padding: 2rem;
+	}
+
+	&.gt-large-padding {
+		padding: 3rem;
+	}
+
+	&.gt-extra-large-padding {
+		padding: 4rem;
+	}
+
+	&.has-background,
+	&.gt-padding:not(.gt-none-padding) {
 		> *:first-child {
 			margin-top: 0;
 		}

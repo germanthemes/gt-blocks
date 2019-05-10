@@ -6,15 +6,19 @@
 		margin-bottom: -17px;
 	}
 
-	&.has-background {
+	&.has-background,
+	&.gt-padding:not(.gt-none-padding) {
 		> .editor-inner-blocks {
 			margin-top: -30px;
 			margin-bottom: -30px;
 		}
 	}
 
-	&:not(.has-background ) {
-		padding-bottom: 1px;
+	&.has-background.gt-none-padding {
+		> .editor-inner-blocks {
+			margin-top: -32px;
+			margin-bottom: -32px;
+		}
 	}
 
 	/* Hide Block Appender */

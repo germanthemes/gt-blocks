@@ -8,6 +8,10 @@ const contentContainerAttributes = {
 	templateLock: {
 		type: 'string',
 	},
+	padding: {
+		type: 'string',
+		default: 'default',
+	},
 	textColor: {
 		type: 'string',
 	},
