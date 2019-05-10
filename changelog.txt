@@ -2,6 +2,14 @@
 GT Blocks Changelog
 ===================================
 
+Version 1.0.2
+-----------------------------------
+* added padding option to GT Column block
+* added padding option to GT Content block
+* added block inserter button to GT Section block
+* added block inserter button to GT Column block
+* added block inserter button to GT Content block
+
 Version 1.0.1
 -----------------------------------
 * added Ghost Button style to GT Button
