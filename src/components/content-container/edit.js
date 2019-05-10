@@ -9,6 +9,7 @@ const { getComputedStyle } = window;
  */
 const { __ } = wp.i18n;
 const { compose } = wp.compose;
+const { withSelect } = wp.data;
 const {
 	Component,
 	Fragment,
@@ -43,6 +44,8 @@ class ContentContainerEdit extends Component {
 			setAttributes,
 			children,
 			clientId,
+			isSelected,
+			isChildBlockSelected,
 			backgroundColor,
 			setBackgroundColor,
 			fallbackBackgroundColor,
@@ -124,7 +127,9 @@ class ContentContainerEdit extends Component {
 
 					{ children }
 
-					<Inserter rootClientId={ clientId } isAppender />
+					{ ( isSelected || isChildBlockSelected ) && (
+						<Inserter rootClientId={ clientId } isAppender />
+					) }
 
 				</div>
 
@@ -143,6 +148,12 @@ export default compose( [
 		return {
 			fallbackBackgroundColor: backgroundColor || ! computedStyles ? undefined : computedStyles.backgroundColor,
 			fallbackTextColor: textColor || ! computedStyles ? undefined : computedStyles.color,
+		};
+	} ),
+	withSelect( ( select, { clientId } ) => {
+		const { hasSelectedInnerBlock } = select( 'core/editor' );
+		return {
+			isChildBlockSelected: hasSelectedInnerBlock( clientId, true ),
 		};
 	} ),
 ] )( ContentContainerEdit );
