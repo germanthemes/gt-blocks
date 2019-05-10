@@ -21,6 +21,29 @@
 		}
 	}
 
+	/* Add Blocks Button */
+	> .block-editor-inserter {
+		display: block;
+		margin: 0;
+		padding: 12px 0 0;
+
+		.block-editor-inserter__toggle {
+			display: flex;
+			justify-content: center;
+			width: 100%;
+			padding: 8px;
+			background: #fafafa;
+			border: 1px solid #ddd;
+
+			&:hover,
+			&:focus {
+				background: #f0f0f0;
+				border: 1px solid #999;
+				box-shadow: none;
+			}
+		}
+	}
+
 	/* Hide Block Appender */
 	.wp-block.editor-default-block-appender {
 		display: none;

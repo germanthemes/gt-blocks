@@ -17,6 +17,7 @@ const {
 const {
 	ContrastChecker,
 	InspectorControls,
+	Inserter,
 	PanelColorSettings,
 	withColors,
 } = wp.editor;
@@ -41,6 +42,7 @@ class ContentContainerEdit extends Component {
 			attributes,
 			setAttributes,
 			children,
+			clientId,
 			backgroundColor,
 			setBackgroundColor,
 			fallbackBackgroundColor,
@@ -121,6 +123,8 @@ class ContentContainerEdit extends Component {
 				<div className={ contentClasses } style={ contentStyles }>
 
 					{ children }
+
+					<Inserter rootClientId={ clientId } isAppender />
 
 				</div>
 
