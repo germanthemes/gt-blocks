@@ -31,4 +31,34 @@
 			margin-bottom: 0;
 		}
 	}
+
+	&.gt-remove-first-block-padding.gt-small-padding {
+		> *:first-child {
+			margin: -1rem -1rem 1rem;
+		}
+	}
+
+	&.gt-remove-first-block-padding.has-background:not(.gt-padding) {
+		> *:first-child {
+			margin: -1.5rem -1.5rem 1.5rem;
+		}
+	}
+
+	&.gt-remove-first-block-padding.gt-medium-padding {
+		> *:first-child {
+			margin: -2rem -2rem 2rem;
+		}
+	}
+
+	&.gt-remove-first-block-padding.gt-large-padding {
+		> *:first-child {
+			margin: -3rem -3rem 3rem;
+		}
+	}
+
+	&.gt-remove-first-block-padding.gt-extra-large-padding {
+		> *:first-child {
+			margin: -4rem -4rem 4rem;
+		}
+	}
 }

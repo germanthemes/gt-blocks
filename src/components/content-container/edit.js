@@ -25,6 +25,7 @@ const {
 const {
 	PanelBody,
 	SelectControl,
+	ToggleControl,
 	withFallbackStyles,
 } = wp.components;
 
@@ -55,10 +56,12 @@ class ContentContainerEdit extends Component {
 		const {
 			contentClass,
 			padding,
+			removeFirstBlockPadding,
 		} = attributes;
 
 		const contentClasses = classnames( contentClass, {
 			[ `gt-padding gt-${ padding }-padding` ]: 'default' !== padding,
+			'gt-remove-first-block-padding-editor': removeFirstBlockPadding,
 			'has-text-color': textColor.color,
 			[ textColor.class ]: textColor.class,
 			'has-background': backgroundColor.color,
@@ -89,6 +92,12 @@ class ContentContainerEdit extends Component {
 								{ value: 'large', label: __( 'Large', 'gt-blocks' ) },
 								{ value: 'extra-large', label: __( 'Extra Large', 'gt-blocks' ) },
 							] }
+						/>
+
+						<ToggleControl
+							label={ __( 'Remove padding of first block?', 'gt-blocks' ) }
+							checked={ !! removeFirstBlockPadding }
+							onChange={ () => setAttributes( { removeFirstBlockPadding: ! removeFirstBlockPadding } ) }
 						/>
 
 					</PanelBody>

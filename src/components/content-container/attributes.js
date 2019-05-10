@@ -12,6 +12,10 @@ const contentContainerAttributes = {
 		type: 'string',
 		default: 'default',
 	},
+	removeFirstBlockPadding: {
+		type: 'boolean',
+		default: false,
+	},
 	textColor: {
 		type: 'string',
 	},
