@@ -101,10 +101,12 @@ class columnEdit extends Component {
 			templateLock,
 		} = attributes;
 
+		const showColumnControls = isSelected || isParentBlockSelected || isChildBlockSelected;
+
 		return (
 			<div className={ className }>
 
-				<ContentContainerEdit { ...this.props }>
+				<ContentContainerEdit showInserter={ showColumnControls } { ...this.props }>
 					<InnerBlocks
 						template={ template || undefined }
 						templateLock={ templateLock || false }
@@ -112,7 +114,7 @@ class columnEdit extends Component {
 					/>
 				</ContentContainerEdit>
 
-				{ ( isSelected || isParentBlockSelected || isChildBlockSelected ) && (
+				{ showColumnControls && (
 					<div className="gt-column-controls">
 
 						<IconButton
