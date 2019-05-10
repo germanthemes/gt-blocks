@@ -9,8 +9,8 @@ const { InnerBlocks } = wp.editor;
  * Internal dependencies
  */
 import './style.scss';
+import edit from './edit';
 import { default as backgroundAttributes } from '../../components/background-section/attributes';
-import { default as BackgroundEdit } from '../../components/background-section/edit';
 import { default as BackgroundSection } from '../../components/background-section';
 
 /**
@@ -42,13 +42,7 @@ registerBlockType(
 			}
 		},
 
-		edit( props ) {
-			return (
-				<BackgroundEdit { ...props }>
-					<InnerBlocks />
-				</BackgroundEdit>
-			);
-		},
+		edit,
 
 		save( props ) {
 			return (

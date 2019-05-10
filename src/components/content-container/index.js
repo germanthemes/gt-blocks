@@ -23,6 +23,8 @@ class ContentContainer extends Component {
 
 		const {
 			contentClass,
+			padding,
+			removeFirstBlockPadding,
 			textColor,
 			backgroundColor,
 			customTextColor,
@@ -33,6 +35,8 @@ class ContentContainer extends Component {
 		const backgroundClass = getColorClassName( 'background-color', backgroundColor );
 
 		const contentClasses = classnames( contentClass, {
+			[ `gt-padding gt-${ padding }-padding` ]: 'default' !== padding,
+			'gt-remove-first-block-padding': removeFirstBlockPadding,
 			'has-text-color': textColor || customTextColor,
 			[ textColorClass ]: textColorClass,
 			'has-background': backgroundColor || customBackgroundColor,

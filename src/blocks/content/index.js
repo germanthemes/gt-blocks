@@ -10,8 +10,8 @@ const { InnerBlocks } = wp.editor;
  */
 import './style.scss';
 import './editor.scss';
+import edit from './edit';
 import { default as contentContainerAttributes } from '../../components/content-container/attributes';
-import { default as ContentContainerEdit } from '../../components/content-container/edit';
 import { default as ContentContainer } from '../../components/content-container';
 
 /**
@@ -38,25 +38,7 @@ registerBlockType(
 			...contentContainerAttributes,
 		},
 
-		edit( props ) {
-			const {
-				allowedBlocks,
-				template,
-				templateLock,
-			} = props.attributes;
-
-			return (
-				<div className={ props.className }>
-					<ContentContainerEdit { ...props }>
-						<InnerBlocks
-							template={ template || undefined }
-							templateLock={ templateLock || false }
-							{ ...( allowedBlocks && { allowedBlocks } ) }
-						/>
-					</ContentContainerEdit>
-				</div>
-			);
-		},
+		edit,
 
 		save( props ) {
 			return (

@@ -24,6 +24,7 @@ const {
 	BlockControls,
 	ContrastChecker,
 	MediaUpload,
+	Inserter,
 	InspectorControls,
 	PanelColorSettings,
 	withColors,
@@ -87,6 +88,8 @@ class BackgroundEdit extends Component {
 		const {
 			attributes,
 			children,
+			clientId,
+			showInserter,
 			backgroundColor,
 			setBackgroundColor,
 			fallbackBackgroundColor,
@@ -384,6 +387,10 @@ class BackgroundEdit extends Component {
 					<div className={ contentClasses }>
 
 						{ children }
+
+						{ showInserter && (
+							<Inserter rootClientId={ clientId } isAppender />
+						) }
 
 					</div>
 

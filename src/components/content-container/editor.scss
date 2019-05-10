@@ -2,19 +2,75 @@
 .wp-block-gt-blocks-column .gt-column {
 
 	> .editor-inner-blocks {
-		margin-top: -17px;
-		margin-bottom: -17px;
+		margin: -17px -1px;
 	}
 
-	&.has-background {
+	&.has-background,
+	&.gt-padding:not(.gt-none-padding) {
 		> .editor-inner-blocks {
 			margin-top: -30px;
 			margin-bottom: -30px;
 		}
 	}
 
-	&:not(.has-background ) {
-		padding-bottom: 1px;
+	&.has-background.gt-none-padding {
+		> .editor-inner-blocks {
+			margin-top: -32px;
+			margin-bottom: -32px;
+		}
+	}
+
+	&.gt-remove-first-block-padding-editor.gt-small-padding {
+		> .editor-inner-blocks > .editor-block-list__layout > .editor-block-list__block:first-child {
+			margin: calc(-1rem - 32px) -1rem 1rem;
+		}
+	}
+
+	&.gt-remove-first-block-padding-editor.has-background:not(.gt-padding) {
+		> .editor-inner-blocks > .editor-block-list__layout > .editor-block-list__block:first-child {
+			margin: calc(-1.5rem - 32px) -1.5rem 1.5rem;
+		}
+	}
+
+	&.gt-remove-first-block-padding-editor.gt-medium-padding {
+		> .editor-inner-blocks > .editor-block-list__layout > .editor-block-list__block:first-child {
+			margin: calc(-2rem - 32px) -2rem 2rem;
+		}
+	}
+
+	&.gt-remove-first-block-padding-editor.gt-large-padding {
+		> .editor-inner-blocks > .editor-block-list__layout > .editor-block-list__block:first-child {
+			margin: calc(-3rem - 32px) -3rem 3rem;
+		}
+	}
+
+	&.gt-remove-first-block-padding-editor.gt-extra-large-padding {
+		> .editor-inner-blocks > .editor-block-list__layout > .editor-block-list__block:first-child {
+			margin: calc(-4rem - 32px) -4rem 4rem;
+		}
+	}
+
+	/* Add Blocks Button */
+	> .block-editor-inserter {
+		display: block;
+		margin: 0;
+		padding: 12px 0 0;
+
+		.block-editor-inserter__toggle {
+			display: flex;
+			justify-content: center;
+			width: 100%;
+			padding: 8px;
+			background: #fafafa;
+			border: 1px solid #ddd;
+
+			&:hover,
+			&:focus {
+				background: #f0f0f0;
+				border: 1px solid #999;
+				box-shadow: none;
+			}
+		}
 	}
 
 	/* Hide Block Appender */

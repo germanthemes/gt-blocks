@@ -17,11 +17,15 @@ const {
 const {
 	ContrastChecker,
 	InspectorControls,
+	Inserter,
 	PanelColorSettings,
 	withColors,
 } = wp.editor;
 
 const {
+	PanelBody,
+	SelectControl,
+	ToggleControl,
 	withFallbackStyles,
 } = wp.components;
 
@@ -37,7 +41,10 @@ class ContentContainerEdit extends Component {
 	render() {
 		const {
 			attributes,
+			setAttributes,
 			children,
+			clientId,
+			showInserter,
 			backgroundColor,
 			setBackgroundColor,
 			fallbackBackgroundColor,
@@ -48,9 +55,13 @@ class ContentContainerEdit extends Component {
 
 		const {
 			contentClass,
+			padding,
+			removeFirstBlockPadding,
 		} = attributes;
 
 		const contentClasses = classnames( contentClass, {
+			[ `gt-padding gt-${ padding }-padding` ]: 'default' !== padding,
+			'gt-remove-first-block-padding-editor': removeFirstBlockPadding,
 			'has-text-color': textColor.color,
 			[ textColor.class ]: textColor.class,
 			'has-background': backgroundColor.color,
@@ -66,6 +77,30 @@ class ContentContainerEdit extends Component {
 			<Fragment>
 
 				<InspectorControls key="inspector">
+
+					<PanelBody title={ __( 'Layout Settings', 'gt-blocks' ) } initialOpen={ false } className="gt-layout-settings-panel gt-panel">
+
+						<SelectControl
+							label={ __( 'Padding', 'gt-blocks' ) }
+							value={ padding }
+							onChange={ ( newPadding ) => setAttributes( { padding: newPadding } ) }
+							options={ [
+								{ value: 'none', label: __( 'None', 'gt-blocks' ) },
+								{ value: 'small', label: __( 'Small', 'gt-blocks' ) },
+								{ value: 'default', label: __( 'Automatic', 'gt-blocks' ) },
+								{ value: 'medium', label: __( 'Medium', 'gt-blocks' ) },
+								{ value: 'large', label: __( 'Large', 'gt-blocks' ) },
+								{ value: 'extra-large', label: __( 'Extra Large', 'gt-blocks' ) },
+							] }
+						/>
+
+						<ToggleControl
+							label={ __( 'Remove padding of first block?', 'gt-blocks' ) }
+							checked={ !! removeFirstBlockPadding }
+							onChange={ () => setAttributes( { removeFirstBlockPadding: ! removeFirstBlockPadding } ) }
+						/>
+
+					</PanelBody>
 
 					<PanelColorSettings
 						title={ __( 'Color Settings', 'gt-blocks' ) }
@@ -98,6 +133,10 @@ class ContentContainerEdit extends Component {
 				<div className={ contentClasses } style={ contentStyles }>
 
 					{ children }
+
+					{ showInserter && (
+						<Inserter rootClientId={ clientId } isAppender />
+					) }
 
 				</div>
 

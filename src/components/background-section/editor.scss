@@ -36,13 +36,29 @@
 		> .editor-inner-blocks > .editor-block-list__layout > div:first-child > .wp-block.editor-default-block-appender {
 			display: block;
 		}
-	}
-}
 
-/* Show Block Appender if block is selected */
-.editor-block-list__block.is-selected[data-type="gt-blocks/section"] {
-	.gt-background-section .gt-section-content .wp-block.editor-default-block-appender {
-		display: block;
+		/* Add Blocks Button */
+		> .block-editor-inserter {
+			display: block;
+			margin: 0;
+			padding: 12px 0 0;
+
+			.block-editor-inserter__toggle {
+				display: flex;
+				justify-content: center;
+				width: 100%;
+				padding: 8px;
+				background: #fafafa;
+				border: 1px solid #ddd;
+
+				&:hover,
+				&:focus {
+					background: #f0f0f0;
+					border: 1px solid #999;
+					box-shadow: none;
+				}
+			}
+		}
 	}
 }
 
