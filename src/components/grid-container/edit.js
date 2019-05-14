@@ -177,7 +177,7 @@ class GridEdit extends Component {
 
 						<InnerBlocks
 							template={ getItemsTemplate( items ) }
-							templateLock="all"
+							templateLock={ false }
 							allowedBlocks={ [ 'gt-blocks/column' ] }
 						/>
 
