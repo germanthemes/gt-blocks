@@ -31,13 +31,11 @@ const {
 } = wp.editor;
 
 const {
-	BaseControl,
 	Button,
 	PanelBody,
 	RangeControl,
 	SelectControl,
 	ToggleControl,
-	Toolbar,
 	withFallbackStyles,
 } = wp.components;
 
@@ -150,21 +148,6 @@ class BackgroundEdit extends Component {
 
 		const dataBackgroundImage = backgroundImageId ? backgroundImageUrl : undefined;
 
-		const ALIGNMENT_CONTROLS = {
-			default: {
-				icon: 'align-center',
-				title: __( 'Default width', 'gt-blocks' ),
-			},
-			wide: {
-				icon: 'align-wide',
-				title: __( 'Wide width', 'gt-blocks' ),
-			},
-			full: {
-				icon: 'align-full-width',
-				title: __( 'Full width', 'gt-blocks' ),
-			},
-		};
-
 		return (
 			<Fragment>
 
@@ -183,20 +166,6 @@ class BackgroundEdit extends Component {
 				<InspectorControls>
 
 					<PanelBody title={ __( 'Section Settings', 'gt-blocks' ) } initialOpen={ false } className="gt-section-settings-panel gt-panel">
-
-						{ wideControlsEnabled && (
-							<BaseControl id="gt-block-alignment" label={ __( 'Block Alignment', 'gt-blocks' ) }>
-								<Toolbar
-									controls={
-										Object.keys( ALIGNMENT_CONTROLS ).map( ( control ) => ( {
-											...ALIGNMENT_CONTROLS[ control ],
-											isActive: blockAlignment === control,
-											onClick: () => setAttributes( { blockAlignment: control } ),
-										} ) )
-									}
-								/>
-							</BaseControl>
-						) }
 
 						{ ( wideControlsEnabled && ( 'full' === blockAlignment || 'wide' === blockAlignment ) ) && (
 
