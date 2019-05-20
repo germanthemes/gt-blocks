@@ -206,7 +206,7 @@ class GridEdit extends Component {
 							onClick={ this.addBlock }
 							className="gt-add-grid-item"
 						>
-							<Dashicon icon="insert" />
+							<Dashicon icon="screenoptions" />
 							{ __( 'Add grid item', 'gt-blocks' ) }
 						</Button>
 					) }
