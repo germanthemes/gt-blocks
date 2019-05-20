@@ -9,6 +9,7 @@ Version 1.0.2
 * added block inserter button to GT Section block
 * added block inserter button to GT Column block
 * added block inserter button to GT Content block
+* fixed duplicating column bug in Grid blocks
 
 Version 1.0.1
 -----------------------------------

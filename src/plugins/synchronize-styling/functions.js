@@ -47,6 +47,8 @@ export const synchronizeButtons = ( blockList, attributes ) => {
 
 export const synchronizeColumns = ( blockList, attributes ) => {
 	const {
+		padding,
+		removeFirstBlockPadding,
 		backgroundColor,
 		textColor,
 		customBackgroundColor,
@@ -56,6 +58,8 @@ export const synchronizeColumns = ( blockList, attributes ) => {
 	} = attributes;
 
 	const newAttributes = {
+		padding,
+		removeFirstBlockPadding,
 		backgroundColor,
 		textColor,
 		customBackgroundColor,
