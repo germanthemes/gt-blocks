@@ -18,10 +18,12 @@ class GridContainer extends Component {
 	render() {
 		const {
 			columns,
+			columnGap,
 		} = this.props.attributes;
 
 		const gridClasses = classnames( 'gt-grid-container', {
 			[ `gt-columns-${ columns }` ]: columns,
+			[ `gt-${ columnGap }-column-gap` ]: 'normal' !== columnGap,
 		} );
 
 		return (
