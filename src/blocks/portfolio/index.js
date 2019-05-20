@@ -41,6 +41,10 @@ registerBlockType(
 				type: 'number',
 				default: 3,
 			},
+			columnGap: {
+				type: 'string',
+				default: 'normal',
+			},
 		},
 
 		edit,

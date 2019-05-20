@@ -37,6 +37,7 @@ const {
 	Dashicon,
 	PanelBody,
 	RangeControl,
+	SelectControl,
 	Toolbar,
 } = wp.components;
 
@@ -106,12 +107,14 @@ class GridEdit extends Component {
 		const {
 			items,
 			columns,
+			columnGap,
 		} = attributes;
 
 		const blockId = `gt-icon-grid-block-${ instanceId }`;
 
 		const gridClasses = classnames( 'gt-grid-container', {
 			[ `gt-columns-${ columns }` ]: columns,
+			[ `gt-${ columnGap }-column-gap` ]: 'normal' !== columnGap,
 		} );
 
 		const columnIcons = {
@@ -162,9 +165,23 @@ class GridEdit extends Component {
 						<RangeControl
 							label={ __( 'Columns', 'gt-blocks' ) }
 							value={ columns }
-							onChange={ ( nextColumns ) => setAttributes( { columns: nextColumns } ) }
+							onChange={ ( value ) => setAttributes( { columns: value } ) }
 							min={ 2 }
 							max={ 6 }
+						/>
+
+						<SelectControl
+							label={ __( 'Column Gap', 'gt-blocks' ) }
+							value={ columnGap }
+							onChange={ ( value ) => setAttributes( { columnGap: value } ) }
+							options={ [
+								{ value: 'none', label: __( 'None', 'gt-blocks' ) },
+								{ value: 'small', label: __( 'Small', 'gt-blocks' ) },
+								{ value: 'normal', label: __( 'Normal', 'gt-blocks' ) },
+								{ value: 'medium', label: __( 'Medium', 'gt-blocks' ) },
+								{ value: 'large', label: __( 'Large', 'gt-blocks' ) },
+								{ value: 'extra-large', label: __( 'Extra Large', 'gt-blocks' ) },
+							] }
 						/>
 
 					</PanelBody>
@@ -177,7 +194,7 @@ class GridEdit extends Component {
 
 						<InnerBlocks
 							template={ getItemsTemplate( items ) }
-							templateLock="all"
+							templateLock={ false }
 							allowedBlocks={ [ 'gt-blocks/column' ] }
 						/>
 
@@ -189,8 +206,8 @@ class GridEdit extends Component {
 							onClick={ this.addBlock }
 							className="gt-add-grid-item"
 						>
-							<Dashicon icon="insert" />
-							{ __( 'Add block', 'gt-blocks' ) }
+							<Dashicon icon="screenoptions" />
+							{ __( 'Add grid item', 'gt-blocks' ) }
 						</Button>
 					) }
 				</div>

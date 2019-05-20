@@ -93,18 +93,23 @@
 /* Add Grid Item*/
 .gt-add-grid-item.components-button.is-large {
 	display: flex;
-	flex-direction: column;
+	justify-content: center;
 	align-items: center;
 	margin: 12px 0 0;
-	padding: 25px 20px 20px;
+	padding: 8px;
 	width: 100%;
 	height: auto;
 	box-shadow: none;
+	background: #fafafa;
 	border: 1px solid #ddd;
-	border-radius: 0;
+
+	svg {
+		margin-right: 8px;
+	}
 
 	&:hover,
 	&:focus {
+		background: #f0f0f0;
 		border: 1px solid #999;
 		box-shadow: none;
 	}

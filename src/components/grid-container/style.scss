@@ -1,3 +1,27 @@
+:root {
+	--gt-column-gap: 1.5em;
+}
+
+.gt-grid-container.gt-none-column-gap {
+	--gt-column-gap: 0;
+}
+
+.gt-grid-container.gt-small-column-gap {
+	--gt-column-gap: 1rem;
+}
+
+.gt-grid-container.gt-medium-column-gap {
+	--gt-column-gap: 2rem;
+}
+
+.gt-grid-container.gt-large-column-gap {
+	--gt-column-gap: 3rem;
+}
+
+.gt-grid-container.gt-extra-large-column-gap {
+	--gt-column-gap: 4rem;
+}
+
 @media only screen and (min-width: 480px) {
 	.gt-columns-2,
 	.gt-columns-4,
@@ -6,10 +30,12 @@
 		display: flex;
 		flex-wrap: wrap;
 		margin-right: -1.5em;
+		margin-right: calc( -1 * var(--gt-column-gap) );
 		margin-bottom: -1.5em;
 
 		.wp-block-gt-blocks-column {
 			padding-right: 1.5em;
+			padding-right: var(--gt-column-gap);
 			width: 50%;
 		}
 	}
@@ -20,10 +46,12 @@
 		display: flex;
 		flex-wrap: wrap;
 		margin-right: -1.5em;
+		margin-right: calc( -1 * var(--gt-column-gap) );
 		margin-bottom: -1.5em;
 
 		.wp-block-gt-blocks-column {
 			padding-right: 1.5em;
+			padding-right: var(--gt-column-gap);
 			width: 33.3333333333333%;
 		}
 	}

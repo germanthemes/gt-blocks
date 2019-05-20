@@ -1,7 +1,7 @@
 /**
  * External dependencies
  */
-const { partial, castArray, last } = lodash;
+const { partial } = lodash;
 
 /**
  * WordPress dependencies
@@ -31,30 +31,31 @@ import { default as ContentContainerEdit } from '../../components/content-contai
 class columnEdit extends Component {
 	duplicateColumn() {
 		const {
+			clientId,
+			rootClientId,
+			lastSelectedIndex,
+			onInsertBlock,
+		} = this.props;
+
+		const {
 			getBlocksByClientId,
-			getBlockIndex,
-			getBlockRootClientId,
 		} = select( 'core/editor' );
 
 		const {
-			insertBlocks,
 			updateBlockAttributes,
 		} = dispatch( 'core/editor' );
 
 		// Get current block.
-		const { clientId } = this.props;
 		const block = getBlocksByClientId( clientId )[ 0 ];
 
 		// Get parent block.
-		const rootClientId = getBlockRootClientId( clientId );
 		const parentBlock = getBlocksByClientId( rootClientId )[ 0 ];
 
-		// Get position to insert duplicated block.
-		const lastSelectedIndex = getBlockIndex( last( castArray( clientId ) ), rootClientId );
-
-		// Clone and insert block.
+		// Clone block.
 		const clonedBlock = cloneBlock( block );
-		insertBlocks( clonedBlock, lastSelectedIndex + 1, rootClientId );
+
+		// Insert Block.
+		onInsertBlock( clonedBlock, lastSelectedIndex + 1, rootClientId );
 
 		// Update number of items in parent block.
 		updateBlockAttributes( rootClientId, { items: parentBlock.attributes.items + 1 } );
@@ -62,8 +63,12 @@ class columnEdit extends Component {
 
 	removeColumn() {
 		const {
+			clientId,
+			rootClientId,
+		} = this.props;
+
+		const {
 			getBlocksByClientId,
-			getBlockRootClientId,
 		} = select( 'core/editor' );
 
 		const {
@@ -72,11 +77,10 @@ class columnEdit extends Component {
 		} = dispatch( 'core/editor' );
 
 		// Get parent block.
-		const rootClientId = getBlockRootClientId( this.props.clientId );
 		const parentBlock = getBlocksByClientId( rootClientId )[ 0 ];
 
 		// Remove block.
-		removeBlocks( this.props.clientId );
+		removeBlocks( clientId );
 
 		// Update number of items in parent block.
 		updateBlockAttributes( rootClientId, { items: parentBlock.attributes.items - 1 } );
@@ -155,6 +159,7 @@ class columnEdit extends Component {
 }
 
 export default compose( [
+	// eslint-disable-next-line no-shadow
 	withSelect( ( select, { clientId } ) => {
 		const {
 			getBlockCount,
@@ -173,14 +178,23 @@ export default compose( [
 			isChildBlockSelected: hasSelectedInnerBlock( rootClientId, true ),
 			isFirstColumn: 0 === columnIndex,
 			isLastColumn: columnCount === ( columnIndex + 1 ),
+			lastSelectedIndex: columnIndex,
 			rootClientId,
 		};
 	} ),
+	// eslint-disable-next-line no-shadow
 	withDispatch( ( dispatch, { clientId, rootClientId } ) => {
-		const { moveBlocksDown, moveBlocksUp } = dispatch( 'core/editor' );
+		const {
+			insertBlock,
+			moveBlocksDown,
+			moveBlocksUp,
+		} = dispatch( 'core/editor' );
 		return {
 			onMoveDown: partial( moveBlocksDown, clientId, rootClientId ),
 			onMoveUp: partial( moveBlocksUp, clientId, rootClientId ),
+			onInsertBlock( block, index ) {
+				insertBlock( block, index, rootClientId );
+			},
 		};
 	} ),
 ] )( columnEdit );
