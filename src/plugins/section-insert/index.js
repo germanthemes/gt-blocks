@@ -38,7 +38,7 @@ const insertIntoSection = createHigherOrderComponent( ( BlockEdit ) => {
 		} = select( 'core/editor' );
 
 		const {
-			replaceBlock,
+			replaceBlocks,
 		} = dispatch( 'core/editor' );
 
 		// Get current block.
@@ -62,7 +62,7 @@ const insertIntoSection = createHigherOrderComponent( ( BlockEdit ) => {
 			const sectionBlock = createBlock( 'gt-blocks/section', {}, [ clonedBlock ] );
 
 			// Replace block.
-			replaceBlock( clientId, sectionBlock );
+			replaceBlocks( clientId, sectionBlock );
 		};
 
 		return (
