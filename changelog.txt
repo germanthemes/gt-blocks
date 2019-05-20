@@ -10,6 +10,7 @@ Version 1.0.2
 * added block inserter button to GT Column block
 * added block inserter button to GT Content block
 * fixed duplicating column bug in Grid blocks
+* fixed section insert feature in Grid blocks
 * removed Card Style of GT Features and GT Portfolio block
 
 Version 1.0.1

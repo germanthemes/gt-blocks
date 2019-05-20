@@ -190,7 +190,7 @@ class GridEdit extends Component {
 							className="gt-add-grid-item"
 						>
 							<Dashicon icon="insert" />
-							{ __( 'Add block', 'gt-blocks' ) }
+							{ __( 'Add grid item', 'gt-blocks' ) }
 						</Button>
 					) }
 				</div>
