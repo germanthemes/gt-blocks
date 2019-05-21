@@ -43,8 +43,12 @@ registerBlockType(
 				default: 3,
 			},
 			columns: {
+				type: 'number',
+				default: 3,
+			},
+			columnLayout: {
 				type: 'string',
-				default: '3',
+				default: '30-40-30',
 			},
 			columnGap: {
 				type: 'string',
@@ -57,11 +61,13 @@ registerBlockType(
 		save( props ) {
 			const {
 				columns,
+				columnLayout,
 				columnGap,
 			} = props.attributes;
 
 			const columnClasses = classnames( 'gt-columns-container', {
-				[ `gt-columns-${ columns }` ]: columns,
+				[ `gt-columns-${ columnLayout }` ]: columnLayout,
+				[ `gt-column-count-${ columns }` ]: columns,
 				[ `gt-${ columnGap }-column-gap` ]: 'normal' !== columnGap,
 			} );
 

@@ -45,6 +45,37 @@ const getTemplate = memoize( ( number ) => {
  * Block Edit Component
  */
 class ColumnsEdit extends Component {
+	constructor() {
+		super( ...arguments );
+		this.updateColumns = this.updateColumns.bind( this );
+	}
+
+	updateColumns( value ) {
+		let columns = 2;
+		const threeColumnLayouts = [
+			'25-25-50',
+			'25-50-25',
+			'50-25-25',
+			'30-40-30',
+			'20-60-20',
+			'33-33-33',
+		];
+		const fourColumnLayouts = [
+			'25-25-25-25',
+		];
+
+		if ( threeColumnLayouts.includes( value ) ) {
+			columns = 3;
+		} else if ( fourColumnLayouts.includes( value ) ) {
+			columns = 4;
+		}
+
+		this.props.setAttributes( {
+			columns: columns,
+			columnLayout: value,
+		} );
+	}
+
 	render() {
 		const {
 			attributes,
@@ -55,11 +86,13 @@ class ColumnsEdit extends Component {
 		const {
 			items,
 			columns,
+			columnLayout,
 			columnGap,
 		} = attributes;
 
 		const columnClasses = classnames( 'gt-columns-container', {
-			[ `gt-columns-${ columns }` ]: columns,
+			[ `gt-columns-${ columnLayout }` ]: columnLayout,
+			[ `gt-column-count-${ columns }` ]: columns,
 			[ `gt-${ columnGap }-column-gap` ]: 'normal' !== columnGap,
 		} );
 
@@ -72,8 +105,8 @@ class ColumnsEdit extends Component {
 
 						<SelectControl
 							label={ __( 'Columns', 'gt-blocks' ) }
-							value={ columns }
-							onChange={ ( value ) => setAttributes( { columns: value } ) }
+							value={ columnLayout }
+							onChange={ this.updateColumns }
 							options={ [
 								{ value: '25-75', label: __( '25% | 75%', 'gt-blocks' ) },
 								{ value: '75-25', label: __( '75% | 25%', 'gt-blocks' ) },
