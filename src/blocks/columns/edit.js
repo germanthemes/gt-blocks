@@ -9,6 +9,8 @@ const { times } = lodash;
  * WordPress dependencies
  */
 const { __ } = wp.i18n;
+const { createBlock } = wp.blocks;
+const { select, dispatch } = wp.data;
 
 const {
 	Component,
@@ -30,6 +32,21 @@ const {
  */
 import './editor.scss';
 
+/* Three Column Layouts */
+const threeColumnLayouts = [
+	'25-25-50',
+	'25-50-25',
+	'50-25-25',
+	'30-40-30',
+	'20-60-20',
+	'33-33-33',
+];
+
+/* Four Column Layouts */
+const fourColumnLayouts = [
+	'25-25-25-25',
+];
+
 /**
  * Returns the layouts configuration for a given number of items.
  *
@@ -48,32 +65,95 @@ class ColumnsEdit extends Component {
 	constructor() {
 		super( ...arguments );
 		this.updateColumns = this.updateColumns.bind( this );
+		this.addColumn = this.addColumn.bind( this );
+		this.removeColumn = this.removeColumn.bind( this );
 	}
 
 	updateColumns( value ) {
-		let columns = 2;
-		const threeColumnLayouts = [
-			'25-25-50',
-			'25-50-25',
-			'50-25-25',
-			'30-40-30',
-			'20-60-20',
-			'33-33-33',
-		];
-		const fourColumnLayouts = [
-			'25-25-25-25',
-		];
+		const {
+			attributes,
+			setAttributes,
+		} = this.props;
+		const { items } = attributes;
 
-		if ( threeColumnLayouts.includes( value ) ) {
-			columns = 3;
-		} else if ( fourColumnLayouts.includes( value ) ) {
-			columns = 4;
+		const columns = this.getColumnCount( value );
+
+		// Check if new column has to be added.
+		if ( items < columns ) {
+			this.addColumn();
+		} else if ( items > columns ) {
+			this.removeColumn();
 		}
 
-		this.props.setAttributes( {
+		// Update attributes.
+		setAttributes( {
 			columns: columns,
 			columnLayout: value,
 		} );
+	}
+
+	getColumnCount( layout ) {
+		if ( threeColumnLayouts.includes( layout ) ) {
+			return 3;
+		} else if ( fourColumnLayouts.includes( layout ) ) {
+			return 4;
+		}
+
+		return 2;
+	}
+
+	addColumn() {
+		const {
+			attributes,
+			clientId,
+			setAttributes,
+		} = this.props;
+
+		const {
+			items,
+		} = attributes;
+
+		// Create Block.
+		const block = createBlock( 'gt-blocks/column', {} );
+
+		// Insert Block.
+		dispatch( 'core/editor' ).insertBlocks( block, items, clientId );
+
+		// Select Parent Block.
+		dispatch( 'core/editor' ).selectBlock( clientId );
+
+		// Update number of items.
+		setAttributes( { items: items + 1 } );
+	}
+
+	removeColumn() {
+		const {
+			attributes,
+			clientId,
+			setAttributes,
+		} = this.props;
+
+		const {
+			items,
+		} = attributes;
+
+		// Get block.
+		const block = select( 'core/editor' ).getBlocksByClientId( clientId )[ 0 ];
+
+		// Get last column block.
+		const lastColumn = block.innerBlocks[ items - 1 ];
+
+		// Check if last column block is empty.
+		if ( 0 === lastColumn.innerBlocks.length ) {
+			// Remove block.
+			dispatch( 'core/editor' ).removeBlocks( lastColumn.clientId );
+
+			// Select Parent Block.
+			dispatch( 'core/editor' ).selectBlock( clientId );
+
+			// Update number of items.
+			setAttributes( { items: items - 1 } );
+		}
 	}
 
 	render() {
