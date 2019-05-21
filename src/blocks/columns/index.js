@@ -1,8 +1,14 @@
 /**
+ * External dependencies
+ */
+import classnames from 'classnames';
+
+/**
  * WordPress dependencies
  */
 const { __ } = wp.i18n;
 const { registerBlockType } = wp.blocks;
+const { InnerBlocks } = wp.editor;
 
 /**
  * Internal dependencies
@@ -10,7 +16,6 @@ const { registerBlockType } = wp.blocks;
 import './style.scss';
 import './editor.scss';
 import edit from './edit';
-import { default as GridContainer } from '../../components/grid-container';
 
 /**
  * Register block
@@ -50,11 +55,23 @@ registerBlockType(
 		edit,
 
 		save( props ) {
+			const {
+				columns,
+				columnGap,
+			} = props.attributes;
+
+			const columnClasses = classnames( 'gt-columns-container', {
+				[ `gt-columns-${ columns }` ]: columns,
+				[ `gt-${ columnGap }-column-gap` ]: 'normal' !== columnGap,
+			} );
+
 			return (
 				<div>
-					<GridContainer
-						{ ...props }
-					/>
+					<div className={ columnClasses }>
+
+						<InnerBlocks.Content />
+
+					</div>
 				</div>
 			);
 		},

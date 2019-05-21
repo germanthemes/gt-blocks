@@ -1,4 +1,5 @@
-.editor-block-list__block .gt-grid-container {
+.editor-block-list__block .gt-grid-container,
+.editor-block-list__block .gt-columns-container {
 	display: block;
 	margin: 0;
 
@@ -116,7 +117,8 @@
 }
 
 @media (min-width: 600px) {
-	.gt-grid-container {
+	.gt-grid-container,
+	.gt-columns-container {
 
 		> .editor-inner-blocks > .editor-block-list__layout {
 
