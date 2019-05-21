@@ -42,6 +42,7 @@ class columnEdit extends Component {
 		} = select( 'core/editor' );
 
 		const {
+			selectBlock,
 			updateBlockAttributes,
 		} = dispatch( 'core/editor' );
 
@@ -56,6 +57,9 @@ class columnEdit extends Component {
 
 		// Insert Block.
 		onInsertBlock( clonedBlock, lastSelectedIndex + 1, rootClientId );
+
+		// Select Parent Block.
+		selectBlock( rootClientId );
 
 		// Update number of items in parent block.
 		updateBlockAttributes( rootClientId, { items: parentBlock.attributes.items + 1 } );
@@ -73,6 +77,7 @@ class columnEdit extends Component {
 
 		const {
 			removeBlocks,
+			selectBlock,
 			updateBlockAttributes,
 		} = dispatch( 'core/editor' );
 
@@ -81,6 +86,9 @@ class columnEdit extends Component {
 
 		// Remove block.
 		removeBlocks( clientId );
+
+		// Select Parent Block.
+		selectBlock( rootClientId );
 
 		// Update number of items in parent block.
 		updateBlockAttributes( rootClientId, { items: parentBlock.attributes.items - 1 } );
