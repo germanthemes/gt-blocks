@@ -82,6 +82,12 @@ class ColumnsEdit extends Component {
 								{ value: '40-60', label: __( '40% | 60%', 'gt-blocks' ) },
 								{ value: '60-40', label: __( '60% | 40%', 'gt-blocks' ) },
 								{ value: '50-50', label: __( '50% | 50%', 'gt-blocks' ) },
+								{ value: '25-25-50', label: __( '25% | 25% | 50%', 'gt-blocks' ) },
+								{ value: '25-50-25', label: __( '25% | 50% | 25%', 'gt-blocks' ) },
+								{ value: '50-25-25', label: __( '50% | 25% | 25%', 'gt-blocks' ) },
+								{ value: '30-40-30', label: __( '30% | 40% | 30%', 'gt-blocks' ) },
+								{ value: '20-60-20', label: __( '20% | 60% | 20%', 'gt-blocks' ) },
+								{ value: '33-33-33', label: __( '33% | 33% | 33%', 'gt-blocks' ) },
 							] }
 						/>
 
