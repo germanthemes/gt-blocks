@@ -75,12 +75,13 @@ class ColumnsEdit extends Component {
 							value={ columns }
 							onChange={ ( value ) => setAttributes( { columns: value } ) }
 							options={ [
-								{ value: '1-2', label: __( '33% | 66%', 'gt-blocks' ) },
-								{ value: '2-1', label: __( '66% | 33%', 'gt-blocks' ) },
-								{ value: '2', label: __( '50% | 50%', 'gt-blocks' ) },
-								{ value: '1-3', label: __( '25% | 75%', 'gt-blocks' ) },
-								{ value: '3-1', label: __( '75% | 25%', 'gt-blocks' ) },
-								{ value: '3', label: __( '33% | 33% | 33%', 'gt-blocks' ) },
+								{ value: '25-75', label: __( '25% | 75%', 'gt-blocks' ) },
+								{ value: '75-25', label: __( '75% | 25%', 'gt-blocks' ) },
+								{ value: '33-66', label: __( '33% | 66%', 'gt-blocks' ) },
+								{ value: '66-33', label: __( '66% | 33%', 'gt-blocks' ) },
+								{ value: '40-60', label: __( '40% | 60%', 'gt-blocks' ) },
+								{ value: '60-40', label: __( '60% | 40%', 'gt-blocks' ) },
+								{ value: '50-50', label: __( '50% | 50%', 'gt-blocks' ) },
 							] }
 						/>
 
