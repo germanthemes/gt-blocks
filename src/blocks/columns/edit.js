@@ -23,6 +23,9 @@ const {
 } = wp.editor;
 
 const {
+	BaseControl,
+	Button,
+	ButtonGroup,
 	PanelBody,
 	SelectControl,
 } = wp.components;
@@ -32,19 +35,30 @@ const {
  */
 import './editor.scss';
 
-/* Three Column Layouts */
-const threeColumnLayouts = [
-	'25-25-50',
-	'25-50-25',
-	'50-25-25',
-	'30-40-30',
-	'20-60-20',
-	'33-33-33',
+/* Two Column Layouts */
+const twoColumnLayouts = [
+	{ value: '25-75', label: __( '25% | 75%', 'gt-blocks' ) },
+	{ value: '75-25', label: __( '75% | 25%', 'gt-blocks' ) },
+	{ value: '33-66', label: __( '33% | 66%', 'gt-blocks' ) },
+	{ value: '66-33', label: __( '66% | 33%', 'gt-blocks' ) },
+	{ value: '40-60', label: __( '40% | 60%', 'gt-blocks' ) },
+	{ value: '60-40', label: __( '60% | 40%', 'gt-blocks' ) },
+	{ value: '50-50', label: __( '50% | 50%', 'gt-blocks' ) },
 ];
 
-/* Four Column Layouts */
+/* Three Column Layouts */
+const threeColumnLayouts = [
+	{ value: '25-25-50', label: __( '25% | 25% | 50%', 'gt-blocks' ) },
+	{ value: '25-50-25', label: __( '25% | 50% | 25%', 'gt-blocks' ) },
+	{ value: '50-25-25', label: __( '50% | 25% | 25%', 'gt-blocks' ) },
+	{ value: '30-40-30', label: __( '30% | 40% | 30%', 'gt-blocks' ) },
+	{ value: '20-60-20', label: __( '20% | 60% | 20%', 'gt-blocks' ) },
+	{ value: '33-33-33', label: __( '33% | 33% | 33%', 'gt-blocks' ) },
+];
+
+/* Three Column Layouts */
 const fourColumnLayouts = [
-	'25-25-25-25',
+	{ value: '25-25-25-25', label: __( '25% | 25% | 25% | 25%', 'gt-blocks' ) },
 ];
 
 /**
@@ -93,9 +107,9 @@ class ColumnsEdit extends Component {
 	}
 
 	getColumnCount( layout ) {
-		if ( threeColumnLayouts.includes( layout ) ) {
+		if ( threeColumnLayouts.map( option => option.value ).includes( layout ) ) {
 			return 3;
-		} else if ( fourColumnLayouts.includes( layout ) ) {
+		} else if ( fourColumnLayouts.map( option => option.value ).includes( layout ) ) {
 			return 4;
 		}
 
@@ -181,28 +195,61 @@ class ColumnsEdit extends Component {
 
 				<InspectorControls key="inspector">
 
-					<PanelBody title={ __( 'Layout Settings', 'gt-blocks' ) } initialOpen={ false } className="gt-panel-layout-settings gt-panel">
+					<PanelBody title={ __( 'Layout Settings', 'gt-blocks' ) } className="gt-panel-layout-settings gt-panel">
 
-						<SelectControl
-							label={ __( 'Columns', 'gt-blocks' ) }
-							value={ columnLayout }
-							onChange={ this.updateColumns }
-							options={ [
-								{ value: '25-75', label: __( '25% | 75%', 'gt-blocks' ) },
-								{ value: '75-25', label: __( '75% | 25%', 'gt-blocks' ) },
-								{ value: '33-66', label: __( '33% | 66%', 'gt-blocks' ) },
-								{ value: '66-33', label: __( '66% | 33%', 'gt-blocks' ) },
-								{ value: '40-60', label: __( '40% | 60%', 'gt-blocks' ) },
-								{ value: '60-40', label: __( '60% | 40%', 'gt-blocks' ) },
-								{ value: '50-50', label: __( '50% | 50%', 'gt-blocks' ) },
-								{ value: '25-25-50', label: __( '25% | 25% | 50%', 'gt-blocks' ) },
-								{ value: '25-50-25', label: __( '25% | 50% | 25%', 'gt-blocks' ) },
-								{ value: '50-25-25', label: __( '50% | 25% | 25%', 'gt-blocks' ) },
-								{ value: '30-40-30', label: __( '30% | 40% | 30%', 'gt-blocks' ) },
-								{ value: '20-60-20', label: __( '20% | 60% | 20%', 'gt-blocks' ) },
-								{ value: '33-33-33', label: __( '33% | 33% | 33%', 'gt-blocks' ) },
-							] }
-						/>
+						<BaseControl label={ __( 'Two Columns', 'gt-blocks' ) }>
+
+							<ButtonGroup>
+								{ twoColumnLayouts.map( ( option ) => (
+									<Button
+										key={ option.value }
+										isLarge
+										isPrimary={ columnLayout === option.value }
+										aria-pressed={ columnLayout === option.value }
+										onClick={ () => this.updateColumns( option.value ) }
+									>
+										{ option.label }
+									</Button>
+								) ) }
+							</ButtonGroup>
+
+						</BaseControl>
+
+						<BaseControl label={ __( 'Three Columns', 'gt-blocks' ) }>
+
+							<ButtonGroup>
+								{ threeColumnLayouts.map( ( option ) => (
+									<Button
+										key={ option.value }
+										isLarge
+										isPrimary={ columnLayout === option.value }
+										aria-pressed={ columnLayout === option.value }
+										onClick={ () => this.updateColumns( option.value ) }
+									>
+										{ option.label }
+									</Button>
+								) ) }
+							</ButtonGroup>
+
+						</BaseControl>
+
+						<BaseControl label={ __( 'Four Columns', 'gt-blocks' ) }>
+
+							<ButtonGroup>
+								{ fourColumnLayouts.map( ( option ) => (
+									<Button
+										key={ option.value }
+										isLarge
+										isPrimary={ columnLayout === option.value }
+										aria-pressed={ columnLayout === option.value }
+										onClick={ () => this.updateColumns( option.value ) }
+									>
+										{ option.label }
+									</Button>
+								) ) }
+							</ButtonGroup>
+
+						</BaseControl>
 
 						<SelectControl
 							label={ __( 'Column Gap', 'gt-blocks' ) }
