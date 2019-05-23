@@ -180,3 +180,56 @@
 		}
 	}
 }
+
+.gt-column-layout-control {
+	.components-button-group {
+		margin-right: -8px;
+	}
+
+	.components-button {
+		margin: 0 8px 8px 0;
+		padding: 3px 0 3px 3px;
+		border: 1px solid #e5e5e5;
+		
+		svg {
+			width: 66px;
+			height: 33px;
+			fill: #d5d5d5;
+		}
+
+		&:hover,
+		&:active {
+			border-color: #c5c5c5;
+			box-shadow: none;
+
+			svg {
+				fill: #a5a5a5;
+			}
+		}
+
+		&.is-primary {
+			background: none;
+			border-color: #0085ba;
+			box-shadow: none;
+			text-shadow: none;
+			height: auto;
+			border-radius: 0;
+
+			&:focus,
+			&:active {
+				background: none;
+				border-color: #0085ba;
+				box-shadow: none;
+			}
+
+			&:first-child,
+			&:last-child {
+				border-radius: 0;
+			}
+
+			svg {
+				fill: #0085ba;
+			}
+		}
+	}
+}

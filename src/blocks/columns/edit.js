@@ -37,13 +37,13 @@ import './editor.scss';
 
 /* Two Column Layouts */
 const twoColumnLayouts = [
-	{ value: '25-75', label: __( '25% | 75%', 'gt-blocks' ) },
-	{ value: '75-25', label: __( '75% | 25%', 'gt-blocks' ) },
-	{ value: '33-66', label: __( '33% | 66%', 'gt-blocks' ) },
-	{ value: '66-33', label: __( '66% | 33%', 'gt-blocks' ) },
-	{ value: '40-60', label: __( '40% | 60%', 'gt-blocks' ) },
-	{ value: '60-40', label: __( '60% | 40%', 'gt-blocks' ) },
 	{ value: '50-50', label: __( '50% | 50%', 'gt-blocks' ) },
+	{ value: '60-40', label: __( '60% | 40%', 'gt-blocks' ) },
+	{ value: '40-60', label: __( '40% | 60%', 'gt-blocks' ) },
+	{ value: '66-33', label: __( '66% | 33%', 'gt-blocks' ) },
+	{ value: '33-66', label: __( '33% | 66%', 'gt-blocks' ) },
+	{ value: '75-25', label: __( '75% | 25%', 'gt-blocks' ) },
+	{ value: '25-75', label: __( '25% | 75%', 'gt-blocks' ) },
 ];
 
 /* Three Column Layouts */
@@ -158,6 +158,21 @@ class ColumnsEdit extends Component {
 		}
 	}
 
+	displayColumnButton( layout, label ) {
+		const columns = layout.split( '-' );
+		let start = 0;
+		return (
+			<svg viewBox="0 0 100 50" xmlns="http://www.w3.org/2000/svg">
+				{ columns.map( ( column, i ) => {
+					const width = parseInt( column ) - 5;
+					const path = <rect key={ i } x={ start } y="0" width={ width } height="50"></rect>;
+					start = start + parseInt( column );
+					return path;
+				} ) }
+			</svg>
+		);
+	}
+
 	render() {
 		const {
 			attributes,
@@ -185,18 +200,18 @@ class ColumnsEdit extends Component {
 
 					<PanelBody title={ __( 'Layout Settings', 'gt-blocks' ) } className="gt-panel-layout-settings gt-panel">
 
-						<BaseControl label={ __( 'Two Columns', 'gt-blocks' ) }>
+						<BaseControl label={ __( 'Two Columns', 'gt-blocks' ) } className="gt-column-layout-control">
 
 							<ButtonGroup>
 								{ twoColumnLayouts.map( ( { value, label } ) => (
 									<Button
 										key={ value }
-										isLarge
+										isDefault={ false }
 										isPrimary={ columnLayout === value }
 										aria-pressed={ columnLayout === value }
 										onClick={ () => this.updateColumns( value, 2 ) }
 									>
-										{ label }
+										{ this.displayColumnButton( value, label ) }
 									</Button>
 								) ) }
 							</ButtonGroup>
