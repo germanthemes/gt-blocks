@@ -83,14 +83,12 @@ class ColumnsEdit extends Component {
 		this.removeColumn = this.removeColumn.bind( this );
 	}
 
-	updateColumns( value ) {
+	updateColumns( columnLayout, columns ) {
 		const {
 			attributes,
 			setAttributes,
 		} = this.props;
 		const { items } = attributes;
-
-		const columns = this.getColumnCount( value );
 
 		// Check if new column has to be added.
 		if ( items < columns ) {
@@ -102,18 +100,8 @@ class ColumnsEdit extends Component {
 		// Update attributes.
 		setAttributes( {
 			columns: columns,
-			columnLayout: value,
+			columnLayout: columnLayout,
 		} );
-	}
-
-	getColumnCount( layout ) {
-		if ( threeColumnLayouts.map( option => option.value ).includes( layout ) ) {
-			return 3;
-		} else if ( fourColumnLayouts.map( option => option.value ).includes( layout ) ) {
-			return 4;
-		}
-
-		return 2;
 	}
 
 	addColumn() {
@@ -200,15 +188,15 @@ class ColumnsEdit extends Component {
 						<BaseControl label={ __( 'Two Columns', 'gt-blocks' ) }>
 
 							<ButtonGroup>
-								{ twoColumnLayouts.map( ( option ) => (
+								{ twoColumnLayouts.map( ( { value, label } ) => (
 									<Button
-										key={ option.value }
+										key={ value }
 										isLarge
-										isPrimary={ columnLayout === option.value }
-										aria-pressed={ columnLayout === option.value }
-										onClick={ () => this.updateColumns( option.value ) }
+										isPrimary={ columnLayout === value }
+										aria-pressed={ columnLayout === value }
+										onClick={ () => this.updateColumns( value, 2 ) }
 									>
-										{ option.label }
+										{ label }
 									</Button>
 								) ) }
 							</ButtonGroup>
@@ -218,15 +206,15 @@ class ColumnsEdit extends Component {
 						<BaseControl label={ __( 'Three Columns', 'gt-blocks' ) }>
 
 							<ButtonGroup>
-								{ threeColumnLayouts.map( ( option ) => (
+								{ threeColumnLayouts.map( ( { value, label } ) => (
 									<Button
-										key={ option.value }
+										key={ value }
 										isLarge
-										isPrimary={ columnLayout === option.value }
-										aria-pressed={ columnLayout === option.value }
-										onClick={ () => this.updateColumns( option.value ) }
+										isPrimary={ columnLayout === value }
+										aria-pressed={ columnLayout === value }
+										onClick={ () => this.updateColumns( value, 3 ) }
 									>
-										{ option.label }
+										{ label }
 									</Button>
 								) ) }
 							</ButtonGroup>
@@ -236,15 +224,15 @@ class ColumnsEdit extends Component {
 						<BaseControl label={ __( 'Four Columns', 'gt-blocks' ) }>
 
 							<ButtonGroup>
-								{ fourColumnLayouts.map( ( option ) => (
+								{ fourColumnLayouts.map( ( { value, label } ) => (
 									<Button
-										key={ option.value }
+										key={ value }
 										isLarge
-										isPrimary={ columnLayout === option.value }
-										aria-pressed={ columnLayout === option.value }
-										onClick={ () => this.updateColumns( option.value ) }
+										isPrimary={ columnLayout === value }
+										aria-pressed={ columnLayout === value }
+										onClick={ () => this.updateColumns( value, 4 ) }
 									>
-										{ option.label }
+										{ label }
 									</Button>
 								) ) }
 							</ButtonGroup>
