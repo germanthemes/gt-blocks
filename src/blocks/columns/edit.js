@@ -49,17 +49,19 @@ const twoColumnLayouts = [
 
 /* Three Column Layouts */
 const threeColumnLayouts = [
-	{ value: '25-25-50', label: __( '25% | 25% | 50%', 'gt-blocks' ) },
-	{ value: '25-50-25', label: __( '25% | 50% | 25%', 'gt-blocks' ) },
-	{ value: '50-25-25', label: __( '50% | 25% | 25%', 'gt-blocks' ) },
+	{ value: '33-33-33', label: __( '33% | 33% | 33%', 'gt-blocks' ) },
 	{ value: '30-40-30', label: __( '30% | 40% | 30%', 'gt-blocks' ) },
 	{ value: '20-60-20', label: __( '20% | 60% | 20%', 'gt-blocks' ) },
-	{ value: '33-33-33', label: __( '33% | 33% | 33%', 'gt-blocks' ) },
+	{ value: '50-25-25', label: __( '50% | 25% | 25%', 'gt-blocks' ) },
+	{ value: '25-50-25', label: __( '25% | 50% | 25%', 'gt-blocks' ) },
+	{ value: '25-25-50', label: __( '25% | 25% | 50%', 'gt-blocks' ) },
 ];
 
 /* Three Column Layouts */
 const fourColumnLayouts = [
 	{ value: '25-25-25-25', label: __( '25% | 25% | 25% | 25%', 'gt-blocks' ) },
+	{ value: '40-20-20-20', label: __( '40% | 20% | 20% | 20%', 'gt-blocks' ) },
+	{ value: '20-20-20-40', label: __( '20% | 20% | 20% | 40%', 'gt-blocks' ) },
 ];
 
 /**
@@ -221,36 +223,36 @@ class ColumnsEdit extends Component {
 
 						</BaseControl>
 
-						<BaseControl label={ __( 'Three Columns', 'gt-blocks' ) }>
+						<BaseControl label={ __( 'Three Columns', 'gt-blocks' ) } className="gt-column-layout-control">
 
 							<ButtonGroup>
 								{ threeColumnLayouts.map( ( { value, label } ) => (
 									<Button
 										key={ value }
-										isLarge
+										isDefault={ false }
 										isPrimary={ columnLayout === value }
 										aria-pressed={ columnLayout === value }
 										onClick={ () => this.updateColumns( value, 3 ) }
 									>
-										{ label }
+										{ this.displayColumnButton( value, label ) }
 									</Button>
 								) ) }
 							</ButtonGroup>
 
 						</BaseControl>
 
-						<BaseControl label={ __( 'Four Columns', 'gt-blocks' ) }>
+						<BaseControl label={ __( 'Four Columns', 'gt-blocks' ) } className="gt-column-layout-control">
 
 							<ButtonGroup>
 								{ fourColumnLayouts.map( ( { value, label } ) => (
 									<Button
 										key={ value }
-										isLarge
+										isDefault={ false }
 										isPrimary={ columnLayout === value }
 										aria-pressed={ columnLayout === value }
 										onClick={ () => this.updateColumns( value, 4 ) }
 									>
-										{ label }
+										{ this.displayColumnButton( value, label ) }
 									</Button>
 								) ) }
 							</ButtonGroup>
