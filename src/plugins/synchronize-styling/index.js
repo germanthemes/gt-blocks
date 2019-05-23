@@ -36,6 +36,7 @@ const supportedBlocks = [
 // Define parent blocks.
 const parentBlocks = [
 	'gt-blocks/column',
+	'gt-blocks/columns',
 	'gt-blocks/features',
 	'gt-blocks/portfolio',
 	'gt-blocks/grid-layout',
