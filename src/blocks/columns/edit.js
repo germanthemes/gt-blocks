@@ -10,7 +10,13 @@ const { times } = lodash;
  */
 const { __ } = wp.i18n;
 const { createBlock } = wp.blocks;
-const { select, dispatch } = wp.data;
+const { compose } = wp.compose;
+
+const {
+	select,
+	dispatch,
+	withSelect,
+} = wp.data;
 
 const {
 	Component,
@@ -26,6 +32,7 @@ const {
 	BaseControl,
 	Button,
 	ButtonGroup,
+	Dashicon,
 	PanelBody,
 	SelectControl,
 	Tooltip,
@@ -183,6 +190,9 @@ class ColumnsEdit extends Component {
 			attributes,
 			setAttributes,
 			className,
+			clientId,
+			isChildBlockSelected,
+			isSelected,
 		} = this.props;
 
 		const {
@@ -289,10 +299,30 @@ class ColumnsEdit extends Component {
 
 					</div>
 
+					{ ( isSelected || isChildBlockSelected ) && (
+						<Button
+							isLarge
+							onClick={ () => dispatch( 'core/editor' ).selectBlock( clientId ) }
+							className={ classnames( 'gt-change-column-layout', 'gt-columns-button', {
+								'has-parent-block-selected': isSelected,
+							} ) }
+						>
+							<Dashicon icon="editor-table" />
+							{ __( 'Change column layout', 'gt-blocks' ) }
+						</Button>
+					) }
+
 				</div>
 			</Fragment>
 		);
 	}
 }
 
-export default ColumnsEdit;
+export default compose( [
+	withSelect( ( select, { clientId } ) => {
+		const { hasSelectedInnerBlock } = select( 'core/editor' );
+		return {
+			isChildBlockSelected: hasSelectedInnerBlock( clientId, true ),
+		};
+	} ),
+] )( ColumnsEdit );
