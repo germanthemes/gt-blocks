@@ -28,6 +28,7 @@ const {
 	ButtonGroup,
 	PanelBody,
 	SelectControl,
+	Tooltip,
 } = wp.components;
 
 /**
@@ -162,14 +163,16 @@ class ColumnsEdit extends Component {
 		const columns = layout.split( '-' );
 		let start = 0;
 		return (
-			<svg viewBox="0 0 100 50" xmlns="http://www.w3.org/2000/svg">
-				{ columns.map( ( column, i ) => {
-					const width = parseInt( column ) - 5;
-					const path = <rect key={ i } x={ start } y="0" width={ width } height="50"></rect>;
-					start = start + parseInt( column );
-					return path;
-				} ) }
-			</svg>
+			<Tooltip text={ label }>
+				<svg viewBox="0 0 100 50" xmlns="http://www.w3.org/2000/svg">
+					{ columns.map( ( column, i ) => {
+						const width = parseInt( column ) - 5;
+						const path = <rect key={ i } x={ start } y="0" width={ width } height="50"></rect>;
+						start = start + parseInt( column );
+						return path;
+					} ) }
+				</svg>
+			</Tooltip>
 		);
 	}
 
