@@ -23,24 +23,6 @@
 				}
 			}
 		}
-
-		.gt-columns-25-75,
-		.gt-columns-75-25,
-		.gt-columns-33-66,
-		.gt-columns-66-33,
-		.gt-columns-40-60,
-		.gt-columns-60-40,
-		.gt-columns-50-50 {
-			> .editor-inner-blocks > .editor-block-list__layout {
-				> [data-type="gt-blocks/column"]:nth-child(1) {
-					padding-right: calc( var(--gt-column-gap) / 2 + 28px );
-				}
-	
-				> [data-type="gt-blocks/column"]:nth-child(2) {
-					padding-left: calc( var(--gt-column-gap) / 2 + 28px );
-				}
-			}
-		}
 	}
 
 	.editor-block-list__block .gt-columns-25-75 {
@@ -186,25 +168,6 @@
 				}
 			}
 		}
-
-		.gt-columns-25-25-50,
-		.gt-columns-25-50-25,
-		.gt-columns-50-25-25,
-		.gt-columns-20-60-20,
-		.gt-columns-30-40-30,
-		.gt-columns-33-33-33 {
-			> .editor-inner-blocks > .editor-block-list__layout {
-				> [data-type="gt-blocks/column"]:nth-child(1),
-				> [data-type="gt-blocks/column"]:nth-child(2) {
-					padding-right: calc( var(--gt-column-gap) / 2 + 28px );
-				}
-
-				> [data-type="gt-blocks/column"]:nth-child(2),
-				> [data-type="gt-blocks/column"]:nth-child(3) {
-					padding-left: calc( var(--gt-column-gap) / 2 + 28px );
-				}
-			}
-		}
 	}
 
 	.editor-block-list__block .gt-columns-25-25-50 {
@@ -281,26 +244,6 @@
 }
 
 @media only screen and (min-width: 960px) {
-	.editor-block-list__block {
-		.gt-columns-25-25-25-25,
-		.gt-columns-40-20-20-20,
-		.gt-columns-20-20-20-40 {
-			> .editor-inner-blocks > .editor-block-list__layout {
-				> [data-type="gt-blocks/column"]:nth-child(1),
-				> [data-type="gt-blocks/column"]:nth-child(2),
-				> [data-type="gt-blocks/column"]:nth-child(3) {
-					padding-right: calc( var(--gt-column-gap) / 2 + 28px );
-				}
-
-				> [data-type="gt-blocks/column"]:nth-child(2),
-				> [data-type="gt-blocks/column"]:nth-child(3),
-				> [data-type="gt-blocks/column"]:nth-child(4) {
-					padding-left: calc( var(--gt-column-gap) / 2 + 28px );
-				}
-			}
-		}
-	}
-
 	.editor-block-list__block .gt-columns-25-25-25-25 {
 		> .editor-inner-blocks > .editor-block-list__layout {
 			> [data-type="gt-blocks/column"]:nth-child(1),
