@@ -1,5 +1,4 @@
-.editor-block-list__block .gt-grid-container,
-.editor-block-list__block .gt-columns-container {
+.editor-block-list__block .gt-grid-container {
 	display: block;
 	margin: 0;
 
@@ -18,6 +17,18 @@
 			> .editor-block-list__block-edit {
 				margin-top: 12px;
 				margin-bottom: 18px;
+			}
+		}
+	}
+}
+
+@media (min-width: 600px) {
+	.gt-grid-container {
+
+		> .editor-inner-blocks > .editor-block-list__layout {
+
+			> [data-type="gt-blocks/column"] > .editor-block-contextual-toolbar {
+				transform: translateY( -40px );
 			}
 		}
 	}
@@ -113,18 +124,5 @@
 		background: #f0f0f0;
 		border: 1px solid #999;
 		box-shadow: none;
-	}
-}
-
-@media (min-width: 600px) {
-	.gt-grid-container,
-	.gt-columns-container {
-
-		> .editor-inner-blocks > .editor-block-list__layout {
-
-			> [data-type="gt-blocks/column"] > .editor-block-contextual-toolbar {
-				transform: translateY( -40px );
-			}
-		}
 	}
 }

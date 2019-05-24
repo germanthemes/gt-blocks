@@ -1,3 +1,39 @@
+.editor-block-list__block .gt-columns-container {
+	display: block;
+	margin: 0;
+
+	.wp-block-gt-blocks-column {
+		padding-right: 0;
+		width: 100%;
+	}
+		
+	> .editor-inner-blocks > .editor-block-list__layout {
+
+		> [data-type="gt-blocks/column"] {
+			margin-left: 0;
+			margin-right: 0;
+			min-width: 0;
+
+			> .editor-block-list__block-edit {
+				margin-top: 12px;
+				margin-bottom: 18px;
+			}
+		}
+	}
+}
+
+@media (min-width: 600px) {
+	.gt-columns-container {
+
+		> .editor-inner-blocks > .editor-block-list__layout {
+
+			> [data-type="gt-blocks/column"] > .editor-block-contextual-toolbar {
+				transform: translateY( -40px );
+			}
+		}
+	}
+}
+
 @media only screen and (min-width: 480px) {
 	.editor-block-list__block {
 		.gt-columns-25-75,
