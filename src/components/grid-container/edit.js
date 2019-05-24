@@ -204,7 +204,7 @@ class GridEdit extends Component {
 						<Button
 							isLarge
 							onClick={ this.addBlock }
-							className="gt-add-grid-item"
+							className="gt-add-grid-item gt-columns-button"
 						>
 							<Dashicon icon="screenoptions" />
 							{ __( 'Add grid item', 'gt-blocks' ) }

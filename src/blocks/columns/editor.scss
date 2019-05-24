@@ -1,0 +1,376 @@
+.editor-block-list__block .gt-columns-container {
+	display: block;
+	margin: 0;
+
+	.wp-block-gt-blocks-column {
+		padding-right: 0;
+		width: 100%;
+	}
+		
+	> .editor-inner-blocks > .editor-block-list__layout {
+
+		> [data-type="gt-blocks/column"] {
+			margin-left: 0;
+			margin-right: 0;
+			min-width: 0;
+
+			> .editor-block-list__block-edit {
+				margin-top: 12px;
+				margin-bottom: 18px;
+			}
+		}
+	}
+}
+
+@media (min-width: 600px) {
+	.gt-columns-container {
+
+		> .editor-inner-blocks > .editor-block-list__layout {
+
+			> [data-type="gt-blocks/column"] > .editor-block-contextual-toolbar {
+				transform: translateY( -40px );
+			}
+		}
+	}
+}
+
+@media only screen and (min-width: 480px) {
+	.editor-block-list__block {
+		.gt-columns-25-75,
+		.gt-columns-75-25,
+		.gt-columns-33-66,
+		.gt-columns-66-33,
+		.gt-columns-40-60,
+		.gt-columns-60-40,
+		.gt-columns-50-50,
+		.gt-columns-25-25-50,
+		.gt-columns-25-50-25,
+		.gt-columns-50-25-25,
+		.gt-columns-20-60-20,
+		.gt-columns-25-25-25-25,
+		.gt-columns-40-20-20-20,
+		.gt-columns-20-20-20-40 {
+			> .editor-inner-blocks > .editor-block-list__layout {
+				display: flex;
+				flex-wrap: wrap;
+	
+				> [data-type="gt-blocks/column"] {
+					width: 100%;
+				}
+			}
+		}
+	}
+
+	.editor-block-list__block .gt-columns-25-75 {
+		> .editor-inner-blocks > .editor-block-list__layout {
+			> [data-type="gt-blocks/column"]:nth-child(2n + 1) {
+				width: 25%;
+			}
+			> [data-type="gt-blocks/column"]:nth-child(2n + 0) {
+				width: 75%;
+			}
+		}
+	}
+
+	.editor-block-list__block .gt-columns-75-25 {
+		> .editor-inner-blocks > .editor-block-list__layout {
+			> [data-type="gt-blocks/column"]:nth-child(2n + 1) {
+				width: 75%;
+			}
+			> [data-type="gt-blocks/column"]:nth-child(2n + 0) {
+				width: 25%;
+			}
+		}
+	}
+
+	.editor-block-list__block .gt-columns-33-66 {
+		> .editor-inner-blocks > .editor-block-list__layout {
+			> [data-type="gt-blocks/column"]:nth-child(2n + 1) {
+				width: 33.3333333333333%;
+			}
+			> [data-type="gt-blocks/column"]:nth-child(2n + 0) {
+				width: 66.666666666666%;
+			}
+		}
+	}
+
+	.editor-block-list__block .gt-columns-66-33 {
+		> .editor-inner-blocks > .editor-block-list__layout {
+			> [data-type="gt-blocks/column"]:nth-child(2n + 1) {
+				width: 66.666666666666%;
+			}
+			> [data-type="gt-blocks/column"]:nth-child(2n + 0) {
+				width: 33.3333333333333%;
+			}
+		}
+	}
+
+	.editor-block-list__block .gt-columns-40-60 {
+		> .editor-inner-blocks > .editor-block-list__layout {
+			> [data-type="gt-blocks/column"]:nth-child(2n + 1) {
+				width: 40%;
+			}
+			> [data-type="gt-blocks/column"]:nth-child(2n + 0) {
+				width: 60%;
+			}
+		}
+	}
+
+	.editor-block-list__block .gt-columns-60-40 {
+		> .editor-inner-blocks > .editor-block-list__layout {
+			> [data-type="gt-blocks/column"]:nth-child(2n + 1) {
+				width: 60%;
+			}
+			> [data-type="gt-blocks/column"]:nth-child(2n + 0) {
+				width: 40%;
+			}
+		}
+	}
+
+	.editor-block-list__block .gt-columns-50-50 {
+		> .editor-inner-blocks > .editor-block-list__layout {
+			> [data-type="gt-blocks/column"] {
+				width: 50%;
+			}
+		}
+	}
+
+	.editor-block-list__block .gt-columns-25-50-25,
+	.editor-block-list__block .gt-columns-20-60-20 {
+		> .editor-inner-blocks > .editor-block-list__layout {
+			> [data-type="gt-blocks/column"] {
+				order: 3;
+			}
+			> [data-type="gt-blocks/column"]:nth-child(3n + 1),
+			> [data-type="gt-blocks/column"]:nth-child(3n + 3) {
+				order: 2;
+				width: 50%;
+			}
+			> [data-type="gt-blocks/column"]:nth-child(3n + 2) {
+				order: 1;
+				width: 100%;
+			}
+		}
+	}
+
+	.editor-block-list__block .gt-columns-50-25-25 {
+		> .editor-inner-blocks > .editor-block-list__layout {
+			> [data-type="gt-blocks/column"]:nth-child(3n + 1) {
+				width: 100%;
+			}
+			> [data-type="gt-blocks/column"]:nth-child(3n + 2),
+			> [data-type="gt-blocks/column"]:nth-child(3n + 3) {
+				width: 50%;
+			}
+		}
+	}
+
+	.editor-block-list__block .gt-columns-25-25-50 {
+		> .editor-inner-blocks > .editor-block-list__layout {
+			> [data-type="gt-blocks/column"]:nth-child(3n + 1),
+			> [data-type="gt-blocks/column"]:nth-child(3n + 2) {
+				width: 50%;
+			}
+			> [data-type="gt-blocks/column"]:nth-child(3n + 3) {
+				width: 100%;
+			}
+		}
+	}
+
+	.editor-block-list__block {
+		.gt-columns-25-25-25-25,
+		.gt-columns-40-20-20-20,
+		.gt-columns-20-20-20-40 {
+			> .editor-inner-blocks > .editor-block-list__layout {
+				> [data-type="gt-blocks/column"] {
+					width: 50%;
+				}
+			}
+		}
+	}
+}
+
+
+@media only screen and (min-width: 720px) {
+	.editor-block-list__block {
+		.gt-columns-30-40-30,
+		.gt-columns-33-33-33 {
+			> .editor-inner-blocks > .editor-block-list__layout {
+				display: flex;
+				flex-wrap: wrap;
+	
+				> [data-type="gt-blocks/column"] {
+					width: 100%;
+				}
+			}
+		}
+	}
+
+	.editor-block-list__block .gt-columns-25-25-50 {
+		> .editor-inner-blocks > .editor-block-list__layout {
+			> [data-type="gt-blocks/column"]:nth-child(3n + 1),
+			> [data-type="gt-blocks/column"]:nth-child(3n + 2) {
+				width: 25%;
+			}
+			> [data-type="gt-blocks/column"]:nth-child(3n + 3) {
+				width: 50%;
+			}
+		}
+	}
+
+	.editor-block-list__block .gt-columns-25-50-25 {
+		> .editor-inner-blocks > .editor-block-list__layout {
+			> [data-type="gt-blocks/column"]:nth-child(3n + 1),
+			> [data-type="gt-blocks/column"]:nth-child(3n + 3) {
+				width: 25%;
+			}
+			> [data-type="gt-blocks/column"]:nth-child(3n + 2) {
+				order: 2;
+				width: 50%;
+			}
+		}
+	}
+
+	.editor-block-list__block .gt-columns-50-25-25 {
+		> .editor-inner-blocks > .editor-block-list__layout {
+			> [data-type="gt-blocks/column"]:nth-child(3n + 2),
+			> [data-type="gt-blocks/column"]:nth-child(3n + 3) {
+				width: 25%;
+			}
+			> [data-type="gt-blocks/column"]:nth-child(3n + 1) {
+				width: 50%;
+			}
+		}
+	}
+
+	.editor-block-list__block .gt-columns-30-40-30 {
+		> .editor-inner-blocks > .editor-block-list__layout {
+			> [data-type="gt-blocks/column"]:nth-child(3n + 1),
+			> [data-type="gt-blocks/column"]:nth-child(3n + 3) {
+				width: 30%;
+			}
+			> [data-type="gt-blocks/column"]:nth-child(3n + 2) {
+				width: 40%;
+			}
+		}
+	}
+
+	.editor-block-list__block .gt-columns-20-60-20 {
+		> .editor-inner-blocks > .editor-block-list__layout {
+			> [data-type="gt-blocks/column"]:nth-child(3n + 1),
+			> [data-type="gt-blocks/column"]:nth-child(3n + 3) {
+				width: 20%;
+			}
+			> [data-type="gt-blocks/column"]:nth-child(3n + 2) {
+				order: 2;
+				width: 60%;
+			}
+		}
+	}
+
+	.editor-block-list__block .gt-columns-33-33-33 {
+		> .editor-inner-blocks > .editor-block-list__layout {
+			> [data-type="gt-blocks/column"] {
+				width: 33.3333333333333%;
+			}
+		}
+	}
+}
+
+@media only screen and (min-width: 960px) {
+	.editor-block-list__block .gt-columns-25-25-25-25 {
+		> .editor-inner-blocks > .editor-block-list__layout {
+			> [data-type="gt-blocks/column"] {
+				width: 25%;
+			}
+		}
+	}
+
+	.editor-block-list__block .gt-columns-40-20-20-20 {
+		> .editor-inner-blocks > .editor-block-list__layout {
+			> [data-type="gt-blocks/column"]:nth-child(4n + 1) {
+				width: 40%;
+			}
+			> [data-type="gt-blocks/column"]:nth-child(4n + 2),
+			> [data-type="gt-blocks/column"]:nth-child(4n + 3),
+			> [data-type="gt-blocks/column"]:nth-child(4n + 4) {
+				width: 20%;
+			}
+		}
+	}
+
+	.editor-block-list__block .gt-columns-20-20-20-40 {
+		> .editor-inner-blocks > .editor-block-list__layout {
+			> [data-type="gt-blocks/column"]:nth-child(4n + 1),
+			> [data-type="gt-blocks/column"]:nth-child(4n + 2),
+			> [data-type="gt-blocks/column"]:nth-child(4n + 3) {
+				width: 20%;
+			}
+			> [data-type="gt-blocks/column"]:nth-child(4n + 4) {
+				width: 40%;
+			}
+		}
+	}
+}
+
+.gt-column-layout-control {
+	.components-button-group {
+		margin-right: -8px;
+	}
+
+	.components-button {
+		margin: 0 8px 8px 0;
+		padding: 3px 0 3px 3px;
+		border: 1px solid #e5e5e5;
+		
+		svg {
+			width: 66px;
+			height: 33px;
+			fill: #d5d5d5;
+		}
+
+		&:hover,
+		&:active {
+			border-color: #c5c5c5;
+			box-shadow: none;
+
+			svg {
+				fill: #a5a5a5;
+			}
+		}
+
+		&.is-primary {
+			background: none;
+			border-color: #0085ba;
+			box-shadow: none;
+			text-shadow: none;
+			height: auto;
+			border-radius: 0;
+
+			&:focus,
+			&:active {
+				background: none;
+				border-color: #0085ba;
+				box-shadow: none;
+			}
+
+			&:first-child,
+			&:last-child {
+				border-radius: 0;
+			}
+
+			svg {
+				fill: #0085ba;
+			}
+		}
+	}
+}
+
+.gt-change-column-layout.gt-columns-button.components-button.is-large {
+	margin-top: 4px;
+
+	&.has-parent-block-selected {
+		background: #f0f0f0;
+		border: 1px solid #999;
+	}
+}

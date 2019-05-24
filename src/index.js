@@ -1,4 +1,9 @@
 /**
+ * Import Default Styling
+ */
+import './style.scss';
+
+/**
  * Import Plugins
  */
 import './plugins/data-store';
@@ -12,6 +17,7 @@ import './plugins/section-insert';
  */
 import './blocks/button';
 import './blocks/column';
+import './blocks/columns';
 import './blocks/content';
 import './blocks/features';
 import './blocks/grid-layout';

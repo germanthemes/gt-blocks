@@ -1,0 +1,241 @@
+.wp-block-gt-blocks-columns {
+	margin-bottom: 1.5em;
+}
+
+@media only screen and (min-width: 480px) {
+	.gt-columns-25-75,
+	.gt-columns-75-25,
+	.gt-columns-33-66,
+	.gt-columns-66-33,
+	.gt-columns-40-60,
+	.gt-columns-60-40,
+	.gt-columns-50-50,
+	.gt-columns-25-25-50,
+	.gt-columns-25-50-25,
+	.gt-columns-50-25-25,
+	.gt-columns-20-60-20,
+	.gt-columns-25-25-25-25,
+	.gt-columns-40-20-20-20,
+	.gt-columns-20-20-20-40 {
+		display: flex;
+		flex-wrap: wrap;
+		margin-right: -1.5em;
+		margin-right: calc( -1 * var(--gt-column-gap) );
+		margin-bottom: -1.5em;
+
+		.wp-block-gt-blocks-column {
+			padding-right: 1.5em;
+			padding-right: var(--gt-column-gap);
+			width: 100%;
+		}
+	}
+
+	.gt-columns-25-75 {
+		.wp-block-gt-blocks-column:nth-child(2n + 1) {
+			width: 25%;
+		}
+		.wp-block-gt-blocks-column:nth-child(2n + 0) {
+			width: 75%;
+		}
+	}
+
+	.gt-columns-75-25 {
+		.wp-block-gt-blocks-column:nth-child(2n + 1) {
+			width: 75%;
+		}
+		.wp-block-gt-blocks-column:nth-child(2n + 0) {
+			width: 25%;
+		}
+	}
+
+	.gt-columns-33-66 {
+		.wp-block-gt-blocks-column:nth-child(2n + 1) {
+			width: 33.3333333333333%;
+		}
+		.wp-block-gt-blocks-column:nth-child(2n + 0) {
+			width: 66.666666666666%;
+		}
+	}
+
+	.gt-columns-66-33 {
+		.wp-block-gt-blocks-column:nth-child(2n + 1) {
+			width: 66.666666666666%;
+		}
+		.wp-block-gt-blocks-column:nth-child(2n + 0) {
+			width: 33.3333333333333%;
+		}
+	}
+
+	.gt-columns-40-60 {
+		.wp-block-gt-blocks-column:nth-child(2n + 1) {
+			width: 40%;
+		}
+		.wp-block-gt-blocks-column:nth-child(2n + 0) {
+			width: 60%;
+		}
+	}
+
+	.gt-columns-60-40 {
+		.wp-block-gt-blocks-column:nth-child(2n + 1) {
+			width: 60%;
+		}
+		.wp-block-gt-blocks-column:nth-child(2n + 0) {
+			width: 40%;
+		}
+	}
+
+	.gt-columns-50-50 {
+		.wp-block-gt-blocks-column {
+			width: 50%;
+		}
+	}
+
+	.gt-columns-25-50-25,
+	.gt-columns-20-60-20 {
+		.wp-block-gt-blocks-column {
+			order: 3;
+		}
+		.wp-block-gt-blocks-column:nth-child(3n + 1),
+		.wp-block-gt-blocks-column:nth-child(3n + 3) {
+			order: 2;
+			width: 50%;
+		}
+		.wp-block-gt-blocks-column:nth-child(3n + 2) {
+			order: 1;
+			width: 100%;
+		}
+	}
+
+	.gt-columns-50-25-25 {
+		.wp-block-gt-blocks-column:nth-child(3n + 1) {
+			width: 100%;
+		}
+		.wp-block-gt-blocks-column:nth-child(3n + 2),
+		.wp-block-gt-blocks-column:nth-child(3n + 3) {
+			width: 50%;
+		}
+	}
+
+	.gt-columns-25-25-50 {
+		.wp-block-gt-blocks-column:nth-child(3n + 1),
+		.wp-block-gt-blocks-column:nth-child(3n + 2) {
+			width: 50%;
+		}
+		.wp-block-gt-blocks-column:nth-child(3n + 3) {
+			width: 100%;
+		}
+	}
+
+	.gt-columns-25-25-25-25,
+	.gt-columns-40-20-20-20,
+	.gt-columns-20-20-20-40 {
+		.wp-block-gt-blocks-column {
+			width: 50%;
+		}
+	}
+}
+
+@media only screen and (min-width: 720px) {
+	.gt-columns-30-40-30,
+	.gt-columns-33-33-33 {
+		display: flex;
+		flex-wrap: wrap;
+		margin-right: -1.5em;
+		margin-right: calc( -1 * var(--gt-column-gap) );
+		margin-bottom: -1.5em;
+
+		.wp-block-gt-blocks-column {
+			padding-right: 1.5em;
+			padding-right: var(--gt-column-gap);
+			width: 100%;
+		}
+	}
+
+	.gt-columns-25-25-50 {
+		.wp-block-gt-blocks-column:nth-child(3n + 1),
+		.wp-block-gt-blocks-column:nth-child(3n + 2) {
+			width: 25%;
+		}
+		.wp-block-gt-blocks-column:nth-child(3n + 3) {
+			width: 50%;
+		}
+	}
+
+	.gt-columns-25-50-25 {
+		.wp-block-gt-blocks-column:nth-child(3n + 1),
+		.wp-block-gt-blocks-column:nth-child(3n + 3) {
+			width: 25%;
+		}
+		.wp-block-gt-blocks-column:nth-child(3n + 2) {
+			order: 2;
+			width: 50%;
+		}
+	}
+
+	.gt-columns-50-25-25 {
+		.wp-block-gt-blocks-column:nth-child(3n + 2),
+		.wp-block-gt-blocks-column:nth-child(3n + 3) {
+			width: 25%;
+		}
+		.wp-block-gt-blocks-column:nth-child(3n + 1) {
+			width: 50%;
+		}
+	}
+
+	.gt-columns-30-40-30 {
+		.wp-block-gt-blocks-column:nth-child(3n + 1),
+		.wp-block-gt-blocks-column:nth-child(3n + 3) {
+			width: 30%;
+		}
+		.wp-block-gt-blocks-column:nth-child(3n + 2) {
+			width: 40%;
+		}
+	}
+
+	.gt-columns-20-60-20 {
+		.wp-block-gt-blocks-column:nth-child(3n + 1),
+		.wp-block-gt-blocks-column:nth-child(3n + 3) {
+			width: 20%;
+		}
+		.wp-block-gt-blocks-column:nth-child(3n + 2) {
+			order: 2;
+			width: 60%;
+		}
+	}
+
+	.gt-columns-33-33-33 {
+		.wp-block-gt-blocks-column {
+			width: 33.3333333333333%;
+		}
+	}
+}
+
+@media only screen and (min-width: 960px) {
+	.gt-columns-25-25-25-25 {
+		.wp-block-gt-blocks-column {
+			width: 25%;
+		}
+	}
+
+	.gt-columns-40-20-20-20 {
+		.wp-block-gt-blocks-column:nth-child(4n + 1) {
+			width: 40%;
+		}
+		.wp-block-gt-blocks-column:nth-child(4n + 2),
+		.wp-block-gt-blocks-column:nth-child(4n + 3),
+		.wp-block-gt-blocks-column:nth-child(4n + 4) {
+			width: 20%;
+		}
+	}
+
+	.gt-columns-20-20-20-40 {
+		.wp-block-gt-blocks-column:nth-child(4n + 1),
+		.wp-block-gt-blocks-column:nth-child(4n + 2),
+		.wp-block-gt-blocks-column:nth-child(4n + 3) {
+			width: 20%;
+		}
+		.wp-block-gt-blocks-column:nth-child(4n + 4) {
+			width: 40%;
+		}
+	}
+}

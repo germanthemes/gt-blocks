@@ -22,6 +22,18 @@
 	}
 }
 
+@media (min-width: 600px) {
+	.gt-grid-container {
+
+		> .editor-inner-blocks > .editor-block-list__layout {
+
+			> [data-type="gt-blocks/column"] > .editor-block-contextual-toolbar {
+				transform: translateY( -40px );
+			}
+		}
+	}
+}
+
 @media only screen and (min-width: 480px) {
 	.editor-block-list__block .gt-columns-2,
 	.editor-block-list__block .gt-columns-4,
@@ -91,7 +103,7 @@
 }
 
 /* Add Grid Item*/
-.gt-add-grid-item.components-button.is-large {
+.gt-columns-button.components-button.is-large {
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -112,17 +124,5 @@
 		background: #f0f0f0;
 		border: 1px solid #999;
 		box-shadow: none;
-	}
-}
-
-@media (min-width: 600px) {
-	.gt-grid-container {
-
-		> .editor-inner-blocks > .editor-block-list__layout {
-
-			> [data-type="gt-blocks/column"] > .editor-block-contextual-toolbar {
-				transform: translateY( -40px );
-			}
-		}
 	}
 }
