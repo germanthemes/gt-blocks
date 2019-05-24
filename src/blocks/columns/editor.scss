@@ -130,12 +130,16 @@
 	.editor-block-list__block .gt-columns-25-50-25,
 	.editor-block-list__block .gt-columns-20-60-20 {
 		> .editor-inner-blocks > .editor-block-list__layout {
+			> [data-type="gt-blocks/column"] {
+				order: 3;
+			}
 			> [data-type="gt-blocks/column"]:nth-child(1),
 			> [data-type="gt-blocks/column"]:nth-child(3) {
-				order: 1;
+				order: 2;
 				width: 50%;
 			}
 			> [data-type="gt-blocks/column"]:nth-child(2) {
+				order: 1;
 				width: 100%;
 			}
 		}
@@ -225,7 +229,7 @@
 				width: 25%;
 			}
 			> [data-type="gt-blocks/column"]:nth-child(2) {
-				order: 1;
+				order: 2;
 				width: 50%;
 			}
 		}
@@ -262,7 +266,7 @@
 				width: 20%;
 			}
 			> [data-type="gt-blocks/column"]:nth-child(2) {
-				order: 1;
+				order: 2;
 				width: 60%;
 			}
 		}

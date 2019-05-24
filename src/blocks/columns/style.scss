@@ -93,12 +93,16 @@
 
 	.gt-columns-25-50-25,
 	.gt-columns-20-60-20 {
+		.wp-block-gt-blocks-column {
+			order: 3;
+		}
 		.wp-block-gt-blocks-column:nth-child(1),
 		.wp-block-gt-blocks-column:nth-child(3) {
-			order: 1;
+			order: 2;
 			width: 50%;
 		}
 		.wp-block-gt-blocks-column:nth-child(2) {
+			order: 1;
 			width: 100%;
 		}
 	}
@@ -167,7 +171,7 @@
 			width: 25%;
 		}
 		.wp-block-gt-blocks-column:nth-child(2) {
-			order: 1;
+			order: 2;
 			width: 50%;
 		}
 	}
@@ -198,7 +202,7 @@
 			width: 20%;
 		}
 		.wp-block-gt-blocks-column:nth-child(2) {
-			order: 1;
+			order: 2;
 			width: 60%;
 		}
 	}
