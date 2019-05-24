@@ -7,6 +7,10 @@
 		.gt-columns-40-60,
 		.gt-columns-60-40,
 		.gt-columns-50-50,
+		.gt-columns-25-25-50,
+		.gt-columns-25-50-25,
+		.gt-columns-50-25-25,
+		.gt-columns-20-60-20,
 		.gt-columns-25-25-25-25,
 		.gt-columns-40-20-20-20,
 		.gt-columns-20-20-20-40 {
@@ -87,6 +91,44 @@
 		}
 	}
 
+	.editor-block-list__block .gt-columns-25-50-25,
+	.editor-block-list__block .gt-columns-20-60-20 {
+		> .editor-inner-blocks > .editor-block-list__layout {
+			> [data-type="gt-blocks/column"]:nth-child(1),
+			> [data-type="gt-blocks/column"]:nth-child(3) {
+				order: 1;
+				width: 50%;
+			}
+			> [data-type="gt-blocks/column"]:nth-child(2) {
+				width: 100%;
+			}
+		}
+	}
+
+	.editor-block-list__block .gt-columns-50-25-25 {
+		> .editor-inner-blocks > .editor-block-list__layout {
+			> [data-type="gt-blocks/column"]:nth-child(1) {
+				width: 100%;
+			}
+			> [data-type="gt-blocks/column"]:nth-child(2),
+			> [data-type="gt-blocks/column"]:nth-child(3) {
+				width: 50%;
+			}
+		}
+	}
+
+	.editor-block-list__block .gt-columns-25-25-50 {
+		> .editor-inner-blocks > .editor-block-list__layout {
+			> [data-type="gt-blocks/column"]:nth-child(1),
+			> [data-type="gt-blocks/column"]:nth-child(2) {
+				width: 50%;
+			}
+			> [data-type="gt-blocks/column"]:nth-child(3) {
+				width: 100%;
+			}
+		}
+	}
+
 	.editor-block-list__block .gt-columns-50-50 {
 		> .editor-inner-blocks > .editor-block-list__layout {
 			> [data-type="gt-blocks/column"]:nth-child(1),
@@ -114,18 +156,16 @@
 
 
 @media only screen and (min-width: 720px) {
-	.editor-block-list__block .gt-columns-25-25-50,
-	.editor-block-list__block .gt-columns-25-50-25,
-	.editor-block-list__block .gt-columns-50-25-25,
-	.editor-block-list__block .gt-columns-30-40-30,
-	.editor-block-list__block .gt-columns-20-60-20,
-	.editor-block-list__block .gt-columns-33-33-33 {
-		> .editor-inner-blocks > .editor-block-list__layout {
-			display: flex;
-			flex-wrap: wrap;
-
-			> [data-type="gt-blocks/column"] {
-				width: 100%;
+	.editor-block-list__block {
+		.gt-columns-30-40-30,
+		.gt-columns-33-33-33 {
+			> .editor-inner-blocks > .editor-block-list__layout {
+				display: flex;
+				flex-wrap: wrap;
+	
+				> [data-type="gt-blocks/column"] {
+					width: 100%;
+				}
 			}
 		}
 	}
@@ -149,6 +189,7 @@
 				width: 25%;
 			}
 			> [data-type="gt-blocks/column"]:nth-child(2) {
+				order: 1;
 				width: 50%;
 			}
 		}
@@ -185,6 +226,7 @@
 				width: 20%;
 			}
 			> [data-type="gt-blocks/column"]:nth-child(2) {
+				order: 1;
 				width: 60%;
 			}
 		}
