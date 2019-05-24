@@ -94,6 +94,7 @@ class ColumnsEdit extends Component {
 
 	componentDidUpdate() {
 		const {
+			attributes,
 			clientId,
 			setAttributes,
 		} = this.props;
@@ -101,8 +102,18 @@ class ColumnsEdit extends Component {
 		// Get block.
 		const block = select( 'core/editor' ).getBlocksByClientId( clientId )[ 0 ];
 
+		// Get number of items.
+		const itemsCount = block.innerBlocks.length;
+
+		// Add new columns if all items were deleted.
+		if ( itemsCount < 1 ) {
+			for ( let i = 0; i < attributes.columns - itemsCount; i++ ) {
+				this.addColumn();
+			}
+		}
+
 		// Update number of items.
-		setAttributes( { items: block.innerBlocks.length } );
+		setAttributes( { items: itemsCount } );
 	}
 
 	updateColumns( columnLayout, columns ) {
