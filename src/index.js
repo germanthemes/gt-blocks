@@ -1,4 +1,9 @@
 /**
+ * Import Default Styling
+ */
+import './style.scss';
+
+/**
  * Import Plugins
  */
 import './plugins/data-store';
