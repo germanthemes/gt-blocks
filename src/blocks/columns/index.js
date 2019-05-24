@@ -40,15 +40,15 @@ registerBlockType(
 		attributes: {
 			items: {
 				type: 'number',
-				default: 3,
+				default: 2,
 			},
 			columns: {
 				type: 'number',
-				default: 3,
+				default: 2,
 			},
 			columnLayout: {
 				type: 'string',
-				default: '30-40-30',
+				default: '50-50',
 			},
 			columnGap: {
 				type: 'string',
