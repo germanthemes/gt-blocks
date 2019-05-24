@@ -90,7 +90,6 @@ class ColumnsEdit extends Component {
 		super( ...arguments );
 		this.updateColumns = this.updateColumns.bind( this );
 		this.addColumn = this.addColumn.bind( this );
-		this.removeColumn = this.removeColumn.bind( this );
 	}
 
 	componentDidUpdate() {
@@ -113,11 +112,11 @@ class ColumnsEdit extends Component {
 		} = this.props;
 		const { items } = attributes;
 
-		// Check if new column has to be added.
+		// Check if new columns have to be added.
 		if ( items < columns ) {
-			this.addColumn();
-		} else if ( items > columns ) {
-			this.removeColumn();
+			for ( let i = 0; i < columns - items; i++ ) {
+				this.addColumn();
+			}
 		}
 
 		// Update attributes.
@@ -145,32 +144,6 @@ class ColumnsEdit extends Component {
 
 		// Select Parent Block.
 		dispatch( 'core/editor' ).selectBlock( clientId );
-	}
-
-	removeColumn() {
-		const {
-			attributes,
-			clientId,
-		} = this.props;
-
-		const {
-			items,
-		} = attributes;
-
-		// Get block.
-		const block = select( 'core/editor' ).getBlocksByClientId( clientId )[ 0 ];
-
-		// Get last column block.
-		const lastColumn = block.innerBlocks[ items - 1 ];
-
-		// Check if last column block is empty.
-		if ( 0 === lastColumn.innerBlocks.length ) {
-			// Remove block.
-			dispatch( 'core/editor' ).removeBlocks( lastColumn.clientId );
-
-			// Select Parent Block.
-			dispatch( 'core/editor' ).selectBlock( clientId );
-		}
 	}
 
 	displayColumnButton( layout, label ) {
