@@ -93,6 +93,19 @@ class ColumnsEdit extends Component {
 		this.removeColumn = this.removeColumn.bind( this );
 	}
 
+	componentDidUpdate() {
+		const {
+			clientId,
+			setAttributes,
+		} = this.props;
+
+		// Get block.
+		const block = select( 'core/editor' ).getBlocksByClientId( clientId )[ 0 ];
+
+		// Update number of items.
+		setAttributes( { items: block.innerBlocks.length } );
+	}
+
 	updateColumns( columnLayout, columns ) {
 		const {
 			attributes,
@@ -118,7 +131,6 @@ class ColumnsEdit extends Component {
 		const {
 			attributes,
 			clientId,
-			setAttributes,
 		} = this.props;
 
 		const {
@@ -133,16 +145,12 @@ class ColumnsEdit extends Component {
 
 		// Select Parent Block.
 		dispatch( 'core/editor' ).selectBlock( clientId );
-
-		// Update number of items.
-		setAttributes( { items: items + 1 } );
 	}
 
 	removeColumn() {
 		const {
 			attributes,
 			clientId,
-			setAttributes,
 		} = this.props;
 
 		const {
@@ -162,9 +170,6 @@ class ColumnsEdit extends Component {
 
 			// Select Parent Block.
 			dispatch( 'core/editor' ).selectBlock( clientId );
-
-			// Update number of items.
-			setAttributes( { items: items - 1 } );
 		}
 	}
 
