@@ -63,6 +63,7 @@ class GridEdit extends Component {
 
 	componentDidUpdate() {
 		const {
+			attributes,
 			clientId,
 			setAttributes,
 		} = this.props;
@@ -72,6 +73,13 @@ class GridEdit extends Component {
 
 		// Get number of items.
 		const itemsCount = block.innerBlocks.length;
+
+		// Add new items if all items were deleted.
+		if ( itemsCount < 1 ) {
+			for ( let i = 0; i < attributes.columns - itemsCount; i++ ) {
+				this.addBlock();
+			}
+		}
 
 		// Update number of items.
 		setAttributes( { items: itemsCount } );
