@@ -34,6 +34,7 @@ const {
 } = wp.editor;
 
 const {
+	BaseControl,
 	Button,
 	Dashicon,
 	PanelBody,
@@ -209,14 +210,16 @@ class GridEdit extends Component {
 							] }
 						/>
 
-						<Button
-							isLarge
-							onClick={ this.addBlock }
-							className="gt-add-grid-item"
-						>
-							<Dashicon icon="insert" />
-							{ __( 'Add grid item', 'gt-blocks' ) }
-						</Button>
+						<BaseControl label={ __( 'Add grid item', 'gt-blocks' ) }>
+							<Button
+								isLarge
+								onClick={ this.addBlock }
+								className="gt-add-grid-item"
+							>
+								<Dashicon icon="insert" />
+								{ __( 'Add block', 'gt-blocks' ) }
+							</Button>
+						</BaseControl>
 
 					</PanelBody>
 
