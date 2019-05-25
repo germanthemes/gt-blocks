@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: GT Blocks\n"
 "Report-Msgid-Bugs-To: https://themezee.com/\n"
-"POT-Creation-Date: 2019-05-20 13:17+0200\n"
+"POT-Creation-Date: 2019-05-25 11:46+0200\n"
 "PO-Revision-Date: 2015-12-29 14:54+0100\n"
 "Last-Translator: \n"
 "Language-Team: GT Blocks<support@germanthemes.de>\n"
@@ -41,35 +41,38 @@ msgstr ""
 msgid "Button Size"
 msgstr ""
 
-#: blocks/button/edit.js:180 blocks/icon/edit.js:141 blocks/icon/edit.js:156
+#: blocks/button/edit.js:180 blocks/columns/edit.js:267
+#: blocks/icon/edit.js:141 blocks/icon/edit.js:156
 #: components/background-section/edit.js:192
 #: components/background-section/edit.js:206
 #: components/content-container/edit.js:89
-#: components/grid-container/edit.js:179
+#: components/grid-container/edit.js:205
 msgid "Small"
 msgstr ""
 
-#: blocks/button/edit.js:181 blocks/icon/edit.js:143 blocks/icon/edit.js:158
+#: blocks/button/edit.js:181 blocks/columns/edit.js:269
+#: blocks/icon/edit.js:143 blocks/icon/edit.js:158
 #: components/background-section/edit.js:194
 #: components/background-section/edit.js:208
 #: components/content-container/edit.js:91
-#: components/grid-container/edit.js:181
+#: components/grid-container/edit.js:207
 msgid "Medium"
 msgstr ""
 
-#: blocks/button/edit.js:182 blocks/icon/edit.js:144 blocks/icon/edit.js:159
+#: blocks/button/edit.js:182 blocks/columns/edit.js:270
+#: blocks/icon/edit.js:144 blocks/icon/edit.js:159
 #: components/background-section/edit.js:195
 #: components/background-section/edit.js:209
 #: components/content-container/edit.js:92
-#: components/grid-container/edit.js:182
+#: components/grid-container/edit.js:208
 msgid "Large"
 msgstr ""
 
-#: blocks/button/edit.js:183 blocks/icon/edit.js:145
-#: components/background-section/edit.js:196
+#: blocks/button/edit.js:183 blocks/columns/edit.js:271
+#: blocks/icon/edit.js:145 components/background-section/edit.js:196
 #: components/background-section/edit.js:210
 #: components/content-container/edit.js:93
-#: components/grid-container/edit.js:183
+#: components/grid-container/edit.js:209
 msgid "Extra Large"
 msgstr ""
 
@@ -166,19 +169,19 @@ msgstr ""
 msgid "Ghost Button"
 msgstr ""
 
-#: blocks/column/edit.js:126
+#: blocks/column/edit.js:134
 msgid "Move up"
 msgstr ""
 
-#: blocks/column/edit.js:134
+#: blocks/column/edit.js:142
 msgid "Move down"
 msgstr ""
 
-#: blocks/column/edit.js:142
+#: blocks/column/edit.js:150
 msgid "Duplicate"
 msgstr ""
 
-#: blocks/column/edit.js:149
+#: blocks/column/edit.js:157
 msgid "Remove"
 msgstr ""
 
@@ -188,6 +191,133 @@ msgstr ""
 
 #: blocks/column/index.js:25
 msgid "A single column within a grid block."
+msgstr ""
+
+#: blocks/columns/edit.js:48
+msgid "50% | 50%"
+msgstr ""
+
+#: blocks/columns/edit.js:49
+msgid "60% | 40%"
+msgstr ""
+
+#: blocks/columns/edit.js:50
+msgid "40% | 60%"
+msgstr ""
+
+#: blocks/columns/edit.js:51
+msgid "66% | 33%"
+msgstr ""
+
+#: blocks/columns/edit.js:52
+msgid "33% | 66%"
+msgstr ""
+
+#: blocks/columns/edit.js:53
+msgid "75% | 25%"
+msgstr ""
+
+#: blocks/columns/edit.js:54
+msgid "25% | 75%"
+msgstr ""
+
+#: blocks/columns/edit.js:59
+msgid "33% | 33% | 33%"
+msgstr ""
+
+#: blocks/columns/edit.js:60
+msgid "30% | 40% | 30%"
+msgstr ""
+
+#: blocks/columns/edit.js:61
+msgid "20% | 60% | 20%"
+msgstr ""
+
+#: blocks/columns/edit.js:62
+msgid "50% | 25% | 25%"
+msgstr ""
+
+#: blocks/columns/edit.js:63
+msgid "25% | 50% | 25%"
+msgstr ""
+
+#: blocks/columns/edit.js:64
+msgid "25% | 25% | 50%"
+msgstr ""
+
+#: blocks/columns/edit.js:69
+msgid "25% | 25% | 25% | 25%"
+msgstr ""
+
+#: blocks/columns/edit.js:70
+msgid "40% | 20% | 20% | 20%"
+msgstr ""
+
+#: blocks/columns/edit.js:71
+msgid "20% | 20% | 20% | 40%"
+msgstr ""
+
+#: blocks/columns/edit.js:205 blocks/image-card/edit.js:157
+#: blocks/multiple-buttons/edit.js:81 components/content-container/edit.js:81
+#: components/grid-container/edit.js:189
+msgid "Layout Settings"
+msgstr ""
+
+#: blocks/columns/edit.js:207
+msgid "Two Columns"
+msgstr ""
+
+#: blocks/columns/edit.js:225
+msgid "Three Columns"
+msgstr ""
+
+#: blocks/columns/edit.js:243
+msgid "Four Columns"
+msgstr ""
+
+#: blocks/columns/edit.js:262 components/grid-container/edit.js:200
+msgid "Column Gap"
+msgstr ""
+
+#: blocks/columns/edit.js:266 components/background-section/edit.js:191
+#: components/background-section/edit.js:205
+#: components/content-container/edit.js:88
+#: components/grid-container/edit.js:204 components/image-block/edit.js:166
+msgid "None"
+msgstr ""
+
+#: blocks/columns/edit.js:268 blocks/icon/edit.js:142 blocks/icon/edit.js:157
+#: blocks/icon/edit.js:171 components/background-section/edit.js:193
+#: components/background-section/edit.js:207
+#: components/grid-container/edit.js:206
+msgid "Normal"
+msgstr ""
+
+#: blocks/columns/edit.js:300
+msgid "Change column layout"
+msgstr ""
+
+#: blocks/columns/index.js:26
+msgid "GT Columns"
+msgstr ""
+
+#: blocks/columns/index.js:28
+msgid "Display your content in multiple columns with flexible widths."
+msgstr ""
+
+#: blocks/columns/index.js:35 blocks/features/index.js:30
+#: blocks/grid-layout/index.js:29 blocks/hero-image/index.js:37
+#: blocks/icon/index.js:36 blocks/portfolio/index.js:30
+#: blocks/section/index.js:31
+msgid "GT Blocks"
+msgstr ""
+
+#: blocks/columns/index.js:36
+msgid "Column"
+msgstr ""
+
+#: blocks/columns/index.js:37 blocks/icon/index.js:38
+msgid "Layout"
 msgstr ""
 
 #: blocks/content/index.js:23
@@ -214,12 +344,6 @@ msgstr ""
 msgid "Add a block that displays your product or service features."
 msgstr ""
 
-#: blocks/features/index.js:30 blocks/grid-layout/index.js:29
-#: blocks/hero-image/index.js:37 blocks/icon/index.js:36
-#: blocks/portfolio/index.js:30 blocks/section/index.js:31
-msgid "GT Blocks"
-msgstr ""
-
 #: blocks/features/index.js:31 blocks/icon/index.js:37
 #: components/icon-picker/index.js:143
 msgid "Icon"
@@ -241,7 +365,7 @@ msgstr ""
 msgid "Multiple"
 msgstr ""
 
-#: blocks/grid-layout/index.js:31 components/grid-container/edit.js:166
+#: blocks/grid-layout/index.js:31 components/grid-container/edit.js:192
 msgid "Columns"
 msgstr ""
 
@@ -306,7 +430,7 @@ msgstr ""
 msgid "Remove Block"
 msgstr ""
 
-#: blocks/hero-image/edit.js:102
+#: blocks/hero-image/edit.js:102 components/grid-container/edit.js:220
 msgid "Add Block"
 msgstr ""
 
@@ -394,13 +518,6 @@ msgstr ""
 msgid "Icon Size"
 msgstr ""
 
-#: blocks/icon/edit.js:142 blocks/icon/edit.js:157 blocks/icon/edit.js:171
-#: components/background-section/edit.js:193
-#: components/background-section/edit.js:207
-#: components/grid-container/edit.js:180
-msgid "Normal"
-msgstr ""
-
 #: blocks/icon/edit.js:146
 msgid "Huge"
 msgstr ""
@@ -429,10 +546,6 @@ msgstr ""
 msgid "Insert a single icon."
 msgstr ""
 
-#: blocks/icon/index.js:38
-msgid "Layout"
-msgstr ""
-
 #: blocks/image-card/edit.js:51
 msgid "Top"
 msgstr ""
@@ -451,12 +564,6 @@ msgstr ""
 
 #: blocks/image-card/edit.js:147
 msgid "Show image on right"
-msgstr ""
-
-#: blocks/image-card/edit.js:157 blocks/multiple-buttons/edit.js:81
-#: components/content-container/edit.js:81
-#: components/grid-container/edit.js:163
-msgid "Layout Settings"
 msgstr ""
 
 #: blocks/image-card/edit.js:172
@@ -536,7 +643,7 @@ msgid "Wrap"
 msgstr ""
 
 #: components/background-section/edit.js:168
-#: plugins/section-insert/index.js:74
+#: plugins/section-insert/index.js:76
 msgid "Section Settings"
 msgstr ""
 
@@ -558,13 +665,6 @@ msgstr ""
 
 #: components/background-section/edit.js:187
 msgid "Padding Top"
-msgstr ""
-
-#: components/background-section/edit.js:191
-#: components/background-section/edit.js:205
-#: components/content-container/edit.js:88
-#: components/grid-container/edit.js:178 components/image-block/edit.js:166
-msgid "None"
 msgstr ""
 
 #: components/background-section/edit.js:201
@@ -654,17 +754,17 @@ msgstr ""
 msgid "Remove padding of first block?"
 msgstr ""
 
-#: components/grid-container/edit.js:152
+#: components/grid-container/edit.js:178
 #, javascript-format
 msgid "%s Columns"
 msgstr ""
 
-#: components/grid-container/edit.js:174
-msgid "Column Gap"
+#: components/grid-container/edit.js:213
+msgid "Add grid item"
 msgstr ""
 
-#: components/grid-container/edit.js:210
-msgid "Add grid item"
+#: components/grid-container/edit.js:249
+msgid "Change grid layout"
 msgstr ""
 
 #: components/icon-picker/index.js:141
@@ -773,49 +873,49 @@ msgstr ""
 msgid "Remove bottom margin?"
 msgstr ""
 
-#: plugins/section-insert/index.js:77
+#: plugins/section-insert/index.js:79
 msgid "Insert this block into a section block."
 msgstr ""
 
-#: plugins/section-insert/index.js:86
-msgid "Add GT Section block"
+#: plugins/section-insert/index.js:88
+msgid "Insert into GT Section"
 msgstr ""
 
-#: plugins/synchronize-styling/index.js:101
+#: plugins/synchronize-styling/index.js:102
 msgid ""
 "Copy button settings and colors of this block and apply them to all sibling "
 "blocks."
 msgstr ""
 
-#: plugins/synchronize-styling/index.js:104
+#: plugins/synchronize-styling/index.js:105
 msgid "Copy colors of this block and apply them to all sibling blocks."
 msgstr ""
 
-#: plugins/synchronize-styling/index.js:107
+#: plugins/synchronize-styling/index.js:108
 msgid ""
 "Copy heading settings and colors of this block and apply them to all "
 "sibling blocks."
 msgstr ""
 
-#: plugins/synchronize-styling/index.js:110
+#: plugins/synchronize-styling/index.js:111
 msgid ""
 "Copy icon settings and colors of this block and apply them to all sibling "
 "blocks."
 msgstr ""
 
-#: plugins/synchronize-styling/index.js:113
+#: plugins/synchronize-styling/index.js:114
 msgid ""
 "Copy image size and URL settings of this block and apply them to all "
 "sibling blocks."
 msgstr ""
 
-#: plugins/synchronize-styling/index.js:116
+#: plugins/synchronize-styling/index.js:117
 msgid ""
 "Copy text settings and colors of this block and apply them to all sibling "
 "blocks."
 msgstr ""
 
-#: plugins/synchronize-styling/index.js:127
-#: plugins/synchronize-styling/index.js:139
+#: plugins/synchronize-styling/index.js:128
+#: plugins/synchronize-styling/index.js:140
 msgid "Synchronize Styling"
 msgstr ""
