@@ -84,7 +84,7 @@ class GridEdit extends Component {
 		// Insert Block.
 		dispatch( 'core/editor' ).insertBlocks( block, items, clientId );
 
-		// Select parent block.
+		// Select Parent Block.
 		dispatch( 'core/editor' ).selectBlock( clientId );
 
 		// Update number of items.
@@ -161,7 +161,7 @@ class GridEdit extends Component {
 
 				<InspectorControls key="inspector">
 
-					<PanelBody title={ __( 'Layout Settings', 'gt-blocks' ) } initialOpen={ false } className="gt-panel-layout-settings gt-panel">
+					<PanelBody title={ __( 'Layout Settings', 'gt-blocks' ) } className="gt-panel-layout-settings gt-panel">
 
 						<RangeControl
 							label={ __( 'Columns', 'gt-blocks' ) }
@@ -184,6 +184,15 @@ class GridEdit extends Component {
 								{ value: 'extra-large', label: __( 'Extra Large', 'gt-blocks' ) },
 							] }
 						/>
+
+						<Button
+							isLarge
+							onClick={ this.addBlock }
+							className="gt-add-grid-item"
+						>
+							<Dashicon icon="insert" />
+							{ __( 'Add grid item', 'gt-blocks' ) }
+						</Button>
 
 					</PanelBody>
 
