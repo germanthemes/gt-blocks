@@ -22,6 +22,7 @@ const { compose, withInstanceId } = wp.compose;
 const { createBlock } = wp.blocks;
 
 const {
+	select,
 	dispatch,
 	withSelect,
 } = wp.data;
@@ -60,11 +61,26 @@ class GridEdit extends Component {
 		this.addBlock = this.addBlock.bind( this );
 	}
 
+	componentDidUpdate() {
+		const {
+			clientId,
+			setAttributes,
+		} = this.props;
+
+		// Get block.
+		const block = select( 'core/editor' ).getBlocksByClientId( clientId )[ 0 ];
+
+		// Get number of items.
+		const itemsCount = block.innerBlocks.length;
+
+		// Update number of items.
+		setAttributes( { items: itemsCount } );
+	}
+
 	addBlock() {
 		const {
 			attributes,
 			clientId,
-			setAttributes,
 			allowedBlocks,
 			template,
 			templateLock,
@@ -86,9 +102,6 @@ class GridEdit extends Component {
 
 		// Select Parent Block.
 		dispatch( 'core/editor' ).selectBlock( clientId );
-
-		// Update number of items.
-		setAttributes( { items: items + 1 } );
 	}
 
 	render() {
