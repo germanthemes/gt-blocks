@@ -61,7 +61,7 @@ class GridEdit extends Component {
 		this.addBlock = this.addBlock.bind( this );
 	}
 
-	componentDidUpdate() {
+	componentDidUpdate( prevProps ) {
 		const {
 			attributes,
 			clientId,
@@ -81,8 +81,14 @@ class GridEdit extends Component {
 			}
 		}
 
-		// Update number of items.
-		setAttributes( { items: itemsCount } );
+		// Check if number of items is changed.
+		if ( prevProps.attributes.items !== itemsCount ) {
+			// Update number of items.
+			setAttributes( { items: itemsCount } );
+
+			// Select Parent Block.
+			dispatch( 'core/editor' ).selectBlock( clientId );
+		}
 	}
 
 	addBlock() {
@@ -107,9 +113,6 @@ class GridEdit extends Component {
 
 		// Insert Block.
 		dispatch( 'core/editor' ).insertBlocks( block, items, clientId );
-
-		// Select Parent Block.
-		dispatch( 'core/editor' ).selectBlock( clientId );
 	}
 
 	render() {
