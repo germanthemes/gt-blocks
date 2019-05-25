@@ -98,6 +98,7 @@ class GridEdit extends Component {
 			isSelected,
 			isChildBlockSelected,
 			className,
+			clientId,
 			instanceId,
 			allowedBlocks,
 			template,
@@ -203,11 +204,13 @@ class GridEdit extends Component {
 					{ ( isSelected || isChildBlockSelected ) && (
 						<Button
 							isLarge
-							onClick={ this.addBlock }
-							className="gt-add-grid-item gt-columns-button"
+							onClick={ () => dispatch( 'core/editor' ).selectBlock( clientId ) }
+							className={ classnames( 'gt-change-grid-layout', 'gt-columns-button', {
+								'has-parent-block-selected': isSelected,
+							} ) }
 						>
 							<Dashicon icon="screenoptions" />
-							{ __( 'Add grid item', 'gt-blocks' ) }
+							{ __( 'Change grid layout', 'gt-blocks' ) }
 						</Button>
 					) }
 				</div>

@@ -107,7 +107,7 @@
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	margin: 12px 0 0;
+	margin: 4px 0 0;
 	padding: 8px;
 	width: 100%;
 	height: auto;
@@ -124,5 +124,10 @@
 		background: #f0f0f0;
 		border: 1px solid #999;
 		box-shadow: none;
+	}
+
+	&.has-parent-block-selected {
+		background: #f0f0f0;
+		border: 1px solid #999;
 	}
 }
