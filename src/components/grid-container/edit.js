@@ -22,6 +22,7 @@ const { compose, withInstanceId } = wp.compose;
 const { createBlock } = wp.blocks;
 
 const {
+	select,
 	dispatch,
 	withSelect,
 } = wp.data;
@@ -33,6 +34,7 @@ const {
 } = wp.editor;
 
 const {
+	BaseControl,
 	Button,
 	Dashicon,
 	PanelBody,
@@ -60,11 +62,40 @@ class GridEdit extends Component {
 		this.addBlock = this.addBlock.bind( this );
 	}
 
-	addBlock() {
+	componentDidUpdate( prevProps ) {
 		const {
 			attributes,
 			clientId,
 			setAttributes,
+		} = this.props;
+
+		// Get block.
+		const block = select( 'core/editor' ).getBlocksByClientId( clientId )[ 0 ];
+
+		// Get number of items.
+		const itemsCount = block.innerBlocks.length;
+
+		// Add new items if all items were deleted.
+		if ( itemsCount < 1 ) {
+			for ( let i = 0; i < attributes.columns - itemsCount; i++ ) {
+				this.addBlock();
+			}
+		}
+
+		// Check if number of items is changed.
+		if ( prevProps.attributes.items !== itemsCount ) {
+			// Update number of items.
+			setAttributes( { items: itemsCount } );
+
+			// Select Parent Block.
+			dispatch( 'core/editor' ).selectBlock( clientId );
+		}
+	}
+
+	addBlock() {
+		const {
+			attributes,
+			clientId,
 			allowedBlocks,
 			template,
 			templateLock,
@@ -83,12 +114,6 @@ class GridEdit extends Component {
 
 		// Insert Block.
 		dispatch( 'core/editor' ).insertBlocks( block, items, clientId );
-
-		// Select parent block.
-		dispatch( 'core/editor' ).selectBlock( clientId );
-
-		// Update number of items.
-		setAttributes( { items: items + 1 } );
 	}
 
 	render() {
@@ -98,6 +123,7 @@ class GridEdit extends Component {
 			isSelected,
 			isChildBlockSelected,
 			className,
+			clientId,
 			instanceId,
 			allowedBlocks,
 			template,
@@ -160,7 +186,7 @@ class GridEdit extends Component {
 
 				<InspectorControls key="inspector">
 
-					<PanelBody title={ __( 'Layout Settings', 'gt-blocks' ) } initialOpen={ false } className="gt-panel-layout-settings gt-panel">
+					<PanelBody title={ __( 'Layout Settings', 'gt-blocks' ) } className="gt-panel-layout-settings gt-panel">
 
 						<RangeControl
 							label={ __( 'Columns', 'gt-blocks' ) }
@@ -184,6 +210,17 @@ class GridEdit extends Component {
 							] }
 						/>
 
+						<BaseControl label={ __( 'Add grid item', 'gt-blocks' ) }>
+							<Button
+								isLarge
+								onClick={ this.addBlock }
+								className="gt-add-grid-item"
+							>
+								<Dashicon icon="insert" />
+								{ __( 'Add Block', 'gt-blocks' ) }
+							</Button>
+						</BaseControl>
+
 					</PanelBody>
 
 				</InspectorControls>
@@ -203,11 +240,13 @@ class GridEdit extends Component {
 					{ ( isSelected || isChildBlockSelected ) && (
 						<Button
 							isLarge
-							onClick={ this.addBlock }
-							className="gt-add-grid-item gt-columns-button"
+							onClick={ () => dispatch( 'core/editor' ).selectBlock( clientId ) }
+							className={ classnames( 'gt-change-grid-layout', 'gt-columns-button', {
+								'has-parent-block-selected': isSelected,
+							} ) }
 						>
 							<Dashicon icon="screenoptions" />
-							{ __( 'Add grid item', 'gt-blocks' ) }
+							{ __( 'Change grid layout', 'gt-blocks' ) }
 						</Button>
 					) }
 				</div>

@@ -20,8 +20,10 @@ import './editor.scss';
 
 // Define supported blocks.
 const supportedBlocks = [
+	'gt-blocks/columns',
 	'gt-blocks/portfolio',
 	'gt-blocks/features',
+	'gt-blocks/grid-layout',
 ];
 
 const insertIntoSection = createHigherOrderComponent( ( BlockEdit ) => {
@@ -82,8 +84,8 @@ const insertIntoSection = createHigherOrderComponent( ( BlockEdit ) => {
 							isLarge
 							onClick={ createSection }
 						>
-							<Dashicon icon="insert" />
-							{ __( 'Add GT Section block', 'gt-blocks' ) }
+							<Dashicon icon="migrate" />
+							{ __( 'Insert into GT Section', 'gt-blocks' ) }
 						</Button>
 
 					</PanelBody>
