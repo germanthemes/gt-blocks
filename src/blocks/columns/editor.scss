@@ -7,16 +7,20 @@
 		width: 100%;
 	}
 		
-	> .editor-inner-blocks > .editor-block-list__layout {
+	> .editor-inner-blocks {
+		margin-top: -12px;
+		margin-bottom: -18px;
 
-		> [data-type="gt-blocks/column"] {
-			margin-left: 0;
-			margin-right: 0;
-			min-width: 0;
+		> .editor-block-list__layout {
+			> [data-type="gt-blocks/column"] {
+				margin-left: 0;
+				margin-right: 0;
+				min-width: 0;
 
-			> .editor-block-list__block-edit {
-				margin-top: 12px;
-				margin-bottom: 18px;
+				> .editor-block-list__block-edit {
+					margin-top: 12px;
+					margin-bottom: 18px;
+				}
 			}
 		}
 	}

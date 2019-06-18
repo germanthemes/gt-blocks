@@ -19,13 +19,17 @@
 	.gt-columns-20-20-20-40 {
 		display: flex;
 		flex-wrap: wrap;
-		margin-right: -1.5em;
+		margin-right: -1.5rem;
 		margin-right: calc( -1 * var(--gt-column-gap) );
-		margin-bottom: -1.5em;
+		margin-bottom: -1.5rem;
+		margin-bottom: calc( -1 * var(--gt-column-gap) );
 
 		.wp-block-gt-blocks-column {
-			padding-right: 1.5em;
+			margin-bottom: 0;
+			padding-right: 1.5rem;
 			padding-right: var(--gt-column-gap);
+			padding-bottom: 1.5rem;
+			padding-bottom: var(--gt-column-gap);
 			width: 100%;
 		}
 	}
@@ -140,13 +144,17 @@
 	.gt-columns-33-33-33 {
 		display: flex;
 		flex-wrap: wrap;
-		margin-right: -1.5em;
+		margin-right: -1.5rem;
 		margin-right: calc( -1 * var(--gt-column-gap) );
-		margin-bottom: -1.5em;
+		margin-bottom: -1.5rem;
+		margin-bottom: calc( -1 * var(--gt-column-gap) );
 
 		.wp-block-gt-blocks-column {
-			padding-right: 1.5em;
+			margin-bottom: 0;
+			padding-right: 1.5rem;
 			padding-right: var(--gt-column-gap);
+			padding-bottom: 1.5rem;
+			padding-bottom: var(--gt-column-gap);
 			width: 100%;
 		}
 	}

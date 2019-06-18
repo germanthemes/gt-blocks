@@ -1,4 +1,6 @@
 .gt-background-section {
+	display: flex;
+	flex-direction: column;
 
 	.gt-section-content {
 		margin-bottom: -30px;
@@ -40,8 +42,8 @@
 		/* Add Blocks Button */
 		> .block-editor-inserter {
 			display: block;
-			margin: 0;
-			padding: 12px 0 0;
+			margin: 0 0 30px;
+			padding: 0;
 
 			.block-editor-inserter__toggle {
 				display: flex;
