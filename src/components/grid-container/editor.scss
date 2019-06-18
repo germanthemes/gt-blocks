@@ -7,16 +7,21 @@
 		width: 100%;
 	}
 		
-	> .editor-inner-blocks > .editor-block-list__layout {
+	> .editor-inner-blocks {
+		margin-top: -12px;
+		margin-bottom: -18px;
 
-		> [data-type="gt-blocks/column"] {
-			margin-left: 0;
-			margin-right: 0;
-			min-width: 0;
+		> .editor-block-list__layout {
 
-			> .editor-block-list__block-edit {
-				margin-top: 12px;
-				margin-bottom: 18px;
+			> [data-type="gt-blocks/column"] {
+				margin-left: 0;
+				margin-right: 0;
+				min-width: 0;
+
+				> .editor-block-list__block-edit {
+					margin-top: 12px;
+					margin-bottom: 18px;
+				}
 			}
 		}
 	}
@@ -107,7 +112,7 @@
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	margin: 4px 0 0;
+	margin: 30px 0 0;
 	padding: 8px;
 	width: 100%;
 	height: auto;
