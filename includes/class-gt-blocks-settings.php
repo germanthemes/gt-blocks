@@ -129,7 +129,6 @@ class GT_Blocks_Settings {
 		}
 
 		// Add Sections
-		add_settings_section( 'gt_blocks_settings_activate_blocks', esc_html__( 'Activate Blocks', 'gt-blocks' ), '__return_false', 'gt_blocks_settings' );
 		add_settings_section( 'gt_blocks_settings_image_sizes', esc_html__( 'Image Sizes', 'gt-blocks' ), array( $this, 'image_section_intro' ), 'gt_blocks_settings' );
 		add_settings_section( 'gt_blocks_settings_automatic_updates', esc_html__( 'Automatic Updates', 'gt-blocks' ), array( $this, 'license_section_intro' ), 'gt_blocks_settings' );
 
@@ -256,39 +255,6 @@ class GT_Blocks_Settings {
 	function get_registered_settings() {
 
 		$settings = array(
-			'basic_blocks' => array(
-				'name'    => esc_html__( 'Basic Blocks', 'gt-blocks' ),
-				'section' => 'activate_blocks',
-				'type'    => 'multicheck',
-				'default' => true,
-				'options' => array(
-					'gt-blocks/button'  => esc_html__( 'GT Button', 'gt-blocks' ),
-					'gt-blocks/heading' => esc_html__( 'GT Heading', 'gt-blocks' ),
-					'gt-blocks/icon'    => esc_html__( 'GT Icon', 'gt-blocks' ),
-				),
-			),
-			'layout_blocks' => array(
-				'name'    => esc_html__( 'Layout Blocks', 'gt-blocks' ),
-				'section' => 'activate_blocks',
-				'type'    => 'multicheck',
-				'default' => true,
-				'options' => array(
-					'gt-blocks/hero-image'       => esc_html__( 'GT Hero Image', 'gt-blocks' ),
-					'gt-blocks/multiple-buttons' => esc_html__( 'GT Multiple Buttons', 'gt-blocks' ),
-					'gt-blocks/section'          => esc_html__( 'GT Section', 'gt-blocks' ),
-				),
-			),
-			'grid_blocks' => array(
-				'name'    => esc_html__( 'Grid Blocks', 'gt-blocks' ),
-				'section' => 'activate_blocks',
-				'type'    => 'multicheck',
-				'default' => true,
-				'options' => array(
-					'gt-blocks/features'    => esc_html__( 'GT Features', 'gt-blocks' ),
-					'gt-blocks/grid-layout' => esc_html__( 'GT Grid Layout', 'gt-blocks' ),
-					'gt-blocks/portfolio'   => esc_html__( 'GT Portfolio', 'gt-blocks' ),
-				),
-			),
 			'image_sizes' => array(
 				'name'    => esc_html__( 'Image Sizes', 'gt-blocks' ),
 				'section' => 'image_sizes',

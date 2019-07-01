@@ -159,9 +159,6 @@ class GT_Blocks {
 		// Transfer Data from PHP to GT Blocks Redux Store.
 		wp_add_inline_script( 'gt-blocks-editor', self::get_dispatch_data(), 'after' );
 
-		// Add block options as JavaScript object.
-		wp_localize_script( 'gt-blocks-editor', 'gtEnabledBlocks', self::get_block_options() );
-
 		// Load javascript translation files.
 		wp_set_script_translations( 'gt-blocks-editor', 'gt-blocks', GT_BLOCKS_PLUGIN_DIR . 'languages/js' );
 
@@ -181,26 +178,6 @@ class GT_Blocks {
 		$script .= sprintf( 'wp.data.dispatch( "gt-blocks-store" ).setPluginURL( %s );', wp_json_encode( GT_BLOCKS_PLUGIN_URL ) );
 
 		return $script;
-	}
-
-	/**
-	 * Retrieve enabled and disabled blocks.
-	 *
-	 * @return $blocks Block options..
-	 */
-	static function get_block_options() {
-		// Get Plugin Settings.
-		$instance = GT_Blocks_Settings::instance();
-		$options  = $instance->get_all();
-
-		// Retrieve block options.
-		$block_options = array_merge(
-			$options['basic_blocks'],
-			$options['layout_blocks'],
-			$options['grid_blocks']
-		);
-
-		return $block_options;
 	}
 
 	/**
