@@ -165,7 +165,7 @@ class BackgroundEdit extends Component {
 
 				<InspectorControls>
 
-					<PanelBody title={ __( 'Section Settings', 'gt-blocks' ) } initialOpen={ false } className="gt-section-settings-panel gt-panel">
+					<PanelBody title={ __( 'Section Settings', 'gt-blocks' ) } initialOpen={ true } className="gt-section-settings-panel gt-panel">
 
 						{ ( wideControlsEnabled && ( 'full' === blockAlignment || 'wide' === blockAlignment ) ) && (
 

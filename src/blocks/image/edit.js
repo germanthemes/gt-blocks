@@ -50,6 +50,7 @@ class ImageEdit extends Component {
 				<ImageBlockEdit
 					customClasses={ blockClasses }
 					showBlockClass={ true }
+					isPanelOpen={ true }
 					{ ...this.props }
 				/>
 

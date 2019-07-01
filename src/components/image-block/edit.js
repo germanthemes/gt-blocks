@@ -178,6 +178,7 @@ class ImageBlockEdit extends Component {
 			className,
 			customClasses,
 			showBlockClass,
+			isPanelOpen,
 		} = this.props;
 
 		const {
@@ -223,7 +224,7 @@ class ImageBlockEdit extends Component {
 
 				<InspectorControls>
 
-					<PanelBody title={ __( 'Image Settings', 'gt-blocks' ) } initialOpen={ false } className="gt-panel-image-settings gt-panel">
+					<PanelBody title={ __( 'Image Settings', 'gt-blocks' ) } initialOpen={ isPanelOpen } className="gt-panel-image-settings gt-panel">
 
 						<TextareaControl
 							label={ __( 'Alt Text (Alternative Text)', 'gt-blocks' ) }

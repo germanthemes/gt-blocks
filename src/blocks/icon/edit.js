@@ -117,7 +117,7 @@ class IconEdit extends Component {
 
 				<InspectorControls key="inspector">
 
-					<PanelBody title={ __( 'Icon Settings', 'gt-blocks' ) } initialOpen={ false } className="gt-panel-icon-settings gt-panel">
+					<PanelBody title={ __( 'Icon Settings', 'gt-blocks' ) } initialOpen={ true } className="gt-panel-icon-settings gt-panel">
 
 						<SelectControl
 							label={ __( 'Icon Style', 'gt-blocks' ) }
