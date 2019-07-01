@@ -78,7 +78,7 @@ class ContentContainerEdit extends Component {
 
 				<InspectorControls key="inspector">
 
-					<PanelBody title={ __( 'Layout Settings', 'gt-blocks' ) } initialOpen={ false } className="gt-layout-settings-panel gt-panel">
+					<PanelBody title={ __( 'Layout Settings', 'gt-blocks' ) } initialOpen={ true } className="gt-layout-settings-panel gt-panel">
 
 						<SelectControl
 							label={ __( 'Padding', 'gt-blocks' ) }

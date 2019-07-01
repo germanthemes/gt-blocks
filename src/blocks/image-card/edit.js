@@ -154,7 +154,7 @@ class ImageCardEdit extends Component {
 
 				<InspectorControls>
 
-					<PanelBody title={ __( 'Layout Settings', 'gt-blocks' ) } initialOpen={ false } className="gt-panel-layout-settings gt-panel">
+					<PanelBody title={ __( 'Layout Settings', 'gt-blocks' ) } initialOpen={ true } className="gt-panel-layout-settings gt-panel">
 
 						<SelectControl
 							label={ __( 'Content Width', 'gt-blocks' ) }
@@ -196,6 +196,7 @@ class ImageCardEdit extends Component {
 
 							<ImageBlockEdit
 								customClasses="gt-image"
+								isPanelOpen={ false }
 								{ ...this.props }
 							/>
 

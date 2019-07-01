@@ -170,7 +170,7 @@ class ButtonEdit extends Component {
 
 				<InspectorControls>
 
-					<PanelBody title={ __( 'Button Settings', 'gt-blocks' ) } initialOpen={ false } className="gt-panel-button-settings gt-panel">
+					<PanelBody title={ __( 'Button Settings', 'gt-blocks' ) } initialOpen={ true } className="gt-panel-button-settings gt-panel">
 
 						<SelectControl
 							label={ __( 'Button Size', 'gt-blocks' ) }
