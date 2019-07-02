@@ -25,10 +25,12 @@
 
 			.gt-image-column {
 				padding-right: 0.75rem;
+				padding-right: calc( var(--gt-column-gap) / 2 );
 			}
 	
 			.gt-text-column {
 				padding-left: 0.75rem;
+				padding-left: calc( var(--gt-column-gap) / 2 );
 			}
 		}
 		
@@ -39,11 +41,13 @@
 				.gt-image-column {
 					padding-right: 0;
 					padding-left: 0.75rem;
+					padding-left: calc( var(--gt-column-gap) / 2 );
 				}
 		
 				.gt-text-column {
 					padding-left: 0;
 					padding-right: 0.75rem;
+					padding-right: calc( var(--gt-column-gap) / 2 );
 				}
 			}
 		}

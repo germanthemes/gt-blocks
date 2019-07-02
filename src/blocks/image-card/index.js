@@ -53,6 +53,10 @@ registerBlockType(
 				type: 'string',
 				default: 'top',
 			},
+			columnGap: {
+				type: 'string',
+				default: 'normal',
+			},
 			textColor: {
 				type: 'string',
 			},
@@ -83,6 +87,7 @@ registerBlockType(
 				imagePosition,
 				contentWidth,
 				verticalAlignment,
+				columnGap,
 				textColor,
 				backgroundColor,
 				customTextColor,
@@ -97,6 +102,7 @@ registerBlockType(
 				[ `gt-image-position-${ imagePosition }` ]: 'left' !== imagePosition,
 				[ `gt-content-width-${ contentWidth }` ]: '50' !== contentWidth,
 				[ `gt-vertical-align-${ verticalAlignment }` ]: 'top' !== verticalAlignment,
+				[ `gt-${ columnGap }-column-gap` ]: 'normal' !== columnGap,
 				'has-text-color': textColor || customTextColor,
 				[ textColorClass ]: textColorClass,
 				'has-background': backgroundColor || customBackgroundColor,
