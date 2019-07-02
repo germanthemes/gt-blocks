@@ -30,6 +30,7 @@ const {
 	BaseControl,
 	PanelBody,
 	SelectControl,
+	ToggleControl,
 	Toolbar,
 	withFallbackStyles,
 } = wp.components;
@@ -105,12 +106,16 @@ class ImageCardEdit extends Component {
 			imagePosition,
 			contentWidth,
 			verticalAlignment,
+			columnGap,
+			overlayCard,
 		} = attributes;
 
 		const blockClasses = classnames( className, {
 			[ `gt-image-position-${ imagePosition }` ]: 'left' !== imagePosition,
 			[ `gt-content-width-${ contentWidth }` ]: '50' !== contentWidth,
 			[ `gt-vertical-align-${ verticalAlignment }` ]: 'top' !== verticalAlignment,
+			[ `gt-${ columnGap }-column-gap` ]: 'normal' !== columnGap,
+			'gt-overlay-card': overlayCard,
 			'has-text-color': textColor.color,
 			[ textColor.class ]: textColor.class,
 			'has-background': backgroundColor.color,
@@ -183,6 +188,26 @@ class ImageCardEdit extends Component {
 								}
 							/>
 						</BaseControl>
+
+						<SelectControl
+							label={ __( 'Column Gap', 'gt-blocks' ) }
+							value={ columnGap }
+							onChange={ ( value ) => setAttributes( { columnGap: value } ) }
+							options={ [
+								{ value: 'none', label: __( 'None', 'gt-blocks' ) },
+								{ value: 'small', label: __( 'Small', 'gt-blocks' ) },
+								{ value: 'normal', label: __( 'Normal', 'gt-blocks' ) },
+								{ value: 'medium', label: __( 'Medium', 'gt-blocks' ) },
+								{ value: 'large', label: __( 'Large', 'gt-blocks' ) },
+								{ value: 'extra-large', label: __( 'Extra Large', 'gt-blocks' ) },
+							] }
+						/>
+
+						<ToggleControl
+							label={ __( 'Overlap content card?', 'gt-blocks' ) }
+							checked={ !! overlayCard }
+							onChange={ () => setAttributes( { overlayCard: ! overlayCard } ) }
+						/>
 
 					</PanelBody>
 

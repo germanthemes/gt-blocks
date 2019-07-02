@@ -25,10 +25,12 @@
 
 			.gt-image-column {
 				padding-right: 0.75rem;
+				padding-right: calc( var(--gt-column-gap) / 2 );
 			}
 	
 			.gt-text-column {
 				padding-left: 0.75rem;
+				padding-left: calc( var(--gt-column-gap) / 2 );
 			}
 		}
 		
@@ -39,11 +41,13 @@
 				.gt-image-column {
 					padding-right: 0;
 					padding-left: 0.75rem;
+					padding-left: calc( var(--gt-column-gap) / 2 );
 				}
 		
 				.gt-text-column {
 					padding-left: 0;
 					padding-right: 0.75rem;
+					padding-right: calc( var(--gt-column-gap) / 2 );
 				}
 			}
 		}
@@ -52,6 +56,42 @@
 			.gt-image-card-columns { 
 				.gt-text-column {
 					padding-left: 1.5rem;
+				}
+			}
+		}
+
+		&.gt-overlay-card {
+			.gt-image-card-columns { 
+				.gt-image-column {
+					flex-grow: 1;
+					padding-right: 0;
+					margin-right: -1.5rem;
+					margin-right: calc( -1 * var(--gt-column-gap) );
+				}
+		
+				.gt-text-column {
+					flex-grow: 1;
+					padding-left: 0;
+					margin-left: -1.5rem;
+					margin-left: calc( -1 * var(--gt-column-gap) );
+				}
+			}
+		}
+
+		&.gt-overlay-card.gt-image-position-right {
+			.gt-image-card-columns { 
+				.gt-image-column {
+					padding-left: 0;
+					margin-right: 0;
+					margin-left: -1.5rem;
+					margin-left: calc( -1 * var(--gt-column-gap) );
+				}
+		
+				.gt-text-column {
+					padding-right: 0;
+					margin-left: 0;
+					margin-right: -1.5rem;
+					margin-right: calc( -1 * var(--gt-column-gap) );
 				}
 			}
 		}
