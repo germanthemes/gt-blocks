@@ -57,6 +57,10 @@ registerBlockType(
 				type: 'string',
 				default: 'normal',
 			},
+			overlayCard: {
+				type: 'boolean',
+				default: false,
+			},
 			textColor: {
 				type: 'string',
 			},
@@ -88,6 +92,7 @@ registerBlockType(
 				contentWidth,
 				verticalAlignment,
 				columnGap,
+				overlayCard,
 				textColor,
 				backgroundColor,
 				customTextColor,
@@ -103,6 +108,7 @@ registerBlockType(
 				[ `gt-content-width-${ contentWidth }` ]: '50' !== contentWidth,
 				[ `gt-vertical-align-${ verticalAlignment }` ]: 'top' !== verticalAlignment,
 				[ `gt-${ columnGap }-column-gap` ]: 'normal' !== columnGap,
+				'gt-overlay-card': overlayCard,
 				'has-text-color': textColor || customTextColor,
 				[ textColorClass ]: textColorClass,
 				'has-background': backgroundColor || customBackgroundColor,
