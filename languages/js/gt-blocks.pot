@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: GT Blocks\n"
 "Report-Msgid-Bugs-To: https://themezee.com/\n"
-"POT-Creation-Date: 2019-05-25 11:46+0200\n"
+"POT-Creation-Date: 2019-07-03 10:15+0200\n"
 "PO-Revision-Date: 2015-12-29 14:54+0100\n"
 "Last-Translator: \n"
 "Language-Team: GT Blocks<support@germanthemes.de>\n"
@@ -43,7 +43,7 @@ msgstr ""
 
 #: blocks/button/edit.js:180 blocks/columns/edit.js:267
 #: blocks/icon/edit.js:141 blocks/icon/edit.js:156
-#: components/background-section/edit.js:192
+#: blocks/image-card/edit.js:198 components/background-section/edit.js:192
 #: components/background-section/edit.js:206
 #: components/content-container/edit.js:89
 #: components/grid-container/edit.js:205
@@ -52,7 +52,7 @@ msgstr ""
 
 #: blocks/button/edit.js:181 blocks/columns/edit.js:269
 #: blocks/icon/edit.js:143 blocks/icon/edit.js:158
-#: components/background-section/edit.js:194
+#: blocks/image-card/edit.js:200 components/background-section/edit.js:194
 #: components/background-section/edit.js:208
 #: components/content-container/edit.js:91
 #: components/grid-container/edit.js:207
@@ -61,7 +61,7 @@ msgstr ""
 
 #: blocks/button/edit.js:182 blocks/columns/edit.js:270
 #: blocks/icon/edit.js:144 blocks/icon/edit.js:159
-#: components/background-section/edit.js:195
+#: blocks/image-card/edit.js:201 components/background-section/edit.js:195
 #: components/background-section/edit.js:209
 #: components/content-container/edit.js:92
 #: components/grid-container/edit.js:208
@@ -69,7 +69,8 @@ msgid "Large"
 msgstr ""
 
 #: blocks/button/edit.js:183 blocks/columns/edit.js:271
-#: blocks/icon/edit.js:145 components/background-section/edit.js:196
+#: blocks/icon/edit.js:145 blocks/image-card/edit.js:202
+#: components/background-section/edit.js:196
 #: components/background-section/edit.js:210
 #: components/content-container/edit.js:93
 #: components/grid-container/edit.js:209
@@ -110,20 +111,20 @@ msgstr ""
 
 #: blocks/button/edit.js:206 blocks/button/edit.js:219
 #: blocks/heading/edit.js:142 blocks/icon/edit.js:186
-#: blocks/image-card/edit.js:227 components/background-section/edit.js:225
+#: blocks/image-card/edit.js:253 components/background-section/edit.js:225
 #: components/content-container/edit.js:112
 msgid "Background Color"
 msgstr ""
 
 #: blocks/button/edit.js:213 blocks/heading/edit.js:136
-#: blocks/icon/edit.js:180 blocks/image-card/edit.js:221
+#: blocks/icon/edit.js:180 blocks/image-card/edit.js:247
 #: components/background-section/edit.js:219
 #: components/content-container/edit.js:106
 msgid "Color Settings"
 msgstr ""
 
 #: blocks/button/edit.js:224 blocks/heading/edit.js:147
-#: blocks/icon/edit.js:191 blocks/image-card/edit.js:232
+#: blocks/icon/edit.js:191 blocks/image-card/edit.js:258
 #: components/background-section/edit.js:230
 #: components/content-container/edit.js:117
 msgid "Text Color"
@@ -257,7 +258,7 @@ msgstr ""
 msgid "20% | 20% | 20% | 40%"
 msgstr ""
 
-#: blocks/columns/edit.js:205 blocks/image-card/edit.js:157
+#: blocks/columns/edit.js:205 blocks/image-card/edit.js:162
 #: blocks/multiple-buttons/edit.js:81 components/content-container/edit.js:81
 #: components/grid-container/edit.js:189
 msgid "Layout Settings"
@@ -275,11 +276,13 @@ msgstr ""
 msgid "Four Columns"
 msgstr ""
 
-#: blocks/columns/edit.js:262 components/grid-container/edit.js:200
+#: blocks/columns/edit.js:262 blocks/image-card/edit.js:193
+#: components/grid-container/edit.js:200
 msgid "Column Gap"
 msgstr ""
 
-#: blocks/columns/edit.js:266 components/background-section/edit.js:191
+#: blocks/columns/edit.js:266 blocks/image-card/edit.js:197
+#: components/background-section/edit.js:191
 #: components/background-section/edit.js:205
 #: components/content-container/edit.js:88
 #: components/grid-container/edit.js:204 components/image-block/edit.js:166
@@ -287,7 +290,8 @@ msgid "None"
 msgstr ""
 
 #: blocks/columns/edit.js:268 blocks/icon/edit.js:142 blocks/icon/edit.js:157
-#: blocks/icon/edit.js:171 components/background-section/edit.js:193
+#: blocks/icon/edit.js:171 blocks/image-card/edit.js:199
+#: components/background-section/edit.js:193
 #: components/background-section/edit.js:207
 #: components/grid-container/edit.js:206
 msgid "Normal"
@@ -446,31 +450,31 @@ msgstr ""
 msgid "Right"
 msgstr ""
 
-#: blocks/hero-image/edit.js:117 blocks/image-card/edit.js:160
+#: blocks/hero-image/edit.js:117 blocks/image-card/edit.js:165
 #: components/background-section/edit.js:173
 msgid "Content Width"
 msgstr ""
 
-#: blocks/hero-image/edit.js:121 blocks/image-card/edit.js:164
+#: blocks/hero-image/edit.js:121 blocks/image-card/edit.js:169
 msgid "30%"
 msgstr ""
 
-#: blocks/hero-image/edit.js:122 blocks/image-card/edit.js:165
-#: components/image-block/edit.js:257
+#: blocks/hero-image/edit.js:122 blocks/image-card/edit.js:170
+#: components/image-block/edit.js:258
 msgid "40%"
 msgstr ""
 
-#: blocks/hero-image/edit.js:123 blocks/image-card/edit.js:166
-#: components/image-block/edit.js:256
+#: blocks/hero-image/edit.js:123 blocks/image-card/edit.js:171
+#: components/image-block/edit.js:257
 msgid "50%"
 msgstr ""
 
-#: blocks/hero-image/edit.js:124 blocks/image-card/edit.js:167
-#: components/image-block/edit.js:255
+#: blocks/hero-image/edit.js:124 blocks/image-card/edit.js:172
+#: components/image-block/edit.js:256
 msgid "60%"
 msgstr ""
 
-#: blocks/hero-image/edit.js:125 blocks/image-card/edit.js:168
+#: blocks/hero-image/edit.js:125 blocks/image-card/edit.js:173
 msgid "70%"
 msgstr ""
 
@@ -546,28 +550,32 @@ msgstr ""
 msgid "Insert a single icon."
 msgstr ""
 
-#: blocks/image-card/edit.js:51
+#: blocks/image-card/edit.js:52
 msgid "Top"
 msgstr ""
 
-#: blocks/image-card/edit.js:55
+#: blocks/image-card/edit.js:56
 msgid "Center"
 msgstr ""
 
-#: blocks/image-card/edit.js:59
+#: blocks/image-card/edit.js:60
 msgid "Bottom"
 msgstr ""
 
-#: blocks/image-card/edit.js:142
+#: blocks/image-card/edit.js:147
 msgid "Show image on left"
 msgstr ""
 
-#: blocks/image-card/edit.js:147
+#: blocks/image-card/edit.js:152
 msgid "Show image on right"
 msgstr ""
 
-#: blocks/image-card/edit.js:172
+#: blocks/image-card/edit.js:177
 msgid "Vertical Alignment"
+msgstr ""
+
+#: blocks/image-card/edit.js:207
+msgid "Overlap image and content?"
 msgstr ""
 
 #: blocks/image-card/index.js:31
@@ -807,57 +815,57 @@ msgstr ""
 msgid "Custom URL"
 msgstr ""
 
-#: components/image-block/edit.js:214
+#: components/image-block/edit.js:215
 msgid "Edit image"
 msgstr ""
 
-#: components/image-block/edit.js:226
+#: components/image-block/edit.js:227
 msgid "Image Settings"
 msgstr ""
 
-#: components/image-block/edit.js:229
+#: components/image-block/edit.js:230
 msgid "Alt Text (Alternative Text)"
 msgstr ""
 
-#: components/image-block/edit.js:232
+#: components/image-block/edit.js:233
 msgid ""
 "Describe the purpose of the image. Leave empty if the image is not a key "
 "part of the content."
 msgstr ""
 
-#: components/image-block/edit.js:237
+#: components/image-block/edit.js:238
 msgid "Image Size"
 msgstr ""
 
-#: components/image-block/edit.js:248
+#: components/image-block/edit.js:249
 msgid "Maximum Width"
 msgstr ""
 
-#: components/image-block/edit.js:252
+#: components/image-block/edit.js:253
 msgid "100%"
 msgstr ""
 
-#: components/image-block/edit.js:253
+#: components/image-block/edit.js:254
 msgid "85%"
 msgstr ""
 
-#: components/image-block/edit.js:254
+#: components/image-block/edit.js:255
 msgid "75%"
 msgstr ""
 
-#: components/image-block/edit.js:258
+#: components/image-block/edit.js:259
 msgid "25%"
 msgstr ""
 
-#: components/image-block/edit.js:264
+#: components/image-block/edit.js:265
 msgid "Link Settings"
 msgstr ""
 
-#: components/image-block/edit.js:267
+#: components/image-block/edit.js:268
 msgid "Link To"
 msgstr ""
 
-#: components/image-block/edit.js:275
+#: components/image-block/edit.js:276
 msgid "Link URL"
 msgstr ""
 
