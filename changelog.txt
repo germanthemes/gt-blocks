@@ -2,6 +2,15 @@
 GT Blocks Changelog
 ===================================
 
+Version 1.1
+-----------------------------------
+* added GT Columns block
+* added GT Image Card block
+* improved usability of Grid blocks
+* improved spacing of GT Section block
+* removed settings to deactivate blocks
+* fixed spacing issues in Editor for nested blocks
+
 Version 1.0.2
 -----------------------------------
 * added padding option to GT Column block
