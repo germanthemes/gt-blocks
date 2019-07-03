@@ -204,7 +204,7 @@ class ImageCardEdit extends Component {
 						/>
 
 						<ToggleControl
-							label={ __( 'Overlap content card?', 'gt-blocks' ) }
+							label={ __( 'Overlap image and content?', 'gt-blocks' ) }
 							checked={ !! overlayCard }
 							onChange={ () => setAttributes( { overlayCard: ! overlayCard } ) }
 						/>
