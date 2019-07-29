@@ -41,7 +41,7 @@ class GermanThemes_Blocks {
 		self::constants();
 
 		// Setup Translation.
-		add_action( 'init', array( __CLASS__, 'translation' ) );
+		add_action( 'plugins_loaded', array( __CLASS__, 'translation' ) );
 
 		// Enqueue Block Styles.
 		add_action( 'enqueue_block_assets', array( __CLASS__, 'enqueue_block_scripts' ) );
@@ -79,7 +79,7 @@ class GermanThemes_Blocks {
 	 * @return void
 	 */
 	static function translation() {
-		load_plugin_textdomain( 'gt-blocks', false, dirname( plugin_basename( GT_BLOCKS_PLUGIN_FILE ) ) . '/languages/php/' );
+		load_plugin_textdomain( 'gt-blocks', false, dirname( plugin_basename( GT_BLOCKS_PLUGIN_FILE ) ) . '/languages/' );
 	}
 
 	/**
@@ -115,7 +115,7 @@ class GermanThemes_Blocks {
 		wp_add_inline_script( 'gt-blocks-editor', self::get_dispatch_data(), 'after' );
 
 		// Load javascript translation files.
-		wp_set_script_translations( 'gt-blocks-editor', 'gt-blocks', GT_BLOCKS_PLUGIN_DIR . 'languages/js' );
+		wp_set_script_translations( 'gt-blocks-editor', 'gt-blocks', GT_BLOCKS_PLUGIN_DIR . 'languages' );
 
 		// Enqueue Editor Stylesheet for GT Blocks.
 		wp_enqueue_style( 'gt-blocks-editor', GT_BLOCKS_PLUGIN_URL . 'assets/css/gt-blocks-editor.css', array( 'wp-edit-blocks', 'gt-blocks' ), GT_BLOCKS_VERSION );
