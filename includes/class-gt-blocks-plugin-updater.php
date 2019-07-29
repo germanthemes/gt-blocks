@@ -11,7 +11,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  * @author Easy Digital Downloads
  * @version 1.6.10
  */
-class GT_Blocks_Plugin_Updater {
+class GermanThemes_Blocks_Plugin_Updater {
 
 	private $api_url     = '';
 	private $api_data    = array();

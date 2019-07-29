@@ -16,11 +16,11 @@ if ( ! defined( 'ABSPATH' ) ) {
 /**
  * GT Blocks Settings
  */
-class GT_Blocks_Settings {
+class GermanThemes_Blocks_Settings {
 	/** Singleton *************************************************************/
 
 	/**
-	 * @var instance The one true GT_Blocks_Settings instance
+	 * @var instance The one true GermanThemes_Blocks_Settings instance
 	 */
 	private static $instance;
 
@@ -32,7 +32,7 @@ class GT_Blocks_Settings {
 	/**
 	 * Creates or returns an instance of this class.
 	 *
-	 * @return GT_Blocks_Settings A single instance of this class.
+	 * @return GermanThemes_Blocks_Settings A single instance of this class.
 	 */
 	public static function instance() {
 
@@ -575,4 +575,4 @@ class GT_Blocks_Settings {
 }
 
 // Run Setting Class
-GT_Blocks_Settings::instance();
+GermanThemes_Blocks_Settings::instance();

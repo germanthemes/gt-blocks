@@ -13,7 +13,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 /**
  * GT Blocks Settings Page Class
  */
-class GT_Blocks_Settings_Page {
+class GermanThemes_Blocks_Settings_Page {
 	/**
 	 * Setup the Settings Page class
 	 *
@@ -89,4 +89,4 @@ class GT_Blocks_Settings_Page {
 }
 
 // Run Settings Page Class.
-GT_Blocks_Settings_Page::setup();
+GermanThemes_Blocks_Settings_Page::setup();

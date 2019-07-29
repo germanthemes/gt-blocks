@@ -21,18 +21,18 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 /**
- * Main GT_Blocks Class
+ * Main GermanThemes_Blocks Class
  *
  * @package GT Blocks
  */
-class GT_Blocks {
+class GermanThemes_Blocks {
 
 	/**
 	 * Call all Functions to setup the Plugin
 	 *
-	 * @uses GT_Blocks::constants() Setup the constants needed
-	 * @uses GT_Blocks::includes() Include the required files
-	 * @uses GT_Blocks::setup_actions() Setup the hooks and actions
+	 * @uses GermanThemes_Blocks::constants() Setup the constants needed
+	 * @uses GermanThemes_Blocks::includes() Include the required files
+	 * @uses GermanThemes_Blocks::setup_actions() Setup the hooks and actions
 	 * @return void
 	 */
 	static function setup() {
@@ -187,7 +187,7 @@ class GT_Blocks {
 	 */
 	static function add_image_sizes() {
 		// Get Plugin Settings.
-		$instance = GT_Blocks_Settings::instance();
+		$instance = GermanThemes_Blocks_Settings::instance();
 		$options  = $instance->get_all();
 
 		if ( true === $options['image_sizes']['square'] ) {
@@ -238,7 +238,7 @@ class GT_Blocks {
 		}
 
 		// Get Settings.
-		$options = GT_Blocks_Settings::instance();
+		$options = GermanThemes_Blocks_Settings::instance();
 
 		if ( 'valid' !== $options->get( 'license_status' ) ) :
 			?>
@@ -268,12 +268,12 @@ class GT_Blocks {
 			return;
 		endif;
 
-		$options = GT_Blocks_Settings::instance();
+		$options = GermanThemes_Blocks_Settings::instance();
 
 		if ( 'valid' === $options->get( 'license_status' ) ) :
 
 			// setup the updater
-			$tzss_updater = new GT_Blocks_Plugin_Updater( GT_BLOCKS_STORE_API_URL, __FILE__, array(
+			$tzss_updater = new GermanThemes_Blocks_Plugin_Updater( GT_BLOCKS_STORE_API_URL, __FILE__, array(
 				'version' => GT_BLOCKS_VERSION,
 				'license' => trim( $options->get( 'license_key' ) ),
 				'item_id' => GT_BLOCKS_PRODUCT_ID,
@@ -284,4 +284,4 @@ class GT_Blocks {
 }
 
 // Run Plugin.
-GT_Blocks::setup();
+GermanThemes_Blocks::setup();
