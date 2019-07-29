@@ -43,11 +43,14 @@ class GermanThemes_Blocks {
 		// Setup Translation.
 		add_action( 'init', array( __CLASS__, 'translation' ) );
 
-		// Include Files.
-		self::includes();
+		// Enqueue Block Styles.
+		add_action( 'enqueue_block_assets', array( __CLASS__, 'enqueue_block_scripts' ) );
 
-		// Setup Action Hooks.
-		self::setup_actions();
+		// Enqueue Block Scripts and Styles for Gutenberg Editor.
+		add_action( 'enqueue_block_editor_assets', array( __CLASS__, 'enqueue_block_editor_scripts' ) );
+
+		// Add block category.
+		add_filter( 'block_categories', array( __CLASS__, 'block_categories' ), 10, 2 );
 	}
 
 	/**
@@ -68,12 +71,6 @@ class GermanThemes_Blocks {
 
 		// Plugin Root File.
 		define( 'GT_BLOCKS_PLUGIN_FILE', __FILE__ );
-
-		// Define Product ID.
-		define( 'GT_BLOCKS_PRODUCT_ID', 338 );
-
-		// Define Update API URL.
-		define( 'GT_BLOCKS_STORE_API_URL', 'https://germanthemes.de' );
 	}
 
 	/**
@@ -83,48 +80,6 @@ class GermanThemes_Blocks {
 	 */
 	static function translation() {
 		load_plugin_textdomain( 'gt-blocks', false, dirname( plugin_basename( GT_BLOCKS_PLUGIN_FILE ) ) . '/languages/php/' );
-	}
-
-	/**
-	 * Include required files
-	 *
-	 * @return void
-	 */
-	static function includes() {
-
-		// Include Plugin Updater.
-		require_once GT_BLOCKS_PLUGIN_DIR . '/includes/class-gt-blocks-plugin-updater.php';
-
-		// Include Plugin Settings.
-		require_once GT_BLOCKS_PLUGIN_DIR . '/includes/class-gt-blocks-settings.php';
-		require_once GT_BLOCKS_PLUGIN_DIR . '/includes/class-gt-blocks-settings-page.php';
-	}
-
-	/**
-	 * Setup Action Hooks
-	 *
-	 * @see https://codex.wordpress.org/Function_Reference/add_action WordPress Codex
-	 * @return void
-	 */
-	static function setup_actions() {
-
-		// Enqueue Block Styles.
-		add_action( 'enqueue_block_assets', array( __CLASS__, 'enqueue_block_scripts' ) );
-
-		// Enqueue Block Scripts and Styles for Gutenberg Editor.
-		add_action( 'enqueue_block_editor_assets', array( __CLASS__, 'enqueue_block_editor_scripts' ) );
-
-		// Add custom image sizes.
-		add_action( 'after_setup_theme', array( __CLASS__, 'add_image_sizes' ) );
-
-		// Add block category.
-		add_filter( 'block_categories', array( __CLASS__, 'block_categories' ), 10, 2 );
-
-		// Add License Key admin notice.
-		add_action( 'admin_notices', array( __CLASS__, 'license_key_admin_notice' ) );
-
-		// Add plugin updater.
-		add_action( 'admin_init', array( __CLASS__, 'plugin_updater' ), 0 );
 	}
 
 	/**
@@ -185,33 +140,6 @@ class GermanThemes_Blocks {
 	 *
 	 * @return void
 	 */
-	static function add_image_sizes() {
-		// Get Plugin Settings.
-		$instance = GermanThemes_Blocks_Settings::instance();
-		$options  = $instance->get_all();
-
-		if ( true === $options['image_sizes']['square'] ) {
-			add_image_size( 'GT-square-640-x-640', 640, 640, true );
-		}
-
-		if ( true === $options['image_sizes']['rectangular'] ) {
-			add_image_size( 'GT-rectangular-640-x-480', 640, 480, true );
-		}
-
-		if ( true === $options['image_sizes']['landscape'] ) {
-			add_image_size( 'GT-landscape-640-x-360', 640, 360, true );
-		}
-
-		if ( true === $options['image_sizes']['portrait'] ) {
-			add_image_size( 'GT-portrait-480-x-640', 480, 640, true );
-		}
-	}
-
-	/**
-	 * Define custom image sizes
-	 *
-	 * @return void
-	 */
 	static function block_categories( $categories, $post ) {
 		return array_merge(
 			$categories,
@@ -222,64 +150,6 @@ class GermanThemes_Blocks {
 				),
 			)
 		);
-	}
-
-	/**
-	 * Add license key admin notice
-	 *
-	 * @return void
-	 */
-	static function license_key_admin_notice() {
-		global $pagenow;
-
-		// Display only on Plugins and Updates page.
-		if ( ! ( 'plugins.php' == $pagenow or 'update-core.php' == $pagenow ) ) {
-			return;
-		}
-
-		// Get Settings.
-		$options = GermanThemes_Blocks_Settings::instance();
-
-		if ( 'valid' !== $options->get( 'license_status' ) ) :
-			?>
-
-			<div class="updated">
-				<p>
-					<?php
-					printf( __( 'Please activate your license key for GT Blocks in order to receive updates and support. <a href="%s">Activate License</a>', 'gt-blocks' ),
-						admin_url( 'options-general.php?page=gt-blocks' )
-					);
-					?>
-				</p>
-			</div>
-
-			<?php
-		endif;
-	}
-
-	/**
-	 * Plugin Updater
-	 *
-	 * @return void
-	 */
-	static function plugin_updater() {
-
-		if ( ! is_admin() ) :
-			return;
-		endif;
-
-		$options = GermanThemes_Blocks_Settings::instance();
-
-		if ( 'valid' === $options->get( 'license_status' ) ) :
-
-			// setup the updater
-			$tzss_updater = new GermanThemes_Blocks_Plugin_Updater( GT_BLOCKS_STORE_API_URL, __FILE__, array(
-				'version' => GT_BLOCKS_VERSION,
-				'license' => trim( $options->get( 'license_key' ) ),
-				'item_id' => GT_BLOCKS_PRODUCT_ID,
-			) );
-
-		endif;
 	}
 }
 

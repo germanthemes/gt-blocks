@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: GT Blocks\n"
 "Report-Msgid-Bugs-To: https://themezee.com/\n"
-"POT-Creation-Date: 2019-07-03 10:12+0200\n"
-"PO-Revision-Date: 2019-07-03 10:12+0200\n"
+"POT-Creation-Date: 2019-07-29 16:04+0200\n"
+"PO-Revision-Date: 2019-07-29 16:05+0200\n"
 "Last-Translator: \n"
 "Language-Team: GT Blocks<support@germanthemes.de>\n"
 "Language: de_DE\n"
@@ -16,147 +16,6 @@ msgstr ""
 "X-Generator: Poedit 2.2.3\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 
-#: gt-blocks.php:221 includes/class-gt-blocks-settings-page.php:38
-#: includes/class-gt-blocks-settings-page.php:39
-#: includes/class-gt-blocks-settings-page.php:57
+#: gt-blocks.php:149
 msgid "GT Blocks"
 msgstr "GT Blocks"
-
-#: gt-blocks.php:249
-#, php-format
-msgid ""
-"Please activate your license key for GT Blocks in order to receive updates "
-"and support. <a href=\"%s\">Activate License</a>"
-msgstr ""
-"Bitte aktiviere deinen Lizenzschlüssel für GT Blocks, um Updates und Support "
-"zu erhalten. <a href=\"%s\">Lizenz aktivieren</a>"
-
-#: includes/class-gt-blocks-plugin-updater.php:202
-#, php-format
-msgid ""
-"There is a new version of %1$s available. %2$sView version %3$s details%4$s."
-msgstr ""
-"Es ist eine neue Version von %1$s verfügbar. %2$sDetails zu Version %3$s "
-"ansehen%4$s."
-
-#: includes/class-gt-blocks-plugin-updater.php:210
-#, php-format
-msgid ""
-"There is a new version of %1$s available. %2$sView version %3$s details%4$s "
-"or %5$supdate now%6$s."
-msgstr ""
-"Es ist eine neue Version von %1$s verfügbar. %2$sDetails von Version %3$s "
-"Version ansehen%4$s oder %5$sjetzt aktualisieren%6$s."
-
-#: includes/class-gt-blocks-plugin-updater.php:396
-msgid "You do not have permission to install plugin updates"
-msgstr "Du hast nicht die Berechtigung, um Plugin-Updates zu installieren"
-
-#: includes/class-gt-blocks-plugin-updater.php:396
-msgid "Error"
-msgstr "Fehler"
-
-#: includes/class-gt-blocks-settings.php:132
-#: includes/class-gt-blocks-settings.php:259
-msgid "Image Sizes"
-msgstr "Bildgrößen"
-
-#: includes/class-gt-blocks-settings.php:133
-msgid "Automatic Updates"
-msgstr "Automatische Updates"
-
-#: includes/class-gt-blocks-settings.php:172
-msgid ""
-"Enabled custom image sizes. This setting will only affect new uploaded "
-"images unless you regenerate existing thumbnails with a plugin."
-msgstr ""
-"Aktivierte, individuelle Bildgrößen. Diese Einstellung wirkt sich nur auf "
-"neue hochgeladene Bilder aus, es sei denn, du regenerierst bestehende Bilder "
-"mit einem Plugin."
-
-#: includes/class-gt-blocks-settings.php:181
-msgid ""
-"Please activate your license in order to receive automatic plugin updates "
-"and support."
-msgstr ""
-"Bitte aktiviere deine Lizenz, um automatische Plugin-Updates und Support zu "
-"erhalten."
-
-#: includes/class-gt-blocks-settings.php:264
-msgid "Square 640 x 640 pixel"
-msgstr "Quadratisch 640 x 640 Pixel"
-
-#: includes/class-gt-blocks-settings.php:265
-msgid "Rectangular 640 x 480 pixel"
-msgstr "Rechteckig 640 x 480 Pixel"
-
-#: includes/class-gt-blocks-settings.php:266
-msgid "Landscape 640 x 360 pixel"
-msgstr "Landscape 640 x 360 Pixel"
-
-#: includes/class-gt-blocks-settings.php:267
-msgid "Portrait 480 x 640 pixel"
-msgstr "Portrait 480 x 640 Pixel"
-
-#: includes/class-gt-blocks-settings.php:271
-msgid "License Status"
-msgstr "Lizenz-Status"
-
-#: includes/class-gt-blocks-settings.php:277
-msgid "License Key"
-msgstr "Lizenzschlüssel"
-
-#: includes/class-gt-blocks-settings.php:343
-msgid "Active"
-msgstr "Aktiv"
-
-#: includes/class-gt-blocks-settings.php:344
-msgid "You are receiving updates."
-msgstr "Du erhältst Updates."
-
-#: includes/class-gt-blocks-settings.php:353
-msgid "Expired"
-msgstr "Abgelaufen"
-
-#: includes/class-gt-blocks-settings.php:354
-msgid ""
-"Your license has expired, renew today to continue getting updates and "
-"support!"
-msgstr ""
-"Deine Lizenz ist abgelaufen. Bitte erneuere sie, um weiterhin Updates und "
-"Support zu erhalten!"
-
-#: includes/class-gt-blocks-settings.php:355
-msgid "Renew Your License"
-msgstr "Lizenz verlängern"
-
-#: includes/class-gt-blocks-settings.php:359
-msgid "Invalid"
-msgstr "Ungültig"
-
-#: includes/class-gt-blocks-settings.php:360
-msgid ""
-"Please make sure you have not reached site limits and/or expiration date."
-msgstr ""
-"Bitte stelle sicher, dass du nicht das Seiten-Limit und/oder Ablaufdatum "
-"erreicht hast."
-
-#: includes/class-gt-blocks-settings.php:364
-msgid "Inactive"
-msgstr "Inaktiv"
-
-#: includes/class-gt-blocks-settings.php:388
-msgid "Deactivate License"
-msgstr "Lizenz deaktivieren"
-
-#: includes/class-gt-blocks-settings.php:393
-msgid "Activate License"
-msgstr "Lizenz aktivieren"
-
-#: includes/class-gt-blocks-settings.php:409
-#, php-format
-msgid ""
-"The callback function used for the <strong>%s</strong> setting is missing."
-msgstr ""
-"Die Callback Funktion für die Einstellung <strong>%s</strong> ist nicht "
-"vorhanden."
