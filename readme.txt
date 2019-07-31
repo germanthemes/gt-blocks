@@ -42,6 +42,15 @@ GT Blocks is developed on [Github](https://github.com/germanthemes/gt-blocks)
 2. Create a new post or page and use GT Blocks in the WordPress Block Editor
 3. For detailed setup instructions, please see our [GT Blocks Documentation](https://germanthemes.de/en/docs/gt-blocks-documentation/)
 
+== Screenshots ==
+
+1. Hero Image Block
+2. Columns Block
+3. Features Block
+4. Section Block
+5. Portfolio Block
+6. Image Card Block
+
 == Changelog ==
 
 = 1.2 =
