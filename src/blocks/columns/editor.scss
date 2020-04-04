@@ -370,3 +370,311 @@
 		}
 	}
 }
+
+/* 5.4 Columns Styling */
+.block-editor-block-list__block .gt-columns-container {
+	display: block;
+	margin: 0;
+
+	.wp-block-gt-blocks-column {
+		padding-right: 0;
+		padding-bottom: 0;
+		width: 100%;
+	}
+		
+	> .block-editor-inner-blocks {
+
+		> .block-editor-block-list__layout {
+			> [data-type="gt-blocks/column"] {
+				margin-left: 0;
+				margin-right: 0;
+				min-width: 0;
+			}
+		}
+	}
+}
+
+@media only screen and (min-width: 480px) {
+	.block-editor-block-list__block {
+		.gt-columns-25-75,
+		.gt-columns-75-25,
+		.gt-columns-33-66,
+		.gt-columns-66-33,
+		.gt-columns-40-60,
+		.gt-columns-60-40,
+		.gt-columns-50-50,
+		.gt-columns-25-25-50,
+		.gt-columns-25-50-25,
+		.gt-columns-50-25-25,
+		.gt-columns-20-60-20,
+		.gt-columns-25-25-25-25,
+		.gt-columns-40-20-20-20,
+		.gt-columns-20-20-20-40 {
+			> .block-editor-inner-blocks > .block-editor-block-list__layout {
+				display: flex;
+				flex-wrap: wrap;
+				margin-right: -1.5rem;
+				margin-right: calc( -1 * var(--gt-column-gap) );
+				margin-bottom: -1.5rem;
+				margin-bottom: calc( -1 * var(--gt-column-gap) );
+	
+				> [data-type="gt-blocks/column"] {
+					padding-right: 1.5rem;
+					padding-right: var(--gt-column-gap);
+					width: 100%;
+				}
+			}
+		}
+	}
+
+	.block-editor-block-list__block .gt-columns-25-75 {
+		> .block-editor-inner-blocks > .block-editor-block-list__layout {
+			> [data-type="gt-blocks/column"]:nth-child(2n + 1) {
+				width: 25%;
+			}
+			> [data-type="gt-blocks/column"]:nth-child(2n + 0) {
+				width: 75%;
+			}
+		}
+	}
+
+	.block-editor-block-list__block .gt-columns-75-25 {
+		> .block-editor-inner-blocks > .block-editor-block-list__layout {
+			> [data-type="gt-blocks/column"]:nth-child(2n + 1) {
+				width: 75%;
+			}
+			> [data-type="gt-blocks/column"]:nth-child(2n + 0) {
+				width: 25%;
+			}
+		}
+	}
+
+	.block-editor-block-list__block .gt-columns-33-66 {
+		> .block-editor-inner-blocks > .block-editor-block-list__layout {
+			> [data-type="gt-blocks/column"]:nth-child(2n + 1) {
+				width: 33.3333333333333%;
+			}
+			> [data-type="gt-blocks/column"]:nth-child(2n + 0) {
+				width: 66.666666666666%;
+			}
+		}
+	}
+
+	.block-editor-block-list__block .gt-columns-66-33 {
+		> .block-editor-inner-blocks > .block-editor-block-list__layout {
+			> [data-type="gt-blocks/column"]:nth-child(2n + 1) {
+				width: 66.666666666666%;
+			}
+			> [data-type="gt-blocks/column"]:nth-child(2n + 0) {
+				width: 33.3333333333333%;
+			}
+		}
+	}
+
+	.block-editor-block-list__block .gt-columns-40-60 {
+		> .block-editor-inner-blocks > .block-editor-block-list__layout {
+			> [data-type="gt-blocks/column"]:nth-child(2n + 1) {
+				width: 40%;
+			}
+			> [data-type="gt-blocks/column"]:nth-child(2n + 0) {
+				width: 60%;
+			}
+		}
+	}
+
+	.block-editor-block-list__block .gt-columns-60-40 {
+		> .block-editor-inner-blocks > .block-editor-block-list__layout {
+			> [data-type="gt-blocks/column"]:nth-child(2n + 1) {
+				width: 60%;
+			}
+			> [data-type="gt-blocks/column"]:nth-child(2n + 0) {
+				width: 40%;
+			}
+		}
+	}
+
+	.block-editor-block-list__block .gt-columns-50-50 {
+		> .block-editor-inner-blocks > .block-editor-block-list__layout {
+			> [data-type="gt-blocks/column"] {
+				width: 50%;
+			}
+		}
+	}
+
+	.block-editor-block-list__block .gt-columns-25-50-25,
+	.block-editor-block-list__block .gt-columns-20-60-20 {
+		> .block-editor-inner-blocks > .block-editor-block-list__layout {
+			> [data-type="gt-blocks/column"] {
+				order: 3;
+			}
+			> [data-type="gt-blocks/column"]:nth-child(3n + 1),
+			> [data-type="gt-blocks/column"]:nth-child(3n + 3) {
+				order: 2;
+				width: 50%;
+			}
+			> [data-type="gt-blocks/column"]:nth-child(3n + 2) {
+				order: 1;
+				width: 100%;
+			}
+		}
+	}
+
+	.block-editor-block-list__block .gt-columns-50-25-25 {
+		> .block-editor-inner-blocks > .block-editor-block-list__layout {
+			> [data-type="gt-blocks/column"]:nth-child(3n + 1) {
+				width: 100%;
+			}
+			> [data-type="gt-blocks/column"]:nth-child(3n + 2),
+			> [data-type="gt-blocks/column"]:nth-child(3n + 3) {
+				width: 50%;
+			}
+		}
+	}
+
+	.block-editor-block-list__block .gt-columns-25-25-50 {
+		> .block-editor-inner-blocks > .block-editor-block-list__layout {
+			> [data-type="gt-blocks/column"]:nth-child(3n + 1),
+			> [data-type="gt-blocks/column"]:nth-child(3n + 2) {
+				width: 50%;
+			}
+			> [data-type="gt-blocks/column"]:nth-child(3n + 3) {
+				width: 100%;
+			}
+		}
+	}
+
+	.block-editor-block-list__block {
+		.gt-columns-25-25-25-25,
+		.gt-columns-40-20-20-20,
+		.gt-columns-20-20-20-40 {
+			> .block-editor-inner-blocks > .block-editor-block-list__layout {
+				> [data-type="gt-blocks/column"] {
+					width: 50%;
+				}
+			}
+		}
+	}
+}
+
+
+@media only screen and (min-width: 720px) {
+	.block-editor-block-list__block {
+		.gt-columns-30-40-30,
+		.gt-columns-33-33-33 {
+			> .block-editor-inner-blocks > .block-editor-block-list__layout {
+				display: flex;
+				flex-wrap: wrap;
+	
+				> [data-type="gt-blocks/column"] {
+					width: 100%;
+				}
+			}
+		}
+	}
+
+	.block-editor-block-list__block .gt-columns-25-25-50 {
+		> .block-editor-inner-blocks > .block-editor-block-list__layout {
+			> [data-type="gt-blocks/column"]:nth-child(3n + 1),
+			> [data-type="gt-blocks/column"]:nth-child(3n + 2) {
+				width: 25%;
+			}
+			> [data-type="gt-blocks/column"]:nth-child(3n + 3) {
+				width: 50%;
+			}
+		}
+	}
+
+	.block-editor-block-list__block .gt-columns-25-50-25 {
+		> .block-editor-inner-blocks > .block-editor-block-list__layout {
+			> [data-type="gt-blocks/column"]:nth-child(3n + 1),
+			> [data-type="gt-blocks/column"]:nth-child(3n + 3) {
+				width: 25%;
+			}
+			> [data-type="gt-blocks/column"]:nth-child(3n + 2) {
+				order: 2;
+				width: 50%;
+			}
+		}
+	}
+
+	.block-editor-block-list__block .gt-columns-50-25-25 {
+		> .block-editor-inner-blocks > .block-editor-block-list__layout {
+			> [data-type="gt-blocks/column"]:nth-child(3n + 2),
+			> [data-type="gt-blocks/column"]:nth-child(3n + 3) {
+				width: 25%;
+			}
+			> [data-type="gt-blocks/column"]:nth-child(3n + 1) {
+				width: 50%;
+			}
+		}
+	}
+
+	.block-editor-block-list__block .gt-columns-30-40-30 {
+		> .block-editor-inner-blocks > .block-editor-block-list__layout {
+			> [data-type="gt-blocks/column"]:nth-child(3n + 1),
+			> [data-type="gt-blocks/column"]:nth-child(3n + 3) {
+				width: 30%;
+			}
+			> [data-type="gt-blocks/column"]:nth-child(3n + 2) {
+				width: 40%;
+			}
+		}
+	}
+
+	.block-editor-block-list__block .gt-columns-20-60-20 {
+		> .block-editor-inner-blocks > .block-editor-block-list__layout {
+			> [data-type="gt-blocks/column"]:nth-child(3n + 1),
+			> [data-type="gt-blocks/column"]:nth-child(3n + 3) {
+				width: 20%;
+			}
+			> [data-type="gt-blocks/column"]:nth-child(3n + 2) {
+				order: 2;
+				width: 60%;
+			}
+		}
+	}
+
+	.block-editor-block-list__block .gt-columns-33-33-33 {
+		> .block-editor-inner-blocks > .block-editor-block-list__layout {
+			> [data-type="gt-blocks/column"] {
+				width: 33.3333333333333%;
+			}
+		}
+	}
+}
+
+@media only screen and (min-width: 960px) {
+	.block-editor-block-list__block .gt-columns-25-25-25-25 {
+		> .block-editor-inner-blocks > .block-editor-block-list__layout {
+			> [data-type="gt-blocks/column"] {
+				width: 25%;
+			}
+		}
+	}
+
+	.block-editor-block-list__block .gt-columns-40-20-20-20 {
+		> .block-editor-inner-blocks > .block-editor-block-list__layout {
+			> [data-type="gt-blocks/column"]:nth-child(4n + 1) {
+				width: 40%;
+			}
+			> [data-type="gt-blocks/column"]:nth-child(4n + 2),
+			> [data-type="gt-blocks/column"]:nth-child(4n + 3),
+			> [data-type="gt-blocks/column"]:nth-child(4n + 4) {
+				width: 20%;
+			}
+		}
+	}
+
+	.block-editor-block-list__block .gt-columns-20-20-20-40 {
+		> .block-editor-inner-blocks > .block-editor-block-list__layout {
+			> [data-type="gt-blocks/column"]:nth-child(4n + 1),
+			> [data-type="gt-blocks/column"]:nth-child(4n + 2),
+			> [data-type="gt-blocks/column"]:nth-child(4n + 3) {
+				width: 20%;
+			}
+			> [data-type="gt-blocks/column"]:nth-child(4n + 4) {
+				width: 40%;
+			}
+		}
+	}
+}
