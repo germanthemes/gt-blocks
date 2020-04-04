@@ -149,3 +149,101 @@
 		margin: 7px 7px 0 0;
 	}
 }
+
+/* 5.4 Styling */
+.block-editor-block-list__block .gt-grid-container {
+	display: block;
+	margin: 0;
+
+	.wp-block-gt-blocks-column {
+		width: 100%;
+	}
+		
+	> .block-editor-inner-blocks {
+
+		> .block-editor-block-list__layout {
+
+			> [data-type="gt-blocks/column"] {
+				margin-left: 0;
+				margin-right: 0;
+				min-width: 0;
+			}
+		}
+	}
+}
+
+@media only screen and (min-width: 480px) {
+	.block-editor-block-list__block .gt-columns-2,
+	.block-editor-block-list__block .gt-columns-4,
+	.block-editor-block-list__block .gt-columns-5,
+	.block-editor-block-list__block .gt-columns-6 {
+		> .block-editor-inner-blocks > .block-editor-block-list__layout {
+			display: flex;
+			flex-wrap: wrap;
+			margin-right: -1.5rem;
+			margin-right: calc( -1 * var(--gt-column-gap) );
+			margin-bottom: -1.5rem;
+			margin-bottom: calc( -1 * var(--gt-column-gap) );
+
+			> [data-type="gt-blocks/column"] {
+				width: 50%;
+			}
+		}
+	}
+}
+
+@media only screen and (min-width: 720px) {
+	.block-editor-block-list__block .gt-columns-3 {
+		> .block-editor-inner-blocks > .block-editor-block-list__layout {
+			display: flex;
+			flex-wrap: wrap;
+			margin-right: -1.5rem;
+			margin-right: calc( -1 * var(--gt-column-gap) );
+			margin-bottom: -1.5rem;
+			margin-bottom: calc( -1 * var(--gt-column-gap) );
+
+			> [data-type="gt-blocks/column"] {
+				width: 33.3333333333333%;
+			}
+		}
+	}
+
+	.block-editor-block-list__block .gt-columns-5,
+	.block-editor-block-list__block .gt-columns-6 {
+		> .block-editor-inner-blocks > .block-editor-block-list__layout {
+			> [data-type="gt-blocks/column"] {
+				width: 33.3333333333333%;
+			}
+		}
+	}
+}
+
+@media only screen and (min-width: 960px) {
+	.block-editor-block-list__block .gt-columns-4 {
+		> .block-editor-inner-blocks > .block-editor-block-list__layout {
+			> [data-type="gt-blocks/column"] {
+				width: 25%;
+			}
+		}
+	}
+}
+
+@media only screen and (min-width: 1040px) {
+	.block-editor-block-list__block .gt-columns-5 {
+		> .block-editor-inner-blocks > .block-editor-block-list__layout {
+			> [data-type="gt-blocks/column"] {
+				width: 20%;
+			}
+		}
+	}
+}
+
+@media only screen and (min-width: 1120px) {
+	.block-editor-block-list__block .gt-columns-6 {
+		> .block-editor-inner-blocks > .block-editor-block-list__layout {
+			> [data-type="gt-blocks/column"] {
+				width: 16.666666666666%;
+			}
+		}
+	}
+}
