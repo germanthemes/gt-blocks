@@ -5,7 +5,7 @@ Plugin URI: https://germanthemes.de/en/blocks/
 Description: With our flexible and innovative blocks for the new WordPress Editor, you can create complex layouts for your business website in just a few minutes.
 Author: GermanThemes
 Author URI: https://germanthemes.de/en/
-Version: 1.2
+Version: 1.2.1
 Text Domain: gt-blocks
 Domain Path: /languages/
 License: GNU General Public License v2 or later
@@ -61,7 +61,7 @@ class GermanThemes_Blocks {
 	static function constants() {
 
 		// Define Version Number.
-		define( 'GT_BLOCKS_VERSION', '1.2' );
+		define( 'GT_BLOCKS_VERSION', '1.2.1' );
 
 		// Plugin Folder Path.
 		define( 'GT_BLOCKS_PLUGIN_DIR', plugin_dir_path( __FILE__ ) );

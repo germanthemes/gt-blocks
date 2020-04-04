@@ -4,7 +4,7 @@ Plugin URI: https://germanthemes.de/en/blocks/
 Contributors: germanthemes
 Tags: Gutenberg, Blocks, Editor
 Requires at least: 5.0
-Tested up to: 5.2
+Tested up to: 5.4
 Stable tag: 1.2
 License: GPLv2 or later
 
@@ -52,6 +52,10 @@ GT Blocks is developed on [Github](https://github.com/germanthemes/gt-blocks)
 6. Image Card Block
 
 == Changelog ==
+
+= 1.2.1 =
+
+* Fixed column and grid styling for WordPress 5.4
 
 = 1.2 =
 
