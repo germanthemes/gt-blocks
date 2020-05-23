@@ -7,7 +7,7 @@ import classnames from 'classnames';
  * WordPress dependencies
  */
 const { __ } = wp.i18n;
-const { registerBlockType } = wp.blocks;
+const { createBlock, registerBlockType } = wp.blocks;
 const {
 	InnerBlocks,
 } = wp.editor;
@@ -47,6 +47,36 @@ registerBlockType(
 			alignment: {
 				type: 'string',
 			},
+		},
+
+		transforms: {
+			to: [
+				{
+					type: 'block',
+					isMultiBlock: true,
+					blocks: [ 'core/buttons' ],
+					transform: ( {}, buttons ) => {
+						// Creates the buttons block
+						return createBlock(
+							'core/buttons',
+							{},
+							// Loop the selected buttons
+							buttons[ 0 ].map( ( { attributes } ) => {
+								// Create singular button in the buttons block
+								return createBlock( 'core/button', {
+									url: attributes.url,
+									title: attributes.title,
+									text: attributes.text,
+									textColor: attributes.textColor,
+									backgroundColor: attributes.backgroundColor,
+									customTextColor: attributes.customTextColor,
+									customBackgroundColor: attributes.customBackgroundColor,
+								} );
+							} )
+						);
+					},
+				},
+			],
 		},
 
 		edit,
