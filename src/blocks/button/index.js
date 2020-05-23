@@ -7,7 +7,7 @@ import classnames from 'classnames';
  * WordPress dependencies
  */
 const { __ } = wp.i18n;
-const { registerBlockType } = wp.blocks;
+const { createBlock, registerBlockType } = wp.blocks;
 const {
 	RichText,
 	getColorClassName,
@@ -112,6 +112,27 @@ registerBlockType(
 			{ name: 'default', label: __( 'Default', 'gt-blocks' ), isDefault: true },
 			{ name: 'ghost-button', label: __( 'Ghost Button', 'gt-blocks' ) },
 		],
+
+		transforms: {
+			to: [
+				{
+					type: 'block',
+					blocks: [ 'core/buttons' ],
+					transform: ( { url, title, text, textColor, backgroundColor, customTextColor, customBackgroundColor } ) => {
+						const button = createBlock( 'core/button', {
+							url: url,
+							title: title,
+							text: text,
+							textColor,
+							backgroundColor,
+							customTextColor,
+							customBackgroundColor,
+						} );
+						return createBlock( 'core/buttons', {}, [ button ] );
+					},
+				},
+			],
+		},
 
 		edit,
 
