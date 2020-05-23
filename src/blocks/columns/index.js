@@ -7,7 +7,7 @@ import classnames from 'classnames';
  * WordPress dependencies
  */
 const { __ } = wp.i18n;
-const { registerBlockType } = wp.blocks;
+const { createBlock, registerBlockType } = wp.blocks;
 const { InnerBlocks } = wp.editor;
 
 /**
@@ -54,6 +54,36 @@ registerBlockType(
 				type: 'string',
 				default: 'normal',
 			},
+		},
+
+		transforms: {
+			to: [
+				{
+					type: 'block',
+					isMultiBlock: true,
+					blocks: [ 'core/columns' ],
+					transform: ( {}, columns ) => {
+						return createBlock(
+							'core/columns',
+							{},
+							columns[ 0 ].map( ( { attributes, innerBlocks } ) => {
+								let content;
+								if ( attributes.backgroundColor || attributes.customBackgroundColor ) {
+									content = [ createBlock( 'core/group', {
+										textColor: attributes.textColor,
+										backgroundColor: attributes.backgroundColor,
+										customTextColor: attributes.customTextColor,
+										customBackgroundColor: attributes.customBackgroundColor,
+									}, innerBlocks ) ];
+								} else {
+									content = innerBlocks;
+								}
+								return createBlock( 'core/column', {}, content );
+							} )
+						);
+					},
+				},
+			],
 		},
 
 		edit,
