@@ -2,7 +2,7 @@
  * WordPress dependencies
  */
 const { __ } = wp.i18n;
-const { registerBlockType } = wp.blocks;
+const { createBlock, registerBlockType } = wp.blocks;
 const { InnerBlocks } = wp.editor;
 
 /**
@@ -40,6 +40,38 @@ registerBlockType(
 			if ( 'wide' === blockAlignment || 'full' === blockAlignment ) {
 				return { 'data-align': blockAlignment };
 			}
+		},
+
+		transforms: {
+			to: [
+				{
+					type: 'block',
+					blocks: [ 'core/group' ],
+					transform: ( { blockAlignment, textColor, backgroundColor, customTextColor, customBackgroundColor }, innerBlocks ) => {
+						return createBlock( 'core/group', {
+							align: blockAlignment,
+							textColor,
+							backgroundColor,
+							customTextColor,
+							customBackgroundColor,
+						}, innerBlocks );
+					},
+				},
+				{
+					type: 'block',
+					blocks: [ 'core/cover' ],
+					transform: ( { blockAlignment, backgroundImageUrl, textColor, backgroundColor, customTextColor, customBackgroundColor }, innerBlocks ) => {
+						return createBlock( 'core/cover', {
+							align: blockAlignment,
+							url: backgroundImageUrl,
+							textColor,
+							backgroundColor,
+							customTextColor,
+							customBackgroundColor,
+						}, innerBlocks );
+					},
+				},
+			],
 		},
 
 		edit,
