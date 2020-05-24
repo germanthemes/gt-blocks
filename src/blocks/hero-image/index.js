@@ -114,6 +114,64 @@ registerBlockType(
 						groupContent );
 					},
 				},
+				{
+					type: 'block',
+					blocks: [ 'core/cover' ],
+					transform: ( { blockAlignment, backgroundImageUrl, textColor, backgroundColor, customTextColor, customBackgroundColor, heroLayout }, columns ) => {
+						let imageBlock;
+						let columnsContent;
+
+						// Transform GT Content to Group block.
+						const contentBlock = [ createBlock( 'core/group', {
+							textColor: columns[ 0 ].attributes.textColor,
+							backgroundColor: columns[ 0 ].attributes.backgroundColor,
+							customTextColor: columns[ 0 ].attributes.customTextColor,
+							customBackgroundColor: columns[ 0 ].attributes.customBackgroundColor,
+						}, columns[ 0 ].innerBlocks ) ];
+
+						// Check if we have both GT Content and GT Image block.
+						if ( columns.length > 1 ) {
+							// Transform GT Image to Image block.
+							imageBlock = [ createBlock( 'core/image', {
+								id: columns[ 1 ].attributes.id,
+								url: columns[ 1 ].attributes.url,
+								alt: columns[ 1 ].attributes.alt,
+								linkDestination: columns[ 1 ].attributes.linkDestination,
+								href: columns[ 1 ].attributes.href,
+							} ) ];
+						} else {
+							imageBlock = undefined;
+						}
+
+						if ( heroLayout === 'left' ) {
+							columnsContent = [
+								createBlock( 'core/column', {}, contentBlock ),
+								createBlock( 'core/column', {}, imageBlock ),
+							];
+						} else {
+							columnsContent = [
+								createBlock( 'core/column', {}, imageBlock ),
+								createBlock( 'core/column', {}, contentBlock ),
+							];
+						}
+
+						const groupContent = [ createBlock(
+							'core/columns',
+							{},
+							columnsContent,
+						) ];
+
+						return createBlock( 'core/cover', {
+							align: blockAlignment,
+							url: backgroundImageUrl,
+							textColor,
+							backgroundColor,
+							customTextColor,
+							customBackgroundColor,
+						},
+						groupContent );
+					},
+				},
 			],
 		},
 
