@@ -60,7 +60,8 @@ registerBlockType(
 				{
 					type: 'block',
 					blocks: [ 'core/group' ],
-					transform: ( { blockAlignment, textColor, backgroundColor, customTextColor, customBackgroundColor }, columns ) => {
+					transform: ( { blockAlignment, textColor, backgroundColor, customTextColor, customBackgroundColor, heroLayout }, columns ) => {
+						let imageBlock;
 						let columnsContent;
 
 						// Transform GT Content to Group block.
@@ -74,24 +75,26 @@ registerBlockType(
 						// Check if we have both GT Content and GT Image block.
 						if ( columns.length > 1 ) {
 							// Transform GT Image to Image block.
-							const imageBlock = [ createBlock( 'core/image', {
-								mediaId: columns[ 1 ].attributes.id,
-								mediaUrl: columns[ 1 ].attributes.url,
-								mediaType: 'image',
-								mediaAlt: columns[ 1 ].attributes.alt,
-								mediaPosition: columns[ 1 ].attributes.imagePosition,
+							imageBlock = [ createBlock( 'core/image', {
+								id: columns[ 1 ].attributes.id,
+								url: columns[ 1 ].attributes.url,
+								alt: columns[ 1 ].attributes.alt,
 								linkDestination: columns[ 1 ].attributes.linkDestination,
 								href: columns[ 1 ].attributes.href,
 							} ) ];
+						} else {
+							imageBlock = undefined;
+						}
 
+						if ( heroLayout === 'left' ) {
 							columnsContent = [
 								createBlock( 'core/column', {}, contentBlock ),
 								createBlock( 'core/column', {}, imageBlock ),
 							];
 						} else {
 							columnsContent = [
+								createBlock( 'core/column', {}, imageBlock ),
 								createBlock( 'core/column', {}, contentBlock ),
-								createBlock( 'core/column', {} ),
 							];
 						}
 
