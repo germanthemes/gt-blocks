@@ -7,7 +7,7 @@ import classnames from 'classnames';
  * WordPress dependencies
  */
 const { __ } = wp.i18n;
-const { registerBlockType } = wp.blocks;
+const { createBlock, registerBlockType } = wp.blocks;
 const { InnerBlocks } = wp.editor;
 
 /**
@@ -53,6 +53,65 @@ registerBlockType(
 				default: true,
 			},
 			...backgroundAttributes,
+		},
+
+		transforms: {
+			to: [
+				{
+					type: 'block',
+					blocks: [ 'core/group' ],
+					transform: ( { blockAlignment, textColor, backgroundColor, customTextColor, customBackgroundColor }, columns ) => {
+						let columnsContent;
+
+						// Transform GT Content to Group block.
+						const contentBlock = [ createBlock( 'core/group', {
+							textColor: columns[ 0 ].attributes.textColor,
+							backgroundColor: columns[ 0 ].attributes.backgroundColor,
+							customTextColor: columns[ 0 ].attributes.customTextColor,
+							customBackgroundColor: columns[ 0 ].attributes.customBackgroundColor,
+						}, columns[ 0 ].innerBlocks ) ];
+
+						// Check if we have both GT Content and GT Image block.
+						if ( columns.length > 1 ) {
+							// Transform GT Image to Image block.
+							const imageBlock = [ createBlock( 'core/image', {
+								mediaId: columns[ 1 ].attributes.id,
+								mediaUrl: columns[ 1 ].attributes.url,
+								mediaType: 'image',
+								mediaAlt: columns[ 1 ].attributes.alt,
+								mediaPosition: columns[ 1 ].attributes.imagePosition,
+								linkDestination: columns[ 1 ].attributes.linkDestination,
+								href: columns[ 1 ].attributes.href,
+							} ) ];
+
+							columnsContent = [
+								createBlock( 'core/column', {}, contentBlock ),
+								createBlock( 'core/column', {}, imageBlock ),
+							];
+						} else {
+							columnsContent = [
+								createBlock( 'core/column', {}, contentBlock ),
+								createBlock( 'core/column', {} ),
+							];
+						}
+
+						const groupContent = [ createBlock(
+							'core/columns',
+							{},
+							columnsContent,
+						) ];
+
+						return createBlock( 'core/group', {
+							align: blockAlignment,
+							textColor,
+							backgroundColor,
+							customTextColor,
+							customBackgroundColor,
+						},
+						groupContent );
+					},
+				},
+			],
 		},
 
 		getEditWrapperProps( attributes ) {
