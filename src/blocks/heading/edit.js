@@ -30,7 +30,7 @@ const {
 	RichText,
 	withColors,
 	withFontSizes,
-} = wp.editor;
+} = wp.blockEditor;
 
 const {
 	BaseControl,

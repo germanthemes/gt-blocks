@@ -4,7 +4,7 @@
 const { compose } = wp.compose;
 const { withSelect } = wp.data;
 const { Component } = wp.element;
-const { InnerBlocks } = wp.editor;
+const { InnerBlocks } = wp.blockEditor;
 
 /**
  * Internal dependencies
@@ -33,7 +33,7 @@ class sectionEdit extends Component {
 
 export default compose( [
 	withSelect( ( select, { clientId } ) => {
-		const { hasSelectedInnerBlock } = select( 'core/editor' );
+		const { hasSelectedInnerBlock } = select( 'core/block-editor' );
 		return {
 			isChildBlockSelected: hasSelectedInnerBlock( clientId, true ),
 		};

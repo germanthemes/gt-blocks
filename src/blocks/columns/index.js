@@ -8,7 +8,7 @@ import classnames from 'classnames';
  */
 const { __ } = wp.i18n;
 const { createBlock, registerBlockType } = wp.blocks;
-const { InnerBlocks } = wp.editor;
+const { InnerBlocks } = wp.blockEditor;
 
 /**
  * Internal dependencies

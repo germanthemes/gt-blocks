@@ -10,7 +10,7 @@ const { Component, Fragment } = wp.element;
 const { compose } = wp.compose;
 const { __ } = wp.i18n;
 const { withSelect } = wp.data;
-const { PlainText } = wp.editor;
+const { PlainText } = wp.blockEditor;
 
 const {
 	Button,

@@ -9,7 +9,7 @@ import classnames from 'classnames';
 const { __ } = wp.i18n;
 const { select } = wp.data;
 const { registerBlockType } = wp.blocks;
-const { getColorClassName } = wp.editor;
+const { getColorClassName } = wp.blockEditor;
 
 /**
  * Internal dependencies

@@ -3,7 +3,7 @@
  */
 const { Component, Fragment } = wp.element;
 const { __ } = wp.i18n;
-const { MediaPlaceholder, MediaUpload } = wp.editor;
+const { MediaPlaceholder, MediaUpload } = wp.blockEditor;
 const { Button, IconButton } = wp.components;
 
 /**

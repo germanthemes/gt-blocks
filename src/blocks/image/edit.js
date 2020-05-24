@@ -10,7 +10,7 @@ const { Component, Fragment } = wp.element;
 const {
 	AlignmentToolbar,
 	BlockControls,
-} = wp.editor;
+} = wp.blockEditor;
 
 /**
  * Internal dependencies

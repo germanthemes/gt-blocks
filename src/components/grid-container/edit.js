@@ -31,7 +31,7 @@ const {
 	BlockControls,
 	InnerBlocks,
 	InspectorControls,
-} = wp.editor;
+} = wp.blockEditor;
 
 const {
 	BaseControl,
@@ -70,7 +70,7 @@ class GridEdit extends Component {
 		} = this.props;
 
 		// Get block.
-		const block = select( 'core/editor' ).getBlocksByClientId( clientId )[ 0 ];
+		const block = select( 'core/block-editor' ).getBlocksByClientId( clientId )[ 0 ];
 
 		// Get number of items.
 		const itemsCount = block.innerBlocks.length;
@@ -257,7 +257,7 @@ class GridEdit extends Component {
 
 export default compose( [
 	withSelect( ( select, { clientId } ) => {
-		const { hasSelectedInnerBlock } = select( 'core/editor' );
+		const { hasSelectedInnerBlock } = select( 'core/block-editor' );
 		return {
 			isChildBlockSelected: hasSelectedInnerBlock( clientId, true ),
 		};

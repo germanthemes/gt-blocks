@@ -201,7 +201,7 @@ export const getParentBlock = ( blockId ) => {
 	const {
 		getBlocksByClientId,
 		getBlockRootClientId,
-	} = select( 'core/editor' );
+	} = select( 'core/block-editor' );
 
 	// Get parent block.
 	const rootClientId = getBlockRootClientId( blockId );

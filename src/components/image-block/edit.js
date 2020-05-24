@@ -25,7 +25,7 @@ const {
 	BlockControls,
 	InspectorControls,
 	MediaUpload,
-} = wp.editor;
+} = wp.blockEditor;
 
 const {
 	IconButton,

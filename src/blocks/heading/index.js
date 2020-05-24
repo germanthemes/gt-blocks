@@ -12,7 +12,7 @@ const {
 	RichText,
 	getColorClassName,
 	getFontSizeClass,
-} = wp.editor;
+} = wp.blockEditor;
 
 /**
  * Internal dependencies

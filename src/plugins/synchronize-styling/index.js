@@ -3,7 +3,7 @@
  */
 const { createHigherOrderComponent } = wp.compose;
 const { Fragment } = wp.element;
-const { InspectorControls } = wp.editor;
+const { InspectorControls } = wp.blockEditor;
 const { Button, Dashicon, PanelBody } = wp.components;
 const { __ } = wp.i18n;
 const { addFilter } = wp.hooks;

@@ -11,7 +11,7 @@ const { createBlock, registerBlockType } = wp.blocks;
 const {
 	getColorClassName,
 	InnerBlocks,
-} = wp.editor;
+} = wp.blockEditor;
 
 /**
  * Internal dependencies

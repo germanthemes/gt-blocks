@@ -4,7 +4,7 @@
 const { compose } = wp.compose;
 const { withSelect } = wp.data;
 const { Component } = wp.element;
-const { InnerBlocks } = wp.editor;
+const { InnerBlocks } = wp.blockEditor;
 
 /**
  * Internal dependencies
@@ -54,7 +54,7 @@ export default compose( [
 			getBlockRootClientId,
 			isBlockSelected,
 			hasSelectedInnerBlock,
-		} = select( 'core/editor' );
+		} = select( 'core/block-editor' );
 
 		const rootClientId = getBlockRootClientId( clientId );
 

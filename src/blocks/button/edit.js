@@ -27,7 +27,7 @@ const {
 	RichText,
 	URLInput,
 	withColors,
-} = wp.editor;
+} = wp.blockEditor;
 
 const {
 	Dashicon,
@@ -259,7 +259,7 @@ class ButtonEdit extends Component {
 							className={ backgroundClasses }
 							style={ backgroundStyles }
 							onChange={ ( newText ) => setAttributes( { text: newText } ) }
-							formattingControls={ [] }
+							allowedFormats={ [] }
 							value={ text }
 							placeholder={ placeholder || __( 'Add text…', 'gt-blocks' ) }
 							keepPlaceholderOnFocus

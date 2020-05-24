@@ -7,7 +7,7 @@ import classnames from 'classnames';
  * WordPress dependencies
  */
 const { Component } = wp.element;
-const { getColorClassName } = wp.editor;
+const { getColorClassName } = wp.blockEditor;
 
 /**
  * Internal dependencies

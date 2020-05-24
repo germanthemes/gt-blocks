@@ -22,7 +22,7 @@ const {
 	InspectorControls,
 	PanelColorSettings,
 	withColors,
-} = wp.editor;
+} = wp.blockEditor;
 
 const {
 	PanelBody,

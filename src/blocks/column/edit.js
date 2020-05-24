@@ -10,7 +10,7 @@ const { __ } = wp.i18n;
 const { compose } = wp.compose;
 const { dispatch, select, withDispatch, withSelect } = wp.data;
 const { Component } = wp.element;
-const { InnerBlocks } = wp.editor;
+const { InnerBlocks } = wp.blockEditor;
 
 const {
 	IconButton,
@@ -39,7 +39,7 @@ class columnEdit extends Component {
 
 		const {
 			getBlocksByClientId,
-		} = select( 'core/editor' );
+		} = select( 'core/block-editor' );
 
 		const {
 			selectBlock,
@@ -73,7 +73,7 @@ class columnEdit extends Component {
 
 		const {
 			getBlocksByClientId,
-		} = select( 'core/editor' );
+		} = select( 'core/block-editor' );
 
 		const {
 			removeBlocks,
@@ -175,7 +175,7 @@ export default compose( [
 			getBlockRootClientId,
 			isBlockSelected,
 			hasSelectedInnerBlock,
-		} = select( 'core/editor' );
+		} = select( 'core/block-editor' );
 
 		const rootClientId = getBlockRootClientId( clientId );
 		const columnIndex = getBlockIndex( clientId, rootClientId );
