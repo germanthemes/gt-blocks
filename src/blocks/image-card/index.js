@@ -7,7 +7,7 @@ import classnames from 'classnames';
  * WordPress dependencies
  */
 const { __ } = wp.i18n;
-const { registerBlockType } = wp.blocks;
+const { createBlock, registerBlockType } = wp.blocks;
 const {
 	getColorClassName,
 	InnerBlocks,
@@ -74,6 +74,30 @@ registerBlockType(
 				type: 'string',
 			},
 			...imageBlockAttributes,
+		},
+
+		transforms: {
+			to: [
+				{
+					type: 'block',
+					blocks: [ 'core/media-text' ],
+					transform: ( { blockAlignment, id, url, alt, imagePosition, linkDestination, href, verticalAlignment, backgroundColor, customBackgroundColor }, innerBlocks ) => {
+						return createBlock( 'core/media-text', {
+							align: blockAlignment,
+							mediaId: id,
+							mediaUrl: url,
+							mediaType: 'image',
+							mediaAlt: alt,
+							mediaPosition: imagePosition,
+							linkDestination,
+							href,
+							verticalAlignment,
+							backgroundColor,
+							customBackgroundColor,
+						}, innerBlocks );
+					},
+				},
+			],
 		},
 
 		getEditWrapperProps( attributes ) {
