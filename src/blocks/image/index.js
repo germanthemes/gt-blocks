@@ -7,7 +7,7 @@ import classnames from 'classnames';
  * WordPress dependencies
  */
 const { __ } = wp.i18n;
-const { registerBlockType } = wp.blocks;
+const { createBlock, registerBlockType } = wp.blocks;
 
 /**
  * Internal dependencies
@@ -46,6 +46,24 @@ registerBlockType(
 			{ name: 'rounded', label: __( 'Rounded Corners', 'gt-blocks' ) },
 			{ name: 'circle', label: __( 'Circle', 'gt-blocks' ) },
 		],
+
+		transforms: {
+			to: [
+				{
+					type: 'block',
+					blocks: [ 'core/image' ],
+					transform: ( { id, url, alt, linkDestination, href } ) => {
+						return createBlock( 'core/image', {
+							id,
+							url,
+							alt,
+							linkDestination,
+							href,
+						} );
+					},
+				},
+			],
+		},
 
 		edit,
 
