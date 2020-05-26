@@ -5,7 +5,7 @@ Contributors: germanthemes
 Tags: Gutenberg, Blocks, Editor
 Requires at least: 5.4
 Tested up to: 5.5
-Stable tag: 1.3
+Stable tag: 1.3.1
 License: GPLv2 or later
 
 Innovative Business Blocks for the new WordPress Editor.
@@ -52,6 +52,10 @@ GT Blocks is developed on [Github](https://github.com/germanthemes/gt-blocks)
 6. Image Card Block
 
 == Changelog ==
+
+= 1.3.1 =
+
+* Added transform method for GT Image block
 
 = 1.3 =
 
